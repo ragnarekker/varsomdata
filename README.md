@@ -15,14 +15,14 @@ Repository contains methods and modules for accessing api's for regObs, The fore
 
 **Repository content - "run" files:**<br>
 `runallforecasteddangerlevels.py`: Needs testing - Saves to `Datafiles` all forecasted danger levels in all regions winter 2014/15. Includes method for saving danger levels and problems if needed.<br>
-`runavalancheproblems.py`: Needs testing - Retrieves all avalanche problems (both forecasted and observed) since 2012 and saves the results to a `.csv` file in `output`.<br>
-`runmainmessage.py`: Needs testing - Retrieves all main messages used in forecasts the winter 2014/15. Both norwegian and english. The main messages are sorted according to the danger levels and avalanche problems they appear. There is also a count of occurrences. `.csv` file is saved to `output`.<br>
-`runmatrix.py`: ok - Plots histograms of forecasted danger levels on different avalanche problems the winter 2014/15. Plots saved in `plots`.<br>
+`runavalancheproblems.py`: Retrieves all avalanche problems (both forecasted and observed) since 2012 and saves the results to a `.csv` file in `output`.<br>
+`runmainmessage.py`: Retrieves all main messages used in forecasts the winter 2014/15. Both norwegian and english. The main messages are sorted according to the danger levels and avalanche problems they appear. There is also a count of occurrences. `.csv` file is saved to `output`.<br>
+`runmatrix.py`: Plots histograms of forecasted danger levels on different avalanche problems the winter 2014/15. Plots saved in `plots`.<br>
 `runmplotdangerandproblem.py`: Needs testing - Makes a plot comparing forecasted and observed danger level and a second plot comparing forecasted and observed avalanche cause for all regions. Plot files are stored in `plots`.<br>
 `runavalancheactivity.py`: Incomplete - Makes a plot of all avalanche activity compared to forecasted danger level. Plot files are stored in `plots`.<br>
 
 **Repository content - folders:**<br>
-`input`: .....<br>
-`localstorage`: ...<br>
-`output`: All ... produced.<br>
-`plots`: All plot files produced.<br>
+`input`: Configuration- or other files used in running scripts.<br>
+`localstorage`: Mostly `.pickle` files. For offline work or to save time when debugging data is stored locally.<br>
+`output`: All products from scripts except plots are saved to this folder.<br>
+`plots`: All plot files produced are saved to tis folder.<br>

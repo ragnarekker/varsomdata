@@ -7,10 +7,6 @@ import os.path
 import setenvironment as se
 
 
-data_folder = se.data_folder
-plot_folder = se.plot_folder
-
-
 def save_danger_levels_to_file(warnings, file_path):
     """
     Saves a list of warning objects to file.
@@ -100,12 +96,12 @@ if __name__ == "__main__":
     file_name_for_all_danger_levels_csv = '{0}{1}'.format(se.output_folder, 'Alle varslede faregrader.csv')
     file_name_for_all_danger_and_problems_csv = '{0}{1}'.format(se.output_folder, 'Alle varslede faregrader og problemer.csv')
 
-    # Warnings with problems found in pickle file for main messages.
-    # If update needed, use pickle_warnings method in runmainmessage.py
+    # NOTE!! Warnings with problems found in pickle file for main messages. If update needed, use pickle_warnings
+    # method in runmainmessage.py
     warnings = mp.unpickle_anything(file_name_for_warnings_pickle)
 
-    # write to file
-    # save_danger_levels_to_file(warnings, file_name_for_all_danger_levels_csv)
+    # write to files
+    save_danger_levels_to_file(warnings, file_name_for_all_danger_levels_csv)
     save_danger_and_problem_to_file(warnings, file_name_for_all_danger_and_problems_csv)
 
     a = 1

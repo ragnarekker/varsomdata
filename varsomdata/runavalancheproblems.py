@@ -2,12 +2,8 @@
 __author__ = 'ragnarekker'
 
 import os.path
-import getregobs as GRO
-
-# Two sets of folder references: windows based og unix based.
-#data_folder = "datafiles\\"
-data_folder = "datafiles/"
-
+import getregobs as gro
+import setenvironment as env
 
 
 def save_problems(problems, file_path):
@@ -47,12 +43,12 @@ if __name__ == "__main__":
 
     # This makes a full report
 
-    data_output_filename = '{0}Alle skredproblemer.csv'.format(data_folder)
+    data_output_filename = '{0}Alle skredproblemer.csv'.format(env.output_folder)
 
     regions = list(range(106, 134))
 
     for r in regions:
-        data = GRO.get_all_problems(r)
+        data = gro.get_all_problems(r)
         save_problems(data, data_output_filename)
 
     a = 1

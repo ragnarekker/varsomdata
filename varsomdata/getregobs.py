@@ -98,7 +98,7 @@ def get_problems_from_AvalancheProblemV(region_name, region_id, start_date, end_
                  "DtObsTime lt datetime'{2}' and " \
                  "ForecastRegionName eq '{0}' and " \
                  "LangKey eq 1".format(region_name, start_date, end_date)
-    odata_query = fe.fe.add_norwegian_letters(odata_query)
+    odata_query = fe.add_norwegian_letters(odata_query)
 
     url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}?$filter={2}&$format=json".decode('utf8').format(
         api_version, view, odata_query)
