@@ -14,7 +14,7 @@ Repository contains methods and modules for accessing api's for regObs, The fore
 `setenvironment.py`: Contains environment variables such as api versions and folder-paths.<br>
 
 **Repository content - "run" files:**<br>
-`runallforecasteddangerlevels.py`: Needs testing - Saves to `Datafiles` all forecasted danger levels in all regions winter 2014/15. Includes method for saving danger levels and problems if needed.<br>
+`runallforecasteddangerlevels.py`: Saves to `Datafiles` all forecasted danger levels in all regions winter 2014/15. Includes method for saving danger levels and problems if needed.<br>
 `runavalancheproblems.py`: Retrieves all avalanche problems (both forecasted and observed) since 2012 and saves the results to a `.csv` file in `output`.<br>
 `runmainmessage.py`: Retrieves all main messages used in forecasts the winter 2014/15. Both norwegian and english. The main messages are sorted according to the danger levels and avalanche problems they appear. There is also a count of occurrences. `.csv` file is saved to `output`.<br>
 `runmatrix.py`: Plots histograms of forecasted danger levels on different avalanche problems the winter 2014/15. Plots saved in `plots`.<br>
