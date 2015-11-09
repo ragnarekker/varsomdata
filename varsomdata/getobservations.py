@@ -126,6 +126,7 @@ class AvalancheActivityObs(Registration, Location, Observer):
         self.Snowline = d['Snowline']
         self.Comment = fe.remove_norwegian_letters(d['Comment'])
         self.LangKey = d['LangKey']
+
 def get_avalanche_activity(region_id, from_date, to_date):
     """Gets observations from AvalancheActivityObsV of a region og list of regions.
 
@@ -168,6 +169,7 @@ class AvalancheObs(Registration, Location, Observer):
         self.UTMEastStop = d['UTMEastStop']
         self.UTMNorthStop = d['UTMNorthStop']
         self.UTMZoneStop = d['UTMZoneStop']
+
 def get_avalanche(region_id, from_date, to_date):
     """Gets observations from AvalancheObsV of a region og list of regions.
 
@@ -204,6 +206,7 @@ class DangerObs(Registration, Location, Observer):
         self.GeoHazardName = d['GeoHazardName']
         self.GeoHazardTID = d['GeoHazardTID']
         self.LangKey = d['LangKey']
+
 def get_danger_sign(region_id, from_date, to_date):
     """Gets observations from DangerObsV of a region og list of regions.
 
