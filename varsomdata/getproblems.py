@@ -235,9 +235,9 @@ def get_all_problems(region_id, start_date, end_date, max_time_span=200):
 
     Note: the queries in Odata goes from a date (but not including) this date. Mathematically <from, to].
 
-    :param region_id:
-    :param start_str:
-    :param end_str:
+    :param region_id:       [int]   ForecastRegionTID
+    :param start_date:
+    :param end_date:        [date or string as "YYYY-MM-DD"]
     :param max_time_span:   [int]   To avoid datacropping in the requests to OData a max time span can be given.
                                     If your request is greater than this value, multiple queries are made.
 
@@ -249,10 +249,12 @@ def get_all_problems(region_id, start_date, end_date, max_time_span=200):
 
 if __name__ == "__main__":
 
-    region_id = 129
+    region_id = 129 # Tamokdalen
     start_date = "2015-04-09"
     end_date = "2015-05-10"
 
+    # Step refferer til antall dager vi henter problemer for omgagangen. Før var jeg redd for å ta for mye data
+    # på en gang. HEr finnes en annen løsning med rekursivt kall som jeg skal implementere.
     #all_problems_step10 = get_all_problems(region_id, start_date, end_date, max_time_span=10)
     all_problems_step100 = get_all_problems(region_id, start_date, end_date, max_time_span=100)
 

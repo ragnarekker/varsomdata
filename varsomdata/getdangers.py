@@ -51,6 +51,7 @@ class AvalancheDanger():
         self.main_message_en = None
         self.nick = None
         self.avalanche_problems = []
+        self.source = None
 
 
     def add_problem(self, problem_inn):
@@ -112,7 +113,7 @@ def get_all_dangers(region_ids, start_date, end_date):
 
 if __name__ == "__main__":
 
-    region_id = 117
+    region_id = 117  # Trollheimen
 
     # from_date = "2014-12-01"
     # to_date = "2015-02-01"
@@ -120,6 +121,5 @@ if __name__ == "__main__":
     to_date = dt.date.today()
 
     alle = get_all_dangers(region_id, from_date, to_date)
-
 
     a = 1
