@@ -1,0 +1,429 @@
+ID   Order  IsActive  Langkey   Name                                              Description                                       
+0    0      1         1         Ikke gitt                                         None                                              
+100  0      1         1         Varslingsregion ikke gitt                         Omraadeinndeling for snoeobservasjoner (GeoHazardTID = 10)
+106  10     1         1         Alta                                              None                                              
+107  20     1         1         Kaafjord                                          None                                              
+108  30     1         1         Tromsoe                                           None                                              
+109  40     1         1         Balsfjord                                         None                                              
+110  50     1         1         Senja                                             None                                              
+111  22     1         1         Lyngsalpan                                        None                                              
+112  70     1         1         Bardu                                             None                                              
+114  90     1         1         Narvik                                            None                                              
+115  100    1         1         Vesteraalen                                       None                                              
+116  110    1         1         Lofoten                                           None                                              
+117  120    1         1         Trollheimen                                       None                                              
+118  130    1         1         Romsdal                                           None                                              
+119  140    1         1         Sunnmoere                                         None                                              
+121  160    1         1         Fjordane                                          None                                              
+122  170    1         1         Sogn                                              None                                              
+123  180    1         1         Jotunheimen                                       None                                              
+124  190    1         1         Voss                                              None                                              
+127  220    1         1         Roeldal                                           None                                              
+128  230    1         1         Rauland                                           None                                              
+129  61     1         1         Tamokdalen                                        None                                              
+130  240    1         1         Nordenskioldland                                  None                                              
+131  115    1         1         Svartisen                                         None                                              
+132  210    1         1         Hallingdal                                        None                                              
+133  114    1         1         Salten                                            None                                              
+151  269    1         1         stfold                                            None                                              
+152  268    1         1         Akershus                                          None                                              
+153  267    1         1         Oslo                                              None                                              
+154  266    1         1         Hedmark                                           None                                              
+155  265    1         1         Oppland                                           None                                              
+156  264    1         1         Buskerud                                          None                                              
+157  263    1         1         Vestfold                                          None                                              
+158  262    1         1         Telemark                                          None                                              
+159  261    1         1         Aust-Agder                                        None                                              
+160  260    1         1         Vest-Agder                                        None                                              
+161  259    1         1         Rogaland                                          None                                              
+162  258    1         1         Hordaland                                         None                                              
+163  257    1         1         Sogn og Fjordane                                  None                                              
+164  256    1         1         Moere og Romsdal                                  None                                              
+165  255    1         1         Soer-Troendelag                                   None                                              
+166  254    1         1         Nord-Troendelag                                   None                                              
+167  253    1         1         Nordland                                          None                                              
+168  252    1         1         Troms                                             None                                              
+169  251    1         1         Finnmark                                          None                                              
+170  250    1         1         Svalbard                                          None                                              
+200  0      1         1         Fylke ikke gitt                                   Omraadeinndeling for jordobservasjoner (GeoHazardTID = 20)
+201  10     1         1         stfold                                            None                                              
+202  20     1         1         Akershus                                          None                                              
+203  30     1         1         Oslo                                              None                                              
+204  40     1         1         Hedmark                                           None                                              
+205  50     1         1         Oppland                                           None                                              
+206  60     1         1         Buskerud                                          None                                              
+207  70     1         1         Vestfold                                          None                                              
+208  80     1         1         Telemark                                          None                                              
+209  90     1         1         Aust-Agder                                        None                                              
+210  100    1         1         Vest-Agder                                        None                                              
+211  110    1         1         Rogaland                                          None                                              
+212  120    1         1         Hordaland                                         None                                              
+214  130    1         1         Sogn og Fjordane                                  None                                              
+215  140    1         1         Moere og Romsdal                                  None                                              
+216  150    1         1         Soer-Troendelag                                   None                                              
+217  160    1         1         Nord-Troendelag                                   None                                              
+218  170    1         1         Nordland                                          None                                              
+219  180    1         1         Troms                                             None                                              
+220  190    1         1         Finnmark                                          None                                              
+221  200    1         1         Svalbard                                          None                                              
+222  210    1         1         Jan Mayen                                         None                                              
+223  220    1         1         Kontinentalsokkelen                               None                                              
+299  1000   1         1         Ukjent                                            None                                              
+300  0      1         1         Fylke ikke gitt                                   Omraadeinndeling for vaat-jordobservasjoner (GeoHazardTID = 30)
+301  10     1         1         stfold                                            None                                              
+302  20     1         1         Akershus                                          None                                              
+303  30     1         1         Oslo                                              None                                              
+304  40     1         1         Hedmark                                           None                                              
+305  50     1         1         Oppland                                           None                                              
+306  60     1         1         Buskerud                                          None                                              
+307  70     1         1         Vestfold                                          None                                              
+308  80     1         1         Telemark                                          None                                              
+309  90     1         1         Aust-Agder                                        None                                              
+310  100    1         1         Vest-Agder                                        None                                              
+311  110    1         1         Rogaland                                          None                                              
+312  120    1         1         Hordaland                                         None                                              
+314  130    1         1         Sogn og Fjordane                                  None                                              
+315  140    1         1         Moere og Romsdal                                  None                                              
+316  150    1         1         Soer-Troendelag                                   None                                              
+317  160    1         1         Nord-Troendelag                                   None                                              
+318  170    1         1         Nordland                                          None                                              
+319  180    1         1         Troms                                             None                                              
+320  190    1         1         Finnmark                                          None                                              
+321  200    1         1         Svalbard                                          None                                              
+322  210    1         1         Jan Mayen                                         None                                              
+323  220    1         1         Kontinentalsokkelen                               None                                              
+399  1000   1         1         Ukjent                                            None                                              
+400  0      1         1         Fylke ikke gitt                                   Omraadeinndeling for steinobservasjoner (GeoHazardTID = 40)
+401  10     1         1         stfold                                            None                                              
+402  20     1         1         Akershus                                          None                                              
+403  30     1         1         Oslo                                              None                                              
+404  40     1         1         Hedmark                                           None                                              
+405  50     1         1         Oppland                                           None                                              
+406  60     1         1         Buskerud                                          None                                              
+407  70     1         1         Vestfold                                          None                                              
+408  80     1         1         Telemark                                          None                                              
+409  90     1         1         Aust-Agder                                        None                                              
+410  100    1         1         Vest-Agder                                        None                                              
+411  110    1         1         Rogaland                                          None                                              
+412  120    1         1         Hordaland                                         None                                              
+414  130    1         1         Sogn og Fjordane                                  None                                              
+415  140    1         1         Moere og Romsdal                                  None                                              
+416  150    1         1         Soer-Troendelag                                   None                                              
+417  160    1         1         Nord-Troendelag                                   None                                              
+418  170    1         1         Nordland                                          None                                              
+419  180    1         1         Troms                                             None                                              
+420  190    1         1         Finnmark                                          None                                              
+421  200    1         1         Svalbard                                          None                                              
+422  210    1         1         Jan Mayen                                         None                                              
+423  220    1         1         Kontinentalsokkelen                               None                                              
+499  1000   1         1         Ukjent                                            None                                              
+700  0      1         1         Fylke ikke gitt                                   Omraadeinndeling for isobservasjoner (GeoHazardTID = 70)
+701  10     1         1         stfold                                            None                                              
+702  20     1         1         Akershus                                          None                                              
+703  30     1         1         Oslo                                              None                                              
+704  40     1         1         Hedmark                                           None                                              
+705  50     1         1         Oppland                                           None                                              
+706  60     1         1         Buskerud                                          None                                              
+707  70     1         1         Vestfold                                          None                                              
+708  80     1         1         Telemark                                          None                                              
+709  90     1         1         Aust-Agder                                        None                                              
+710  100    1         1         Vest-Agder                                        None                                              
+711  110    1         1         Rogaland                                          None                                              
+712  120    1         1         Hordaland                                         None                                              
+714  130    1         1         Sogn og Fjordane                                  None                                              
+715  140    1         1         Moere og Romsdal                                  None                                              
+716  150    1         1         Soer-Troendelag                                   None                                              
+717  160    1         1         Nord-Troendelag                                   None                                              
+718  170    1         1         Nordland                                          None                                              
+719  180    1         1         Troms                                             None                                              
+720  190    1         1         Finnmark                                          None                                              
+721  200    1         1         Svalbard                                          None                                              
+722  210    1         1         Jan Mayen                                         None                                              
+723  220    1         1         Kontinentalsokkelen                               None                                              
+799  1000   1         1         Ukjent                                            None                                              
+1000 None   1         1         Ingen varslingsregion SE                          Svenske varslingsregioner                         
+1001 None   1         1         Treriksrset - Torne Trsk                          None                                              
+1002 None   1         1         Riksgrnsenfjllen                                  None                                              
+1003 None   1         1         Abisko, Torne Trsk                                None                                              
+1004 None   1         1         Kebnekaise                                        None                                              
+1005 None   1         1         Vstra Gllivarefjllen                              None                                              
+1006 None   1         1         stra Gllivarefjllen                               None                                              
+1007 None   1         1         Vstra Jokkmokksfjllen                             None                                              
+1008 None   1         1         stra Jokkmokksfjllen                              None                                              
+1009 None   1         1         Vstra Arjeplogsfjllen                             None                                              
+1010 None   1         1         stra Arjeplogsfjllen                              None                                              
+1011 None   1         1         Vstra Vindel- och Trnafjllen                      None                                              
+1012 None   1         1         stra Vindel- och Trnafjllen                       None                                              
+1013 None   1         1         Stekenjokksfjllen                                 None                                              
+1014 None   1         1         Marsfjllen                                        None                                              
+1015 None   1         1         Hotagen-Frostviken                                None                                              
+1016 None   1         1         Flatruet, Helags, Sylarna, Storlien               None                                              
+1017 None   1         1         re, Vaalaadalen, Oviksfjllen                      None                                              
+1018 None   1         1         Ljungdalen, Funsdalen                             None                                              
+1019 None   1         1         Klvsj, Vemdalen                                   None                                              
+1020 None   1         1         Idre, Grvelsjn                                    None                                              
+1021 None   1         1         Slenfjllen                                        None                                              
+2000 None   1         1         Vassdrag ikke gitt                                Ommraadeinndeling for vannobservasjoner (GeoHazardTID = 20)
+2001 None   1         1         HALDENVASSDRAGET                                  None                                              
+2002 None   1         1         GLOMMAVASSDRAGET                                  None                                              
+2003 None   1         1         MOSSEVASSDRAGET                                   None                                              
+2004 None   1         1         HLENELVA                                          None                                              
+2005 None   1         1         NESODDEN OG BUNNEFJORDEN                          None                                              
+2006 None   1         1         NORDMARKVASSDRAGET                                None                                              
+2007 None   1         1         LYSAKERELVA                                       None                                              
+2008 None   1         1         SANDVIKSELVA                                      None                                              
+2009 None   1         1         ROSVASSDRAGET                                     None                                              
+2010 None   1         1         HURUMLANDET ST OG SR                              None                                              
+2011 None   1         1         LIERELVA                                          None                                              
+2012 None   1         1         DRAMMENSVASSDRAGET                                None                                              
+2013 None   1         1         SANDEVASSDRAGET                                   None                                              
+2014 None   1         1         AULIVASSDRAGET                                    None                                              
+2015 None   1         1         NUMEDALSLGEN OG SILJANVASSDRAGET                  None                                              
+2016 None   1         1         SKIENSVASSDRAGET                                  None                                              
+2017 None   1         1         KRAGERVASSDRAGET                                  None                                              
+2018 None   1         1         VEGRSVASSDRAGET OG GJERSTADVASSDRAGET             None                                              
+2019 None   1         1         ARENDALSVASSDRAGET                                None                                              
+2020 None   1         1         TOVDALSVASSDRAGET                                 None                                              
+2021 None   1         1         OTRA                                              None                                              
+2022 None   1         1         MANDALSELVA                                       None                                              
+2023 None   1         1         AUDNA                                             None                                              
+2024 None   1         1         LYGNA                                             None                                              
+2025 None   1         1         KVINA                                             None                                              
+2026 None   1         1         SIRA OG SOKNA                                     None                                              
+2027 None   1         1         BJERKREIMVASSDRAGET                               None                                              
+2028 None   1         1         FIGGJO                                            None                                              
+2029 None   1         1         STAVANGER OG SANDNES KOMMUNER                     None                                              
+2030 None   1         1         FRAFJORDELVA                                      None                                              
+2031 None   1         1         LYSEVASSDRAGET                                    None                                              
+2032 None   1         1         JRPELANDSNA                                       None                                              
+2033 None   1         1         RDALSELVA                                         None                                              
+2034 None   1         1         RYFYLKEYANE                                       None                                              
+2035 None   1         1         ULLA OG FRREELVA                                  None                                              
+2036 None   1         1         SULDALSVASSDRAGET                                 None                                              
+2037 None   1         1         SAUDAVASSDRAGET                                   None                                              
+2038 None   1         1         VIKEDALSELVA                                      None                                              
+2039 None   1         1         KYST NEDSTRAND-HAUGESUND-TITTELSNES               None                                              
+2040 None   1         1         KARMY                                             None                                              
+2041 None   1         1         ETNEVASSDRAGET                                    None                                              
+2042 None   1         1         BLELVA                                            None                                              
+2043 None   1         1         BMLO                                              None                                              
+2044 None   1         1         STORDYA                                           None                                              
+2045 None   1         1         HARDANGERFJORDEN ST: SUNDE-NES                    None                                              
+2046 None   1         1         MAURANGERFJORDEN OG SILDEFJORDEN ST               None                                              
+2047 None   1         1         SAMLAFJORDEN SR OG JONDAL KOMMUNE                 None                                              
+2048 None   1         1         OPO                                               None                                              
+2049 None   1         1         TYSSO                                             None                                              
+2050 None   1         1         EIDFJORDVASSDRAGET, KINSO OG SIMA                 None                                              
+2051 None   1         1         OSAFJORDEN, ULVIKFJORDEN OG EIDFJORDEN NORD       None                                              
+2052 None   1         1         GRANVINFJORDEN OG SAMLAFJORDEN NORD               None                                              
+2053 None   1         1         SVAREIDELVA                                       None                                              
+2054 None   1         1         TYSNES OG AUSTEVOLL KOMMUNER                      None                                              
+2055 None   1         1         SAMNANGERVASSDRAGET                               None                                              
+2056 None   1         1         BERGEN OG OMEGN                                   None                                              
+2057 None   1         1         SOTRA                                             None                                              
+2058 None   1         1         YGARDEN KOMMUNE                                   None                                              
+2059 None   1         1         ASKYA OG HOLSNYA                                  None                                              
+2060 None   1         1         OSTERYA                                           None                                              
+2061 None   1         1         BERGSDALSVASSDRAGET                               None                                              
+2062 None   1         1         VOSSOVASSDRAGET                                   None                                              
+2063 None   1         1         EKSINGEDALSVASSDRAGET                             None                                              
+2064 None   1         1         STEINSLANDSVASSDRAGET                             None                                              
+2065 None   1         1         LINDSHALVYA, SEIMSFJORDEN OG AUSTFJORDEN          None                                              
+2066 None   1         1         FOSNYA, RADYA OG FEDJE                            None                                              
+2067 None   1         1         MASFJORDEN                                        None                                              
+2068 None   1         1         SOGNESJEN SR                                      None                                              
+2069 None   1         1         YTRE SOGNEFJORDEN SR: RUTLEDAL-VARMRK             None                                              
+2070 None   1         1         VIKSVASSDRAGET                                    None                                              
+2071 None   1         1         NRYELVI                                           None                                              
+2072 None   1         1         AURLANDSVASSDRAGET                                None                                              
+2073 None   1         1         LRDALSVASSDRAGET                                  None                                              
+2074 None   1         1         RDALSVASSDRAGET                                   None                                              
+2075 None   1         1         FORTUNVASSDRAGET                                  None                                              
+2076 None   1         1         JOSTEDLA                                          None                                              
+2077 None   1         1         RYVASSDRAGET                                      None                                              
+2078 None   1         1         VETLEFJORDEN OG FJRLANDSFJORDEN                   None                                              
+2079 None   1         1         HYANGERVASSDRAGET                                 None                                              
+2080 None   1         1         YTRE SOGNEFJORDEN NORD: KYRKJEB-RISNES            None                                              
+2081 None   1         1         SOLUND KOMMUNE                                    None                                              
+2082 None   1         1         GUDDALSVASSDRAGET                                 None                                              
+2083 None   1         1         GAULARVASSDRAGET                                  None                                              
+2084 None   1         1         JLSTRA                                            None                                              
+2085 None   1         1         OSELVVASSDRAGET                                   None                                              
+2086 None   1         1         GJENGEDALSVASSDRAGET                              None                                              
+2087 None   1         1         BREIMSVASSDRAGET                                  None                                              
+2088 None   1         1         STRYNVASSDRAGET                                   None                                              
+2089 None   1         1         HORNINDALVASSDRAGET                               None                                              
+2090 None   1         1         BREMANGERLANDET                                   None                                              
+2091 None   1         1         SILDEGAPET                                        None                                              
+2092 None   1         1         GUSDALELVA                                        None                                              
+2093 None   1         1         ROVDEFJORDEN SR OG SYVDEFJORDEN                   None                                              
+2094 None   1         1         STIGEDALSELVA                                     None                                              
+2095 None   1         1         RSTAVASSDRAGET                                    None                                              
+2096 None   1         1         HAREIDLANDET OG GURSKYA                           None                                              
+2097 None   1         1         STORFJORDEN SR, HJRUNDFJORDEN OG SYKKYLVSFJORDEN  None                                              
+2098 None   1         1         STORFJORDEN SR, SUNNYLVSFJORDEN OG GEIRANGERFJORD None                                              
+2099 None   1         1         TAFJORDVASSDRAGET                                 None                                              
+2100 None   1         1         VALLDLA                                           None                                              
+2101 None   1         1         LESUND OG OMEGN                                   None                                              
+2102 None   1         1         MIDTFJORDEN SR OG ROMSDALSFJORDEN VEST            None                                              
+2103 None   1         1         RAUMA                                             None                                              
+2104 None   1         1         EIRA                                              None                                              
+2105 None   1         1         GUSJVASSDRAGET                                    None                                              
+2106 None   1         1         AUKRA, MISUND OG SANDY KOMMUNER                   None                                              
+2107 None   1         1         FRNFJORDEN, JULSUNDET OG HUSTADVIKA               None                                              
+2108 None   1         1         KORNSTADFJORDEN OG BATNFJORDEN                    None                                              
+2109 None   1         1         DRIVA                                             None                                              
+2110 None   1         1         AVERY, FREI OG KRISTIANDSUND KOMMUNER             None                                              
+2111 None   1         1         KYST TINGVOLLFJORDEN-SURNADALSFJORDEN             None                                              
+2112 None   1         1         SURNA                                             None                                              
+2113 None   1         1         FJELNA                                            None                                              
+2114 None   1         1         TUSTNA KOMMUNE OG ERTVGY                          None                                              
+2115 None   1         1         SMLA KOMMUNE                                      None                                              
+2116 None   1         1         RSTA                                              None                                              
+2117 None   1         1         HITRA KOMMUNE                                     None                                              
+2118 None   1         1         FRYA KOMMUNE                                      None                                              
+2119 None   1         1         TRONDHEIMSLEIA ST: STAMNES-AGDENES FYR            None                                              
+2120 None   1         1         YTRE TRONDHEIMSFJORDEN: AGDENES FYR-GEITANESET    None                                              
+2121 None   1         1         ORKLA                                             None                                              
+2122 None   1         1         GAULA                                             None                                              
+2123 None   1         1         NIDELVVASSDRAGET                                  None                                              
+2124 None   1         1         STJRDALSVASSDRAGET                                None                                              
+2125 None   1         1         SENFJORDEN                                        None                                              
+2126 None   1         1         TRONDHEIMSFJORDEN ST: FROSTA-VERDALSRA            None                                              
+2127 None   1         1         VERDALSVASSDRAGET                                 None                                              
+2128 None   1         1         SNSAVASSDRAGET                                    None                                              
+2129 None   1         1         FOLLAVASSDRAGET                                   None                                              
+2130 None   1         1         VERRANSUNDET                                      None                                              
+2131 None   1         1         TRONDHEIMSFJORDEN VEST                            None                                              
+2132 None   1         1         SKAUDALSVASSDRAGET                                None                                              
+2133 None   1         1         STJRNFJORDEN                                      None                                              
+2134 None   1         1         TEKSDALSELVA                                      None                                              
+2135 None   1         1         STORDALSELVA                                      None                                              
+2136 None   1         1         HOFSTADELVA                                       None                                              
+2137 None   1         1         OSEN OG FLATANGER KOMMUNER                        None                                              
+2138 None   1         1         RGRDSVASSDRAGET OG BOGNA                          None                                              
+2139 None   1         1         NAMSEN                                            None                                              
+2140 None   1         1         SALSVATNVASSDRAGET                                None                                              
+2141 None   1         1         OPPLYVASSDRAGET                                   None                                              
+2142 None   1         1         INDRE FOLDA                                       None                                              
+2143 None   1         1         VIKNA OG KYST FOLDFJORDEN-BINDALSFJORDEN          None                                              
+2144 None   1         1         BJRA                                              None                                              
+2145 None   1         1         BINDALSFJORDEN NORD                               None                                              
+2146 None   1         1         KYST RYINGEN-VELFJORDEN                           None                                              
+2147 None   1         1         VEGA KOMMUNE                                      None                                              
+2148 None   1         1         LOMSDALSVASSDRAGET                                None                                              
+2149 None   1         1         VISTEN, HALSFJORDEN OG YTRE VEFSNFJORDEN ST       None                                              
+2150 None   1         1         ALSTEN OG TJTTA                                   None                                              
+2151 None   1         1         VEFSNA                                            None                                              
+2152 None   1         1         FUSTA OG DREVJA                                   None                                              
+2153 None   1         1         LEIRFJORD KOMMUNE                                 None                                              
+2154 None   1         1         DNNA OG HERY KOMMUNER                             None                                              
+2155 None   1         1         RSSGA                                             None                                              
+2156 None   1         1         RANAVASSDRAGET                                    None                                              
+2157 None   1         1         KYST UTSKARPEN-NESNA-TONNES                       None                                              
+2158 None   1         1         YER I NESNA, LURY OG TRNA KOMMUNER                None                                              
+2159 None   1         1         VESTRE SVARTISEN OG RDY KOMMUNE                   None                                              
+2160 None   1         1         FYKANGA                                           None                                              
+2161 None   1         1         BEIARELVA, MORSDALSFJORDEN OG NORDFJORDEN         None                                              
+2162 None   1         1         SALTFJORDEN: NORDFJORDEN-SKJERSTAD                None                                              
+2163 None   1         1         SALTELVA                                          None                                              
+2164 None   1         1         SULITJELMAVASSDRAGET                              None                                              
+2165 None   1         1         KYST SALTSTRAUMEN-BOD-TRNVIKFJELLET               None                                              
+2166 None   1         1         FAGERBAKKVASSDRAGET OG LAKSGA                     None                                              
+2167 None   1         1         KOBBELVVASSDRAGET                                 None                                              
+2168 None   1         1         NORDFOLDA                                         None                                              
+2169 None   1         1         YTRE DEL AV STEIGEN KOMMUNE                       None                                              
+2170 None   1         1         SAGELVVASSDRAGET                                  None                                              
+2171 None   1         1         HELLEMOVASSDRAGET                                 None                                              
+2172 None   1         1         FORSVASSDRAGET                                    None                                              
+2173 None   1         1         SKJOMAVASSDRAGET                                  None                                              
+2174 None   1         1         INDRE OFOTFJORDEN                                 None                                              
+2175 None   1         1         OFOTFJORDEN NORD: TANGVIK-BOGEN-SELNES            None                                              
+2176 None   1         1         TJELDYA                                           None                                              
+2177 None   1         1         STRE HINNYA                                       None                                              
+2178 None   1         1         VESTRE HINNYA                                     None                                              
+2179 None   1         1         VGAN KOMMUNE                                      None                                              
+2180 None   1         1         VESTVGY KOMMUNE                                   None                                              
+2181 None   1         1         FLAKSTADYA OG MOSKENESYA                          None                                              
+2182 None   1         1         VRY KOMMUNE                                       None                                              
+2183 None   1         1         RST KOMMUNE                                       None                                              
+2184 None   1         1         HADSELYA                                          None                                              
+2185 None   1         1         LANGYA                                            None                                              
+2186 None   1         1         ANDYA                                             None                                              
+2187 None   1         1         GRYTYA, BJARKYA OG SANDSYA                        None                                              
+2188 None   1         1         ROLLA                                             None                                              
+2189 None   1         1         SKODDEBERGVASSDRAGET                              None                                              
+2190 None   1         1         GRATANGEN OG LAVANGEN                             None                                              
+2191 None   1         1         SALANGSELVA                                       None                                              
+2192 None   1         1         ANDRJA                                            None                                              
+2193 None   1         1         SKELVVASSDRAGET                                   None                                              
+2194 None   1         1         LAKSELVA OG LYSELVVASSDRAGET                      None                                              
+2195 None   1         1         SENJA VEST                                        None                                              
+2196 None   1         1         MLSELVVASSDRAGET                                  None                                              
+2197 None   1         1         KVALYA OG TROMSYA                                 None                                              
+2198 None   1         1         NORDKJOSELVA                                      None                                              
+2199 None   1         1         TROMSYSUNDET OG GRTSUNDET ST, REINYA OG KARLS     None                                              
+2200 None   1         1         RINGVASSYA                                        None                                              
+2201 None   1         1         REBBENESYA, GRYTYA, NORD-KVALYA OG HELGYA         None                                              
+2202 None   1         1         VANNA OG NORD-FUGLYA                              None                                              
+2203 None   1         1         LAKSELVA                                          None                                              
+2204 None   1         1         SIGNALDALSELVA                                    None                                              
+2205 None   1         1         SKIBOTNVASSDRAGET                                 None                                              
+2206 None   1         1         KFJORDVASSDRAGET                                  None                                              
+2207 None   1         1         ARNYA OG LAUKYA                                   None                                              
+2208 None   1         1         REISAVASSDRAGET                                   None                                              
+2209 None   1         1         KVNANGSVASSDRAGET                                 None                                              
+2210 None   1         1         STORELVA                                          None                                              
+2211 None   1         1         LOPPA KOMMUNE OG LANGFJORDEN                      None                                              
+2212 None   1         1         ALTAVASSDRAGET                                    None                                              
+2213 None   1         1         REPPARFJORDVASSDRAGET                             None                                              
+2214 None   1         1         STJERNYA                                          None                                              
+2215 None   1         1         SEILAND                                           None                                              
+2216 None   1         1         SRYA                                              None                                              
+2217 None   1         1         KVALYA                                            None                                              
+2218 None   1         1         RUSSELVVASSDRAGET                                 None                                              
+2219 None   1         1         INGYA OG ROLVSYA                                  None                                              
+2220 None   1         1         NORDRE PORSANGERHALVYA, MSYA OG HJELMSYA          None                                              
+2221 None   1         1         MAGERYA                                           None                                              
+2222 None   1         1         VESTRE PORSANGEN                                  None                                              
+2223 None   1         1         STABBURSELVA                                      None                                              
+2224 None   1         1         LAKSELVVASSDRAGET                                 None                                              
+2225 None   1         1         BRSELVVASSDRAGET                                  None                                              
+2226 None   1         1         STRE PORSANGEN                                    None                                              
+2227 None   1         1         YTRE LAKSEFJORDEN VEST                            None                                              
+2228 None   1         1         STORELVA                                          None                                              
+2229 None   1         1         ADAMSELVVASSDRAGET                                None                                              
+2230 None   1         1         YTRE LAKSEFJORDEN ST                              None                                              
+2231 None   1         1         NORDKINNHALVYA NORD                               None                                              
+2232 None   1         1         HOPSFJORDEN                                       None                                              
+2233 None   1         1         LANGFJORDVASSDRAGET                               None                                              
+2234 None   1         1         TANA                                              None                                              
+2235 None   1         1         STORDALSELVVASSDRAGET                             None                                              
+2236 None   1         1         KONGSFJORDVASSDRAGET                              None                                              
+2237 None   1         1         VESTERELVVASSDRAGET                               None                                              
+2238 None   1         1         SANDFJORDELVA                                     None                                              
+2239 None   1         1         KOMAGELVA OG SKALLELVVASSDRAGET                   None                                              
+2240 None   1         1         VESTRE JAKOBSELVA                                 None                                              
+2241 None   1         1         BERGEBYELVA OG VESTERELVA                         None                                              
+2242 None   1         1         REPPENELVA OG NYELVVASSDRAGET                     None                                              
+2243 None   1         1         KLOKKERELVVASSDRAGET                              None                                              
+2244 None   1         1         NEIDENVASSDRAGET                                  None                                              
+2245 None   1         1         SKOGERYA                                          None                                              
+2246 None   1         1         PASVIKELVA                                        None                                              
+2247 None   1         1         GRENSE JAKOBSELV                                  None                                              
+2301 None   1         1         KEMIJOKI                                          None                                              
+2302 None   1         1         TORNEELVEN                                        None                                              
+2303 None   1         1         LULEELVEN                                         None                                              
+2304 None   1         1         PITEELVEN                                         None                                              
+2305 None   1         1         SKELLEFTEELVEN                                    None                                              
+2306 None   1         1         UMEELVEN                                          None                                              
+2307 None   1         1         NGERMANELVEN                                      None                                              
+2308 None   1         1         INDALSELVEN                                       None                                              
+2309 None   1         1         LJUSNAN                                           None                                              
+2310 None   1         1         DALELVEN                                          None                                              
+2311 None   1         1         VANERN-GTA ELV'S SIDENEDBRFELT KLARAELVEN         None                                              
+2312 None   1         1         VANERN-GTA ELV'S SIDENEDBRFELT NORSELVEN          None                                              
+2313 None   1         1         VANERN-GTA ELV'S SIDENEDBRFELT BYELVEN            None                                              
+2314 None   1         1         VANERN-GTA ELV'S SIDENEDBRFELT UPPERUDSELVEN      None                                              
+2315 None   1         1         STRMSN                                            None                                              
+2999 None   1         1         Ukjent                                            None                                              
