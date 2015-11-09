@@ -202,7 +202,6 @@ if __name__ == "__main__":
     from_date = dt.date(2014, 11, 30)
     to_date = dt.date(2015, 6, 1)
     #to_date = dt.date.today()
-
     #### get and make the data set
     # date_region, forecasted_dangers = make_data_set(region_id, from_date, to_date)
     # mp.pickle_anything([date_region, forecasted_dangers], '{0}runforavalancheactivity.pickle'.format(env.local_storage))
