@@ -10,7 +10,8 @@ import getproblems as gp
 import makepickle as mp
 import getregobs as gro
 import fencoding as fe
-from setenvironment import data_folder, plot_folder
+import getkdvelements as gkdv
+import setenvironment as env
 
 
 def make_plots_for_region(region_id, start_date, end_date):
@@ -24,7 +25,7 @@ def make_plots_for_region(region_id, start_date, end_date):
     :return:
     """
 
-    filename = "{3}runForPlots ID{0} {1} {2}.pickle".format(region_id, start_date, end_date, data_folder)
+    filename = "{3}runForPlots ID{0} {1} {2}.pickle".format(region_id, start_date, end_date, env.local_storage)
     [problems, danger] = mp.unpickle_anything(filename)
 
     region_name = gro.get_forecast_region_name(region_id)
@@ -58,8 +59,7 @@ def make_plots_for_region(region_id, start_date, end_date):
 
 
 def plot_danger_levels(region_name, w_danger_levels, w_dates, o_danger_levels, o_dates):
-    """
-    Plots the danger levels as bars and makes a small cake diagram with distribution.
+    """Plots the danger levels as bars and makes a small cake diagram with distribution.
 
     :param region_name:     [String] Name of forecast region
     :param w_danger_levels:   [list] Forecasted danger levels as ints
@@ -139,7 +139,7 @@ def plot_danger_levels(region_name, w_danger_levels, w_dates, o_danger_levels, o
     plt.setp(b, xticks=[], yticks=[])
 
     # This saves the figure til file
-    plt.savefig("{0}{1}".format(plot_folder, filename))#,dpi=90)
+    plt.savefig("{0}{1}".format(env.plot_folder, filename))#,dpi=90)
     plt.close(fig)
 
 
@@ -156,7 +156,7 @@ def plot_causes(region_name, w_cause_with_date, w_dates, o_cause_with_date):
     filename = r"{0} Skredproblemer {1} til {2}".format(region_name, w_dates[0].strftime('%Y%m%d'), w_dates[-1].strftime('%Y%m%d'))
     print("Plotting {0}".format(filename))
 
-    AvalCauseKDV = gro.get_kdv("AvalCauseKDV")
+    AvalCauseKDV = gkdv.get_kdv("AvalCauseKDV")
 
     # A variable to list all WARNED causes with a list of dates they occured
     DayNoPrAvalCause = [0, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]                       # the day number in the series. This variable is for plotting only
@@ -191,7 +191,7 @@ def plot_causes(region_name, w_cause_with_date, w_dates, o_cause_with_date):
     for i in range(0, len(DayNoPrAvalCause), 1):
         events.append(DayNoPrAvalCause[i][1])
         count.append(len(events[i]))
-        causes.append(fe.add_norwegian_letters("{0}".format(AvalCauseKDV[DayNoPrAvalCause[i][0]])))
+        causes.append(fe.add_norwegian_letters("{0}".format(AvalCauseKDV[DayNoPrAvalCause[i][0]].Name)))
         obsEvents.append(DayNoPrObservedCause[i][1])
         obsCount.append(len(obsEvents[i]))
         if count[i] == 0 and obsCount[i] == 0:
@@ -256,7 +256,7 @@ def plot_causes(region_name, w_cause_with_date, w_dates, o_cause_with_date):
     fig = plt.gcf()
     fig.subplots_adjust(left=0.2)
 
-    plt.savefig("{0}{1}".format(plot_folder, filename))
+    plt.savefig("{0}{1}".format(env.plot_folder, filename))
 
 
 def compareDangerLevels(wDates, eDates, wDangerLevels, eDangerLevels):
@@ -309,8 +309,7 @@ def compareAvalancheCauses(DayNoPrAvalCause, DayNoPrObservedCause):
 
 
 def get_data_from_api_and_pickle(region_id, start_date, end_date):
-    """
-    Gets all the data needed in the plots and pickles it so that I dont need to do requests to make plots.
+    """Gets all the data needed in the plots and pickles it so that I don't need to do requests to make plots.
 
     :param region_id:       [int]    Region ID is an int as given i ForecastRegionKDV
     :param start_date:      [string] Start date. Data for this date is not included in requests from OData
@@ -321,7 +320,7 @@ def get_data_from_api_and_pickle(region_id, start_date, end_date):
     problems = gp.get_all_problems(region_id, start_date, end_date)
     dangers = gd.get_all_dangers(region_id, start_date, end_date)
 
-    filename = "{3}runForPlots ID{0} {1} {2}.pickle".format(region_id, start_date, end_date, data_folder)
+    filename = "{3}runForPlots ID{0} {1} {2}.pickle".format(region_id, start_date, end_date, env.local_storage)
 
     # Saving the objects:
     mp.pickle_anything([problems, dangers], filename)
@@ -329,8 +328,9 @@ def get_data_from_api_and_pickle(region_id, start_date, end_date):
 
 if __name__ == "__main__":
 
-    get_data_from_api_and_pickle(129, "2014-12-01", "2015-06-01")
-    make_plots_for_region(129, "2014-12-01", "2015-06-01")
+    ##### Start small - do one region
+    # get_data_from_api_and_pickle(129, "2014-12-01", "2015-06-01")
+    # make_plots_for_region(129, "2014-12-01", "2015-06-01")
 
     # All regions span from 6 (Alta) to 33 (Salten).
     for i in range(106, 134, 1):

@@ -21,12 +21,12 @@ class AvalancheProblem():
         :param region_id_inn:       [int]       Region ID is as given in ForecastRegionKDV.
         :param region_name_inn:     [String]    Region name as given in ForecastRegionKDV.
         :param date_inn:            [Date]      Date for avalanche problem.
-        :param order_inn:           [int]       The order* of the avalanche problem.
+        :param order_inn:           [int]       The que_number* of the avalanche problem.
         :param cause_name_inn:      [String]    Avalanche cause. For newer problems this as given in AvalCauseKDV.
         :param source_inn:          [String]    The source of the data. Normally 'Observasjon' og 'Varsel'.
 
         * Order should be indexed from 0 (main problem) and up, but I see that they often start on higher indexes
-          and don't always have a step of +1. A rule is that the higher the order the higher the priority.
+          and don't always have a step of +1. A rule is that the higher the que_number the higher the priority.
 
         Other variables:
         regid               [int]

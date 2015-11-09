@@ -18,7 +18,7 @@ Repository contains methods and modules for accessing api's for regObs, The fore
 `runavalancheproblems.py`: Retrieves all avalanche problems (both forecasted and observed) since 2012 and saves the results to a `.csv` file in `output`.<br>
 `runmainmessage.py`: Retrieves all main messages used in forecasts the winter 2014/15. Both norwegian and english. The main messages are sorted according to the danger levels and avalanche problems they appear. There is also a count of occurrences. `.csv` file is saved to `output`.<br>
 `runmatrix.py`: Plots histograms of forecasted danger levels on different avalanche problems the winter 2014/15. Plots saved in `plots`.<br>
-`runmplotdangerandproblem.py`: Needs testing - Makes a plot comparing forecasted and observed danger level and a second plot comparing forecasted and observed avalanche cause for all regions. Plot files are stored in `plots`.<br>
+`runmplotdangerandproblem.py`: Makes a plot comparing forecasted and observed danger level and a second plot comparing forecasted and observed avalanche cause for all regions. Plot files are stored in `plots`.<br>
 `runavalancheactivity.py`: Incomplete - Makes a plot of all avalanche activity compared to forecasted danger level. Plot files are stored in `plots`.<br>
 
 **Repository content - folders:**<br>

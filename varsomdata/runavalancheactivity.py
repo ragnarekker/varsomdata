@@ -57,6 +57,22 @@ class DataOnDateInRegion():
         self.highest_value = -1
 
 
+class OrderOfSizeAndNumber():
+
+
+    def __init__(self):
+        self.estimated_num = None
+        self.destructive_size = None
+        self.que_number = None
+
+
+    def add_configuration_row(self, row):
+        self.estimated_num = row[0]
+        self.destructive_size = row[1]
+        self.que_number = row[2]
+        return
+
+
 def make_data_set(region_id, from_date, to_date):
     """Makes the dataset of all observed avalanche activity (inl signs and isingle avalanches obs) and mapps
     to forecasts for those days.
@@ -138,31 +154,25 @@ def make_data_set(region_id, from_date, to_date):
 
 def find_most_valued_observations(date_region):
 
-    destructive_size_kdv = gkdv.get_kdv('DestructiveSizeKDV')
-    estimated_num_kdv = gkdv.get_kdv('EstimatedNumKDV')
-
+    order = rf.read_configuration_file('{0}aval_dl_order_of_size_and_num.csv'.format(env.input_folder), OrderOfSizeAndNumber)
     for d in date_region:
 
         for aa in d.avalanche_activity:
-            size_tid = 0
-            number_tid = 0
-            for k, v in destructive_size_kdv.iteritems():
-                if v.Name == aa.DestructiveSizeName:
-                    size_tid = k
-            for k, v in estimated_num_kdv.iteritems():
-                if v.Name == aa.EstimatedNumName:
-                    number_tid = k
-            if size_tid + number_tid > d.highest_value:
-                d.highest_value = size_tid + number_tid
+            que_number = 0
+            for o in order:
+                if o.estimated_num in aa.EstimatedNumName and o.destructive_size in aa.DestructiveSizeName:
+                    que_number = o.que_number
+            if d.highest_value < que_number:
+                d.highest_value = que_number
                 d.most_valued_observation = aa
 
         for a in d.avalanche:
-            size_tid = 0
-            for k, v in destructive_size_kdv.iteritems():
-                if v.Name == a.DestructiveSizeName:
-                    size_tid = k
-            if size_tid + 2 > d.highest_value:      # single avalanches have EstimatedNumTID = 2
-                d.highest_value = size_tid + 2
+            que_number = 0
+            for o in order:
+                if o.estimated_num in 'Ett (1)' and o.destructive_size in a.DestructiveSizeName:
+                    que_number = o.que_number
+            if d.highest_value < que_number:
+                d.highest_value = que_number
                 d.most_valued_observation = a
 
         for ds in d.danger_sign:
