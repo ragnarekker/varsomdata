@@ -57,19 +57,19 @@ class DataOnDateInRegion():
         self.highest_value = -1
 
 
-class OrderOfSizeAndNumber():
+class IndexOfSizeAndNumber():
 
 
     def __init__(self):
         self.estimated_num = None
         self.destructive_size = None
-        self.que_number = None
+        self.index = None
 
 
     def add_configuration_row(self, row):
         self.estimated_num = row[0]
         self.destructive_size = row[1]
-        self.que_number = row[2]
+        self.index = row[2]
         return
 
 
@@ -154,25 +154,27 @@ def make_data_set(region_id, from_date, to_date):
 
 def find_most_valued_observations(date_region):
 
-    order = rf.read_configuration_file('{0}aval_dl_order_of_size_and_num.csv'.format(env.input_folder), OrderOfSizeAndNumber)
+    # most valued obs could change name to observation with highest index
+
+    index = rf.read_configuration_file('{0}aval_dl_order_of_size_and_num.csv'.format(env.input_folder), IndexOfSizeAndNumber)
     for d in date_region:
 
         for aa in d.avalanche_activity:
-            que_number = 0
-            for o in order:
-                if o.estimated_num in aa.EstimatedNumName and o.destructive_size in aa.DestructiveSizeName:
-                    que_number = o.que_number
-            if d.highest_value < que_number:
-                d.highest_value = que_number
+            max_index = 0
+            for i in index:
+                if i.estimated_num in aa.EstimatedNumName and i.destructive_size in aa.DestructiveSizeName:
+                    max_index = i.index
+            if d.highest_value < max_index:
+                d.highest_value = max_index
                 d.most_valued_observation = aa
 
         for a in d.avalanche:
-            que_number = 0
-            for o in order:
-                if o.estimated_num in 'Ett (1)' and o.destructive_size in a.DestructiveSizeName:
-                    que_number = o.que_number
-            if d.highest_value < que_number:
-                d.highest_value = que_number
+            max_index = 0
+            for i in index:
+                if i.estimated_num in 'Ett (1)' and i.destructive_size in a.DestructiveSizeName:
+                    max_index = i.index
+            if d.highest_value < max_index:
+                d.highest_value = max_index
                 d.most_valued_observation = a
 
         for ds in d.danger_sign:

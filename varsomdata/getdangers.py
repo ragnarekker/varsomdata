@@ -56,7 +56,7 @@ class AvalancheDanger():
 
     def add_problem(self, problem_inn):
         self.avalanche_problems.append(problem_inn)
-        self.avalanche_problems.sort(key=lambda problems: problems.order)           # make sure lowest que_number (main problem) is first
+        self.avalanche_problems.sort(key=lambda problems: problems.order)           # make sure lowest index (main problem) is first
 
 
     def set_main_message_no(self, main_message_no_inn):
