@@ -192,7 +192,6 @@ def find_most_valued_observations(date_region):
 
 if __name__ == "__main__":
 
-    # master igjen?
     region_id = [112, 117, 116, 128]
 
     #### Get all regions
