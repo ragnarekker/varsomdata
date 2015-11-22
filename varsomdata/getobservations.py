@@ -31,7 +31,7 @@ def _make_request(view, region_ids, from_date, to_date):
     """Common part of all data requests
 
     :param view:
-    :param region_id:
+    :param region_id:   [int og list of ints]   If region_id is 0 all is selected
     :param from_date:   [date]
     :param end_date:    [date]
     :return:
@@ -75,7 +75,7 @@ def _make_request(view, region_ids, from_date, to_date):
 
         data_out += result
 
-    env.log.append("{2} to {3}: {1} has {0} problems".format(len(data_out), view, from_date, to_date))
+    env.log.append("{2} to {3}: {1} has {0} items".format(len(data_out), view, from_date, to_date))
 
     return data_out
 
@@ -237,14 +237,67 @@ def get_weather_observation(region_id, from_date, to_date):
     return
 
 
-if __name__ == "__main__":
 
-    from_date = dt.date(2015, 4, 1)
-    to_date = dt.date.today()
+def _view_test():
+    '''Method tests if views show observartions made by Ragnar on a test location the last fiew days.
+    The purpose is to test if views correctly remove deleted items.
 
-    avalanche_activity = get_avalanche_activity(116, from_date, to_date)
+    :return:
+    '''
+
+    views = ['AllRegistrationsV',
+             'AllRegistrationsIceV',
+             'AllRegistrationsLandslideV',
+             'AllRegistrationsSnowV',
+             'AllRegistrationsWaterV',
+             'DangerObsV',
+             'IncidentV',
+             'GeneralObservationV',
+             'PictureV',
+             'AvalancheObsV',
+             'AvalancheActivityObsV',
+             # 'AvalancheActivityObs2V',
+             'AvalancheDangerObsV',
+             'AvalancheEvaluationV',
+             'AvalancheEvaluation2V',
+             'AvalancheEvaluation3V',
+             'AvalancheEvalProblem2V',
+             'WeatherObservationV',
+             'ColumnTestV',
+             # 'DangerSignV',
+             # 'WeakLayerV',
+             'SnowCoverObsV',
+             'SnowSurfaceObservationV',
+             'IceCoverObsV',
+             'IceThicknessV',
+             'LandSlideObsV',
+             'WaterLevelV',
+             ]
+
 
     log = env.log
+    view_test = []
+
+    for v in views:
+        view_test += _make_request(v, 0, dt.date.today()-dt.timedelta(days=1), dt.date.today()+dt.timedelta(days=1))
+
+    for o in view_test:
+        if 'Ragnar' in o['NickName'] and 'Test' in o['LocationName']:
+            print '{0: <30} with RegID    {3: <7} has observations by    {1: <20} on location    {2}.'.format(o['__metadata']['type'], o['NickName'], o['LocationName'], o['RegID'])
+
+
+
+    a = 1
+
+
+if __name__ == "__main__":
+
+    # from_date = dt.date(2015, 4, 1)
+    # to_date = dt.date.today()
+    # avalanche_activity = get_avalanche_activity(116, from_date, to_date)
+
+    # _view_test()
+
     a = 1
 
 
