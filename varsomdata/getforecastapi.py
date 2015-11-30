@@ -5,53 +5,63 @@ __author__ = 'raek'
 import requests
 import datetime
 import getdangers as gd
+import types as types
 
 
-def get_warnings_as_json(region_id, start_date, end_date, lang_key=1):
+def get_warnings_as_json(region_ids, start_date, end_date, lang_key=1):
     """
     Selects warnings and returns the json structured result as given on the api.
 
-    :param region_id:   [int]       RegionID as given in the forecast api [1-99] or in regObs [101-199]
-    :param start_date:  [string]    date as yyyy-mm-dd
-    :param end_date:    [string]    date as yyyy-mm-dd
+    :param region_id:   [int or list of ints]       RegionID as given in the forecast api [1-99] or in regObs [101-199]
+    :param start_date:  [date or string as yyyy-mm-dd]
+    :param end_date:    [date or string as yyyy-mm-dd]
 
     :return warnings:   [string]    String as json
 
     Eg. http://api01.nve.no/hydrology/forecast/avalanche/v2.0.2/api/AvalancheWarningByRegion/Detail/10/1/2013-01-10/2013-01-20
     """
 
-    if region_id > 100:
-        region_id = region_id - 100
+    # If input isn't a list, make it so
+    if not isinstance(region_ids, types.ListType):
+        region_ids = [region_ids]
 
-    print"getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for {0} from {1} til {2}"\
-        .format(region_id, start_date, end_date)
+    warnings = []
 
-    url = "http://api01.nve.no/hydrology/forecast/avalanche/v2.0.2/api/AvalancheWarningByRegion/Detail/{0}/{3}/{1}/{2}"\
-        .format(region_id, start_date, end_date, lang_key)
+    for region_id in region_ids:
 
-    # If at first you don't succeed, try and try again.
-    try:
-        warnings = requests.get(url).json()
-        print(".. {} warnings found.".format(len(warnings)))
-        return warnings
-    except:
-        print("!!Exception occurred!!")
-        warnings = get_warnings_as_json(region_id, start_date, end_date, lang_key)
-        return warnings
+        if region_id > 100:
+            region_id = region_id - 100
+
+        print "getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for {0} from {1} til {2}"\
+            .format(region_id, start_date, end_date)
+
+        url = "http://api01.nve.no/hydrology/forecast/avalanche/v2.0.2/api/AvalancheWarningByRegion/Detail/{0}/{3}/{1}/{2}"\
+            .format(region_id, start_date, end_date, lang_key)
+
+        # If at first you don't succeed, try and try again.
+        try:
+            warnings += requests.get(url).json()
+            print "getForecastApi -> get_warnings_as_json: {0} warnings found for {1}.".format(len(warnings), region_id)
+
+        except:
+            print "getForecastApi -> get_warnings_as_json: !!Exception occurred!! Trying again."
+            warnings += get_warnings_as_json(region_id, start_date, end_date, lang_key)
+
+    return warnings
 
 
-def get_warnings(region_id, start_date, end_date, lang_key=1):
+def get_warnings(region_ids, start_date, end_date, lang_key=1):
     """Selects warnings and returns a list of AvalancheDanger Objects. This method does NOT add the
     avalanche problems to the warning.
 
-    :param region_id:   [int]       RegionID as given in the forecast api [1-99] or in regObs [101-199]
-    :param start_date:  [string]    date as yyyy-mm-dd
-    :param end_date:    [string]    date as yyyy-mm-dd
+    :param region_id:   [int or list of ints]       RegionID as given in the forecast api [1-99] or in regObs [101-199]
+    :param start_date:  [date or string as yyyy-mm-dd]
+    :param end_date:    [date or string as yyyy-mm-dd]
 
     :return avalanche_danger_list: List of AvalancheDanger objects
     """
 
-    warnings = get_warnings_as_json(region_id,start_date, end_date, lang_key=lang_key)
+    warnings = get_warnings_as_json(region_ids,start_date, end_date, lang_key=lang_key)
     avalanche_danger_list = []
 
     for w in warnings:
@@ -81,7 +91,7 @@ def get_valid_regids(region_id, start_date, end_date):
     :param region_id:   [int]       RegionID as given in the forecast api [1-99] or in regObs [101-199]
     :param start_date:  [string]    date as yyyy-mm-dd
     :param end_date:    [string]    date as yyyy-mm-dd
-    :return:
+    :return:            {RegID:date, RegID:date, ...}
     """
 
     warnings = get_warnings_as_json(region_id, start_date, end_date)
@@ -97,8 +107,9 @@ def get_valid_regids(region_id, start_date, end_date):
 
 if __name__ == "__main__":
 
+    import datetime as dt
     # get data for Bardu (112) and Tamokdalen (129)
-    warnings_for_129 = get_warnings(129, "2014-12-01", "2015-06-01")
+    warnings_for_129 = get_warnings([129, 118], dt.date(2015, 4, 1), dt.date(2015, 5, 1))
     # p = get_valid_regids(10, "2013-03-01", "2013-03-09")
 
     a = 1

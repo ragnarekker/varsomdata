@@ -9,6 +9,7 @@ import setenvironment as env
 import getkdvelements as gkdv
 import getdangers as gd
 import getproblems as gp
+import getobservations as go
 
 
 # Some global variables
@@ -51,7 +52,7 @@ def get_forecast_region_name(region_id):
     return forecast_region_name
 
 
-def get_problems_from_AvalancheProblemV(region_name, region_id, start_date, end_date):
+def get_problems_from_AvalancheProblemV(region_id, start_date, end_date):
     '''
     Used for observations from 2012-01-01 upp until 2012-12-02
     Elrapp used the view longer but added only "Ikke gitt"
@@ -91,9 +92,8 @@ def get_problems_from_AvalancheProblemV(region_name, region_id, start_date, end_
     }
     '''
 
-
+    region_name = get_forecast_region_name(region_id)
     view = "AvalancheProblemV"
-
     odata_query = "DtObsTime gt datetime'{1}' and " \
                  "DtObsTime lt datetime'{2}' and " \
                  "ForecastRegionName eq '{0}' and " \
@@ -105,47 +105,53 @@ def get_problems_from_AvalancheProblemV(region_name, region_id, start_date, end_
 
     result = requests.get(url).json()
     result = result['d']['results']
-    log.append("{2} to {3}: {1} has {0} problems".format(len(result), view, start_date, end_date))
 
-    problems = []
+    print 'getregobs.py -> get_problems_from_AvalancheProblemV: {0} observations for {1} in from {2} to {3}.'\
+        .format(len(result), region_id, start_date, end_date)
 
-    if len(result) != 0:
-        for p in result:
+    # if more than 1000 elements are requested, odata truncates data to 1000. We do more requests
+    if len(result) == 1000:
+        time_delta = end_date - start_date
+        date_in_middle = start_date + time_delta/2
+        problems = get_problems_from_AvalancheProblemV(region_id, start_date, date_in_middle) \
+               + get_problems_from_AvalancheProblemV(region_id, date_in_middle, end_date)
+    else:
+        problems = []
+        if len(result) != 0:
+            for p in result:
 
-            date = unix_time_2_normal(int(p['DtObsTime'][6:-2])).date()   # DtObsTime and data on Day0 gives best data
-            cause_name1 = p["AvalancheProblemName1"]
-            cause_name2 = p["AvalancheProblemName2"]
-            cause_name3 = p["AvalancheProblemName3"]
-            source = "Observasjon"
+                date = unix_time_2_normal(int(p['DtObsTime'][6:-2])).date()   # DtObsTime and data on Day0 gives best data
+                cause_name1 = p["AvalancheProblemName1"]
+                cause_name2 = p["AvalancheProblemName2"]
+                cause_name3 = p["AvalancheProblemName3"]
+                source = "Observasjon"
 
-            if cause_name1 != "Ikke gitt":
-                prob = gp.AvalancheProblem(region_id, region_name, date, 0, cause_name1, source)
-                prob.set_regobs_view(view)
-                prob.set_regid(p['RegID'])
-                prob.set_url("{0}{1}".format(registration_basestring, prob.regid))
-                problems.append(prob)
+                if cause_name1 != "Ikke gitt":
+                    prob = gp.AvalancheProblem(region_id, region_name, date, 0, cause_name1, source)
+                    prob.set_regobs_view(view)
+                    prob.set_regid(p['RegID'])
+                    prob.set_url("{0}{1}".format(registration_basestring, prob.regid))
+                    problems.append(prob)
 
-            if cause_name2 != "Ikke gitt":
-                prob = gp.AvalancheProblem(region_id, region_name, date, 1, cause_name2, source)
-                prob.set_regobs_view(view)
-                prob.set_regid(p['RegID'])
-                prob.set_url("{0}{1}".format(registration_basestring, prob.regid))
-                problems.append(prob)
+                if cause_name2 != "Ikke gitt":
+                    prob = gp.AvalancheProblem(region_id, region_name, date, 1, cause_name2, source)
+                    prob.set_regobs_view(view)
+                    prob.set_regid(p['RegID'])
+                    prob.set_url("{0}{1}".format(registration_basestring, prob.regid))
+                    problems.append(prob)
 
-            if cause_name3 != "Ikke gitt":
-                prob = gp.AvalancheProblem(region_id, region_name, date, 2, cause_name3, source)
-                prob.set_regobs_view(view)
-                prob.set_regid(p['RegID'])
-                prob.set_url("{0}{1}".format(registration_basestring, prob.regid))
-                problems.append(prob)
+                if cause_name3 != "Ikke gitt":
+                    prob = gp.AvalancheProblem(region_id, region_name, date, 2, cause_name3, source)
+                    prob.set_regobs_view(view)
+                    prob.set_regid(p['RegID'])
+                    prob.set_url("{0}{1}".format(registration_basestring, prob.regid))
+                    problems.append(prob)
 
     return problems
 
 
-def get_problems_from_AvalancheEvalProblemV(region_name, region_id, start_date, end_date):
-    '''
-
-    Used for observations from 2012-11-29 up until 2014-05-13
+def get_problems_from_AvalancheEvalProblemV(region_id, start_date, end_date):
+    '''Used for observations from 2012-11-29 up until 2014-05-13
     (elrapp used the view but added only "Ikke gitt")
 
     Eg url:
@@ -158,8 +164,8 @@ def get_problems_from_AvalancheEvalProblemV(region_name, region_id, start_date, 
     :return:
     '''
 
+    region_name = get_forecast_region_name(region_id)
     view = "AvalancheEvalProblemV"
-
     odata_query = "DtObsTime gt datetime'{1}' and " \
                  "DtObsTime lt datetime'{2}' and " \
                  "ForecastRegionName eq '{0}' and " \
@@ -171,41 +177,50 @@ def get_problems_from_AvalancheEvalProblemV(region_name, region_id, start_date, 
 
     result = requests.get(url).json()
     result = result['d']['results']
-    log.append("{2} to {3}: {1} has {0} problems".format(len(result), view, start_date, end_date))
 
-    problems = []
+    print 'getregobs.py -> get_problems_from_AvalancheEvalProblemV: {0} observations for {1} in from {2} to {3}.'\
+        .format(len(result), region_id, start_date, end_date)
 
-    if len(result) != 0:
-        for p in result:
+    # if more than 1000 elements are requested, odata truncates data to 1000. We do more requests
+    if len(result) == 1000:
+        time_delta = end_date - start_date
+        date_in_middle = start_date + time_delta/2
+        problems = get_problems_from_AvalancheEvalProblemV(region_id, start_date, date_in_middle) \
+               + get_problems_from_AvalancheEvalProblemV(region_id, date_in_middle, end_date)
+    else:
+        problems = []
 
-            cause = int(p['AvalCauseTID'])
-            cause_ext = int(p["AvalCauseExtTID"])
+        if len(result) != 0:
+            for p in result:
 
-            if cause != 0 and cause_ext != 0:
+                cause = int(p['AvalCauseTID'])
+                cause_ext = int(p["AvalCauseExtTID"])
 
-                date = unix_time_2_normal(int(p['DtObsTime'][6:-2])).date()
-                order = int(p["AvalancheEvalProblemID"])
-                cause_name = fe.remove_norwegian_letters(p['AvalCauseName'])
-                cause_ext_name = fe.remove_norwegian_letters(p['AvalCauseExtName'])
-                cause_name = "{0}, {1}".format(cause_name, cause_ext_name)
-                source = "Observasjon"
+                if cause != 0 and cause_ext != 0:
 
-                prob = gp.AvalancheProblem(region_id, region_name, date, order, cause_name, source)
+                    date = unix_time_2_normal(int(p['DtObsTime'][6:-2])).date()
+                    order = int(p["AvalancheEvalProblemID"])
+                    cause_name = fe.remove_norwegian_letters(p['AvalCauseName'])
+                    cause_ext_name = fe.remove_norwegian_letters(p['AvalCauseExtName'])
+                    cause_name = "{0}, {1}".format(cause_name, cause_ext_name)
+                    source = "Observasjon"
 
-                prob.set_municipal(p['MunicipalName'])
-                prob.set_regid(p['RegID'])
-                prob.set_url("{0}{1}".format(registration_basestring, prob.regid))
-                prob.set_aval_size(p["DestructiveSizeExtName"])
-                prob.set_problem_combined(p['AvalancheProblemCombined'])
-                prob.set_regobs_view(view)
-                prob.set_nick_name(p['NickName'])
+                    prob = gp.AvalancheProblem(region_id, region_name, date, order, cause_name, source)
 
-                problems.append(prob)
+                    prob.set_municipal(p['MunicipalName'])
+                    prob.set_regid(p['RegID'])
+                    prob.set_url("{0}{1}".format(registration_basestring, prob.regid))
+                    prob.set_aval_size(p["DestructiveSizeExtName"])
+                    prob.set_problem_combined(p['AvalancheProblemCombined'])
+                    prob.set_regobs_view(view)
+                    prob.set_nick_name(p['NickName'])
+
+                    problems.append(prob)
 
     return problems
 
 
-def get_problems_from_AvalancheEvalProblem2V(region_name, region_id, start_date, end_date):
+def get_problems_from_AvalancheEvalProblem2V(region_id, start_date, end_date):
     '''Used from 2014-02-10 up to today
 
     http://api.nve.no/hydrology/regobs/v0.9.8/Odata.svc/AvalancheEvalProblem2V?$filter=DtObsTime%20gt%20datetime%272012-01-10%27%20and%20DtObsTime%20lt%20datetime%272015-01-15%27%20and%20ForecastRegionName%20eq%20%27Senja%27%20and%20LangKey%20eq%201&$format=json
@@ -258,6 +273,7 @@ def get_problems_from_AvalancheEvalProblem2V(region_name, region_id, start_date,
 
     '''
 
+    region_name = get_forecast_region_name(region_id)
     aval_cause_kdv = gkdv.get_kdv('AvalCauseKDV')
     view = "AvalancheEvalProblem2V"
 
@@ -272,38 +288,49 @@ def get_problems_from_AvalancheEvalProblem2V(region_name, region_id, start_date,
 
     result = requests.get(url).json()
     result = result['d']['results']
-    log.append("{2} to {3}: {1} has {0} problems".format(len(result), view, start_date, end_date))
 
-    problems = []
+    print 'getregobs.py -> get_problems_from_AvalancheEvalProblem2V: {0} observations for {1} in from {2} to {3}.'\
+        .format(len(result), region_id, start_date, end_date)
 
-    if len(result) != 0:
-        for p in result:
-            cause = int(p['AvalCauseTID'])
-            if cause != 0:
 
-                date = unix_time_2_normal(int(p['DtObsTime'][6:-2])).date()
-                order = int(p["AvalancheEvalProblemID"])
-                cause_tid = p['AvalCauseTID']
-                cause_name = aval_cause_kdv[cause_tid].Name
-                source = "Observasjon"
+    # if more than 1000 elements are requested, odata truncates data to 1000. We do more requests
+    if len(result) == 1000:
+        time_delta = end_date - start_date
+        date_in_middle = start_date + time_delta/2
+        problems = get_problems_from_AvalancheEvalProblem2V(region_id, start_date, date_in_middle) \
+               + get_problems_from_AvalancheEvalProblem2V(region_id, date_in_middle, end_date)
+    else:
 
-                prob = gp.AvalancheProblem(region_id, region_name, date, order, cause_name, source)
+        problems = []
 
-                prob.set_cause_tid(cause_tid)
-                prob.set_municipal(p['MunicipalName'])
-                prob.set_regid(p['RegID'])
-                prob.set_url("{0}{1}".format(registration_basestring, prob.regid))
-                prob.set_aval_size(p["DestructiveSizeName"])
-                prob.set_problem_combined(p['AvalCauseName'])
-                prob.set_regobs_view(view)
-                prob.set_nick_name(p['NickName'])
+        if len(result) != 0:
+            for p in result:
+                cause = int(p['AvalCauseTID'])
+                if cause != 0:
 
-                problems.append(prob)
+                    date = unix_time_2_normal(int(p['DtObsTime'][6:-2])).date()
+                    order = int(p["AvalancheEvalProblemID"])
+                    cause_tid = p['AvalCauseTID']
+                    cause_name = aval_cause_kdv[cause_tid].Name
+                    source = "Observasjon"
+
+                    prob = gp.AvalancheProblem(region_id, region_name, date, order, cause_name, source)
+
+                    prob.set_cause_tid(cause_tid)
+                    prob.set_municipal(p['MunicipalName'])
+                    prob.set_regid(p['RegID'])
+                    prob.set_url("{0}{1}".format(registration_basestring, prob.regid))
+                    prob.set_aval_size(p["DestructiveSizeName"])
+                    prob.set_problem_combined(p['AvalCauseName'])
+                    prob.set_regobs_view(view)
+                    prob.set_nick_name(p['NickName'])
+
+                    problems.append(prob)
 
     return problems
 
 
-def get_problems_from_AvalancheWarningV(region_name, region_id, start_date, end_date):
+def get_problems_from_AvalancheWarningV(region_id, start_date, end_date):
     '''
 
     :param region_name:
@@ -369,8 +396,8 @@ def get_problems_from_AvalancheWarningV(region_name, region_id, start_date, end_
         ]
         '''
 
+    region_name = get_forecast_region_name(region_id)
     view = "AvalancheWarningV"
-
     odata_query = "DtObsTime gt datetime'{1}' and " \
                  "DtObsTime lt datetime'{2}' and " \
                  "ForecastRegionName eq '{0}' and " \
@@ -379,50 +406,57 @@ def get_problems_from_AvalancheWarningV(region_name, region_id, start_date, end_
 
     url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}?$filter={2}&$format=json".decode('utf8').format(
         api_version, view, odata_query)
-
     result = requests.get(url).json()
     result = result['d']['results']
-    log.append("{2} to {3}: {1} has {0} problems".format(len(result), view, start_date, end_date))
 
-    problems = []
+    print 'getregobs.py -> get_problems_from_AvalancheWarningV: {0} observations for {1} in from {2} to {3}.'\
+        .format(len(result), region_id, start_date, end_date)
 
-    if len(result) != 0:
-        for p in result:
+    # if more than 1000 elements are requested, odata truncates data to 1000. We do more requests
+    if len(result) == 1000:
+        time_delta = end_date - start_date
+        date_in_middle = start_date + time_delta/2
+        problems = get_problems_from_AvalancheWarningV(region_id, start_date, date_in_middle) \
+               + get_problems_from_AvalancheWarningV(region_id, date_in_middle, end_date)
+    else:
+        problems = []
+        if len(result) != 0:
+            for p in result:
 
-            date = unix_time_2_normal(int(p['DtObsTime'][6:-2])).date()   # DtObsTime and data on Day0 gives best data
-            cause_name1 = p["Day0AvalProblemName1"]
-            cause_name2 = p["Day0AvalProblemName2"]
-            cause_name3 = p["Day0AvalProblemName3"]
-            source = "Varsel"
+                date = unix_time_2_normal(int(p['DtObsTime'][6:-2])).date()   # DtObsTime and data on Day0 gives best data
+                cause_name1 = p["Day0AvalProblemName1"]
+                cause_name2 = p["Day0AvalProblemName2"]
+                cause_name3 = p["Day0AvalProblemName3"]
+                source = "Varsel"
 
-            # http://api.nve.no/hydrology/regobs/v0.9.8/Odata.svc/AvalancheWarningV?$filter=RegID%20eq%202472%20and%20LangKey%20eq%201&$format=json
-            view_url_base = 'http://api.nve.no/hydrology/regobs/v0.9.8/Odata.svc/AvalancheWarningV?$filter=RegID%20eq%20{0}%20and%20LangKey%20eq%201&$format=json'
+                # http://api.nve.no/hydrology/regobs/v0.9.8/Odata.svc/AvalancheWarningV?$filter=RegID%20eq%202472%20and%20LangKey%20eq%201&$format=json
+                view_url_base = 'http://api.nve.no/hydrology/regobs/v0.9.8/Odata.svc/AvalancheWarningV?$filter=RegID%20eq%20{0}%20and%20LangKey%20eq%201&$format=json'
 
-            if cause_name1 != "Ikke gitt":
-                prob = gp.AvalancheProblem(region_id, region_name, date, 0, cause_name1, source)
-                prob.set_regobs_view(view)
-                prob.set_regid(p['RegID'])
-                prob.set_url(view_url_base.format(p['RegID']))
-                problems.append(prob)
+                if cause_name1 != "Ikke gitt":
+                    prob = gp.AvalancheProblem(region_id, region_name, date, 0, cause_name1, source)
+                    prob.set_regobs_view(view)
+                    prob.set_regid(p['RegID'])
+                    prob.set_url(view_url_base.format(p['RegID']))
+                    problems.append(prob)
 
-            if cause_name2 != "Ikke gitt":
-                prob = gp.AvalancheProblem(region_id, region_name, date, 1, cause_name2, source)
-                prob.set_regobs_view(view)
-                prob.set_regid(p['RegID'])
-                prob.set_url(view_url_base.format(p['RegID']))
-                problems.append(prob)
+                if cause_name2 != "Ikke gitt":
+                    prob = gp.AvalancheProblem(region_id, region_name, date, 1, cause_name2, source)
+                    prob.set_regobs_view(view)
+                    prob.set_regid(p['RegID'])
+                    prob.set_url(view_url_base.format(p['RegID']))
+                    problems.append(prob)
 
-            if cause_name3 != "Ikke gitt":
-                prob = gp.AvalancheProblem(region_id, region_name, date, 2, cause_name3, source)
-                prob.set_regobs_view(view)
-                prob.set_regid(p['RegID'])
-                prob.set_url(view_url_base.format(p['RegID']))
-                problems.append(prob)
+                if cause_name3 != "Ikke gitt":
+                    prob = gp.AvalancheProblem(region_id, region_name, date, 2, cause_name3, source)
+                    prob.set_regobs_view(view)
+                    prob.set_regid(p['RegID'])
+                    prob.set_url(view_url_base.format(p['RegID']))
+                    problems.append(prob)
 
     return problems
 
 
-def get_problems_from_AvalancheWarnProblemV(region_name, region_id, start_date, end_date):
+def get_problems_from_AvalancheWarnProblemV(region_id, start_date, end_date):
     '''AvalancheWarnProblemV used from 2012-11-15 to today. It selects only problems linked to published
     warnings.
 
@@ -499,7 +533,7 @@ def get_problems_from_AvalancheWarnProblemV(region_name, region_id, start_date, 
 
 
     '''
-
+    region_name = get_forecast_region_name(region_id)
     aval_cause_kdv = gkdv.get_kdv('AvalCauseKDV')
     view = "AvalancheWarnProblemV"
 
@@ -512,251 +546,222 @@ def get_problems_from_AvalancheWarnProblemV(region_name, region_id, start_date, 
 
     url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}?$filter={2}&$format=json".decode('utf8').format(
         api_version, view, odata_query)
-
     result = requests.get(url).json()
     result = result['d']['results']
-    log.append("{2} to {3}: {1} has {0} problems".format(len(result), view, start_date, end_date))
 
-    valid_regids = fa.get_valid_regids(region_id-100, start_date, end_date)
+    print 'getregobs.py -> get_problems_from_AvalancheWarnProblemV: {0} observations for {1} in from {2} to {3}.'\
+        .format(len(result), region_id, start_date, end_date)
 
-    problems = []
+    # if more than 1000 elements are requested, odata truncates data to 1000. We do more requests
+    if len(result) == 1000:
+        time_delta = end_date - start_date
+        date_in_middle = start_date + time_delta/2
+        problems = get_problems_from_AvalancheWarnProblemV(region_id, start_date, date_in_middle) \
+               + get_problems_from_AvalancheWarnProblemV(region_id, date_in_middle, end_date)
+    else:
+        valid_regids = fa.get_valid_regids(region_id-100, start_date, end_date)
+        problems = []
+        if len(result) != 0:
+            for p in result:
+                regid = p["RegID"]
 
-    if len(result) != 0:
-        for p in result:
-            regid = p["RegID"]
+                if regid in valid_regids:
 
-            if regid in valid_regids:
+                    date = datetime.datetime.strptime(valid_regids[regid][0:10], '%Y-%m-%d').date()
+                    source = "Varsel"
 
-                date = datetime.datetime.strptime(valid_regids[regid][0:10], '%Y-%m-%d').date()
-                source = "Varsel"
-
-                aval_cause_tid = int(p['AvalCauseTID']) + int(p['AvalCauseExtTID'])
-                cause_name = p["CauseCombined"]
-                aval_size = fe.remove_norwegian_letters(p['DestructiveSizeExtName'])
-                aval_type = p['AvalancheExtName']
-                aval_trigger = fe.remove_norwegian_letters(p['AvalTriggerSimpleName'])
-                aval_probability = fe.remove_norwegian_letters(p['AvalProbabilityName'])
-                aval_distribution = fe.remove_norwegian_letters(p['AvalPropagationName'])
-                aval_cause_combined = p['AvalancheProblemCombined']
-                problem_url = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}?$filter=RegID eq {2} and LangKey eq 1&$format=json'.format(api_version, view, regid)
-
-                # from late november 2013 there was a change in data model
-                if date > datetime.datetime.strptime('2013-11-15', '%Y-%m-%d').date():
-                    aval_cause_tid = int(p['AvalCauseTID'])
-                    cause_name = aval_cause_kdv[aval_cause_tid].Name
-                    aval_size = fe.remove_norwegian_letters(p['DestructiveSizeName'])
+                    aval_cause_tid = int(p['AvalCauseTID']) + int(p['AvalCauseExtTID'])
+                    cause_name = p["CauseCombined"]
+                    aval_size = fe.remove_norwegian_letters(p['DestructiveSizeExtName'])
+                    aval_type = p['AvalancheExtName']
+                    aval_trigger = fe.remove_norwegian_letters(p['AvalTriggerSimpleName'])
                     aval_probability = fe.remove_norwegian_letters(p['AvalProbabilityName'])
                     aval_distribution = fe.remove_norwegian_letters(p['AvalPropagationName'])
-                    aval_cause_combined = p['AvalCauseName']
+                    aval_cause_combined = p['AvalancheProblemCombined']
+                    problem_url = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}?$filter=RegID eq {2} and LangKey eq 1&$format=json'.format(api_version, view, regid)
 
-                    # http://www.varsom.no/Snoskred/Senja/?date=18.03.2015
-                    varsom_name = region_name.replace('æ','a').replace('ø','o').replace('å','a')
-                    varsom_date = date.strftime("%d.%m.%Y")
-                    problem_url = "http://www.varsom.no/Snoskred/{0}/?date={1}".format(varsom_name, varsom_date)
+                    # from late november 2013 there was a change in data model
+                    if date > datetime.datetime.strptime('2013-11-15', '%Y-%m-%d').date():
+                        aval_cause_tid = int(p['AvalCauseTID'])
+                        cause_name = aval_cause_kdv[aval_cause_tid].Name
+                        aval_size = fe.remove_norwegian_letters(p['DestructiveSizeName'])
+                        aval_probability = fe.remove_norwegian_letters(p['AvalProbabilityName'])
+                        aval_distribution = fe.remove_norwegian_letters(p['AvalPropagationName'])
+                        aval_cause_combined = p['AvalCauseName']
 
-                if cause_name is not None and aval_cause_tid != 0:
-                    order = int(p["AvalancheWarnProblemID"])
-                    prob = gp.AvalancheProblem(region_id, region_name, date, order, cause_name, source)
-                    prob.set_aval_type(aval_type)
-                    prob.set_aval_size(aval_size)
-                    prob.set_aval_trigger(aval_trigger)
-                    prob.set_aval_distribution(aval_distribution)
-                    prob.set_aval_probability(aval_probability)
-                    prob.set_problem_combined(aval_cause_combined)
-                    prob.set_regobs_view(view)
-                    prob.set_url(problem_url)
-                    prob.set_cause_tid(aval_cause_tid)
-                    prob.set_main_cause(cause_name)
-                    problems.append(prob)
+                        # http://www.varsom.no/Snoskred/Senja/?date=18.03.2015
+                        varsom_name = region_name.replace('æ','a').replace('ø','o').replace('å','a')
+                        varsom_date = date.strftime("%d.%m.%Y")
+                        problem_url = "http://www.varsom.no/Snoskred/{0}/?date={1}".format(varsom_name, varsom_date)
+
+                    if cause_name is not None and aval_cause_tid != 0:
+                        order = int(p["AvalancheWarnProblemID"])
+                        prob = gp.AvalancheProblem(region_id, region_name, date, order, cause_name, source)
+                        prob.set_aval_type(aval_type)
+                        prob.set_aval_size(aval_size)
+                        prob.set_aval_trigger(aval_trigger)
+                        prob.set_aval_distribution(aval_distribution)
+                        prob.set_aval_probability(aval_probability)
+                        prob.set_problem_combined(aval_cause_combined)
+                        prob.set_regobs_view(view)
+                        prob.set_url(problem_url)
+                        prob.set_cause_tid(aval_cause_tid)
+                        prob.set_main_cause(cause_name)
+                        problems.append(prob)
 
     return problems
 
 
-def get_observed_dangers(region_id, start_date, end_date):
-    """
-    Gets observed avalanche dangers from AvalancheEvaluationV, AvalancheEvaluation2V and AvalancheEvaluation3V.
+def get_observed_danger_AvalancheEvaluation3V(region_id, start_date, end_date):
+    '''
 
     :param region_id:
     :param start_date:
     :param end_date:
     :return:
-    """
+    '''
+
 
     region_name = get_forecast_region_name(region_id)
-
     oDataQuery = "DtObsTime gt datetime'{1}' and " \
                  "DtObsTime lt datetime'{2}' and " \
                  "ForecastRegionName eq '{0}' and " \
                  "LangKey eq 1".format(region_name, start_date, end_date)
     oDataQuery = fe.add_norwegian_letters(oDataQuery)    # Need norwegian letters in the URL
 
-    print("Getting AvalancheEvaluations for {0} from {1} til {2}").format(region_name, start_date, end_date)
-
-    print("..from AvalancheEvaluation3V")
     url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/AvalancheEvaluation3V?$filter={1}&$format=json".decode('utf8').format(api_version, oDataQuery)
     AvalancheEvaluation3V = requests.get(url).json()
-    print(".. {0} evaluations".format(len(AvalancheEvaluation3V['d']['results'])))
-
-    print("..from AvalancheEvaluation2V")
-    url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/AvalancheEvaluation2V?$filter={1}&$format=json".decode('utf8').format(api_version, oDataQuery)
-    AvalancheEvaluation2V = requests.get(url).json()
-    print(".. {0} evaluations".format(len(AvalancheEvaluation2V['d']['results'])))
-
-    print("..from AvalancheEvaluationV")
-    url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/AvalancheEvaluationV?$filter={1}&$format=json".decode('utf8').format(api_version, oDataQuery)
-    AvalancheEvaluationV = requests.get(url).json()
-    print(".. {0} evaluations".format(len(AvalancheEvaluationV['d']['results'])))
-
     avalEval3 = AvalancheEvaluation3V['d']['results']
-    avalEval2 = AvalancheEvaluation2V['d']['results']
-    avalEval = AvalancheEvaluationV['d']['results']
 
-    print("Getting AvalancheWarnings for {0} from {1} til {2}").format(region_name, start_date, end_date)
+    print 'getregobs.py -> get_observed_danger_AvalancheEvaluation3V: {0} observations for {1} in from {2} to {3}.'\
+        .format(len(avalEval3), region_id, start_date, end_date)
 
-    evaluations = []
+    # if more than 1000 elements are requested, odata truncates data to 1000. We do more requests
+    if len(avalEval3) == 1000:
+        time_delta = end_date - start_date
+        date_in_middle = start_date + time_delta/2
+        evaluations = get_observed_danger_AvalancheEvaluation3V(region_id, start_date, date_in_middle) \
+               + get_observed_danger_AvalancheEvaluation3V(region_id, date_in_middle, end_date)
+    else:
 
-    if len(avalEval3) != 0:
-        for e in avalEval3:
-            date = unix_time_2_normal(int(e['DtObsTime'][6:-2]))
-            danger_level = e['AvalancheDangerTID']
-            danger_level_name = e['AvalancheDangerName']
-            nick = e['NickName']
-            eval = gd.AvalancheDanger(region_id, region_name, "AvalancheEvaluation3V", date, danger_level, danger_level_name)
-            eval.set_nick(nick)
-            eval.set_source('Observasjon')
-            evaluations.append(eval)
+        evaluations = []
 
-    if len(avalEval2) != 0:
-        for e in avalEval2:
-            date = unix_time_2_normal(int(e['DtObsTime'][6:-2]))
-            danger_level = e['AvalancheDangerTID']
-            danger_level_name = e['AvalancheDangerName']
-            nick = e['NickName']
-            eval = gd.AvalancheDanger(region_id, region_name, "AvalancheEvaluation2V", date, danger_level, danger_level_name)
-            eval.set_nick(nick)
-            eval.set_source('Observasjon')
-            evaluations.append(eval)
-
-    if len(avalEval) != 0:
-        for e in avalEval:
-            date = unix_time_2_normal(int(e['DtObsTime'][6:-2]))
-            danger_level = e['AvalancheDangerTID']
-            danger_level_name = e['AvalancheDangerName']
-            nick = e['NickName']
-            eval = gd.AvalancheDanger(region_id, region_name, "AvalancheEvaluationV", date, danger_level, danger_level_name)
-            eval.set_nick(nick)
-            eval.set_source('Observasjon')
-            evaluations.append(eval)
+        if len(avalEval3) != 0:
+            for e in avalEval3:
+                date = unix_time_2_normal(int(e['DtObsTime'][6:-2]))
+                danger_level = e['AvalancheDangerTID']
+                danger_level_name = e['AvalancheDangerName']
+                nick = e['NickName']
+                eval = gd.AvalancheDanger(region_id, region_name, "AvalancheEvaluation3V", date, danger_level, danger_level_name)
+                eval.set_nick(nick)
+                eval.set_source('Observasjon')
+                evaluations.append(eval)
 
     # sort list by date
-    evaluations = sorted(evaluations, key=lambda AvalancheEvaluation: AvalancheEvaluation.date)
+    #evaluations = sorted(evaluations, key=lambda AvalancheEvaluation: AvalancheEvaluation.date)
 
     return evaluations
 
 
-def get_all_problems_with_date(region_id, start_str, end_str, max_time_span=200):
+def get_observed_danger_AvalancheEvaluation2V(region_id, start_date, end_date):
     '''
-    Method returns all avalanche problems on views AvalancheProblemV, AvalancheEvalProblemV, AvalancheEvalProblem2V,
-    AvalancheWarningV and AvalancheWarnProblemV.
-
-    Method takes the region ID as used in ForecastRegionKDV.
-
-    Note: the queries in Odata goes from a date (but not including) this date. Mathematically <from, to].
 
     :param region_id:
-    :param start_str:
-    :param end_str:
-    :param max_time_span:   [int]   To avoid datacropping in the requests to OData a max time span can be given.
-                                    If your request is greater than this value, multiple queries are made.
-
-    :return problems:       [list]  List of AvalancheProblem objects
+    :param start_date:
+    :param end_date:
+    :return:
     '''
 
 
-    # OData has a limit of returning 1000 elements in a request.
-    # If the time span of a request is to great we split up in more requests.
-    # Thus, I convert from string (_str) to datetime (_dt)
-    start_dt = datetime.datetime.strptime(start_str, "%Y-%m-%d")
-    end_dt =  datetime.datetime.strptime(end_str, "%Y-%m-%d")
     region_name = get_forecast_region_name(region_id)
+    oDataQuery = "DtObsTime gt datetime'{1}' and " \
+                 "DtObsTime lt datetime'{2}' and " \
+                 "ForecastRegionName eq '{0}' and " \
+                 "LangKey eq 1".format(region_name, start_date, end_date)
+    oDataQuery = fe.add_norwegian_letters(oDataQuery)    # Need norwegian letters in the URL
 
-    problem_v = []
-    eval_problem_v = []
-    eval_problem2_v = []
-    warning_v = []
-    warn_problem_v = []
+    url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/AvalancheEvaluation2V?$filter={1}&$format=json".decode('utf8').format(api_version, oDataQuery)
+    AvalancheEvaluation2V = requests.get(url).json()
+    avalEval2 = AvalancheEvaluation2V['d']['results']
 
-    # If requested time span is greater than max time span days, make more requests.
-    if end_dt - start_dt > datetime.timedelta(days=max_time_span):
+    print 'getregobs.py -> get_observed_danger_AvalancheEvaluation2V: {0} observations for {1} in from {2} to {3}.'\
+        .format(len(avalEval2), region_id, start_date, end_date)
 
-        variable_start_dt = start_dt
-        while variable_start_dt < end_dt:
-
-            variable_end_dt = variable_start_dt + datetime.timedelta(days=max_time_span)
-            if variable_end_dt > end_dt:
-                variable_end_dt = end_dt
-
-            variable_start_str = variable_start_dt.strftime("%Y-%m-%d")
-            variable_end_str = variable_end_dt.strftime("%Y-%m-%d")
-
-            problem_v       = problem_v       + get_problems_from_AvalancheProblemV(region_name, region_id, variable_start_str, variable_end_str)
-            eval_problem_v  = eval_problem_v  + get_problems_from_AvalancheEvalProblemV(region_name, region_id, variable_start_str, variable_end_str)
-            eval_problem2_v = eval_problem2_v + get_problems_from_AvalancheEvalProblem2V(region_name, region_id, variable_start_str, variable_end_str)
-            warning_v       = warning_v       + get_problems_from_AvalancheWarningV(region_name, region_id, variable_start_str, variable_end_str)
-            warn_problem_v  = warn_problem_v  + get_problems_from_AvalancheWarnProblemV(region_name, region_id, variable_start_str, variable_end_str)
-
-            variable_start_dt = variable_start_dt + datetime.timedelta(days=max_time_span)
-
+    # if more than 1000 elements are requested, odata truncates data to 1000. We do more requests
+    if len(avalEval2) == 1000:
+        time_delta = end_date - start_date
+        date_in_middle = start_date + time_delta/2
+        evaluations = get_observed_danger_AvalancheEvaluation2V(region_id, start_date, date_in_middle) \
+               + get_observed_danger_AvalancheEvaluation2V(region_id, date_in_middle, end_date)
     else:
-        problem_v = []
-        eval_problem_v = get_problems_from_AvalancheEvalProblemV(region_name, region_id, start_str, end_str)
-        eval_problem2_v = get_problems_from_AvalancheEvalProblem2V(region_name, region_id, start_str, end_str)
 
-        warning_v = get_problems_from_AvalancheWarningV(region_name, region_id, start_str, end_str)
-        warn_problem_v = get_problems_from_AvalancheWarnProblemV(region_name, region_id, start_str, end_str)
+        evaluations = []
+
+        if len(avalEval2) != 0:
+            for e in avalEval2:
+                date = unix_time_2_normal(int(e['DtObsTime'][6:-2]))
+                danger_level = e['AvalancheDangerTID']
+                danger_level_name = e['AvalancheDangerName']
+                nick = e['NickName']
+                eval = gd.AvalancheDanger(region_id, region_name, "AvalancheEvaluation2V", date, danger_level, danger_level_name)
+                eval.set_nick(nick)
+                eval.set_source('Observasjon')
+                evaluations.append(eval)
+
+    # sort list by date
+    # evaluations = sorted(evaluations, key=lambda AvalancheEvaluation: AvalancheEvaluation.date)
+
+    return evaluations
 
 
-    problems = problem_v + eval_problem_v + eval_problem2_v + warning_v + warn_problem_v
-
-    # Sort by date
-    problems = sorted(problems, key=lambda AvalancheProblem: AvalancheProblem.date)
-
-    return problems
-
-
-def get_all_problems(region_id):
+def get_observed_danger_AvalancheEvaluationV(region_id, start_date, end_date):
     '''
-    Henter alle skredproblemer registrert siden 2011-11-01 fram til idag. Skredprobelemene hentes sessong for sessong.
-    Merk at odata api har begrensining på 1000 elementer. Er det flere elementer i spørringen kommer de ikke med.
 
-    :param region_id:   ID til regionen slik de er definert i regObs og ForecastRegionTID
-    :return:            Liste med AvalancheProblem objekter
-
+    :param region_id:
+    :param start_date:
+    :param end_date:
+    :return:
     '''
 
     region_name = get_forecast_region_name(region_id)
+    oDataQuery = "DtObsTime gt datetime'{1}' and " \
+                 "DtObsTime lt datetime'{2}' and " \
+                 "ForecastRegionName eq '{0}' and " \
+                 "LangKey eq 1".format(region_name, start_date, end_date)
+    oDataQuery = fe.add_norwegian_letters(oDataQuery)    # Need norwegian letters in the URL
 
-    dates = [['2011-11-01','2012-07-01'],   # siste testsessong
-             ['2012-11-01','2013-07-01'],   # lansering snøskredvarsling
-             ['2013-11-01','2014-07-01'],
-             ['2014-11-01','2015-07-01']]   # this season - no trouble that query goes beyond today
+    url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/AvalancheEvaluationV?$filter={1}&$format=json".decode('utf8').format(api_version, oDataQuery)
+    AvalancheEvaluationV = requests.get(url).json()
+    avalEval = AvalancheEvaluationV['d']['results']
 
-    problems = []
+    print 'getregobs.py -> get_observed_danger_AvalancheEvaluationV: {0} observations for {1} in from {2} to {3}.'\
+        .format(len(avalEval), region_id, start_date, end_date)
 
-    for d in dates:
-        # Pick date intervals from season to season
-        start_date = d[0]
-        end_date = d[1]
+    # if more than 1000 elements are requested, odata truncates data to 1000. We do more requests
+    if len(avalEval) == 1000:
+        time_delta = end_date - start_date
+        date_in_middle = start_date + time_delta/2
+        evaluations = get_observed_danger_AvalancheEvaluationV(region_id, start_date, date_in_middle) \
+               + get_observed_danger_AvalancheEvaluationV(region_id, date_in_middle, end_date)
+    else:
 
-        problem_v =       get_problems_from_AvalancheProblemV(region_name, region_id, start_date, end_date)
-        eval_problem_v =  get_problems_from_AvalancheEvalProblemV(region_name, region_id, start_date, end_date)
-        eval_problem2_v = get_problems_from_AvalancheEvalProblem2V(region_name, region_id, start_date, end_date)
-        warning_v =       get_problems_from_AvalancheWarningV(region_name, region_id, start_date, end_date)
-        warn_problem_v =  get_problems_from_AvalancheWarnProblemV(region_name, region_id, start_date, end_date)
+        evaluations = []
 
-        problems = problems + problem_v + eval_problem_v + eval_problem2_v + warning_v + warn_problem_v
+        if len(avalEval) != 0:
+            for e in avalEval:
+                date = unix_time_2_normal(int(e['DtObsTime'][6:-2]))
+                danger_level = e['AvalancheDangerTID']
+                danger_level_name = e['AvalancheDangerName']
+                nick = e['NickName']
+                eval = gd.AvalancheDanger(region_id, region_name, "AvalancheEvaluationV", date, danger_level, danger_level_name)
+                eval.set_nick(nick)
+                eval.set_source('Observasjon')
+                evaluations.append(eval)
 
-    return problems
+    # sort list by date
+    # evaluations = sorted(evaluations, key=lambda AvalancheEvaluation: AvalancheEvaluation.date)
+
+    return evaluations
 
 
 def __get_cause_from_old_cause(old_cause_parameter_name, old_cause_tid):
@@ -831,13 +836,15 @@ def __get_cause_from_old_cause(old_cause_parameter_name, old_cause_tid):
 
 if __name__ == "__main__":
 
+    import datetime as dt
     # __get_cause_from_old_cause('AvalancheProblem', 3)
     region_list = gkdv.get_kdv("ForecastRegionKDV")
     aval_cause_kdv = gkdv.get_kdv("AvalCauseKDV")
 
-    AvalacheProblems = get_problems_from_AvalancheProblemV(region_list[108], 108, '2012-01-01','2013-01-15')
-    # AvalancheWarnProblem = get_problems_from_AvalancheWarnProblemV(region_list[108], 108, '2015-01-01','2015-01-15')
-    data = get_all_problems_with_date(108, '2012-01-01','2013-01-15')
+
+    avalanche_warning = get_problems_from_AvalancheWarningV(108, dt.date(2011,11,30), dt.date(2013,3,15))
+    avalache_problems2_v = get_problems_from_AvalancheEvalProblem2V(108, dt.date(2014,11,30), dt.date(2015,3,15))
+    # AvalancheWarnProblem = get_problems_from_AvalancheWarnProblemV(108, '2015-01-01','2015-01-15')
 
     a = 1
 

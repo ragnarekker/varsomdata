@@ -39,7 +39,7 @@ def get_kdv(xkdv):
             ordered_dict = get_kdv(xkdv)
         else:
             # print "getkdvelements.py -> get_kdv: Getting KDV from local storage: {0}".format(kdv_file_name)
-            ordered_dict = mp.unpickle_anything(kdv_file_name)
+            ordered_dict = mp.unpickle_anything(kdv_file_name, print_message=False)
 
     else:
         url = 'http://api.nve.no/hydrology/regobs/{0}/OData.svc/{1}?$filter=Langkey%20eq%201%20&$format=json'\

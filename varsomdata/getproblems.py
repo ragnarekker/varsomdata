@@ -3,9 +3,12 @@ __author__ = 'raek'
 
 
 import getregobs as gro
+import getforecastapi as gfa
 import fencoding as fe
-import datetime
+import datetime as dt
 import getkdvelements as gkdv
+import getdangers as gd
+import types as types
 
 
 class AvalancheProblem():
@@ -47,6 +50,7 @@ class AvalancheProblem():
         self.metadata = {}              # dictionary {key:value, key:value, ..}
         self.region_id = region_id_inn
         self.region_name = fe.remove_norwegian_letters(region_name_inn)
+        self.date = None
         self.set_date(date_inn)
         self.order = order_inn
         self.cause_tid = None           # [int]     Avalanche cause ID (in regObs TID)
@@ -66,11 +70,13 @@ class AvalancheProblem():
         self.url = None                 # [String]
         self.nick_name = None           # [String]
 
+        self.danger_level = None        # Int
+        self.danger_level_name = None   # String
 
     def set_date(self, date_inn):
 
         # makes sure we only have the date
-        if isinstance(date_inn, datetime.datetime):
+        if isinstance(date_inn, dt.datetime):
             self.add_metadata("Original datetime", date_inn)
             date_inn = date_inn.date()
 
@@ -224,38 +230,74 @@ class AvalancheProblem():
         self.nick_name = nick_name_inn
 
 
-def get_all_problems(region_id, start_date, end_date, max_time_span=200):
-    '''
-    Method points to getregobs.py. Comment below is copied from there.
+    def set_danger_level(self, danger_level):
+        self.danger_level = danger_level
+        AvalancheDangerKDV = gkdv.get_kdv("AvalancheDangerKDV")
+        self.danger_level_name = AvalancheDangerKDV[danger_level].Name
 
-    Method returns all avalanche problems on views AvalancheProblemV, AvalancheEvalProblemV, AvalancheEvalProblem2V,
-    AvalancheWarningV and AvalancheWarnProblemV.
 
-    Method takes the region ID as used in ForecastRegionKDV.
+def get_all_problems(region_ids, start_date, end_date):
+    '''Method returns all avalanche problems on views AvalancheProblemV, AvalancheEvalProblemV,
+    AvalancheEvalProblem2V, AvalancheWarningV and AvalancheWarnProblemV. Method takes the
+    region ID as used in ForecastRegionKDV.
 
     Note: the queries in Odata goes from a date (but not including) this date. Mathematically <from, to].
 
     :param region_id:       [int]   ForecastRegionTID
-    :param start_date:
+    :param start_date:      [date or string as "YYYY-MM-DD"]
     :param end_date:        [date or string as "YYYY-MM-DD"]
-    :param max_time_span:   [int]   To avoid datacropping in the requests to OData a max time span can be given.
-                                    If your request is greater than this value, multiple queries are made.
-
     :return problems:       [list]  List of AvalancheProblem objects
     '''
 
-    return gro.get_all_problems_with_date(region_id, start_date, end_date, max_time_span=max_time_span)
+    # If input isn't a list, make it so
+    if not isinstance(region_ids, types.ListType):
+        region_ids = [region_ids]
+
+    problem_v = []
+    eval_problem_v = []
+    eval_problem2_v = []
+    warning_v = []
+    warn_problem_v = []
+
+    for region_id in region_ids:
+        problem_v += gro.get_problems_from_AvalancheProblemV(region_id, start_date, end_date)
+        eval_problem_v += gro.get_problems_from_AvalancheEvalProblemV(region_id, start_date, end_date)
+        eval_problem2_v += gro.get_problems_from_AvalancheEvalProblem2V(region_id, start_date, end_date)
+        warning_v += gro.get_problems_from_AvalancheWarningV(region_id, start_date, end_date)
+        warn_problem_v += gro.get_problems_from_AvalancheWarnProblemV(region_id, start_date, end_date)
+
+    all_problems = problem_v + eval_problem_v + eval_problem2_v + warning_v + warn_problem_v
+
+    # Will add all forecasted danger levels to the problems
+    all_warnings = gfa.get_warnings(region_ids, start_date, end_date)
+    all_non_zero_warnings = [w for w in all_warnings if w.danger_level != 0]
+
+    # Sort lists
+    all_problems.sort(key=lambda AvalancheProblem: AvalancheProblem.date)
+    all_non_zero_warnings.sort(key=lambda AvalancheDanger: AvalancheDanger.date)
+
+    # Add forecasted dangerlevel to all problems.
+    # Lots of looping. Be smart. Keep track of last index since both lista are ordered the same.
+    # Break the for loop if dates dont match anymore.
+    last_i = 0
+    for p in all_problems:
+        print 'getproblems.py -> get_all_problems: looping through {0} on {1}'.format(p.date, p.regobs_view)
+        for i in range(last_i, len(all_non_zero_warnings), 1):
+            if all_non_zero_warnings[i].date > p.date:
+                last_i = max(0, i-1-len(region_ids))
+                break
+            elif p.date == all_non_zero_warnings[i].date and p.region_id == all_non_zero_warnings[i].region_regobs_id:
+                p.set_danger_level(all_non_zero_warnings[i].danger_level)
+
+    return all_problems
 
 
 if __name__ == "__main__":
 
-    region_id = 129 # Tamokdalen
-    start_date = "2015-04-09"
-    end_date = "2015-05-10"
+    region_id = [118] #, 129] # Tamokdalen
+    from_date = dt.date(2014, 12, 31)
+    to_date = dt.date(2015, 3, 1)
 
-    # Step refferer til antall dager vi henter problemer for omgagangen. Før var jeg redd for å ta for mye data
-    # på en gang. HEr finnes en annen løsning med rekursivt kall som jeg skal implementere.
-    #all_problems_step10 = get_all_problems(region_id, start_date, end_date, max_time_span=10)
-    all_problems_step100 = get_all_problems(region_id, start_date, end_date, max_time_span=100)
+    all_problems = get_all_problems(region_id, from_date, to_date)
 
     a = 1

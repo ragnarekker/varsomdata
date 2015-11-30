@@ -80,6 +80,30 @@ class AvalancheDanger():
         self.source = source_inn
 
 
+def get_observed_dangers(region_id, start_date, end_date):
+    """
+    Gets observed avalanche dangers from AvalancheEvaluationV, AvalancheEvaluation2V and AvalancheEvaluation3V.
+
+    :param region_id:
+    :param start_date:
+    :param end_date:
+    :return:
+    """
+
+    print("Getting AvalancheWarnings for {0} from {1} til {2}").format(region_id, start_date, end_date)
+
+    avalEval3 = gro.get_observed_danger_AvalancheEvaluation3V(region_id, start_date, end_date)
+    avalEval2 = gro.get_observed_danger_AvalancheEvaluation2V(region_id, start_date, end_date)
+    avalEval = gro.get_observed_danger_AvalancheEvaluationV(region_id, start_date, end_date)
+
+    evaluations = avalEval + avalEval2 +avalEval3
+
+    # sort list by date
+    evaluations = sorted(evaluations, key=lambda AvalancheEvaluation: AvalancheEvaluation.date)
+
+    return evaluations
+
+
 def get_all_dangers(region_ids, start_date, end_date):
     """
     Gets all avalanche dangers dangers, both forecasted and observed in a given region for a given time period.
@@ -101,7 +125,7 @@ def get_all_dangers(region_ids, start_date, end_date):
 
     for region_id in region_ids:
         warnings += gfa.get_warnings(region_id, start_date, end_date)
-        observed += gro.get_observed_dangers(region_id, start_date, end_date)
+        observed += get_observed_dangers(region_id, start_date, end_date)
 
     all_dangers = warnings + observed
 
@@ -113,12 +137,11 @@ def get_all_dangers(region_ids, start_date, end_date):
 
 if __name__ == "__main__":
 
-    region_id = 117  # Trollheimen
+    region_id = [117, 128]  # Trollheimen
 
-    # from_date = "2014-12-01"
-    # to_date = "2015-02-01"
-    from_date = dt.date(2015, 4, 1)
+    from_date = dt.date(2012, 11, 1)
     to_date = dt.date.today()
+    to_date = dt.date(2015, 7, 1)
 
     alle = get_all_dangers(region_id, from_date, to_date)
 

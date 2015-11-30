@@ -3,7 +3,7 @@ __author__ = 'raek'
 
 import getdangers as gd
 import getobservations as go
-import getobservations as getobservations
+# import getobservations as getobservations
 import getkdvelements as gkdv
 import setenvironment as env
 import datetime as dt
@@ -40,7 +40,7 @@ class ActivityAndDanger():
         self.y = row[6]
 
         self.cell_colour = row[7]
-        self.update_cell_colour()
+        # self.update_cell_colour()
 
         return
 
@@ -489,11 +489,11 @@ if __name__ == "__main__":
     # date_region = step_2_find_most_valued(date_region)
     # mp.pickle_anything([date_region, forecasted_dangers], '{0}runforavalancheactivity_step_2.pickle'.format(env.local_storage))
     # #
-    # ## ready to add to count elements
-    # date_region, forecasted_dangers = mp.unpickle_anything('{0}runforavalancheactivity_step_2.pickle'.format(env.local_storage))
-    # elements = rf.read_configuration_file('{0}aval_dl_configuration.csv'.format(env.input_folder), ActivityAndDanger)
-    # elements = step_3_count_occurances(date_region, elements)
-    # mp.pickle_anything([date_region, forecasted_dangers, elements], '{0}runforavalancheactivity_step_3.pickle'.format(env.local_storage))
+    ## ready to add to count elements
+    date_region, forecasted_dangers = mp.unpickle_anything('{0}runforavalancheactivity_step_2.pickle'.format(env.local_storage))
+    elements = rf.read_configuration_file('{0}aval_dl_configuration.csv'.format(env.input_folder), ActivityAndDanger)
+    elements = step_3_count_occurances(date_region, elements)
+    mp.pickle_anything([date_region, forecasted_dangers, elements], '{0}runforavalancheactivity_step_3.pickle'.format(env.local_storage))
 
     ### ready to plot?
     date_region, forecasted_dangers, elements = mp.unpickle_anything('{0}runforavalancheactivity_step_3.pickle'.format(env.local_storage))
