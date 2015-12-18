@@ -106,6 +106,34 @@ class Observer():
         self.NickName = fe.remove_norwegian_letters(NickName)
         self.CompetenceLevelName = fe.remove_norwegian_letters(CompetenceLevelName)
 
+# INCOMPLETE
+class AllRegistrations(Registration, Location, Observer):
+
+    def __init__(self, d):
+        Registration.__init__(self, d['RegID'], d['DtObsTime'], d['DtRegTime'])
+        Location.__init__(self, d['LocationName'], d['UTMZone'], d['UTMEast'],
+                                d['UTMNorth'], d['ForecastRegionName'], d['Kommunenavn'])
+        Observer.__init__(self, d['NickName'], d['CompetenceLevelName'])
+
+        self.GeoHazardName = fe.remove_norwegian_letters(d['GeoHazardName'])
+        self.RegistrationName = fe.remove_norwegian_letters(d['RegistrationName'])
+
+        self.LangKey = d['LangKey']
+
+
+# INCOMPLETE
+def get_all_registrations(region_id, from_date, to_date):
+
+    data = _make_request("AllRegistrationsV", region_id, from_date, to_date)
+    list = []
+
+    for d in data:
+        list.append(AllRegistrations(d))
+
+    list = sorted(list, key=lambda AvalancheActivity: AvalancheActivity.DtObsTime)
+
+    return list
+
 
 class AvalancheActivityObs(Registration, Location, Observer):
 
@@ -292,11 +320,17 @@ def _view_test():
 
 if __name__ == "__main__":
 
-    # from_date = dt.date(2015, 4, 1)
-    # to_date = dt.date.today()
+    from_date = dt.date(2015, 4, 1)
+    from_date = dt.date.today()-dt.timedelta(days=1)
+    to_date = dt.date.today()+dt.timedelta(days=1)
+    all_registrations = get_all_registrations(0, from_date, to_date)
+
     # avalanche_activity = get_avalanche_activity(116, from_date, to_date)
 
     # _view_test()
+    for a in all_registrations:
+        print "{0}\t{1}\t{2:<6}\t{3:<15}\t{4:<20}\t{5:<20}\t{6}".format(a.RegID, a.DtRegTime, a.GeoHazardName, a.MunicipalName, a.ForecastRegionName, a.NickName, a.RegistrationName)
+
 
     a = 1
 

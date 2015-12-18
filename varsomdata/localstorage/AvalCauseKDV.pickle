@@ -197,7 +197,7 @@ KDVelement
 p50
 (dp51
 g5
-S'Nedsnoedd eller nedfoeyket svakt lag med loes nysnoe'
+S'Nedfoeyket svakt lag med nysnoe'
 p52
 sg7
 I1
@@ -217,12 +217,12 @@ KDVelement
 p55
 (dp56
 g5
-S'Nedsnoedd eller nedfoeyket svakt lag med overflaterim'
+S'Nedsnoedd eller nedfoeyket overflaterim'
 p57
 sg7
 I1
 sg8
-I11
+I26
 sg9
 I11
 sg10
@@ -246,7 +246,7 @@ I12
 sg9
 I12
 sg10
-I01
+I00
 sg11
 S'Lag med sproehagl'
 p63
@@ -257,12 +257,12 @@ KDVelement
 p65
 (dp66
 g5
-S'Nedsnoedd eller nedfoeyket svakt lag med kantkornet snoe'
+S'Nedsnoedd eller nedfoeyket kantkornet snoe'
 p67
 sg7
 I1
 sg8
-I13
+I25
 sg9
 I13
 sg10
@@ -346,7 +346,7 @@ I17
 sg9
 I17
 sg10
-I01
+I00
 sg11
 S'Kantkornet rundt vegetasjon'
 p88
@@ -362,7 +362,7 @@ p92
 sg7
 I1
 sg8
-I18
+I22
 sg9
 I18
 sg10
@@ -382,7 +382,7 @@ p97
 sg7
 I1
 sg8
-I19
+I21
 sg9
 I19
 sg10
@@ -397,18 +397,18 @@ KDVelement
 p100
 (dp101
 g5
-S'Snoedekket er gjennomfuktet og ustabilt fra bakken'
+S'Vann ved bakken/smelting fra bakken'
 p102
 sg7
 I1
 sg8
-I20
+I29
 sg9
 I20
 sg10
 I01
 sg11
-S'Gjennomfuktet fra bakken'
+S'Smelting fra bakken'
 p103
 sbaa(lp104
 I21
@@ -426,7 +426,7 @@ I21
 sg9
 I21
 sg10
-I01
+I00
 sg11
 S'Gjennomfuktet fra overflaten'
 p108
@@ -437,12 +437,12 @@ KDVelement
 p110
 (dp111
 g5
-S'Opphopning av vann over skarelag'
+S'Opphopning av vann i/over lag i snoedekket'
 p112
 sg7
 I1
 sg8
-I22
+I28
 sg9
 I22
 sg10
@@ -462,11 +462,11 @@ p117
 sg7
 I1
 sg8
-I23
+I49
 sg9
 I23
 sg10
-I01
+I00
 sg11
 S'Snoedekket er overmettet av vann'
 p118
@@ -477,7 +477,7 @@ KDVelement
 p120
 (dp121
 g5
-S'Ubundet loes snoe'
+S'Ubunden snoe'
 p122
 sg7
 I1
@@ -488,7 +488,7 @@ I24
 sg10
 I01
 sg11
-S'Ubundet loes snoe'
+S'Ubunden snoe'
 p123
 sbaa(lp124
 I25
@@ -502,92 +502,14 @@ p127
 sg7
 I1
 sg8
-I25
+I50
 sg9
 I25
 sg10
-I01
+I00
 sg11
 S'Regn/temperaturstigning'
 p128
-sbaa(lp129
-I26
-a(igetkdvelements
-KDVelement
-p130
-(dp131
-g5
-S'Smelting fra bakken'
-p132
-sg7
-I1
-sg8
-I26
-sg9
-I26
-sg10
-I00
-sg11
-S'Smelting fra bakken'
-p133
-sbaa(lp134
-I27
-a(igetkdvelements
-KDVelement
-p135
-(dp136
-g5
-S'Vennmettet snoe'
-p137
-sg7
-I1
-sg8
-I27
-sg9
-I27
-sg10
-I00
-sg11
-S'Vannmettet snoe'
-p138
-sbaa(lp139
-I28
-a(igetkdvelements
-KDVelement
-p140
-(dp141
-g5
-S'Loes toerr snoe'
-p142
-sg7
-I1
-sg8
-I28
-sg9
-I28
-sg10
-I00
-sg11
-S'Loes toerr snoe'
-p143
-sbaa(lp144
-I29
-a(igetkdvelements
-KDVelement
-p145
-(dp146
-g5
-Nsg7
-I1
-sg8
-I29
-sg9
-I29
-sg10
-I00
-sg11
-S'Regn / temperaturstigning / soloppvarming'
-p147
-sbaatp148
-Rp149
+sbaatp129
+Rp130
 .

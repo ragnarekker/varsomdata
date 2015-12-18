@@ -89,18 +89,19 @@ class AvalancheProblem():
         aval_cause_kdv = gkdv.get_kdv('AvalCauseKDV')
         cause_name_inn = fe.remove_norwegian_letters(cause_name_inn)
 
-        if (cause_name_inn == aval_cause_kdv[26].Name):
-            self.add_metadata('Original AvalCauseName', cause_name_inn)
-            cause_name_inn = aval_cause_kdv[20]
-        if (cause_name_inn == aval_cause_kdv[27].Name):
-            self.add_metadata('Original AvalCauseName', cause_name_inn)
-            cause_name_inn = aval_cause_kdv[23]
-        if (cause_name_inn == aval_cause_kdv[28].Name):
-            self.add_metadata('Original AvalCauseName', cause_name_inn)
-            cause_name_inn = aval_cause_kdv[24]
-        if (cause_name_inn == aval_cause_kdv[29].Name):
-            self.add_metadata('Original AvalCauseName', cause_name_inn)
-            cause_name_inn = aval_cause_kdv[25].Name
+        #### Cleanup in db during summer of 2015. Need this no more.
+        # if (cause_name_inn == aval_cause_kdv[26].Name):
+        #     self.add_metadata('Original AvalCauseName', cause_name_inn)
+        #     cause_name_inn = aval_cause_kdv[20]
+        # if (cause_name_inn == aval_cause_kdv[27].Name):
+        #     self.add_metadata('Original AvalCauseName', cause_name_inn)
+        #     cause_name_inn = aval_cause_kdv[23]
+        # if (cause_name_inn == aval_cause_kdv[28].Name):
+        #     self.add_metadata('Original AvalCauseName', cause_name_inn)
+        #     cause_name_inn = aval_cause_kdv[24]
+        # if (cause_name_inn == aval_cause_kdv[29].Name):
+        #     self.add_metadata('Original AvalCauseName', cause_name_inn)
+        #     cause_name_inn = aval_cause_kdv[25].Name
 
         self.cause_name = cause_name_inn
 

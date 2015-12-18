@@ -12,9 +12,10 @@ import getregobs as gro
 import fencoding as fe
 import getkdvelements as gkdv
 import setenvironment as env
+import datetime as dt
 
 
-def make_plots_for_region(region_id, start_date, end_date):
+def make_plots_for_region(region_id, problems, dangers, start_date, end_date):
     """
     This method prepares data for plotting and calls on the plot methods. Pure administration.
 
@@ -24,9 +25,6 @@ def make_plots_for_region(region_id, start_date, end_date):
 
     :return:
     """
-
-    filename = "{3}runForPlots ID{0} {1} {2}.pickle".format(region_id, start_date, end_date, env.local_storage)
-    [problems, danger] = mp.unpickle_anything(filename)
 
     region_name = gro.get_forecast_region_name(region_id)
 
@@ -44,7 +42,7 @@ def make_plots_for_region(region_id, start_date, end_date):
         if p.source == 'Varsel':
             w_cause_with_date.append([p.date, p.cause_tid])
 
-    for d in danger:
+    for d in dangers:
         if d.nick != 'drift@svv' and d.danger_level > 0:
             if d.source == 'Observasjon':
                 o_danger_levels.append(d.danger_level)
@@ -53,9 +51,10 @@ def make_plots_for_region(region_id, start_date, end_date):
                 w_danger_levels.append(d.danger_level)
                 w_danger_dates.append(d.date)
 
-
-    plot_danger_levels(region_name, w_danger_levels, w_danger_dates, o_danger_levels, o_danger_dates)
-    plot_causes(region_name, w_cause_with_date, w_danger_dates, o_cause_with_date)
+    # No data, no plot
+    if len(w_danger_dates) is not 0: #and len(o_danger_dates) is not 0:
+        plot_danger_levels(region_name, w_danger_levels, w_danger_dates, o_danger_levels, o_danger_dates)
+        plot_causes(region_name, w_cause_with_date, w_danger_dates, o_cause_with_date)
 
 
 def plot_danger_levels(region_name, w_danger_levels, w_dates, o_danger_levels, o_dates):
@@ -70,7 +69,7 @@ def plot_danger_levels(region_name, w_danger_levels, w_dates, o_danger_levels, o
     :return:
     """
 
-    filename = r"{0} Faregrader {1} til {2}".format(region_name, w_dates[0].strftime('%Y%m%d'), w_dates[-1].strftime('%Y%m%d'))
+    filename = r"{0} faregrader {1}-{2}".format(region_name, w_dates[0].strftime('%Y'), w_dates[-1].strftime('%y'))
     print("Plotting {0}".format(filename))
 
     # Figure dimensions
@@ -153,7 +152,7 @@ def plot_causes(region_name, w_cause_with_date, w_dates, o_cause_with_date):
     :return:
     '''
 
-    filename = r"{0} Skredproblemer {1} til {2}".format(region_name, w_dates[0].strftime('%Y%m%d'), w_dates[-1].strftime('%Y%m%d'))
+    filename = r"{0} skredproblemer {1}-{2}".format(region_name, w_dates[0].strftime('%Y'), w_dates[-1].strftime('%y'))
     print("Plotting {0}".format(filename))
 
     AvalCauseKDV = gkdv.get_kdv("AvalCauseKDV")
@@ -308,7 +307,7 @@ def compareAvalancheCauses(DayNoPrAvalCause, DayNoPrObservedCause):
     return fractSame
 
 
-def get_data_from_api_and_pickle(region_id, start_date, end_date):
+def get_data_from_api(region_id, start_date, end_date):
     """Gets all the data needed in the plots and pickles it so that I don't need to do requests to make plots.
 
     :param region_id:       [int]    Region ID is an int as given i ForecastRegionKDV
@@ -320,11 +319,7 @@ def get_data_from_api_and_pickle(region_id, start_date, end_date):
     problems = gp.get_all_problems(region_id, start_date, end_date)
     dangers = gd.get_all_dangers(region_id, start_date, end_date)
 
-    filename = "{3}runForPlots ID{0} {1} {2}.pickle".format(region_id, start_date, end_date, env.local_storage)
-
-    # Saving the objects:
-    mp.pickle_anything([problems, dangers], filename)
-
+    return problems, dangers
 
 if __name__ == "__main__":
 
@@ -332,10 +327,26 @@ if __name__ == "__main__":
     # get_data_from_api_and_pickle(129, "2014-12-01", "2015-06-01")
     # make_plots_for_region(129, "2014-12-01", "2015-06-01")
 
+    ## Get all regions
+    region_id = []
+    ForecastRegionKDV = gkdv.get_kdv('ForecastRegionKDV')
+    for k, v in ForecastRegionKDV.iteritems():
+        if 100 < k < 150 and v.IsActive is True:
+            region_id.append(v.ID)
+
+    from_date = dt.date(2014, 12, 1)
+    to_date = dt.date(2015, 6, 1)
+    #to_date = dt.date.today() + dt.timedelta(days=2)
+
     # All regions span from 6 (Alta) to 33 (Salten).
-    for i in range(106, 134, 1):
-        if i != 113 and i != 120 and i !=125 and i != 126:  # 13 er harstad, 20 er Nordfjord, 25 er hallingskarvet og 26 er hemsedal og har ikke data
-            get_data_from_api_and_pickle(i, "2014-12-01", "2015-06-01")
-            make_plots_for_region(i, "2014-12-01", "2015-06-01")
+    for i in region_id:
+        problems, dangers = get_data_from_api(i, from_date, to_date)
+
+        # # Saving the objects:
+        # filename = "{3}runForPlots ID{0} {1} {2}.pickle".format(region_id, from_date, to_date, env.local_storage)
+        # mp.pickle_anything([problems, dangers], filename)
+        # problems, dangers = mp.unpickle_anything(filename)
+
+        make_plots_for_region(i, problems, dangers, from_date, to_date)
 
 
