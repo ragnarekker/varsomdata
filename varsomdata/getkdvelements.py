@@ -11,19 +11,19 @@ import datetime as dt
 import collections
 
 
-def get_kdv(xkdv):
-    '''Imports a xkdv view from regObs and returns a dictionary with <key, value> = <ID, Name>
-    An xkdv is requested from the regObs api if the pickle file is older thatn 3 days.
+def get_kdv(view):
+    '''Imports a view view from regObs and returns a dictionary with <key, value> = <ID, Name>
+    An view is requested from the regObs api if the pickle file is older thatn 3 days.
 
-    :param xkdv:    [string]    xkdv view
-    :return dict:   {}          xkdv as a dictionary
+    :param view:    [string]    kdv view
+    :return dict:   {}          view as a dictionary
 
     Ex of use: aval_cause_kdv = get_kdv('AvalCauseKDV')
     Ex of url for returning values for IceCoverKDV in norwegian:
     http://api.nve.no/hydrology/regobs/v0.9.4/OData.svc/ForecastRegionKDV?$filter=Langkey%20eq%201%20&$format=json
     '''
 
-    kdv_file_name = '{0}{1}.pickle'.format(env.local_storage, xkdv)
+    kdv_file_name = '{0}{1}.pickle'.format(env.local_storage, view)
     dict = {}
 
     if os.path.exists(kdv_file_name):
@@ -36,14 +36,21 @@ def get_kdv(xkdv):
         if file_date_datetime < file_date_limit:
             print "getkdvelements.py -> get_kdv: Removing KDV from local storage: {0}".format(kdv_file_name)
             os.remove(kdv_file_name)
-            ordered_dict = get_kdv(xkdv)
+            ordered_dict = get_kdv(view)
         else:
             # print "getkdvelements.py -> get_kdv: Getting KDV from local storage: {0}".format(kdv_file_name)
             ordered_dict = mp.unpickle_anything(kdv_file_name, print_message=False)
 
     else:
-        url = 'http://api.nve.no/hydrology/regobs/{0}/OData.svc/{1}?$filter=Langkey%20eq%201%20&$format=json'\
-            .format(env.api_version, xkdv)
+
+        filter = 'filter=Langkey%20eq%201'
+
+        if 'TripTypeKDV' in view:
+            filter = 'filter=LangKey%20eq%201'
+
+        url = 'http://api.nve.no/hydrology/regobs/{0}/OData.svc/{1}?${2}&$format=json'\
+            .format(env.api_version, view, filter)
+
         lang_key = 1
 
         print "getkdvelements.py -> get_kdv: Getting KDV from URL: {0}".format(url)
@@ -51,14 +58,19 @@ def get_kdv(xkdv):
 
         for a in kdv['d']['results']:
             try:
-                id = int(a["ID"])
                 sort_order = a["SortOrder"]
                 is_active = a["IsActive"]
 
                 if 'AvalCauseKDV' in url and 9 < int(a['ID']) < 26:      # this table gets special treatment
+                    id = int(a["ID"])
                     name = fe.remove_norwegian_letters(a["Description"])
                     description = fe.remove_norwegian_letters(a["Name"])
+                elif 'TripTypeKDV' in view:
+                    id = int(a["TripTypeTID"])
+                    name = fe.remove_norwegian_letters(a["Name"])
+                    description = fe.remove_norwegian_letters(a["Descr"])
                 else:
+                    id = int(a["ID"])
                     name = fe.remove_norwegian_letters(a["Name"])
                     description = fe.remove_norwegian_letters(a["Description"])
 
@@ -71,6 +83,14 @@ def get_kdv(xkdv):
         mp.pickle_anything(ordered_dict, kdv_file_name)
 
     return ordered_dict
+
+
+def get_name(view, tid):
+
+    kdv = get_kdv(view)
+    name = kdv[tid].Name
+
+    return name
 
 
 class KDVelement():
