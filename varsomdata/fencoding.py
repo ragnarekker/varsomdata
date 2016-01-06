@@ -1,5 +1,22 @@
 # -*- coding: utf-8 -*-
-# __author__ = 'ragnarekker'
+__author__ = 'ragnarekker'
+
+import datetime as dt
+
+
+def unix_time_2_normal(unix_date_time):
+    """
+    Takes in a date in unix datetime and returns a "normal date"
+
+    :param unix_date_time:    Unix date time in milliseconds from 1.1.1970
+    :return:                The date as datetime object
+
+    Ex: date = unix_time_2_normal(int(p['DtObsTime'][6:-2]))
+    """
+
+    unix_datetime_in_seconds = unix_date_time/1000 # For some reason they are given in miliseconds
+    date = dt.datetime.fromtimestamp(int(unix_datetime_in_seconds))
+    return date
 
 
 def remove_norwegian_letters(name_inn):

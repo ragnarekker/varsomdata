@@ -4,25 +4,12 @@ __author__ = 'raek'
 
 import datetime as dt
 import requests as requests
+import csv as csv
 
 import fencoding as fe
 import setenvironment as env
 import getkdvelements as kdv
 
-
-def _unix_time_2_normal(unix_date_time):
-    """
-    Takes in a date in unix datetime and returns a "normal date"
-
-    :param unix_date_time:    Unix date time in milliseconds from 1.1.1970
-    :return:                The date as datetime object
-
-    Ex: date = unix_time_2_normal(int(p['DtObsTime'][6:-2]))
-    """
-
-    unix_datetime_in_seconds = unix_date_time/1000 # For some reason they are given in miliseconds
-    date = dt.datetime.fromtimestamp(int(unix_datetime_in_seconds))
-    return date
 
 
 class Trip():
@@ -34,12 +21,12 @@ class Trip():
         self.ObsLocationID = int(d["ObsLocationID"])
         self.GeoHazardTID = int(d["GeoHazardTID"])
         self.TripTypeTID = int(d["TripTypeTID"])
-        self.ObservationExpectedTime = _unix_time_2_normal( int(d["ObservationExpectedTime"][6:-2]) )
+        self.ObservationExpectedTime = fe.unix_time_2_normal( int(d["ObservationExpectedTime"][6:-2]) )
         self.Comment = fe.remove_norwegian_letters(d["Comment"])
         self.IsFinished = bool(d["IsFinished"])
-        self.TripRegistrationTime = _unix_time_2_normal( int(d["TripRegistrationTime"][6:-2]) )
+        self.TripRegistrationTime = fe.unix_time_2_normal( int(d["TripRegistrationTime"][6:-2]) )
         if d["TripFinishedTime"] is not None:
-            self.TripFinishedTime = _unix_time_2_normal( int(d["TripFinishedTime"][6:-2]) )
+            self.TripFinishedTime = fe.unix_time_2_normal( int(d["TripFinishedTime"][6:-2]) )
         else:
             self.TripFinishedTime = None
         self.DeviceID = d["DeviceID"]
@@ -47,7 +34,7 @@ class Trip():
         self.TripTypeName = kdv.get_name("TripTypeKDV", self.TripTypeTID)
 
 
-def get_trip(from_date, to_date, geohazard_tid=None):
+def get_trip(from_date, to_date, geohazard_tid=None, output='List'):
     """
     :param from_date:       [date] A query returns [from_date, to_date>
     :param to_date:         [date] A query returns [from_date, to_date>
@@ -97,7 +84,7 @@ def get_trip(from_date, to_date, geohazard_tid=None):
     url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/Trip/?$filter={1}&$format=json"\
         .decode('utf8').format(env.api_version, odata_filter)
 
-    print "gettrip.py -> get_trip: ..to {0}".format(fe.remove_norwegian_letters(url))
+    print "getmisc.py -> get_trip: ..to {0}".format(fe.remove_norwegian_letters(url))
 
     result = requests.get(url).json()
     data = result['d']['results']
@@ -110,7 +97,48 @@ def get_trip(from_date, to_date, geohazard_tid=None):
     else:
         data_out = [Trip(d) for d in data]
 
-    return data_out
+    if output == 'List':
+        return data_out
+    elif output == 'csv':
+        with open('{0}trips {1}-{2}.csv'.format(env.output_folder, from_date.strftime('%Y%m%d'), to_date.strftime('%Y%m%d')), 'wb') as f:
+            w = csv.DictWriter(f, data_out[0].__dict__.keys(), delimiter=";")
+            w.writeheader()
+            for t in data_out:
+                w.writerow(t.__dict__)
+        return
+
+
+class ObserverGroupMember():
+
+    def __init__(self, d):
+
+        self.NickName = fe.remove_norwegian_letters(d["NickName"])
+        self.ObserverGroupDescription = fe.remove_norwegian_letters(d["ObserverGroupDescription"])
+        self.ObserverGroupID = int(d["ObserverGroupID"])
+        self.ObserverGroupName = fe.remove_norwegian_letters(d["ObserverGroupName"])
+        self.ObserverID = int(d["ObserverID"])
+
+
+def get_observer_group_member(group_id=None, output='List'):
+
+    if group_id is None:
+        url = 'http://api.nve.no/hydrology/regobs/v0.9.9/Odata.svc/ObserverGroupMemberV/?$format=json'
+    else:
+        url = 'http://api.nve.no/hydrology/regobs/v0.9.9/Odata.svc/ObserverGroupMemberV/?$filter=ObserverGroupID%20eq%20{0}&$format=json'.format(group_id)
+    print "getmisc.py -> get_trip: ..to {0}".format(fe.remove_norwegian_letters(url))
+
+    result = requests.get(url).json()
+    data = result['d']['results']
+    data_out = [ObserverGroupMember(d) for d in data]
+
+    if output=='List':
+        return data_out
+    elif output=='Dict':
+        observer_dict = {}
+        for o in data_out:
+            observer_dict[o.ObserverID] = o.NickName
+        return observer_dict
+
 
 
 if __name__ == "__main__":
@@ -119,14 +147,11 @@ if __name__ == "__main__":
     from_date = dt.date.today()-dt.timedelta(days=60)
     to_date = dt.date.today()+dt.timedelta(days=1)
 
-    trips = get_trip(from_date, to_date)
+    # trips = get_trip(from_date, to_date, output='csv')
 
-    import csv
+    observers = get_observer_group_member(group_id=51, output='Dict')
 
-    with open('{0}trips.csv'.format(env.output_folder), 'wb') as f:
-        w = csv.DictWriter(f, trips[0].__dict__.keys(), delimiter=";")
-        w.writeheader()
-        for t in trips:
-            w.writerow(t.__dict__)
+
+
 
     a = 1

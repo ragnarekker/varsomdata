@@ -152,14 +152,17 @@ def _make_data_frame(list):
     :return:     [data frame]
     """
 
-    observation_fields = list[0].__dict__.keys()
-    data_frame = pd.DataFrame(columns=observation_fields)
+    if len(list) == 0:
+        data_frame = pd.DataFrame()
+    else:
+        observation_fields = list[0].__dict__.keys()
+        data_frame = pd.DataFrame(columns=observation_fields)
 
-    i = 0
-    for l in list:
-        observation_values = l.__dict__.values()
-        data_frame.loc[i] = observation_values
-        i += 1
+        i = 0
+        for l in list:
+            observation_values = l.__dict__.values()
+            data_frame.loc[i] = observation_values
+            i += 1
 
     return data_frame
 

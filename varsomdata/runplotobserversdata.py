@@ -39,6 +39,9 @@ class DayData():
         self.number_obs = None
         self.reg_ids = col.Counter()
 
+        self.obs_pr_regid = {}
+        self.loc_pr_regid = {}
+
         self.x = None
         self.y = None
         self.set_x()
@@ -55,11 +58,19 @@ class DayData():
         self.observations = col.Counter(observations)
         self.number_obs = sum(self.observations.values())
         if self.number_obs > 0:
-            self.cell_colour = 'gray'
+            self.cell_colour = 'gainsboro'
 
 
     def add_regids(self, reg_ids):
         self.reg_ids = col.Counter(reg_ids)
+
+
+    def add_obs_pr_regid(self, obs_pr_regid):
+        self.obs_pr_regid = obs_pr_regid
+
+
+    def add_loc_pr_regid(self, loc_pr_regid):
+        self.loc_pr_regid = loc_pr_regid
 
 
     def set_x(self):
@@ -73,35 +84,35 @@ class DayData():
         first_week = dt.date(year, month, first).isocalendar()[1]
         last_week = dt.date(year, month, last).isocalendar()[1]
 
-        self.y = 100 * (1 + last_week - self.week_no)
+        self.y = -100 * (self.week_no - first_week)
 
 
     def get_obs_pos(self, obs_type):
 
         if obs_type == 'Faretegn':
-            return 35, 80, 'red', 'k'
-        elif obs_type == 'Observert skredaktivitet':
-            return 55, 80, 'red', 'k'
+            return 38, 86, 'tomato', 'k'
+        elif obs_type == 'Observert skredaktivitet(2014)':
+            return 62, 86, 'tomato', 'k'
         elif obs_type == 'Observert skred':
-            return 85, 80, 'orange', 'k'
+            return 86, 86, 'orange', 'k'
         elif obs_type == 'Hendelse':
-            return 85, 60, 'orange', 'k'
+            return 86, 62, 'orange', 'k'
         elif obs_type == 'Snoedekke':
-            return 85, 40, 'blue', 'k'
+            return 86, 38, 'lightskyblue', 'k'
         elif obs_type == 'Observert vaer':
-            return 85, 20, 'blue', 'k'
+            return 86, 14, 'lightskyblue', 'k'
         elif obs_type == 'Snoeprofil':
-            return 55, 20, 'white', 'k'
-        elif obs_type == 'Stabilitetstest':
-            return 35, 20, 'white', 'k'
-        elif obs_type == 'Skredproblem (2014)':
-            return 15, 20, 'pink', 'k'
-        elif obs_type == 'Skredfarevurdering (2014)':
-            return 15, 40, 'pink', 'k'
+            return 62, 14, 'white', 'k'
+        elif obs_type == 'Kompresjonstest':
+            return 38, 14, 'white', 'k'
+        elif obs_type == 'Skredproblem':
+            return 14, 14, 'pink', 'k'
+        elif obs_type == 'Skredfarevurdering':
+            return 14, 38, 'pink', 'k'
         elif obs_type == 'Bilde':
-            return 15, 60, 'yellow', 'k'
+            return 14, 62, 'yellow', 'k'
         elif obs_type == 'Fritekstfelt':
-            return 35, 60, 'yellow', 'k'
+            return 38, 62, 'yellow', 'k'
         else:
             return 0, 0, 'k', 'k'
 
@@ -123,7 +134,7 @@ def step1_get_data(observer_id, year, month, get_new=True):
     :return:
     """
 
-    pickle_file_name = "{0}runPlotObserverData_{1}_{2}{3}.pickle".format(env.local_storage, observer_id, year, month)
+    pickle_file_name = "{0}runPlotObserverData_{1}_{2}{3:02d}.pickle".format(env.local_storage, observer_id, year, month)
 
     first, last  = cal.monthrange(year, month)
     from_date = dt.date(year, month, first)
@@ -139,6 +150,8 @@ def step1_get_data(observer_id, year, month, get_new=True):
             dd = DayData(d, observer_id)
             obstyp = []
             regids = []
+            loc_pr_regid = {}
+            obs_pr_regid = {}
 
             # loop through all observations
             for i in all_observations.index:
@@ -146,6 +159,19 @@ def step1_get_data(observer_id, year, month, get_new=True):
 
                 # append all observations where dates match
                 if this_date == d:
+
+                    regid = all_observations.iloc[i].RegID
+                    # location on regid
+                    if regid not in loc_pr_regid.keys():
+                        loc_pr_regid[regid] = all_observations.iloc[i].ForecastRegionName
+
+                    # observations pr regid
+                    if regid not in obs_pr_regid.keys():
+                        obs_pr_regid[regid] = [all_observations.iloc[i].RegistrationName]
+                    else:
+                        obs_pr_regid[regid].append(all_observations.iloc[i].RegistrationName)
+
+                    # list of all observations
                     if all_observations.iloc[i].RegistrationName == 'Bilde':
                         if all_observations.iloc[i].TypicalValue1 == 'Bilde av: Snoeprofil':
                             obstyp.append('Snoeprofil')
@@ -154,9 +180,12 @@ def step1_get_data(observer_id, year, month, get_new=True):
                     else:
                         obstyp.append(all_observations.iloc[i].RegistrationName)
 
+                    # list of all regids
                     regids.append(all_observations.iloc[i].RegID)
 
             # add to object for plotting
+            dd.add_loc_pr_regid(loc_pr_regid)
+            dd.add_obs_pr_regid(obs_pr_regid)
             dd.add_observations(obstyp)
             dd.add_regids(regids)
             dates.append(dd)
@@ -169,42 +198,81 @@ def step1_get_data(observer_id, year, month, get_new=True):
     return dates
 
 
-def step2_plot(dates, file_ext=".png"):
+def step2_plot(dates, observer_name, file_ext=".png"):
 
-    plot_file_name = '{0}observerdata_{1}_{2}{3}'.format(env.plot_folder, dates[0].observer_id, dates[0].date.year, dates[0].date.month)
+    plot_file_name = '{0}observerdata_{1}_{2}{3:02d}'.format(env.plot_folder, dates[0].observer_id, dates[0].date.year, dates[0].date.month)
 
     # Figure dimensions
-    fsize = (20, 13)
+    fsize = (18, 13)
     fig = plb.figure(figsize=fsize)
     #plb.clf()
     ax = fig.add_subplot(111)
     plb.subplots_adjust(top=0.95, bottom=0.15, left=0.02, right=0.98)
 
-
+    # plot all boxes pr date
     for d in dates:
         x = int(d.x)-d.box_size_x
         y = int(d.y)-d.box_size_y
         rect = mpl.patches.Rectangle((x, y), d.box_size_x , d.box_size_y, facecolor=d.cell_colour)
         ax.add_patch(rect)
 
-        plb.text(x+5, y+80, '{0}'.format(d.date.day), fontsize=15)
+        # The date in top left corner
+        plb.text(x+6, y+84, '{0}'.format(d.date.day), fontsize=20)
 
+        # plot circles with individual observation count
         for k,v in d.observations.iteritems():
             relative_x, relative_y, obs_colour, obs_edge = d.get_obs_pos(k)
             circ = mpl.patches.Circle((x+relative_x, y+relative_y), d.box_size_x/11, facecolor=obs_colour, edgecolor=obs_edge)
             ax.add_patch(circ)
-            plb.text(x+relative_x, y+relative_y, '{0}'.format(v))
+            plb.text(x+relative_x-2, y+relative_y-2, '{0}'.format(v))
 
+        # List all regids
         reg_id_string = ''
         for k,v in d.reg_ids.iteritems():
             reg_id_string += '{0}: {1}\n'.format(k, v)
-        plb.text(x+60, y+60, reg_id_string)
+        plb.text(x+45, y+60-len(d.reg_ids)*8, reg_id_string)
 
+        # total obs this day
         if d.number_obs > 0:
-            plb.text(x+30, y+25, '{0}'.format(d.number_obs), fontsize=20)
+            plb.text(x+30, y+35, '{0}'.format(d.number_obs), fontsize=25)
 
-    plb.xlim(-50, 700)
-    plb.ylim(0, 550)
+    # add weeknumbers
+    year = dates[0].date.year
+    month = dates[0].date.month
+    first, last  = cal.monthrange(year, month)
+    first_week = dt.date(year, month, first).isocalendar()[1]
+    last_week = dt.date(year, month, last).isocalendar()[1]
+    week_nos = range(first_week, last_week+1, 1)
+    index = -100
+    for wn in week_nos:
+        plb.text(-15, index+60, 'Uke {0}'.format(wn), fontsize=20, rotation=90)
+        index -= 100
+
+    # add weekdays
+    week_days = ['Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Loerdag','Soendag']
+    index = 0
+    for wd in week_days:
+        plb.text(index+30, 10, '{0}'.format(wd), fontsize=20)
+        index += 100
+
+    month_names = {1:'januar',
+                   2:'februar',
+                   3:'mars',
+                   4:'april',
+                   5:'mai',
+                   6:'juni',
+                   7:'juli',
+                   8:'august',
+                   9:'september',
+                   10:'oktober',
+                   11:'november',
+                   12:'desember'}
+    # add title
+    plb.title('Observasjoner av {0} i {1}, {2}'.format(observer_name, month_names[month], year), fontsize=30)
+
+
+    plb.xlim(-20, 700)
+    plb.ylim(-1 *(len(week_nos) * 100), 50)
     plb.axis('off')
     fig.tight_layout()
 
@@ -212,9 +280,6 @@ def step2_plot(dates, file_ext=".png"):
     plb.close()
 
     return
-
-
-
 
 
 def step3_make_html(dates):
@@ -256,32 +321,34 @@ def step3_make_html(dates):
 
     """
 
-    html_file_name = '{0}observerdata_{1}_{2}{3}.html'.format(env.output_folder, dates[0].observer_id, dates[0].date.year, dates[0].date.month)
+    html_file_name = '{0}observerdata_{1}_{2}{3:02d}.html'.format(env.output_folder, dates[0].observer_id, dates[0].date.year, dates[0].date.month)
 
     f = open(html_file_name, 'w')
 
-    f.write('<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#tbl{0}{1}">Tabell</button>\n'
+    f.write('<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#tbl{0}{1}">Tabell med observasjoner og lenker til regObs</button>\n'
             '<div id="tbl{0}{1}" class="collapse">\n'.format(dates[0].date.year, dates[0].date.month))
     f.write('</br>\n'
             ''
             '<table class="table table-hover">\n')
     f.write('    <thead>\n'
             '        <tr>\n'
-            '            <th>Date</th>\n'
-            '            <th>Registration</th>\n'
-            '            <th>Observations</th>\n'
+            '            <th>Dato</th>\n'
+            '            <th>Registrering</th>\n'
+            '            <th>Region</th>\n'
+            '            <th>Observasjon</th>\n'
             '        </tr>\n'
             '    </thead>\n'
             '    <tbody>\n')
 
     for d in dates:
         d_one_time = d.date
-        for id in d.reg_ids.keys():
+        for regid in d.reg_ids.keys():
             f.write('        <tr>\n'
                     '            <td>{0}</td>\n'
-                    '            <td><a href="http://www.regobs.no/registration/{1}">{1}</a></td>\n'
+                    '            <td><a href="http://www.regobs.no/registration/{1}" target="_blank">{1}</a></td>\n'
+                    '            <td>{3}</td>\n'
                     '            <td>{2}</td>\n'
-                    '        </tr>\n'.format(d_one_time, id, d.observations))
+                    '        </tr>\n'.format(d_one_time, regid, ', '.join(d.obs_pr_regid[regid]), d.loc_pr_regid[regid]))
             if d_one_time is not '':
                 d_one_time = ''         # date show only once in column 1
 
@@ -295,19 +362,26 @@ def step3_make_html(dates):
     return
 
 
-
 if __name__ == "__main__":
 
 
-    observer_list={111:'Jonas@ObsKorps', 282:'Martin?', 325:'Siggen@Obskorps'}
+    observer_list={111:'JonasD@ObsKorps',
+                   282:'martin@obskorps',
+                   325:'Siggen@Obskorps',
+                   45:'jostein@nve',
+                   580:'SindreH@ObsKorps',
+                   759:'madspaatopp@senjaobs'}
 
-    months = [dt.date(2015,11,1), dt.date(2015,12,1)]
+    #observer_list={282:'Martin?'}
+
+    months = [dt.date(2015,11,1), dt.date(2015,12,1), dt.date(2016,1,1)]
+    #months = [dt.date(2015,12,1)]
 
     for k,v in observer_list.iteritems():
         for m in months:
 
-            dates = step1_get_data(k, m.year, m.month, get_new=False)
-            step2_plot(dates)
+            dates = step1_get_data(k, m.year, m.month, get_new=True)
+            step2_plot(dates, v)
             step3_make_html(dates)
 
     a = 1
