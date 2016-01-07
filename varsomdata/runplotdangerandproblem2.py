@@ -306,7 +306,7 @@ if __name__ == "__main__":
 
     from_date = dt.date(2015, 11, 15)
     to_date = dt.date(2016, 1, 15)
-    #to_date = dt.date.today() + dt.timedelta(days=2)
+    to_date = dt.date.today() + dt.timedelta(days=2)
 
     #
     # #### Start small - do one region

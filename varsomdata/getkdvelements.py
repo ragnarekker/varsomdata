@@ -141,8 +141,8 @@ def write_kdv_dictionary(data, file_name, get_is_active=True, extension='.txt'):
 
 if __name__ == "__main__":
 
-    trigger = get_kdv('AvalancheDangerKDV')
-    write_kdv_dictionary(trigger, '{0}AvalancheDangerKDV'.format(env.output_folder))
+    danger = get_kdv('AvalancheDangerKDV')
+    write_kdv_dictionary(danger, '{0}AvalancheDangerKDV'.format(env.output_folder))
 
     danger_sign_kdv = get_kdv('DangerSignKDV')
     write_kdv_dictionary(danger_sign_kdv, '{0}DangerSignKDV'.format(env.output_folder))

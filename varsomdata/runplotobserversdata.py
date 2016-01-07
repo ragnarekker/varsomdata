@@ -34,6 +34,10 @@ class DayData():
 
         self.date = date
         self.week_no = date.isocalendar()[1]
+        # if in january use week 0 instead of week 53
+        if date.month == 1 and self.week_no > 50:
+            self.week_no = 0
+
         self.week_day = date.isocalendar()[2]
         self.observations = col.Counter()
         self.number_obs = None
@@ -81,7 +85,10 @@ class DayData():
         year = self.date.year
         month = self.date.month
         first, last  = cal.monthrange(year, month)
-        first_week = dt.date(year, month, first).isocalendar()[1]
+        first_week = dt.date(year, month, 1).isocalendar()[1]
+        # make sure to get last week of previous year if needed
+        if month == 1 and first != 1:
+            first_week = 0
         last_week = dt.date(year, month, last).isocalendar()[1]
 
         self.y = -100 * (self.week_no - first_week)
@@ -91,7 +98,7 @@ class DayData():
 
         if obs_type == 'Faretegn':
             return 38, 86, 'tomato', 'k'
-        elif obs_type == 'Observert skredaktivitet(2014)':
+        elif 'Observert skredaktivitet' in obs_type:
             return 62, 86, 'tomato', 'k'
         elif obs_type == 'Observert skred':
             return 86, 86, 'orange', 'k'
@@ -124,20 +131,24 @@ def _get_dates(start, end, delta):
         curr += delta
 
 
-def step1_get_data(observer_id, year, month, get_new=True):
+
+
+def step1_get_data(observer_id, year, month, get_new=True, make_pickle=False):
     """Gets data for one month and prepares for plotting
 
     :param observer_id:     [int]
     :param year:            [int]
     :param month:           [int]
-    :param get_new:         [bool]
-    :return:
+    :param get_new:         [bool] get data with a new request or use local pickle
+    :param make_pickle:     [bool] if getting new data, make a pickle in local storage
+
+    :return dates:          [list of DayData objects]
     """
 
     pickle_file_name = "{0}runPlotObserverData_{1}_{2}{3:02d}.pickle".format(env.local_storage, observer_id, year, month)
 
     first, last  = cal.monthrange(year, month)
-    from_date = dt.date(year, month, first)
+    from_date = dt.date(year, month, 1)
     to_date = dt.date(year, month, last) + dt.timedelta(days=1)
 
     if get_new:
@@ -181,7 +192,7 @@ def step1_get_data(observer_id, year, month, get_new=True):
                         obstyp.append(all_observations.iloc[i].RegistrationName)
 
                     # list of all regids
-                    regids.append(all_observations.iloc[i].RegID)
+                    regids.append(int(all_observations.iloc[i].RegID))
 
             # add to object for plotting
             dd.add_loc_pr_regid(loc_pr_regid)
@@ -190,7 +201,8 @@ def step1_get_data(observer_id, year, month, get_new=True):
             dd.add_regids(regids)
             dates.append(dd)
 
-        mp.pickle_anything(dates, pickle_file_name)
+        if make_pickle:
+            mp.pickle_anything(dates, pickle_file_name)
 
     else:
         dates = mp.unpickle_anything(pickle_file_name)
@@ -240,7 +252,10 @@ def step2_plot(dates, observer_name, file_ext=".png"):
     year = dates[0].date.year
     month = dates[0].date.month
     first, last  = cal.monthrange(year, month)
-    first_week = dt.date(year, month, first).isocalendar()[1]
+    first_week = dt.date(year, month, 1).isocalendar()[1]
+    # make sure to get last week of previous year if needed
+    if month == 1 and first != 1:
+        first_week = 0
     last_week = dt.date(year, month, last).isocalendar()[1]
     week_nos = range(first_week, last_week+1, 1)
     index = -100
@@ -287,37 +302,6 @@ def step3_make_html(dates):
 
     :param dates:
     :return:
-
-    <div class="container">
-      <h2>Observasjoner tabulert</h2>
-      <p>Plottet over tabulert. Merk også lenker til hver registrering.</p>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Registration</th>
-            <th>Observations</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>John</td>
-            <td><a href='http://www.varsom.no'>Doe</a></td>
-            <td>john@example.com</td>
-          </tr>
-          <tr>
-            <td>Mary</td>
-            <td>Moe</td>
-            <td>mary@example.com</td>
-          </tr>
-          <tr>
-            <td>July</td>
-            <td>Dooley</td>
-            <td>july@example.com</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
 
     """
 
@@ -372,10 +356,16 @@ if __name__ == "__main__":
                    580:'SindreH@ObsKorps',
                    759:'madspaatopp@senjaobs'}
 
-    #observer_list={282:'Martin?'}
+    #observer_list={282:'martin@obskorps'}
 
-    months = [dt.date(2015,11,1), dt.date(2015,12,1), dt.date(2016,1,1)]
-    #months = [dt.date(2015,12,1)]
+    months = []
+    month = dt.date(2015,11,1)
+    while month < dt.date.today():
+        months.append(month)
+        almost_next = month + dt.timedelta(days=35)
+        month = dt.date(almost_next.year, almost_next.month, 1)
+
+    #months = [dt.date(2015,11,1)]
 
     for k,v in observer_list.iteritems():
         for m in months:
