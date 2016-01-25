@@ -7,4 +7,8 @@
 
 # windows .ini filer
 *.ini
-'.idea' 
+'.idea'
+
+# environment variables
+setvariables.py
+

@@ -11,7 +11,6 @@ import setenvironment as env
 import getkdvelements as kdv
 
 
-
 class Trip():
 
     def __init__(self, d):
@@ -140,17 +139,115 @@ def get_observer_group_member(group_id=None, output='List'):
         return observer_dict
 
 
+class Registration():
+
+    def __init__(self, d):
+
+        self.RegID = int(d["RegID"])
+        self.DtObsTime = fe.unix_time_2_normal(d["DtObsTime"])
+        self.DtRegTime = fe.unix_time_2_normal(d["DtRegTime"])
+        if d["DtChangeTime"] is not None:
+            self.DtChangeTime = fe.unix_time_2_normal(d["DtChangeTime"])
+        else:
+            self.DtChangeTime = None
+        if d["DeletedDate"] is not None:
+            self.DeletedDate = fe.unix_time_2_normal(d["DeletedDate"])
+        else:
+            self.DeletedDate = None
+        self.ObserverID = int(d["ObserverID"])
+        self.NickName = None                                    # added later
+        self.CompetenceLevelTID = int(d["CompetenceLevelTID"])
+        if d["ObserverGroupID"] is not None:
+            self.ObserverGroupID = int(d["ObserverGroupID"])
+        else:
+            self.ObserverGroupID = None
+        self.GeoHazardTID = int(d['GeoHazardTID'])
+        self.ObsLocationID = int(d["ObsLocationID"])
+        self.ApplicationID = d["ApplicationId"]
+
+
+def get_registration(from_date, to_date, output='List', geohazard_tid=None, ApplicationID=None, include_deleted=False):
+
+    import setvariables as setv
+
+    odata_filter = ""
+    if geohazard_tid is not None:
+        odata_filter += "GeoHazardTID eq {0} and ".format(geohazard_tid)
+    odata_filter += "DtRegTime gt datetime'{0}' and DtRegTime lt datetime'{1}'".format(from_date, to_date)
+    if "Web and app" in ApplicationID:
+        odata_filter += " and (ApplicationId eq guid'{0}' or ApplicationId eq guid'{1}')".format(setv.web, setv.app)
+
+    url = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}/?$filter={2}&$format=json'.format(env.api_version, "Registration",odata_filter)
+    print "getmisc.py -> get_registration: ..to {0}".format(fe.remove_norwegian_letters(url))
+
+    result = requests.get(url).json()
+    data = result['d']['results']
+
+    # if more than 1000 elements are requested, odata truncates data to 1000. We do more requests
+    if len(data) == 1000:
+        time_delta = to_date - from_date
+        date_in_middle = from_date + time_delta/2
+        data = get_registration(from_date, date_in_middle, output='Raw', geohazard_tid=geohazard_tid, ApplicationID=ApplicationID) \
+                 + get_registration(date_in_middle, to_date, output='Raw', geohazard_tid=geohazard_tid, ApplicationID=ApplicationID)
+
+    if output=='Raw':
+        return data
+    elif output=='List':
+        data_out = [Registration(d) for d in data]
+        observer_nicks = get_observerv()
+        for d in data_out:
+            d.NickName = [observer_nicks[d.ObserverID]]
+        if include_deleted == False:
+            data_out = [d for d in data_out if d.DeletedDate is None]
+        return data_out
+
+
+
+
+
+
+
+def get_observerv():
+
+    url = 'http://api.nve.no/hydrology/regobs/v1.0.0/Odata.svc/ObserverV?$format=json'
+    result = requests.get(url).json()
+    data = result['d']['results']
+
+    observer_nicks = {}
+    for d in data:
+        key = d['ObserverId']
+        val = fe.remove_norwegian_letters(d['NickName'])
+        observer_nicks[key] = val
+
+    return observer_nicks
+
 
 if __name__ == "__main__":
 
-    from_date = dt.date(2015, 4, 1)
+    from_date = dt.date(2015, 12, 1)
     from_date = dt.date.today()-dt.timedelta(days=60)
     to_date = dt.date.today()+dt.timedelta(days=1)
 
+
+    #data = get_observerv()
+
     # trips = get_trip(from_date, to_date, output='csv')
+    # observers = get_observer_group_member(group_id=51, output='Dict')
+    registration = get_registration(from_date, to_date, geohazard_tid=10, ApplicationID="Web and app")
 
-    observers = get_observer_group_member(group_id=51, output='Dict')
+    observers_dict = {}
 
+    for r in registration:
+        if r.ObserverID not in observers_dict.keys():
+            observers_dict[r.ObserverID] = 1
+        else:
+            observers_dict[r.ObserverID] += 1
+
+    observers_dict_select = {}
+
+    for k,v in observers_dict.iteritems():
+        if v > 5:
+            observers_dict_select[k] = v
 
 
 

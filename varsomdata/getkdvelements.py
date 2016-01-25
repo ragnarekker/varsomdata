@@ -106,7 +106,7 @@ class KDVelement():
         self.SortOrder = sort_order_inn
 
 
-    def file_output(self, get_header = False):
+    def file_output(self, get_header=False):
 
         if get_header is True:
             return "{0: <5}{1: <7}{2: <10}{3: <10}{4: <50}{5: <50}".format(
@@ -118,7 +118,7 @@ class KDVelement():
 
 
 def write_kdv_dictionary(data, file_name, get_is_active=True, extension='.txt'):
-    """Writes a directory to file.
+    """Writes a kdv dictionary to file.
 
     :param data:        [dictionary of KDVelement()]
     :param file_name:
@@ -140,6 +140,10 @@ def write_kdv_dictionary(data, file_name, get_is_active=True, extension='.txt'):
 
 
 if __name__ == "__main__":
+
+
+    snow_surface_kdv = get_kdv('SnowSurfaceKDV')
+    write_kdv_dictionary(snow_surface_kdv, '{0}SnowSurfaceKDV'.format(env.output_folder))
 
     danger = get_kdv('AvalancheDangerKDV')
     write_kdv_dictionary(danger, '{0}AvalancheDangerKDV'.format(env.output_folder))

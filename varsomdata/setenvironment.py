@@ -21,6 +21,8 @@ if sys.platform == 'linux2' or sys.platform == 'darwin':
     input_folder = 'input/'
     local_storage = 'localstorage/'
     output_folder = 'output/'
+    web_images_folder = '/Users/ragnarekker/Documents/github/BottleSite/images/'
+    web_view_folder = '/Users/ragnarekker/Documents/github/BottleSite/views/'
 
     
 elif sys.platform == 'win32':
@@ -30,6 +32,8 @@ elif sys.platform == 'win32':
     input_folder = 'input\\'
     local_storage = 'localstorage\\'
     output_folder = 'output\\'
+    web_images_folder = 'plots\\'
+    web_view_folder = 'output\\'
 
     
 else:

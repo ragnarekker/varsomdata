@@ -131,8 +131,6 @@ def _get_dates(start, end, delta):
         curr += delta
 
 
-
-
 def step1_get_data(observer_id, year, month, get_new=True, make_pickle=False):
     """Gets data for one month and prepares for plotting
 
@@ -212,7 +210,7 @@ def step1_get_data(observer_id, year, month, get_new=True, make_pickle=False):
 
 def step2_plot(dates, observer_name, file_ext=".png"):
 
-    plot_file_name = '{0}observerdata_{1}_{2}{3:02d}'.format(env.plot_folder, dates[0].observer_id, dates[0].date.year, dates[0].date.month)
+    plot_file_name = '{0}observerdata_{1}_{2}{3:02d}'.format(env.web_images_folder, dates[0].observer_id, dates[0].date.year, dates[0].date.month)
 
     # Figure dimensions
     fsize = (18, 13)
@@ -305,7 +303,7 @@ def step3_make_html(dates):
 
     """
 
-    html_file_name = '{0}observerdata_{1}_{2}{3:02d}.html'.format(env.output_folder, dates[0].observer_id, dates[0].date.year, dates[0].date.month)
+    html_file_name = '{0}observerdata_{1}_{2}{3:02d}.html'.format(env.web_view_folder, dates[0].observer_id, dates[0].date.year, dates[0].date.month)
 
     f = open(html_file_name, 'w')
 
@@ -346,26 +344,7 @@ def step3_make_html(dates):
     return
 
 
-if __name__ == "__main__":
-
-
-    observer_list={111:'JonasD@ObsKorps',
-                   282:'martin@obskorps',
-                   325:'Siggen@Obskorps',
-                   45:'jostein@nve',
-                   580:'SindreH@ObsKorps',
-                   759:'madspaatopp@senjaobs'}
-
-    #observer_list={282:'martin@obskorps'}
-
-    months = []
-    month = dt.date(2015,11,1)
-    while month < dt.date.today():
-        months.append(month)
-        almost_next = month + dt.timedelta(days=35)
-        month = dt.date(almost_next.year, almost_next.month, 1)
-
-    #months = [dt.date(2015,11,1)]
+def make_observer_plots(observer_list, months):
 
     for k,v in observer_list.iteritems():
         for m in months:
@@ -374,4 +353,29 @@ if __name__ == "__main__":
             step2_plot(dates, v)
             step3_make_html(dates)
 
-    a = 1
+
+if __name__ == "__main__":
+
+    from observerlist import observer_list
+
+    # observer_list={111:'JonasD@ObsKorps',
+    #                282:'martin@obskorps',
+    #                325:'Siggen@Obskorps',
+    #                45:'jostein@nve',
+    #                580:'SindreH@ObsKorps',
+    #                759:'madspaatopp@senjaobs'}
+    #
+    # observer_list={282:'martin@obskorps'}
+
+    months = []
+    month = dt.date(2015,11,1)
+    while month < dt.date.today():
+        months.append(month)
+        almost_next = month + dt.timedelta(days=35)
+        month = dt.date(almost_next.year, almost_next.month, 1)
+
+    # months = [dt.date(2015,11,1)]
+
+
+    make_observer_plots(observer_list, months)
+

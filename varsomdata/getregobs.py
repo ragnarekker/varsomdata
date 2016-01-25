@@ -407,7 +407,10 @@ def get_problems_from_AvalancheWarningV(region_id, start_date, end_date):
     url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}?$filter={2}&$format=json".decode('utf8').format(
         api_version, view, odata_query)
     result = requests.get(url).json()
-    result = result['d']['results']
+    try:
+        result = result['d']['results']
+    except:
+        result = []
 
     print 'getregobs.py -> get_problems_from_AvalancheWarningV: {0} observations for {1} in from {2} to {3}.'\
         .format(len(result), region_id, start_date, end_date)
@@ -547,7 +550,10 @@ def get_problems_from_AvalancheWarnProblemV(region_id, start_date, end_date):
     url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}?$filter={2}&$format=json".decode('utf8').format(
         api_version, view, odata_query)
     result = requests.get(url).json()
-    result = result['d']['results']
+    try:
+        result = result['d']['results']
+    except:
+        result = []
 
     print 'getregobs.py -> get_problems_from_AvalancheWarnProblemV: {0} observations for {1} in from {2} to {3}.'\
         .format(len(result), region_id, start_date, end_date)

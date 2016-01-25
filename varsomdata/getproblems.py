@@ -237,17 +237,19 @@ class AvalancheProblem():
         self.danger_level_name = AvalancheDangerKDV[danger_level].Name
 
 
-def get_all_problems(region_ids, start_date, end_date):
+def get_all_problems(region_ids, start_date, end_date, add_danger_level=True):
     '''Method returns all avalanche problems on views AvalancheProblemV, AvalancheEvalProblemV,
     AvalancheEvalProblem2V, AvalancheWarningV and AvalancheWarnProblemV. Method takes the
     region ID as used in ForecastRegionKDV.
 
     Note: the queries in Odata goes from a date (but not including) this date. Mathematically <from, to].
 
-    :param region_id:       [int]   ForecastRegionTID
-    :param start_date:      [date or string as "YYYY-MM-DD"]
-    :param end_date:        [date or string as "YYYY-MM-DD"]
-    :return problems:       [list]  List of AvalancheProblem objects
+    :param region_id:           [int] ForecastRegionTID
+    :param start_date:          [date or string as "YYYY-MM-DD"]
+    :param end_date:            [date or string as "YYYY-MM-DD"]
+    :param add_danger_level:    [bool] If false danger level will not be added to the problem
+
+    :return all_problems:   [list]  List of AvalancheProblem objects
     '''
 
     # If input isn't a list, make it so
@@ -268,27 +270,26 @@ def get_all_problems(region_ids, start_date, end_date):
         warn_problem_v += gro.get_problems_from_AvalancheWarnProblemV(region_id, start_date, end_date)
 
     all_problems = problem_v + eval_problem_v + eval_problem2_v + warning_v + warn_problem_v
+    all_problems.sort(key=lambda AvalancheProblem: AvalancheProblem.date)
 
     # Will add all forecasted danger levels to the problems
-    all_warnings = gfa.get_warnings(region_ids, start_date, end_date)
-    all_non_zero_warnings = [w for w in all_warnings if w.danger_level != 0]
+    if add_danger_level:
 
-    # Sort lists
-    all_problems.sort(key=lambda AvalancheProblem: AvalancheProblem.date)
-    all_non_zero_warnings.sort(key=lambda AvalancheDanger: AvalancheDanger.date)
+        all_warnings = gfa.get_warnings(region_ids, start_date, end_date)
+        all_non_zero_warnings = [w for w in all_warnings if w.danger_level != 0]
+        all_non_zero_warnings.sort(key=lambda AvalancheDanger: AvalancheDanger.date)
 
-    # Add forecasted dangerlevel to all problems.
-    # Lots of looping. Be smart. Keep track of last index since both lista are ordered the same.
-    # Break the for loop if dates dont match anymore.
-    last_i = 0
-    for p in all_problems:
-        print 'getproblems.py -> get_all_problems: looping through {0} on {1}'.format(p.date, p.regobs_view)
-        for i in range(last_i, len(all_non_zero_warnings), 1):
-            if all_non_zero_warnings[i].date > p.date:
-                last_i = max(0, i-1-len(region_ids))
-                break
-            elif p.date == all_non_zero_warnings[i].date and p.region_id == all_non_zero_warnings[i].region_regobs_id:
-                p.set_danger_level(all_non_zero_warnings[i].danger_level)
+        # Add forecasted dangerlevel to all problems. Lots of looping. Be smart. Keep track of last index since
+        # both lista are ordered the same. Break the for loop if dates dont match anymore.
+        last_i = 0
+        for p in all_problems:
+            print 'getproblems.py -> get_all_problems: looping through {0} on {1}'.format(p.date, p.regobs_view)
+            for i in range(last_i, len(all_non_zero_warnings), 1):
+                if all_non_zero_warnings[i].date > p.date:
+                    last_i = max(0, i-1-len(region_ids))
+                    break
+                elif p.date == all_non_zero_warnings[i].date and p.region_id == all_non_zero_warnings[i].region_regobs_id:
+                    p.set_danger_level(all_non_zero_warnings[i].danger_level)
 
     return all_problems
 
@@ -300,5 +301,6 @@ if __name__ == "__main__":
     to_date = dt.date(2015, 3, 1)
 
     all_problems = get_all_problems(region_id, from_date, to_date)
+    all_problems_no_danger = get_all_problems(region_id, from_date, to_date, add_danger_level=False)
 
     a = 1

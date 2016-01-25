@@ -14,6 +14,10 @@ def unix_time_2_normal(unix_date_time):
     Ex: date = unix_time_2_normal(int(p['DtObsTime'][6:-2]))
     """
 
+    # odata returns a string with prefix "Date". Cropp and cast.
+    if "Date" in unix_date_time:
+        unix_date_time = int(unix_date_time[6:-2])
+
     unix_datetime_in_seconds = unix_date_time/1000 # For some reason they are given in miliseconds
     date = dt.datetime.fromtimestamp(int(unix_datetime_in_seconds))
     return date

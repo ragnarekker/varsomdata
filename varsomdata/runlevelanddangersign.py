@@ -145,7 +145,7 @@ if __name__ == "__main__":
         plb.text(100*i-20, -0.04, '{0}'.format(plot_labels[i-1]))
 
     # title
-    plb.text(50, 1.165, 'Faregrader fordelt paa varselt faregrad vintern 2014-15', fontsize=30)
+    plb.text(50, 1.165, 'Faretegn fordelt paa varselt faregrad vintern 2014-15', fontsize=30)
 
 
     plb.xlim(0, 700)
