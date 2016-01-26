@@ -109,12 +109,12 @@ class KDVelement():
     def file_output(self, get_header=False):
 
         if get_header is True:
-            return "{0: <5}{1: <7}{2: <10}{3: <10}{4: <50}{5: <50}".format(
-                "ID", "Order", "IsActive", "Langkey", "Name", "Description")
+            "{0: <5}{1: <7}{2: <10}{3: <10}{4: <50}{5: <50}".format(
+            "ID", "Order", "IsActive", "Langkey", "Name", "Description")
 
         else:
-            return "{0: <5}{1: <7}{2: <10}{3: <10}{4: <50}{5: <50}".format(
-                self.ID, self.SortOrder, self.IsActive, self.Langkey, self.Name, self.Description)
+            "{0: <5}{1: <7}{2: <10}{3: <10}{4: <50}{5: <50}".format(
+            self.ID, self.SortOrder, self.IsActive, self.Langkey, self.Name, self.Description)
 
 
 def write_kdv_dictionary(data, file_name, get_is_active=True, extension='.txt'):
@@ -141,6 +141,12 @@ def write_kdv_dictionary(data, file_name, get_is_active=True, extension='.txt'):
 
 if __name__ == "__main__":
 
+
+    cause_kdv = get_kdv('AvalCauseKDV')
+    write_kdv_dictionary(cause_kdv, '{0}AvalCauseKDV'.format(env.output_folder))
+
+    cause_ext_kdv = get_kdv('AvalCauseExtKDV')
+    write_kdv_dictionary(cause_ext_kdv, '{0}AvalCauseExtKDV'.format(env.output_folder))
 
     snow_surface_kdv = get_kdv('SnowSurfaceKDV')
     write_kdv_dictionary(snow_surface_kdv, '{0}SnowSurfaceKDV'.format(env.output_folder))
