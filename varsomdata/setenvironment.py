@@ -15,24 +15,30 @@ import sys
 
 
 if sys.platform == 'darwin':
-    data_folder = 'datafiles/'
-    plot_folder = 'plots/'
-    kdv_elements_folder = 'localstorage/'
-    input_folder = 'input/'
-    local_storage = 'localstorage/'
-    output_folder = 'output/'
+
+    root_folder = '/Users/ragnarekker/Documents/github/varsomdata/varsomdata/'
+    data_folder = root_folder + 'datafiles/'
+    plot_folder = root_folder + 'plots/'
+    kdv_elements_folder = root_folder + 'localstorage/'
+    input_folder = root_folder + 'input/'
+    local_storage = root_folder + 'localstorage/'
+    output_folder = root_folder + 'output/'
+
     web_root_folder = '/Users/ragnarekker/Documents/github/BottleSite/'
     web_images_folder = web_root_folder + 'images/'
     web_view_folder = web_root_folder + 'views/'
 
     
 elif sys.platform == 'win32':
-    data_folder = 'datafiles\\'
-    plot_folder = 'plots\\'
-    kdv_elements_folder = 'localstorage\\'
-    input_folder = 'input\\'
-    local_storage = 'localstorage\\'
-    output_folder = 'output\\'
+
+    root_folder = 'C:\\Users\\raek\\github\\varsomdata\\varsomdata\\'
+    data_folder = root_folder + 'datafiles\\'
+    plot_folder = root_folder + 'plots\\'
+    kdv_elements_folder = root_folder + 'localstorage\\'
+    input_folder = root_folder + 'input\\'
+    local_storage = root_folder + 'localstorage\\'
+    output_folder = root_folder + 'output\\'
+
     web_root_folder = 'C:\\Users\\raek\\github\\BottleSite\\'
     web_images_folder = web_root_folder + 'images\\'
     web_view_folder = web_root_folder + 'views\\'
