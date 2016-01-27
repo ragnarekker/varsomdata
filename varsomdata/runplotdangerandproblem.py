@@ -15,14 +15,14 @@ import setenvironment as env
 import datetime as dt
 
 
-def plot_causes(region_name, start_date, end_date, causes):
+def plot_causes(region_name, from_date, to_date, causes):
     '''
 
     :param causes:
     :return:
     '''
 
-    filename = r"{0} skredproblemer {1}-{2}".format(region_name, start_date.strftime('%Y'), end_date.strftime('%y'))
+    filename = r"{0} skredproblemer {1}-{2}".format(region_name, from_date.strftime('%Y'), to_date.strftime('%y'))
     print("Plotting {0}".format(filename))
 
     AvalCauseKDV = gkdv.get_kdv("AvalCauseKDV")
@@ -293,7 +293,7 @@ def get_data(region_id, start_date, end_date, data_from="request"):
     :param region_id:       [int]    Region ID is an int as given i ForecastRegionKDV
     :param start_date:      [string] Start date. Data for this date is not included in requests from OData
     :param end_date:
-    :param data_from:       [string] Default "request". Other options: "request and save" and "localstorage"
+    :param data_from:       [string] Default "request". Other options: "request and save" and "local storage"
     :return:
     """
 
@@ -310,7 +310,7 @@ def get_data(region_id, start_date, end_date, data_from="request"):
         if "request and save" in data_from:
             mp.pickle_anything([problems, dangers], filename)
 
-    elif "localstorage" in  data_from:
+    elif "local storage" in data_from:
         problems, dangers = mp.unpickle_anything(filename)
 
     else:
@@ -322,12 +322,36 @@ def get_data(region_id, start_date, end_date, data_from="request"):
     return problems, dangers
 
 
+def make_2015_16_plots():
+    """Makes all plots for all regions and saves to web-app folder
+
+    :return:
+    """
+
+    from_date = dt.date(2015, 11, 15)
+    to_date = dt.date.today() + dt.timedelta(days=2)
+
+    ## Get all regions
+    region_id = []
+    ForecastRegionKDV = gkdv.get_kdv('ForecastRegionKDV')
+    for k, v in ForecastRegionKDV.iteritems():
+        if 100 < k < 150 and v.IsActive is True:
+            region_id.append(v.ID)
+
+    # All regions span from 6 (Alta) to 33 (Salten).
+    for i in region_id:
+        problems, dangers = get_data(i, from_date, to_date, data_from="request")
+        make_plots_for_region(i, problems, dangers, from_date, to_date)
+
+    return
+
+
 if __name__ == "__main__":
 
 
     from_date = dt.date(2015, 11, 15)
     to_date = dt.date(2015, 6, 1)
-    to_date = dt.date.today() + dt.timedelta(days=2)
+
 
     # #### Start small - do one region
     # i = 121

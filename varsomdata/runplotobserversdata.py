@@ -13,6 +13,7 @@ import calendar as cal
 import getdangers as gd
 import getobservations as go
 import getkdvelements as gkdv
+import getmisc as gm
 import fencoding as fe
 
 # I/O and environmental stuff
@@ -354,9 +355,31 @@ def make_observer_plots(observer_list, months):
             step3_make_html(dates)
 
 
-if __name__ == "__main__":
+def make_2015_16_plots():
+    """Plots observer observations for display on webpage for the season 2015-16.
+    Method includes a request for list of relevant observers.
 
-    from observerlist import observer_list
+    :return:
+    """
+
+    # get a list of relevant observerst to plot and make plickle in the web-folder
+    observer_list = gm.get_observer_dict_for_2015_16_ploting()
+    mp.pickle_anything(observer_list, '{0}observerlist.pickle'.format(env.web_root_folder))
+
+    # list of months to be ploted
+    months = []
+    month = dt.date(2015,11,1)
+    while month < dt.date.today():
+        months.append(month)
+        almost_next = month + dt.timedelta(days=35)
+        month = dt.date(almost_next.year, almost_next.month, 1)
+
+    make_observer_plots(observer_list, months)
+
+    return
+
+
+if __name__ == "__main__":
 
     # observer_list={111:'JonasD@ObsKorps',
     #                282:'martin@obskorps',

@@ -194,7 +194,7 @@ def get_registration(from_date, to_date, output='List', geohazard_tid=None, Appl
         return data
     elif output=='List':
         data_out = [Registration(d) for d in data]
-        observer_nicks = get_observerv()
+        observer_nicks = get_observer_v()
         for d in data_out:
             d.NickName = [observer_nicks[d.ObserverID]]
         if include_deleted == False:
@@ -204,10 +204,11 @@ def get_registration(from_date, to_date, output='List', geohazard_tid=None, Appl
 
 
 
+def get_observer_v():
+    """Selects all data from the ObserverV view.
 
-
-
-def get_observerv():
+    :return: a dictionary of key/ObserverID : value/NickName
+    """
 
     url = 'http://api.nve.no/hydrology/regobs/v1.0.0/Odata.svc/ObserverV?$format=json'
     result = requests.get(url).json()
@@ -222,32 +223,54 @@ def get_observerv():
     return observer_nicks
 
 
-if __name__ == "__main__":
+def get_observer_dict_for_2015_16_ploting():
 
     from_date = dt.date(2015, 12, 1)
-    from_date = dt.date.today()-dt.timedelta(days=60)
     to_date = dt.date.today()+dt.timedelta(days=1)
 
-
-    #data = get_observerv()
-
-    # trips = get_trip(from_date, to_date, output='csv')
-    # observers = get_observer_group_member(group_id=51, output='Dict')
+    # get all registrations
     registration = get_registration(from_date, to_date, geohazard_tid=10, ApplicationID="Web and app")
 
+    # make dict of all observers and how much they contributed
     observers_dict = {}
-
     for r in registration:
         if r.ObserverID not in observers_dict.keys():
             observers_dict[r.ObserverID] = 1
         else:
             observers_dict[r.ObserverID] += 1
 
-    observers_dict_select = {}
+    # list of all observerids and their nicks
+    observer_nicks = get_observer_v()
 
+    # only the whorthy are selected
+    observers_dict_select = {}
     for k,v in observers_dict.iteritems():
         if v > 5:
-            observers_dict_select[k] = v
+            observers_dict_select[k] = observer_nicks[k]
+
+    return observers_dict_select
+
+
+
+if __name__ == "__main__":
+
+    # from_date = dt.date(2015, 12, 1)
+    # from_date = dt.date.today()-dt.timedelta(days=60)
+    # to_date = dt.date.today()+dt.timedelta(days=1)
+
+
+    observer_list = get_observer_dict_for_2015_16_ploting()
+    import makepickle as mp
+    mp.pickle_anything(observer_list, '{0}observerlist.pickle'.format(env.web_root_folder))
+
+
+    # observer_nicks = get_observer_v()
+    # trips = get_trip(from_date, to_date, output='csv')
+    # observers = get_observer_group_member(group_id=51, output='Dict')
+    # registration = get_registration(from_date, to_date, geohazard_tid=10, ApplicationID="Web and app")
+
+
+
 
 
 
