@@ -32,8 +32,8 @@ elif sys.platform == 'win32':
     input_folder = 'input\\'
     local_storage = 'localstorage\\'
     output_folder = 'output\\'
-    web_images_folder = 'plots\\'
-    web_view_folder = 'output\\'
+    web_images_folder = 'C:\\Users\\raek\\github\\BottleSite\\images\\'
+    web_view_folder = 'C:\\Users\\raek\\github\\BottleSite\\views\\'
 
     
 else:

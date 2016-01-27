@@ -11,6 +11,33 @@ import datetime as dt
 import collections
 
 
+class KDVelement():
+    """
+    Class holds the KDV-element and has some methods used when printing.
+    """
+
+
+    def __init__(self, id_inn, sort_order_inn, is_active_inn, name_inn, description_inn, lang_key_inn):
+
+        self.ID = id_inn
+        self.Langkey = lang_key_inn
+        self.Name = name_inn
+        self.Description = description_inn
+        self.IsActive = is_active_inn
+        self.SortOrder = sort_order_inn
+
+
+    def file_output(self, get_header=False):
+
+        if get_header is True:
+            "{0: <5}{1: <7}{2: <10}{3: <10}{4: <50}{5: <50}".format(
+            "ID", "Order", "IsActive", "Langkey", "Name", "Description")
+
+        else:
+            "{0: <5}{1: <7}{2: <10}{3: <10}{4: <50}{5: <50}".format(
+            self.ID, self.SortOrder, self.IsActive, self.Langkey, self.Name, self.Description)
+
+
 def get_kdv(view):
     '''Imports a view view from regObs and returns a dictionary with <key, value> = <ID, Name>
     An view is requested from the regObs api if the pickle file is older thatn 3 days.
@@ -86,35 +113,17 @@ def get_kdv(view):
 
 
 def get_name(view, tid):
+    """Gets a Name-value given ist value and the KDV-view it belongs to.
+
+    :param view:    [string]
+    :param tid:     [int]
+    :return:
+    """
 
     kdv = get_kdv(view)
     name = kdv[tid].Name
 
     return name
-
-
-class KDVelement():
-
-
-    def __init__(self, id_inn, sort_order_inn, is_active_inn, name_inn, description_inn, lang_key_inn):
-
-        self.ID = id_inn
-        self.Langkey = lang_key_inn
-        self.Name = name_inn
-        self.Description = description_inn
-        self.IsActive = is_active_inn
-        self.SortOrder = sort_order_inn
-
-
-    def file_output(self, get_header=False):
-
-        if get_header is True:
-            "{0: <5}{1: <7}{2: <10}{3: <10}{4: <50}{5: <50}".format(
-            "ID", "Order", "IsActive", "Langkey", "Name", "Description")
-
-        else:
-            "{0: <5}{1: <7}{2: <10}{3: <10}{4: <50}{5: <50}".format(
-            self.ID, self.SortOrder, self.IsActive, self.Langkey, self.Name, self.Description)
 
 
 def write_kdv_dictionary(data, file_name, get_is_active=True, extension='.txt'):
