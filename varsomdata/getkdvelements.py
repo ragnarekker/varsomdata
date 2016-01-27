@@ -142,25 +142,25 @@ def write_kdv_dictionary(data, file_name, get_is_active=True, extension='.txt'):
 if __name__ == "__main__":
 
 
-    cause_kdv = get_kdv('AvalCauseKDV')
-    write_kdv_dictionary(cause_kdv, '{0}AvalCauseKDV'.format(env.output_folder))
-
-    cause_ext_kdv = get_kdv('AvalCauseExtKDV')
-    write_kdv_dictionary(cause_ext_kdv, '{0}AvalCauseExtKDV'.format(env.output_folder))
-
-    snow_surface_kdv = get_kdv('SnowSurfaceKDV')
-    write_kdv_dictionary(snow_surface_kdv, '{0}SnowSurfaceKDV'.format(env.output_folder))
-
-    danger = get_kdv('AvalancheDangerKDV')
-    write_kdv_dictionary(danger, '{0}AvalancheDangerKDV'.format(env.output_folder))
-
-    danger_sign_kdv = get_kdv('DangerSignKDV')
-    write_kdv_dictionary(danger_sign_kdv, '{0}DangerSignKDV'.format(env.output_folder))
-
-    registration_kdv = get_kdv('RegistrationKDV')
+    # cause_kdv = get_kdv('AvalCauseKDV')
+    # write_kdv_dictionary(cause_kdv, '{0}AvalCauseKDV'.format(env.output_folder))
+    #
+    # cause_ext_kdv = get_kdv('AvalCauseExtKDV')
+    # write_kdv_dictionary(cause_ext_kdv, '{0}AvalCauseExtKDV'.format(env.output_folder))
+    #
+    # snow_surface_kdv = get_kdv('SnowSurfaceKDV')
+    # write_kdv_dictionary(snow_surface_kdv, '{0}SnowSurfaceKDV'.format(env.output_folder))
+    #
+    # danger = get_kdv('AvalancheDangerKDV')
+    # write_kdv_dictionary(danger, '{0}AvalancheDangerKDV'.format(env.output_folder))
+    #
+    # danger_sign_kdv = get_kdv('DangerSignKDV')
+    # write_kdv_dictionary(danger_sign_kdv, '{0}DangerSignKDV'.format(env.output_folder))
+    #
+    # registration_kdv = get_kdv('RegistrationKDV')
     forecast_region_KDV = get_kdv('ForecastRegionKDV')
 
-    write_kdv_dictionary(registration_kdv, "{0}RegistrationKDV".format(env.output_folder))
-    write_kdv_dictionary(forecast_region_KDV, "{0}ForecastRegionKDV".format(env.output_folder))
+    # write_kdv_dictionary(registration_kdv, "{0}RegistrationKDV".format(env.output_folder))
+    # write_kdv_dictionary(forecast_region_KDV, "{0}ForecastRegionKDV".format(env.output_folder))
 
     a = 1

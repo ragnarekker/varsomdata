@@ -283,7 +283,8 @@ def make_plots_for_region(region_id, problems, dangers, start_date, end_date):
     # No data, no plot
     if len(danger_levels) is not 0:
         plot_danger_levels(region_name, start_date, end_date, danger_levels)
-        plot_causes(region_name, start_date, end_date, causes)
+        if end_date > dt.date(2014, 11, 01) and start_date > dt.date(2014, 11, 01): # Early years dont have this avalanche problem
+            plot_causes(region_name, start_date, end_date, causes)
 
 
 def get_data(region_id, start_date, end_date, data_from="request"):
@@ -298,10 +299,12 @@ def get_data(region_id, start_date, end_date, data_from="request"):
 
     filename = "{3}dangerandproblemplot_id{0} {1}-{2}.pickle".format(region_id, start_date.strftime('%Y'), end_date.strftime('%y'), env.local_storage)
 
-    problems = []
-
     if "request" in data_from:
-        #problems = gp.get_all_problems(region_id, start_date, end_date, add_danger_level=False)
+        if end_date > dt.date(2014, 11, 01) and start_date > dt.date(2014, 11, 01): # Early years dont have this avalanche problem
+            problems = gp.get_all_problems(region_id, start_date, end_date, add_danger_level=False)
+        else:
+            problems = []
+
         dangers = gd.get_all_dangers(region_id, start_date, end_date)
 
         if "request and save" in data_from:
@@ -322,15 +325,14 @@ def get_data(region_id, start_date, end_date, data_from="request"):
 if __name__ == "__main__":
 
 
-    from_date = dt.date(2013, 11, 15)
-    to_date = dt.date(2014, 6, 15)
-    #to_date = dt.date.today() + dt.timedelta(days=2)
-
+    from_date = dt.date(2015, 11, 15)
+    to_date = dt.date(2015, 6, 1)
+    to_date = dt.date.today() + dt.timedelta(days=2)
 
     # #### Start small - do one region
-    i = 121
-    problems, dangers = get_data(i, from_date, to_date, data_from="request and save")
-    make_plots_for_region(i, problems, dangers, from_date, to_date)
+    # i = 121
+    # problems, dangers = get_data(i, from_date, to_date, data_from="request and save")
+    # make_plots_for_region(i, problems, dangers, from_date, to_date)
 
     ## Get all regions
     region_id = []
@@ -338,6 +340,8 @@ if __name__ == "__main__":
     for k, v in ForecastRegionKDV.iteritems():
         if 100 < k < 150 and v.IsActive is True:
             region_id.append(v.ID)
+
+    # region_id += [113,125,126]  # two first years had more regions. Uncomment if making plots for 2012-13 and 2013-14
 
     # All regions span from 6 (Alta) to 33 (Salten).
     for i in region_id:
