@@ -4,7 +4,7 @@ p0
 ((lp1
 (lp2
 I0
-a(i__main__
+a(igetkdvelements
 KDVelement
 p3
 (dp4
@@ -30,7 +30,7 @@ S'Ikke gitt'
 p12
 sbaa(lp13
 I1
-a(i__main__
+a(igetkdvelements
 KDVelement
 p14
 (dp15
@@ -48,7 +48,7 @@ S'Regn'
 p16
 sbaa(lp17
 I2
-a(i__main__
+a(igetkdvelements
 KDVelement
 p18
 (dp19
@@ -66,7 +66,7 @@ S'Oppvarming'
 p20
 sbaa(lp21
 I3
-a(i__main__
+a(igetkdvelements
 KDVelement
 p22
 (dp23
@@ -84,7 +84,7 @@ S'Ingen gjenfrysing'
 p24
 sbaa(lp25
 I4
-a(i__main__
+a(igetkdvelements
 KDVelement
 p26
 (dp27
@@ -102,7 +102,7 @@ S'Paalagring'
 p28
 sbaa(lp29
 I5
-a(i__main__
+a(igetkdvelements
 KDVelement
 p30
 (dp31
@@ -120,7 +120,7 @@ S'Svake lag'
 p32
 sbaa(lp33
 I6
-a(i__main__
+a(igetkdvelements
 KDVelement
 p34
 (dp35
@@ -138,7 +138,7 @@ S'Regn + oppvarming'
 p36
 sbaa(lp37
 I7
-a(i__main__
+a(igetkdvelements
 KDVelement
 p38
 (dp39
@@ -156,7 +156,7 @@ S'Regn + oppvarm + ingen gj.frys'
 p40
 sbaa(lp41
 I8
-a(i__main__
+a(igetkdvelements
 KDVelement
 p42
 (dp43
@@ -174,7 +174,7 @@ S'Vind'
 p44
 sbaa(lp45
 I9
-a(i__main__
+a(igetkdvelements
 KDVelement
 p46
 (dp47
@@ -192,7 +192,7 @@ S'Oppvarm + ingen gj.frys'
 p48
 sbaa(lp49
 I10
-a(i__main__
+a(igetkdvelements
 KDVelement
 p50
 (dp51
@@ -212,7 +212,7 @@ S'Lag med loes nysnoe'
 p53
 sbaa(lp54
 I11
-a(i__main__
+a(igetkdvelements
 KDVelement
 p55
 (dp56
@@ -232,7 +232,7 @@ S'Lag med overflaterim'
 p58
 sbaa(lp59
 I12
-a(i__main__
+a(igetkdvelements
 KDVelement
 p60
 (dp61
@@ -252,7 +252,7 @@ S'Lag med sproehagl'
 p63
 sbaa(lp64
 I13
-a(i__main__
+a(igetkdvelements
 KDVelement
 p65
 (dp66
@@ -272,7 +272,7 @@ S'Lag med kantkornet snoe'
 p68
 sbaa(lp69
 I14
-a(i__main__
+a(igetkdvelements
 KDVelement
 p70
 (dp71
@@ -292,7 +292,7 @@ S'Glatt skare'
 p73
 sbaa(lp74
 I15
-a(i__main__
+a(igetkdvelements
 KDVelement
 p75
 (dp76
@@ -312,7 +312,7 @@ S'I fokksnoeen'
 p78
 sbaa(lp79
 I16
-a(i__main__
+a(igetkdvelements
 KDVelement
 p80
 (dp81
@@ -332,7 +332,7 @@ S'Kantkornet ved bakken'
 p83
 sbaa(lp84
 I17
-a(i__main__
+a(igetkdvelements
 KDVelement
 p85
 (dp86
@@ -352,7 +352,7 @@ S'Kantkornet rundt vegetasjon'
 p88
 sbaa(lp89
 I18
-a(i__main__
+a(igetkdvelements
 KDVelement
 p90
 (dp91
@@ -372,7 +372,7 @@ S'Kantkornet over skaren'
 p93
 sbaa(lp94
 I19
-a(i__main__
+a(igetkdvelements
 KDVelement
 p95
 (dp96
@@ -392,7 +392,7 @@ S'Kantkornet under skaren'
 p98
 sbaa(lp99
 I20
-a(i__main__
+a(igetkdvelements
 KDVelement
 p100
 (dp101
@@ -412,7 +412,7 @@ S'Smelting fra bakken'
 p103
 sbaa(lp104
 I21
-a(i__main__
+a(igetkdvelements
 KDVelement
 p105
 (dp106
@@ -432,7 +432,7 @@ S'Gjennomfuktet fra overflaten'
 p108
 sbaa(lp109
 I22
-a(i__main__
+a(igetkdvelements
 KDVelement
 p110
 (dp111
@@ -452,7 +452,7 @@ S'Opphopning over skaren'
 p113
 sbaa(lp114
 I23
-a(i__main__
+a(igetkdvelements
 KDVelement
 p115
 (dp116
@@ -472,7 +472,7 @@ S'Snoedekket er overmettet av vann'
 p118
 sbaa(lp119
 I24
-a(i__main__
+a(igetkdvelements
 KDVelement
 p120
 (dp121
@@ -492,7 +492,7 @@ S'Ubunden snoe'
 p123
 sbaa(lp124
 I25
-a(i__main__
+a(igetkdvelements
 KDVelement
 p125
 (dp126

@@ -298,8 +298,10 @@ def get_data(region_id, start_date, end_date, data_from="request"):
 
     filename = "{3}dangerandproblemplot_id{0} {1}-{2}.pickle".format(region_id, start_date.strftime('%Y'), end_date.strftime('%y'), env.local_storage)
 
+    problems = []
+
     if "request" in data_from:
-        problems = gp.get_all_problems(region_id, start_date, end_date, add_danger_level=False)
+        #problems = gp.get_all_problems(region_id, start_date, end_date, add_danger_level=False)
         dangers = gd.get_all_dangers(region_id, start_date, end_date)
 
         if "request and save" in data_from:
@@ -320,15 +322,15 @@ def get_data(region_id, start_date, end_date, data_from="request"):
 if __name__ == "__main__":
 
 
-    from_date = dt.date(2015, 11, 15)
-    to_date = dt.date(2015, 6, 15)
-    to_date = dt.date.today() + dt.timedelta(days=2)
+    from_date = dt.date(2013, 11, 15)
+    to_date = dt.date(2014, 6, 15)
+    #to_date = dt.date.today() + dt.timedelta(days=2)
 
 
     # #### Start small - do one region
-    # i = 121
-    # problems, dangers = get_data(i, from_date, to_date, data_from="request and save")
-    # make_plots_for_region(i, problems, dangers, from_date, to_date)
+    i = 121
+    problems, dangers = get_data(i, from_date, to_date, data_from="request and save")
+    make_plots_for_region(i, problems, dangers, from_date, to_date)
 
     ## Get all regions
     region_id = []
