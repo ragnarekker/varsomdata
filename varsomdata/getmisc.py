@@ -5,10 +5,13 @@ __author__ = 'raek'
 import datetime as dt
 import requests as requests
 import csv as csv
+import operator
+
 
 import fencoding as fe
 import setenvironment as env
 import getkdvelements as kdv
+
 
 
 class Trip():
@@ -202,8 +205,6 @@ def get_registration(from_date, to_date, output='List', geohazard_tid=None, Appl
         return data_out
 
 
-
-
 def get_observer_v():
     """Selects all data from the ObserverV view.
 
@@ -248,8 +249,10 @@ def get_observer_dict_for_2015_16_ploting():
         if v > 5:
             observers_dict_select[k] = observer_nicks[k]
 
-    return observers_dict_select
+    # order by nickname
+    # sorted_observers_dict = sorted(observers_dict_select.items(), key=operator.itemgetter(1))
 
+    return observers_dict_select
 
 
 if __name__ == "__main__":
@@ -258,20 +261,13 @@ if __name__ == "__main__":
     # from_date = dt.date.today()-dt.timedelta(days=60)
     # to_date = dt.date.today()+dt.timedelta(days=1)
 
-
     observer_list = get_observer_dict_for_2015_16_ploting()
     import makepickle as mp
     mp.pickle_anything(observer_list, '{0}observerlist.pickle'.format(env.web_root_folder))
-
 
     # observer_nicks = get_observer_v()
     # trips = get_trip(from_date, to_date, output='csv')
     # observers = get_observer_group_member(group_id=51, output='Dict')
     # registration = get_registration(from_date, to_date, geohazard_tid=10, ApplicationID="Web and app")
-
-
-
-
-
 
     a = 1

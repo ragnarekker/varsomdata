@@ -3,10 +3,13 @@ __author__ = 'raek'
 
 import runplotdangerandproblem as dap
 import runplotobserversdata as od
+import subprocess
 
 if __name__ == "__main__":
 
     dap.make_2015_16_plots()
     od.make_2015_16_plots()
 
+    rsync_cmd = 'rsync -rzP ~/Documents/github/BottleSite/ ragnar@ssh.pythonanywhere.com:~/BottleSite'
+    subprocess.Popen(rsync_cmd, shell=True).wait()
 

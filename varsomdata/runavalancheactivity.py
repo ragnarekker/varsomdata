@@ -212,7 +212,6 @@ def step_2_find_most_valued(date_region):
 
 def step_3_count_occurances(date_region, elements):
 
-
     for d in date_region:
         for e in elements:
             if str(d.forecast[0].danger_level) in e.danger_level:
@@ -281,10 +280,8 @@ def step_4_plot(date_region, forecasted_dangers, elements, file_name, file_ext="
             # if elements are given coordinates 0 they are an illegal combination. Append them to this list for debug purposes
             unused_elements.append(e)
 
-
     # Figure header
     plb.text(0, 790, 'Hoeyest observerte skredaktivitet i regionen sett sammen mot faregraden - vinter 2014/15', fontsize=30)
-
 
     # Label Avalanche size
     plb.text(-100, 430, 'Skredstoerelse', fontsize=20, rotation=90)
@@ -309,11 +306,8 @@ def step_4_plot(date_region, forecasted_dangers, elements, file_name, file_ext="
 
         plb.vlines((i-1)*600, -250, 630, lw=1, color='0.8')
 
-
         # plot distributions
         step_4_1_plot_numbers_and_distribution(i, ax, (i - 1) * 600, elements, date_region, forecasted_dangers)
-
-
 
     plb.xlim(-100, 2410)
     plb.ylim(-300, 800)

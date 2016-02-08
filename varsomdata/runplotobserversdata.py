@@ -24,9 +24,10 @@ import setenvironment as env
 
 class DayData():
 
-    def __init__(self, date, observer_id):
+    def __init__(self, date, observer_id=None, region_id=None):
 
         self.observer_id = observer_id
+        self.region_id = region_id
 
         self.box_size_x = None
         self.box_size_y = None
@@ -43,13 +44,15 @@ class DayData():
         self.observations = col.Counter()
         self.number_obs = None
         self.reg_ids = col.Counter()
+        self.nick_names = col.Counter()
 
-        self.obs_pr_regid = {}
-        self.loc_pr_regid = {}
+        self.obs_pr_regid = {}          # which registration names (observations) have been used tis day?
+        self.loc_pr_regid = {}          # which forecast regions have been used this day?
+        self.nic_pr_regid = {}          # which nicknames (observers) have contributed this day?
 
         self.x = None
         self.y = None
-        self.set_x()
+        self.set_x()                    # x and y positions in plot set based on date
         self.set_y()
 
 
@@ -70,12 +73,20 @@ class DayData():
         self.reg_ids = col.Counter(reg_ids)
 
 
+    def add_nicks(self, nicks):
+        self.nick_names = col.Counter(nicks)
+
+
     def add_obs_pr_regid(self, obs_pr_regid):
         self.obs_pr_regid = obs_pr_regid
 
 
     def add_loc_pr_regid(self, loc_pr_regid):
         self.loc_pr_regid = loc_pr_regid
+
+
+    def add_nic_pr_regid(self, nic_pr_regid):
+        self.nic_pr_regid = nic_pr_regid
 
 
     def set_x(self):
@@ -126,42 +137,64 @@ class DayData():
 
 
 def _get_dates(start, end, delta):
+    '''Yields all dates in an interval from - to.
+
+    :param start:
+    :param end:
+    :param delta:
+    :return:
+    '''
+
     curr = start
     while curr < end:
         yield curr
         curr += delta
 
 
-def step1_get_data(observer_id, year, month, get_new=True, make_pickle=False):
+def step1_get_data(year, month, observer_id=None, region_id=None, get_new=True, make_pickle=False):
     """Gets data for one month and prepares for plotting
 
-    :param observer_id:     [int]
-    :param year:            [int]
-    :param month:           [int]
-    :param get_new:         [bool] get data with a new request or use local pickle
-    :param make_pickle:     [bool] if getting new data, make a pickle in local storage
+    :param year:                [int]
+    :param month:               [int]
+    :param observer_id:         [int]
+    :param forecast_region_tid  [int]
+    :param get_new:             [bool] get data with a new request or use local pickle
+    :param make_pickle:         [bool] if getting new data, make a pickle in local storage
 
-    :return dates:          [list of DayData objects]
+    :return dates:              [list of DayData objects]
     """
 
-    pickle_file_name = "{0}runPlotObserverData_{1}_{2}{3:02d}.pickle".format(env.local_storage, observer_id, year, month)
+    if observer_id is not None:
+        pickle_file_name = "{0}runPlotObserverData_{1}_{2}{3:02d}.pickle".format(env.local_storage, observer_id, year, month)
+    elif region_id is not None:
+        pickle_file_name = "{0}runPlotRegionData_{1}_{2}{3:02d}.pickle".format(env.local_storage, region_id, year, month)
+    else:
+        print 'Need Observerid or forecastRegionTID to make this work.'
+        return []
 
     first, last  = cal.monthrange(year, month)
     from_date = dt.date(year, month, 1)
     to_date = dt.date(year, month, last) + dt.timedelta(days=1)
 
     if get_new:
-        all_observations = go.get_all_registrations(from_date, to_date, output='DataFrame', geohazard_tid=10, observer_ids=observer_id)
-        dates = []
+        all_observations = go.get_all_registrations(from_date, to_date, output='DataFrame', geohazard_tid=10,
+                                                    observer_ids=observer_id, region_ids=region_id)
 
-        # for all dates
+        # for all dates in the requested from-to interval
+        dates = []
         for d in _get_dates(from_date, to_date, dt.timedelta(days=1)):
 
-            dd = DayData(d, observer_id)
+            if observer_id is not None:
+                dd = DayData(d, observer_id=observer_id)
+            elif region_id is not None:
+                dd = DayData(d, region_id=region_id)
+
             obstyp = []
             regids = []
+            nicks = []
             loc_pr_regid = {}
             obs_pr_regid = {}
+            nic_pr_regid = {}
 
             # loop through all observations
             for i in all_observations.index:
@@ -171,17 +204,22 @@ def step1_get_data(observer_id, year, month, get_new=True, make_pickle=False):
                 if this_date == d:
 
                     regid = all_observations.iloc[i].RegID
-                    # location on regid
+
+                    # location on regid (only one location pr RegID)
                     if regid not in loc_pr_regid.keys():
                         loc_pr_regid[regid] = all_observations.iloc[i].ForecastRegionName
 
-                    # observations pr regid
+                    # get the nicname use on the regid (only one pr RegID)
+                    if regid not in nic_pr_regid.keys():
+                        nic_pr_regid[regid] = all_observations.iloc[i].NickName
+
+                    # observations pr regid (might be more)
                     if regid not in obs_pr_regid.keys():
                         obs_pr_regid[regid] = [all_observations.iloc[i].RegistrationName]
                     else:
                         obs_pr_regid[regid].append(all_observations.iloc[i].RegistrationName)
 
-                    # list of all observations
+                    # list of all observations on this date
                     if all_observations.iloc[i].RegistrationName == 'Bilde':
                         if all_observations.iloc[i].TypicalValue1 == 'Bilde av: Snoeprofil':
                             obstyp.append('Snoeprofil')
@@ -190,14 +228,19 @@ def step1_get_data(observer_id, year, month, get_new=True, make_pickle=False):
                     else:
                         obstyp.append(all_observations.iloc[i].RegistrationName)
 
-                    # list of all regids
+                    # list of all regids - this counts occurances
                     regids.append(int(all_observations.iloc[i].RegID))
+
+                    # list of all observers nickanmes - this counts occurances
+                    nicks.append(all_observations.iloc[i].NickName)
 
             # add to object for plotting
             dd.add_loc_pr_regid(loc_pr_regid)
             dd.add_obs_pr_regid(obs_pr_regid)
+            dd.add_nic_pr_regid(nic_pr_regid)
             dd.add_observations(obstyp)
             dd.add_regids(regids)
+            dd.add_nicks(nicks)
             dates.append(dd)
 
         if make_pickle:
@@ -209,9 +252,15 @@ def step1_get_data(observer_id, year, month, get_new=True, make_pickle=False):
     return dates
 
 
-def step2_plot(dates, observer_name, file_ext=".png"):
+def step2_plot(dates, observer_name=None, region_name=None, file_ext=".png"):
 
-    plot_file_name = '{0}observerdata_{1}_{2}{3:02d}'.format(env.web_images_folder, dates[0].observer_id, dates[0].date.year, dates[0].date.month)
+    if observer_name is not None:
+        plot_file_name = '{0}observerdata_{1}_{2}{3:02d}'.format(env.web_images_folder, dates[0].observer_id, dates[0].date.year, dates[0].date.month)
+    elif region_name is not None:
+        plot_file_name = '{0}{1}_regiondata_{2}{3:02d}'.format(env.web_images_folder, region_name, dates[0].date.year, dates[0].date.month)
+    else:
+        print 'Need ObserverID or forecastRegionTID to make this work.'
+        plot_file_name = 'no_good_plot'
 
     # Figure dimensions
     fsize = (18, 13)
@@ -237,11 +286,19 @@ def step2_plot(dates, observer_name, file_ext=".png"):
             ax.add_patch(circ)
             plb.text(x+relative_x-2, y+relative_y-2, '{0}'.format(v))
 
-        # List all regids
-        reg_id_string = ''
-        for k,v in d.reg_ids.iteritems():
-            reg_id_string += '{0}: {1}\n'.format(k, v)
-        plb.text(x+45, y+60-len(d.reg_ids)*8, reg_id_string)
+        if observer_name is not None:
+            # List all regids
+            reg_id_string = ''
+            for k,v in d.reg_ids.iteritems():
+                reg_id_string += '{0}: {1}\n'.format(k, v)
+            plb.text(x+45, y+60-len(d.reg_ids)*8, reg_id_string)
+
+        if region_name is not None:
+            # List all observer nicks
+            nick_string = ''
+            for k,v in d.nick_names.iteritems():
+                nick_string += '{0}: {1}\n'.format(k, v)
+            plb.text(x+35, y+60-len(d.nick_names)*8, nick_string)
 
         # total obs this day
         if d.number_obs > 0:
@@ -282,7 +339,10 @@ def step2_plot(dates, observer_name, file_ext=".png"):
                    11:'november',
                    12:'desember'}
     # add title
-    plb.title('Observasjoner av {0} i {1}, {2}'.format(observer_name, month_names[month], year), fontsize=30)
+    if observer_name is not None:
+        plb.title('Observasjoner av {0} i {1}, {2}'.format(observer_name, month_names[month], year), fontsize=30)
+    elif region_name is not None:
+        plb.title('Observasjoner i {0} i {1}, {2}'.format(region_name, month_names[month], year), fontsize=30)
 
 
     plb.xlim(-20, 700)
@@ -296,15 +356,23 @@ def step2_plot(dates, observer_name, file_ext=".png"):
     return
 
 
-def step3_make_html(dates):
+def step3_make_html(dates, region_name=None):
     """
 
     :param dates:
+    :param region_name:     If doing observers region_name=None else we are doing regions and this is a region name
     :return:
 
     """
+    observer_id = dates[0].observer_id      # if doing regions this is always None
 
-    html_file_name = '{0}observerdata_{1}_{2}{3:02d}.html'.format(env.web_view_folder, dates[0].observer_id, dates[0].date.year, dates[0].date.month)
+    if observer_id is not None:
+        html_file_name = '{0}observerdata_{1}_{2}{3:02d}.html'.format(env.web_view_folder, observer_id, dates[0].date.year, dates[0].date.month)
+    elif region_name is not None:
+        html_file_name = '{0}{1}_regiondata_{2}{3:02d}.html'.format(env.web_view_folder, region_name, dates[0].date.year, dates[0].date.month)
+    else:
+        print 'Got to have either region or observer to make this work.'
+        html_file_name = 'no_good_html'
 
     f = open(html_file_name, 'w')
 
@@ -316,9 +384,14 @@ def step3_make_html(dates):
     f.write('    <thead>\n'
             '        <tr>\n'
             '            <th>Dato</th>\n'
-            '            <th>Registrering</th>\n'
-            '            <th>Region</th>\n'
-            '            <th>Observasjon</th>\n'
+            '            <th>Registrering</th>\n')
+    if observer_id is not None:
+        f.write('            <th>Region</th>\n')
+    elif region_name is not None:
+        f.write('            <th>Observer</th>\n')
+    else:
+        f.write('            <th>Noe gikk galt</th>\n')
+    f.write('            <th>Observasjon</th>\n'
             '        </tr>\n'
             '    </thead>\n'
             '    <tbody>\n')
@@ -326,12 +399,18 @@ def step3_make_html(dates):
     for d in dates:
         d_one_time = d.date
         for regid in d.reg_ids.keys():
+            if observer_id is not None:
+                thrd_column = d.loc_pr_regid[regid]
+            elif region_name is not None:
+                thrd_column = d.nic_pr_regid[regid]
+            else:
+                thrd_column = 'No good'
             f.write('        <tr>\n'
                     '            <td>{0}</td>\n'
                     '            <td><a href="http://www.regobs.no/registration/{1}" target="_blank">{1}</a></td>\n'
-                    '            <td>{3}</td>\n'
                     '            <td>{2}</td>\n'
-                    '        </tr>\n'.format(d_one_time, regid, ', '.join(d.obs_pr_regid[regid]), d.loc_pr_regid[regid]))
+                    '            <td>{3}</td>\n'
+                    '        </tr>\n'.format(d_one_time, regid, thrd_column, ', '.join(d.obs_pr_regid[regid])))
             if d_one_time is not '':
                 d_one_time = ''         # date show only once in column 1
 
@@ -350,13 +429,24 @@ def make_observer_plots(observer_list, months):
     for k,v in observer_list.iteritems():
         for m in months:
 
-            dates = step1_get_data(k, m.year, m.month, get_new=True)
-            step2_plot(dates, v)
+            dates = step1_get_data(m.year, m.month, observer_id=k, get_new=True)
+            step2_plot(dates, observer_name=v)
             step3_make_html(dates)
 
 
+def make_region_plots(region_ids, months):
+
+    for id in region_ids:
+        for m in months:
+
+            dates = step1_get_data(m.year, m.month, region_id=id, get_new=True)
+            region_name = gkdv.get_name('ForecastRegionKDV', id)
+            step2_plot(dates, region_name=region_name)
+            step3_make_html(dates, region_name=region_name)
+
+
 def make_2015_16_plots():
-    """Plots observer observations for display on webpage for the season 2015-16.
+    """Plots both observations pr observer and pr region for display on webpage for the season 2015-16.
     Method includes a request for list of relevant observers.
 
     :return:
@@ -374,7 +464,15 @@ def make_2015_16_plots():
         almost_next = month + dt.timedelta(days=35)
         month = dt.date(almost_next.year, almost_next.month, 1)
 
+    ## Get all regions
+    region_ids = []
+    ForecastRegionKDV = gkdv.get_kdv('ForecastRegionKDV')
+    for k, v in ForecastRegionKDV.iteritems():
+        if 100 < k < 150 and v.IsActive is True:
+            region_ids.append(v.ID)
+
     make_observer_plots(observer_list, months)
+    make_region_plots(region_ids, months)
 
     return
 
@@ -388,7 +486,7 @@ if __name__ == "__main__":
     #                580:'SindreH@ObsKorps',
     #                759:'madspaatopp@senjaobs'}
     #
-    # observer_list={282:'martin@obskorps'}
+    observer_list={282:'martin@obskorps', 325:'Siggen@Obskorps'}
 
     months = []
     month = dt.date(2015,11,1)
@@ -398,7 +496,39 @@ if __name__ == "__main__":
         month = dt.date(almost_next.year, almost_next.month, 1)
 
     # months = [dt.date(2015,11,1)]
+    # make_observer_plots(observer_list, months)
+    # make_region_plots([119, 121], months)
+
+    make_2015_16_plots()
 
 
-    make_observer_plots(observer_list, months)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

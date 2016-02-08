@@ -31,40 +31,38 @@ if __name__ == "__main__":
     pickle_file_name_1 = '{0}runlevelanddangersign part 1.pickle'.format(env.local_storage)
     pickle_file_name_2 = '{0}runlevelanddangersign part 2.pickle'.format(env.local_storage)
 
-    # all_danger_levels = gd.get_all_dangers(region_id, from_date, to_date)
-    # all_danger_signs = go.get_danger_sign(region_id, from_date, to_date)
-    # mp.pickle_anything([all_danger_levels, all_danger_signs], pickle_file_name_1)
-    #
-    # all_danger_levels, all_danger_signs = mp.unpickle_anything(pickle_file_name_1)
-    #
-    # # for counting days with danger levels
-    # level_count = []
-    #
-    # data = {1:[], 2:[], 3:[], 4:[], 5:[]}
-    # for dl in all_danger_levels:
-    #     if dl.source == 'Varsel' and dl.danger_level is not 0:
-    #         level_count.append(dl.danger_level)
-    #         for ds in all_danger_signs:
-    #             if dl.date == ds.DtObsTime.date() and dl.region_name in ds.ForecastRegionName:
-    #                 print '{0}'.format(dl.date)
-    #                 data[dl.danger_level].append(fe.remove_norwegian_letters(ds.DangerSignName))
-    # mp.pickle_anything([data, level_count], pickle_file_name_2)
+    all_danger_levels = gd.get_all_dangers(region_id, from_date, to_date)
+    all_danger_signs = go.get_danger_sign(from_date, to_date, region_ids=region_id, geohazard_tid=10)
+    mp.pickle_anything([all_danger_levels, all_danger_signs], pickle_file_name_1)
+
+    all_danger_levels, all_danger_signs = mp.unpickle_anything(pickle_file_name_1)
+
+    # for counting days with danger levels
+    level_count = []
+    data = {1:[], 2:[], 3:[], 4:[], 5:[]}
+    for dl in all_danger_levels:
+        if dl.source == 'Varsel' and dl.danger_level is not 0:
+            level_count.append(dl.danger_level)
+            for ds in all_danger_signs:
+                if dl.date == ds.DtObsTime.date() and dl.region_name in ds.ForecastRegionName:
+                    print '{0}'.format(dl.date)
+                    data[dl.danger_level].append(fe.remove_norwegian_letters(ds.DangerSignName))
+    mp.pickle_anything([data, level_count], pickle_file_name_2)
 
     data, level_count = mp.unpickle_anything(pickle_file_name_2)
 
-    # pick out a list of dangersigns
+    # pick out a list of danger signs
     DangerSignKDV = gkdv.get_kdv('DangerSignKDV')
     danger_signs = []
     for k, v in DangerSignKDV.iteritems():
         if 0 < k < 100 and v.IsActive is True:
             danger_signs.append(v.Name)
 
-    # chang order in danger signs
+    # change order in danger signs
     a = danger_signs[8]
     danger_signs.insert(5, a)
     b = danger_signs[9]
     danger_signs.pop(9)
-
 
     fg_1 = []
     fg_2 = []
@@ -146,7 +144,6 @@ if __name__ == "__main__":
 
     # title
     plb.text(50, 1.165, 'Faretegn fordelt paa varselt faregrad vintern 2014-15', fontsize=30)
-
 
     plb.xlim(0, 700)
     plb.ylim(-0.05, 1.25)

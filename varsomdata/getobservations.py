@@ -91,8 +91,15 @@ def _make_data_request(view, from_date, to_date, region_ids=None, observer_ids=N
 
             print "getobservations.py -> _make_data_request: ..to {0}".format(fe.remove_norwegian_letters(url))
 
-            result = requests.get(url).json()
-            result = result['d']['results']
+            try:
+                result = requests.get(url).json()
+                result = result['d']['results']
+
+            except:
+                # Need to improve on exception handling:
+                # http://docs.python-requests.org/en/latest/user/quickstart/#errors-and-exceptions
+                print "getobservations.py -> _make_data_request: EXCEPTION DURING REQUEST. DATA LOST."
+                result = []
 
             # if more than 1000 elements are requested, odata truncates data to 1000. We do more requests
             if len(result) == 1000:
@@ -109,7 +116,9 @@ def _make_data_request(view, from_date, to_date, region_ids=None, observer_ids=N
 
 
 def _make_count_request(view, from_date, to_date, region_ids=None, observer_ids=None, geohazard_tid=None):
-    """Common part of all count requests. Note that some views are shared by all geohazards. In these it is also
+    """Common part of all count requests.
+
+    Note that some views are shared by all geohazards. In these it is also
     possible to specify geohazard_tid in the filter.
 
     :param view:
@@ -338,8 +347,9 @@ class DangerObs(Registration, Location, Observer):
 
 
 def get_all_registrations(from_date, to_date, region_ids=None, observer_ids=None, output='List', geohazard_tid=None):
-    """Gets observations from AllRegistrationsV. View is shared by all the geohazards so the filter includes
-    geohazard_tid if only one geohazard is needed.
+    """Gets observations from AllRegistrationsV.
+
+    View is shared by all the geohazards so the filter includes geohazard_tid if only one geohazard is needed.
 
     :param from_date:       [date] A query returns [from_date, to_date>
     :param to_date:         [date] A query returns [from_date, to_date>
@@ -537,6 +547,14 @@ if __name__ == "__main__":
     to_date = dt.date.today()+dt.timedelta(days=1)
     region_ids = 116
     observer_ids = None
+
+    # requesten bør returnere tom liste. Hvordan går det?
+    my_observations = get_all_registrations(from_date=dt.date(2015, 6, 1),
+                                            to_date=dt.date(2015, 7, 1),
+                                            geohazard_tid=10,
+                                            observer_ids=7,
+                                            output='List',
+                                            region_ids=121)
 
     #all_observations = get_all_registrations(from_date, to_date, output='DataFrame')
     #print(all_observations)

@@ -107,10 +107,10 @@ def plot_causes(region_name, from_date, to_date, causes):
     title = fe.add_norwegian_letters(title)
     plt.title(title)
 
-
     fig = plt.gcf()
     fig.subplots_adjust(left=0.2)
     plt.savefig("{0}{1}".format(env.web_images_folder, filename))
+    plt.close(fig)
 
     return
 
@@ -202,7 +202,7 @@ def plot_danger_levels(region_name, start_date, end_date, danger_levels):
     fig.text(0.18, 0.13, " Totalt {0} varslet faregrader og {1} observerte faregrader \n og det er {2}% samsvar mellom det som er observert og varslet."
              .format(w_number, e_number, int(round(fract_same*100, 0))), fontsize = 14)
 
-    # this is an inset pie of the distribution of dangerlevels over the main axes
+    # this is an inset pie of the distribution of dangerlevels OVER the main axes
     xfrac = 0.15
     yfrac = (float(fsize[0])/float(fsize[1])) * xfrac
     xpos = 0.95-xfrac
