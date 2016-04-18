@@ -169,18 +169,27 @@ class Registration():
         self.ApplicationID = d["ApplicationId"]
 
 
-def get_registration(from_date, to_date, output='List', geohazard_tid=None, ApplicationID=None, include_deleted=False):
+def get_registration(from_date, to_date, output='List', geohazard_tid=None, ApplicationID='', include_deleted=False):
+    '''Gets data from the Registration table. Adds observer nickname if list is requested and if not otherwize
+    specified deleted registrations are taken out.
 
-    import setvariables as setv
+    :param from_date:
+    :param to_date:
+    :param output:
+    :param geohazard_tid:
+    :param ApplicationID:
+    :param include_deleted:
+    :return:
+    '''
 
     odata_filter = ""
     if geohazard_tid is not None:
         odata_filter += "GeoHazardTID eq {0} and ".format(geohazard_tid)
     odata_filter += "DtRegTime gt datetime'{0}' and DtRegTime lt datetime'{1}'".format(from_date, to_date)
-    if "Web and app" in ApplicationID:
-        odata_filter += " and (ApplicationId eq guid'{0}' or ApplicationId eq guid'{1}')".format(setv.web, setv.app)
+    if "Web and app" in ApplicationID: # does not work..
+        odata_filter += " and (ApplicationId eq guid'{0}' or ApplicationId eq guid'{1}')".format('','')
 
-    url = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}/?$filter={2}&$format=json'.format(env.api_version, "Registration",odata_filter)
+    url = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}/?$filter={2}&$format=json'.format(env.api_version, "Registration", odata_filter)
     print "getmisc.py -> get_registration: ..to {0}".format(fe.remove_norwegian_letters(url))
 
     result = requests.get(url).json()
@@ -198,8 +207,10 @@ def get_registration(from_date, to_date, output='List', geohazard_tid=None, Appl
     elif output=='List':
         data_out = [Registration(d) for d in data]
         observer_nicks = get_observer_v()
+        # NickName is not originally in the Registration table
         for d in data_out:
-            d.NickName = [observer_nicks[d.ObserverID]]
+            d.NickName = observer_nicks[d.ObserverID]
+            # why list??? d.NickName = [observer_nicks[d.ObserverID]]
         if include_deleted == False:
             data_out = [d for d in data_out if d.DeletedDate is None]
         return data_out
@@ -224,13 +235,25 @@ def get_observer_v():
     return observer_nicks
 
 
+def get_observer_nicks_given_ids(observer_ids):
+
+    all_observers = get_observer_v()
+    list_of_nicks = []
+
+    for k,v in all_observers.iteritems():
+        if k in observer_ids:
+            list_of_nicks.append(v)
+
+    return list_of_nicks
+
+
 def get_observer_dict_for_2015_16_ploting():
 
     from_date = dt.date(2015, 12, 1)
     to_date = dt.date.today()+dt.timedelta(days=1)
 
-    # get all registrations
-    registration = get_registration(from_date, to_date, geohazard_tid=10, ApplicationID="Web and app")
+    # get all registrations (all forecasts and elrapp also. Filter does not work)
+    registration = get_registration(from_date, to_date, geohazard_tid=10)
 
     # make dict of all observers and how much they contributed
     observers_dict = {}
@@ -243,31 +266,49 @@ def get_observer_dict_for_2015_16_ploting():
     # list of all observerids and their nicks
     observer_nicks = get_observer_v()
 
-    # only the whorthy are selected
+    # only the worthy are selected
     observers_dict_select = {}
     for k,v in observers_dict.iteritems():
         if v > 5:
-            observers_dict_select[k] = observer_nicks[k]
+            if k is not 237:        # not elrapp
+                observers_dict_select[k] = observer_nicks[k]
+
+    # # sorted list
+    # observer_nick_list = []
+    # for k,v in observers_dict_select.iteritems():
+    #     observer_nick_list.append(v)
+    # observer_nick_list.sort(key=str.lower)
+    #
+    # sorted_observers_dict_select = {}
+    # for n in observer_nick_list:
+    #     for k,v in observers_dict_select.iteritems():
+    #         if n in v:
+    #             sorted_observers_dict_select[k] = fe.add_norwegian_letters(v)
 
     # order by nickname
-    # sorted_observers_dict = sorted(observers_dict_select.items(), key=operator.itemgetter(1))
+    #sorted_observers_dict = sorted(observers_dict_select.items(), key=operator.itemgetter(1))
 
     return observers_dict_select
 
 
 if __name__ == "__main__":
 
-    # from_date = dt.date(2015, 12, 1)
-    # from_date = dt.date.today()-dt.timedelta(days=60)
-    # to_date = dt.date.today()+dt.timedelta(days=1)
+    from_date = dt.date(2015, 11, 1)
+    #from_date = dt.date.today()-dt.timedelta(days=1)
+    to_date = dt.date.today()+dt.timedelta(days=1)
 
+    # observer_list = [1090, 79, 43, 1084, 33, 119, 67, 101, 952, 41, 34, 125, 126, 8, 384, 955, 14, 841, 50, 175, 1123, 199, 1068, 1598, 1646, 637, 1664, 1307, 135, 307, 1212, 1279, 1310]
+    # nicks = get_observer_nicks_given_ids(observer_list)
+    # print nicks
+
+    '''
     observer_list = get_observer_dict_for_2015_16_ploting()
     import makepickle as mp
     mp.pickle_anything(observer_list, '{0}observerlist.pickle'.format(env.web_root_folder))
-
+    '''
     # observer_nicks = get_observer_v()
     # trips = get_trip(from_date, to_date, output='csv')
     # observers = get_observer_group_member(group_id=51, output='Dict')
-    # registration = get_registration(from_date, to_date, geohazard_tid=10, ApplicationID="Web and app")
+    registration = get_registration(from_date, to_date, geohazard_tid=10)
 
     a = 1

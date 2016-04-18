@@ -151,26 +151,31 @@ def _get_dates(start, end, delta):
         curr += delta
 
 
-def step1_get_data(year, month, observer_id=None, region_id=None, get_new=True, make_pickle=False):
+def step1_get_data(year, month, observer_id=None, region_id=None, get_new=True, make_pickle=False, data_description="no_description_given"):
     """Gets data for one month and prepares for plotting
 
     :param year:                [int]
     :param month:               [int]
-    :param observer_id:         [int]
-    :param forecast_region_tid  [int]
+    :param observer_id:         [int or list of ints]
+    :param region_id            [int]
     :param get_new:             [bool] get data with a new request or use local pickle
-    :param make_pickle:         [bool] if getting new data, make a pickle in local storage
-
+    :param make_pickle:         [bool] only matters if getting new data, make a pickle in local storage
+    :param data_description     [string] Custom description for naming pickle-files
     :return dates:              [list of DayData objects]
+
     """
 
-    if observer_id is not None:
-        pickle_file_name = "{0}runPlotObserverData_{1}_{2}{3:02d}.pickle".format(env.local_storage, observer_id, year, month)
-    elif region_id is not None:
-        pickle_file_name = "{0}runPlotRegionData_{1}_{2}{3:02d}.pickle".format(env.local_storage, region_id, year, month)
+    if data_description is not None:
+        pickle_file_name = "{0}{1}_{2}{3:02d}.pickle".format(env.local_storage, data_description, year, month)
     else:
-        print 'Need Observerid or forecastRegionTID to make this work.'
-        return []
+        if region_id is not None:
+            pickle_file_name = "{0}runPlotRegionData_{1}_{2}{3:02d}.pickle".format(env.local_storage, region_id, year, month)
+        else:
+            if observer_id is not None:
+                pickle_file_name = "{0}runPlotObserverData_{1}_{2}{3:02d}.pickle".format(env.local_storage, observer_id, year, month)
+            else:
+                print 'Need Observerid and/or forecastRegionTID to make this work.'
+                return []
 
     first, last  = cal.monthrange(year, month)
     from_date = dt.date(year, month, 1)
@@ -184,9 +189,9 @@ def step1_get_data(year, month, observer_id=None, region_id=None, get_new=True, 
         dates = []
         for d in _get_dates(from_date, to_date, dt.timedelta(days=1)):
 
-            if observer_id is not None:
+            if observer_id is not None and region_id is None:   # if only data for one observer
                 dd = DayData(d, observer_id=observer_id)
-            elif region_id is not None:
+            else:                                               # else whish to have data for some/all observervers in a region
                 dd = DayData(d, region_id=region_id)
 
             obstyp = []
@@ -252,15 +257,31 @@ def step1_get_data(year, month, observer_id=None, region_id=None, get_new=True, 
     return dates
 
 
-def step2_plot(dates, observer_name=None, region_name=None, file_ext=".png"):
+def step2_plot(dates, observer_name=None, region_name=None, file_ext=".png", data_description=None):
+    """
+    If it is a custom data set ragion_name shold be provided because it wil be plotted by region.
+    observer_name and region_name determines the main groupiong of data. They should not be provided both.
 
-    if observer_name is not None:
-        plot_file_name = '{0}observerdata_{1}_{2}{3:02d}'.format(env.web_images_folder, dates[0].observer_id, dates[0].date.year, dates[0].date.month)
-    elif region_name is not None:
-        plot_file_name = '{0}{1}_regiondata_{2}{3:02d}'.format(env.web_images_folder, region_name, dates[0].date.year, dates[0].date.month)
+    :param dates:
+    :param observer_name:
+    :param region_name:
+    :param file_ext:
+    :param data_description:    Custom description for naming plot-files
+    :return:
+    """
+
+    if data_description is not None:
+        plot_file_name = '{0}{1}_{2}{3:02d}'.format(env.web_images_folder, data_description, dates[0].date.year, dates[0].date.month)
     else:
-        print 'Need ObserverID or forecastRegionTID to make this work.'
-        plot_file_name = 'no_good_plot'
+        if region_name is not None:
+            plot_file_name = '{0}{1}_regiondata_{2}{3:02d}'.format(env.web_images_folder, region_name, dates[0].date.year, dates[0].date.month)
+        else:
+            if observer_name is not None:
+                plot_file_name = '{0}observerdata_{1}_{2}{3:02d}'.format(env.web_images_folder, dates[0].observer_id, dates[0].date.year, dates[0].date.month)
+            else:
+                print 'Need ObserverID and/or forecastRegionTID to make this work.'
+                plot_file_name = 'no_good_plot'
+
 
     # Figure dimensions
     fsize = (18, 13)
@@ -338,17 +359,23 @@ def step2_plot(dates, observer_name=None, region_name=None, file_ext=".png"):
                    10:'oktober',
                    11:'november',
                    12:'desember'}
-    # add title
-    if observer_name is not None:
-        plb.title('Observasjoner av {0} i {1}, {2}'.format(observer_name, month_names[month], year), fontsize=30)
-    elif region_name is not None:
-        plb.title('Observasjoner i {0} i {1}, {2}'.format(region_name, month_names[month], year), fontsize=30)
 
+    # add title
+    if data_description is not None:
+        plb.title('Observasjoner i {0} i {1}, {2}'.format(data_description, month_names[month], year), fontsize=30)
+    else:
+        if region_name is not None:
+            plb.title('Observasjoner i {0} i {1}, {2}'.format(region_name, month_names[month], year), fontsize=30)
+        else:
+            if observer_name is not None:
+                plb.title('Observasjoner av {0} i {1}, {2}'.format(observer_name, month_names[month], year), fontsize=30)
+            else:
+                plb.title('No title - probably an error', fontsize=30)
 
     plb.xlim(-20, 700)
     plb.ylim(-1 *(len(week_nos) * 100), 50)
     plb.axis('off')
-    fig.tight_layout()
+    #fig.tight_layout()
 
     plb.savefig(plot_file_name+file_ext)
     plb.close()
@@ -356,7 +383,7 @@ def step2_plot(dates, observer_name=None, region_name=None, file_ext=".png"):
     return
 
 
-def step3_make_html(dates, region_name=None):
+def step3_make_html(dates, region_name=None, data_description=None):
     """
 
     :param dates:
@@ -366,13 +393,18 @@ def step3_make_html(dates, region_name=None):
     """
     observer_id = dates[0].observer_id      # if doing regions this is always None
 
-    if observer_id is not None:
-        html_file_name = '{0}observerdata_{1}_{2}{3:02d}.html'.format(env.web_view_folder, observer_id, dates[0].date.year, dates[0].date.month)
-    elif region_name is not None:
-        html_file_name = '{0}{1}_regiondata_{2}{3:02d}.html'.format(env.web_view_folder, region_name, dates[0].date.year, dates[0].date.month)
+    if data_description is not None:
+        html_file_name = '{0}{1}_{2}{3:02d}.html'.format(env.web_view_folder, data_description, dates[0].date.year, dates[0].date.month)
     else:
-        print 'Got to have either region or observer to make this work.'
-        html_file_name = 'no_good_html'
+        if region_name is not None:
+            html_file_name = '{0}{1}_regiondata_{2}{3:02d}.html'.format(env.web_view_folder, region_name, dates[0].date.year, dates[0].date.month)
+        else:
+            if observer_id is not None:
+                html_file_name = '{0}observerdata_{1}_{2}{3:02d}.html'.format(env.web_view_folder, observer_id, dates[0].date.year, dates[0].date.month)
+            else:
+                print 'Got to have region and/or observer to make this work.'
+                html_file_name = 'no_good_html'
+
 
     f = open(html_file_name, 'w')
 
@@ -445,18 +477,8 @@ def make_region_plots(region_ids, months):
             step3_make_html(dates, region_name=region_name)
 
 
-def make_2015_16_plots():
-    """Plots both observations pr observer and pr region for display on webpage for the season 2015-16.
-    Method includes a request for list of relevant observers.
+def make_svv_plots(run_all=False):
 
-    :return:
-    """
-
-    # get a list of relevant observerst to plot and make plickle in the web-folder
-    observer_list = gm.get_observer_dict_for_2015_16_ploting()
-    mp.pickle_anything(observer_list, '{0}observerlist.pickle'.format(env.web_root_folder))
-
-    # list of months to be ploted
     months = []
     month = dt.date(2015,11,1)
     while month < dt.date.today():
@@ -464,20 +486,95 @@ def make_2015_16_plots():
         almost_next = month + dt.timedelta(days=35)
         month = dt.date(almost_next.year, almost_next.month, 1)
 
-    ## Get all regions
+    if not run_all:
+        if dt.date.today().day < 5 and len(months) > 1:
+            months = months[-2:]
+        else:
+            months = [months[-1]]
+
+    observer_list = [1090, 79, 43, 1084, 33, 119, 67, 101, 952, 41, 34, 125, 126, 8, 384, 955, 14, 841, 50, 175, 1123, 199, 1068, 1598, 1646, 637, 1664, 1307, 135, 307, 1212, 1279, 1310]
+
+    region_ids = [108,109,131,133,117,118,119,121,122,123,124,127,128]
+
+    for id in region_ids:
+        region_name = gkdv.get_name('ForecastRegionKDV', id)
+        data_description="svv_i_{0}".format(region_name)
+
+        for m in months:
+            dates = step1_get_data(m.year, m.month, observer_id=observer_list, region_id=id, make_pickle=False, get_new=True, data_description=data_description)
+            step2_plot(dates, region_name=region_name, data_description=data_description)
+            step3_make_html(dates, region_name=region_name, data_description=data_description)
+
+    return
+
+
+def make_2015_16_plots(run_all=False):
+    """Plots both observations pr observer and pr region for display on web page for the season 2015-16.
+    Method includes a request for list of relevant observers.
+
+    :return:
+    """
+
+    # list of months to be plotted
+    all_months = []
+    month = dt.date(2015,11,1)
+    while month < dt.date.today():
+        all_months.append(month)
+        almost_next = month + dt.timedelta(days=35)
+        month = dt.date(almost_next.year, almost_next.month, 1)
+
+    # if not specified run only the last month
+    if not run_all:
+        if dt.date.today().day < 5 and len(all_months) > 1:
+            last_months = all_months[-2:]
+        else:
+            last_months = [all_months[-1]]
+    else:
+        last_months = all_months
+
+    # get a list of relevant observerst to plot and make plickle in the web-folder
+    previous_observer_list = mp.unpickle_anything('{0}observerlist.pickle'.format(env.web_root_folder))
+    observer_list = gm.get_observer_dict_for_2015_16_ploting()
+    mp.pickle_anything(observer_list, '{0}observerlist.pickle'.format(env.web_root_folder))
+
+    # if observer not in previous observer list, run all months else only run last months
+    new_observers = {}
+    for k,v in observer_list.iteritems():
+        if k not in previous_observer_list.keys():
+            new_observers[k] = v
+
+    # Get all regions
     region_ids = []
     ForecastRegionKDV = gkdv.get_kdv('ForecastRegionKDV')
     for k, v in ForecastRegionKDV.iteritems():
         if 100 < k < 150 and v.IsActive is True:
             region_ids.append(v.ID)
 
-    make_observer_plots(observer_list, months)
-    make_region_plots(region_ids, months)
+    # run the stuff
+    make_observer_plots(new_observers, all_months)
+    make_observer_plots(previous_observer_list, last_months)
+    make_region_plots(region_ids, last_months)
+
+    return
+
+
+def test_sort_observer_list():
+
+    observer_dict = mp.unpickle_anything('{0}observerlist.pickle'.format(env.web_root_folder))
+    observer_list_unsorted = [[k,v] for k,v in observer_dict.iteritems()]
+    unknown_user = observer_list_unsorted[0]
+    observer_list_unsorted.pop(0)
+    observer_list = sorted(observer_list_unsorted, key=lambda nick: nick[1].lower())
+    observer_list.insert(0, unknown_user)
 
     return
 
 
 if __name__ == "__main__":
+
+    #make_svv_plots(run_all=False)
+    test_sort_observer_list()
+    make_2015_16_plots()
 
     # observer_list={111:'JonasD@ObsKorps',
     #                282:'martin@obskorps',
@@ -486,22 +583,21 @@ if __name__ == "__main__":
     #                580:'SindreH@ObsKorps',
     #                759:'madspaatopp@senjaobs'}
     #
-    observer_list={282:'martin@obskorps', 325:'Siggen@Obskorps'}
-
-    months = []
-    month = dt.date(2015,11,1)
-    while month < dt.date.today():
-        months.append(month)
-        almost_next = month + dt.timedelta(days=35)
-        month = dt.date(almost_next.year, almost_next.month, 1)
-
-    # months = [dt.date(2015,11,1)]
+    # observer_list={282:'martin@obskorps', 325:'Siggen@Obskorps'}
+    #
+    # months = []
+    # month = dt.date(2016,1,1)
+    # while month < dt.date.today():
+    #     months.append(month)
+    #     almost_next = month + dt.timedelta(days=35)
+    #     month = dt.date(almost_next.year, almost_next.month, 1)
+    #
+    # # months = [dt.date(2015,11,1)]
     # make_observer_plots(observer_list, months)
     # make_region_plots([119, 121], months)
-
-    make_2015_16_plots()
-
-
+    #
+    #
+    #
 
 
 

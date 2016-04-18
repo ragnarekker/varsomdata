@@ -8,6 +8,7 @@ import types as types
 import pandas as pd
 
 import fencoding as fe
+import makelogs as ml
 import setenvironment as env
 import getkdvelements as kdv
 from getkdvelements import KDVelement
@@ -60,7 +61,7 @@ def _make_odata_filter(from_date, to_date, region_id, observer_id, geohazard_tid
     return odata_filter
 
 
-def _make_data_request(view, from_date, to_date, region_ids=None, observer_ids=None, geohazard_tid=None):
+def _make_data_request(view, from_date, to_date, region_ids=None, observer_ids=None, geohazard_tid=None, recursive_count=5):
     """Common part of all data requests.
 
     :param view:            [string] Name of view in regObs
@@ -69,6 +70,7 @@ def _make_data_request(view, from_date, to_date, region_ids=None, observer_ids=N
     :param region_ids:      [int or list of ints] If region_ids = None, all regions are selected
     :param observer_ids:    [int or list of ints] If observer_ids = None, all observers are selected
     :param geohazard_tid:   [int] 10 is snow, 20,30,40 are dirt, 60 is water and 70 is ice
+    :param recursive_count  [int] by default atempt the same request 5 times before giving up
 
     :return:                untreated request result
     """
@@ -81,25 +83,31 @@ def _make_data_request(view, from_date, to_date, region_ids=None, observer_ids=N
         observer_ids = [observer_ids]
 
     data_out = []
+    recursive_count_default = recursive_count   # need the default for later
+
     for region_id in region_ids:
         for observer_id in observer_ids:
 
-            odata_query = _make_odata_filter(from_date, to_date, region_id, observer_id, geohazard_tid)
+            if len(observer_ids) > 1:
+                # if we are looping the initial list make sure each item gets the recursive count default
+                recursive_count = recursive_count_default
 
+            odata_query = _make_odata_filter(from_date, to_date, region_id, observer_id, geohazard_tid)
             url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}/?$filter={2}&$format=json"\
                 .decode('utf8').format(env.api_version, view, odata_query)
-
-            print "getobservations.py -> _make_data_request: ..to {0}".format(fe.remove_norwegian_letters(url))
+            ml.log_and_print("getobservations.py -> _make_data_request: {0}".format(fe.remove_norwegian_letters(url)))
 
             try:
                 result = requests.get(url).json()
                 result = result['d']['results']
 
             except:
-                # Need to improve on exception handling:
-                # http://docs.python-requests.org/en/latest/user/quickstart/#errors-and-exceptions
-                print "getobservations.py -> _make_data_request: EXCEPTION DURING REQUEST. DATA LOST."
+                # Need to improve on exception handling: http://docs.python-requests.org/en/latest/user/quickstart/#errors-and-exceptions
+                ml.log_and_print("getobservations.py -> _make_data_request: EXCEPTION. RECURSIVE COUNT {0}".format(recursive_count))
                 result = []
+                if recursive_count > 1:
+                    recursive_count -= 1        # count down
+                    result = _make_data_request(view, from_date, to_date, region_id, observer_id, geohazard_tid, recursive_count=recursive_count)
 
             # if more than 1000 elements are requested, odata truncates data to 1000. We do more requests
             if len(result) == 1000:
@@ -146,7 +154,7 @@ def _make_count_request(view, from_date, to_date, region_ids=None, observer_ids=
             url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}/$count/?$filter={2}&$format=json"\
                 .decode('utf8').format(env.api_version, view, odata_query)
 
-            print "getobservations.py -> _make_count_request: ..to {0}".format(fe.remove_norwegian_letters(url))
+            ml.log_and_print("getobservations.py -> _make_count_request: ..to {0}".format(fe.remove_norwegian_letters(url)))
 
             result = requests.get(url).json()
             count += result
@@ -377,7 +385,7 @@ def get_all_registrations(from_date, to_date, region_ids=None, observer_ids=None
         return count
 
     else:
-        print('getobservations.py -> get_all_registrations: Illegal output option.')
+        ml.log_and_print('getobservations.py -> get_all_registrations: Illegal output option.')
         return None
 
 
@@ -409,7 +417,7 @@ def get_avalanche_activity(from_date, to_date, region_ids=None, observer_ids=Non
         return count
 
     else:
-        print('getobservations.py -> get_avalanche_activity: Illegal output option.')
+        ml.log_and_print('getobservations.py -> get_avalanche_activity: Illegal output option.')
         return None
 
 
@@ -442,7 +450,7 @@ def get_avalanche(from_date, to_date, region_ids=None, observer_ids=None, output
         return count
 
     else:
-        print('getobservations.py -> get_avalanche: Illegal output option.')
+        ml.log_and_print('getobservations.py -> get_avalanche: Illegal output option.')
         return None
 
 
@@ -476,7 +484,7 @@ def get_danger_sign(from_date, to_date, region_ids=None, observer_ids=None, outp
         return count
 
     else:
-        print('getobservations.py -> get_danger_sign: Illegal output option.')
+        ml.log_and_print('getobservations.py -> get_danger_sign: Illegal output option.')
         return None
 
 
@@ -533,7 +541,8 @@ def _view_test():
 
     for o in view_test:
         if 'Ragnar' in o['NickName'] and 'Test' in o['LocationName']:
-            print '{0: <30} with RegID    {3: <7} has observations by    {1: <20} on location    {2}.'.format(o['__metadata']['type'], o['NickName'], o['LocationName'], o['RegID'])
+            ml.log_and_print('{0: <30} with RegID    {3: <7} has observations by    {1: <20} on location    {2}.'.format(o['__metadata']['type'], o['NickName'], o['LocationName'], o['RegID']),
+                             print_it=True, log_it=True)
 
 
 
@@ -550,14 +559,14 @@ if __name__ == "__main__":
 
     # requesten bør returnere tom liste. Hvordan går det?
     my_observations = get_all_registrations(from_date=dt.date(2015, 6, 1),
-                                            to_date=dt.date(2015, 7, 1),
+                                            to_date=dt.date(2016, 7, 1),
                                             geohazard_tid=10,
-                                            observer_ids=7,
+                                            observer_ids=[6, 7, 236],
                                             output='List',
-                                            region_ids=121)
+                                            region_ids=[121, 122, 123])
 
-    #all_observations = get_all_registrations(from_date, to_date, output='DataFrame')
-    #print(all_observations)
+    all_observations = get_all_registrations(from_date, to_date, output='DataFrame')
+    # print(all_observations)
 
     # geo_hazard_kdv = kdv.get_kdv('GeoHazardKDV')
 
@@ -579,7 +588,10 @@ if __name__ == "__main__":
     # _view_test()
     all_registrations = get_all_registrations(from_date, to_date)
     for a in all_registrations:
-        print "{0}\t{1}\t{2:<6}\t{3:<15}\t{4:<20}\t{5:<20}\t{6}".format(a.RegID, a.DtRegTime, a.GeoHazardName, a.MunicipalName, a.ForecastRegionName, a.NickName, a.RegistrationName)
+        ml.log_and_print(
+            "{0}\t{1}\t{2:<6}\t{3:<15}\t{4:<20}\t{5:<20}\t{6}".format(a.RegID, a.DtRegTime, a.GeoHazardName, a.MunicipalName,
+                                                                      a.ForecastRegionName, a.NickName, a.RegistrationName),
+            print_it=True, log_it=True)
 
 
     a = 1

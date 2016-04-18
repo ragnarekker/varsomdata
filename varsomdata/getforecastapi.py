@@ -5,18 +5,18 @@ __author__ = 'raek'
 import requests
 import datetime
 import getdangers as gd
+import makelogs as md
 import types as types
 
 
-def get_warnings_as_json(region_ids, start_date, end_date, lang_key=1):
-    """
-    Selects warnings and returns the json structured result as given on the api.
+def get_warnings_as_json(region_ids, start_date, end_date, lang_key=1, recursive_count=5):
+    """Selects warnings and returns the json structured result as given on the api.
 
-    :param region_id:   [int or list of ints]       RegionID as given in the forecast api [1-99] or in regObs [101-199]
-    :param start_date:  [date or string as yyyy-mm-dd]
-    :param end_date:    [date or string as yyyy-mm-dd]
-
-    :return warnings:   [string]    String as json
+    :param region_id:       [int or list of ints] RegionID as given in the forecast api [1-99] or in regObs [101-199]
+    :param start_date:      [date or string as yyyy-mm-dd]
+    :param end_date:        [date or string as yyyy-mm-dd]
+    :param recursive_count  [int] by default atempt the same request # times before giving up
+    :return warnings:       [string] String as json
 
     Eg. http://api01.nve.no/hydrology/forecast/avalanche/v2.0.2/api/AvalancheWarningByRegion/Detail/10/1/2013-01-10/2013-01-20
     """
@@ -26,14 +26,19 @@ def get_warnings_as_json(region_ids, start_date, end_date, lang_key=1):
         region_ids = [region_ids]
 
     warnings = []
+    recursive_count_default = recursive_count   # need the default for later
 
     for region_id in region_ids:
+
+        if len(region_ids) > 1:
+            # if we are looping the initial list make sure each item gets the recursive count default
+            recursive_count = recursive_count_default
 
         if region_id > 100:
             region_id = region_id - 100
 
-        print "getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for {0} from {1} til {2}"\
-            .format(region_id, start_date, end_date)
+        md.log_and_print("getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for {0} from {1} til {2}"\
+            .format(region_id, start_date, end_date))
 
         url = "http://api01.nve.no/hydrology/forecast/avalanche/v2.0.2/api/AvalancheWarningByRegion/Detail/{0}/{3}/{1}/{2}"\
             .format(region_id, start_date, end_date, lang_key)
@@ -41,11 +46,13 @@ def get_warnings_as_json(region_ids, start_date, end_date, lang_key=1):
         # If at first you don't succeed, try and try again.
         try:
             warnings += requests.get(url).json()
-            print "getForecastApi -> get_warnings_as_json: {0} warnings found for {1}.".format(len(warnings), region_id)
+            md.log_and_print("getForecastApi -> get_warnings_as_json: {0} warnings found for {1}.".format(len(warnings), region_id))
 
         except:
-            print "getForecastApi -> get_warnings_as_json: !!Exception occurred!! Trying again."
-            warnings += get_warnings_as_json(region_id, start_date, end_date, lang_key)
+            md.log_and_print("getForecastApi -> get_warnings_as_json: EXCEPTION. RECURSIVE COUNT {0}".format(recursive_count))
+            if recursive_count > 1:
+                recursive_count -= 1        # count down
+                warnings += get_warnings_as_json(region_id, start_date, end_date, lang_key, recursive_count=recursive_count)
 
     return warnings
 
@@ -109,7 +116,7 @@ if __name__ == "__main__":
 
     import datetime as dt
     # get data for Bardu (112) and Tamokdalen (129)
-    warnings_for_129 = get_warnings([129, 118], dt.date(2015, 4, 1), dt.date(2015, 5, 1))
+    warnings_for_129 = get_warnings([129, 118, 131], dt.date(2015, 4, 1), dt.date(2015, 5, 1))
     # p = get_valid_regids(10, "2013-03-01", "2013-03-09")
 
     a = 1

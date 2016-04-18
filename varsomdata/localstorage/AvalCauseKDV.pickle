@@ -208,7 +208,7 @@ I10
 sg10
 I01
 sg11
-S'Lag med loes nysnoe'
+S'Nedfoeyket loes nysnoe'
 p53
 sbaa(lp54
 I11
@@ -222,13 +222,13 @@ p57
 sg7
 I1
 sg8
-I26
+I11
 sg9
 I11
 sg10
 I01
 sg11
-S'Lag med overflaterim'
+S'Nedsnoedd overflaterim'
 p58
 sbaa(lp59
 I12
@@ -262,13 +262,13 @@ p67
 sg7
 I1
 sg8
-I25
+I13
 sg9
 I13
 sg10
 I01
 sg11
-S'Lag med kantkornet snoe'
+S'Nedsnoedd kantkornet snoe'
 p68
 sbaa(lp69
 I14
@@ -288,7 +288,7 @@ I14
 sg10
 I01
 sg11
-S'Glatt skare'
+S'Daarlig binding mot skare'
 p73
 sbaa(lp74
 I15
@@ -308,7 +308,7 @@ I15
 sg10
 I01
 sg11
-S'I fokksnoeen'
+S'Daarlig binding i fokksnoeen'
 p78
 sbaa(lp79
 I16
@@ -402,7 +402,7 @@ p102
 sg7
 I1
 sg8
-I29
+I24
 sg9
 I20
 sg10
@@ -442,13 +442,13 @@ p112
 sg7
 I1
 sg8
-I28
+I23
 sg9
 I22
 sg10
 I01
 sg11
-S'Opphopning over skaren'
+S'Opphopning av vann over lag'
 p113
 sbaa(lp114
 I23
