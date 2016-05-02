@@ -77,9 +77,15 @@ def get_warnings(region_ids, start_date, end_date, lang_key=1):
         date = datetime.datetime.strptime(w['ValidFrom'][0:10], '%Y-%m-%d').date()
         danger_level = int(w['DangerLevel'])
         danger_level_name = w['DangerLevelName']
+        author = w['Author']
+        avalanche_forecast = w['AvalancheDanger']
+        avalanche_nowcast = w['AvalancheWarning']
 
         danger = gd.AvalancheDanger(region_id, region_name, 'Forecast API', date, danger_level, danger_level_name)
         danger.set_source('Varsel')
+        danger.set_nick(author)
+        danger.set_avalanche_nowcast(avalanche_nowcast)
+        danger.set_avalanche_forecast(avalanche_forecast)
 
         if lang_key == 1:
             danger.set_main_message_no(w['MainText'])
@@ -87,6 +93,9 @@ def get_warnings(region_ids, start_date, end_date, lang_key=1):
             danger.set_main_message_en(w['MainText'])
 
         avalanche_danger_list.append(danger)
+
+    # Sort by date
+    avalanche_danger_list = sorted(avalanche_danger_list, key=lambda AvalancheDanger: AvalancheDanger.date)
 
     return avalanche_danger_list
 

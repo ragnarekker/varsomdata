@@ -52,6 +52,9 @@ class AvalancheDanger():
         self.nick = None
         self.avalanche_problems = []
         self.source = None
+        self.avalanche_forecast = None
+        self.avalanche_nowcast = None
+
 
 
     def add_problem(self, problem_inn):
@@ -73,18 +76,26 @@ class AvalancheDanger():
 
 
     def set_nick(self, nick_inn):
-        self.nick = nick_inn
+        self.nick = fe.remove_norwegian_letters(nick_inn)
 
 
     def set_source(self, source_inn):
         self.source = source_inn
 
 
+    def set_avalanche_nowcast(self, avalanche_nowcast_inn):
+        self.avalanche_nowcast = avalanche_nowcast_inn
+
+
+    def set_avalanche_forecast(self, avalanche_forecast_inn):
+        self.avalanche_forecast = avalanche_forecast_inn
+
+
 def get_observed_dangers(region_id, start_date, end_date):
     """
     Gets observed avalanche dangers from AvalancheEvaluationV, AvalancheEvaluation2V and AvalancheEvaluation3V.
 
-    :param region_id:
+    :param region_id:       int
     :param start_date:
     :param end_date:
     :return:
@@ -104,10 +115,49 @@ def get_observed_dangers(region_id, start_date, end_date):
     return evaluations
 
 
+def get_forecasted_dangers(region_id, start_date, end_date, include_problems=False, include_ikke_vurdert=False):
+    '''Gets forecasted dangers. If specified, the avalanche problems are included.
+
+    :param region_id:               [int] only one region. ID as given in regObs
+    :param start_date:              [date or string as yyyy-mm-dd] gets dates [from, to>
+    :param end_date:                [date or string as yyyy-mm-dd] gets dates [from, to>
+    :param include_problems:        [bool] if true, avalanche probelms are included. This takes more time ans additional requests.
+    :param include_ikke_vurdert:    [bool] if true, it includes frocasts where danger_level = 0
+
+    :return:
+    '''
+
+    # get all warning and problems for this region and then loop though them joining them where dates match.
+    region_warnings = gfa.get_warnings(region_id, start_date, end_date)
+
+    if include_problems:
+        problems = gro.get_problems_from_AvalancheWarnProblemV(region_id, start_date, end_date)
+
+        for i in range(0, len(region_warnings), 1):
+            for j in range(0, len(problems), 1):
+                if region_warnings[i].date == problems[j].date:
+                    region_warnings[i].add_problem(problems[j])
+
+
+        # make sure all problems are ordered from lowest id (main problem) to largest.
+        for w in region_warnings:
+            w.avalanche_problems = sorted(w.avalanche_problems, key=lambda AvalancheProblem: AvalancheProblem.order)
+
+    if not include_ikke_vurdert:
+        all_non_zero_warnings = []
+
+        for w in region_warnings:
+            if w.danger_level != 0:
+                all_non_zero_warnings.append(w)
+
+        region_warnings = all_non_zero_warnings
+
+    return region_warnings
+
+
 def get_all_dangers(region_ids, start_date, end_date):
-    """
-    Gets all avalanche dangers dangers, both forecasted and observed in a given region for a given time period.
-    Method does not include avalanhe problems.
+    """Method does NOT include avalanhe problems. Gets all avalanche dangers dangers, both forecasted and
+    observed in a given region for a given time period.
 
     :param region_id:   [int or list of ints]
     :param start_date:  [date]
@@ -139,9 +189,9 @@ if __name__ == "__main__":
 
     region_id = [117, 128]  # Trollheimen
 
-    from_date = dt.date(2012, 11, 1)
+    from_date = dt.date(2016, 01, 28)
     to_date = dt.date.today()
-    to_date = dt.date(2015, 7, 1)
+    to_date = dt.date(2016, 2, 3)
 
     alle = get_all_dangers(region_id, from_date, to_date)
 

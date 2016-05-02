@@ -6,8 +6,6 @@ import datetime as dt
 import requests as requests
 import csv as csv
 import operator
-
-
 import fencoding as fe
 import setenvironment as env
 import getkdvelements as kdv
@@ -217,12 +215,12 @@ def get_registration(from_date, to_date, output='List', geohazard_tid=None, Appl
 
 
 def get_observer_v():
-    """Selects all data from the ObserverV view.
+    """Selects all data from the ObserverV view. Returns all observers. Not only the topp 1000 for some reason.
 
     :return: a dictionary of key/ObserverID : value/NickName
     """
 
-    url = 'http://api.nve.no/hydrology/regobs/v1.0.0/Odata.svc/ObserverV?$format=json'
+    url = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/ObserverV?$format=json'.format(env.api_version)
     result = requests.get(url).json()
     data = result['d']['results']
 
@@ -233,6 +231,19 @@ def get_observer_v():
         observer_nicks[key] = val
 
     return observer_nicks
+
+
+def get_active_forecast_regions():
+    '''Get all active forecast regions. IsActive = True in ForecastRegionKDV
+    '''
+
+    region_ids = []
+    ForecastRegionKDV = kdv.get_kdv('ForecastRegionKDV')
+    for k, v in ForecastRegionKDV.iteritems():
+        if 100 < k < 150 and v.IsActive is True:
+            region_ids.append(v.ID)
+
+    return region_ids
 
 
 def get_observer_nicks_given_ids(observer_ids):
@@ -248,6 +259,9 @@ def get_observer_nicks_given_ids(observer_ids):
 
 
 def get_observer_dict_for_2015_16_ploting():
+    '''Returns a dict og observer id : observer nick.
+
+    '''
 
     from_date = dt.date(2015, 12, 1)
     to_date = dt.date.today()+dt.timedelta(days=1)
@@ -266,27 +280,12 @@ def get_observer_dict_for_2015_16_ploting():
     # list of all observerids and their nicks
     observer_nicks = get_observer_v()
 
-    # only the worthy are selected
+    # only the worthy are selected. More than 5 registrations and not elrapp.
     observers_dict_select = {}
     for k,v in observers_dict.iteritems():
         if v > 5:
             if k is not 237:        # not elrapp
                 observers_dict_select[k] = observer_nicks[k]
-
-    # # sorted list
-    # observer_nick_list = []
-    # for k,v in observers_dict_select.iteritems():
-    #     observer_nick_list.append(v)
-    # observer_nick_list.sort(key=str.lower)
-    #
-    # sorted_observers_dict_select = {}
-    # for n in observer_nick_list:
-    #     for k,v in observers_dict_select.iteritems():
-    #         if n in v:
-    #             sorted_observers_dict_select[k] = fe.add_norwegian_letters(v)
-
-    # order by nickname
-    #sorted_observers_dict = sorted(observers_dict_select.items(), key=operator.itemgetter(1))
 
     return observers_dict_select
 

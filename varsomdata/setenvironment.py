@@ -48,6 +48,7 @@ else:
     print "The current operating system is not supported!"
 
 
-api_version = "v0.9.9"
+api_version = "v1.0.1"
+old_api_version = "v0.9.9"
 registration_basestring = 'http://www.regobs.no/Registration/'
 log = []

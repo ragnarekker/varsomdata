@@ -1,0 +1,655 @@
+(dp0
+S'trigger'
+p1
+(dp2
+S'keys'
+p3
+(lp4
+S'Stor tilleggsbelastning'
+p5
+aS'Liten tilleggsbelastning'
+p6
+aS'Naturlig utloest'
+p7
+asS'colors'
+p8
+(lp9
+S'0.7'
+p10
+asS'values'
+p11
+(lp12
+S'Naturlig utloest'
+p13
+aS'Liten tilleggsbelastning'
+p14
+aS'Liten tilleggsbelastning'
+p15
+aS'Stor tilleggsbelastning'
+p16
+aS'Liten tilleggsbelastning'
+p17
+aS'Liten tilleggsbelastning'
+p18
+aS'Liten tilleggsbelastning'
+p19
+aS'Stor tilleggsbelastning'
+p20
+aS'Liten tilleggsbelastning'
+p21
+aS'Liten tilleggsbelastning'
+p22
+aS'Liten tilleggsbelastning'
+p23
+aS'Liten tilleggsbelastning'
+p24
+aS'Liten tilleggsbelastning'
+p25
+aS'Liten tilleggsbelastning'
+p26
+aS'Liten tilleggsbelastning'
+p27
+aS'Liten tilleggsbelastning'
+p28
+aS'Liten tilleggsbelastning'
+p29
+aS'Liten tilleggsbelastning'
+p30
+aS'Liten tilleggsbelastning'
+p31
+aS'Liten tilleggsbelastning'
+p32
+aS'Liten tilleggsbelastning'
+p33
+aS'Liten tilleggsbelastning'
+p34
+aS'Liten tilleggsbelastning'
+p35
+aS'Liten tilleggsbelastning'
+p36
+aS'Liten tilleggsbelastning'
+p37
+aS'Liten tilleggsbelastning'
+p38
+aS'Liten tilleggsbelastning'
+p39
+aS'Liten tilleggsbelastning'
+p40
+aS'Liten tilleggsbelastning'
+p41
+aS'Liten tilleggsbelastning'
+p42
+aS'Liten tilleggsbelastning'
+p43
+aS'Liten tilleggsbelastning'
+p44
+aS'Liten tilleggsbelastning'
+p45
+aS'Liten tilleggsbelastning'
+p46
+aS'Liten tilleggsbelastning'
+p47
+aS'Liten tilleggsbelastning'
+p48
+aS'Liten tilleggsbelastning'
+p49
+aS'Liten tilleggsbelastning'
+p50
+aS'Naturlig utloest'
+p51
+aS'Liten tilleggsbelastning'
+p52
+aS'Liten tilleggsbelastning'
+p53
+aS'Liten tilleggsbelastning'
+p54
+aS'Liten tilleggsbelastning'
+p55
+aS'Naturlig utloest'
+p56
+aS'Naturlig utloest'
+p57
+aS'Naturlig utloest'
+p58
+aS'Naturlig utloest'
+p59
+aS'Liten tilleggsbelastning'
+p60
+aS'Naturlig utloest'
+p61
+aS'Naturlig utloest'
+p62
+aS'Naturlig utloest'
+p63
+aS'Naturlig utloest'
+p64
+aS'Naturlig utloest'
+p65
+aS'Naturlig utloest'
+p66
+aS'Liten tilleggsbelastning'
+p67
+aS'Naturlig utloest'
+p68
+aS'Naturlig utloest'
+p69
+aS'Naturlig utloest'
+p70
+aS'Naturlig utloest'
+p71
+aS'Naturlig utloest'
+p72
+aS'Liten tilleggsbelastning'
+p73
+assS'distribution'
+p74
+(dp75
+g3
+(lp76
+S'Isolerte faresoner'
+p77
+aS'Noen bratte heng'
+p78
+aS'Mange bratte heng'
+p79
+aS'De fleste bratte heng'
+p80
+aS'Ogsaa i mindre bratt terreng'
+p81
+asg8
+(lp82
+g10
+asg11
+(lp83
+S'Noen bratte heng'
+p84
+aS'Noen bratte heng'
+p85
+aS'Noen bratte heng'
+p86
+aS'Noen bratte heng'
+p87
+aS'Noen bratte heng'
+p88
+aS'Noen bratte heng'
+p89
+aS'Noen bratte heng'
+p90
+aS'Noen bratte heng'
+p91
+aS'Noen bratte heng'
+p92
+aS'Noen bratte heng'
+p93
+aS'Noen bratte heng'
+p94
+aS'Noen bratte heng'
+p95
+aS'Noen bratte heng'
+p96
+aS'Noen bratte heng'
+p97
+aS'Noen bratte heng'
+p98
+aS'Noen bratte heng'
+p99
+aS'Noen bratte heng'
+p100
+aS'Noen bratte heng'
+p101
+aS'Noen bratte heng'
+p102
+aS'Noen bratte heng'
+p103
+aS'Noen bratte heng'
+p104
+aS'Noen bratte heng'
+p105
+aS'Noen bratte heng'
+p106
+aS'Noen bratte heng'
+p107
+aS'Noen bratte heng'
+p108
+aS'Noen bratte heng'
+p109
+aS'Noen bratte heng'
+p110
+aS'Noen bratte heng'
+p111
+aS'Noen bratte heng'
+p112
+aS'Noen bratte heng'
+p113
+aS'Noen bratte heng'
+p114
+aS'Noen bratte heng'
+p115
+aS'Noen bratte heng'
+p116
+aS'Noen bratte heng'
+p117
+aS'Noen bratte heng'
+p118
+aS'Noen bratte heng'
+p119
+aS'Noen bratte heng'
+p120
+aS'Noen bratte heng'
+p121
+aS'Noen bratte heng'
+p122
+aS'Noen bratte heng'
+p123
+aS'Noen bratte heng'
+p124
+aS'Noen bratte heng'
+p125
+aS'Noen bratte heng'
+p126
+aS'Noen bratte heng'
+p127
+aS'Noen bratte heng'
+p128
+aS'Noen bratte heng'
+p129
+aS'Noen bratte heng'
+p130
+aS'Noen bratte heng'
+p131
+aS'Noen bratte heng'
+p132
+aS'Noen bratte heng'
+p133
+aS'Noen bratte heng'
+p134
+aS'Noen bratte heng'
+p135
+aS'Noen bratte heng'
+p136
+aS'Noen bratte heng'
+p137
+aS'Noen bratte heng'
+p138
+aS'Noen bratte heng'
+p139
+aS'Noen bratte heng'
+p140
+aS'Noen bratte heng'
+p141
+aS'Noen bratte heng'
+p142
+aS'Noen bratte heng'
+p143
+aS'Noen bratte heng'
+p144
+assS'size'
+p145
+(dp146
+g3
+(lp147
+S'1 - Harmloest'
+p148
+aS'2 - Smaa'
+p149
+aS'3 - Middels'
+p150
+aS'4 - Store'
+p151
+aS'5 - Svaert store'
+p152
+aS'Ukjent'
+p153
+asg8
+(lp154
+g10
+asg11
+(lp155
+S'2 - Smaa'
+p156
+aS'2 - Smaa'
+p157
+aS'2 - Smaa'
+p158
+aS'1 - Harmloest'
+p159
+aS'2 - Smaa'
+p160
+aS'3 - Middels'
+p161
+aS'3 - Middels'
+p162
+aS'1 - Harmloest'
+p163
+aS'3 - Middels'
+p164
+aS'2 - Smaa'
+p165
+aS'3 - Middels'
+p166
+aS'3 - Middels'
+p167
+aS'2 - Smaa'
+p168
+aS'2 - Smaa'
+p169
+aS'3 - Middels'
+p170
+aS'2 - Smaa'
+p171
+aS'2 - Smaa'
+p172
+aS'2 - Smaa'
+p173
+aS'2 - Smaa'
+p174
+aS'2 - Smaa'
+p175
+aS'2 - Smaa'
+p176
+aS'2 - Smaa'
+p177
+aS'2 - Smaa'
+p178
+aS'2 - Smaa'
+p179
+aS'2 - Smaa'
+p180
+aS'2 - Smaa'
+p181
+aS'2 - Smaa'
+p182
+aS'2 - Smaa'
+p183
+aS'2 - Smaa'
+p184
+aS'2 - Smaa'
+p185
+aS'2 - Smaa'
+p186
+aS'2 - Smaa'
+p187
+aS'2 - Smaa'
+p188
+aS'2 - Smaa'
+p189
+aS'2 - Smaa'
+p190
+aS'2 - Smaa'
+p191
+aS'2 - Smaa'
+p192
+aS'2 - Smaa'
+p193
+aS'1 - Harmloest'
+p194
+aS'2 - Smaa'
+p195
+aS'2 - Smaa'
+p196
+aS'2 - Smaa'
+p197
+aS'2 - Smaa'
+p198
+aS'2 - Smaa'
+p199
+aS'2 - Smaa'
+p200
+aS'2 - Smaa'
+p201
+aS'2 - Smaa'
+p202
+aS'2 - Smaa'
+p203
+aS'2 - Smaa'
+p204
+aS'2 - Smaa'
+p205
+aS'2 - Smaa'
+p206
+aS'2 - Smaa'
+p207
+aS'2 - Smaa'
+p208
+aS'2 - Smaa'
+p209
+aS'2 - Smaa'
+p210
+aS'2 - Smaa'
+p211
+aS'2 - Smaa'
+p212
+aS'2 - Smaa'
+p213
+aS'2 - Smaa'
+p214
+aS'2 - Smaa'
+p215
+aS'2 - Smaa'
+p216
+assS'probability'
+p217
+(dp218
+g3
+(lp219
+S'Lite sannsynlig'
+p220
+aS'Mulig'
+p221
+aS'Sannsynlig'
+p222
+aS'Meget sannsynlig'
+p223
+asg8
+(lp224
+g10
+asg11
+(lp225
+S'Sannsynlig'
+p226
+aS'Mulig'
+p227
+aS'Mulig'
+p228
+aS'Lite sannsynlig'
+p229
+aS'Mulig'
+p230
+aS'Mulig'
+p231
+aS'Mulig'
+p232
+aS'Lite sannsynlig'
+p233
+aS'Mulig'
+p234
+aS'Mulig'
+p235
+aS'Mulig'
+p236
+aS'Mulig'
+p237
+aS'Mulig'
+p238
+aS'Mulig'
+p239
+aS'Mulig'
+p240
+aS'Mulig'
+p241
+aS'Mulig'
+p242
+aS'Mulig'
+p243
+aS'Mulig'
+p244
+aS'Mulig'
+p245
+aS'Mulig'
+p246
+aS'Mulig'
+p247
+aS'Mulig'
+p248
+aS'Mulig'
+p249
+aS'Mulig'
+p250
+aS'Mulig'
+p251
+aS'Mulig'
+p252
+aS'Mulig'
+p253
+aS'Mulig'
+p254
+aS'Mulig'
+p255
+aS'Mulig'
+p256
+aS'Mulig'
+p257
+aS'Mulig'
+p258
+aS'Mulig'
+p259
+aS'Mulig'
+p260
+aS'Mulig'
+p261
+aS'Mulig'
+p262
+aS'Mulig'
+p263
+aS'Mulig'
+p264
+aS'Mulig'
+p265
+aS'Mulig'
+p266
+aS'Mulig'
+p267
+aS'Mulig'
+p268
+aS'Sannsynlig'
+p269
+aS'Sannsynlig'
+p270
+aS'Sannsynlig'
+p271
+aS'Sannsynlig'
+p272
+aS'Mulig'
+p273
+aS'Sannsynlig'
+p274
+aS'Sannsynlig'
+p275
+aS'Sannsynlig'
+p276
+aS'Sannsynlig'
+p277
+aS'Sannsynlig'
+p278
+aS'Sannsynlig'
+p279
+aS'Mulig'
+p280
+aS'Sannsynlig'
+p281
+aS'Sannsynlig'
+p282
+aS'Sannsynlig'
+p283
+aS'Sannsynlig'
+p284
+aS'Mulig'
+p285
+aS'Mulig'
+p286
+assS'level'
+p287
+(dp288
+g3
+(lp289
+I1
+aI2
+aI3
+aI4
+aI5
+asg8
+(lp290
+S'#ccff66'
+p291
+aS'#ffff00'
+p292
+aS'#ff9900'
+p293
+aS'#ff0000'
+p294
+aS'k'
+p295
+asg11
+(lp296
+I3
+aI2
+aI2
+aI1
+aI2
+aI3
+aI3
+aI1
+aI3
+aI2
+aI3
+aI3
+aI2
+aI2
+aI3
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI3
+aI3
+aI2
+aI2
+aI2
+aI3
+aI3
+aI3
+aI3
+aI2
+aI2
+aI2
+aI3
+aI3
+aI2
+aI2
+aI3
+aI2
+ass.

@@ -13,9 +13,10 @@ import getkdvelements as gkdv
 
 
 def pickle_warnings(regions, date_from, date_to, pickle_file_name):
-    '''All forecasted warnings and problems are selected from regObs or the avalanche api and neatly pickel'd for later use.
+    '''All forecasted warnings and problems are selected from regObs or the avalanche api.
+    Dangers and problems are connected and neatly pickel'd for later use.
 
-    :param regions:            list []
+    :param regions:            list [int] RegionID as given in regObs [101-199]
     :param date_from:          string as 'yyyy-mm-dd'
     :param date_to:            string as 'yyyy-mm-dd'
     :param pickle_file_name:   filename including directory as string
@@ -29,7 +30,7 @@ def pickle_warnings(regions, date_from, date_to, pickle_file_name):
         # get all warning and problems for this region and then loop though them joining them where dates match.
         region_warnings = gfa.get_warnings(r, date_from, date_to)
         name = gro.get_forecast_region_name(r)
-        problems = gro.get_problems_from_AvalancheWarnProblemV(name, r, date_from, date_to)
+        problems = gro.get_problems_from_AvalancheWarnProblemV(r, date_from, date_to)
 
         print 'runmatrix.py -> pickle_warnings: {0} problems found for {1}'.format(len(problems), name)
 
@@ -48,7 +49,7 @@ def pickle_warnings(regions, date_from, date_to, pickle_file_name):
 
 
 def pickle_data_set(warnings, file_name, use_ikke_gitt=False):
-    '''Takes the warnings data set which is a list of class AvalancheDanger objects and makes a dictionary
+    '''Data preperation continued. Takes the warnings which is a list of class AvalancheDanger objects and makes a dictionary
     data set of if. The value indexes relate to each other. I.e. distribution, level, probability etc.
     at the nth index originate from the same problem.
 
@@ -56,7 +57,7 @@ def pickle_data_set(warnings, file_name, use_ikke_gitt=False):
     plotting.
 
     :param warnings:        list of AvalancheDanger objects
-    :param file_name:       filename to pickle the data to
+    :param file_name:       full path and filename to pickle the data to
     :param use_ikke_gitt:   If I dont whant to use the ID = 0 (Ikke gitt) values they can be omitted all in all.
 
     :return:

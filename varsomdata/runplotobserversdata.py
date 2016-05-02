@@ -384,7 +384,7 @@ def step2_plot(dates, observer_name=None, region_name=None, file_ext=".png", dat
 
 
 def step3_make_html(dates, region_name=None, data_description=None):
-    """
+    """Method serves both plots for selected obserevars or selected regions.
 
     :param dates:
     :param region_name:     If doing observers region_name=None else we are doing regions and this is a region name

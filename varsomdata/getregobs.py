@@ -405,7 +405,7 @@ def get_problems_from_AvalancheWarningV(region_id, start_date, end_date):
     odata_query = fe.add_norwegian_letters(odata_query)
 
     url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}?$filter={2}&$format=json".decode('utf8').format(
-        api_version, view, odata_query)
+        env.old_api_version, view, odata_query)
     result = requests.get(url).json()
     try:
         result = result['d']['results']
@@ -548,7 +548,7 @@ def get_problems_from_AvalancheWarnProblemV(region_id, start_date, end_date):
     odata_query = fe.add_norwegian_letters(odata_query)
 
     url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}?$filter={2}&$format=json".decode('utf8').format(
-        api_version, view, odata_query)
+        env.old_api_version, view, odata_query)
     result = requests.get(url).json()
     try:
         result = result['d']['results']
