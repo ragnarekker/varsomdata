@@ -167,7 +167,9 @@ if __name__ == "__main__":
     # write_kdv_dictionary(danger_sign_kdv, '{0}DangerSignKDV'.format(env.output_folder))
     #
     # registration_kdv = get_kdv('RegistrationKDV')
-    forecast_region_KDV = get_kdv('ForecastRegionKDV')
+    # forecast_region_KDV = get_kdv('ForecastRegionKDV')
+    avalanche_ext_kdv = get_kdv('AvalancheExtKDV')
+    avalanche_kdv = get_kdv('AvalancheKDV')
 
     # write_kdv_dictionary(registration_kdv, "{0}RegistrationKDV".format(env.output_folder))
     # write_kdv_dictionary(forecast_region_KDV, "{0}ForecastRegionKDV".format(env.output_folder))

@@ -1605,7 +1605,7 @@ M3Element
 p460
 (dp461
 g3
-F2.0434782608695654
+F2.0256410256410255
 sg4
 S'Lite sannsynlig, Mulig'
 p462
@@ -1614,6 +1614,22 @@ g246
 sg8
 (lp463
 I3
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
 aI2
 aI2
 aI2
@@ -1653,7 +1669,7 @@ sg19
 S'Naturlig utloest'
 p467
 sg21
-I23
+I39
 sg22
 S'200'
 p468
@@ -1666,7 +1682,7 @@ p470
 sg28
 g255
 (g259
-S'\x8fx\x809j\x1a\xca?'
+S'\xaegGL_;\xc4?'
 p471
 tp472
 Rp473

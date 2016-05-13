@@ -1212,12 +1212,12 @@ M3Element
 p365
 (dp366
 g3
-F2.0
+F1.4583333333333333
 sg4
 S'Lite sannsynlig, Mulig'
 p367
 sg6
-g115
+g138
 sg8
 (lp368
 I2
@@ -1231,6 +1231,19 @@ aI2
 aI2
 aI2
 aI2
+aI1
+aI1
+aI1
+aI1
+aI1
+aI1
+aI1
+aI1
+aI1
+aI1
+aI1
+aI1
+aI1
 asg10
 S'Possible'
 p369
@@ -1248,7 +1261,7 @@ sg19
 S'Liten tilleggsbelastning'
 p372
 sg21
-I11
+I24
 sg22
 S'200'
 p373
@@ -1261,7 +1274,7 @@ p375
 sg28
 g124
 (g128
-S'\x00\x00\x00\x00\x00\x00\x00\x00'
+S'Z\xc3A\x89\x81\xe3\xdf?'
 p376
 tp377
 Rp378
@@ -1580,6 +1593,11 @@ aI2
 aI2
 aI2
 aI2
+aI2
+aI2
+aI2
+aI2
+aI2
 asg10
 S'Possible'
 p451
@@ -1597,7 +1615,7 @@ sg19
 S'Liten tilleggsbelastning'
 p454
 sg21
-I42
+I47
 sg22
 S'200'
 p455

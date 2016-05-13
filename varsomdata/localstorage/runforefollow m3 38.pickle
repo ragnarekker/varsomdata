@@ -1510,7 +1510,7 @@ M3Element
 p449
 (dp450
 g3
-F2.142857142857143
+F2.13953488372093
 sg4
 S'Lite sannsynlig, Mulig'
 p451
@@ -1560,6 +1560,7 @@ aI2
 aI2
 aI2
 aI2
+aI2
 asg10
 S'Possible'
 p453
@@ -1577,7 +1578,7 @@ sg19
 S'Liten tilleggsbelastning'
 p456
 sg21
-I42
+I43
 sg22
 S'200'
 p457
@@ -1590,7 +1591,7 @@ p459
 sg28
 g29
 (g33
-S'r$\x17\xd1\xa5d\xda?'
+S'\xb1\x11\x16V\xee\x1e\xda?'
 p460
 tp461
 Rp462
@@ -1604,15 +1605,14 @@ M3Element
 p464
 (dp465
 g3
-F2.5384615384615383
+F2.269230769230769
 sg4
 S'Lite sannsynlig, Mulig'
 p466
 sg6
-S'#ff9900'
-p467
+g382
 sg8
-(lp468
+(lp467
 I2
 aI3
 aI2
@@ -1626,146 +1626,160 @@ aI2
 aI3
 aI2
 aI3
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
+aI2
 asg10
 S'Possible'
-p469
+p468
 sg12
 S'Some'
-p470
+p469
 sg14
 g250
 sg16
 I2
 sg17
 S'Nat'
-p471
+p470
 sg19
 S'Naturlig utloest'
-p472
+p471
 sg21
-I13
+I26
 sg22
 S'200'
-p473
+p472
 sg24
 S'900'
-p474
+p473
 sg26
 S'Noen bratte heng'
-p475
+p474
 sg28
 g29
 (g33
-S'\xa3\x16\xe03\xba\xe7\xdf?'
-p476
-tp477
-Rp478
+S'\x9f\x87\x9b\xe6Ic\xdc?'
+p475
+tp476
+Rp477
 sg39
 g347
 sg41
 S'2 - Smaa'
-p479
+p478
 sba(irunmatrix
 M3Element
-p480
-(dp481
+p479
+(dp480
 g3
 Nsg4
 S'Sannsynlig, Meget sannsynlig'
-p482
+p481
 sg6
 S'gray'
-p483
+p482
 sg8
-(lp484
+(lp483
 sg10
 S'Likely'
-p485
+p484
 sg12
 S'Some'
-p486
+p485
 sg14
 g76
 sg16
 I0
 sg17
 S'High'
-p487
+p486
 sg19
 S'Stor tilleggsbelastning'
-p488
+p487
 sg21
 Nsg22
 S'200'
-p489
+p488
 sg24
 S'1000'
-p490
+p489
 sg26
 S'Noen bratte heng'
-p491
+p490
 sg28
 Nsg39
 g347
 sg41
 S'2 - Smaa'
-p492
+p491
 sba(irunmatrix
 M3Element
-p493
-(dp494
+p492
+(dp493
 g3
 Nsg4
 S'Sannsynlig, Meget sannsynlig'
-p495
+p494
 sg6
 S'gray'
-p496
+p495
 sg8
-(lp497
+(lp496
 sg10
 S'Likely'
-p498
+p497
 sg12
 S'Some'
-p499
+p498
 sg14
 g76
 sg16
 I0
 sg17
 S'Low'
-p500
+p499
 sg19
 S'Liten tilleggsbelastning'
-p501
+p500
 sg21
 Nsg22
 S'200'
-p502
+p501
 sg24
 S'1100'
-p503
+p502
 sg26
 S'Noen bratte heng'
-p504
+p503
 sg28
 Nsg39
 g347
 sg41
 S'2 - Smaa'
-p505
+p504
 sba(irunmatrix
 M3Element
-p506
-(dp507
+p505
+(dp506
 g3
 F3.0
 sg4
 S'Sannsynlig, Meget sannsynlig'
-p508
+p507
 sg6
-g467
+S'#ff9900'
+p508
 sg8
 (lp509
 I3
@@ -1865,7 +1879,7 @@ sg4
 S'Lite sannsynlig, Mulig'
 p537
 sg6
-g467
+g508
 sg8
 (lp538
 I3
@@ -1934,7 +1948,7 @@ sg4
 S'Lite sannsynlig, Mulig'
 p552
 sg6
-g467
+g508
 sg8
 (lp553
 I3
@@ -2498,7 +2512,7 @@ sg4
 S'Lite sannsynlig, Mulig'
 p714
 sg6
-g467
+g508
 sg8
 (lp715
 I3
@@ -2750,10 +2764,12 @@ sg4
 S'Lite sannsynlig, Mulig'
 p783
 sg6
-g467
+g508
 sg8
 (lp784
 I3
+aI3
+aI3
 aI3
 aI3
 aI3
@@ -2780,7 +2796,7 @@ sg19
 S'Liten tilleggsbelastning'
 p788
 sg21
-I10
+I12
 sg22
 S'300'
 p789
@@ -3037,7 +3053,7 @@ sg4
 S'Lite sannsynlig, Mulig'
 p863
 sg6
-g467
+g508
 sg8
 (lp864
 I3
