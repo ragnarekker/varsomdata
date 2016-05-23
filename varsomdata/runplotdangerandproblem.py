@@ -3,16 +3,123 @@ __author__ = 'raek'
 
 import matplotlib
 matplotlib.use('Agg')
+import matplotlib.pyplot as pplt
 import numpy as np
 import pylab as plt
 import getdangers as gd
 import getproblems as gp
+import getmisc as gm
 import makepickle as mp
 import getregobs as gro
 import fencoding as fe
 import getkdvelements as gkdv
 import setenvironment as env
 import datetime as dt
+
+
+def get_data(region_id, start_date, end_date, data_from="request"):
+    """Gets all the data needed in the plots and pickles it so that I don't need to do requests to make plots.
+
+    :param region_id:       [int]    Region ID is an int as given i ForecastRegionKDV
+    :param start_date:      [string] Start date. Data for this date is not included in requests from OData
+    :param end_date:
+    :param data_from:       [string] Default "request". Other options: "request and save" and "local storage"
+    :return:
+    """
+
+    filename = "{3}dangerandproblemplot2_id{0} {1}-{2}.pickle".format(region_id, start_date.strftime('%Y'), end_date.strftime('%y'), env.local_storage)
+
+    if "request" in data_from:
+
+        # get problems
+        if end_date > dt.date(2014, 11, 01) and start_date > dt.date(2014, 11, 01): # Early years dont have this avalanche problem
+            problems = gp.get_all_problems(region_id, start_date, end_date, add_danger_level=False)
+        else:
+            problems = []
+
+        # get dangers
+        dangers = gd.get_all_dangers(region_id, start_date, end_date)
+
+        # get avalanche index
+        aval_indexes = gm.get_avalanche_index(start_date, end_date, region_ids=region_id)
+
+        if "request and save" in data_from:
+            mp.pickle_anything([problems, dangers, aval_indexes], filename)
+
+    elif "local storage" in data_from:
+        problems, dangers, aval_indexes = mp.unpickle_anything(filename)
+
+    else:
+        print "rundagerandproblem.py -> get_data: unknown data handler."
+        problems = None
+        dangers = None
+        aval_indexes = None
+
+    return problems, dangers, aval_indexes
+
+
+class DangerLevel():
+
+
+    def __init__(self, danger_level_inn, date_inn, source_inn, danger_object_inn):
+
+        self.danger_level = danger_level_inn
+        self.date = date_inn
+        self.source = source_inn
+        self.danger_object = danger_object_inn
+
+
+class AvalanceCause():
+
+
+    def __init__(self, cause_tid, date, source):
+
+        self.cause_tid = cause_tid
+        self.date = date
+        self.source = source
+        self.cause_name = None
+        self.set_cause_name()
+
+
+    def set_cause_name(self):
+
+        AvalCauseKDV = gkdv.get_kdv("AvalCauseKDV")
+        self.cause_name = AvalCauseKDV[self.cause_tid].Name
+
+
+def make_plots_for_region(region_id, problems, dangers, aval_indexes, start_date, end_date):
+    """
+    This method prepares data for plotting and calls on the plot methods. Pure administration.
+
+    :param region_id:       [int]   Forecast region ID as given in ForecastRegionKDV
+    :param start_date:      [string]
+    :param end_date:        [string]
+
+    :return:
+    """
+
+    region_name = gro.get_forecast_region_name(region_id)
+
+    causes = []                                                 # list of dates and causes
+    for p in problems:
+        causes.append( AvalanceCause(p.cause_tid, p.date, p.source) )
+
+    danger_levels = []
+    for d in dangers:
+        if d.nick != 'drift@svv' and d.danger_level > 0:        # for these plots elrapp wil make noise.
+            danger_levels.append( DangerLevel(d.danger_level, d.date, d.source, d))
+
+    # Only data with danger levels are plotted
+    if len(danger_levels) is not 0:
+
+        # Danger level histograms
+        plot_danger_levels(region_name, start_date, end_date, danger_levels, aval_indexes)
+
+        # Cause horizontal line plots
+        if end_date > dt.date(2014, 11, 01) and start_date > dt.date(2014, 11, 01): # Early years dont have this avalanche problem
+            plot_causes(region_name, start_date, end_date, causes)
+
+    return
 
 
 def plot_causes(region_name, from_date, to_date, causes):
@@ -115,6 +222,229 @@ def plot_causes(region_name, from_date, to_date, causes):
     return
 
 
+def plot_danger_levels(region_name, start_date, end_date, danger_levels, aval_indexes):
+    """Plots the danger levels as bars and makes a small cake diagram with distribution.
+
+    :param region_name:     [String] Name of forecast region
+    :param start_date:
+    :param end_date:
+    :param danger_levels
+    :param aval_indexes
+
+    :return:
+    """
+
+    filename = r"{0} faregrader {1}-{2}".format(region_name, start_date.strftime('%Y'), end_date.strftime('%y'))
+    print("Plotting {0}".format(filename))
+
+    # Figure dimensions
+    fsize = (16, 16)
+    fig = plt.figure(figsize=fsize)
+    plt.clf()
+
+    ##########################################
+    ###### First subplot with avalanche index
+    ##########################################
+    pplt.subplot2grid((6,1),(0,0), rowspan=1)
+
+    index_dates = []
+    data_indexes = []
+    index_colors = []
+
+    for i in aval_indexes:
+        date = i.date
+        index_dates.append(date)
+        data_indexes.append(i.index)
+        # color on the marker
+        if i.index == 0:
+            index_colors.append('white')
+        elif i.index == 1:
+            index_colors.append('pink')
+        elif i.index >= 2 and i.index <= 5:
+            index_colors.append('green')
+        elif i.index >= 6 and i.index <= 8:
+            index_colors.append('yellow')
+        elif i.index >= 9 and i.index <= 12:
+            index_colors.append('orange')
+        elif i.index >= 13:
+            index_colors.append('red')
+        else:
+            index_colors.append('pink')
+
+    index_values = np.asarray(data_indexes, int)
+
+    plt.scatter(index_dates, index_values, s=50., c=index_colors, alpha=0.5)
+    plt.yticks([1, 4, 6, 11, 17, 22], ['Ingen - 1','Ett str2 - 4','Ett str3 - 6','Noen str3 - 11','Mange str3 - 17', ''])
+    plt.ylabel('Skredindex')
+    plt.xlim(start_date, end_date)
+
+    title = fe.add_norwegian_letters("Faregrad og skredindeks for {0} ({1}-{2})".format(region_name, start_date.strftime('%Y'), end_date.strftime('%y')))
+    plt.title(title)
+
+    ##########################################
+    ## Second subplot with avalanche danger forecast
+    ##########################################
+    pplt.subplot2grid((6,1),(1,0), rowspan=2)
+
+    # Making the main plot
+    dl_labels = ['', '1 - Liten', '2 - Moderat', '3 - Betydelig', '4 - Stor', '']
+    dl_colors = ['0.5', '#ccff66', '#ffff00', '#ff9900', '#ff0000', 'k']
+
+    # Making a new dataset with both warned and evaluated data
+    data_dates = []
+    data_dangers = []
+
+    for d in danger_levels:
+        data_dates.append(d.date)
+        if 'Varsel' in d.source:
+            data_dangers.append(d.danger_level)
+        else:
+            data_dangers.append(0.*d.danger_level)
+
+    values = np.asarray(data_dangers, int)
+
+    colors = []
+    for n in values:
+        if abs(n) == 1:
+            colors.append(dl_colors[1])
+        elif abs(n) == 2:
+            colors.append(dl_colors[2])
+        elif abs(n) == 3:
+            colors.append(dl_colors[3])
+        elif abs(n) == 4:
+            colors.append(dl_colors[4])
+        elif abs(n) == 5:
+            colors.append(dl_colors[5])
+        else:
+            colors.append(dl_colors[0])
+
+    plt.bar(data_dates, values, color=colors)
+    plt.yticks(range(0, len(dl_labels), 1), dl_labels) #, size='small')
+    plt.ylabel('Varslet faregrad')
+    plt.xlim(start_date, end_date)
+
+    ##########################################
+    ######### Third subplot with avalanche danger observed
+    ##########################################
+    pplt.subplot2grid((6,1),(3,0), rowspan=2)
+
+    dl_labels = ['', '1 - Liten', '2 - Moderat', '3 - Betydelig', '4 - Stor', '']
+    dl_colors = ['0.5', '#ccff66', '#ffff00', '#ff9900', '#ff0000', 'k']
+
+    # Making a new dataset with both warned and evaluated data
+    data_dates = []
+    data_dangers = []
+
+    for d in danger_levels:
+        data_dates.append(d.date)
+        if not 'Varsel' in d.source:
+            data_dangers.append(-1.*d.danger_level)
+        else:
+            data_dangers.append(0.*d.danger_level)
+
+    values = np.asarray(data_dangers, int)
+
+    colors = []
+    for n in values:
+        if abs(n) == 1:
+            colors.append(dl_colors[1])
+        elif abs(n) == 2:
+            colors.append(dl_colors[2])
+        elif abs(n) == 3:
+            colors.append(dl_colors[3])
+        elif abs(n) == 4:
+            colors.append(dl_colors[4])
+        elif abs(n) == 5:
+            colors.append(dl_colors[5])
+        else:
+            colors.append(dl_colors[0])
+
+    plt.bar(data_dates, values, color=colors)
+    plt.yticks(range(0, -len(dl_labels), -1), dl_labels)
+    plt.ylabel('Observert faregrad')
+    plt.xticks([])
+    plt.xlim(start_date, end_date)
+
+    ##########################################
+    ######### Forth subplot with how well the forecast is
+    ##########################################
+    pplt.subplot2grid((6,1),(5,0), rowspan=1)
+    plt.xlim(start_date, end_date)
+
+    forecast_correct_values = []
+    forecast_correct_colours = []
+    forecast_correct_dates = []
+    for d in danger_levels:
+        if 'Observasjon' in d.source:
+            forecast_correct = d.danger_object.forecast_correct
+            if forecast_correct is not None and not 'Ikke gitt' in forecast_correct:
+                forecast_correct_dates.append(d.date)
+                if 'riktig' in forecast_correct:
+                    forecast_correct_values.append(0)
+                    forecast_correct_colours.append('green')
+                elif 'for lav' in forecast_correct:
+                    forecast_correct_values.append(-1)
+                    forecast_correct_colours.append('red')
+                elif 'for hoey' in forecast_correct:
+                    forecast_correct_values.append(1)
+                    forecast_correct_colours.append('red')
+                else:
+                    forecast_correct_values.append(0)
+                    forecast_correct_colours.append('pink')
+
+    forecast_correct_np_values = np.asarray(forecast_correct_values, int)
+    plt.scatter(forecast_correct_dates, forecast_correct_np_values, s=50., c=forecast_correct_colours, alpha=0.5)
+    plt.yticks(range(-1, 2, 1), ['For lav','Riktig','    For hoey'])
+    plt.ylabel('Stemmer varslet faregrad?')
+
+
+    # this is an inset pie of the distribution of dangerlevels OVER the main axes
+    xfrac = 0.15
+    yfrac = (float(fsize[0])/float(fsize[1])) * xfrac
+    xpos = 0.45-xfrac
+    ypos = 0.95-yfrac
+    a = plt.axes([0.8, 0.66, 0.10, 0.10])
+    #a = plt.axes([xpos, ypos, xfrac, yfrac])
+    wDistr = np.bincount([d.danger_level for d in danger_levels if 'Varsel' in d.source])
+    a.pie(wDistr, colors=dl_colors, autopct='%1.0f%%', shadow=False)
+    plt.setp(a, xticks=[], yticks=[])
+
+    # this is an inset pie of the distribution of dangerlevels UNDER the main axes
+    xfrac = 0.15
+    yfrac = (float(fsize[0])/float(fsize[1])) * xfrac
+    xpos = 0.95-xfrac
+    ypos = 0.29-yfrac
+    b = plt.axes([0.8, 0.24, 0.10, 0.10])
+    #b = plt.axes([xpos, ypos, xfrac, yfrac])
+    eDistr = np.bincount([d.danger_level for d in danger_levels if 'Observasjon' in d.source])
+    b.pie(eDistr, colors=dl_colors, autopct='%1.0f%%', shadow=False)
+    plt.setp(b, xticks=[], yticks=[])
+
+    # figuretext in observed dangerlevels subplot
+    w_number, e_number, fract_same = compare_danger_levels(danger_levels)
+    fig.text(0.15, 0.25, " Totalt {0} varslet faregrader og {1} observerte faregrader \n og det er {2}% samsvar mellom det som er observert og varslet."
+             .format(w_number, e_number, int(round(fract_same*100, 0))), fontsize = 14)
+
+    # fractions to the right in the forecast correct subplot
+    forecast_correct_distr = {}
+    for f in forecast_correct_values:
+        if f in forecast_correct_distr.keys():
+            forecast_correct_distr[f] += 1
+        else:
+            forecast_correct_distr[f] = 1
+
+    if 1 in forecast_correct_distr.keys():  fig.text(0.91, 0.19, "{0}%".format(  int(round(forecast_correct_distr[1]/float(len(forecast_correct_values))*100, 0)))  ,fontsize = 14)
+    if 0 in forecast_correct_distr.keys():  fig.text(0.91, 0.15, "{0}%".format(  int(round(forecast_correct_distr[0]/float(len(forecast_correct_values))*100, 0)))  ,fontsize = 14)
+    if -1 in forecast_correct_distr.keys(): fig.text(0.91, 0.11, "{0}%".format(  int(round(forecast_correct_distr[-1]/float(len(forecast_correct_values))*100, 0))) ,fontsize = 14)
+
+    # This saves the figure to file
+    plt.savefig("{0}{1}".format(env.web_images_folder, filename))#,dpi=90)
+    fig.tight_layout()
+    plt.close(fig)
+
+    return
+
+
 def compare_danger_levels(danger_levels):
     """
     Method compares warned and observed dangerlevels data by date
@@ -138,190 +468,6 @@ def compare_danger_levels(danger_levels):
     return len(forecasts), len(observations), fract_same
 
 
-def plot_danger_levels(region_name, start_date, end_date, danger_levels):
-    """Plots the danger levels as bars and makes a small cake diagram with distribution.
-
-    :param region_name:     [String] Name of forecast region
-    :param
-
-    :return:
-    """
-
-    filename = r"{0} faregrader {1}-{2}".format(region_name, start_date.strftime('%Y'), end_date.strftime('%y'))
-    print("Plotting {0}".format(filename))
-
-    # Figure dimensions
-    fsize = (16, 10)
-    fig = plt.figure(figsize=fsize)
-    plt.clf()
-
-    # Making the main plot
-    dl_labels = ['5 - Meget stor', '4 - Stor', '3 - Betydelig', '2 - Moderat', '1 - Liten', '0 - Ikke vurdert', '1 - Liten', '2 - Moderat', '3 - Betydelig', '4 - Stor', '5 - Meget stor']
-    dl_colors = ['0.5', '#ccff66', '#ffff00', '#ff9900', '#ff0000', 'k']
-
-    # Making a new dataset with both warned and evaluated data
-    data_dates = []
-    data_dangers = []
-
-    for d in danger_levels:
-        data_dates.append(d.date)
-        if 'Varsel' in d.source:
-            data_dangers.append(d.danger_level)
-        else:
-            data_dangers.append(-1*d.danger_level)
-
-    values = np.asarray(data_dangers, int)
-
-    colors = []
-    for n in values:
-        if abs(n) == 1:
-            colors.append(dl_colors[1])
-        elif abs(n) == 2:
-            colors.append(dl_colors[2])
-        elif abs(n) == 3:
-            colors.append(dl_colors[3])
-        elif abs(n) == 4:
-            colors.append(dl_colors[4])
-        elif abs(n) == 5:
-            colors.append(dl_colors[5])
-        else:
-            colors.append(dl_colors[0])
-
-    ax = plt.axes([.15, .05, .8, .9])
-    ax.bar(data_dates, values, color=colors)
-
-    w_number, e_number, fract_same = compare_danger_levels(danger_levels)
-
-    title = fe.add_norwegian_letters("Snoeskredfaregrad for {0} ({1}-{2})".format(region_name, start_date.strftime('%Y'), end_date.strftime('%y')))
-
-    plt.yticks(range(-len(dl_labels)/2+1, len(dl_labels)/2+1, 1), dl_labels)#, size='small')
-    #plt.xlabel('Dato')
-    plt.ylabel('Faregrad')
-    plt.title(title)
-
-    fig.text(0.18, 0.13, " Totalt {0} varslet faregrader og {1} observerte faregrader \n og det er {2}% samsvar mellom det som er observert og varslet."
-             .format(w_number, e_number, int(round(fract_same*100, 0))), fontsize = 14)
-
-    # this is an inset pie of the distribution of dangerlevels OVER the main axes
-    xfrac = 0.15
-    yfrac = (float(fsize[0])/float(fsize[1])) * xfrac
-    xpos = 0.95-xfrac
-    ypos = 0.95-yfrac
-    a = plt.axes([xpos, ypos, xfrac, yfrac])
-    wDistr = np.bincount([d.danger_level for d in danger_levels if 'Varsel' in d.source])
-    a.pie(wDistr, colors=dl_colors, autopct='%1.0f%%', shadow=False)
-    plt.setp(a, xticks=[], yticks=[])
-
-    # this is an inset pie of the distribution of dangerlevels UNDER the main axes
-    xfrac = 0.15
-    yfrac = (float(fsize[0])/float(fsize[1])) * xfrac
-    xpos = 0.95-xfrac
-    ypos = 0.29-yfrac
-    b = plt.axes([xpos, ypos, xfrac, yfrac])
-    eDistr = np.bincount([d.danger_level for d in danger_levels if 'Observasjon' in d.source])
-    b.pie(eDistr, colors=dl_colors, autopct='%1.0f%%', shadow=False)
-    plt.setp(b, xticks=[], yticks=[])
-
-    # This saves the figure til file
-    plt.savefig("{0}{1}".format(env.web_images_folder, filename))#,dpi=90)
-    plt.close(fig)
-
-    return
-
-
-class DangerLevel():
-
-
-    def __init__(self, danger_level, date, source):
-
-        self.danger_level = danger_level
-        self.date = date
-        self.source = source
-
-
-class AvalanceCause():
-
-
-    def __init__(self, cause_tid, date, source):
-
-        self.cause_tid = cause_tid
-        self.date = date
-        self.source = source
-        self.cause_name = None
-        self.set_cause_name()
-
-
-    def set_cause_name(self):
-
-        AvalCauseKDV = gkdv.get_kdv("AvalCauseKDV")
-        self.cause_name = AvalCauseKDV[self.cause_tid].Name
-
-
-def make_plots_for_region(region_id, problems, dangers, start_date, end_date):
-    """
-    This method prepares data for plotting and calls on the plot methods. Pure administration.
-
-    :param region_id:       [int]   Forecast region ID as given in ForecastRegionKDV
-    :param start_date:      [string]
-    :param end_date:        [string]
-
-    :return:
-    """
-
-    region_name = gro.get_forecast_region_name(region_id)
-
-    danger_levels = []
-    causes = []          # list of dates and causes
-
-    for p in problems:
-        causes.append( AvalanceCause(p.cause_tid, p.date, p.source) )
-
-    for d in dangers:
-        if d.nick != 'drift@svv' and d.danger_level > 0:
-            danger_levels.append( DangerLevel(d.danger_level, d.date, d.source))
-
-    # No data, no plot
-    if len(danger_levels) is not 0:
-        plot_danger_levels(region_name, start_date, end_date, danger_levels)
-        if end_date > dt.date(2014, 11, 01) and start_date > dt.date(2014, 11, 01): # Early years dont have this avalanche problem
-            plot_causes(region_name, start_date, end_date, causes)
-
-
-def get_data(region_id, start_date, end_date, data_from="request"):
-    """Gets all the data needed in the plots and pickles it so that I don't need to do requests to make plots.
-
-    :param region_id:       [int]    Region ID is an int as given i ForecastRegionKDV
-    :param start_date:      [string] Start date. Data for this date is not included in requests from OData
-    :param end_date:
-    :param data_from:       [string] Default "request". Other options: "request and save" and "local storage"
-    :return:
-    """
-
-    filename = "{3}dangerandproblemplot_id{0} {1}-{2}.pickle".format(region_id, start_date.strftime('%Y'), end_date.strftime('%y'), env.local_storage)
-
-    if "request" in data_from:
-        if end_date > dt.date(2014, 11, 01) and start_date > dt.date(2014, 11, 01): # Early years dont have this avalanche problem
-            problems = gp.get_all_problems(region_id, start_date, end_date, add_danger_level=False)
-        else:
-            problems = []
-
-        dangers = gd.get_all_dangers(region_id, start_date, end_date)
-
-        if "request and save" in data_from:
-            mp.pickle_anything([problems, dangers], filename)
-
-    elif "local storage" in data_from:
-        problems, dangers = mp.unpickle_anything(filename)
-
-    else:
-        print "rundagerandproblem.py -> get_data: unknown data handler."
-        problems = None
-        dangers = None
-
-
-    return problems, dangers
-
-
 def make_2015_16_plots():
     """Makes all plots for all regions and saves to web-app folder
 
@@ -340,24 +486,29 @@ def make_2015_16_plots():
 
     # All regions span from 6 (Alta) to 33 (Salten).
     for i in region_id:
-        problems, dangers = get_data(i, from_date, to_date, data_from="request")
-        make_plots_for_region(i, problems, dangers, from_date, to_date)
+        problems, dangers, aval_indexes = get_data(i, from_date, to_date, data_from="request")
+        make_plots_for_region(i, problems, dangers, aval_indexes, from_date, to_date)
 
     return
 
 
 if __name__ == "__main__":
 
+    #make_2015_16_plots()
+
 
     from_date = dt.date(2015, 11, 15)
-    to_date = dt.date(2015, 6, 1)
-
+    to_date = dt.date(2016, 6, 15)
 
     # #### Start small - do one region
-    # i = 121
-    # problems, dangers = get_data(i, from_date, to_date, data_from="request and save")
-    # make_plots_for_region(i, problems, dangers, from_date, to_date)
+    i = 121
+    #problems, dangers, aval_indexes = get_data(i, from_date, to_date, data_from="request and save")
+    problems, dangers, aval_indexes = get_data(i, from_date, to_date, data_from="local storage")
+    make_plots_for_region(i, problems, dangers, aval_indexes, from_date, to_date)
 
+    a = 1
+
+    '''
     ## Get all regions
     region_id = []
     ForecastRegionKDV = gkdv.get_kdv('ForecastRegionKDV')
@@ -369,7 +520,7 @@ if __name__ == "__main__":
 
     # All regions span from 6 (Alta) to 33 (Salten).
     for i in region_id:
-        problems, dangers = get_data(i, from_date, to_date, data_from="request")
+        problems, dangers, aval_indexes = get_data(i, from_date, to_date, data_from="request")
         make_plots_for_region(i, problems, dangers, from_date, to_date)
-
+    '''
 

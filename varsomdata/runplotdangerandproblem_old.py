@@ -190,20 +190,15 @@ def plot_danger_levels(region_name, start_date, end_date, danger_levels):
     ax = plt.axes([.15, .05, .8, .9])
     ax.bar(data_dates, values, color=colors)
 
-    plt.yticks(range(-len(dl_labels)/2+1, len(dl_labels)/2+1, 1), dl_labels)#, size='small')
-    plt.ylabel('Faregrad')
-
-    ax2 = ax.twinx()
-    ax2.plot(data_dates, values, marker='*', linestyle='')
-
-    plt.yticks(range(-len(dl_labels)/2+1, len(dl_labels)/2+1, 1), dl_labels)#, size='small')
-    plt.ylabel('Faregrad')
-
+    w_number, e_number, fract_same = compare_danger_levels(danger_levels)
 
     title = fe.add_norwegian_letters("Snoeskredfaregrad for {0} ({1}-{2})".format(region_name, start_date.strftime('%Y'), end_date.strftime('%y')))
+
+    plt.yticks(range(-len(dl_labels)/2+1, len(dl_labels)/2+1, 1), dl_labels)#, size='small')
+    #plt.xlabel('Dato')
+    plt.ylabel('Faregrad')
     plt.title(title)
 
-    w_number, e_number, fract_same = compare_danger_levels(danger_levels)
     fig.text(0.18, 0.13, " Totalt {0} varslet faregrader og {1} observerte faregrader \n og det er {2}% samsvar mellom det som er observert og varslet."
              .format(w_number, e_number, int(round(fract_same*100, 0))), fontsize = 14)
 
@@ -262,18 +257,6 @@ class AvalanceCause():
         self.cause_name = AvalCauseKDV[self.cause_tid].Name
 
 
-class AvalancheIndex():
-
-    def __init__(self):
-
-        self.alval_index = None
-        self.date = None
-
-        self.aval_one = []
-        self.aval_activity = []
-        self.danger_sign = []
-
-
 def make_plots_for_region(region_id, problems, dangers, start_date, end_date):
     """
     This method prepares data for plotting and calls on the plot methods. Pure administration.
@@ -287,22 +270,19 @@ def make_plots_for_region(region_id, problems, dangers, start_date, end_date):
 
     region_name = gro.get_forecast_region_name(region_id)
 
-    causes = []                                                 # list of dates and causes
+    danger_levels = []
+    causes = []          # list of dates and causes
+
     for p in problems:
         causes.append( AvalanceCause(p.cause_tid, p.date, p.source) )
 
-    danger_levels = []
     for d in dangers:
-        if d.nick != 'drift@svv' and d.danger_level > 0:        # for these plots elrapp wil make noise.
+        if d.nick != 'drift@svv' and d.danger_level > 0:
             danger_levels.append( DangerLevel(d.danger_level, d.date, d.source))
 
-    # Only data with danger levels are plotted
+    # No data, no plot
     if len(danger_levels) is not 0:
-
-        # Danger level histograms
         plot_danger_levels(region_name, start_date, end_date, danger_levels)
-
-        # Cause horizontal line plots
         if end_date > dt.date(2014, 11, 01) and start_date > dt.date(2014, 11, 01): # Early years dont have this avalanche problem
             plot_causes(region_name, start_date, end_date, causes)
 
@@ -320,33 +300,23 @@ def get_data(region_id, start_date, end_date, data_from="request"):
     filename = "{3}dangerandproblemplot_id{0} {1}-{2}.pickle".format(region_id, start_date.strftime('%Y'), end_date.strftime('%y'), env.local_storage)
 
     if "request" in data_from:
-
-        # get problems
         if end_date > dt.date(2014, 11, 01) and start_date > dt.date(2014, 11, 01): # Early years dont have this avalanche problem
             problems = gp.get_all_problems(region_id, start_date, end_date, add_danger_level=False)
         else:
             problems = []
 
-        # get dangers
         dangers = gd.get_all_dangers(region_id, start_date, end_date)
 
-        # get avalanche index
-        # avalanches = go.get_avalanche_activity(region_id, from_date, to_date)
-        # single_avalanches = go.get_avalanche(region_id, from_date, to_date)
-        # danger_signs = go.get_danger_sign(region_id, from_date, to_date)
-        aval_index = '???'
-
         if "request and save" in data_from:
-            mp.pickle_anything([problems, dangers, aval_index], filename)
+            mp.pickle_anything([problems, dangers], filename)
 
     elif "local storage" in data_from:
-        problems, dangers, aval_index = mp.unpickle_anything(filename)
+        problems, dangers = mp.unpickle_anything(filename)
 
     else:
         print "rundagerandproblem.py -> get_data: unknown data handler."
         problems = None
         dangers = None
-        aval_index = None
 
 
     return problems, dangers
@@ -380,13 +350,13 @@ if __name__ == "__main__":
 
 
     from_date = dt.date(2015, 11, 15)
-    to_date = dt.date(2016, 2, 1)
+    to_date = dt.date(2015, 6, 1)
 
 
     # #### Start small - do one region
-    i = 121
-    problems, dangers = get_data(i, from_date, to_date, data_from="request and save")
-    make_plots_for_region(i, problems, dangers, from_date, to_date)
+    # i = 121
+    # problems, dangers = get_data(i, from_date, to_date, data_from="request and save")
+    # make_plots_for_region(i, problems, dangers, from_date, to_date)
 
     ## Get all regions
     region_id = []

@@ -1199,7 +1199,7 @@ M3Element
 p362
 (dp363
 g3
-F1.0588235294117647
+F1.0526315789473684
 sg4
 S'Lite sannsynlig, Mulig'
 p364
@@ -1209,6 +1209,8 @@ sg8
 (lp365
 I1
 aI2
+aI1
+aI1
 aI1
 aI1
 aI1
@@ -1241,7 +1243,7 @@ sg19
 S'Liten tilleggsbelastning'
 p369
 sg21
-I17
+I19
 sg22
 S'200'
 p370
@@ -1254,7 +1256,7 @@ p372
 sg28
 g45
 (g49
-S'\x1f\x1e\x1e\x1e\x1e\x1e\xce?'
+S'\xd9\xa9\xbb\xfa\xfd\x94\xcc?'
 p373
 tp374
 Rp375
@@ -1510,7 +1512,7 @@ M3Element
 p445
 (dp446
 g3
-F2.0084745762711864
+F2.008130081300813
 sg4
 S'Lite sannsynlig, Mulig'
 p447
@@ -1636,6 +1638,11 @@ aI2
 aI2
 aI2
 aI2
+aI2
+aI2
+aI2
+aI2
+aI2
 asg10
 S'Possible'
 p449
@@ -1653,7 +1660,7 @@ sg19
 S'Liten tilleggsbelastning'
 p452
 sg21
-I118
+I123
 sg22
 S'200'
 p453
@@ -1666,7 +1673,7 @@ p455
 sg28
 g45
 (g49
-S'\x1e"\x1b\xa4uw\xb7?'
+S'!I\xf6\xad\x1c\xfd\xb6?'
 p456
 tp457
 Rp458

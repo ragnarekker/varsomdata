@@ -1191,7 +1191,7 @@ M3Element
 p360
 (dp361
 g3
-F1.3333333333333333
+F1.25
 sg4
 S'Lite sannsynlig, Mulig'
 p362
@@ -1203,6 +1203,9 @@ sg8
 I2
 aI2
 aI2
+aI1
+aI1
+aI1
 aI1
 aI1
 aI1
@@ -1226,7 +1229,7 @@ sg19
 S'Liten tilleggsbelastning'
 p368
 sg21
-I9
+I12
 sg22
 S'200'
 p369
@@ -1239,7 +1242,7 @@ p371
 sg28
 g255
 (g259
-S'f\xfa\xfe\xdd}+\xde?'
+S'\xaaLX\xe8z\xb6\xdb?'
 p372
 tp373
 Rp374
@@ -1253,7 +1256,7 @@ M3Element
 p376
 (dp377
 g3
-F2.0
+F1.8
 sg4
 S'Lite sannsynlig, Mulig'
 p378
@@ -1262,6 +1265,10 @@ g246
 sg8
 (lp379
 I2
+aI2
+aI2
+aI2
+aI1
 asg10
 S'Possible'
 p380
@@ -1279,7 +1286,7 @@ sg19
 S'Naturlig utloest'
 p383
 sg21
-I1
+I5
 sg22
 S'200'
 p384
@@ -1292,7 +1299,7 @@ p386
 sg28
 g255
 (g259
-S'\x00\x00\x00\x00\x00\x00\x00\x00'
+S'\x9a\x99\x99\x99\x99\x99\xd9?'
 p387
 tp388
 Rp389
@@ -1605,7 +1612,7 @@ M3Element
 p460
 (dp461
 g3
-F2.0256410256410255
+F2.024390243902439
 sg4
 S'Lite sannsynlig, Mulig'
 p462
@@ -1614,6 +1621,8 @@ g246
 sg8
 (lp463
 I3
+aI2
+aI2
 aI2
 aI2
 aI2
@@ -1669,7 +1678,7 @@ sg19
 S'Naturlig utloest'
 p467
 sg21
-I39
+I41
 sg22
 S'200'
 p468
@@ -1682,7 +1691,7 @@ p470
 sg28
 g255
 (g259
-S'\xaegGL_;\xc4?'
+S'\xbdl\xaa@\xb5\xbe\xc3?'
 p471
 tp472
 Rp473

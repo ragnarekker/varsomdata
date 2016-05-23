@@ -658,9 +658,12 @@ def get_observed_danger_AvalancheEvaluation3V(region_id, start_date, end_date):
                 danger_level = e['AvalancheDangerTID']
                 danger_level_name = e['AvalancheDangerName']
                 nick = e['NickName']
+                forecast_correct = e['ForecastCorrectName']
+                forecast_correct_id = e['ForecastCorrectTID']
                 eval = gd.AvalancheDanger(region_id, region_name, "AvalancheEvaluation3V", date, danger_level, danger_level_name)
                 eval.set_nick(nick)
                 eval.set_source('Observasjon')
+                eval.set_forecast_correct(forecast_correct, forecast_correct_id)
                 evaluations.append(eval)
 
     # sort list by date

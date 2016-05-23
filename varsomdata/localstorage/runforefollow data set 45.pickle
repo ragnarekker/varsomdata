@@ -245,39 +245,39 @@ aS'Naturlig utloest'
 p124
 aS'Naturlig utloest'
 p125
-assS'distribution'
+aS'Naturlig utloest'
 p126
-(dp127
-g3
-(lp128
-S'Isolerte faresoner'
+aS'Naturlig utloest'
+p127
+aS'Liten tilleggsbelastning'
+p128
+aS'Liten tilleggsbelastning'
 p129
-aS'Noen bratte heng'
+aS'Liten tilleggsbelastning'
 p130
-aS'Mange bratte heng'
+aS'Stor tilleggsbelastning'
 p131
-aS'De fleste bratte heng'
+assS'distribution'
 p132
-aS'Ogsaa i mindre bratt terreng'
-p133
-asg8
+(dp133
+g3
 (lp134
+S'Isolerte faresoner'
+p135
+aS'Noen bratte heng'
+p136
+aS'Mange bratte heng'
+p137
+aS'De fleste bratte heng'
+p138
+aS'Ogsaa i mindre bratt terreng'
+p139
+asg8
+(lp140
 g10
 asg11
-(lp135
+(lp141
 S'Noen bratte heng'
-p136
-aS'Noen bratte heng'
-p137
-aS'Noen bratte heng'
-p138
-aS'Isolerte faresoner'
-p139
-aS'Isolerte faresoner'
-p140
-aS'Noen bratte heng'
-p141
-aS'Noen bratte heng'
 p142
 aS'Noen bratte heng'
 p143
@@ -285,7 +285,7 @@ aS'Noen bratte heng'
 p144
 aS'Isolerte faresoner'
 p145
-aS'Noen bratte heng'
+aS'Isolerte faresoner'
 p146
 aS'Noen bratte heng'
 p147
@@ -295,13 +295,13 @@ aS'Noen bratte heng'
 p149
 aS'Noen bratte heng'
 p150
-aS'Noen bratte heng'
+aS'Isolerte faresoner'
 p151
 aS'Noen bratte heng'
 p152
 aS'Noen bratte heng'
 p153
-aS'Isolerte faresoner'
+aS'Noen bratte heng'
 p154
 aS'Noen bratte heng'
 p155
@@ -325,7 +325,7 @@ aS'Noen bratte heng'
 p164
 aS'Noen bratte heng'
 p165
-aS'Noen bratte heng'
+aS'Isolerte faresoner'
 p166
 aS'Noen bratte heng'
 p167
@@ -377,7 +377,7 @@ aS'Noen bratte heng'
 p190
 aS'Noen bratte heng'
 p191
-aS'Mange bratte heng'
+aS'Noen bratte heng'
 p192
 aS'Noen bratte heng'
 p193
@@ -389,7 +389,7 @@ aS'Noen bratte heng'
 p196
 aS'Noen bratte heng'
 p197
-aS'Noen bratte heng'
+aS'Mange bratte heng'
 p198
 aS'Noen bratte heng'
 p199
@@ -397,7 +397,7 @@ aS'Noen bratte heng'
 p200
 aS'Noen bratte heng'
 p201
-aS'Isolerte faresoner'
+aS'Noen bratte heng'
 p202
 aS'Noen bratte heng'
 p203
@@ -409,7 +409,7 @@ aS'Noen bratte heng'
 p206
 aS'Noen bratte heng'
 p207
-aS'Noen bratte heng'
+aS'Isolerte faresoner'
 p208
 aS'Noen bratte heng'
 p209
@@ -429,7 +429,7 @@ aS'Noen bratte heng'
 p216
 aS'Noen bratte heng'
 p217
-aS'Isolerte faresoner'
+aS'Noen bratte heng'
 p218
 aS'Noen bratte heng'
 p219
@@ -439,9 +439,9 @@ aS'Noen bratte heng'
 p221
 aS'Noen bratte heng'
 p222
-aS'Isolerte faresoner'
-p223
 aS'Noen bratte heng'
+p223
+aS'Isolerte faresoner'
 p224
 aS'Noen bratte heng'
 p225
@@ -449,9 +449,9 @@ aS'Noen bratte heng'
 p226
 aS'Noen bratte heng'
 p227
-aS'Isolerte faresoner'
-p228
 aS'Noen bratte heng'
+p228
+aS'Isolerte faresoner'
 p229
 aS'Noen bratte heng'
 p230
@@ -461,7 +461,7 @@ aS'Noen bratte heng'
 p232
 aS'Noen bratte heng'
 p233
-aS'Noen bratte heng'
+aS'Isolerte faresoner'
 p234
 aS'Noen bratte heng'
 p235
@@ -469,9 +469,9 @@ aS'Noen bratte heng'
 p236
 aS'Noen bratte heng'
 p237
-aS'Isolerte faresoner'
+aS'Noen bratte heng'
 p238
-aS'Isolerte faresoner'
+aS'Noen bratte heng'
 p239
 aS'Noen bratte heng'
 p240
@@ -481,9 +481,9 @@ aS'Noen bratte heng'
 p242
 aS'Noen bratte heng'
 p243
-aS'Noen bratte heng'
+aS'Isolerte faresoner'
 p244
-aS'Noen bratte heng'
+aS'Isolerte faresoner'
 p245
 aS'Noen bratte heng'
 p246
@@ -491,67 +491,67 @@ aS'Noen bratte heng'
 p247
 aS'Noen bratte heng'
 p248
-assS'size'
+aS'Noen bratte heng'
 p249
-(dp250
-g3
-(lp251
-S'1 - Harmloest'
+aS'Noen bratte heng'
+p250
+aS'Noen bratte heng'
+p251
+aS'Noen bratte heng'
 p252
-aS'2 - Smaa'
+aS'Noen bratte heng'
 p253
-aS'3 - Middels'
+aS'Noen bratte heng'
 p254
-aS'4 - Store'
+aS'Noen bratte heng'
 p255
-aS'5 - Svaert store'
+aS'Noen bratte heng'
 p256
-aS'Ukjent'
+aS'Noen bratte heng'
 p257
-asg8
-(lp258
-g10
-asg11
-(lp259
-S'3 - Middels'
+aS'Noen bratte heng'
+p258
+aS'Noen bratte heng'
+p259
+aS'Noen bratte heng'
 p260
-aS'2 - Smaa'
+assS'size'
 p261
-aS'2 - Smaa'
-p262
-aS'1 - Harmloest'
-p263
-aS'2 - Smaa'
+(dp262
+g3
+(lp263
+S'1 - Harmloest'
 p264
 aS'2 - Smaa'
 p265
-aS'2 - Smaa'
+aS'3 - Middels'
 p266
-aS'3 - Middels'
+aS'4 - Store'
 p267
-aS'2 - Smaa'
+aS'5 - Svaert store'
 p268
-aS'2 - Smaa'
+aS'Ukjent'
 p269
-aS'2 - Smaa'
-p270
-aS'2 - Smaa'
-p271
-aS'2 - Smaa'
+asg8
+(lp270
+g10
+asg11
+(lp271
+S'3 - Middels'
 p272
-aS'3 - Middels'
+aS'2 - Smaa'
 p273
 aS'2 - Smaa'
 p274
-aS'2 - Smaa'
+aS'1 - Harmloest'
 p275
 aS'2 - Smaa'
 p276
-aS'3 - Middels'
+aS'2 - Smaa'
 p277
 aS'2 - Smaa'
 p278
-aS'2 - Smaa'
+aS'3 - Middels'
 p279
 aS'2 - Smaa'
 p280
@@ -571,11 +571,11 @@ aS'2 - Smaa'
 p287
 aS'2 - Smaa'
 p288
-aS'2 - Smaa'
+aS'3 - Middels'
 p289
 aS'2 - Smaa'
 p290
-aS'3 - Middels'
+aS'2 - Smaa'
 p291
 aS'2 - Smaa'
 p292
@@ -591,19 +591,19 @@ aS'3 - Middels'
 p297
 aS'2 - Smaa'
 p298
-aS'3 - Middels'
+aS'2 - Smaa'
 p299
 aS'2 - Smaa'
 p300
-aS'3 - Middels'
+aS'2 - Smaa'
 p301
 aS'2 - Smaa'
 p302
 aS'3 - Middels'
 p303
-aS'3 - Middels'
+aS'2 - Smaa'
 p304
-aS'3 - Middels'
+aS'2 - Smaa'
 p305
 aS'2 - Smaa'
 p306
@@ -611,23 +611,23 @@ aS'2 - Smaa'
 p307
 aS'2 - Smaa'
 p308
-aS'2 - Smaa'
+aS'3 - Middels'
 p309
 aS'2 - Smaa'
 p310
-aS'2 - Smaa'
+aS'3 - Middels'
 p311
 aS'2 - Smaa'
 p312
-aS'2 - Smaa'
+aS'3 - Middels'
 p313
 aS'2 - Smaa'
 p314
-aS'2 - Smaa'
+aS'3 - Middels'
 p315
-aS'2 - Smaa'
+aS'3 - Middels'
 p316
-aS'2 - Smaa'
+aS'3 - Middels'
 p317
 aS'2 - Smaa'
 p318
@@ -659,9 +659,9 @@ aS'2 - Smaa'
 p331
 aS'2 - Smaa'
 p332
-aS'3 - Middels'
+aS'2 - Smaa'
 p333
-aS'3 - Middels'
+aS'2 - Smaa'
 p334
 aS'2 - Smaa'
 p335
@@ -669,133 +669,133 @@ aS'2 - Smaa'
 p336
 aS'2 - Smaa'
 p337
-aS'3 - Middels'
+aS'2 - Smaa'
 p338
-aS'3 - Middels'
+aS'2 - Smaa'
 p339
 aS'2 - Smaa'
 p340
 aS'2 - Smaa'
 p341
-aS'3 - Middels'
+aS'2 - Smaa'
 p342
-aS'3 - Middels'
+aS'2 - Smaa'
 p343
-aS'3 - Middels'
+aS'2 - Smaa'
 p344
-aS'1 - Harmloest'
+aS'3 - Middels'
 p345
-aS'2 - Smaa'
+aS'3 - Middels'
 p346
-aS'3 - Middels'
-p347
-aS'3 - Middels'
-p348
-aS'3 - Middels'
-p349
-aS'1 - Harmloest'
-p350
 aS'2 - Smaa'
+p347
+aS'2 - Smaa'
+p348
+aS'2 - Smaa'
+p349
+aS'3 - Middels'
+p350
+aS'3 - Middels'
 p351
-aS'3 - Middels'
+aS'2 - Smaa'
 p352
-aS'3 - Middels'
+aS'2 - Smaa'
 p353
 aS'3 - Middels'
 p354
-aS'2 - Smaa'
-p355
-aS'1 - Harmloest'
-p356
-aS'2 - Smaa'
-p357
 aS'3 - Middels'
+p355
+aS'3 - Middels'
+p356
+aS'1 - Harmloest'
+p357
+aS'2 - Smaa'
 p358
-aS'2 - Smaa'
+aS'3 - Middels'
 p359
-aS'2 - Smaa'
+aS'3 - Middels'
 p360
-aS'2 - Smaa'
+aS'3 - Middels'
 p361
-aS'2 - Smaa'
+aS'1 - Harmloest'
 p362
 aS'2 - Smaa'
 p363
-aS'2 - Smaa'
+aS'3 - Middels'
 p364
-aS'2 - Smaa'
+aS'3 - Middels'
 p365
-aS'2 - Smaa'
+aS'3 - Middels'
 p366
 aS'2 - Smaa'
 p367
-aS'2 - Smaa'
+aS'1 - Harmloest'
 p368
 aS'2 - Smaa'
 p369
-aS'2 - Smaa'
-p370
 aS'3 - Middels'
+p370
+aS'2 - Smaa'
 p371
 aS'2 - Smaa'
 p372
-assS'probability'
+aS'2 - Smaa'
 p373
-(dp374
-g3
-(lp375
-S'Lite sannsynlig'
+aS'2 - Smaa'
+p374
+aS'2 - Smaa'
+p375
+aS'2 - Smaa'
 p376
-aS'Mulig'
+aS'2 - Smaa'
 p377
-aS'Sannsynlig'
+aS'2 - Smaa'
 p378
-aS'Meget sannsynlig'
+aS'2 - Smaa'
 p379
-asg8
-(lp380
-g10
-asg11
-(lp381
-S'Mulig'
+aS'2 - Smaa'
+p380
+aS'2 - Smaa'
+p381
+aS'2 - Smaa'
 p382
-aS'Sannsynlig'
+aS'3 - Middels'
 p383
-aS'Mulig'
+aS'2 - Smaa'
 p384
-aS'Mulig'
+aS'2 - Smaa'
 p385
-aS'Mulig'
+aS'2 - Smaa'
 p386
-aS'Mulig'
+aS'1 - Harmloest'
 p387
-aS'Mulig'
+aS'3 - Middels'
 p388
-aS'Mulig'
+aS'1 - Harmloest'
 p389
-aS'Mulig'
+aS'3 - Middels'
 p390
-aS'Mulig'
+assS'probability'
 p391
-aS'Mulig'
-p392
-aS'Mulig'
-p393
-aS'Mulig'
+(dp392
+g3
+(lp393
+S'Lite sannsynlig'
 p394
 aS'Mulig'
 p395
-aS'Mulig'
+aS'Sannsynlig'
 p396
-aS'Mulig'
+aS'Meget sannsynlig'
 p397
-aS'Mulig'
-p398
-aS'Mulig'
-p399
-aS'Mulig'
+asg8
+(lp398
+g10
+asg11
+(lp399
+S'Mulig'
 p400
-aS'Mulig'
+aS'Sannsynlig'
 p401
 aS'Mulig'
 p402
@@ -857,7 +857,7 @@ aS'Mulig'
 p430
 aS'Mulig'
 p431
-aS'Sannsynlig'
+aS'Mulig'
 p432
 aS'Mulig'
 p433
@@ -893,7 +893,7 @@ aS'Mulig'
 p448
 aS'Mulig'
 p449
-aS'Mulig'
+aS'Sannsynlig'
 p450
 aS'Mulig'
 p451
@@ -983,30 +983,78 @@ aS'Mulig'
 p493
 aS'Mulig'
 p494
-assS'level'
+aS'Mulig'
 p495
-(dp496
+aS'Mulig'
+p496
+aS'Mulig'
+p497
+aS'Mulig'
+p498
+aS'Mulig'
+p499
+aS'Mulig'
+p500
+aS'Mulig'
+p501
+aS'Mulig'
+p502
+aS'Mulig'
+p503
+aS'Mulig'
+p504
+aS'Mulig'
+p505
+aS'Mulig'
+p506
+aS'Mulig'
+p507
+aS'Mulig'
+p508
+aS'Mulig'
+p509
+aS'Mulig'
+p510
+aS'Mulig'
+p511
+aS'Mulig'
+p512
+aS'Mulig'
+p513
+aS'Mulig'
+p514
+aS'Mulig'
+p515
+aS'Mulig'
+p516
+aS'Mulig'
+p517
+aS'Mulig'
+p518
+assS'level'
+p519
+(dp520
 g3
-(lp497
+(lp521
 I1
 aI2
 aI3
 aI4
 aI5
 asg8
-(lp498
+(lp522
 S'#ccff66'
-p499
+p523
 aS'#ffff00'
-p500
+p524
 aS'#ff9900'
-p501
+p525
 aS'#ff0000'
-p502
+p526
 aS'k'
-p503
+p527
 asg11
-(lp504
+(lp528
 I3
 aI3
 aI2
@@ -1119,5 +1167,11 @@ aI2
 aI2
 aI2
 aI3
+aI2
+aI2
+aI2
+aI1
+aI3
+aI1
 aI2
 ass.

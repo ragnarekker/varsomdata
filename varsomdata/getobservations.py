@@ -314,6 +314,48 @@ class AvalancheActivityObs(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
+class AvalancheActivityObs2(Registration, Location, Observer):
+
+    def __init__(self, d):
+
+        Registration.__init__(self, d)
+        Location.__init__(self, d)
+        Observer.__init__(self, d)
+
+        self.EstimatedNumTID = d['EstimatedNumTID']
+        self.EstimatedNumName = fe.remove_norwegian_letters(d['EstimatedNumName'])
+
+        #timedelta between regobs.no and database
+        time_delta = dt.timedelta(hours=-2)
+
+        if d['DtStart'] is not None:
+            self.DtStart = _unix_time_2_normal(int(d['DtStart'][6:-2])) + time_delta
+        else:
+            # Really not sure I should assume DtStart = DtObsTime when None
+            self.DtStart = (_unix_time_2_normal(int(d['DtObsTime'][6:-2]))).replace(hour=00, minute=00)
+
+        if d['DtEnd'] is not None:
+            self.DtEnd = _unix_time_2_normal(int(d['DtEnd'][6:-2])) + time_delta
+        else:
+            # Really not sure I should assume DtEnd = DtObsTime when None
+            self.DtEnd = (_unix_time_2_normal(int(d['DtObsTime'][6:-2]))).replace(hour=23, minute=59)
+
+        self.ValidExposition = d['ValidExposition']     # int of eight char. First char is N, second is NE etc.
+        self.ExposedHeight1 = None
+        if d['ExposedHeight1'] is not None: self.ExposedHeight1 = d['ExposedHeight1']      # upper height
+        self.ExposedHeight2 = None
+        if d['ExposedHeight2'] is not None: self.ExposedHeight2 = d['ExposedHeight2']      # lower height
+        self.ExposedHeightComboTID = d['ExposedHeightComboTID']
+
+        self.AvalancheExtName = fe.remove_norwegian_letters(d['AvalancheExtName'])
+        self.AvalCauseName = fe.remove_norwegian_letters(d['AvalCauseName'])
+        self.AvalTriggerSimpleName = fe.remove_norwegian_letters(d['AvalTriggerSimpleName'])
+        self.DestructiveSizeName = fe.remove_norwegian_letters(d['DestructiveSizeName'])
+        self.AvalPropagationName = fe.remove_norwegian_letters(d['AvalPropagationName'])
+        self.Comment = fe.remove_norwegian_letters(d['Comment'])
+        self.LangKey = d['LangKey']
+
+
 class AvalancheObs(Registration, Location, Observer):
 
     def __init__(self, d):
@@ -418,6 +460,38 @@ def get_avalanche_activity(from_date, to_date, region_ids=None, observer_ids=Non
 
     else:
         ml.log_and_print('getobservations.py -> get_avalanche_activity: Illegal output option.')
+        return None
+
+
+def get_avalanche_activity_2(from_date, to_date, region_ids=None, observer_ids=None, output='List'):
+    """Gets observations from AvalancheActivityObs2V.
+
+    :param from_date:       [date] A query returns [from_date, to_date>
+    :param to_date:         [date] A query returns [from_date, to_date>
+    :param region_ids:      [int or list of ints] If region_ids = None, all regions are selected
+    :param observer_ids:    [int or list of ints] If observer_ids = None, all observers are selected
+    :param output:          [string] Options: 'List', 'DataFrame' and 'Count'. Default 'List'.
+
+    :return:
+    """
+
+    if output == 'List' or output == 'DataFrame':
+        data = _make_data_request("AvalancheActivityObs2V", from_date, to_date, region_ids, observer_ids)
+        list = [AvalancheActivityObs2(d) for d in data]
+        list = sorted(list, key=lambda AvalancheActivityObs2: AvalancheActivityObs2.DtObsTime)
+
+        if output == 'List':
+            return list
+
+        elif output == 'DataFrame':
+            return _make_data_frame(list)
+
+    elif output == 'Count':
+        count = _make_count_request("AvalancheActivityObs2V", from_date, to_date, region_ids, observer_ids)
+        return count
+
+    else:
+        ml.log_and_print('getobservations.py -> get_avalanche_activity_2: Illegal output option.')
         return None
 
 
@@ -551,21 +625,23 @@ def _view_test():
 
 if __name__ == "__main__":
 
-    from_date = dt.date(2015, 4, 1)
+    from_date = dt.date(2016, 4, 1)
     from_date = dt.date.today()-dt.timedelta(days=150)
     to_date = dt.date.today()+dt.timedelta(days=1)
     region_ids = 116
     observer_ids = None
 
+
     # requesten bør returnere tom liste. Hvordan går det?
-    my_observations = get_all_registrations(from_date=dt.date(2015, 6, 1),
+    '''my_observations = get_all_registrations(from_date=dt.date(2015, 6, 1),
                                             to_date=dt.date(2016, 7, 1),
                                             geohazard_tid=10,
                                             observer_ids=[6, 7, 236],
                                             output='List',
                                             region_ids=[121, 122, 123])
+    '''
 
-    all_observations = get_all_registrations(from_date, to_date, output='DataFrame')
+    #all_observations = get_all_registrations(from_date, to_date, output='DataFrame')
     # print(all_observations)
 
     # geo_hazard_kdv = kdv.get_kdv('GeoHazardKDV')
@@ -578,7 +654,8 @@ if __name__ == "__main__":
     # count_registrations_ice = get_all_registrations(from_date, to_date, geohazard_tid=70, output='Count')
     # count_registrations = get_all_registrations(from_date, to_date, output='Count')
     #
-    # avalanche_activity = get_avalanche_activity(from_date, to_date, 116)
+    avalanche_activity = get_avalanche_activity(from_date, to_date, 116)
+    avalanche_activity_2 = get_avalanche_activity_2(from_date, to_date, 116)
     # avalanche = get_avalanche(from_date, to_date, region_ids)
     # danger_sign = get_danger_sign(from_date, to_date, observer_ids)
 

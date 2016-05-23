@@ -5,6 +5,8 @@ __author__ = 'raek'
 import datetime as dt
 import requests as requests
 import csv as csv
+import getobservations as go
+import readfile as rf
 import operator
 import fencoding as fe
 import setenvironment as env
@@ -214,6 +216,124 @@ def get_registration(from_date, to_date, output='List', geohazard_tid=None, Appl
         return data_out
 
 
+class AvalancheIndex():
+
+    def __init__(self):
+
+        self.estimated_num = None
+        self.destructive_size = None
+        self.index = 0          # avalanche index 0 is an avalanche observation with insufficient data
+
+        self.date = None
+        self.region_name = None
+        self.observation = None
+
+
+    def set_num_and_size_and_index(self, estimated_num_inn, destructive_size_inn, index_definition):
+
+        self.estimated_num = estimated_num_inn
+        self.destructive_size = destructive_size_inn
+
+        if "Ingen skredaktivitet" in self.estimated_num:
+            self.set_no_avalanche_activity()
+        elif self.estimated_num is not None and self.destructive_size is not None:
+            for i in index_definition:
+                if i.estimated_num in self.estimated_num and i.destructive_size in self.destructive_size:
+                    self.index = int(i.index)
+
+
+    def set_no_avalanche_activity(self):
+        self.estimated_num = "Ingen skredaktivitet"
+        self.index = 1
+
+
+    def set_avalanches_as_dangersign(self):
+        self.estimated_num = 'Ferske skred'
+        self.destructive_size = 'Ferske skred'
+        self.index = 2
+
+
+    def set_date_region_observation(self, date_inn, region_name_inn, observation_inn):
+
+        self.date = date_inn
+        self.region_name = region_name_inn
+        self.observation = observation_inn
+
+
+    def add_configuration_row(self, row):
+        """Used for reading the definition file. Method called from readfile.py.
+
+        :param row:
+        :return:
+        """
+
+        self.estimated_num = row[0]
+        self.destructive_size = row[1]
+        self.index = row[2]
+
+        return
+
+
+def get_avalanche_index(from_date, to_date, region_ids=None, observer_ids=None):
+    '''
+
+    :param from_date:
+    :param to_date:
+    :param region_ids:
+    :param observer_ids:
+    :return:
+    '''
+
+    # get all data
+    avalanche_activities = go.get_avalanche_activity(from_date, to_date, region_ids=region_ids, observer_ids=observer_ids)
+    avalanche_activities_2 = go.get_avalanche_activity_2(from_date, to_date, region_ids=region_ids, observer_ids=observer_ids)
+    avalanches = go.get_avalanche(from_date, to_date, region_ids=region_ids, observer_ids=observer_ids)
+    danger_signs = go.get_danger_sign(from_date, to_date, region_ids=region_ids, observer_ids=observer_ids)
+
+    # get index definition
+    index_definition = rf.read_configuration_file('{0}aval_dl_order_of_size_and_num.csv'.format(env.input_folder), AvalancheIndex)
+
+    avalanche_indexes = []
+
+    for aa in avalanche_activities:
+
+        ai = AvalancheIndex()
+        ai.set_num_and_size_and_index(aa.EstimatedNumName, aa.DestructiveSizeName, index_definition)
+        ai.set_date_region_observation(aa.DtAvalancheTime, aa.ForecastRegionName, aa)
+        avalanche_indexes.append(ai)
+
+    for aa in avalanche_activities_2:
+
+        ai = AvalancheIndex()
+        ai.set_num_and_size_and_index(aa.EstimatedNumName, aa.DestructiveSizeName, index_definition)
+        # Activity date is the avarage of DtStart and DtEnd
+        activity_date = aa.DtStart+(aa.DtEnd-aa.DtStart)/2
+        ai.set_date_region_observation(activity_date.date(), aa.ForecastRegionName, aa)
+        avalanche_indexes.append(ai)
+
+    for aa in avalanches:
+
+        ai = AvalancheIndex()
+        # Make sure size is not None
+        ai.set_num_and_size_and_index("Ett (1)", aa.DestructiveSizeName, index_definition)
+        ai.set_date_region_observation(aa.DtAvalancheTime, aa.ForecastRegionName, aa)
+        avalanche_indexes.append(ai)
+
+    for ds in danger_signs:
+
+        ai = AvalancheIndex()
+        if 'Ferske skred' in ds.DangerSignName:
+            ai.set_avalanches_as_dangersign()
+        elif 'Ingen faretegn observert' in ds.DangerSignName:
+            ai.set_no_avalanche_activity()
+        else:
+            continue
+        ai.set_date_region_observation(ds.DtObsTime, ds.ForecastRegionName, ds)
+        avalanche_indexes.append(ai)
+
+    return avalanche_indexes
+
+
 def get_observer_v():
     """Selects all data from the ObserverV view. Returns all observers. Not only the topp 1000 for some reason.
 
@@ -292,9 +412,12 @@ def get_observer_dict_for_2015_16_ploting():
 
 if __name__ == "__main__":
 
-    from_date = dt.date(2015, 11, 1)
+    from_date = dt.date(2016, 4, 1)
     #from_date = dt.date.today()-dt.timedelta(days=1)
     to_date = dt.date.today()+dt.timedelta(days=1)
+
+    region_ids = [116, 117]
+    avalanche_indexes = get_avalanche_index(from_date, to_date, region_ids)
 
     # observer_list = [1090, 79, 43, 1084, 33, 119, 67, 101, 952, 41, 34, 125, 126, 8, 384, 955, 14, 841, 50, 175, 1123, 199, 1068, 1598, 1646, 637, 1664, 1307, 135, 307, 1212, 1279, 1310]
     # nicks = get_observer_nicks_given_ids(observer_list)

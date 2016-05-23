@@ -47,6 +47,7 @@ class AvalancheDanger():
         self.danger_level = danger_level_inn                                        # [Int]
         self.danger_level_name = fe.remove_norwegian_letters(danger_level_name_inn) # [String]
 
+        #forecast stuff
         self.main_message_no = None                                                 # [String]
         self.main_message_en = None
         self.nick = None
@@ -54,6 +55,10 @@ class AvalancheDanger():
         self.source = None
         self.avalanche_forecast = None
         self.avalanche_nowcast = None
+
+        #obs eval 3 stuff
+        self.forecast_correct = None
+        self.forecast_correct_id = None
 
 
 
@@ -89,6 +94,11 @@ class AvalancheDanger():
 
     def set_avalanche_forecast(self, avalanche_forecast_inn):
         self.avalanche_forecast = avalanche_forecast_inn
+
+
+    def set_forecast_correct(self, forecast_correct_inn, forecast_correct_id_inn):
+        self.forecast_correct = fe.remove_norwegian_letters(forecast_correct_inn)
+        self.forecast_correct_id = int(forecast_correct_id_inn)
 
 
 def get_observed_dangers(region_id, start_date, end_date):

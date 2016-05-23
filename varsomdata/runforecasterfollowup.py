@@ -329,7 +329,7 @@ def make_comparison_plots(forecaster_dict, path=''):
     plt.xlabel('Gjennomsnittlig faregrad')
     plt.xlim(0., 4.5)
     plt.axvline(forecaster_dict['Ragnar@NVE'].danger_levels_all_avg, color='k', linestyle='dashed', linewidth=3)
-    plt.title('Sammenlignet varselt faregrad sessongen 2015/16')
+    plt.title('Sammenlignet varselt faregrad sesongen 2015/16')
     fig = plt.gcf()
     fig.subplots_adjust(left=0.2)
     plt.savefig('{0}all_danger_201516.png'.format(path))
@@ -343,7 +343,7 @@ def make_comparison_plots(forecaster_dict, path=''):
     plt.xlabel('Snitt antall skredproblemer')
     plt.xlim(0.5, 3.)
     plt.axvline(forecaster_dict['Ragnar@NVE'].problems_pr_warning_all_avg, color='k', linestyle='dashed', linewidth=3)
-    plt.title('Antall skredproblemer pr varsel sessongen 2015/16')
+    plt.title('Antall skredproblemer pr varsel sesongen 2015/16')
     fig = plt.gcf()
     fig.subplots_adjust(left=0.2)
     plt.savefig('{0}all_problems_pr_warning_201516.png'.format(path))
@@ -357,7 +357,7 @@ def make_comparison_plots(forecaster_dict, path=''):
     plt.xlabel('Snitt tegn paa naasituasjon')
     plt.xlim(0., 1024.)
     plt.axvline(forecaster_dict['Ragnar@NVE'].nowcast_lengths_all_avg, color='k', linestyle='dashed', linewidth=3)
-    plt.title('Antall tegn brukt i naasituasjonen sessongen 2015/16')
+    plt.title('Antall tegn brukt i naasituasjonen sesongen 2015/16')
     fig = plt.gcf()
     fig.subplots_adjust(left=0.2)
     plt.savefig('{0}all_nowcast_lengths_201516.png'.format(path))
@@ -371,7 +371,7 @@ def make_comparison_plots(forecaster_dict, path=''):
     plt.xlabel('Snitt tegn paa varselet')
     plt.xlim(0., 1024.)
     plt.axvline(forecaster_dict['Ragnar@NVE'].forecast_lengths_all_avg, color='k', linestyle='dashed', linewidth=3)
-    plt.title('Antall tegn brukt i varselet sessongen 2015/16')
+    plt.title('Antall tegn brukt i varselet sesongen 2015/16')
     fig = plt.gcf()
     fig.subplots_adjust(left=0.2)
     plt.savefig('{0}all_forecast_lengths_201516.png'.format(path))
@@ -491,8 +491,8 @@ if __name__ == "__main__":
     # Some controls for debuging and developing
     plot_one = False         # make one plot. If False it makes all plots.
     save_for_web = True      # save for web. If false it saves to plot folder.
-    get_new = False
-    make_pickle = True
+    get_new = True
+    make_pickle = False
 
     # Manny files. Use a project folder.
     project_folder = 'forecasterfollowup/'
