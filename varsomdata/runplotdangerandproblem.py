@@ -262,9 +262,9 @@ def plot_danger_levels(region_name, start_date, end_date, danger_levels, aval_in
             index_colors.append('pink')
         elif i.index >= 2 and i.index <= 5:
             index_colors.append('green')
-        elif i.index >= 6 and i.index <= 8:
+        elif i.index >= 6 and i.index <= 9:
             index_colors.append('yellow')
-        elif i.index >= 9 and i.index <= 12:
+        elif i.index >= 10 and i.index <= 12:
             index_colors.append('orange')
         elif i.index >= 13:
             index_colors.append('red')

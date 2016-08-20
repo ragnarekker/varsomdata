@@ -23,7 +23,8 @@ def get_2015_16_warnings(how_to_get_data='Get new and dont pickle', pickle_file_
     if 'Get new' in how_to_get_data:
 
         from_date = dt.date(2015, 11, 30)
-        to_date = dt.date.today()
+        #to_date = dt.date.today()
+        to_date = dt.date(2016, 05, 31)
 
         region_ids = [117, 128]  # Trollheimen
         region_ids = gm.get_active_forecast_regions()
