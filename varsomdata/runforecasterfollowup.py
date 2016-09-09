@@ -48,7 +48,7 @@ def get_2015_16_warnings(how_to_get_data='Get new and dont pickle', pickle_file_
     return all_warnings
 
 
-def make_forecaster_data(warnings):
+def make_forecaster_data(warnings, save_for_web=False):
     '''Make the forecaster dictionary with all the neccesary data.
     method also makes the dict needed fore the menu on the pythonanywhre website.
 
@@ -117,12 +117,13 @@ def make_forecaster_data(warnings):
         forecaster_dict[f.nick].add_problems_pr_warning(problems_pr_warning, problems_pr_warning_all)
 
     # Save dict of forecasters for the website menu. Find where nick match forecasters.
-    forecaster_nicknid_dict = {-1:'_OVERSIKT ALLE_'}
-    for o_i,o_n in observer_nicks.iteritems():
-        for f_n, f_F in forecaster_dict.iteritems():
-            if o_n == f_n:
-                forecaster_nicknid_dict[o_i] = o_n
-    mp.pickle_anything(forecaster_nicknid_dict, '{0}forecasterlist.pickle'.format(env.web_root_folder))
+    if save_for_web:
+        forecaster_nicknid_dict = {-1:'_OVERSIKT ALLE_'}
+        for o_i,o_n in observer_nicks.iteritems():
+            for f_n, f_F in forecaster_dict.iteritems():
+                if o_n == f_n:
+                    forecaster_nicknid_dict[o_i] = o_n
+        mp.pickle_anything(forecaster_nicknid_dict, '{0}forecasterlist.pickle'.format(env.web_root_folder))
 
     return forecaster_dict
 
@@ -187,11 +188,15 @@ def make_plots(forecaster_dict, nick, path=''):
 
 
     plt.clf()
+    bug_fixed_date = dt.date(2016, 01, 11)
+    antall_pr_dag = [v for k,v in f.dates.iteritems() if k > bug_fixed_date]
+    snitt = sum(antall_pr_dag)/float(len(antall_pr_dag))
     plt.bar(f.dates.keys(), f.dates.values(), color='g')
     ymax = max(f.dates.values()) + 1
     plt.title("Antall varsler paa datoer")
     plt.ylim(0, ymax)
     plt.xlim(dt.date(2015, 12, 01), dt.date(2016, 06, 01))
+    plt.plot( (bug_fixed_date, dt.date(2016, 06, 01)) ,(snitt, snitt), color='g', linestyle='dashed', linewidth=3)
     plt.xticks( rotation=17 )
     plt.savefig('{0}{1}_dates.png'.format(path, f.observer_id))
 
@@ -489,17 +494,18 @@ class Forecaster():
 
 if __name__ == "__main__":
 
-    # Some controls for debuging and developing
-    plot_one = False         # make one plot. If False it makes all plots.
-    save_for_web = True      # save for web. If false it saves to plot folder.
-    get_new = True
-    make_pickle = False
+    # Some controls for debugging and developing
+    plot_one = True         # make one plot for user 'Ragnar@NVE'. If False it makes all plots.
+    save_for_web = False      # save for web. If false it saves to plot folder.
+    get_new = False           # if false it uses a local pickle
+    make_pickle = True      # save pickle of new data if true
 
     # Manny files. Use a project folder.
     project_folder = 'forecasterfollowup/'
 
     product_image_folder='plots/'+ project_folder
-    if save_for_web: product_image_folder=env.web_images_folder + project_folder
+    if save_for_web:
+        product_image_folder=env.web_images_folder + project_folder
     # Make folder if it doesnt exist
     if not os.path.exists('{0}'.format(product_image_folder)):
         os.makedirs('{0}'.format(product_image_folder))
@@ -517,8 +523,8 @@ if __name__ == "__main__":
             how_to_get_warning_data='Get new and dont pickle'
     warnings = get_2015_16_warnings(how_to_get_data=how_to_get_warning_data, pickle_file_name=pickle_warnings_file_name)
 
-    # This is the data used form now on
-    forecaster_dict = make_forecaster_data(warnings)
+    # This is the data used from now on
+    forecaster_dict = make_forecaster_data(warnings, save_for_web=save_for_web)
 
     # make plots about all forecasters
     make_comparison_plots(forecaster_dict, path=product_image_folder)
@@ -526,10 +532,10 @@ if __name__ == "__main__":
     # make finge forecaster output
     if plot_one:
         # plot for singe user
-        make_m3_figs(forecaster_dict, 'Ragnar@NVE', path=product_image_folder)
+        #make_m3_figs(forecaster_dict, 'Ragnar@NVE', path=product_image_folder)
         make_plots(forecaster_dict, 'Ragnar@NVE', path=product_image_folder)
-        make_html(forecaster_dict, 'Ragnar@NVE', path=product_html_folder, type='Advanced')
-        make_html(forecaster_dict, 'Ragnar@NVE', path=product_html_folder, type='Simple')
+        #make_html(forecaster_dict, 'Ragnar@NVE', path=product_html_folder, type='Advanced')
+        #make_html(forecaster_dict, 'Ragnar@NVE', path=product_html_folder, type='Simple')
     else:
         # plot for all forecasters
         for n,f in forecaster_dict.iteritems():
