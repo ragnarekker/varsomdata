@@ -30,12 +30,11 @@ class KDVelement():
     def file_output(self, get_header=False):
 
         if get_header is True:
-            "{0: <5}{1: <7}{2: <10}{3: <10}{4: <50}{5: <50}".format(
-            "ID", "Order", "IsActive", "Langkey", "Name", "Description")
-
+            return "{0: <5}{1: <7}{2: <10}{3: <10}{4: <50}{5: <50}".format(
+                   "ID", "Order", "IsActive", "Langkey", "Name", "Description")
         else:
-            "{0: <5}{1: <7}{2: <10}{3: <10}{4: <50}{5: <50}".format(
-            self.ID, self.SortOrder, self.IsActive, self.Langkey, self.Name, self.Description)
+            return "{0: <5}{1: <7}{2: <10}{3: <10}{4: <50}{5: <50}".format(
+                   self.ID, self.SortOrder, self.IsActive, self.Langkey, self.Name, self.Description)
 
 
 def get_kdv(view):
@@ -166,10 +165,12 @@ if __name__ == "__main__":
     # danger_sign_kdv = get_kdv('DangerSignKDV')
     # write_kdv_dictionary(danger_sign_kdv, '{0}DangerSignKDV'.format(env.output_folder))
     #
-    # registration_kdv = get_kdv('RegistrationKDV')
+    registration_kdv = get_kdv('RegistrationKDV')
+    write_kdv_dictionary(registration_kdv, '{0}RegistrationKDV'.format(env.output_folder))
+
     # forecast_region_KDV = get_kdv('ForecastRegionKDV')
-    avalanche_ext_kdv = get_kdv('AvalancheExtKDV')
-    avalanche_kdv = get_kdv('AvalancheKDV')
+    #avalanche_ext_kdv = get_kdv('AvalancheExtKDV')
+    #avalanche_kdv = get_kdv('AvalancheKDV')
 
     # write_kdv_dictionary(registration_kdv, "{0}RegistrationKDV".format(env.output_folder))
     # write_kdv_dictionary(forecast_region_KDV, "{0}ForecastRegionKDV".format(env.output_folder))
