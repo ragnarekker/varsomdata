@@ -1,0 +1,76 @@
+15:39: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 100 from 2015-11-30 til 2016-06-01
+15:40: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 100 from 2015-11-30 til 2016-06-01
+15:40: getForecastApi -> get_warnings_as_json: 185 warnings found for 100.
+15:41: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 6 from 2015-11-30 til 2016-06-01
+15:41: getForecastApi -> get_warnings_as_json: 185 warnings found for 6.
+15:41: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 7 from 2015-11-30 til 2016-06-01
+15:41: getForecastApi -> get_warnings_as_json: 185 warnings found for 7.
+15:42: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 8 from 2015-11-30 til 2016-06-01
+15:42: getForecastApi -> get_warnings_as_json: 185 warnings found for 8.
+15:42: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 9 from 2015-11-30 til 2016-06-01
+15:42: getForecastApi -> get_warnings_as_json: 185 warnings found for 9.
+15:43: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 10 from 2015-11-30 til 2016-06-01
+15:43: getForecastApi -> get_warnings_as_json: 185 warnings found for 10.
+15:43: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 11 from 2015-11-30 til 2016-06-01
+15:44: getForecastApi -> get_warnings_as_json: 185 warnings found for 11.
+15:44: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 12 from 2015-11-30 til 2016-06-01
+15:44: getForecastApi -> get_warnings_as_json: 185 warnings found for 12.
+15:45: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 14 from 2015-11-30 til 2016-06-01
+15:45: getForecastApi -> get_warnings_as_json: 185 warnings found for 14.
+15:45: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 15 from 2015-11-30 til 2016-06-01
+15:45: getForecastApi -> get_warnings_as_json: 185 warnings found for 15.
+15:46: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 16 from 2015-11-30 til 2016-06-01
+15:46: getForecastApi -> get_warnings_as_json: 185 warnings found for 16.
+15:46: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 17 from 2015-11-30 til 2016-06-01
+15:47: getForecastApi -> get_warnings_as_json: 185 warnings found for 17.
+15:47: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 18 from 2015-11-30 til 2016-06-01
+15:47: getForecastApi -> get_warnings_as_json: 185 warnings found for 18.
+15:48: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 19 from 2015-11-30 til 2016-06-01
+15:48: getForecastApi -> get_warnings_as_json: 185 warnings found for 19.
+15:48: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 21 from 2015-11-30 til 2016-06-01
+15:49: getForecastApi -> get_warnings_as_json: 185 warnings found for 21.
+15:49: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 22 from 2015-11-30 til 2016-06-01
+15:49: getForecastApi -> get_warnings_as_json: 185 warnings found for 22.
+15:50: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 23 from 2015-11-30 til 2016-06-01
+15:50: getForecastApi -> get_warnings_as_json: 185 warnings found for 23.
+15:50: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 24 from 2015-11-30 til 2016-06-01
+15:51: getForecastApi -> get_warnings_as_json: 185 warnings found for 24.
+15:51: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 27 from 2015-11-30 til 2016-06-01
+15:51: getForecastApi -> get_warnings_as_json: 185 warnings found for 27.
+15:52: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 28 from 2015-11-30 til 2016-06-01
+15:52: getForecastApi -> get_warnings_as_json: 185 warnings found for 28.
+15:52: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 29 from 2015-11-30 til 2016-06-01
+15:53: getForecastApi -> get_warnings_as_json: 185 warnings found for 29.
+15:53: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 30 from 2015-11-30 til 2016-06-01
+15:53: getForecastApi -> get_warnings_as_json: 185 warnings found for 30.
+15:54: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 31 from 2015-11-30 til 2016-06-01
+15:54: getForecastApi -> get_warnings_as_json: 185 warnings found for 31.
+15:55: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 32 from 2015-11-30 til 2016-06-01
+15:55: getForecastApi -> get_warnings_as_json: 185 warnings found for 32.
+15:55: getForecastApi -> get_warnings_as_json: Getting AvalancheWarnings for 33 from 2015-11-30 til 2016-06-01
+15:55: getForecastApi -> get_warnings_as_json: 185 warnings found for 33.
+15:56: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Varslingsregion ikke gitt' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+15:56: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Alta' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+15:57: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Kaafjord' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+15:57: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Tromsoe' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+15:57: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Balsfjord' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+15:57: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Senja' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+15:57: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Lyngsalpan' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+15:58: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Bardu' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+15:58: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Narvik' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+15:58: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Vesteraalen' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+15:58: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Lofoten' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+15:58: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Trollheimen' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+15:59: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Romsdal' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+15:59: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Sunnmoere' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+15:59: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Fjordane' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+15:59: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Sogn' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+16:00: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Jotunheimen' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+16:00: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Voss' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+16:00: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Roeldal' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+16:00: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Rauland' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+16:01: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Tamokdalen' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+16:01: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Nordenskioldland' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+16:01: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Svartisen' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+16:01: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Hallingdal' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
+16:01: getobservations.py -> _make_data_request: http://api.nve.no/hydrology/regobs/v1.0.1/Odata.svc/DangerObsV/?$filter=DtObsTime gt datetime'2015-11-30' and DtObsTime lt datetime'2016-06-01' and ForecastRegionName eq 'Salten' and GeoHazardTID eq 10 and LangKey eq 1&$format=json
