@@ -93,21 +93,21 @@ class IndexOfSizeAndNumber():
         return
 
 
-def step_1_make_data_set(region_id, from_date, to_date):
-    """Makes the dataset of all observed avalanche activity (inl signs and isingle avalanches obs) and mapps
+def step_1_make_data_set(region_ids, from_date, to_date):
+    """Makes the dataset of all observed avalanche activity (inl signs and isingle avalanches obs) and maps
     to forecasts for those days.
 
-    :param region_id:   [int or list of ints]
+    :param region_ids:   [int or list of ints]
     :param from_date:   [date]
     :param to_date:     [date]
     :return:
     """
 
     # get all data
-    dangers = gd.get_all_dangers(region_id, from_date, to_date)
-    avalanches = go.get_avalanche_activity(region_id, from_date, to_date)
-    single_avalanches = go.get_avalanche(region_id, from_date, to_date)
-    danger_signs = go.get_danger_sign(region_id, from_date, to_date)
+    dangers = gd.get_all_dangers(region_ids, from_date, to_date)
+    avalanches = go.get_avalanche_activity(from_date, to_date, region_ids)
+    single_avalanches = go.get_avalanche(from_date, to_date, region_ids)
+    danger_signs = go.get_danger_sign(from_date, to_date, region_ids)
 
     # List of only forecasts
     forecasted_dangers = []
@@ -218,13 +218,13 @@ def step_3_count_occurances(date_region, elements):
 
                 # if danger sign
                 if isinstance(d.most_valued_observation, go.DangerObs):
-                    dager_sign_name = d.most_valued_observation.DangerSignName
-                    if e.estimated_number == "Fra faretegn" and 'Ikke gitt' in e.destructive_size and 'Ferske skred' in dager_sign_name:
+                    danger_sign_name = d.most_valued_observation.DangerSignName
+                    if e.estimated_number == "Fra faretegn" and 'Ikke gitt' in e.destructive_size and 'Ferske skred' in danger_sign_name:
                         e.observation_count += 1
-                    if e.estimated_number == "Ingen" and 'Ikke gitt' in e.destructive_size and 'Ingen faretegn observert' in dager_sign_name:
+                    if e.estimated_number == 'Ingen' and 'Ikke gitt' in e.destructive_size and 'Ingen faretegn observert' in danger_sign_name:
                         e.observation_count += 1
 
-                # if one avlanche
+                # if one avalanche
                 if isinstance(d.most_valued_observation, go.AvalancheObs):
                     num = "Ett (1)"
                     size = d.most_valued_observation.DestructiveSizeName
@@ -234,11 +234,13 @@ def step_3_count_occurances(date_region, elements):
                         e.avalanche_trigger.append(trigger)
 
                 # if activity
+                # Note that in the elements no activity i "Ingen" whereas no activity in EstimatedNumKDV is
+                # "Ingen skredaktivitet"
                 if isinstance(d.most_valued_observation, go.AvalancheActivityObs):
                     num = d.most_valued_observation.EstimatedNumName
                     size = d.most_valued_observation.DestructiveSizeName
                     trigger = d.most_valued_observation.AvalancheTriggerName
-                    if size in e.destructive_size and num in e.estimated_number:
+                    if size in e.destructive_size and e.estimated_number in num:
                         e.observation_count += 1
                         e.avalanche_trigger.append(trigger)
 
@@ -281,7 +283,7 @@ def step_4_plot(date_region, forecasted_dangers, elements, file_name, file_ext="
             unused_elements.append(e)
 
     # Figure header
-    plb.text(0, 790, 'Hoeyest observerte skredaktivitet i regionen sett sammen mot faregraden - vinter 2014/15', fontsize=30)
+    plb.text(0, 790, 'Hoeyest observerte skredaktivitet i regionen sett sammen mot faregraden - vinter 2015/16', fontsize=30)
 
     # Label Avalanche size
     plb.text(-100, 430, 'Skredstoerelse', fontsize=20, rotation=90)
@@ -339,7 +341,10 @@ def step_4_1_plot_numbers_and_distribution(danger_level, ax, x, elements, date_r
                 obs_trigger += sum(t not in 'Ikke gitt' for t in e.avalanche_trigger)
                 aval_obs_total += e.observation_count
 
-        frac_trigger = float(obs_trigger)/aval_obs_total*100
+        if aval_obs_total == 0:
+            frac_trigger = 0
+        else:
+            frac_trigger = float(obs_trigger)/aval_obs_total*100
 
         plb.text(x+20, 620, 'I {0:.0f}% av tilfellene hvor skred eller skredaktivitet var\n'
                             'observert var tilleggsbelastning observert.'.format(frac_trigger))
@@ -461,20 +466,20 @@ def step_4_1_plot_numbers_and_distribution(danger_level, ax, x, elements, date_r
 
 if __name__ == "__main__":
 
-    region_id = [112, 117, 116, 128]
-
     ### Get all regions
+    #region_id = [112, 117, 116, 128]
+
     region_id = []
     ForecastRegionKDV = gkdv.get_kdv('ForecastRegionKDV')
     for k, v in ForecastRegionKDV.iteritems():
-        if 99 < k < 150 and v.IsActive is True:
-            region_id.append(v.ID)
+       if 99 < k < 150 and v.IsActive is True:
+           region_id.append(v.ID)
 
-    from_date = dt.date(2014, 11, 30)
-    to_date = dt.date(2015, 6, 1)
+    from_date = dt.date(2015, 11, 30)
+    to_date = dt.date(2016, 06, 01)
     #to_date = dt.date.today()
 
-    ### get and make the data set
+    # ## get and make the data set
     # date_region, forecasted_dangers = step_1_make_data_set(region_id, from_date, to_date)
     # mp.pickle_anything([date_region, forecasted_dangers], '{0}runforavalancheactivity_step_1.pickle'.format(env.local_storage))
     #
@@ -482,17 +487,19 @@ if __name__ == "__main__":
     # date_region, forecasted_dangers = mp.unpickle_anything('{0}runforavalancheactivity_step_1.pickle'.format(env.local_storage))
     # date_region = step_2_find_most_valued(date_region)
     # mp.pickle_anything([date_region, forecasted_dangers], '{0}runforavalancheactivity_step_2.pickle'.format(env.local_storage))
-    # #
-    ## ready to add to count elements
-    date_region, forecasted_dangers = mp.unpickle_anything('{0}runforavalancheactivity_step_2.pickle'.format(env.local_storage))
-    elements = rf.read_configuration_file('{0}aval_dl_configuration.csv'.format(env.input_folder), ActivityAndDanger)
-    elements = step_3_count_occurances(date_region, elements)
-    mp.pickle_anything([date_region, forecasted_dangers, elements], '{0}runforavalancheactivity_step_3.pickle'.format(env.local_storage))
+    #
+    # ## ready to add to count elements
+    # date_region, forecasted_dangers = mp.unpickle_anything('{0}runforavalancheactivity_step_2.pickle'.format(env.local_storage))
+    # elements = rf.read_configuration_file('{0}aval_dl_configuration.csv'.format(env.input_folder), ActivityAndDanger)
+    # elements = step_3_count_occurances(date_region, elements)
+    # mp.pickle_anything([date_region, forecasted_dangers, elements], '{0}runforavalancheactivity_step_3.pickle'.format(env.local_storage))
 
     ### ready to plot?
     date_region, forecasted_dangers, elements = mp.unpickle_anything('{0}runforavalancheactivity_step_3.pickle'.format(env.local_storage))
     step_4_plot(date_region, forecasted_dangers, elements, '{0}Avalanches and dangers {1} to {2}'.format(env.plot_folder, from_date, to_date))
 
+
+    # Do a count on observations..
     total_a = 0
     total_aa = 0
     total_ds = 0
@@ -500,9 +507,9 @@ if __name__ == "__main__":
         total_a += len(d.avalanche)
         total_aa += len(d.avalanche_activity)
         total_ds += len(d.danger_sign)
-
     total_obs = total_a + total_aa + total_ds
 
+    # ..and used elements. Useful for debugging.
     used_elements = []
     for e in elements:
         if e.observation_count is not 0:

@@ -15,9 +15,9 @@ import pylab as plb
 if __name__ == "__main__":
 
     ## Get new or load from pickle.
-    get_new = True
-    ## Use already made data set
-    make_new = True
+    get_new = False
+    ## Use already made data set. Remember to make get_new = False
+    make_new = False
 
     ## Set dates
     from_date = dt.date(2015, 11, 30)
@@ -156,7 +156,7 @@ if __name__ == "__main__":
         plb.text(100*i-20, -0.04, '{0}'.format(plot_labels[i-1]))
 
     # title
-    plb.text(50, 1.165, 'Faretegn fordelt paa varselt faregrad vintern 2014-15', fontsize=30)
+    plb.text(50, 1.165, 'Faretegn fordelt paa varselt faregrad vintern {0}-{1}'.format(from_date.strftime('%Y'), to_date.strftime('%y')), fontsize=30)
 
     plb.xlim(0, 700)
     plb.ylim(-0.05, 1.25)

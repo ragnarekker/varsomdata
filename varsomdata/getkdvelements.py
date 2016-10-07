@@ -55,7 +55,8 @@ def get_kdv(view):
     if os.path.exists(kdv_file_name):
 
         max_file_age = 3
-        file_date_seconds = os.path.getctime(kdv_file_name)
+        # file_date_seconds = os.path.getctime(kdv_file_name)
+        file_date_seconds = os.path.getmtime(kdv_file_name)
         file_date_datetime = dt.datetime.fromtimestamp(file_date_seconds)
         file_date_limit = dt.datetime.now() - dt.timedelta(days=max_file_age)
 
@@ -63,6 +64,7 @@ def get_kdv(view):
             print "getkdvelements.py -> get_kdv: Removing KDV from local storage: {0}".format(kdv_file_name)
             os.remove(kdv_file_name)
             ordered_dict = get_kdv(view)
+            mp.pickle_anything(ordered_dict, kdv_file_name)
         else:
             # print "getkdvelements.py -> get_kdv: Getting KDV from local storage: {0}".format(kdv_file_name)
             ordered_dict = mp.unpickle_anything(kdv_file_name, print_message=False)
@@ -165,10 +167,10 @@ if __name__ == "__main__":
     # danger_sign_kdv = get_kdv('DangerSignKDV')
     # write_kdv_dictionary(danger_sign_kdv, '{0}DangerSignKDV'.format(env.output_folder))
     #
-    registration_kdv = get_kdv('RegistrationKDV')
-    write_kdv_dictionary(registration_kdv, '{0}RegistrationKDV'.format(env.output_folder))
+    # registration_kdv = get_kdv('RegistrationKDV')
+    # write_kdv_dictionary(registration_kdv, '{0}RegistrationKDV'.format(env.output_folder))
 
-    # forecast_region_KDV = get_kdv('ForecastRegionKDV')
+    forecast_region_KDV = get_kdv('ForecastRegionKDV')
     #avalanche_ext_kdv = get_kdv('AvalancheExtKDV')
     #avalanche_kdv = get_kdv('AvalancheKDV')
 
