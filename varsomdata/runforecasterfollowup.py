@@ -190,13 +190,15 @@ def make_plots(forecaster_dict, nick, path=''):
     plt.clf()
     bug_fixed_date = dt.date(2016, 01, 11)
     antall_pr_dag = [v for k,v in f.dates.iteritems() if k > bug_fixed_date]
-    snitt = sum(antall_pr_dag)/float(len(antall_pr_dag))
+    if len(antall_pr_dag) != 0:
+        snitt = sum(antall_pr_dag)/float(len(antall_pr_dag))
+        plt.plot((bug_fixed_date, dt.date(2016, 06, 01)), (snitt, snitt), color='g', linestyle='dashed', linewidth=3)
     plt.bar(f.dates.keys(), f.dates.values(), color='g')
     ymax = max(f.dates.values()) + 1
     plt.title("Antall varsler paa datoer")
     plt.ylim(0, ymax)
     plt.xlim(dt.date(2015, 12, 01), dt.date(2016, 06, 01))
-    plt.plot( (bug_fixed_date, dt.date(2016, 06, 01)) ,(snitt, snitt), color='g', linestyle='dashed', linewidth=3)
+
     plt.xticks( rotation=17 )
     plt.savefig('{0}{1}_dates.png'.format(path, f.observer_id))
 
@@ -495,10 +497,10 @@ class Forecaster():
 if __name__ == "__main__":
 
     # Some controls for debugging and developing
-    plot_one = True         # make one plot for user 'Ragnar@NVE'. If False it makes all plots.
-    save_for_web = False      # save for web. If false it saves to plot folder.
+    plot_one = False         # make one plot for user 'Ragnar@NVE'. If False it makes all plots.
+    save_for_web = True      # save for web. If false it saves to plot folder.
     get_new = False           # if false it uses a local pickle
-    make_pickle = True      # save pickle of new data if true
+    make_pickle = True      # save pickle of get_new if true
 
     # Manny files. Use a project folder.
     project_folder = 'forecasterfollowup/'
@@ -532,18 +534,18 @@ if __name__ == "__main__":
     # make finge forecaster output
     if plot_one:
         # plot for singe user
-        #make_m3_figs(forecaster_dict, 'Ragnar@NVE', path=product_image_folder)
+        make_m3_figs(forecaster_dict, 'Ragnar@NVE', path=product_image_folder)
         make_plots(forecaster_dict, 'Ragnar@NVE', path=product_image_folder)
-        #make_html(forecaster_dict, 'Ragnar@NVE', path=product_html_folder, type='Advanced')
-        #make_html(forecaster_dict, 'Ragnar@NVE', path=product_html_folder, type='Simple')
+        make_html(forecaster_dict, 'Ragnar@NVE', path=product_html_folder, type='Advanced')
+        make_html(forecaster_dict, 'Ragnar@NVE', path=product_html_folder, type='Simple')
     else:
         # plot for all forecasters
         for n,f in forecaster_dict.iteritems():
             nick = fe.remove_norwegian_letters(n)
-            make_m3_figs(forecaster_dict, nick, path=product_image_folder)
+            #make_m3_figs(forecaster_dict, nick, path=product_image_folder)
             make_plots(forecaster_dict, nick, path=product_image_folder)
-            make_html(forecaster_dict, nick, path=product_html_folder, type='Advanced')
-            make_html(forecaster_dict, nick, path=product_html_folder, type='Simple')
+            #make_html(forecaster_dict, nick, path=product_html_folder, type='Advanced')
+            #make_html(forecaster_dict, nick, path=product_html_folder, type='Simple')
 
 
 
