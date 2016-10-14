@@ -7,7 +7,6 @@ import getobservations as go
 import getkdvelements as gkdv
 import setenvironment as env
 import datetime as dt
-import readfile as rf
 import makepickle as mp
 import matplotlib as mpl
 import pylab as plb
@@ -15,41 +14,55 @@ import pylab as plb
 
 if __name__ == "__main__":
 
-    # region_id = [112, 117, 116, 128]
+    ## Get new or load from pickle.
+    get_new = False
+    ## Use already made data set. Remember to make get_new = False
+    make_new = False
 
-    ## Get all regions
+    ## Set dates
+    from_date = dt.date(2015, 11, 30)
+    to_date = dt.date(2016, 6, 1)
+    #to_date = dt.date.today()
+
+    ## Get regions
+    # region_id = [112, 117, 116, 128]
     region_id = []
     ForecastRegionKDV = gkdv.get_kdv('ForecastRegionKDV')
     for k, v in ForecastRegionKDV.iteritems():
         if 99 < k < 150 and v.IsActive is True:
             region_id.append(v.ID)
 
-    from_date = dt.date(2014, 11, 30)
-    to_date = dt.date(2015, 6, 1)
-    #to_date = dt.date.today()
+    ## The output
+    plot_file_name = 'Danger level and danger sign 2015-16.png'
+
+    ##################################### End of configuration ###################################
 
     pickle_file_name_1 = '{0}runlevelanddangersign part 1.pickle'.format(env.local_storage)
     pickle_file_name_2 = '{0}runlevelanddangersign part 2.pickle'.format(env.local_storage)
 
-    all_danger_levels = gd.get_all_dangers(region_id, from_date, to_date)
-    all_danger_signs = go.get_danger_sign(from_date, to_date, region_ids=region_id, geohazard_tid=10)
-    mp.pickle_anything([all_danger_levels, all_danger_signs], pickle_file_name_1)
+    if get_new:
+        # get all data and save to pickle
+        all_danger_levels = gd.get_all_dangers(region_id, from_date, to_date)
+        all_danger_signs = go.get_danger_sign(from_date, to_date, region_ids=region_id, geohazard_tid=10)
+        mp.pickle_anything([all_danger_levels, all_danger_signs], pickle_file_name_1)
+    else:
+        # load data from pickle
+        all_danger_levels, all_danger_signs = mp.unpickle_anything(pickle_file_name_1)
 
-    all_danger_levels, all_danger_signs = mp.unpickle_anything(pickle_file_name_1)
-
-    # for counting days with danger levels
-    level_count = []
-    data = {1:[], 2:[], 3:[], 4:[], 5:[]}
-    for dl in all_danger_levels:
-        if dl.source == 'Varsel' and dl.danger_level is not 0:
-            level_count.append(dl.danger_level)
-            for ds in all_danger_signs:
-                if dl.date == ds.DtObsTime.date() and dl.region_name in ds.ForecastRegionName:
-                    print '{0}'.format(dl.date)
-                    data[dl.danger_level].append(fe.remove_norwegian_letters(ds.DangerSignName))
-    mp.pickle_anything([data, level_count], pickle_file_name_2)
-
-    data, level_count = mp.unpickle_anything(pickle_file_name_2)
+    if make_new:
+        # for counting days with danger levels
+        level_count = []
+        data = {1:[], 2:[], 3:[], 4:[], 5:[]}
+        for dl in all_danger_levels:
+            if dl.source == 'Varsel' and dl.danger_level is not 0:
+                level_count.append(dl.danger_level)
+                for ds in all_danger_signs:
+                    if dl.date == ds.DtObsTime.date() and dl.region_name in ds.ForecastRegionName:
+                        print '{0}'.format(dl.date)
+                        data[dl.danger_level].append(fe.remove_norwegian_letters(ds.DangerSignName))
+        mp.pickle_anything([data, level_count], pickle_file_name_2)
+    else:
+        data, level_count = mp.unpickle_anything(pickle_file_name_2)
 
     # pick out a list of danger signs
     DangerSignKDV = gkdv.get_kdv('DangerSignKDV')
@@ -143,12 +156,11 @@ if __name__ == "__main__":
         plb.text(100*i-20, -0.04, '{0}'.format(plot_labels[i-1]))
 
     # title
-    plb.text(50, 1.165, 'Faretegn fordelt paa varselt faregrad vintern 2014-15', fontsize=30)
+    plb.text(50, 1.165, 'Faretegn fordelt paa varselt faregrad vintern {0}-{1}'.format(from_date.strftime('%Y'), to_date.strftime('%y')), fontsize=30)
 
     plb.xlim(0, 700)
     plb.ylim(-0.05, 1.25)
     plb.axis('off')
 
-    file_name = 'Danger level and danger sign 2014-15.png'
-    plb.savefig("{0}{1}".format(env.plot_folder, file_name))
+    plb.savefig("{0}{1}".format(env.plot_folder, plot_file_name))
 
