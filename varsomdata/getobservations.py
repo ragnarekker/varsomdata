@@ -95,6 +95,8 @@ def _make_data_request(view, from_date, to_date, region_ids=None, observer_ids=N
             odata_query = _make_odata_filter(from_date, to_date, region_id, observer_id, geohazard_tid)
             url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}/?$filter={2}&$format=json"\
                 .decode('utf8').format(env.api_version, view, odata_query)
+            if view == "IncidentV":
+                url = url.replace('GeoHazardTID', 'GeoHazardTid')
             ml.log_and_print("getobservations.py -> _make_data_request: {0}".format(fe.remove_norwegian_letters(url)))
 
             try:
@@ -396,6 +398,55 @@ class DangerObs(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
+class Incident(Registration, Location, Observer):
+    """
+    <content type="application/xml">
+    <m:properties>
+    <d:RegID m:type="Edm.Int32">555</d:RegID>
+    <d:DtObsTime m:type="Edm.DateTime">2011-12-27T00:00:00</d:DtObsTime>
+    <d:DtRegTime m:type="Edm.DateTime">2012-01-31T15:52:25.807</d:DtRegTime>
+    <d:LocationName>Aga</d:LocationName>
+    <d:UTMZone m:type="Edm.Int16">33</d:UTMZone>
+    <d:UTMEast m:type="Edm.Int32">36197</d:UTMEast>
+    <d:UTMNorth m:type="Edm.Int32">6714366</d:UTMNorth>
+    <d:ForecastRegionName>Røldal</d:ForecastRegionName>
+    <d:MunicipalName>ULLENSVANG</d:MunicipalName>
+    <d:NickName>jaw@nve.no</d:NickName>
+    <d:CompetenceLevelName>Ukjent</d:CompetenceLevelName>
+    <d:GeoHazardName>Våt jord</d:GeoHazardName>
+
+    <d:ActivityInfluencedName>Annet</d:ActivityInfluencedName>
+    <d:DamageExtentTID m:type="Edm.Int16">20</d:DamageExtentTID>
+    <d:DamageExtentName xml:space="preserve">Kun materielle skader </d:DamageExtentName>
+    <d:IncidentHeader>Flomskred Aga</d:IncidentHeader>
+    <d:IncidentIngress m:null="true" />
+    <d:IncidentText>Stort flomskred fra høyt oppe i gjelet. Stoppet i fangvollen som er bygd for å sikre mot snøskred. Flomskredmassene tettet dreningsspalten midt i vollen, slik at flomvannet rant ut på sidene av vollen. Selve skredmassene påvirket ikke bebyggelse, men flomvannet som kom etter skredet og rant ut på sidene av vollen voldet skader på bebygglse nedenfor. Markering i kartet viser hvor skredmassene stoppet.</d:IncidentText>
+    <d:LangKey m:type="Edm.Int16">1</d:LangKey>
+    <d:ForecastRegionTID m:type="Edm.Int16">127</d:ForecastRegionTID>
+    <d:GeoHazardTid m:type="Edm.Int16">30</d:GeoHazardTid>
+    <d:MunicipalNo>1231</d:MunicipalNo>
+    <d:DtChangeTime m:type="Edm.DateTime">2012-01-31T15:52:25.807</d:DtChangeTime>
+    </m:properties>
+    </content>
+    """
+
+    def __init__(self, d):
+
+        Registration.__init__(self, d)
+        Location.__init__(self, d)
+        Observer.__init__(self, d)
+
+        self.ActivityInfluencedName = fe.remove_norwegian_letters(d['ActivityInfluencedName'])
+        self.DamageExtentTID = d['DamageExtentTID']
+        self.DamageExtentName = fe.remove_norwegian_letters(d['DamageExtentName'])
+        self.IncidentHeader = fe.remove_norwegian_letters(d['IncidentHeader'])
+        self.IncidentIngress = fe.remove_norwegian_letters(d['IncidentIngress'])
+        self.IncidentText = fe.remove_norwegian_letters(d['IncidentText'])
+        self.GeoHazardName = fe.remove_norwegian_letters(d['GeoHazardName'])
+        self.GeoHazardTID = d['GeoHazardTid']
+        self.LangKey = d['LangKey']
+
+
 def get_all_registrations(from_date, to_date, region_ids=None, observer_ids=None, output='List', geohazard_tid=None):
     """Gets observations from AllRegistrationsV.
 
@@ -559,6 +610,40 @@ def get_danger_sign(from_date, to_date, region_ids=None, observer_ids=None, outp
 
     else:
         ml.log_and_print('getobservations.py -> get_danger_sign: Illegal output option.')
+        return None
+
+
+def get_incident(from_date, to_date, region_ids=None, observer_ids=None, output='List', geohazard_tid=None):
+    """Gets observations from IncidentV. View is shared by all the geohazards so the filter includes
+    geohazard_tid if only one geohazard is needed.
+
+    :param from_date:       [date] A query returns [from_date, to_date>
+    :param to_date:         [date] A query returns [from_date, to_date>
+    :param region_ids:      [int or list of ints] If region_ids = None, all regions are selected
+    :param observer_ids:    [int or list of ints] If observer_ids = None, all observers are selected
+    :param output:          [string] Options: 'List', 'DataFrame' and 'Count'. Default 'List'.
+    :param geohazard_tid    [int] 10 is snow, 20,30,40 are dirt, 60 is water and 70 is ice
+
+    :return:
+    """
+
+    if output == 'List' or output == 'DataFrame':
+        data = _make_data_request("IncidentV", from_date, to_date, region_ids, observer_ids, geohazard_tid)
+        list = [Incident(d) for d in data]
+        list = sorted(list, key=lambda DangerObs: DangerObs.DtObsTime)
+
+        if output == 'List':
+            return list
+
+        elif output == 'DataFrame':
+            return _make_data_frame(list)
+
+    elif output == 'Count':
+        count = _make_count_request("IncidentV", from_date, to_date, region_ids, observer_ids, geohazard_tid)
+        return count
+
+    else:
+        ml.log_and_print('getobservations.py -> get_incident: Illegal output option.')
         return None
 
 

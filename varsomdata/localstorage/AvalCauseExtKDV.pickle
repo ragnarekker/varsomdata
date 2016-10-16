@@ -4,7 +4,7 @@ p0
 ((lp1
 (lp2
 I0
-a(i__main__
+a(igetkdvelements
 KDVelement
 p3
 (dp4
@@ -28,7 +28,7 @@ S'ikke gitt'
 p11
 sbaa(lp12
 I1
-a(i__main__
+a(igetkdvelements
 KDVelement
 p13
 (dp14
@@ -46,7 +46,7 @@ S'Temperatur'
 p15
 sbaa(lp16
 I2
-a(i__main__
+a(igetkdvelements
 KDVelement
 p17
 (dp18
@@ -64,7 +64,7 @@ S'Temperatur + sol'
 p19
 sbaa(lp20
 I3
-a(i__main__
+a(igetkdvelements
 KDVelement
 p21
 (dp22
@@ -82,7 +82,7 @@ S'Sol'
 p23
 sbaa(lp24
 I4
-a(i__main__
+a(igetkdvelements
 KDVelement
 p25
 (dp26
@@ -100,7 +100,7 @@ S'Nysnoe'
 p27
 sbaa(lp28
 I5
-a(i__main__
+a(igetkdvelements
 KDVelement
 p29
 (dp30
@@ -118,7 +118,7 @@ S'Vind'
 p31
 sbaa(lp32
 I6
-a(i__main__
+a(igetkdvelements
 KDVelement
 p33
 (dp34
@@ -136,7 +136,7 @@ S'Nysnoe + vind'
 p35
 sbaa(lp36
 I7
-a(i__main__
+a(igetkdvelements
 KDVelement
 p37
 (dp38
@@ -154,7 +154,7 @@ S'Skare'
 p39
 sbaa(lp40
 I8
-a(i__main__
+a(igetkdvelements
 KDVelement
 p41
 (dp42
@@ -172,7 +172,7 @@ S'Overflaterim'
 p43
 sbaa(lp44
 I9
-a(i__main__
+a(igetkdvelements
 KDVelement
 p45
 (dp46
@@ -190,7 +190,7 @@ S'Sjiktovergang'
 p47
 sbaa(lp48
 I10
-a(i__main__
+a(igetkdvelements
 KDVelement
 p49
 (dp50
@@ -208,7 +208,7 @@ S'Hagl'
 p51
 sbaa(lp52
 I11
-a(i__main__
+a(igetkdvelements
 KDVelement
 p53
 (dp54

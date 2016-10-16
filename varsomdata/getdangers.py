@@ -61,7 +61,6 @@ class AvalancheDanger():
         self.forecast_correct_id = None
 
 
-
     def add_problem(self, problem_inn):
         self.avalanche_problems.append(problem_inn)
         self.avalanche_problems.sort(key=lambda problems: problems.order)           # make sure lowest index (main problem) is first
@@ -126,7 +125,7 @@ def get_observed_dangers(region_id, start_date, end_date):
 
 
 def get_forecasted_dangers(region_id, start_date, end_date, include_problems=False, include_ikke_vurdert=False):
-    '''Gets forecasted dangers. If specified, the avalanche problems are included.
+    '''Gets forecasted dangers for ONE region. If specified, the avalanche problems are included.
 
     :param region_id:               [int] only one region. ID as given in regObs
     :param start_date:              [date or string as yyyy-mm-dd] gets dates [from, to>
@@ -147,7 +146,6 @@ def get_forecasted_dangers(region_id, start_date, end_date, include_problems=Fal
             for j in range(0, len(problems), 1):
                 if region_warnings[i].date == problems[j].date:
                     region_warnings[i].add_problem(problems[j])
-
 
         # make sure all problems are ordered from lowest id (main problem) to largest.
         for w in region_warnings:
