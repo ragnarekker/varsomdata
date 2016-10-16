@@ -28,8 +28,7 @@
 {"name":"2 Moderat"},
 {"name":"4 Stor"},
 {"name":"Smelting fra bakken"},
-{"name":"Personer skadet"},
-],
+{"name":"Personer skadet"}],
 "links":[
 {"source":0,"target":10,"value":118},
 {"source":1,"target":12,"value":6},
@@ -78,5 +77,4 @@
 {"source":23,"target":28,"value":104},
 {"source":23,"target":29,"value":7},
 {"source":24,"target":27,"value":1},
-{"source":25,"target":27,"value":1},
-]}
+{"source":25,"target":27,"value":1}]}

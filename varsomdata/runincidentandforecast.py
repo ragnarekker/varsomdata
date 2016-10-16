@@ -60,8 +60,8 @@ if __name__ == "__main__":
     ## Get new or load from pickle.
     get_new = False
     ## Use already made data set. Remember to make get_new = False
-    make_new_incident_list = False
-    make_new_node_list = False
+    make_new_incident_list = True
+    make_new_node_list = True
 
     ## Set dates
     from_date = dt.date(2015, 11, 30)
@@ -77,7 +77,7 @@ if __name__ == "__main__":
             region_ids.append(v.ID)
 
     ## The output
-    incident_ap_dl_json = 'incident_and_forecast.json'
+    incident_ap_dl_json = '{0}incident_and_forecast.json'.format(env.output_folder)
 
     ##################################### End of configuration, get data ###########################
 
@@ -98,9 +98,9 @@ if __name__ == "__main__":
 
     ################################## Make incident list ##################################################
 
-    desired_damage_extent_kdv = {15: 'Trafikk hindret',
-                                 20: 'Kun materielle skader',
-                                 25: 'Evakuering',
+    desired_damage_extent_kdv = {#15: 'Trafikk hindret',
+                                 #20: 'Kun materielle skader',
+                                 #25: 'Evakuering',
                                  29: 'Nestenulykke',
                                  30: 'Personer skadet',
                                  40: 'Personer omkommet'}
@@ -269,7 +269,7 @@ if __name__ == "__main__":
     else:
         nodes_and_values = mp.unpickle_anything(pickle_file_name_3)
 
-    #################################### Clean node list ###############################################
+    #################################### Clean node list and make file###########################################
 
     new_nodes_and_values = []       # with values > 0
 
@@ -292,6 +292,8 @@ if __name__ == "__main__":
         nv.update_ids(new_nodes_dict)
 
     '''
+    Output example
+
     {"nodes":[
     {"name": "Agricultural 'waste'"},
     ],
@@ -301,14 +303,29 @@ if __name__ == "__main__":
     }
     '''
 
+    import operator
+    sorted_new_nodes_dict = sorted(new_nodes_dict.items(), key=operator.itemgetter(1))
 
-    with open('test.json', "w") as myfile:
+    first_nodes = True
+    first_links = True
+
+    with open(incident_ap_dl_json, "w") as myfile:
         myfile.write('{"nodes":[\n')
-        for nd in new_nodes_dict.keys():
-            myfile.write('{{"name":"{0}"}},\n'.format(nd))
-        myfile.write('],\n"links":[\n')
+
+        for nd in sorted_new_nodes_dict:
+            if first_nodes:
+                myfile.write('{{"name":"{0}"}}'.format(nd[0]))
+                first_nodes = False
+            else:
+                myfile.write(',\n{{"name":"{0}"}}'.format(nd[0]))
+        myfile.write('\n],\n"links":[\n')
+
         for nv in new_nodes_and_values:
-            myfile.write('{{"source":{0},"target":{1},"value":{2}}},\n'.format(nv.node_id, nv.target_id, nv.value))
-        myfile.write(']}')
+            if first_links:
+                myfile.write('{{"source":{0},"target":{1},"value":{2}}}'.format(nv.node_id, nv.target_id, nv.value))
+                first_links = False
+            else:
+                myfile.write(',\n{{"source":{0},"target":{1},"value":{2}}}'.format(nv.node_id, nv.target_id, nv.value))
+        myfile.write('\n]}')
 
     a = 1
