@@ -24,7 +24,7 @@ if sys.platform == 'darwin':
     local_storage = root_folder + 'localstorage/'
     output_folder = root_folder + 'output/'
 
-    web_root_folder = '/Users/ragnarekker/Documents/github/BottleSite/'
+    web_root_folder = '/Users/ragnarekker/Dropbox/Kode/Python/BottleSite/'
     web_images_folder = web_root_folder + 'images/'
     web_view_folder = web_root_folder + 'views/'
 
@@ -39,7 +39,7 @@ elif sys.platform == 'win32':
     local_storage = root_folder + 'localstorage\\'
     output_folder = root_folder + 'output\\'
 
-    web_root_folder = 'C:\\Users\\raek\\github\\BottleSite\\'
+    web_root_folder = 'C:\\Users\\raek\\Dropbox\\Kode\\Python\\BottleSite\\'
     web_images_folder = web_root_folder + 'images\\'
     web_view_folder = web_root_folder + 'views\\'
 

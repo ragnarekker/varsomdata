@@ -34,8 +34,6 @@ class IncidentAndForecasts():
         return return_value
 
 
-
-
 class NodesAndValues():
 
     def __init__(self, node_name_inn, node_id_inn, target_name_inn, target_id_inn):
@@ -55,36 +53,16 @@ class NodesAndValues():
         self.target_id = nodes_dict[self.target_name]
 
 
-if __name__ == "__main__":
+def get_data(from_date, to_date, region_ids, pickle_file_name_1, get_new):
+    '''Timeconsuming and inefficient. Not proud..
 
-    ## Get new or load from pickle.
-    get_new = False
-    ## Use already made data set. Remember to make get_new = False
-    make_new_incident_list = True
-    make_new_node_list = True
-
-    ## Set dates
-    from_date = dt.date(2015, 11, 30)
-    to_date = dt.date(2016, 6, 1)
-    #to_date = dt.date.today()
-
-    ## Get regions
-    # region_id = [112, 117, 116, 128]
-    region_ids = []
-    ForecastRegionKDV = gkdv.get_kdv('ForecastRegionKDV')
-    for k, v in ForecastRegionKDV.iteritems():
-        if 99 < k < 150 and v.IsActive is True:
-            region_ids.append(v.ID)
-
-    ## The output
-    incident_ap_dl_json = '{0}incident_and_forecast.json'.format(env.output_folder)
-
-    ##################################### End of configuration, get data ###########################
-
-    pickle_file_name_1 = '{0}runincidentandforecast part 1.pickle'.format(env.local_storage)
-    pickle_file_name_2 = '{0}runincidentandforecast part 2.pickle'.format(env.local_storage)
-    pickle_file_name_3 = '{0}runincidentandforecast part 3.pickle'.format(env.local_storage)
-
+    :param from_date:
+    :param to_date:
+    :param region_ids:
+    :param pickle_file_name_1:
+    :param get_new:
+    :return:
+    '''
     if get_new:
         # get all data and save to pickle
         all_incidents = go.get_incident(from_date, to_date, region_ids=region_ids, geohazard_tid=10)
@@ -96,39 +74,53 @@ if __name__ == "__main__":
         # load data from pickle
         all_forecasts, all_incidents = mp.unpickle_anything(pickle_file_name_1)
 
-    ################################## Make incident list ##################################################
+    return all_forecasts, all_incidents
 
-    desired_damage_extent_kdv = {#15: 'Trafikk hindret',
-                                 #20: 'Kun materielle skader',
-                                 #25: 'Evakuering',
-                                 29: 'Nestenulykke',
-                                 30: 'Personer skadet',
-                                 40: 'Personer omkommet'}
+
+def get_incident_list(all_incidents, desired_damage_extent_kdv, pickle_file_name_2, make_new_incident_list):
+    '''Each row in the incident list contains Incident and Forecast objects where
+    date and forecast region match AND where incidents match the damage extent we wish to study.
+
+    :param all_incidents:
+    :param desired_damage_extent_kdv:
+    :param pickle_file_name_2:
+    :param make_new_incident_list:
+    :return:
+    '''
 
     if make_new_incident_list:
         incident_list = []
         for incident in all_incidents:
             if incident.DamageExtentTID in desired_damage_extent_kdv.keys():
                 incident_list.append(IncidentAndForecasts(incident, all_forecasts))
-
         mp.pickle_anything(incident_list, pickle_file_name_2)
     else:
         incident_list = mp.unpickle_anything(pickle_file_name_2)
 
-    #################################### Make node list ###############################################
+    return incident_list
+
+
+def get_node_list(pickle_file_name_3, make_new_node_list):
+    '''Makes a list of NodesAndValues objects. All nodes get an object and relations between the nodes are
+    calculated. Lots of looping.
+
+    :param pickle_file_name_3:
+    :param make_new_node_list:
+    :return:
+    '''
 
     if make_new_node_list:
-        problem_kdv = {   0: 'Ikke gitt',
-                          3: 'Toerre loessnoeskred',
-                          5: 'Vaate loessnoeskred',
-                          7: 'Nysnoeflak',
-                          10 : 'Fokksnoe',
-                          20 : 'Nysnoe',
-                          30 : 'Vedvarende svakt lag',
-                          37 : 'Dypt vedvarende svakt lag',
-                          40 : 'Vaat snoe',
-                          45 : 'Vaate flakskred',
-                          50 : 'Glideskred'}
+        problem_kdv = {0: 'Ikke gitt',
+                       3: 'Toerre loessnoeskred',
+                       5: 'Vaate loessnoeskred',
+                       7: 'Nysnoeflak',
+                       10: 'Fokksnoe',
+                       20: 'Nysnoe',
+                       30: 'Vedvarende svakt lag',
+                       37: 'Dypt vedvarende svakt lag',
+                       40: 'Vaat snoe',
+                       45: 'Vaate flakskred',
+                       50: 'Glideskred'}
 
         cause_kdv = gkdv.get_kdv('AvalCauseKDV')
         danger_kdv = gkdv.get_kdv('AvalancheDangerKDV')
@@ -199,7 +191,8 @@ if __name__ == "__main__":
                         for problem_tid, problem_name in problem_kdv.iteritems():
                             if 'kke gitt' in problem_name: problem_name = 'Skredproblem {0}'.format(problem_name)
                             if make_nodes:  # the run of the first item of incident_list covers all nodes
-                                nodes_and_values.append(NodesAndValues(cause_name, nodes_dict[cause_name], problem_name, nodes_dict[problem_name]))
+                                nodes_and_values.append(NodesAndValues(cause_name, nodes_dict[cause_name], problem_name,
+                                                                       nodes_dict[problem_name]))
                             if cause in cause_name and problem in problem_name:
                                 for nv in nodes_and_values:
                                     if cause in nv.node_name and problem in nv.target_name:
@@ -215,7 +208,9 @@ if __name__ == "__main__":
                         if 'kke gitt' in desired_damage_extent_name:
                             desired_damage_extent_name = 'Skadeomfang {0}'.format(desired_damage_extent_name)
                         if make_nodes:
-                            nodes_and_values.append(NodesAndValues(problem_name, nodes_dict[problem_name], desired_damage_extent_name, nodes_dict[desired_damage_extent_name]))
+                            nodes_and_values.append(
+                                NodesAndValues(problem_name, nodes_dict[problem_name], desired_damage_extent_name,
+                                               nodes_dict[desired_damage_extent_name]))
                         if problem in problem_name and damage_extent in desired_damage_extent_name:
                             for nv in nodes_and_values:
                                 if problem in nv.node_name and damage_extent in nv.target_name:
@@ -234,7 +229,10 @@ if __name__ == "__main__":
                                 activity_influenced_name = 'Aktivitet {0}'.format(activity_influenced_name)
                             if activity_influenced_kdve.IsActive:
                                 if make_nodes:
-                                    nodes_and_values.append(NodesAndValues(desired_damage_extent_name, nodes_dict[desired_damage_extent_name], activity_influenced_name, nodes_dict[activity_influenced_name]))
+                                    nodes_and_values.append(NodesAndValues(desired_damage_extent_name,
+                                                                           nodes_dict[desired_damage_extent_name],
+                                                                           activity_influenced_name,
+                                                                           nodes_dict[activity_influenced_name]))
                                 if desired_damage_extent_name in damage_extent and activity_influenced_name in activity_influenced:
                                     for nv in nodes_and_values:
                                         if desired_damage_extent_name in nv.node_name and activity_influenced_name in nv.target_name:
@@ -256,7 +254,8 @@ if __name__ == "__main__":
                                 if danger_kdve.IsActive:
                                     if make_nodes:
                                         nodes_and_values.append(
-                                            NodesAndValues(activity_influenced_name, nodes_dict[activity_influenced_name],
+                                            NodesAndValues(activity_influenced_name,
+                                                           nodes_dict[activity_influenced_name],
                                                            danger_name, nodes_dict[danger_name]))
                                     if activity_influenced_name in activity_influenced and danger_name in danger:
                                         for nv in nodes_and_values:
@@ -269,14 +268,62 @@ if __name__ == "__main__":
     else:
         nodes_and_values = mp.unpickle_anything(pickle_file_name_3)
 
-    #################################### Clean node list and make file###########################################
+    return nodes_and_values
 
+
+if __name__ == "__main__":
+
+    ## Get new or load from pickle.
+    get_new = False
+    ## Use already made data set. Remember to make get_new = False
+    make_new_incident_list = True
+    make_new_node_list = False
+
+    ## Set dates
+    from_date = dt.date(2015, 11, 30)
+    to_date = dt.date(2016, 6, 1)
+    #to_date = dt.date.today()
+
+    ## Get regions
+    # region_id = [112, 117, 116, 128]
+    region_ids = []
+    ForecastRegionKDV = gkdv.get_kdv('ForecastRegionKDV')
+    for k, v in ForecastRegionKDV.iteritems():
+        if 99 < k < 150 and v.IsActive is True:
+            region_ids.append(v.ID)
+
+    ## The output
+    incident_ap_dl_json = '{0}incident_and_forecast.json'.format(env.output_folder)
+    incident_ap_dl_csv = '{0}incident_and_forecast.csv'.format(env.output_folder)
+
+    ############################ End of configuration, get and make data ###########################
+
+    pickle_file_name_1 = '{0}runincidentandforecast part 1.pickle'.format(env.local_storage)
+    pickle_file_name_2 = '{0}runincidentandforecast part 2.pickle'.format(env.local_storage)
+    pickle_file_name_3 = '{0}runincidentandforecast part 3.pickle'.format(env.local_storage)
+
+    all_forecasts, all_incidents = get_data(from_date, to_date, region_ids, pickle_file_name_1, get_new)
+
+    desired_damage_extent_kdv = {15: 'Trafikk hindret',
+                                 20: 'Kun materielle skader',
+                                 25: 'Evakuering',
+                                 29: 'Nestenulykke',
+                                 30: 'Personer skadet',
+                                 40: 'Personer omkommet'}
+
+    incident_list = get_incident_list(all_incidents, desired_damage_extent_kdv, pickle_file_name_2, make_new_incident_list)
+    nodes_and_values = get_node_list(pickle_file_name_3, make_new_node_list)
+
+    #################################### Clean node list and make files ###########################################
+
+    # remove all nodes with no relations.
     new_nodes_and_values = []       # with values > 0
 
     for nv in nodes_and_values:
         if nv.value > 0:
             new_nodes_and_values.append(nv)
 
+    # Asign new node ids so it is a continuous number set.
     new_nodes_dict = {}
     id_counter = -1
     for nv in new_nodes_and_values:
@@ -291,8 +338,8 @@ if __name__ == "__main__":
     for nv in new_nodes_and_values:
         nv.update_ids(new_nodes_dict)
 
-    '''
-    Output example
+
+    '''Write output to .json. Output example:
 
     {"nodes":[
     {"name": "Agricultural 'waste'"},
@@ -327,5 +374,34 @@ if __name__ == "__main__":
             else:
                 myfile.write(',\n{{"source":{0},"target":{1},"value":{2}}}'.format(nv.node_id, nv.target_id, nv.value))
         myfile.write('\n]}')
+
+
+    # Write to .csv
+    with open(incident_ap_dl_csv, "w") as  myfile:
+        myfile.write('Dato;Varslingsregion;URL;RegID;'#Observatoer;'
+                     'Skadeomfang;Aktivitet;URL;Faregrad;'
+                     'Skredproblem;Svakt lag;Skredproblem;Svakt lag;Skredproblem;Svakt lag\n')
+
+        for i in incident_list:
+            if i.forecast:
+                skredproblemene = ''.join([';{0};{1}'.format(sp.main_cause, sp.cause_name) for sp in i.forecast.avalanche_problems])
+                registration = 'http://www.regobs.no/Registration/{0}'.format(i.incident.RegID)
+                varsom_forecast = 'http://www.varsom.no/Snoskred/{0}/?date={1}'.format(
+                    fe.add_norwegian_letters(i.forecast.region_name).replace(u'å', 'a').replace(u'ø', 'o'),
+                    (i.forecast.date).strftime('%d.%m.%Y'))
+
+                table_row = '{0};{1};{2};{3};{4};{5};{6};{7};{8}{9}\n'.format(
+                    i.forecast.date,
+                    i.forecast.region_name,
+                    registration,
+                    i.incident.RegID,
+                    #i.incident.NickName,
+                    i.incident.DamageExtentName,
+                    i.incident.ActivityInfluencedName,
+                    varsom_forecast,
+                    i.forecast.danger_level_name,
+                    skredproblemene)
+
+                myfile.write(table_row)
 
     a = 1

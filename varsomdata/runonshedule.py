@@ -11,6 +11,6 @@ if __name__ == "__main__":
     #od.make_2015_16_plots(run_all=True)
     #od.make_svv_plots(run_all=True)
 
-    rsync_cmd = 'rsync -rzP ~/Documents/github/BottleSite/ ragnar@ssh.pythonanywhere.com:~/BottleSite'
+    rsync_cmd = 'rsync -rzP ~/Dropbox/Kode/Python/BottleSite/ ragnar@ssh.pythonanywhere.com:~/BottleSite'
     subprocess.Popen(rsync_cmd, shell=True).wait()
 
