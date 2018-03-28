@@ -11,8 +11,8 @@
 # log files are made when executing the code. Not repo material
 *.log
 
+# very undeveloped modules
+postobservations.py
+
 # windows .ini filer
 *.ini
-
-# very undeveloped modules
-**/!postobservations.py
