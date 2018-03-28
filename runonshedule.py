@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import plotdangerandproblem as pdap
 import plotcalendardata as pcd
+import regobsstatistics as rs
 from varsomdata import makelogs as ml
 from varsomdata import setcoreenvironment as cenv
 import subprocess as sp
@@ -22,6 +23,12 @@ if __name__ == "__main__":
     except:
         error_msg = sys.exc_info()[0]
         ml.log_and_print("[error] {0}__main__: Full crash on making 2017-18 observer and region calender plots. {1}".format(log_reference, error_msg))
+
+    try:
+        rs.plot_regs_obs_numbs()
+    except:
+        error_msg = sys.exc_info()[0]
+        ml.log_and_print("[error] {0}__main__: Full crash on making regobs statistics plots. {1}".format(log_reference, error_msg))
 
     try:
         # This requires version 3 of rsync and command is set up to handle utf-8 file names from mac to linux server

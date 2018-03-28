@@ -276,10 +276,8 @@ def plot_regs_obs_numbs():
 
     # plt.grid(color='0.6', linestyle='--', linewidth=0.7, zorder=0)
 
-    plt.savefig('{}regobsstatistics'.format(env.plot_folder))
+    plt.savefig('{}regobsstatistics'.format(env.web_images_regobsdata_folder))
     plt.close()
-
-    pass
 
 
 if __name__ == '__main__':

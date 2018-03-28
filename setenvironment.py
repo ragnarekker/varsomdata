@@ -17,6 +17,7 @@ if sys.platform == 'darwin':
         web_pickle_folder = web_root_folder
         web_images_folder = web_root_folder + 'images/'
         web_images_regiondata_folder = web_images_folder + 'regionplots/'
+        web_images_regobsdata_folder = web_images_folder + 'regobsplots/'
         web_images_observerdata_folder = web_images_folder + 'observerplots/'
         web_images_svvdata_folder = web_images_folder + 'svvplots/'
         web_view_folder = web_root_folder + 'views/'
@@ -25,6 +26,7 @@ if sys.platform == 'darwin':
         web_pickle_folder = output_folder
         web_images_folder = plot_folder
         web_images_regiondata_folder = web_images_folder + 'regionplots/'
+        web_images_regobsdata_folder = web_images_folder + 'regobsplots/'
         web_images_observerdata_folder = web_images_folder + 'observerplots/'
         web_images_svvdata_folder = web_images_folder + 'svvplots/'
         web_view_folder = output_folder + 'views/'
@@ -37,6 +39,7 @@ elif sys.platform == 'win32':
     web_root_folder = 'C:\\Users\\raek\\Dropbox\\Kode\\Python\\BottleSite\\'
     web_images_folder = web_root_folder + 'images\\'
     web_images_regiondata_folder = web_images_folder + 'regionplots\\'
+    web_images_regobsdata_folder = web_images_folder + 'regobsplots\\'
     web_images_observerdata_folder = web_images_folder + 'observerplots\\'
     web_images_svvdata_folder = web_images_folder + 'svvplots\\'
     web_view_folder = web_root_folder + 'views\\'
@@ -59,6 +62,8 @@ if root_folder:
         if not os.path.exists(web_images_folder):
             os.makedirs(web_images_folder)
         if not os.path.exists(web_images_regiondata_folder):
+            os.makedirs(web_images_regiondata_folder)
+        if not os.path.exists(web_images_regobsdata_folder):
             os.makedirs(web_images_regiondata_folder)
         if not os.path.exists(web_images_observerdata_folder):
             os.makedirs(web_images_observerdata_folder)
