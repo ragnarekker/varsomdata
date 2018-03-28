@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-__author__ = 'raek'
-
 import getdangers as gd
 
 import getkdvelements as gkdv
@@ -8,6 +6,8 @@ import setenvironment as env
 import datetime as dt
 import makepickle as mp
 import getmisc as gm
+
+__author__ = 'raek'
 
 
 class ElrappData():

@@ -15,4 +15,4 @@
 *.ini
 
 # very undeveloped modules
-*postobservations.py
+!postobservations.py
