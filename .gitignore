@@ -1,3 +1,6 @@
+# very undeveloped modules
+postobservations.py
+
 # Workspace config for PyCharm
 .idea/
 '.idea'
@@ -10,9 +13,6 @@
 
 # log files are made when executing the code. Not repo material
 *.log
-
-# very undeveloped modules
-postobservations.py
 
 # windows .ini filer
 *.ini
