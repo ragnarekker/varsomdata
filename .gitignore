@@ -1,14 +1,18 @@
-
 # Workspace config for PyCharm
 .idea/
+'.idea'
 
-# pyc files (sortof compilations of the py files..)
+# pyc files (compilations of the .py files..)
 *.pyc
+
+# .pickles are used for local storage in this repo
+*.pickle
+
+# log files are made when executing the code. Not repo material
+*.log
 
 # windows .ini filer
 *.ini
-'.idea'
 
-# environment variables
-setvariables.py
-
+# very undeveloped modules
+postobservations.py
