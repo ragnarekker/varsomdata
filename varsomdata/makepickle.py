@@ -1,36 +1,37 @@
 # -*- coding: utf-8 -*-
 __author__ = 'raek'
 
-import pickle
+import pickle as pickle
+from varsomdata import makelogs as ml
 
 
 def pickle_anything(something_to_pickle, file_name_and_path, print_message=True):
-    '''Pickles anything.
+    """Pickles anything.
 
     :param something_to_pickle:
     :param file_name_and_path:
+    :param print_message:
     :return:
-    '''
+    """
 
-    with open(file_name_and_path, 'w') as f:
-        pickle.dump(something_to_pickle, f)
+    pickle.dump(something_to_pickle, open(file_name_and_path, 'wb'))
 
     if print_message is True:
-        print 'makepickle.py -> pickle_anything: {0} pickled.'.format(file_name_and_path)
+        ml.log_and_print('[info] makepickle.py -> pickle_anything: {0} pickled.'.format(file_name_and_path))
 
 
 def unpickle_anything(file_name_and_path, print_message=True):
-    '''Unpickles anything.
+    """Unpickles anything.
 
     :param file_name_and_path:
-    :return:
-    '''
+    :param print_message:
+    :return something_to_unpickle:
+    """
 
-    with open(file_name_and_path) as f:
-        something_to_unpickle = pickle.load(f)
+    something_to_unpickle = pickle.load( open(file_name_and_path, 'rb') )
 
     if print_message is True:
-        print 'makepickle.py -> unpickle_anything: {0} unpickled.'.format(file_name_and_path)
+        ml.log_and_print('[info] makepickle.py -> unpickle_anything: {0} unpickled.'.format(file_name_and_path))
 
     return something_to_unpickle
 

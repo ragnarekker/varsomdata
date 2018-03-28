@@ -1,8 +1,0 @@
-ID   Order  IsActive  Langkey   Name                                              Description                                       
-0    1      1         1         Ikke gitt                                         None                                              
-1    2      1         1         1 - Harmloest                                     Relativt ufarlig                                  
-2    3      1         1         2 - Smaa                                          Farlig for mennesker                              
-3    4      1         1         3 - Middels                                       Farlig for liten infrastr                         
-4    5      1         1         4 - Store                                         Farlig for stoerre infrastr                       
-5    6      1         1         5 - Svaert store                                  Mulig det stoerste vi har sett                    
-9    10     1         1         Ukjent                                            None                                              

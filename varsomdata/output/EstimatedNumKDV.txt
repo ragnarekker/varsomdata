@@ -1,6 +1,0 @@
-ID   Order  IsActive  Langkey   Name                                              Description                                       
-0    1      1         1         Ikke gitt                                         None                                              
-2    3      1         1         Ett (1)                                           None                                              
-3    4      1         1         Noen (2-5)                                        None                                              
-4    5      1         1         Flere (6-10)                                      None                                              
-5    6      1         1         Mange (10 eller mer)                              None                                              

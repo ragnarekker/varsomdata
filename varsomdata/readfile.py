@@ -1,19 +1,28 @@
 # -*- coding: utf-8 -*-
-__author__ = 'raek'
+from varsomdata import makelogs as ml
 
-import setenvironment as env
+__author__ = 'raek'
 
 
 def read_configuration_file(file_name, element_class):
+    """
 
-    print "readfile.py -> read_configuration_file: Reading {0}".format(file_name)
+    :param file_name:
+    :param element_class:
+    :return:
+    """
 
-    inn_file = open(file_name)
-    inn_data = inn_file.read().replace('\r', '\n')
+    ml.log_and_print("[info] readfile.py -> read_configuration_file: Reading {0}".format(file_name))
+
+    with open(file_name, 'rb') as f:
+        inn_data = f.read()
+
+    inn_data = inn_data.decode('utf-8')
+
+    inn_data = inn_data.replace('\r', '\n')
     inn_data = inn_data.replace('\n\n', '\n')
-    inn_file.close()
 
-    # setarate the rows
+    # separate the rows
     inn_data = inn_data.split('\n')
 
     separator = ';'
@@ -34,13 +43,38 @@ def read_configuration_file(file_name, element_class):
     return elements
 
 
+def read_csv_file(file_name, element_class):
+    """
 
-if __name__ == "__main__":
+    :param file_name:
+    :param element_class:
+    :return:
+    """
 
+    ml.log_and_print("[info] readfile.py -> read_csv_file: Reading {0}".format(file_name))
 
-    import runmatrix as rfm
+    with open(file_name, 'rb') as f:
+        inn_data = f.read()
 
-    config_file_name = '{0}{1}'.format(env.input_folder, 'matrixconfiguration.v2.csv')
-    m3_elements = read_configuration_file(config_file_name, rfm.M3Element)
+    inn_data = inn_data.decode('utf-8')
 
-    a = 1
+    inn_data = inn_data.replace('\r', '\n')
+    inn_data = inn_data.replace('\n\n', '\n')
+
+    # separate the rows
+    inn_data = inn_data.split('\n')
+
+    separator = ';'
+    elements = []
+    for i in range(1, len(inn_data), 1):
+
+        inn_data[i] = inn_data[i].strip()       # get rid of ' ' and '\n' and such
+        if inn_data[i] == '':                   # blank line at end of file
+            break
+
+        row = inn_data[i].split(separator)      # splits line into list of elements in the line
+        element = element_class(row)
+
+        elements.append(element)
+
+    return elements

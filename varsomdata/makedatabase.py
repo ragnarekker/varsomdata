@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
-__author__ = 'raek'
-
 import datetime as dt
-import fencoding as fe
-import setenvironment as env
-import getobservations as go
-
+from varsomdata import setcoreenvironment as cenv
+from varsomdata import getobservations as go
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-engine = create_engine('sqlite:///'+env.root_folder+'/tester.sqlite', echo=True)
+__author__ = 'raek'
+
+engine = create_engine('sqlite:///' + cenv.root_folder + '/tester.sqlite', echo=True)
 Base = declarative_base(bind=engine)
 
 
@@ -25,7 +23,7 @@ def _unix_time_2_normal(unix_date_time):
     Ex: date = unix_time_2_normal(int(p['DtObsTime'][6:-2]))
     """
 
-    unix_datetime_in_seconds = unix_date_time/1000 # For some reason they are given in miliseconds
+    unix_datetime_in_seconds = unix_date_time/1000      # For some reason they are given in milliseconds
     date = dt.datetime.fromtimestamp(int(unix_datetime_in_seconds))
     return date
 
