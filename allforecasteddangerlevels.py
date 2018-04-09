@@ -11,7 +11,7 @@ import pylab as plt
 __author__ = 'raek'
 
 
-def save_danger_and_problem_to_file(warnings, file_path):
+def _save_danger_and_problem_to_file(warnings, file_path):
     """Saves a list of warning and problems to file.
 
     :param warnings:
@@ -57,7 +57,16 @@ class AllDangersAndCorrectsOnDate:
         self.dangers += self.county_dangers
 
 
-def make_plot_dangerlevels_simple(warnings, all_avalanche_evaluations, file_path, from_date, to_date):
+def _make_plot_dangerlevels_simple(warnings, all_avalanche_evaluations, file_path, from_date, to_date):
+    """Works best for plotting multiple regions over one season.
+
+    :param warnings:
+    :param all_avalanche_evaluations:
+    :param file_path:
+    :param from_date:
+    :param to_date:
+    :return:
+    """
 
     # count corrects
     correct_not_given = 0
@@ -75,7 +84,7 @@ def make_plot_dangerlevels_simple(warnings, all_avalanche_evaluations, file_path
         elif e.ForecastCorrectTID == 3:
             correct_to_high += 1
         else:
-            ml.log_and_print("allforecasteddangerlevels.py -> make_plot_dangerlevels_simple: Illegal ForecastCorrectTID given.", log_it=True, print_it=False)
+            ml.log_and_print("allforecasteddangerlevels.py -> _make_plot_dangerlevels_simple: Illegal ForecastCorrectTID given.", log_it=True, print_it=False)
 
     correct_total = correct_correct + correct_to_high + correct_to_low
 
@@ -170,46 +179,60 @@ def make_plot_dangerlevels_simple(warnings, all_avalanche_evaluations, file_path
     plt.close(fig)
 
 
-if __name__ == "__main__":
+def get_all_ofoten():
+    """Dangers and problems for Ofoten (former Narvik). Writes file to .csv"""
 
     get_new = True
     get_observations = False
     write_csv = True
     plot_dangerlevels_simple = False
 
-    # Run no more than one season at the time. Forecast regions has had yearly changes.
-    # from_date = dt.date(2013, 11, 15)
-    # to_date = dt.date(2014, 6, 15)
-    # to_date = dt.date.today()
-    # select_year = '{0}-{1}'.format(from_date.strftime('%Y'), to_date.strftime('%y'))
+    select_years = ['2012-13', '2013-14', '2014-15', '2015-16', '2016-17', '2017-18']
+    region_id_Narvik = 114      # Narvik used from 2012 until nov 2016
+    region_id_Ofoten = 3015     # Ofoten introduced in november 2016
 
-    select_year = '2016-17'
-    from_date, to_date = gm.get_forecast_dates(year=select_year)
-
-    # region_ids = [113]
-    region_ids = gm.get_forecast_regions(year=select_year, get_counties=True)
-
-    warnings_pickle = '{0}{1}'.format(ste.local_storage, 'runallforecasteddangerlevels {0}.pickle'.format(select_year))
-    danger_and_problems_csv = '{0}{1}'.format(ste.output_folder, 'Alle varslede faregrader og problemer {0}.csv'.format(select_year))
-    dangers_plotted_simple_filename = '{0}Faregrader {1}.png'.format(ste.output_folder, select_year)
-
-    ########################### End of config ##########################################
+    warnings_pickle = '{0}allforecasteddangerlevels_Ofoten_201218.pickle'.format(ste.local_storage)
+    warnings_csv = '{0}Faregrader Ofoten 2012-18.csv'.format(ste.output_folder)
+    warnings_plot = '{0}Faregrader Ofoten 2012-18.png'.format(ste.output_folder)
 
     if get_new:
-        all_warnings = gd.get_forecasted_dangers(region_ids, from_date, to_date)
-        all_avalanche_evaluations = []
-        if get_observations:
-            all_avalanche_evaluations = go.get_avalanche_evaluation_3(from_date, to_date)
-        mp.pickle_anything([all_warnings, all_avalanche_evaluations], warnings_pickle)
+        all_warnings = []
+        all_evaluations = []
+
+        for y in select_years:
+
+            if y in ['2016-17', '2017-18']:
+                region_id = region_id_Ofoten
+            else:
+                region_id = region_id_Narvik
+
+            from_date, to_date = gm.get_forecast_dates(year=y)
+
+            all_warnings += gd.get_forecasted_dangers(region_id,  from_date, to_date)
+            if get_observations:
+                all_evaluations += go.get_avalanche_evaluation_3(from_date, to_date, region_id)
+
+        mp.pickle_anything([all_warnings, all_evaluations], warnings_pickle)
+
     else:
-        [all_warnings, all_avalanche_evaluations] = mp.unpickle_anything(warnings_pickle)
+        [all_warnings, all_evaluations] = mp.unpickle_anything(warnings_pickle)
 
     if write_csv:
         # write to csv files
-        save_danger_and_problem_to_file(all_warnings, danger_and_problems_csv)
+        _save_danger_and_problem_to_file(all_warnings, warnings_csv)
+
     elif plot_dangerlevels_simple:
-        make_plot_dangerlevels_simple(all_warnings, all_avalanche_evaluations, dangers_plotted_simple_filename, from_date, to_date)
+        # Make simple plot
+        from_date = gm.get_forecast_dates(select_years[0])[0]
+        to_date = gm.get_forecast_dates(select_years[-1])[1]
+        _make_plot_dangerlevels_simple(all_warnings, all_evaluations, warnings_plot, from_date, to_date)
+
     else:
         print("No output selected")
 
-    pass
+    return all_warnings, all_evaluations
+
+
+if __name__ == "__main__":
+
+    get_all_ofoten()

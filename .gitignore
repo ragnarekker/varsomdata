@@ -16,3 +16,7 @@
 
 # very undeveloped modules
 postobservations.py
+
+# Handling content of private files when adding to git
+setenvironment.private.py
+setenvironment.public.py
