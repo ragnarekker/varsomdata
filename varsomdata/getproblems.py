@@ -10,9 +10,8 @@ __author__ = 'raek'
 
 class AvalancheProblem():
 
-
     def __init__(self, region_regobs_id_inn, region_name_inn, date_inn, order_inn, cause_name_inn, source_inn, problem_inn=None):
-        '''The AvalancheProblem object is useful since there are 3 different tables to get regObs-data from and 2 tables
+        """The AvalancheProblem object is useful since there are 3 different tables to get regObs-data from and 2 tables
         from forecasts. Thus avalanche problems are saved in 5 ways. The structure of this object is based on the
         "latest" model and the other/older ways to save avalanche problems on may be mapped to these.
 
@@ -29,11 +28,11 @@ class AvalancheProblem():
 
         Other variables declared with initiation:
         metadata = []       [list with dictionaries [{},{},..] ]
-        '''
+        """
 
         # In nov 2016 we updated all regions to have ids in th 3000´s. GIS and regObs equal.
         # Before that GIS har numbers 0-99 and regObs 100-199. Messy..
-        # Convetion is regObs ids always
+        # Convention is regObs ids always
         if region_regobs_id_inn < 100:
             region_regobs_id_inn += 100
 
@@ -79,7 +78,6 @@ class AvalancheProblem():
         # self.cause_attribute_soft = None          # [String]
         # self.cause_attribute_thin = None          # [String]
 
-
     def set_date(self, date_inn):
 
         # makes sure we only have the dat, but we keep the datetime as metadata
@@ -89,15 +87,12 @@ class AvalancheProblem():
 
         self.date = date_inn
 
-
     def set_registration_time(self, registration_time_inn):
         # DtRegTime is when the problem was registered in regObs.
         self.registration_time = registration_time_inn
 
-
     def set_cause_tid(self, cause_tid_inn):
         self.cause_tid = cause_tid_inn
-
 
     def set_municipal(self, municipal_inn):
         try:
@@ -109,29 +104,23 @@ class AvalancheProblem():
             print("Got un expected error on setting municipal name on {0} for {1}.")\
                 .format(self.date, self.region_name)
 
-
     def set_regid(self, regid_inn):
         self.regid = regid_inn
 
-
     def set_url(self, url_inn):
         self.url = url_inn
-
 
     def set_aval_type(self, aval_type_inn, aval_type_tid_inn=None):
         self.aval_type = aval_type_inn
         self.aval_type_tid = aval_type_tid_inn
 
-
     def set_aval_size(self, aval_size_inn, aval_size_tid_inn=None):
         self.aval_size = aval_size_inn
         self.aval_size_tid = aval_size_tid_inn
 
-
     def set_aval_trigger(self, aval_trigger_inn, aval_trigger_tid_inn=None):
         self.aval_trigger = aval_trigger_inn
         self.aval_trigger_tid = aval_trigger_tid_inn
-
 
     def set_aval_probability(self, aval_probability_inn):
         self.aval_probability = aval_probability_inn
@@ -139,7 +128,6 @@ class AvalancheProblem():
 
     def set_aval_distribution(self, aval_distribution_inn):
         self.aval_distribution = aval_distribution_inn
-
 
     def set_aval_cause_attributes(self, problem_object):
 
@@ -172,27 +160,21 @@ class AvalancheProblem():
         self.problem = problem_inn
         self.problem_tid = problem_tid_inn
 
-
     def set_regobs_table(self, table_inn):
         self.regobs_table = table_inn
-
 
     def set_nick_name(self, nick_name_inn):
         self.nick_name = nick_name_inn
 
-
     def set_competence_level(self, competence_level_inn):
         self.competence_level = competence_level_inn
-
 
     def set_danger_level(self, danger_level_name_inn, danger_level_inn):
         self.danger_level = danger_level_inn
         self.danger_level_name = danger_level_name_inn
 
-
     def set_lang_key(self, lang_key_inn):
         self.lang_key = lang_key_inn
-
 
     def map_to_eaws_problems(self):
         """
@@ -283,7 +265,6 @@ class AvalancheProblem():
 
         else:
             ml.log_and_print('getproblems.py -> AvalancheProblem.map_to_eaws_problems: Unknown source.')
-
 
     def add_metadata(self, key, value):
         self.metadata[key] = value

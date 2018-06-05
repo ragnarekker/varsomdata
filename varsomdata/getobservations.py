@@ -68,7 +68,7 @@ def _reg_types_dict(registration_tids=None):
 
 
     Registration IDs and names
-    10	Fritekst
+    10	Notater, var Fritekst inntil april 2018         # TODO Remove Fritekst reference
     11	Ulykke/hendelse
     12	Bilde
     13	Faretegn
@@ -107,7 +107,7 @@ def _reg_types_dict(registration_tids=None):
     for registration_tid in registration_tids:
         if registration_tid is None:
             return None
-        elif registration_tid == 10:  # Fritekst
+        elif registration_tid == 10:  # Notater (var Fritekst inntil april 2018)  # TODO Remove Fritekst reference
             registration_dicts.append({'Id': 10, 'SubTypes': []})
         elif registration_tid == 11:  # Ulykke/hendelse
             registration_dicts.append({'Id': 80, 'SubTypes': [11]})

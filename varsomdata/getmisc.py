@@ -190,11 +190,11 @@ def get_registration(from_date, to_date, output='List', geohazard_tid=None, appl
     if geohazard_tid is not None:
         odata_filter += "GeoHazardTID eq {0} and ".format(geohazard_tid)
     odata_filter += "DtRegTime gt datetime'{0}' and DtRegTime lt datetime'{1}'".format(from_date, to_date)
-    if "Web and app" in application_id: # does not work..
-        odata_filter += " and (ApplicationId eq guid'{0}' or ApplicationId eq guid'{1}')".format('','')
+    if "Web and app" in application_id:     # does not work..
+        odata_filter += " and (ApplicationId eq guid'{0}' or ApplicationId eq guid'{1}')".format('', '')
 
-    url = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}/?$filter={2}&$format=json'.format(cenv.odata_version, "Registration", odata_filter)
-    ml.log_and_print('[info] getmisc.py -> get_registration: ..to {0}'.format(url), print_it=True)
+    url = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}/?$filter={2}&$format=json'.format(cenv.odata_version, 'Registration', odata_filter)
+    ml.log_and_print("[info] getmisc.py -> get_registration: ..to {0}".format(url), print_it=True)
 
     result = requests.get(url).json()
     data = result['d']['results']
@@ -583,6 +583,7 @@ def get_dates_from_season(year):
 
     return from_date, to_date
 
+
 def get_season_from_date(date_inn):
     """A date belongs to a season. This method returns it."""
 
@@ -705,8 +706,9 @@ def get_observer_nicks_given_ids(observer_ids):
     return list_of_nicks
 
 
-def get_observer_dict_for_2017_18_plotting(limit_for_select=10):
+def _delete_get_observer_dict_for_2017_18_plotting(limit_for_select=10):
     """Returns a dict og observer id : observer nick.
+    TODO Remove method
 
     :param limit_for_select:    [int] Only observers with this number of observations and more are selected.
     """

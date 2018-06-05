@@ -127,7 +127,7 @@ class DayData:
             return 14, 38, 'pink', 'k'
         elif obs_type == 'Bilde':
             return 14, 62, 'yellow', 'k'
-        elif obs_type == 'Fritekst':
+        elif obs_type == 'Fritekst' or obs_type == 'Notater':       # TODO Remove Fritekst reference
             return 38, 62, 'yellow', 'k'
         else:
             return 0, 0, 'k', 'k'
@@ -187,7 +187,7 @@ def _make_plot(dates, observer_name=None, region_name=None, file_ext=".png", dat
             if observer_name is not None:
                 plot_file_name = '{0}observerdata_{1}_{2}{3:02d}'.format(env.web_images_observerdata_folder, dates[0].observer_id, dates[0].date.year, dates[0].date.month)
             else:
-                ml.log_and_print("[warning] plotobserversdata.py -> _make_plot: Need ObserverID and/or forecastRegionTID to make this work.", print_it=True)
+                ml.log_and_print("[warning] plotcalendardata.py -> _make_plot: Need ObserverID and/or forecastRegionTID to make this work.", print_it=True)
                 plot_file_name = 'no_good_plot'
 
 
@@ -309,7 +309,7 @@ def _make_html(dates, observer_id=None, region_name=None, data_description=None)
             if observer_id is not None:
                 html_file_name = '{0}observerdata_{1}_{2}{3:02d}.html'.format(env.web_view_folder, observer_id, dates[0].date.year, dates[0].date.month)
             else:
-                ml.log_and_print("[warning] plotobserversdata.py -> _make_html: Got to have region and/or observer to make this work.", print_it=True)
+                ml.log_and_print("[warning] plotcalendardata.py -> _make_html: Got to have region and/or observer to make this work.", print_it=True)
                 html_file_name = 'no_good_html'
 
     with open(html_file_name, 'w', encoding='utf-8') as f:

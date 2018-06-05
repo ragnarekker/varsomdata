@@ -4,6 +4,7 @@ from varsomdata import getforecastapi as gfa
 from varsomdata import getmisc as gm
 from varsomdata import makepickle as mp
 from varsomdata import makelogs as ml
+from varsomdata import getvarsompickles as gvp
 import setenvironment as env
 import collections as cols
 import os as os
@@ -12,7 +13,7 @@ import datetime as dt
 __author__ = 'ragnarekker'
 
 
-def _get_all(get_new=False, from_date='2012-10-01', to_date='2018-01-01'):
+def _get_all(get_new=False, from_date='2012-10-01', to_date='2019-01-01'):
     """Get all observations (only the meta data) for all time. Useful for statistics."""
 
     file_name = '{}all observations.pickle'.format(env.local_storage)
@@ -65,6 +66,7 @@ def _make_date_list_dict(start_date=dt.date(2012, 10, 1), end_date=dt.date.today
 
 
 def _make_date_int_dict(start_date=dt.date(2012, 10, 1), end_date=dt.date.today()):
+    """Makes dictionary with all dates in a period as keys and values set to 0."""
 
     num_days = (end_date-start_date).days
     date_list = [start_date + dt.timedelta(days=x) for x in range(0, num_days)]
@@ -275,13 +277,17 @@ def pick_winners_at_conference():
 
 
 def write_to_file_all_obs():
+    """Writes to file all dates and the number of observations on the dates."""
 
     obs = _get_all(get_new=False)
 
-    num_at_date = _make_date_int_dict()          # antall obs pr dag
+    num_at_date = _make_date_int_dict()          # number og obs pr day
     for o in obs:
         date = o.DtObsTime.date()
-        num_at_date[date] += 1
+        try:
+            num_at_date[date] += 1
+        except:
+            pass
 
     # Write observed dangers to file
     with open('{}number_off_obs_pr_date.txt'.format(env.output_folder), 'w', encoding='utf-8') as f:
@@ -289,10 +295,66 @@ def write_to_file_all_obs():
             f.write('{};{}\n'.format(k, v))
 
 
+def pick_winners_varsom_friflyt_konk_2018():
+    """Method for picking winners of the varsom/friflyt competition.
+    Winter 2017-18 we encouraged voluntary observations.
+    We pick som winners among snow obs.
+    1st, 2nd and 3rd to those who observed most.
+    The rest on random pick in relevant obs.
+
+    :return:
+    """
+
+    year = '2017-18'
+    all_snow_obs = gvp.get_all_observations(year, output='Nest', geohazard_tids=10, max_file_age=23)
+
+    voluntary_obs = []
+    users_and_numbers = {}
+
+
+    for o in all_snow_obs:
+
+        competence_level = o.CompetenceLevelName
+        nick_name = o.NickName.lower()
+        observer_id_and_nick = '{};{}'.format(o.ObserverId, nick_name)
+
+        if '****' not in competence_level:   # dont include obs with *** or more cometance
+            if 'obskorps' not in nick_name:
+                if 'svv' not in nick_name and 'vegvesen' not in nick_name:
+                    if 'nve' not in nick_name and 'met' not in nick_name:
+                        if 'wyssen' not in nick_name and 'forsvaret' not in nick_name:
+                            if 'kjus@nortind' not in nick_name:
+
+                                voluntary_obs.append(o)
+                                if observer_id_and_nick in users_and_numbers.keys():
+                                    users_and_numbers[observer_id_and_nick] += 1
+                                else:
+                                    users_and_numbers[observer_id_and_nick] = 1
+
+    import operator
+    from random import shuffle
+    sorted_users_and_numbers = sorted(users_and_numbers.items(), key=operator.itemgetter(1), reverse=True)
+
+    # Write list of users and numbers to file. List can be sorted in excel. Need to lookup email and full name.
+    with open('{}users_and_numbers {}.txt'.format(env.output_folder, year), 'w', encoding='utf-8') as f:
+        for k, v in users_and_numbers.items():
+            f.write('{};{}\n'.format(k, v))
+
+    # Shuffle the list of observations
+    shuffle(voluntary_obs)
+
+    # Write the random list of users and regid to file
+    with open('{}random_users_and_obs {}.txt'.format(env.output_folder, year), 'w', encoding='utf-8') as f:
+        for o in voluntary_obs:
+            f.write('{};{};{}\n'.format(o.ObserverId, o.NickName, o.RegID))
+
+    pass
+
+
 if __name__ == '__main__':
 
     # find_fun_facts()
     # pick_winners_at_conference()
     write_to_file_all_obs()
+    # pick_winners_varsom_friflyt_konk_2018()
 
-    a = 1

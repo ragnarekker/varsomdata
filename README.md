@@ -22,7 +22,8 @@ This said, lots of this works fine and all of it gives insight in how to read th
 `observations.py`: Methods and analysis of observations as a whole. Looks mostly on when, where and who of observations over year(s).<br>
 `output`: Folder for saving plots and data files made by the different modules.<br>
 `plotdangerandproblem.py`: The code for downloading and making the plots on ragnar.pythonanywhere.com/dangerandproblem/<br>
-`plotobserversdata.py`: The code for downloading and making the plots on ragnar.pythonanywhere.com/observerdata/<br>
+`plotcalendardata.py`: The code for downloading and making the plots on ragnar.pythonanywhere.com/observerdata/<br>
+`plotobserversdata.py`: TO BE REMOVED. The code for downloading and making the plots on ragnar.pythonanywhere.com/observerdata/<br>
 `regobsstatistics.py`: Seasonal plots over data in regObs. Eg observations pr day, annual sum etc./<br>
 `runonshedule.py`: Contains the code which runs the modules and makes the file transfer to ragnar.pythonanywhere.com/observerdata/<br>
 `setenvironment.py`: Contains environment variables such as api versions and folder-paths.<br>

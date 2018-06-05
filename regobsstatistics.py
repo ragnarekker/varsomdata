@@ -103,6 +103,26 @@ class DailyNumbers:
         # self.numbs_two_seasons_ago = None
 
 
+class MonthlyNumbers:
+    """
+    pr month
+    * list num pr geohazard
+    * obskorps
+    * svv, vegvesen, met, forsvaret, jbv, nve, naturopsynet,
+    * andre
+    """
+
+    def __init__(self, year, month):
+
+        self.month = month
+        self.year = year
+        self.all_obs = []
+
+    def add_to_all_obs(self, o):
+
+        self.all_obs.append(o)
+
+
 def _str(int_inn):
     """Change the int to string but make sure it has two digits. The int represents a month og day."""
 
@@ -158,8 +178,8 @@ def _smooth(list_of_numbers, crop_for_season=False):
 
 def plot_regs_obs_numbs():
 
-    all_obs_201718_list = gvp.get_all_observations('2017-18', output='List', max_file_age=240)
-    all_obs_201718_nest = gvp.get_all_observations('2017-18', output='Nest', max_file_age=240)
+    all_obs_201718_list = gvp.get_all_observations('2017-18', output='List', max_file_age=23)
+    all_obs_201718_nest = gvp.get_all_observations('2017-18', output='Nest', max_file_age=23)
     all_obs_201617_list = gvp.get_all_observations('2016-17', output='List')
     all_obs_201617_nest = gvp.get_all_observations('2016-17', output='Nest')
     all_obs_201516_list = gvp.get_all_observations('2015-16', output='List')
@@ -276,10 +296,39 @@ def plot_regs_obs_numbs():
 
     # plt.grid(color='0.6', linestyle='--', linewidth=0.7, zorder=0)
 
-    plt.savefig('{}regobsstatistics'.format(env.web_images_regobsdata_folder))
+    plt.savefig('{}regobsstatistics.png'.format(env.web_images_regobsdata_folder))
     plt.close()
+
+
+def table_regs_obs_numbs():
+    """
+
+    :return:
+
+    pr month:
+    snow: obskorps, svv, elrapp, other_gov, voluntairy
+    ice: NVE, fjelloppsynet, voluntairy, webcam images
+    water and dirt: NVE, elrapp, other_gov, voluntary
+    *, **, ***, ****, *****
+
+    """
+
+    all_obs_201718_list = gvp.get_all_observations('2017-18', output='List', max_file_age=230)
+    all_obs_201718_nest = gvp.get_all_observations('2017-18', output='Nest', max_file_age=230)
+
+    monthly_numbs = {}
+
+    for o in all_obs_201718_nest:
+        month = '{}{}'.format(_str(o.DtObsTime.year), _str(o.DtObsTime.month))
+        if month not in monthly_numbs.keys():
+            monthly_numbs[month] = MonthlyNumbers(o.DtObsTime.year, o.DtObsTime.month)
+        else:
+            monthly_numbs[month].add_to_all_obs(o)
+
+    pass
 
 
 if __name__ == '__main__':
 
-    plot_regs_obs_numbs()
+    ##plot_regs_obs_numbs()
+    table_regs_obs_numbs()

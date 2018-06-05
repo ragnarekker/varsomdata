@@ -137,6 +137,7 @@ def make_avalanche_problemes_for_techel():
     Tar 15-20 min å kjøre
     :return:
 
+    TODO: remove "Automatisk genrator" forecasts.
 
     """
 
