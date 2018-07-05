@@ -1,22 +1,25 @@
 # -*- coding: utf-8 -*-
-__author__ = 'raek'
 
 import requests
-import datetime
+import datetime as dt
 from varsomdata import getdangers as gd
 from varsomdata import getproblems as gp
 from varsomdata import makelogs as ml
 from varsomdata import setcoreenvironment as cenv
 
+__author__ = 'raek'
+
 
 def get_warnings_as_json(region_ids, from_date, to_date, lang_key=1, recursive_count=5):
-    """Selects warnings and returns the json structured result as given on the api.
+    """Selects warnings and returns the json structured as given on the api .
 
-    :param region_id:       [int or list of ints] RegionID as given in the forecast api [1-99] or in regObs [101-199]
+    :param region_id:       [int or list of ints]       RegionID as given in the forecast api [1-99] or in regObs [101-199]
     :param from_date:       [date or string as yyyy-mm-dd]
     :param to_date:         [date or string as yyyy-mm-dd]
-    :param recursive_count  [int] by default atempt the same request # times before giving up
-    :return warnings:       [string] String as json
+    :param lang_key:        [int]                       Language setting. 1 is norwegian and 2 is english.
+    :param recursive_count  [int]                       by default attempt the same request # times before giving up
+
+    :return warnings:       [string]                    String as json
 
     Eg. http://api01.nve.no/hydrology/forecast/avalanche/v2.0.2/api/AvalancheWarningByRegion/Detail/10/1/2013-01-10/2013-01-20
         http://api01.nve.no/hydrology/forecast/avalanche/v2.0.2/api/AvalancheWarningByRegion/Detail/29/1/2015-12-02/2015-12-02
@@ -35,7 +38,7 @@ def get_warnings_as_json(region_ids, from_date, to_date, lang_key=1, recursive_c
             # if we are looping the initial list make sure each item gets the recursive count default
             recursive_count = recursive_count_default
 
-        # In nov 2016 we uppdated all regions to have ids in th 3000´s. GIS and regObs equal.
+        # In nov 2016 we updated all regions to have ids in th 3000´s. GIS and regObs equal.
         # Before that GIS har numbers 0-99 and regObs 100-199. Messy..
         if region_id > 100 and region_id < 3000:
             region_id = region_id - 100
@@ -61,12 +64,13 @@ def get_warnings_as_json(region_ids, from_date, to_date, lang_key=1, recursive_c
 
 
 def get_warnings(region_ids, from_date, to_date, lang_key=1):
-    """Selects warnings and returns a list of AvalancheDanger Objects. This method does NOT add the
+    """Selects warnings and returns a list of AvalancheDanger Objects. This method adds the
     avalanche problems to the warning.
 
-    :param region_id:   [int or list of ints]       RegionID as given in the forecast api [1-99] or in regObs [101-199]
+    :param region_ids:  [int or list of ints]       RegionID as given in the forecast api [1-99] or in regObs [101-199]
     :param from_date:   [date or string as yyyy-mm-dd]
     :param to_date:     [date or string as yyyy-mm-dd]
+    :param lang_key:    [int]                       Language setting. 1 is norwegian and 2 is english.
 
     :return avalanche_danger_list: List of AvalancheDanger objects
     """
@@ -79,7 +83,7 @@ def get_warnings(region_ids, from_date, to_date, lang_key=1):
         try:
             region_id = int(w['RegionId'])
             region_name = w['RegionName']
-            date = datetime.datetime.strptime(w['ValidFrom'][0:10], '%Y-%m-%d').date()
+            date = dt.datetime.strptime(w['ValidFrom'][0:10], '%Y-%m-%d').date()
             danger_level = int(w['DangerLevel'])
             danger_level_name = w['DangerLevelName']
             author = w['Author']
@@ -185,11 +189,59 @@ def get_valid_regids(region_id, from_date, to_date):
     return valid_regids
 
 
+def get_landslide_warnings_as_json(municipality, from_date, to_date, lang_key=1, recursive_count=5):
+    """Selects landslide warnings and returns the json structured as given on the api as dict objects.
+
+    :param municipality:    [int or list of ints]       Municipality numbers
+    :param from_date:       [date or string as yyyy-mm-dd]
+    :param to_date:         [date or string as yyyy-mm-dd]
+    :param lang_key:        [int]                       Language setting. 1 is norwegian and 2 is english.
+    :param recursive_count  [int]                       by default attempt the same request # times before giving up
+
+    :return warnings:       [warnings]
+
+    Eg. https://api01.nve.no/hydrology/forecast/landslide/v1.0.5/api/Warning/Municipality/1201/1/2018-06-03/2018-07-03
+    """
+
+    # If input isn't a list, make it so
+    if not isinstance(municipality, list):
+        municipality = [municipality]
+
+    landslide_warnings = []
+    recursive_count_default = recursive_count   # need the default for later
+
+    for m in municipality:
+
+        if len(municipality) > 1:
+            # if we are looping the initial list make sure each item gets the recursive count default
+            recursive_count = recursive_count_default
+
+        landslide_api_base_url = 'https://api01.nve.no/hydrology/forecast/landslide/v1.0.5/api'
+        headers = {'Content-Type': 'application/json'}
+        url = landslide_api_base_url + '/Warning/Municipality/{0}/{1}/{2}/{3}'.format(m, lang_key, from_date, to_date)
+
+        # If at first you don't succeed, try and try again.
+        try:
+            landslide_warnings_municipal = requests.get(url, headers=headers).json()
+            ml.log_and_print('[info] getforecastapi.py -> get_landslide_warnings_as_json: {0} warnings found for {1} in {2} to {3}'
+                             .format(len(landslide_warnings_municipal), m, from_date, to_date))
+            landslide_warnings += landslide_warnings_municipal
+
+        except:
+            ml.log_and_print('[error] getforecastapi.py -> get_warnings_as_json: EXCEPTION. RECURSIVE COUNT {0} for {1} in {2} to {3}'
+                             .format(recursive_count, m, from_date, to_date))
+            if recursive_count > 1:
+                recursive_count -= 1        # count down
+                landslide_warnings += get_landslide_warnings_as_json(m, from_date, to_date, lang_key, recursive_count=recursive_count)
+
+    return landslide_warnings
+
+
 if __name__ == "__main__":
 
-    import datetime as dt
+    get_landslide_warnings_as_json(1201, dt.date(2018, 1, 1), dt.date(2018, 4, 1))
     # get data for Bardu (112) and Tamokdalen (129)
-    warnings = get_warnings([3022, 3014], dt.date(2016, 12, 1), dt.date(2016, 12, 21))
+    # warnings = get_warnings([3022, 3014], dt.date(2016, 12, 1), dt.date(2016, 12, 21))
     # p = get_valid_regids(10, "2013-03-01", "2013-03-09")
 
     a = 1

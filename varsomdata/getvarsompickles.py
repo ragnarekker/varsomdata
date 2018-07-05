@@ -10,6 +10,17 @@ import os as os
 __author__ = 'raek'
 
 
+def _observation_is_not_empty(o):
+    """Test if an observation form is empty. Might occur when making list of nests and only pictures are given."""
+
+    if o.RegistrationTID == 10:
+        if o.ObsComment is None and o.ObsHeader is None and o.Comment is None and len(o.URLs) == 0:
+            return False
+
+    else:
+        return True
+
+
 def get_all_observations(year, output='Nest', geohazard_tids=None, lang_key=1, max_file_age=23):
     """Specialized method for getting all observations for one season (1. sept to 31. august). If request has been
     made the last 23hrs, data is retrieved from a locally stored pickle, if not, new request is made to the
@@ -17,7 +28,7 @@ def get_all_observations(year, output='Nest', geohazard_tids=None, lang_key=1, m
 
     :param year:                [string] Eg. '2017-18'
     :param output:              [string] 'Nest' or 'List'
-    :param geohazard_tids:      [int or list of ints] Default None gives all.
+    :param geohazard_tids:      [int or list of ints] Default None gives all. Note, pickle stores all, but this option returns a select
     :param lang_key             [int] 1 is norwegian, 2 is english
     :param max_file_age:        [int] hrs how old the file is before new is retrieved
 
@@ -39,7 +50,9 @@ def get_all_observations(year, output='Nest', geohazard_tids=None, lang_key=1, m
         if year == '2017-18':
             file_age = dt.datetime.fromtimestamp(os.path.getmtime(file_name_list))
             if file_age > date_limit:
-                get_new = False
+                # If file size larger than that of an nearly empty file, dont make new.
+                if os.path.getsize(file_name_list) > 100:   # 100 bytes limit
+                    get_new = False
         else:
             get_new = False
 
@@ -53,7 +66,8 @@ def get_all_observations(year, output='Nest', geohazard_tids=None, lang_key=1, m
         listed_observations = []
         for d in nested_observations:
             for o in d.Observations:
-                listed_observations.append(o)
+                if _observation_is_not_empty(o):
+                    listed_observations.append(o)
             for p in d.Pictures:
                 # p['RegistrationName'] = 'Bilde'
                 listed_observations.append(p)

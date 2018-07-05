@@ -1,0 +1,53 @@
+Totalt antall observasjoner; 200
+Totalt antall skjema; 494
+
+Vannstand;145
+Faretegn;28
+Skader;114
+Notater;207
+
+Ingeborg@nve;10
+Ukjent observatør;1
+rue@nve;9
+Ali Ahmad;1
+odbmar@baneNOR;1
+jostein@nve;3
+idst;1
+drift@svv;27
+Tommy@NVE;2
+MNJ;7
+Kommunegeologen;2
+Agathe (Bane NOR);2
+marthefroshaug;2
+Gjermund Nilsen;1
+torehum@svv;1
+Søren@nve;3
+bli@nve;7
+pvaa@nve.no;21
+Engebret;3
+Christian@NVE;4
+Tfjell;1
+Marcel van der Velpen;1
+Priska@NVE;1
+Ragnar@NVE;2
+paulv@UiT;2
+tls;3
+IDE;2
+Solveig@NVE;1
+eva fNVE;1
+KRDY(nve);4
+krst;2
+Siggen@obskorps;5
+Steinar_69;6
+Kalle@SkredAS;6
+Sim;7
+Albert;1
+MoS@NVE;5
+Knut M. Møen;2
+Per Ludvig;2
+Aen;10
+Kjartan;13
+Turid;1
+MortenDue;2
+Hervé@NVE;11
+abjo@nve.no;1

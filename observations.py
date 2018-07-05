@@ -78,8 +78,50 @@ def _make_date_int_dict(start_date=dt.date(2012, 10, 1), end_date=dt.date.today(
     return date_dict
 
 
+def _map_obs_to_old_regions(obs, make_new=True):
+
+    picle_file_name = '{}all observations with old coords.pickle'.format(env.local_storage)
+
+    if make_new:
+
+        for o in obs:
+            utm_n = o.UTMNorth
+            utm_e = o.UTMEast
+            date = o.DtObsTime
+            year = gm.get_season_from_date(date)
+            region_id, region_name = gm.get_forecast_region_for_coordinate(utm_e, utm_n, year)
+            o.ForecastRegionName = region_name
+            o.ForecastRegionTID = region_id
+
+        mp.pickle_anything(obs, picle_file_name)
+        return obs
+
+    else:
+        obs_old_coords = mp.unpickle_anything(picle_file_name)
+        return obs_old_coords
+
+
+def write_to_file_all_obs():
+    """Writes to file all dates and the number of observations on the dates."""
+
+    obs = _get_all(get_new=False)
+
+    num_at_date = _make_date_int_dict()          # number og obs pr day
+    for o in obs:
+        date = o.DtObsTime.date()
+        try:
+            num_at_date[date] += 1
+        except:
+            pass
+
+    # Write observed dangers to file
+    with open('{}number_off_obs_pr_date.txt'.format(env.output_folder), 'w', encoding='utf-8') as f:
+        for k, v in num_at_date.items():
+            f.write('{};{}\n'.format(k, v))
+
+
 def find_fun_facts():
-    """
+    """Til regObs quiz på oppstartsamling nov2017
     Antall observasjoner totalt
     Andre spm: kva region hadde(prosentvis?) flest obs av vedvarande svakt lag?
     Antall observasjoner i Trollheimen?
@@ -232,30 +274,8 @@ def find_fun_facts():
     #         f.write('{}{};{}\n'.format(cenv.output_folder, k, v))
 
 
-def _map_obs_to_old_regions(obs, make_new=True):
-
-    picle_file_name = '{}all observations with old coords.pickle'.format(env.local_storage)
-
-    if make_new:
-
-        for o in obs:
-            utm_n = o.UTMNorth
-            utm_e = o.UTMEast
-            date = o.DtObsTime
-            year = gm.get_season_from_date(date)
-            region_id, region_name = gm.get_forecast_region_for_coordinate(utm_e, utm_n, year)
-            o.ForecastRegionName = region_name
-            o.ForecastRegionTID = region_id
-
-        mp.pickle_anything(obs, picle_file_name)
-        return obs
-
-    else:
-        obs_old_coords = mp.unpickle_anything(picle_file_name)
-        return obs_old_coords
-
-
 def pick_winners_at_conference():
+    """Pick winers at regObs competition at nordic avalanche conference at Åndalsnes."""
     import random as rand
     romsdalen_konf_obs = go.get_all_registrations('2017-11-02', '2017-11-05', region_ids=3023, geohazard_tids=10)
     romsdalen_konf_regs = go.get_data('2017-11-02', '2017-11-05', region_ids=3023, geohazard_tids=10, output='Nest')
@@ -276,25 +296,6 @@ def pick_winners_at_conference():
     print('5 : {}'.format(rauma_konf_obs[rand.randint(0, len(rauma_konf_obs))].NickName))
 
 
-def write_to_file_all_obs():
-    """Writes to file all dates and the number of observations on the dates."""
-
-    obs = _get_all(get_new=False)
-
-    num_at_date = _make_date_int_dict()          # number og obs pr day
-    for o in obs:
-        date = o.DtObsTime.date()
-        try:
-            num_at_date[date] += 1
-        except:
-            pass
-
-    # Write observed dangers to file
-    with open('{}number_off_obs_pr_date.txt'.format(env.output_folder), 'w', encoding='utf-8') as f:
-        for k, v in num_at_date.items():
-            f.write('{};{}\n'.format(k, v))
-
-
 def pick_winners_varsom_friflyt_konk_2018():
     """Method for picking winners of the varsom/friflyt competition.
     Winter 2017-18 we encouraged voluntary observations.
@@ -310,7 +311,6 @@ def pick_winners_varsom_friflyt_konk_2018():
 
     voluntary_obs = []
     users_and_numbers = {}
-
 
     for o in all_snow_obs:
 
@@ -351,10 +351,47 @@ def pick_winners_varsom_friflyt_konk_2018():
     pass
 
 
+def count_of_water_forms_used():
+    """Which forms are use for observing water"""
+
+    year = '2017-18'
+    all_water_obs_list = gvp.get_all_observations(year, output='List', geohazard_tids=60, max_file_age=230)
+    all_water_obs_nest = gvp.get_all_observations(year, output='Nest', geohazard_tids=60, max_file_age=230)
+
+    form_count = {}
+    for o in all_water_obs_list:
+        form_name = o.RegistrationName
+        if form_name in form_count.keys():
+            form_count[form_name] += 1
+        else:
+            form_count[form_name] = 1
+
+    observation_count = len(all_water_obs_nest)
+    user_count = {}
+    for o in all_water_obs_nest:
+        nick_name = o.NickName
+        if nick_name in user_count.keys():
+            user_count[nick_name] += 1
+        else:
+            user_count[nick_name] = 1
+
+    with open('{}water_users_and_numbers {}.txt'.format(env.output_folder, year), 'w', encoding='utf-8') as f:
+        f.write('Totalt antall observasjoner; {}\n'.format(observation_count))
+        f.write('Totalt antall skjema; {}\n'.format(len(all_water_obs_list)))
+        f.write('\n')
+        for k, v in form_count.items():
+            f.write('{};{}\n'.format(k, v))
+        f.write('\n')
+        for k, v in user_count.items():
+            f.write('{};{}\n'.format(k, v))
+
+    pass
+
+
 if __name__ == '__main__':
 
     # find_fun_facts()
     # pick_winners_at_conference()
-    write_to_file_all_obs()
+    # write_to_file_all_obs()
     # pick_winners_varsom_friflyt_konk_2018()
-
+    count_of_water_forms_used()

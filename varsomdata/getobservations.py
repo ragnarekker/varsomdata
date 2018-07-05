@@ -1798,11 +1798,11 @@ def _raw_play_ground():
 
     # query object posted in the request
     rssquery = {'LangKey': 1,
-                'RegId': 146437,
+    #            'RegId': 146437,
     #            'ObserverGuid': None,               # '4d11f3cc-07c5-4f43-837a-6597d318143c',
     #            'SelectedRegistrationTypes': [{'Id': 83, 'SubTypes': [30]}], #_reg_types_dict([10, 11, 12, 13]),    # list dict with type and sub type
     #            'SelectedRegions': None,
-    #            'SelectedGeoHazards': [60],         # list int
+                'SelectedGeoHazards': [60],         # list int
     #            'ObserverNickName': None,           # "jostein",
     #            'ObserverId': None,
     #            'ObserverCompetence': None,         # list int

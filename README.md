@@ -6,18 +6,18 @@ Both repository root- and core modules should be viewed as a work in progress. T
 This said, lots of this works fine and all of it gives insight in how to read the api's we have in Varsom.
 
 **Repository content:**<br>
-`allforecasteddangerlevels.py`: Requests all forecasts (danger levels and problems) from the forecast api and writes to .csv file or plot.\<br>
 `avalancheactivity.py`:<br>
-`avalancheproblems.py`:<br>
+`dangerlevelsandproblems.py`: Requests all forecasts (danger levels and problems) from the forecast api and writes to .csv file or plot.<br>
 `elrappdata.py`:<br>
 `forcastersregions.py`:<br>
 `forecasterfollowup.py`:<br>
 `incidentandforecast.py`:<br>
 `incidentandforecastnodelist.py`:<br>
+`landslideforecasts.py`: Methods for retrieving and saving landslide forecasts.<br>
 `levelanddangersign.py`:<br>
 `localstorage`: Folder holding part of a calculation or data set. Eg, requesting data may take time, so a .pickle of the data set may be stored locally while working on the analysis.<br>
 `locationcheck.py`:<br>
-`mainmessages.py`:<br>
+`mainmessages.py`: Finds all main messages used in the forecasts and counts occurrences and tags danger levels, avalanche problems, avalanche types etc used in the forecasts when the main message was used.<br>
 `matrix.py`:<br>
 `observations.py`: Methods and analysis of observations as a whole. Looks mostly on when, where and who of observations over year(s).<br>
 `output`: Folder for saving plots and data files made by the different modules.<br>
@@ -32,7 +32,6 @@ This said, lots of this works fine and all of it gives insight in how to read th
 `fencoding.py`: Handles removing and adding of norwegian letters. In general æ, ø and å are removed from data on retrieval from the api's and added when plotted or written to file.<br>
 `getaps.py`: Code testing requests to the Avalanche Problem Solver (APS).<br>
 `getdangers.py`: Contains classes and methods for retrieving avalanche danger regardless source (regObs or forecastAPI or version/year the data is from.)<br>
-`getfloodwarning.py`: Code testing requests to the flood warning api.<br>
 `getforecastapi.py`: Contains methods for accessing data on the forecast api.<br>
 `getgts.py`: Code testing requests to the grid time series application (GTS).<br>
 `getkdvelements.py`: Contains methods for accessing KDV-elements used in regObs. In regObs, xKDV elements contain the link between an element ID and its name and description. This is also the contents of dropdown choices in regObs. It is useful to have a local copy of these tables.<br>

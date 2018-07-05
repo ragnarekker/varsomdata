@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
-__author__ = 'raek'
 
-from varsomdata import getregobs as gro
 from varsomdata import getforecastapi as gfa
 from varsomdata import makepickle as mp
 from varsomdata import getmisc as gm
+from varsomdata import fencoding as fe
+from varsomdata import setcoreenvironment as cenv
+from varsomdata import readfile as rf
 import os.path
 import operator
-from runvarsomdata import setthisenvironment as se
+import setenvironment as env
+
+__author__ = 'raek'
 
 
 class MainMessage:
@@ -75,14 +78,78 @@ class MainMessage:
         self.occurrences = self.occurrences + 1
 
 
+class MainMessageInAdmin:
+
+    def __init__(self, row):
+
+        self.AvalancheDangerId = row[0]
+        self.AvalancheProblemTypeId1 = row[1]
+        self.AvalancheProblemTypeId2 = row[2]
+        self.AvalancheProblemTypeId3 = row[3]
+        self.AvalancheTriggerId = row[4]
+        self.LangKey = int(row[5])
+        self.Id = int(row[6])
+        self.Text = row[7]
+
+
+def _messages_found_in_admin(file_name):
+    """Loads a list of messages found in admin and returns the norwegian ones as a list.
+
+    :param file_name:   [string] Full path of the file contaning the main messages found in admin
+    :return:            [list of strings]
+    """
+
+    main_messages_in_admin = rf.read_csv_file(file_name, MainMessageInAdmin)
+    main_messages_no = []
+
+    for m in main_messages_in_admin:
+        if m.LangKey == 1:
+            main_messages_no.append(fe.text_cleanup(m.Text))
+
+    return main_messages_no
+
+
+def _get_main_message_object(message_no, main_messages):
+    """Returns the main message object reference if the main message in Norwegian is in
+    the list of main messages.
+
+    :param message_no:
+    :param main_messages:
+    :return:
+    """
+
+    for m in main_messages:
+        if message_no == m.main_message_no:
+            return m
+
+    return None
+
+
+def _message_no_is_in_list(message_no, main_messages):
+    """Returns True if the main message in Norwegian is in the list of main messages.
+
+    :param message_no:
+    :param main_messages:
+    :return:
+    """
+
+    is_in_list = False
+
+    for m in main_messages:
+        if message_no == m.main_message_no:
+            is_in_list = True
+
+    return is_in_list
+
+
 def pickle_warnings(regions, date_from, date_to, pickle_file_name):
     """All warnings and problems are selected from regObs or the avalanche api and neatly pickel'd for later use.
     This method also gets all warnings in english for the english main message.
 
-    :param regions:            list []
-    :param date_from:          string as 'yyyy-mm-dd'
-    :param date_to:            string as 'yyyy-mm-dd'
-    :param pickle_file_name:   filename including directory as string
+    :param regions:             [int or list of ints] RegionID as given in the forecast api
+    :param date_from:           [date or string as yyyy-mm-dd]
+    :param date_to:             [date or string as yyyy-mm-dd]
+    :param pickle_file_name:    filename including directory as string
 
     :return:
     """
@@ -114,28 +181,32 @@ def select_messages_with_more(pickle_warnings_file_name):
     occurrence), adds the danger levels, main causes, causes, and avalanche types that are used to this main
     message. There is also a count of how many times the main text has occurred.
 
-    :param pickle_warnings_file_name    filename to where the picle file with the warnings are located
+    :param pickle_warnings_file_name    filename to where the pickle file with the warnings are located
     :return main_messages               list of MainMessage objects ordered by most occurrences first
     """
 
     warnings = mp.unpickle_anything(pickle_warnings_file_name)
+    main_messages_in_admin = _messages_found_in_admin('{}mainmessages.20180704.csv'.format(cenv.input_folder))
     main_messages = []
 
     for w in warnings:
 
         message_no = w.main_message_no
-        message_no = more_text_cleanup(message_no)
+        message_no = fe.text_cleanup(message_no)
 
         # if no content
-        if message_no == 'Ikke vurdert':
+        if 'Ikke vurdert.' in message_no:
             continue
 
         if message_no == '':
             continue
 
+        if message_no in main_messages_in_admin:
+            continue
+
         # if message exists in list append changes to it
-        if message_no_is_in_list(message_no, main_messages):
-            m = get_main_message_object(message_no, main_messages)
+        if _message_no_is_in_list(message_no, main_messages):
+            m = _get_main_message_object(message_no, main_messages)
             m.add_occurrence()
             m.add_to_danger_levels(w.danger_level)
 
@@ -144,7 +215,6 @@ def select_messages_with_more(pickle_warnings_file_name):
                 m.add_to_cause_names(p.cause_name)
                 m.add_to_aval_types(p.aval_type)
                 m.add_to_aval_triggers(p.aval_trigger)
-
 
         # if not append a new one
         else:
@@ -167,84 +237,6 @@ def select_messages_with_more(pickle_warnings_file_name):
     # main_messages.sort(key=lambda m: m.occurrences, reverse=True)
 
     return main_messages
-
-
-def more_text_cleanup(message_no):
-    """
-    Method removes ...
-
-    :param message_no:
-    :return:
-    """
-
-    message_no = message_no.rstrip()
-
-    message_no = message_no.replace('\n', '')
-    message_no = message_no.replace('\t', '')
-
-    message_no = message_no.replace('    ', ' ')  # in case four spaces occur by mistake
-    message_no = message_no.replace('   ', ' ')
-    message_no = message_no.replace('  ', ' ')  # in case double spaces occur by mistake
-    message_no = message_no.replace(' - ', '-')
-    message_no = message_no.replace(' -', '-')
-    message_no = message_no.replace('- ', '-')
-
-    # add space behind a comma if missing
-    if ',' in message_no:
-        split_message = message_no.split(',')
-        message_no = []
-        for s in split_message:
-            message_no.append(s.strip())
-        message_no = ', '.join(message_no)
-
-    if '.' in message_no:
-        split_message = message_no.split('.')
-        message_no = []
-        for s in split_message:
-            message_no.append(s.strip())
-        message_no = '. '.join(message_no)
-
-    # remove spaces to left and right
-    message_no = message_no.strip()
-
-    # if there is no punctuation or exclamation on the end, add..
-    if not (message_no.endswith('.') or message_no.endswith('!')):
-        message_no = message_no + '.'
-
-    return message_no
-
-
-def get_main_message_object(message_no, main_messages):
-    """Returns the main message object reference if the main message in Norwegian is in
-    the list of main messages.
-
-    :param message_no:
-    :param main_messages:
-    :return:
-    """
-
-    for m in main_messages:
-        if message_no == m.main_message_no:
-            return m
-
-    return None
-
-
-def message_no_is_in_list(message_no, main_messages):
-    """Returns True if the main message in noregian is in the list of main messages.
-
-    :param message_no:
-    :param main_messages:
-    :return:
-    """
-
-    is_in_list = False
-
-    for m in main_messages:
-        if message_no == m.main_message_no:
-            is_in_list = True
-
-    return is_in_list
 
 
 def save_main_messages_to_file(main_messages, file_path):
@@ -295,19 +287,17 @@ def save_main_messages_to_file(main_messages, file_path):
 
 if __name__ == "__main__":
 
-    # regions_kdv = gkdv.get_kdv("ForecastRegionKDV")
-    regions = gm.get_forecast_regions(year='2016-17')
-
-    date_from = "2016-12-01"
-    date_to = "2017-06-01"
+    year = '2017-18'
+    regions = gm.get_forecast_regions(year=year)
+    date_from, date_to = gm.get_dates_from_season(year=year)
 
     # file names
-    file_name_for_warnings_pickle = '{0}{1}'.format(se.local_storage, 'runmainmessage warnings.pickle')
-    file_name_for_main_messages_pickle = '{0}{1}'.format(se.local_storage, 'runmainmessage main messages.pickle')
-    file_name_for_main_messages_csv = '{0}{1}'.format(se.output_folder, 'Alle hovedbudskap 2017-18.csv')
+    file_name_for_warnings_pickle = '{0}{1}'.format(env.local_storage, 'runmainmessage warnings.pickle')
+    file_name_for_main_messages_pickle = '{0}{1}'.format(env.local_storage, 'runmainmessage main messages.pickle')
+    file_name_for_main_messages_csv = '{0}{1}'.format(env.output_folder, 'Alle hovedbudskap {}.csv'.format(year))
 
     ##### pickle the warnings and dataset with main messages
-    #pickle_warnings(regions, date_from, date_to, file_name_for_warnings_pickle)
+    # pickle_warnings(regions, date_from, date_to, file_name_for_warnings_pickle)
     main_messages = select_messages_with_more(file_name_for_warnings_pickle)
     mp.pickle_anything(main_messages, file_name_for_main_messages_pickle)
     main_messages = mp.unpickle_anything(file_name_for_main_messages_pickle)
@@ -315,4 +305,4 @@ if __name__ == "__main__":
     # write to file
     save_main_messages_to_file(main_messages, file_name_for_main_messages_csv)
 
-    a = 1
+    pass

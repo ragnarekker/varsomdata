@@ -6,7 +6,7 @@ from varsomdata import getforecastapi as gfa
 from varsomdata import makepickle as mp
 import matplotlib as mpl
 import pylab as plb
-from runvarsomdata import setthisenvironment as thisenv
+import setenvironment as thisenv
 from varsomdata import setcoreenvironment as env
 import numpy as np
 from varsomdata import readfile as rf
@@ -166,8 +166,7 @@ def plot_histogram(data_series, data_labels, file_name, data_colors=None, figure
 
 
 def plot_histogram_on_danger_level(key, data_set, file_name, normalized=False, figure_title='', file_ext='.png'):
-    '''
-    Messy but generic for its use. Plots a histogram on the requested data series for each danger level.
+    """Messy but generic for its use. Plots a histogram on the requested data series for each danger level.
 
     :param key:             which series in data_set is to be plotted.
     :param data_set:        a data set as made in the method pickle_data_set in thins file.
@@ -177,7 +176,7 @@ def plot_histogram_on_danger_level(key, data_set, file_name, normalized=False, f
     :param file_ext:        String. Default extencion is png if no other extencion is specified.
 
     :return:
-    '''
+    """
 
     if figure_title == '':
         figure_title = file_name
@@ -351,8 +350,7 @@ def plot_all_histograms(data_set, date_from, date_to, warnings):
                                     figure_title='Faregrader pr skredproblem ({0} til {1})'.format(date_from, date_to))
 
 
-class M3Element():
-
+class M3Element:
 
     def __init__(self):
 
@@ -377,7 +375,6 @@ class M3Element():
         self.colour = 'white'               # string, should always be overwritten.
         self.recomended_danger_level = None  # int
         self.recomended_colour = 'white'    # string, should always be overwritten.
-
 
     def add_configuration_row(self, row):
         """
@@ -412,7 +409,6 @@ class M3Element():
         else:
             self.recomended_danger_level = 0  # int
         self.set_recomended_colour()
-
 
     def add_danger_level(self, level):
         self.danger_level_list.append(level)

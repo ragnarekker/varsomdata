@@ -133,6 +133,52 @@ def make_standard_file_name(name_inn):
     return name
 
 
+def text_cleanup(str_inn):
+    """Method cleans up text.
+
+    :param str_inn:
+    :return str_inn:
+    """
+
+    if str_inn:
+        str_inn = str_inn.rstrip()
+
+        str_inn = str_inn.replace('\n', '')
+        str_inn = str_inn.replace('\t', '')
+        str_inn = str_inn.replace('<br/><br/>', ' ')
+
+        str_inn = str_inn.replace('    ', ' ')  # in case four spaces occur by mistake
+        str_inn = str_inn.replace('   ', ' ')
+        str_inn = str_inn.replace('  ', ' ')  # in case double spaces occur by mistake
+        str_inn = str_inn.replace(' - ', '-')
+        str_inn = str_inn.replace(' -', '-')
+        str_inn = str_inn.replace('- ', '-')
+
+        # add space behind a comma if missing
+        if ',' in str_inn:
+            split_message = str_inn.split(',')
+            str_inn = []
+            for s in split_message:
+                str_inn.append(s.strip())
+            str_inn = ', '.join(str_inn)
+
+        if '.' in str_inn:
+            split_message = str_inn.split('.')
+            str_inn = []
+            for s in split_message:
+                str_inn.append(s.strip())
+            str_inn = '. '.join(str_inn)
+
+        # remove spaces to left and right
+            str_inn = str_inn.strip()
+
+        # if there is no punctuation or exclamation on the end, add..
+        if not (str_inn.endswith('.') or str_inn.endswith('!')):
+            str_inn = str_inn + '.'
+
+    return str_inn
+
+
 if __name__ == "__main__":
 
     a = u'æøå'.encode('utf8')

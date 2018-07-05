@@ -66,7 +66,7 @@ def read_csv_file(file_name, element_class):
 
     separator = ';'
     elements = []
-    for i in range(1, len(inn_data), 1):
+    for i in range(1, len(inn_data), 1):        # begin range at 1 since 0 is the headers
 
         inn_data[i] = inn_data[i].strip()       # get rid of ' ' and '\n' and such
         if inn_data[i] == '':                   # blank line at end of file

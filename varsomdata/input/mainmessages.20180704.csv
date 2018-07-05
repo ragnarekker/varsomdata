@@ -1,0 +1,431 @@
+﻿AvalancheDangerId;AvalancheProblemTypeId1;AvalancheProblemTypeId2;AvalancheProblemTypeId3;AvalancheTriggerId;LangKey;Id;Text
+2;10;30;0;10;1;1419;Lokalt ustabile forhold.Vær forsiktig i forsenkninger og søkk der fokksnø har lagt seg oppå et tynt lag med overflaterim.
+2;10;30;0;10;2;1420;Locally unstable conditions. Be careful in areas with soft slabs. A weak layer of buried surface hoar can be present underneath soft slabs in isolated features.
+3;7;0;0;22;1;1421;Vind og nysnø i fjellet. Skred kan løysast ut både naturleg og av skiløpar. Unngå leområde kor det samlar seg fersk fokksnø.
+3;7;0;0;22;2;1422;Wind and fresh snow may give instable conditions. Be careful in lee areas with wind deposited snow, typically behind ridges, ribs and in gullies. Especially where the wind deposited slabs are thin or soft, a slab avalanche is easier to trigger there. Especially avoid convex terrain.
+3;7;30;0;21;1;1423;Krevende situasjon. I tillegg til mye nysnø og vind finnes det områder med vedvarende svake lag under den ferske fokksnøen som gir et svært ustabilt snødekke.
+3;7;30;0;21;2;1424;The snowpack is very unstable. Avoid areas with wind-deposited snow. It is also possible to trigger avalanches in a persistant weak layer in old snow found in bowls and gullies.
+3;7;0;0;21;1;1425;Unngå terreng der nysnøen har bundet seg saman til mjuke flak.
+3;7;0;0;21;2;1426;Avoid terrain with fresh wind deposited snow/storm slabs.
+3;30;10;0;21;1;1427;Komplekse forhold med flere svake lag. Vær spesielt forsiktig i leområder hvor et svakt lag av overflaterim kan ligge under fersk fokksnø.
+3;30;10;0;21;2;1428;Complex conditions with several avalanche problems. Be especilally careful in areas where buried surface hoar can be hidden beneath fresh wind deposited snow.
+2;7;0;0;21;1;1429;Lokalt ustabile forhold. Nysnø og vind har dannet nysnøflak i høyden.
+2;7;0;0;21;2;1430;Locally unstable avalanche conditions. Be cautious in steep terrain, storm slabs can be triggered.
+2;5;50;0;22;1;1431;Vær forsiktig i leområder og i bratte heng med myk våt snø. Hold avstand til fjellsider med glidesprekker.
+2;5;50;0;22;2;1432;Be careful on steep slopes with soft and wet snow, a skier can trigger avalanches here. Keep distance to areas with glide-cracks
+3;7;5;0;21;1;1433;Krevende forhold med mye nedbør. Unngå bratt terreng i høyden. I lavlandet kan det gå enkelte naturlig utløste våte skred.
+3;7;5;0;21;2;1434;Demanding conditions with heavy snow/rainfall. Avoid avalanche terrain above tree line. Possibility for wet loose avalanches at lower elevations.
+3;30;0;0;21;1;1435;Generelt reduseres skredfaren, men treffer man på områder med nedføyket rim kan man løse ut store skred. Unngå derfor nordsider.
+3;30;0;0;21;2;1436;Generally the avalanche danger will decrease, but be aware of wind slabs and isolated areas with surface hoar in north aspects in high elevation.
+2;50;45;5;22;1;1437;Aukande varme svekker snødekket og kan gi naturlig utløste våte skred. Vær varsom ved skavler og under områder med sigesprekker.
+2;50;45;5;22;2;1438;Increasing temperature can weaken the snowpack, and wet slabs can be released. Be aware by cornices and under gliding cracks.
+3;30;5;0;22;1;1837;Sol og plussgrader kan gi naturlig utløste skred, det blir lettere å påvirke dype svake lag. Skred kan bli store. Hold avstand til bratt terreng og utløpssoner.
+3;30;5;0;22;2;1838;Wet avalanches can release due to sun and high temperatures. Persistent weak layers buried in the snow will be easier to trigger and can cause medium large avalanches. Remote triggering is possible. Keep good distance to avalanche terrain and run out zones for wet avalanches.
+4;45;0;0;22;1;1439;Økende snøskredfare grunnet rask temperaturstigning og nedbør som regn. Naturlig utløste snøskred sannsynlig.
+4;45;0;0;22;2;1440;Natural triggered avalanches are likely. Increasing danger level due to higher temperatures and percipitation as rain.
+3;10;0;0;21;1;1441;Vær forsiktig der det ligger fersk fokksnø i høyden. Stigende temperatur fører til midlertidig svekkelse av snødekket.
+3;10;0;0;21;2;1442;Be careful in areas with wind deposited snow at high elevations. Increasing temperature will weaken the snow cover temporarily.
+3;30;0;0;21;1;1443;Krevende forhold. Et nedsnødd svakt lag kan utløses av skiløper. Fjernutløsning er mulig.
+3;30;0;0;21;2;1444;Conditions are challenging. A persistent buried weak layer can cause large avalanches. Remote triggering is possible.
+2;10;0;0;10;1;1445;Vær forsiktig der det ligger fersk fokksnø i høyden, ellers stabile forhold.
+2;10;0;0;10;2;1446;Be aware of isolated wind slabs above treeline, otherwise stable conditions.
+2;10;5;0;10;1;1447;Vær obs i bratte leområder med tørr fokksnø i høyfjellet. Skredfaren øker til 2-moderat også der sola evt. gjør snøen myk. Stort sett stabile forhold ellers.
+2;10;5;0;10;2;1448;Predominantly stable conditions, but be aware in steep lee areas in higher elevations, small dry wind slabs are possible to release. Be careful close to and in terrain traps. If/when the sun comes out, the danger will rise to 2-moderate also in areas where the snow becomes wet and soft.
+3;45;7;0;22;1;1449;Generelt ustabile forhold. Naturlig utløste våte snøskred ventes i lavlandet, mens i høyden må man unngå ferske og ustabile nysnøflak.
+3;45;7;0;22;2;1450;General unstable conditions. Wet avalanches are expected. In the mountains where precipitation falls as snow, avoid new and fresh stormslabs.
+4;7;0;0;22;1;1451;Omfattende ustabile forhold pga. store nysnømengder og vind. Naturlig utløste skred forventes. Unngå skredterreng.
+4;7;0;0;22;2;1452;Dangerous avalanche conditions due to large amounts of new snow and strong winds. Natural avalanches are likely. Avoid avalanche terrain.
+2;7;5;50;21;1;1453;Vær forsiktig i leområder med tørre nysnøflak i høyden. I lavlandet og i solvendte fjellsider kan det gå små løssnøskred. Unngå områder under glidesprekker.
+2;7;5;50;21;2;1454;Wet avalanches can release in steep terrain in lower areas and in sun exposed slopes where the sun comes out. Wind slabs are a problem at high elevations. Avoid areas beneath visible gliding cracks, glide avalanches can occur.
+2;30;10;0;21;1;1455;Det finnes områder med svake lag av rim under den vindtransporterte snøen. Vær forsiktig i leområder, særlig i eller nært terrengfeller.
+2;30;10;0;21;2;1456;Be aware that there can be pockets with persistent weak layer beneath wind deposited snow. Be careful in these areas, especially in and close to terrain traps.
+3;5;45;0;22;1;1457;Lokalt ustabile forhold. Vær forsiktig i bratte solvendte heng, særlig utover dagen.
+3;5;45;0;22;2;1458;Local unstable conditions. Be careful in sun exposed steep slopes, the danger increases with temperature during the day.
+1;5;10;0;22;1;1459;Generelt stabile forhold. Vær varsom med skavler, gammel fokksnø og bratte fjellsider der sola tar tak.
+1;5;10;0;22;2;1460;Generally stable avalanche conditions. Use caution in areas with wind deposited snow and cornices and where the sun makes the snow surface wet and soft.
+3;7;0;0;21;1;1461;Unngå terrengfeller og store bratte heng til nysnøen har stabilisert seg. Enkelte naturlig utløste skred kan forekomme.
+3;7;0;0;21;2;1462;Avoid terrain traps and big steep slopes. Wait until the fresh snow has stabilized.Naturally released avalanches can occur.
+3;10;0;0;21;1;1463;Krevende forhold i fjellet pga. polart lavtrykk med svært kraftig vind som vil føre til ustabile fokksnøflak i leområder. Turer i høyfjellet anbefales ikke.
+3;10;0;0;21;2;1464;A strong low pressure system will hit the region. Hurricane winds are forecasted. Touring above treeline is not recommened.
+3;30;7;0;21;1;1835;Krevende forhold. Ferdsel i bratt terreng krever erfaring og kunnskap. I tillegg til ustabile nysnøflak finnes det vedvarende svake lag under nysnøen.
+3;30;7;0;21;2;1836;Conditions are challenging. Be sure you have enough knowledge and experience before travelling in steep terrain. Be extra careful in lee areas with wind deposited snow. There are persistent weak layers in the snowpack.
+4;45;7;0;22;1;1465;Værskifte! Naturlig utløste skred ventes pga. temperaturstigning og regn. Nysnøproblem høyt til fjells. Hold deg unna skredterreng.
+4;45;7;0;22;2;1466;Weather change! Natural avalanches expected due temperature rise and rain. Fresh storm slabs are the problem in the mountains. Avoid avalanche terrain.
+3;10;0;0;21;1;1467;Ver forsiktig i leområde der det samlar seg fokksnø, td. bak ryggar, i søkk og renneformasjonar. Lettast å løyse ut skred der fokksnølaget er tynt eller mjukt.
+3;10;0;0;21;2;1468;Be careful in lee areas with wind deposited snow, typically behind ridges, ribs and in gullies. Especially where the wind deposited slabs are thin or soft, a slab avalanche is easier to trigger there.
+2;10;30;0;10;1;1469;Lokalt ustabile forhold. Vær forsiktig i leområder med fokksnø. Det finnes lommer med svake lag under den vindtransporterte snøen.
+2;10;30;0;10;2;1470;Locally unstable conditions. Be careful in areas with fresh wind deposited snow. Be aware that there can be pockets with persistent weak layer beneath wind deposited snow.
+2;45;30;0;10;1;1471;Stigende temperatur fører til økende skredfare. Det er en mulighet for at gamle svake lag kan vekkes til live og øke faren for naturlig utløste skred.
+2;45;30;0;10;2;1472;Increasing temperatures leads to higher avalanche danger. A weak layer deep in the snow pack can now become more active and increase the chance for natural released avalanches.
+2;10;0;0;10;1;1821;Vær varsom der det ligger fersk fokksnø, ellers stabile forhold.
+2;10;0;0;10;2;1822;Be aware of isolated wind slabs, otherwise stable conditions.
+3;30;0;0;21;1;1473;Unngå områder der snødekket over det svake laget er tynt, t. d. nær ryggar og på konvekse terrengformasjonar.
+3;30;0;0;21;2;1474;Avoid (lee) areas where a persistent weak layer can be hidden in the snow pack. Avalanches are triggered most easily where the snow pack is thin, typically close to ridges and on convex formations.
+2;7;0;0;21;1;1475;Nysnø og vind kan skape ustabile forhold i høyfjellet. Mer stabile forhold i ytre og lavereliggende deler av regionen.
+2;7;0;0;21;2;1476;Storm and wind slabs in the alpine can give unstable conditions. More stable snowpack in lower areas and closer to the coast.
+2;10;30;0;10;1;1477;Vær forsiktig i leområder med fokksnø. Det finnes områder med svake lag under den vindtransporterte snøen.
+2;10;30;0;10;2;1478;Be careful in areas with fresh wind deposited snow. There may be pockets with a persistent weak layer beneath the wind depposited snow.
+4;45;0;0;22;1;1839;Når regnet trenger ned til de dype vedvarende svake lagene vil det gå store naturlige utløste skred. Hold avstand til bratt terreng og utløpssoner.
+4;45;0;0;22;2;1840;Expect wet avalanches due to rain and high temperatures. There are well-defined persistent weak layers buried in the snowpack that can cause large avalanches. Keep good distance to avalanche terrain and run out zones for wet avalanches.
+1;5;10;0;22;1;1479;Generelt stabile forhold. Ha ulik tilnærming til vått og tørt snødekke. Faren for våte skred øker utover dagen.
+1;5;10;0;22;2;1480;Generally stable avalanche conditions, but the danger for small wet avalanches increases as the temperature rises. Its time to switch to spring mode and remember to use slightly different approaches on wet and dry snow.
+3;30;10;0;21;1;1481;Krevende forhold. Vedvarende svake lag nede i snødekket og ansamlinger av fersk fokksnø. Utvis stor varsomhet inntil videre.
+3;30;10;0;21;2;1482;Conditions are dangerous. Be careful in lee areas with wind deposited snow, typically behind ridges, ribs and in gullies. Be aware of a persistant weak layer buried by windslabs.
+2;10;5;0;10;1;1483;Stabile forhold mange steder, men vær forsiktig der det ligger fokksnø i bratte leformasjoner. Økt fare for våte løssnøskred i solutsatte fjellsider.
+2;10;5;0;10;2;1484;Stabile conditions, but be careful in lee areas with wind deposited snow. Increased danger of small natural avalanches in sun-exposed mountainsides.
+2;10;0;0;10;1;1813; Det finst fersk fokksnø i leformasjonar i terrenget. Skred er lettast å løyse ut der fokksnølaget er tynt eller mjukt.
+2;10;0;0;10;2;1814;Be careful in lee areas with wind deposited snow, typically behind ridges, ribs and in gullies. Especially where the wind deposited slabs are thin or soft, a slab avalanche is easier to trigger here.
+3;7;0;0;22;1;1485;Generelt ustabile forhold. Unngå leområder og andre terrengformasjoner hvor vinden har lagt fra seg mye nysnø. Naturlig utløste skred forventes.
+3;7;0;0;22;2;1486;Generally unstable conditions, avoid lee areas with wind deposited snow, typically behind ridges, ribs and in gullies. Naturally released avalanches are expected.
+2;10;0;0;21;1;1803;Ver varsom der det ligg fersk fokksnø, elles stabile forhold.
+2;10;0;0;21;2;1804;Be aware of isolated wind slabs, otherwise stable conditions.
+3;30;0;0;21;1;1487;Et nedsnødd svakt lag kan føre til store skred. Fjernutløsning er mulig.
+3;30;0;0;21;2;1488;A persistent weak layer buried in the snow can cause large avalanches. Remote triggering is possible.
+3;30;5;0;21;1;1489;Krevende skredforhold i fjellet, ferdsel i bratt terreng krever erfaring og kunnskap. I lavlandet kan det gå våte skred i bratt terreng.
+3;30;5;0;21;2;1490;Conditions are challenging. Be sure you have enough knowledge and experience before travelling in steep terrain. Wet avalanches can release in steep terrain in lower areas.
+2;30;10;0;21;1;1491;Det finnes svake lag i snødekket som kan trigges av en skiløper eller skuter der snødekket er tynt. Fokksnø i høyden kan også gi skred. Vær også obs på skavler.
+2;30;10;0;21;2;1492;There is a persistent weak layer buried in the snow cover that may be triggered by a skier or snowmobile. Remote triggering possible on hotspots or on convex terrain where the snow cover is thin. Wind slabs in the alpine may also form avalanches. Be also aware of cornices than kan break off due to rising temperatures.
+3;7;0;0;21;1;1493;Krevende forhold. Polart lavtrykk med bygevær kan gi store lokale forskjeller. Vær svært varsom i leområder, stedvis vil nysnøflak legge seg på glatt skare.
+3;7;0;0;21;2;1494;Conditions are challenging. A strong low pressure may cause large local differences in precipitation and wind. Storm slab will form directly on crust layer.
+2;5;7;0;22;1;1495;Lokalt ustabile forhold. Ha ulik tilnærming til vått og tørt snødekke. Fare for ustabile nysnøflak i høyden.
+2;5;7;0;22;2;1496;Locally unstable conditions. Use caution in areas with recently formed storm slabs. Its time to switch to spring mode and remember to use slightly different approaches on wet and dry snow.
+3;5;10;0;22;1;1497;Mangel på nattefrost og påfølgende milde temperaturer og sol, øker faren for våte skred. Fokksnø er et problem i høyden.
+3;5;10;0;22;2;1498;High temperature elevates the danger of wet avalanches. Be careful with recently formed wind slabs at high elevations. Remember to use slightly different approaches on wet and dry snow.
+3;30;7;0;21;1;1499;Kompleks situasjon med flere skredproblemer, det krever mye kunnskap om skred å bevege seg trygt i bratt terreng. Gjør svært forsiktige vegvalg.
+3;30;7;0;21;2;1500;Complex and difficult situation with several avalanche problems. Be very careful and avoid avalanche terrain, especially in poor visibility.
+3;7;30;0;21;1;1501;Krevende forhold. Unngå leområder hvor det legger seg opp ferske nysnøflak. Svake lag i snødekket gir en utfordrende situasjon over mildværsgrensa.
+3;7;30;0;21;2;1502;Demanding conditions, avoid areas with fresh wind deposited snow. It is also possible to trigger a persistant weak layer in the old snow in bowls and gullies, in all alpine expositions.
+3;7;0;0;21;1;1503;Unngå terrengfeller og store bratte heng til nysnøen har stabilisert seg.
+3;7;0;0;21;2;1504;Avoid terrain traps and big steep slopes. Wait until the fresh snow has stabilized.
+3;7;0;0;21;1;1505;Generelt ustabile forhold. Unngå leområder og andre terrengformasjoner hvor vinden har lagt fra seg mye nysnø. Naturlig utløste skred kan forekomme.
+3;7;0;0;21;2;1506;Generally unstable conditions in higher terrain. Avoid lee areas with wind deposited snow, typically behind ridges, ribs and in gullies. Naturally triggered avalanches may occur.
+3;7;0;0;21;1;1507;Vind og nysnø kan gi ustabile forhold i mange bratte heng. Unngå leområde kor det samlar seg fersk fokksnø, typisk bak ryggar, i søkk og renneformasjonar.
+3;7;0;0;21;2;1508;Wind and fresh snow may give instable conditions in some slopes. Be careful in lee areas with wind deposited snow, typically behind ridges, ribs and in gullies. Especially where the wind deposited slabs are thin or soft, a slab avalanche is easier to trigger here. Avoid especially convex terrain.
+1;10;0;0;10;1;1509;Vær varsom i bratt terreng der vinden har lagt frå seg ferske fokksnøflak.
+1;10;0;0;10;2;1510;Be careful in steep terrain with fresh wind deposited snow.
+3;30;7;0;21;1;1829;Vedvarende svake lag i snødekket kombinert med vind og snøvær gir en komplisert situasjon som kan føre til skred, både naturlig utløste og fjernutløste.
+3;30;7;0;21;2;1830;Complicated situation with  persistent weak layers in the snow pack, wind and fresh snow. Avalanches may be released both naturally and remotely.
+2;7;5;0;21;1;1511;Vær varsom i leområder med ferske nysnøflak. Temperaturstigning og solinnstråling gir fare for små våte løssnøskred i nysnøen.
+2;7;5;0;21;2;1512;Be careful in areas with fresh wind deposited snow. Sun and rise of temperature can produce small wet avalanches.
+2;10;30;0;10;1;1513;Generelt gunstige forhold under ca 2000 moh. I høyfjellet kan det fortsatt ligger enkelte lommer av ustabil fokksnø over vedvarende svake lag.
+2;10;30;0;10;2;1514;Favorable conditions. Be aware of wind-slabs over persistent weak layers above 2000 moh. It is possible to trigger wet avalanches in sun exposed slopes.
+2;5;0;0;22;1;1515;Vær forsiktig i solutsatte brattheng, spesielt om ettermiddagen. Snøen er mest stabil tidlig på dagen.
+2;5;0;0;22;2;1516;Be careful on sun-exposed slopes, especially in the afternoon. Conditions are most stable early in the day.
+2;7;0;0;21;1;1811;Vær varsom der det ligger fersk vindtransportert snø, ellers stort sett stabile forhold.
+2;7;0;0;21;2;1812;Be aware of isolated wind slabs, otherwise stable conditions.
+3;7;0;0;21;1;1517;Unngå leområder hvor det samler seg mye nysnø. Vær ekstra konservativ i vegvalgene når sikten er dårlig.
+3;7;0;0;21;2;1518;Avoid areas with fresh wind deposited snow. Be extra careful when the visibility is poor.
+1;5;10;0;22;1;1519;Generelt stabile forhold. Men vær varsom i solvendte brattheng og der det er fokksnøansamlinger i høyden.
+1;5;10;0;22;2;1520;Generally stable conditions. Be careful in sun exposed steep slopes and in areas with wind slabs at higher elevations.
+3;7;0;0;21;1;1521;Stor usikkerhet i varslet. Polart lavtrykk med kraftige snøbyger og snøfokk kan føre til krevende forhold. Følg oppdatering i morgen.
+3;7;0;0;21;2;1522;Conditions are challenging. Strong low pressure system will generate high winds and heavy snowfall. Follow the update tomorrow.
+1;0;0;0;0;1;1523;Det er lite snø, og liten skredfare.
+1;0;0;0;0;2;1524;Small amounts of snow, low avalanche danger.
+2;45;10;50;22;1;1525;Faren øker utover dagen. I lavlandet og i solvendte fjellsider ventes våte skred. I leområder i høyden er fokksnø problemet. Unngå områder under glidesprekker.
+2;45;10;50;22;2;1526;The danger rises when the temperature rises. Wet avalanches can release in steep terrain in lower areas and in sun exposed slopes where the sun comes out. Wind slabs are a problem at high elevations. Avoid areas beneath visible gliding cracks.
+2;45;50;7;22;1;1527;Det er mykje vatn i snøen i låglandet. Flakskred og glideskred kan gå der vatn hopar seg opp. Høgt til fjells finst det nysnøflak.
+2;45;50;7;22;2;1528;The snow pack is considerably wet in the lower areas due to high temperatures and heavy rain. The wet snow is in general stable, but wet slabs and glide avalanches may be released in some exposed slopes. In the high mountains, however, unstable slabs may have been formed during previous snowfall.
+2;30;0;0;21;1;1529;Det finnes svake lag i snødekket som kan trigges av en skiløper eller skuter der snødekket er tynt. Fjernutløsning av skred er mulig.
+2;30;0;0;21;2;1530;There is a persistent weak layer buried in the snow cover that may be triggered by a skier or snowmobile. Remote triggering possible on hotspots or on convex terrain where the snow cover is thin.
+2;45;50;0;10;1;1531;Stabiliteten i snøen blir dårligere når snødekket blir vått og mykt. Unngå utløps- og utløsningsområder for våte snøskred og områder under glidesprekker.
+2;45;50;0;10;2;1532;The stability decreases when the snow gets wet. Avoid areas beneath visible gliding cracks, release areas and run out areas for wet snow avalanches.
+2;30;0;0;21;1;1809;Stort sett stabile forhold, men vær forsiktig i lesider og forsenkninger der nysnø kan ha lagt seg oppå et tynt lag med overflaterim.
+2;30;0;0;21;2;1810;Generally stable conditions, but be careful in areas with soft slabs. A weak layer of buried surface hoar can be present underneath soft slabs in isolated features.
+1;10;0;0;10;1;1533;Stort sett lite snø i regionen, men vær forsiktig i leområder som samler fokksnø.
+1;10;0;0;10;2;1534;Generally thin snow cover, but be careful in areas with fresh wind deposited snow.
+2;7;10;0;21;1;1535;Vær forsiktig i leområder som har samlet mye snø fra før, og i nye leområder når bygeværet starter.
+2;7;10;0;21;2;1536;Be careful in areas with wind deposited snow.
+3;5;7;50;22;1;1537;Våte løssnøskred er hovedproblemet, faren øker først når regnet starter. Over snøgrensa vil skredfaren øke i leområder. Unngå også områder under glidesprekker.
+3;5;7;50;22;2;1538;Wet loose avalanches are the biggest problem, the danger increases in the afternoon, when the rain sets in. Above the new snow line the danger will increase in lee areas. Avoid areas under glide cracks.
+2;5;10;50;22;1;1539;I lavlandet og i solvendte fjellsider ventes små løssnøskred. I høyden er fokksnø problemet. Unngå områder under glidesprekker.
+2;5;10;50;22;2;1540;Wet avalanches can release in steep terrain in lower areas and in sun exposed slopes where the sun comes out. Wind slabs are a problem at high elevations. Avoid areas beneath visible gliding cracks, full depth glide avalanches can occur.
+3;30;45;0;21;1;1541;Flere nedsnødde svake lag kan føre til middels store skred. Fjernutløsning er mulig. I lavlandet kan det gå våte skred i bratt terreng.
+3;30;45;0;21;2;1542;Persistent weak layers buried in the snow can cause medium large avalanches. Remote triggering is possible. Wet avalanches can release in steep terrain in lower areas.
+3;45;7;0;22;1;1543;Faren øker når regnet kommer. Unngå potensielle løsneområder og utløpsområder for skred. Høyere til fjells vil det legge seg opp ustabile nysnøflak i leområder.
+3;45;7;0;22;2;1544;The avalanche danger increases when the rain sets in. Avoid potential release areas and runout areas for avalanches. At higher altitudes avoid areas with wind-deposited snow, typically behind ridges, ribs and in gullies.
+2;7;0;0;21;1;1545;Bygevær fører til lokalt ustabile forhold. Vær forsiktig i leområder hvor det samler seg mye snø.
+2;7;0;0;21;2;1546;Locally unstable conditions, be careful in lee areas with fresh wind deposited snow/storm slabs.
+1;5;0;0;21;1;1847;Generelt gunstige forhold. Regn og litt snø i høgda gir fare for mindre våte skred. Glideskred kan forekomme.
+1;5;0;0;21;2;1848;Favorable conditions. Rain and some snow high up give increased danger of wet avalanches. Glide avalanches are possible.
+4;45;0;0;22;1;1547;Temperaturstigning og regn gjør at naturlige skred ventes å gå på vedvarende svake lag i snødekket. Unngå skredterreng.
+4;45;0;0;22;2;1548;Temperature increase and rain causes natural avalanches in old persistant weak layers. Avoid avalanche terrain.
+2;45;5;0;22;1;1549;Høye temperaturer og regn øker faren for våte skred.
+2;45;5;0;22;2;1550;High temperature and rain elevate the danger of wet avalanches.
+2;7;5;0;21;1;1551;Ustabile nysnøflak i leområder er hovedproblemet. Våte løssnøskred vil løsne der sola får tak.
+2;7;5;0;21;2;1552;New snow with wind will create small unstable storm slabs in lee areas. Wet loose avalanches in south and west facing slopes are expected when the sun comes out.
+2;10;0;0;10;1;1553;Lokalt ustabile forhold. Vær forsiktig der det ligger fersk fokksnø i høyden, ellers generelt stabilt og hardt snødekke.
+2;10;0;0;10;2;1554;Be cautious in steep terrain with wind slabs that could be triggered. Generally expect a hard and stable snow pack.
+3;7;0;0;21;1;1555;Krevende forhold i fjellet. Unngå bratte leområder med mye nysnø. Vær ekstra konservativ i vegvalgene når sikten er dårlig.
+3;7;0;0;21;2;1556;Demanding conditions, avoid areas with fresh wind deposited snow. Be extra careful when the visibility is poor.
+2;30;10;0;21;1;1557;Det finnes svake lag i snødekket som kan trigges av en skiløper eller skuter der snødekket er tynt. Fokksnø i høyden kan også gi skred.
+2;30;10;0;21;2;1558;There is a persistent weak layer buried in the snow cover that may be triggered by a skier or snowmobile. Remote triggering possible on hotspots or on convex terrain where the snow cover is thin. Wind slabs in the alpine may also form avalanches.
+4;7;0;0;22;1;1559;Stort snøfall ventes i delar av regionen. Hald deg som skiløpar/skuterkjørar unna alt skredterreng. Enkelte vegstrekningar kan være utsette.
+4;7;0;0;22;2;1560;Heavy snowfall is expected in parts of the region. Stay away from all avalanche terrain as a skier/snowmobiler. Some roads might be vulnerable
+4;7;0;0;22;1;1561;Mildvêr, vind og mykje nedbør fører til auka skredfare. Unngå opphald i skredterreng. Nokre vegstrekningar kan være utsett.
+4;7;0;0;22;2;1562;Rising temperatures, wind and heavy precipitation will lead to increased avalanche hazard. Stay away from all avalanche terrain. Some roads might be vulnerable.
+2;10;0;0;0;1;1563;Det finst fersk fokksnø i leformasjonar i terrenget. Skred er lettast å løyse ut der fokksnølaget er tynt eller mjukt. Minkande skredfare i løpet av dagen.
+2;10;0;0;0;2;1564;Be careful in lee areas with wind deposited snow, typically behind ridges, ribs and in gullies. Especially where the wind deposited slabs are thin or soft, a slab avalanche is easier to trigger here. Decreasing avalanche hazard during the day.
+2;5;45;0;22;1;1565;Sol og høye dagtemperaturer kan føre til naturlig utløste skred, særlig i leområder i høyden og i bratte solvendte heng.
+2;5;45;0;22;2;1566;Solar radiation and high day temperatures may result in natural avalanche activity.
+3;7;45;30;21;1;1567;Sammensatt situasjon med fersk fokksnø høyfjellet, våt snø i lavlandet og forekomst av svakt rimlag nede i snødekket. Bruk erfaring og kunnskap ved veivalg!
+3;7;45;30;21;2;1568;Complex situation with heavy snowfall at high altitudes, wet snow in the lowlands and presence of weak layers of buried surface hoar in the snow pack. Use experience and knowledge in backcountry activities!
+3;7;45;0;21;1;1569;Ferske nysnøflak er problemet i høyden, under snøgrensa kan temperaturstigning og regn føre til naturlig utløste skred.
+3;7;45;0;21;2;1570;Wind deposited snow is the problem above the new snow line, lower down some naturally released wet avalanches can occur due to rain and rise in temperature.
+3;45;0;0;22;1;1571;Faren øker pga regnet. Unngå potensielle løsneområder og utløpsområder for skred.
+3;45;0;0;22;2;1572;The rain will increase the avalanche danger. Avoid avalanche release and run out areas.
+3;30;0;0;10;1;1833;Krevende forhold. Fravær av faretegn betyr ikke at det er trygt. Konservative turer anbefales.
+3;30;0;0;10;2;1834;Complex and tricky situation due to reactive persistent weak layers. Be very careful and avoid avalanche terrain, especially in poor visibility. Remotely triggered avalanche are possible. Use caution on recently loaded slopes.
+3;45;30;7;22;1;1573;Utfordrende forhold pga. flere ulike skredproblem. Unngå utløpsområder i lavlandet og vær varsom i områder med nysnøflak i høyfjellet.
+3;45;30;7;22;2;1574;Challenging conditions due to several different avalanche problems. Wet snow in lower elevations and risk of avalanche releasing in full depth. Conservative terrain choice is essential on freshly loaded storm slabs in the alpine.
+3;30;0;0;21;1;1825;Unngå  leområder der vedvarende svakt lag har snødd/føyket ned. Sprekker i snødekket og drønnelyder er tydelige tegn på ustabilitet.
+3;30;0;0;21;2;1826;Avoid leeward slopes, wind deposited snow are covering persistent week layer. Beware of alarm signals like shooting cracks and collapsing snow.
+2;10;0;0;10;1;1575;Vær forsiktig i leområder med fokksnø. Større skred er vanskelig å løse ut, men kan forekomme ved stor tilleggsbelastning.
+2;10;0;0;10;2;1576;Use caution on slopes recently loaded with wind slabs. Several layers of facets and surface hoar are persistent and widespread in the snow pack. These layers can be triggered by high additional loads and propagate into size 3 avalanches. 
+3;7;5;0;21;1;1577;Skredfaren avtar til 2-moderat utover dagen. I høyden er nysnøflak i leområder problemet. I lavlandet kan det gå våte skred i bratt terreng.
+3;7;5;0;21;2;1578;Storm slabs are a problem in lee areas at high elevations. Wet avalanches can release in steep terrain in lower areas.
+3;7;0;0;21;1;1579;Generelt ustabile forhold. Stedvis kan en enkelt skikjører løse ut skred i områder med ferske nysnøflak. Det er stor variasjon i forholdene pga bygevær.
+3;7;0;0;21;2;1580;Dangerous avalanche conditions, human triggered avalanches are possible in the freshly deposited wind slabs. Conditions will vary due to snow showers of varying intensity.
+2;30;7;0;21;1;1581;Mulighet for overflaterim som snør ned. Dette kan gi lokalt ustabile forhold.
+2;30;7;0;21;2;1582;Mainly stable snow conditions. Possible surface hoar burried by new snow during the day. Be careful in lee areas with wind deposited snow, typically behind ridges, ribs and in gullies.
+3;30;10;0;21;1;1583;Komplekse forhold med flere svake lag. Vær spesielt forsiktig i leområder der et vedvarende svakt lag kan ligge under fokksnøen.
+3;30;10;0;21;2;1584;Complex conditions with several avalanche problems. Be careful in areas with wind deposited snow, persistent weak layers are present in many areas.
+2;5;0;0;22;1;1585;Skredfaren øker utover dagen der snødekket blir vått og mykt. Eventuell nattefrost vil stabilisere snødekket, der overflaten er hard er skredfaren 1-liten.
+2;5;0;0;22;2;1586;The stability decreases when the snow gets wet. If we get a cold night the snow surface will freeze and stabilize. The danger level is 1 where the surface is hard, but will rise to 2-moderate as soon as the surface gets wet and soft.
+3;7;30;0;21;1;1587;Krevende forhold. Det er store lokale forskjeller i nysnømengde og det er stedvis glatt skare og rimlag under nysnøen. Utvis aktsomhet.
+3;7;30;0;21;2;1588;Challenging conditions, large local differences in precipitation and wind. Storm slab form directly on crust layer and areas with buried layer of surface hoar.
+5;0;0;0;0;1;1589;Unngå alt skredterreng. Følg med på nyhetene for andre anbefalinger fra beredskapsmyndighetene.
+5;0;0;0;0;2;1590;Avoid all avalanche terrain. Follow the news for other recommendations from the authorities.
+2;10;30;0;10;1;1823;Lokalt ustabile forhold. Vær forsiktig i leområder med mye fokksnø, særlig i eller nært terrengfeller. Det finnes områder med vedvarende svake lag i snødekket.
+2;10;30;0;10;2;1824;Locally unstable conditions. Be aware that there can be pockets with persistent weak layers and unstable wind slabs.
+3;30;10;0;21;1;1591;Lokalt ustabile forhold som følge av nedsnødd rimlag. Vær forsiktig i leområder der vinden har lagt igjen flak av fersk fokksnø.
+3;30;10;0;21;2;1592;Locally unstable conditions due too possible buried surface hoar. Be careful in lee areas with fresh wind deposited snow.
+2;30;0;0;21;1;1827;Vær varsom i leområder der et vedvarende svakt lag har snødd/føyket ned. Sprekker i snødekket og drønnelyder er tydelige tegn på ustabilitet.
+2;30;0;0;21;2;1828;Be careful in leeward slopes, wind deposited snow are covering persistent week layer. Beware of alarm signals like shooting cracks and collapsing snow.
+2;7;3;0;21;1;1593;Vær forsiktig i leområder og andre terrengformasjoner som har samlet mye snø. Det kan også gå naturlig utløste løssnøskred i nysnøen i bratte solutsatte heng.
+2;7;3;0;21;2;1594;Be careful in areas with wind deposited snow. Naturally released loose avalanches can occur in steep sun exposed faces.
+4;45;0;0;22;1;1595;Temperaturstigning og svært mye regn gir stor skredfare. Unngå skredterreng.
+4;45;0;0;22;2;1596;Temperature increase and extreme amounts of rain gives high avalanche danger. Avoid avalanche terrain.
+2;7;10;30;21;1;1597;Bygevær gir nysnøflak og fokksnø i fjellet, vær også obs på vedvarende svakt lag i høyden. Nysnøen kan ligge på et rimlag enkelte steder.
+2;7;10;30;21;2;1598;Bygevær gir nysnøflak og fokksnø i fjellet, vær også obs på vedvarende svakt lag i høyden. Nysnøen kan ligge på et rimlag enkelte steder.
+2;30;5;50;10;1;1599;I høyden er vedvarende svake lag hovedproblemet. Temperaturauke gjennom dagen kan gi våte laussnøskred. Unngå områder under sigesprekker.
+2;30;5;50;10;2;1600;Persistent weak layers are a problem at high elevations. Wet avalanches can release in steep terrain in lower areas because of sun and high temperatures. Avoid areas with visible gliding cracks, release areas and run out areas for wet snow avalanches.
+4;10;0;0;22;1;1601;Kraftig vindøkning vil føre til stor vindtransport av snø inn i leheng. Skred kan utløses både naturlig og av skiløper. Unngå alt skredterreng.
+4;10;0;0;22;2;1602;An increase in wind will lead to a large amount of wind transported snow. Avoid all avalanche terrain. Naturally triggered avalanches likely.
+2;7;3;0;21;1;1603;Vær forsiktig der det ligger ferske nysnøflak i høyden. I nysnøen kan det også gå små løssnøskred hvis sola titter frem.
+2;7;3;0;21;2;1604;Be careful in areas with wind deposited snow at high elevations. The danger for small loose avalanches increases in steep sun exposed slopes if the sun comes out.
+3;45;0;0;22;1;1841;Det finst vedvarande svake lag i snødekket. Regn og høge temperaturer høgt til fjells gjev auka fare for våte laussnø-og flakskred. Ver merksam på fare for skavlbrudd.
+3;45;0;0;22;2;1842;A persistant weak layer is present in the snow pack. Rain and high temperatures give higher risk of wet loose-snow and slab avalanches in steep terrain. Be aware of cornice falls.
+3;7;30;0;21;1;1605;Krevende forhold. Polart lavtrykk kan gi store lokale forskjeller i nysnømengde. Nysnøen vil stedvis legge seg rett på glatt skare og rimlag. Utvis aktsomhet.
+3;7;30;0;21;2;1606;Conditions are challenging. Low pressure may cause large local differences in precipitation and wind. Storm slab will form directly on crust layer and areas with buried layer of surface hoar.
+2;5;0;0;22;1;1607;Mangel på nattefrost og påfølgende milde temperaturer øker faren for våte skred.
+2;5;0;0;22;2;1608;Wet snow through the night and higt temperature at daytime elevates the danger of wet avalanches.
+2;10;5;0;10;1;1609;Vær varsom i terreng med ferske fokksnøflak og i bratte solsider midt på dagen.
+2;10;5;0;10;2;1610;Be careful in terrain with fresh wind-deposited snow. Also be careful in steep and sunexposed terrain.
+2;5;10;0;22;1;1611;Skredfaren øker i solsidene utover dagen når nysnøen blir fuktig. Vær forsiktig i bratte leområder med tørr fokksnø i høyfjellet.
+2;5;10;0;22;2;1612;When the sun comes out, the danger will rise in areas where the new snow becomes wet and soft. Be aware in steep lee areas in higher elevations, small dry wind slabs are possible to release. Be careful close to and in terrain traps.
+2;7;30;0;21;1;1613;Lokalt ustabile forhold i høyden. Nysnøflak over mildværsgrensen kan være ustabile. Vedvarende svake lag i snødekket kan påvirkes der snødekket er tynt.
+2;7;30;0;21;2;1614;Locally unstable avalanche conditions in the alpine. Be careful of recently loaded storm slabs. A persistent weak layer of facets may be triggered, especially where the snow cover is thin.
+3;7;0;0;21;1;1615;Polart lavtrykk kan gi store lokale forskjeller i nysnømengde. Vær forsiktig i leområder og andre terrengformasjoner som samler snø i høyden.
+3;7;0;0;21;2;1616;Polar low pressure system may cause large local differences in precipitation and wind. Be careful in areas with wind-deposited snow, typically behind ridges, ribs and in gullies.
+1;7;0;0;21;1;1617;Litt nysnø fører til små ustabile nysnøflak i enkelte leområder, ellers stort sett stabile forhold.
+1;7;0;0;21;2;1618;Some new snow, but generally stable conditions. Small wind slabs in isolated areas in the inner parts of the region are possible, but not likely.
+1;10;0;0;10;1;1619;Lite snø og generelt stabile forhold, kun mulighet for å løse ut skred i noen få leheng med fokksnøansamlinger.
+1;10;0;0;10;2;1620;Generally stable conditions, but wind slabs can be present in isolated features.
+2;10;30;0;10;1;1621;Vær forsiktig i terrengformasjoner som har samlet fokksnø, stedvis kan fokksnøen ligge på et vedvarende svakt lag.
+2;10;30;0;10;2;1622;Be careful in lee areas with wind deposited snow, typically behind ridges, ribs and in gullies. A persistent weak layer can be present underneath fresh wind deposited snow in isolated features.
+2;30;0;0;10;1;1623;Det finnes et vedvarende svake lag ved bakken. Vær spesielt forsiktig der snødekket er tynt, særlig rundt skoggrensen.
+2;30;0;0;10;2;1624;There is a persistent weak layer buried in the snow pack, especially at tree line.
+2;5;10;30;22;1;1625;Vær varsom i solutsatte brattheng og der det er fokksnøansamlinger i høyden. NB, det kan finnes svake lag i snødekket som kan påvirkes der snødekket er tynt.
+2;5;10;30;22;2;1626;Be careful in sun exposed steep slopes and in areas with wind slabs at higher elevations. Be aware that persistent weak layers can be hidden in the snow pack.
+1;5;10;0;22;1;1627;Skredfaren kan øke til 2-moderat hvis sola får tak. Stort sett stabile forhold ellers. Vær også obs i bratte leområder med tørr fokksnø i høyfjellet.
+1;5;10;0;22;2;1628;If/when the sun comes out, the danger can rise to 2-moderate in areas where the snow becomes wet and soft. Predominantly stable conditions, but be aware in steep lee areas in higher elevations, small dry wind slabs are possible to release. Be careful close to and in terrain traps.
+3;7;30;0;21;1;1629;Vær forsiktig i terreng der nysnøen har bundet seg i mjuke flak, et svakt lag av nedsnødd overflaterim kan lokalt bidra til betydelig skredfare.
+3;7;30;0;21;2;1630;Be careful in terrain where fresh wind deposited snow has formed soft slabs. Be aware of a layer of buried surface hoar locally under the fresh snow.
+3;30;7;0;21;1;1631;Vær varsom i leområder, overflaterim har snødd/føyket ned. Sprekker i snødekket og drønnelyder er tydelige tegn på ustabilitet.
+3;30;7;0;21;2;1632;Be careful before entering leeward slopes, new snow might rest on a weak layer of surface hoar. Beware of alarm signals like shooting cracks and collapsing snow.
+3;10;0;0;21;1;1633;Lokalt ustabile forhold. Vær forsiktig i områder med fokksnø i høyden og indre deler av regionen. Generelt stabile forhold i lavlandet og kystområder.
+3;10;0;0;21;2;1634;Locally unstable conditions. Be careful in areas with windslabs in the alpine and inner parts of the region. Generally stable conditions in low-lying and coastal areas.
+1;5;0;0;22;1;1635;Generelt stabile forhold. Vær varsom i bratte solutsatte fjellsider der snøoverflaten blir våt og myk.
+1;5;0;0;22;2;1636;Generally stabile conditions. Be aware in sun-exposed aspects for natural triggered avalanches.
+2;7;0;0;21;1;1637;Stort sett stabile forhold, men snøbyger i fjellet og varierende vindforhold vil gi lokale forskjeller. Følg med på hvor det danner seg flak av innblåst nysnø.
+2;7;0;0;21;2;1638;Predominantly stable conditions, but snow showers and varying wind conditions will give local differences. Watch out for unstable storm slabs in lee areas.
+2;10;5;0;10;1;1639;Vær varsom i områder med fersk fokksnø. Temperaturstigning og solinnstråling gir fare for våte løssnøskred i nysnøen.
+2;10;5;0;10;2;1640;Be careful in areas with fresh wind deposited snow. Sun and an increase of temperature can produce small wet avalanches.
+3;7;0;0;21;1;1641;Vær varsom i leområder. Det har bygd seg opp store ansamlinger av snø i leområder fjellet. Sprekker i snødekket og drønnelyder er tydelige tegn på ustabilitet.
+3;7;0;0;21;2;1642;Be careful before entering leeward slopes. Large amounts of wind deposited snow has been built up.
+2;10;50;0;10;1;1643;Vær varsom i leområder der det ligg fersk fokksnø. Hold avstand under områder med sigesprekker i snødekket.
+2;10;50;0;10;2;1644;At higher altitudes avoid areas with wind-deposited snow, typically behind ridges, ribs and in gullies. Keep distance to areas with gliding cracks.
+1;0;0;0;0;1;1645;Lite snø, liten snøskredfare.
+1;0;0;0;0;2;1646;Little snow, low avalanche danger.
+1;5;10;0;22;1;1647;Temperaturstigning og solinnstråling gir fare for mindre våte skred. Over ca 1400 moh forventes det enkelte lommer med ustabil fokksnø.
+1;5;10;0;22;2;1648;Temperature rise and solar radiation give increased danger of wet avalanches. Risk of wind-deposited snow above 1400 masl.
+2;7;30;0;21;1;1649;Vær forsiktig i områder med ferske nysnøflak. De kan ligge på svake lag som kan løses ut av skiløper.
+2;7;30;0;21;2;1650;Be careful in terrain where you find fresh wind deposited snow. Weak layers beneath the new snow can be triggered by a skier.
+1;5;50;0;22;1;1651;Generelt gunstige forhold. Regn og varme gir fare for mindre våte skred. Glideskred kan forekomme.
+1;5;50;0;22;2;1652;Favorable conditions. Rain and heat give increased danger of wet avalanches. Glide avalanches are possible.
+2;5;0;0;22;1;1653;Skredfaren kan øke utover dagen der snødekket blir vått og mykt. Der overflaten er hard er skredfaren 1-liten.
+2;5;0;0;22;2;1654;The danger level is 1 where the surface is hard, but can rise to 2-moderate if the surface gets wet and soft.
+3;45;7;50;22;1;1655;I lavlandet ventes middels store våte skred. I leområder i høyden er ferske nysnøflak problemet. Unngå områder under glidesprekker.
+3;45;7;50;22;2;1656;Wet avalanches can release in steep terrain in lower areas because of rain. Fresh storm slabs are a problem at higher elevations. Avoid also areas beneath visible gliding cracks.
+3;30;7;0;21;1;1657;Krevende forhold, det krever mye kunnskap om skred å bevege seg trygt i bratt terreng. Gjør svært forsiktige vegvalg, særlig i dårlig sikt.
+3;30;7;0;21;2;1658;Complex and difficult situation with 2 avalanche problems. Be very careful and avoid avalanche terrain where the avalanche problems can be present, especially in poor visibility.
+3;10;30;0;21;1;1659;Ustabile fokksnøflak kan ligge på glatt skare eller over et vedvarende svakt lag i leområder. I disse områdene er det lett å løse ut skred.
+3;10;30;0;21;2;1660;Unstable wind slabs may cover a slippery crust,or a persistent weak layer in lee areas. Avalaches can be triggered by a single skier.
+2;10;0;0;10;1;1661;Vær forsiktig i leområder med fersk fokksnø i høyden. Der overflaten er hard og avblåst er skredfaren 1-liten.
+2;10;0;0;10;2;1662;Be careful on lee slopes with fresh wind slabs in the alpine. The danger level is low where the surface is hard.
+3;7;30;0;21;1;1663;Bygenedbør kan gi store lokale forskjeller og krevende forhold. I tillegg til ustabile nysnøflak finnes det stedvis vedvarende svake lag under nysnøen.
+3;7;30;0;21;2;1664;Snowshowers may cause large local differences and demanding conditions. Be sure you have enough knowledge and experience before travelling in steep terrain. Be extra careful in lee areas with wind deposited snow. There are still weak layers in the snowpack.
+2;5;10;0;22;1;1665;Skredfaren øker i solsidene utover dagen. Vær forsiktig i bratte leområder med tørr fokksnø i høyfjellet. Stort sett stabile forhold ellers.
+2;5;10;0;22;2;1666;When the sun comes out, the danger will rise to 2-moderate in areas where the snow becomes wet and soft. Be aware in steep lee areas in higher elevations, small dry wind slabs are possible to release. Be careful close to and in terrain traps.
+1;5;0;0;22;1;1667;Generelt stabile forhold. Temperaturstigning og solinnstråling gir fare for mindre våte skred i nysnøen.
+1;5;0;0;22;2;1668;Favorable conditions. Sun and rise of temperature can produce small wet avalanches.
+2;10;0;0;10;1;1669;Vær forsiktig i leområder og andre terrengformasjoner som samler fokksnø. Mest utsatt himmelretning skifter i løpet av dagen.
+2;10;0;0;10;2;1670;Be careful in areas with wind-deposited snow, typically behind ridges, ribs and in gullies. Be aware of changing wind directions and exposed areas during the day.
+2;10;0;0;10;1;1671;Mindre flak av fokksnø kan utløses enkelte steder. Utbredelsen er begrenset da det generelt er lite snø i fjellet.
+2;10;0;0;10;2;1672;Smaller slabs of wind deposited snow can be triggered in isolated features.
+2;10;30;0;10;1;1673;Vær forsiktig i terrengformasjoner som har samlet fokksnø. Noen få steder kan fokksnøen ha lagt seg over et svakt lag av overflaterim.
+2;10;30;0;10;2;1674;Be careful in lee areas with wind deposited snow, typically behind ridges, ribs and in gullies. A weak layer of buried surface hoar can be present underneath fresh wind deposited snow in isolated features.
+3;7;0;0;21;1;1675;Unngå leområder og andre terrengformasjoner som har samlet fokksnø. Det kan gå naturlig utløste skred i nysnøen i bratte solutsatte heng.
+3;7;0;0;21;2;1676;Avoid areas with wind deposited snow. Naturally released avalanches can occur in steep sun exposed faces.
+3;10;30;0;21;1;1677;Lokalt ustabile fokksnøflak i leområder. Vedvarende svake lag kan påvirkes der snødekket er tynt.
+3;10;30;0;21;2;1678;Locally unstable conditions due to wind slabs in lee areas. Persistent weak layers  may also be triggered where the snow cover is thin.
+3;30;0;0;21;1;1679;Komplekse forhold med flere svake lag. Vær spesielt forsiktig i vindbeskyttede leformasjoner hvor snøoverflaten er myk.
+3;30;0;0;21;2;1680;Complex conditions with several avalanche problems. Be careful in areas with wind deposited snow, buried surface hoar is present in local areas.
+2;10;5;0;10;1;1681;Vær forsiktig i skyggeområder med ustabil fokksnø, og i soleksponert brattheng midt på dagen.
+2;10;5;0;10;2;1682;Be careful in shaded areas with wind slabs and in sun exposed steep slopes.
+3;7;30;0;21;1;1683;Krevende forhold. Vær obs på at det finnes flere svake lag i snødekket og at det kan være store lokale forskjeller i nysnømengde.
+3;7;30;0;21;2;1684;Conditions are challenging. Be careful with peristent weak layers, as well as wind and storm slabs - there will be local differences in precipitation and wind.
+3;7;0;0;21;1;1685;Krevande forhold i høgfjellet. Ferdsel krev erfaring og gode vegvalg.
+3;7;0;0;21;2;1686;Conditions are challenging. Be sure you have enough knowledge and experience before travelling in steep terrain.
+2;10;0;0;21;1;1819;Det ligger fersk fokksnø i leformasjonar i terrenget. Skred er lettest å løse ut der fokksnøflakene er tynne eller myke.
+2;10;0;0;21;2;1820;Be careful in lee areas with wind deposited snow, typically behind ridges, ribs and in gullies. Especially where the wind deposited slabs are thin or soft, a slab avalanche is easier to trigger here.
+2;30;10;0;10;1;1687;Vær forsiktig i leområder hvor et svakt lag av overflaterim kan ligge under fersk fokksnø.
+2;30;10;0;10;2;1688;Be careful in areas where buried surface hoar can be hidden beneath fresh wind deposited snow.
+4;45;7;0;22;1;1689;Mildvær og regn høyt til fjells gir økt fare for naturlige våte flakskred. Unngå bratt terreng! I høyfjellet vil fersk fokksnø være skredproblemet.
+4;45;7;0;22;2;1690;Rising temperatures and rain will give risk of natural wet slab avalanches. Avoid areas with fresh windslabs in the higher areas.
+2;7;45;0;21;1;1691;Utfordrende forhold pga. av ulike skredproblem. Unngå utløpsområder for våte flakskred i lavlandet og vær varsom i områder med nysnøflak i høyfjellet.
+2;7;45;0;21;2;1692;Challenging conditions due to different avalanche problems. Wet snow found in lower elevations. Conservative terrain choice is essential on freshly loaded storm slabs in the alpine.
+2;10;30;0;10;1;1693;Vær varsom i områder med ustabile fokksnøflak. Det finnes også vedvarende svake lag lenger ned i snødekket som kan påvirkes der snødekket er tynt.
+2;10;30;0;10;2;1694;Be careful in areas with windslabs. A persistent weak layer of facets may be triggered, especially where the snow cover is thin.
+2;50;5;0;22;1;1695;Hold avstand til bratte fjellsider med tydelige glidesprekker. Vær også forsiktig i bratte solvendte heng, særlig utover dagen.
+2;50;5;0;22;2;1696;Keep your distance to areas beneath glide cracks. Be especially careful in sun exposed steep slopes, danger increases with temperature during the day.
+2;7;10;30;21;1;1697;Bygevær gir nysnøflak og fokksnø i fjellet, vær også obs på rimlag i høyden.
+2;7;10;30;21;2;1698;Storm slabs are the main concern. A weak layer of surface hoar or facets may exist at high altitudes.
+2;45;10;0;22;1;1699;Snødekket er fremdeles vått og ustabilt. Unngå potensielle løsneområder og utløpsområder for skred. Det kan finnes lommer av fersk fokksnø høgt til fjells.
+2;45;10;0;22;2;1700;The snowpack is still wet and unstable. Avoid potential release areas and runout areas for avalanches. It might be some spots with fresh wind deposited snow at high altitude.
+2;5;30;45;22;1;1701;Det finnes aktive vedvarende svake lag. Sol og varme temperaturer høyt til fjells gir økt risiko for våte løssnø-og flakskred. Vær oppmerksom på skavlbrudd.
+2;5;30;45;22;2;1702;Complex conditions with several avalanche problems. A persistant weak layer of facets is present in many areas. Sun and high temperatures gives higher risk of wet loose-snow and slab avalanches in steep sun-exposed terrain. Be aware of cornice falls.
+3;10;30;0;21;1;1807;Krevende forhold. Det finnes svake lag i snødekket. Vær spesielt forsiktig rundt skoggrensen, samt i områder med fersk fokksnø.
+3;10;30;0;21;2;1808;Difficult conditions. There is a persistent weak layer buried in the snow pack, especially around the tree line. Be careful in areas with wind deposited snow.
+3;7;50;0;21;1;1703;Krevande forhold i høgfjellet. Ferdsel krev erfaring og gode vegvalg. Det er forhold for våte flakskred som lausnar ved bakken.
+3;7;50;0;21;2;1704;Avoid terrain with fresh wind-deposited snow. Also avoid areas beneath glide cracks, full depth glide avalanches can occur.
+4;45;30;10;22;1;1705;Mildvær fører til økende skredfare. Flak av ustabil fokksnø i høyden. Gamle svake lag kan vekkes til live og øke faren for naturlig utløste skred.
+4;45;30;10;22;2;1706;Increasing temperatures leads to higher avalanche danger. Isolated terrain feature may hold unstable wind slabs. A weak layer deep in the snow pack can now become more active.
+1;5;50;0;22;1;1707;Generelt gunstige forhold. Høye dagtemperaturer og solinnstråling gir fare for mindre våte skred. Enkelte glideskred kan også forekomme.
+1;5;50;0;22;2;1708;Favorable conditions. Warm daytime-temperatures and solar radiation give increased danger of wet avalanches. Glide avalanches are possible.
+2;7;0;0;21;1;1709;Vind og nysnø kan gi ustabile forhold i nokre bratte heng. Unngå leområde kor det samlar seg fersk fokksnø, typisk bak ryggar, i søkk og renneformasjonar.
+2;7;0;0;21;2;1710;Wind and fresh snow may give instable conditions in some slopes. Be careful in lee areas with wind deposited snow, typically behind ridges, ribs and in gullies. Especially where the wind deposited slabs are thin or soft, a slab avalanche is easier to trigger. Avoid convex terrain.
+2;5;10;50;22;1;1711;Vær oppmerksom på fare for våte skred i solutsatte brattheng og der det ligger flak av tørr fokksnø høyt til fjells. Unngå områder under sigesprekker.
+2;5;10;50;22;2;1712;Be careful in sun-exposed steep slopes and in high north facing areas with dry wind slabs. Avoid areas below glide cracks.
+3;30;10;0;21;1;1713;Unngå leområder hvor et svakt lag kan ligge begravet i snødekket. Det er lettest å trigge skred der snødekket er tynt, f. eks. nær rygger og på kuler.
+3;30;10;0;21;2;1714;Avoid lee areas where a persistent weak layer can be hidden in the snow pack. Avalanches is triggered most easily where the snow pack is thin, typically close to ridges and on convex formations. Remote triggering is possible.
+1;5;0;0;22;1;1715;Generelt stabile forhold, men fare for naturlig utløste våte skred i bratte solutsatte fjellsider.
+1;5;0;0;22;2;1716;Generally stable conditions, but danger of wet avalanches in sunexposed mountainsides.
+3;30;0;0;21;1;1717;Krevende forhold pga svake lag, vær svært forsiktig. Det er lettest å trigge skred der snødekket er tynt og over konvekse formasjoner.
+3;30;0;0;21;2;1718;Complex situation with persistant weak layers. Avalanches are triggered most easily where the snow pack is thin, typically close to ridges and on convex formations. Be careful in lee areas with wind deposited snow, typically behind ridges, ribs and in gullies.
+3;10;0;0;21;1;1719;Vindauke fører til auka skredfare. Unngå leområde der det samlar seg fersk fokksnø, typisk bak ryggar, i søkk og renneformasjonar.
+3;10;0;0;21;2;1720;The danger increases when the wind picks up. Be careful in lee areas with wind deposited snow, typically behind ridges, ribs and in gullies.
+2;7;0;0;21;1;1721;Bygevær gjør at skredforholdene vil variere i regionen. Unngå leområder der det legger seg opp ferske nysnøflak.
+2;7;0;0;21;2;1722;Showers will result in local differences in new snow amount and danger level within the region. Avoid areas with fresh storm slabs.
+1;10;0;0;10;1;1723;Generelt stabile forhold, men vær likevel forsiktig i bratt terreng der fokksnøen er myk.
+1;10;0;0;10;2;1724;Generally stable conditions, but be careful in steep terrain, especially where wind deposited slabs are thin or soft, a slab avalanche is easier to trigger here.
+2;5;10;0;22;1;1725;Vær varsom i solutsatte brattheng og der det er fokksnøansamlinger i høyden.
+2;5;10;0;22;2;1726;Be careful in sun exposed steep slopes and in areas with wind slabs at higher elevations.
+4;45;7;0;22;1;1727;Omfattende ustabile forhold. Mange middels store og noen store naturlig utløste skred forventes. Hold avstand fra utløsnings-og utløpsområder for snøskred.
+4;45;7;0;22;2;1728;Very dangerous avalanche conditions. Travel in avalanche terrain not recommended. We expect intense wet slab activity around and below treeline. Wind slabs can be easily triggered in the alpine.
+2;30;10;0;0;1;1729;Det finnes vedvarende svake lag i snødekket. Vær spesielt forsiktig rundt skoggrensen og i områder med fersk fokksnø.
+2;30;10;0;0;2;1730;There is a persistent weak layer buried in the snow pack, especially at tree line. Be careful in areas with wind deposited snow.
+2;10;5;0;21;1;1731;Vær forsiktig i bratt og soleksponert terreng midt på dagen og i bratte leområder med fokksnø i høyfjellet.
+2;10;5;0;21;2;1732;At higher elevations, be aware in steep areas with with slabs. The danger also increases during the day in steep and sunexposed terrain.
+1;45;30;0;10;1;1733;Foreløpig generelt stabile forhold. Svake lag i snødekket kan våkne til live ved høye dagtemperaturer og øke skredfaren betydelig. Når/om det skjer er usikkert.
+1;45;30;0;10;2;1734;Generally safe avalanche conditions. Isolateted terrain feature may hold unstable wind slabs. A weak layer is still luming deep in the snow pack and can become active with high temperatures. When they become active is very uncertain.
+1;30;45;0;10;1;1735;Generelt stabile forhold. Svake lag i snødekket kan våkne til liv ved høye dagtemperaturer og øke faren betydelig. Når dette skjer er veldig usikkert.
+1;30;45;0;10;2;1736;Generally safe avalanche conditions. A weak layer is still luming deep in the snow pack and can become active again with higher temperatures. When this happens is very unsure.
+4;7;30;0;22;1;1737;Vedvarende svakt rimlag og mye nysnø med vind gir krevende forhold. Varslet har usikkerhet pga. lite observasjoner og store lokale variasjoner i nedbør.
+4;7;30;0;22;2;1738;Challenging conditions due to heavy snowfall with wind and a persistent weak layer of depth hoar. Use forecast with care as we have few observations  from the region.
+3;7;0;0;21;1;1739;Ustabile nysnøflak kan ligge på glatt skare eller over et rimlag i leområder.
+3;7;0;0;21;2;1740;Avoid areas with fresh storm slabs. A slippery crust or a weak layer of buried surface hoar may be present under the storm slabs.
+2;30;7;0;10;1;1741;Lokalt ustabile forhold. Vær varsom i områder hvor overflaterim kan ha snødd eller føyket ned.
+2;30;7;0;10;2;1742;Be careful in lee areas with wind deposited snow, typically behind ridges, ribs and in gullies. Wind deposited snow could rest on a weak layer of buried surface hoar.
+2;10;0;0;10;1;1817;Ver varsom i terreng som har samla fokksnø. Skred er lettast å løyse ut der fokksnølaget er tynt eller mjukt.
+2;10;0;0;10;2;1818;Be careful in lee areas with wind deposited snow, typically behind ridges, ribs and in gullies. Especially where the wind deposited slabs are thin or soft, a slab avalanche is easier to trigger here.
+3;7;0;0;21;1;1743;Generelt ustabile forhold. Unngå leområder og andre terrengformasjoner som samler snø pga vinden.
+3;7;0;0;21;2;1744;Generally unstable conditions, avoid lee areas with wind deposited snow, typically behind ridges, ribs and in gullies.
+3;7;10;30;21;1;1745;Bygevær gir nysnøflak og fokksnø i fjellet, vær også obs på rimlag i høyden.
+3;7;10;30;21;2;1746;Storm slabs are the main concern. A weak layer of surface hoar or facets may exist at high altitudes.
+3;7;0;0;21;1;1747;Faregraden vil øke mot faregrad 3-betydelig i takt med økende nedbør og vind. De områdene som får mest nedbør vil være mest utsatt. Unngå leområder.
+3;7;0;0;21;2;1748;The danger level will increase to considerable (level 3) due to percipitation in combination with strong winds. Avoid leeward slopes.
+2;5;10;0;22;1;1749;Høyt vanninnhold i snøen og solinnstråling gir fare for våte skred i lavlandet. I høyfjellet forventes det ustabil fersk fokksnø.
+2;5;10;0;22;2;1750;Wet snow and solar radiation give increased danger of wet avalanches at lower altitudes. Risk of wind-deposited snow in the alpine.
+3;7;30;0;21;1;1751;Krevende forhold, ferdsel i bratt terreng krever erfaring og kunnskap. I tillegg til ustabile nysnøflak finnes det stedvis vedvarende svake lag under nysnøen.
+3;7;30;0;21;2;1752;Conditions are challenging. Be sure you have enough knowledge and experience before travelling in steep terrain. Be extra careful in lee areas with wind deposited snow. There are still weak layers in the snowpack.
+3;10;5;0;21;1;1753;Unngå leområder hvor det samler seg fersk fokksnø. Naturlig utløste skred kan forekomme i soleksponerte brattheng.
+3;10;5;0;21;2;1754;Be careful in lee areas with wind deposited snow, typically behind ridges, ribs and in gullies. Naturally released loose avalanches can occur in sun exposed steep terrain.
+1;5;0;0;22;1;1755;Generelt gunstige forhold. Men husk at selv små skred kan være farlige i/ved terrengfeller.
+1;5;0;0;22;2;1756;Favorable conditions. But remember that small avalanches can be dangerous in terrain traps.
+3;30;0;0;21;1;1757;Krevende forhold. Et nedsnødd svakt lag kan føre til middels store skred. Fjernutløsning er mulig.
+3;30;0;0;21;2;1758;Conditions are challenging. A persistent buried weak layer can cause medium sized avalanches. Remote triggering is possible.
+1;50;0;0;22;1;1843;Generelt gunstige forhold. Hald avstand til fjellsider med glidesprekkar og skavlar
+1;50;0;0;22;2;1844;Favourable conditions. Keep distance to areas with glide-cracks and be aware of weak cornices.
+3;30;10;0;21;1;1831;Komplekse forhold, vær svært forsiktig. Skred løses lettest ut der snødekket er tynt og over konvekse formasjoner. Fjernutløsning fra slakere terreng er mulig.
+3;30;10;0;21;2;1832;Complex situation with persistant weak layers. Avalanches are triggered most easily where the snow pack is thin, typically close to ridges and on convex formations. Remote triggering from less steep terrain is possible.
+3;10;30;0;21;1;1759;Unngå leområder med fersk fokksnø. Unngå også områder der snødekket over svakt lag er tynt, eksempelvis nær rygger og på konvekse terrengformasjoner.
+3;10;30;0;21;2;1760;Be careful in areas with fresh windloaded snow. Avoid lee areas where a persistent weak layer can be hidden in the snow pack. Avalanches are triggered most easily where the snow pack is thin, typically close to ridges and on convex formations.
+3;7;0;0;21;1;1761;Krevende forhold, det krever mye kunnskap om skred for å bevege seg trygt i bratt terreng. Gjør svært forsiktige vegvalg, særlig i dårlig sikt.
+3;7;0;0;21;2;1762;Complex and difficult situation with two avalanche problems. Be very careful and avoid avalanche terrain where the avalanche problems can be present, especially in poor visibility.
+1;7;0;0;21;1;1763;Generelt lite snø og hard snøoverflate, men i områder hvor det kommer nedbør kan man i enkelte leformasjoner løse ut flak av innblåst nysnø.
+1;7;0;0;21;2;1764;Not much snow and genreally safe conditions. Smaller slabs of wind deposited snow can be triggered in isolated features.
+2;30;0;0;21;1;1765;Det finnes områder med svake lag i snødekket, spesielt rundt skoggrensa. Vær forsiktig i leområder, særlig i eller nært terrengfeller.
+2;30;0;0;21;2;1766;Be aware that there can be pockets with persistent weak layer beneath wind deposited snow, especially around the treeline.
+2;7;30;0;21;1;1767;Vær forsiktig i terrengfeller og i bratte heng til nysnøen har stabilisert seg. Vær oppmerksom på at det kan finnes svake lag nede i snødekket.
+2;7;30;0;21;2;1768;Be careful in and close to terrain traps and on steep slopes until the new snow has stabilized. Be aware that persistent weak layers can be hidden in the snow pack.
+1;5;0;0;22;1;1769;Generelt stabile forhold. Sola og stigende temperaturer vil myke opp snøoverflaten utover dagen og øker sjansen for små våte skred i bratt terreng.
+1;5;0;0;22;2;1770;Generally stable conditions. Temperature rise and solar radiation give increased danger of wet avalanches.
+3;45;30;7;10;1;1771;Regn fører til økende skredfare. Gamle svake lag kan vekkes til live og øke faren for naturlig utløste skred. Ustabile flak med nysnø over mildværsgrensa.
+3;45;30;7;10;2;1772;Precipitation as rain leads to higher avalanche danger. A weak layer deep in the snow pack can now become more active. Avoid fresh stormslabs above the new snow line.
+3;7;0;0;21;1;1773;Lokalt mye nedbør og vind fører til økt skredfare. Vær forsiktig i leområder og andre terrengformasjoner hvor vinden legger fra seg ustabile nysnøflak.
+3;7;0;0;21;2;1774;The avalanche danger will increase due to heavy snowfall and wind. Be careful in areas with fresh storm slabs, typically behind ridges, ribs and in gullies.
+2;7;0;0;21;1;1775;Vær varsom i terreng der nysnøen har bundet seg i mjuke flak til nysnøen har stabilisert seg.
+2;7;0;0;21;2;1776;Be careful in terrain with fresh storm slabs until the new snow is stabilized.
+4;7;0;0;22;1;1777;Mulighet for naturlig utløste snøskred grunnet lokalt store nedbørsmengder. Skikjører kan forvente å løse ut snøskred.
+4;7;0;0;22;2;1778;Nataural avalanches possible. Be aware of large local differences in amount of snowfall. The precipitation will occur as showers. Skier triggered avalanches are likely.
+3;7;0;0;21;1;1779;Krevende forhold. Unngå terrengfeller og bratte heng til nysnøen har stabilisert seg. Fare for naturlig utløste skred.
+3;7;0;0;21;2;1780;Conditions are challenging. Avoid terrain traps and big steep slopes. Wait until the fresh snow has stabilized. Naturally released avalanches may occur.
+3;5;45;50;22;1;1781;Betydelige mengder regn vil svekke snødekket og naturlig utløste skred er sannsynlig. Hold god avstand til bratt terreng og utløpsområder.
+3;5;45;50;22;2;1782;Large amounts of rain will weaken the snowpack considerably. Keep good distance to avalanche terrain and run out zones for wet avalanches.
+2;5;0;0;22;1;1783;Skredfaren varierer i løpet av døgnet. Faren er størst i solvendte heng og når dagen er på sitt varmeste.
+2;5;0;0;22;2;1784;The avalanche danger varies during the day. The danger is at its highest in steep sun exposed slopes and in the afternoon when the air temperature is high.
+2;5;45;0;21;1;1845;Ver varsom i bratte heng med mjuk våt snø. Hald avstand til skavlar og fjellsider med glidesprekkar.
+2;5;45;0;21;2;1846;Be careful on steep slopes with soft and wet snow, a skier can trigger avalanches here.  Keep distance to cornices and areas with glide-cracks
+3;45;0;0;22;1;1815;Vi venter våte naturlig utløste flakskred. Faren opprettholdes så lenge det regner. Unngå potensielle løsneområder og utløpsområder for skred.
+3;45;0;0;22;2;1816;Wet natural avalanches are expected. The avalanche danger stays at the same level as long as the rain continues. Avoid avalanche release and run out areas.
+2;5;10;0;22;1;1785;Skredfaren øker til 2-moderat der sola gjør snøen myk. Stort sett stabile forhold ellers. Vær også obs i bratte leområder med tørr fokksnø i høyfjellet.
+2;5;10;0;22;2;1786;If/when the sun comes out, the danger will rise to 2-moderate in areas where the snow becomes wet and soft. Predominantly stable conditions, but be aware in steep lee areas in higher elevations, small dry wind slabs are possible to release. Be careful close to and in terrain traps.
+3;45;0;0;22;1;1787;Våte naturlig utløste flakskred kan forekomme. Faren opprettholdes så lenge det regner. Unngå potensielle løsneområder og utløpsområder for skred.
+3;45;0;0;22;2;1788;Wet natural avalanches possible. The avalanche danger stays at the same level as long as the rain continues. Avoid avalanche release and run out areas.
+3;45;50;7;22;1;1789;Det er mykje vatn i snøen i låglandet. Små laussnøsskred og middels glideskred frå sva kan forekomme. I høgfjellet gir nysnø og kraftig snøfokk nysnøflak.
+3;45;50;7;22;2;1790;The snow pack is considerably wet in the lower areas due to high temperatures and heavy rain. The wet snow is in general stable, but loose snow avalanches and medium glide avalanches may be triggered in some exposed slopes. In the high mountains, however, heavy snowfall and strong wind will cause unstable storm slabs.
+2;45;5;0;22;1;1791;Våte flak- eller løssnøskred kan forekomme. Faren opprettholdes så lenge det regner. Vær varsom i  løsneområder og utløpsområder for skred.
+2;45;5;0;22;2;1792;Wet natural avalanches possible. The avalanche danger stays at the same level as long as the rain continues. Be careful in avalanche release and run out areas.
+2;7;30;0;21;1;1793;Vær forsiktig i leområder og andre terrengformasjoner hvor vinden har lagt fra seg snø, stedvis kan det ligge rim under nysnøflakene.
+2;7;30;0;21;2;1794;Be careful in lee areas with wind deposited snow, typically behind ridges, ribs and in gullies. Buried surface hoar is a problem in some locations.
+2;7;0;0;21;1;1795;Lokalt ustabile forhold. Polart lavtrykk kan gi store lokale forskjeller i nysnømengde. Nysnøen vil stedvis legge seg rett på glatt skare.
+2;7;0;0;21;2;1796;Locally unstable conditions. Low pressure may cause large local differences in precipitation and wind. Storm slab will form directly onto a slippery crust layer.
+1;30;0;0;10;1;1805;Generelt stabile forhold. Vedvarande svakt lag ved bakken kan påverkast der snødekket er tynt.
+1;30;0;0;10;2;1806;Generally safe avalanche conditions. There is a persistent weak layer at the ground that can be triggered where the snowpack is thin.
+2;7;3;0;21;1;1797;Vær forsiktig i leheng med ferske nysnøflak, nysnøen kan ha dårlig feste til glatt skare. Naturlig utløste skred kan forekomme i soleksponerte bratte heng.
+2;7;3;0;21;2;1798;Be careful in areas with wind-deposited snow, it may be resting on a slippery crust surface. Naturally released avalanches can occur in steep sun exposed faces.
+2;10;5;0;10;1;1799;Vær varsom i områder med fersk fokksnø. Våte laussnøskred kan løses ut i solvendte brattheng. Vær forsiktig i områder under skavlar.
+2;10;5;0;10;2;1800;Be careful in areas with fresh wind deposited snow. Wet avalanches can occur where the snow is wet. Be careful beneath and in the vicinity of cornices.
+3;7;30;0;21;1;1801;Ustabile nysnøflak i leområder. Det finnes også vedvarende svake lag i snødekket som kan påvirkes der snødekket er tynt.
+3;7;30;0;21;2;1802;Be careful in lee areas with fresh storm slabs. A persistent weak layer of facets may also be triggered, especially where the snow cover is thin.

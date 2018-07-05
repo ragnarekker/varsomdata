@@ -12,23 +12,23 @@ log_reference = 'runonshedule.py -> '
 
 if __name__ == "__main__":
 
-    try:
-        pdap.make_2017_18_plots()
-    except Exception:
-        error_msg = sys.exc_info()[0]
-        ml.log_and_print("[error] {0}__main__: Full crash on making 2017-18 danger and problem plots. {1}".format(log_reference, error_msg))
-
-    try:
-        pcd.make_2017_18_plots()
-    except:
-        error_msg = sys.exc_info()[0]
-        ml.log_and_print("[error] {0}__main__: Full crash on making 2017-18 observer and region calender plots. {1}".format(log_reference, error_msg))
-
-    try:
-        rs.plot_regs_obs_numbs()
-    except:
-        error_msg = sys.exc_info()[0]
-        ml.log_and_print("[error] {0}__main__: Full crash on making regobs statistics plots. {1}".format(log_reference, error_msg))
+    # try:
+    #     pdap.make_2017_18_plots()
+    # except Exception:
+    #     error_msg = sys.exc_info()[0]
+    #     ml.log_and_print("[error] {0}__main__: Full crash on making 2017-18 danger and problem plots. {1}".format(log_reference, error_msg))
+    #
+    # try:
+    #     pcd.make_2017_18_plots()
+    # except:
+    #     error_msg = sys.exc_info()[0]
+    #     ml.log_and_print("[error] {0}__main__: Full crash on making 2017-18 observer and region calender plots. {1}".format(log_reference, error_msg))
+    #
+    # try:
+    #     rs.plot_regs_obs_numbs()
+    # except:
+    #     error_msg = sys.exc_info()[0]
+    #     ml.log_and_print("[error] {0}__main__: Full crash on making regobs statistics plots. {1}".format(log_reference, error_msg))
 
     try:
         # This requires version 3 of rsync and command is set up to handle utf-8 file names from mac to linux server
