@@ -77,7 +77,7 @@ if root_folder:
         if not os.path.exists(web_images_regiondata_folder):
             os.makedirs(web_images_regiondata_folder)
         if not os.path.exists(web_images_regobsdata_folder):
-            os.makedirs(web_images_regobsdata_folder)
+            os.makedirs(web_images_regiondata_folder)
         if not os.path.exists(web_images_observerdata_folder):
             os.makedirs(web_images_observerdata_folder)
         if not os.path.exists(web_images_svvdata_folder):

@@ -179,6 +179,18 @@ def text_cleanup(str_inn):
     return str_inn
 
 
+def make_str(s):
+    """Casts the input to string. If a string instance is Not given, Ikke gitt or None, return empty string."""
+
+    if s == 'Not given':
+        return ''
+    if s == 'Ikke gitt':
+        return ''
+    if s is None:
+        return ''
+    return str(s)
+
+
 if __name__ == "__main__":
 
     a = u'æøå'.encode('utf8')

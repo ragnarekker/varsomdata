@@ -3,32 +3,12 @@ from varsomdata import getobservations as go
 from varsomdata import getforecastapi as gfa
 from varsomdata import getmisc as gm
 from varsomdata import makepickle as mp
-from varsomdata import makelogs as ml
 from varsomdata import getvarsompickles as gvp
 import setenvironment as env
 import collections as cols
-import os as os
 import datetime as dt
 
 __author__ = 'ragnarekker'
-
-
-def _get_all(get_new=False, from_date='2012-10-01', to_date='2019-01-01'):
-    """Get all observations (only the meta data) for all time. Useful for statistics."""
-
-    file_name = '{}all observations.pickle'.format(env.local_storage)
-
-    if not os.path.exists(file_name):
-        get_new = True
-        ml.log_and_print('observations.py -> _get_all: pickle missing, getting new data.', print_it=True)
-
-    if get_new:
-        all_observations = go.get_all_registrations(from_date, to_date)
-        mp.pickle_anything(all_observations, file_name)
-    else:
-        all_observations = mp.unpickle_anything(file_name)
-
-    return all_observations
 
 
 def _get_all_snow(get_new=False):
@@ -53,7 +33,46 @@ def _get_all_snow(get_new=False):
     return all_observations, all_forecasts
 
 
+class ObsCount:
+
+    def __init__(self):
+        self.total = 0
+        self.snow = 0
+        self.landslide = 0
+        self.water = 0
+        self.ice = 0
+
+    def add_one_to_total(self):
+        self.total += 1
+
+    def add_one_to_snow(self):
+        self.snow += 1
+
+    def add_one_to_landslide(self):
+        self.landslide += 1
+
+    def add_one_to_water(self):
+        self.water += 1
+
+    def add_one_to_ice(self):
+        self.ice += 1
+
+
+def _make_date_obscount_dict(start_date=dt.date(2012, 10, 1), end_date=dt.date.today()):
+    """Makes dictionary with all dates in a period as keys and values set to empty ObsCount objects."""
+
+    num_days = (end_date-start_date).days
+    date_list = [start_date + dt.timedelta(days=x) for x in range(0, num_days)]
+
+    date_dict = cols.OrderedDict()
+    for d in date_list:
+        date_dict[d] = ObsCount()
+
+    return date_dict
+
+
 def _make_date_list_dict(start_date=dt.date(2012, 10, 1), end_date=dt.date.today()):
+    """Makes dictionary with all dates in a period as keys and values set to []."""
 
     num_days = (end_date-start_date).days
     date_list = [start_date + dt.timedelta(days=x) for x in range(0, num_days)]
@@ -102,22 +121,38 @@ def _map_obs_to_old_regions(obs, make_new=True):
 
 
 def write_to_file_all_obs():
-    """Writes to file all dates and the number of observations on the dates."""
+    """Writes to file all dates and the number of observations on the dates.
+    Both the total and the numbers pr geohazard."""
 
-    obs = _get_all(get_new=False)
+    years = ['2012-13', '2013-14', '2014-15', '2015-16', '2016-17', '2017-18']
+    all_observations = []
+    for y in years:
+        all_observations += gvp.get_all_observations(y)
 
-    num_at_date = _make_date_int_dict()          # number og obs pr day
-    for o in obs:
+    num_at_date = _make_date_obscount_dict()          # number of obs pr day pr geohaz
+
+    for o in all_observations:
         date = o.DtObsTime.date()
         try:
-            num_at_date[date] += 1
+            num_at_date[date].add_one_to_total()
+
+            if o.GeoHazardTID == 10:
+                num_at_date[date].add_one_to_snow()
+            if o.GeoHazardTID in [20, 30, 40]:
+                num_at_date[date].add_one_to_landslide()
+            if o.GeoHazardTID == 60:
+                num_at_date[date].add_one_to_water()
+            if o.GeoHazardTID == 70:
+                num_at_date[date].add_one_to_ice()
+
         except:
             pass
 
     # Write observed dangers to file
     with open('{}number_off_obs_pr_date.txt'.format(env.output_folder), 'w', encoding='utf-8') as f:
+        f.write('Date;Water;Landslide;Ice;Snow;Total\n')
         for k, v in num_at_date.items():
-            f.write('{};{}\n'.format(k, v))
+            f.write('{};{};{};{};{};{}\n'.format(k, v.water, v.landslide, v.ice, v.snow, v.total))
 
 
 def find_fun_facts():
@@ -392,6 +427,6 @@ if __name__ == '__main__':
 
     # find_fun_facts()
     # pick_winners_at_conference()
-    # write_to_file_all_obs()
+    write_to_file_all_obs()
     # pick_winners_varsom_friflyt_konk_2018()
-    count_of_water_forms_used()
+    # count_of_water_forms_used()

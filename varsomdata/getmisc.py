@@ -3,13 +3,12 @@ import sys as sys
 import datetime as dt
 import requests as requests
 import csv as csv
-import operator as operator
 from varsomdata import getobservations as go
+from varsomdata import getdangers as gd
 from varsomdata import readfile as rf
 from varsomdata import makelogs as ml
 from varsomdata import fencoding as fe
 from varsomdata import getkdvelements as kdv
-from varsomdata.getkdvelements import KDVelement
 from varsomdata import setcoreenvironment as cenv
 import setenvironment as env
 
@@ -587,34 +586,41 @@ def get_dates_from_season(year):
 def get_season_from_date(date_inn):
     """A date belongs to a season. This method returns it."""
 
-    if date_inn >= dt.date(2017, 8, 1) and date_inn < dt.date(2018, 8, 1):
+    if date_inn >= dt.date(2017, 9, 1) and date_inn < dt.date(2018, 9, 1):
         return '2017-18'
-    elif date_inn >= dt.date(2016, 8, 1) and date_inn < dt.date(2017, 8, 1):
+    elif date_inn >= dt.date(2016, 9, 1) and date_inn < dt.date(2017, 9, 1):
         return '2016-17'
-    elif date_inn >= dt.date(2015, 8, 1) and date_inn < dt.date(2016, 8, 1):
+    elif date_inn >= dt.date(2015, 9, 1) and date_inn < dt.date(2016, 9, 1):
         return '2015-16'
-    elif date_inn >= dt.date(2014, 8, 1) and date_inn < dt.date(2015, 8, 1):
+    elif date_inn >= dt.date(2014, 9, 1) and date_inn < dt.date(2015, 9, 1):
         return '2014-15'
-    elif date_inn >= dt.date(2013, 8, 1) and date_inn < dt.date(2014, 8, 1):
+    elif date_inn >= dt.date(2013, 9, 1) and date_inn < dt.date(2014, 9, 1):
         return '2013-14'
-    elif date_inn >= dt.date(2012, 8, 1) and date_inn < dt.date(2013, 8, 1):
+    elif date_inn >= dt.date(2012, 9, 1) and date_inn < dt.date(2013, 9, 1):
         return '2014-13'
-    elif date_inn >= dt.date(2011, 8, 1) and date_inn < dt.date(2012, 8, 1):
+    elif date_inn >= dt.date(2011, 9, 1) and date_inn < dt.date(2012, 9, 1):
         return '2011-12'
     else:
         return 'Requested date is before the beginning of time.'
 
 
 def get_forecast_region_for_regid(reg_id):
+    """Returns the forecast region used at a given place in a given season.
 
-    region_id, region_name = None, None
+    :param reg_id: [int]            regid in regObs
+    :return:       [int]            ForecastRegionTID from regObs
+                   [string]         ForecastRegionName from regObs
+                   [observation]    The full observation on this regID
+    """
+
+    region_id, region_name, observation = None, None, None
 
     try:
-        observation = go.get_data(reg_ids=reg_id)
-        utm33x = observation[0]['UtmEast']
-        utm33y = observation[0]['UtmNorth']
-        date = go._stringtime_2_datetime(observation[0]['DtObsTime']).date()
-        season = get_season_from_date(date)
+        observation = go.get_data_as_class(reg_ids=reg_id)
+        utm33x = observation[0].UTMEast
+        utm33y = observation[0].UTMNorth
+        date = observation[0].DtObsTime
+        season = get_season_from_date(date.date())
 
         region_id, region_name = get_forecast_region_for_coordinate(utm33x, utm33y, season)
 
@@ -622,11 +628,11 @@ def get_forecast_region_for_regid(reg_id):
         error_msg = sys.exc_info()[0]
         ml.log_and_print('[error] getmisc.py -> get_forecast_region_for_regid: Exception on RegID={0}: {1}.'.format(reg_id, error_msg))
 
-    return region_id, region_name
+    return region_id, region_name, observation
 
 
 def get_forecast_region_for_coordinate(utm33x, utm33y, year):
-    """Maps an observation to the forecastregions used at the time the observation was made
+    """Maps an observation to the forecast regions used at the time the observation was made
 
     :param utm33x:
     :param utm33y:
@@ -706,43 +712,6 @@ def get_observer_nicks_given_ids(observer_ids):
     return list_of_nicks
 
 
-def _delete_get_observer_dict_for_2017_18_plotting(limit_for_select=10):
-    """Returns a dict og observer id : observer nick.
-    TODO Remove method
-
-    :param limit_for_select:    [int] Only observers with this number of observations and more are selected.
-    """
-
-    from_date = dt.date(2017, 11, 1)
-    to_date = dt.date.today()+dt.timedelta(days=1)
-
-    # get all registrations in the registrations table (all forecasts and elrapp also. Filter does not work)
-    registrations = get_registration(from_date, to_date, geohazard_tid=10)
-
-    # make dict of all observers and how much they contributed
-    observer_obs_count_dict = {}
-    for r in registrations:
-        if r.ObserverID not in observer_obs_count_dict.keys():
-            observer_obs_count_dict[r.ObserverID] = 1
-        else:
-            observer_obs_count_dict[r.ObserverID] += 1
-
-    # dict of all observer ids and their nicks
-    all_observer_nicks = get_observer_v()
-
-    # num_per = observer_obs_count_dict[841]
-    # nick_per = all_observer_nicks[841]
-
-    # only the worthy are selected. More than a given number of registrations and not elrapp.
-    observers_dict_select = {}
-    for k, v in observer_obs_count_dict.items():
-        if v >= limit_for_select:
-            if k is not 237:        # not elrapp
-                observers_dict_select[k] = all_observer_nicks[k]
-
-    return observers_dict_select
-
-
 class VarsomIncident:
     """The method get_varsom_incidents reads a csv file and this is the class each row is mapped into."""
 
@@ -764,18 +733,33 @@ class VarsomIncident:
         self.varsom_news_url = row[9]
         self.comment = row[10]
 
+        self.observations = []
+        self.forecast = None
+        self.region_id = None
+        self.region_name = None
+
     def add_forecast_region(self, region_id_inn, region_name_inn):
         self.region_id = region_id_inn
         self.region_name = region_name_inn
 
+    def add_forecast(self, forecast_inn):
+        self.forecast = forecast_inn
 
-def get_varsom_incidents(add_forecast_regions=False):
+    def add_observation(self, observation_inn):
+        self.observations.append(observation_inn)
+
+
+def get_varsom_incidents(add_forecast_regions=False, add_observations=False, add_forecasts=False):
     """Returns the incidents shown on varsom.no in a list of VarsomIncident objects.
-    Data input is a csv file in input folder. Original file has some newlines and
-    semicolons (;) in the cells that need to be removed before saving til csv.
+    Data input is a utf-8 formatted csv file in input folder. Original file might have newlines and
+    semicolons (;) in the cells. These need to be removed before saving as csv.
 
     :param add_forecast_regions:    [bool] If true the regid is used to get coordinates and the forecast region at the
                                     observation date is added. Note, if true, some time is to be expected getting data.
+    :param add_observations:        [bool] If true the observation is added when looking up the region name. This
+                                    option is only taken into account if add_forecast_regions is true.
+    :param add_forecasts:           [bool] If true the forecast at that time and place is added to the incident. This
+                                    option is only taken into account if add_forecast_regions is true.
     """
 
     incidents_file = '{}varsomsineskredulykker.csv'.format(cenv.input_folder)
@@ -785,12 +769,38 @@ def get_varsom_incidents(add_forecast_regions=False):
     if add_forecast_regions:
         for i in varsom_incidents:
             if i.regid == []:
-                i.add_forecast_region(None, None)
-                ml.log_and_print("[warning] getmisc.py -> get_varsom_incidents: No regid on incident on {}. No forecast region added.".format(i.date))
+                ml.log_and_print("[warning] getmisc.py -> get_varsom_incidents: No regid on incident on {}. No forecast region found.".format(i.date))
             else:
-                region_id, region_name = get_forecast_region_for_regid(i.regid[0])
+                region_id, region_name, observation = get_forecast_region_for_regid(i.regid[0])
                 i.add_forecast_region(region_id, region_name)
-                # print(i.date)
+                print("regid {}: {}".format(i.regid[0], i.date))
+
+                if add_observations:
+                    i.add_observation(observation[0])
+                    if len(i.regid) > 1:
+                        observations = go.get_data_as_class(reg_ids=i.regid[1:])
+                        for o in observations:
+                            i.add_observation(o)
+
+        if add_forecasts:
+            years = ['2014-15', '2015-16', '2016-17', '2017-18']        # the years with data
+
+            all_forecasts = []
+            for y in years:
+                region_ids = get_forecast_regions(year=y)
+                from_date, to_date = get_forecast_dates(y)
+                all_forecasts += gd.get_forecasted_dangers(region_ids, from_date, to_date)
+
+            for i in varsom_incidents:
+                incident_date = i.date
+                incident_region_id = i.region_id
+                print("{}: {}".format(i.location, incident_date))
+                for f in all_forecasts:
+                    forecast_date = f.date
+                    forecast_region_id = f.region_regobs_id
+                    if incident_date == forecast_date:
+                        if incident_region_id == forecast_region_id:
+                            i.add_forecast(f)
 
     return varsom_incidents
 

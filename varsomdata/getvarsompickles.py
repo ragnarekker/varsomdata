@@ -11,7 +11,8 @@ __author__ = 'raek'
 
 
 def _observation_is_not_empty(o):
-    """Test if an observation form is empty. Might occur when making list of nests and only pictures are given."""
+    """Test if an observation form is empty. Might occur when making list of nests and only pictures are given.
+    Method will need to expand if empty cases occur on other forms."""
 
     if o.RegistrationTID == 10:
         if o.ObsComment is None and o.ObsHeader is None and o.Comment is None and len(o.URLs) == 0:
@@ -46,7 +47,7 @@ def get_all_observations(year, output='Nest', geohazard_tids=None, lang_key=1, m
             geohazard_tids = [geohazard_tids]
 
     if os.path.exists(file_name_list):
-        # if file is newer than the time Ive set for it dont make new.
+        # if file is newer than the time Ive set for it, dont make new.
         if year == '2017-18':
             file_age = dt.datetime.fromtimestamp(os.path.getmtime(file_name_list))
             if file_age > date_limit:

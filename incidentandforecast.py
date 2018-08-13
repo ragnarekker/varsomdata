@@ -1,91 +1,112 @@
-import datetime as dt
-from runvarsomdata import allforecasteddangerlevels as afdl
+# -*- coding: utf-8 -*-
 from varsomdata import getdangers as gd
 from varsomdata import getobservations as go
 from varsomdata import makepickle as mp
-from runvarsomdata import setthisenvironment as env
 from varsomdata import getmisc as gm
+from varsomdata import fencoding as fe
+import setenvironment as env
 
-# -*- coding: utf-8 -*-
 __author__ = 'raek'
 
 
-def get_data(from_date, to_date, region_ids, pickle_file_name_1, get_new):
-    """Timeconsuming and inefficient. Not proud..
+def make_forecasts_at_incidents_for_sander():
+    """Lager csv med alle varsomhendelser sammen med faregrad og de aktuelle skredproblemene 
+    (svakt lag, skredtype og skredproblemnavnert). Der det er gjort en regObs observasjon 
+    med «hendelse/ulykke» skjema fylt ut har jeg også lagt på skadeomfangsvurderingen.
 
-    :param from_date:
-    :param to_date:
-    :param region_ids:
-    :param pickle_file_name_1:
-    :param get_new:
-    :return:
+    August 2018: Hei Jostein.
+
+    Som du veit skal eg skriva om: Skredulykker knytt til skredproblem
+    Du snakka om at det var muleg å få ut data for dette frå NVE sin database. Kan du hjelpa meg med det?
+
+    Mvh
+    Sander
     """
 
+    pickle_file_name = '{0}dl_inci_sander.pickle'.format(env.local_storage)
+    output_incident_and_dl = '{0}Hendelse og faregrad til Sander.csv'.format(env.output_folder)
+    get_new = False
+
     if get_new:
-        # get all data and save to pickle
-        all_incidents = go.get_incident(from_date, to_date, region_ids=region_ids, geohazard_tids=10)
-        all_forecasts = gd.get_forecasted_dangers(region_ids, from_date, to_date)
-        mp.pickle_anything([all_forecasts, all_incidents], pickle_file_name_1)
+        varsom_incidents = gm.get_varsom_incidents(add_forecast_regions=True, add_forecasts=True, add_observations=True)
+        mp.pickle_anything(varsom_incidents, pickle_file_name)
     else:
-        # load data from pickle
-        all_forecasts, all_incidents = mp.unpickle_anything(pickle_file_name_1)
+        varsom_incidents = mp.unpickle_anything(pickle_file_name)
 
-    return all_forecasts, all_incidents
+    incident_and_dl = []
 
+    for i in varsom_incidents:
 
-def write_incidents_to_csv(incidents, file_path):
+        incident_date = i.date
+        danger_level = None
 
-    # Write to .csv
-    with open(file_path, "w", encoding='utf-8') as myfile:
-        myfile.write('Dato;Varslingsregion;RegID;Skadeomfang;Aktivitet;URL\n')
+        problem_1 = None
+        problem_2 = None
+        problem_3 = None
 
-        for i in incidents:
+        avalanche_type_1 = None
+        avalanche_type_2 = None
+        avalanche_type_3 = None
 
-            registration = 'http://www.regobs.no/Registration/{0}'.format(i.RegID)
+        weak_layer_1 = None
+        weak_layer_2 = None
+        weak_layer_3 = None
 
-            table_row = '{0};{1};{2};{3};{4};\n'.format(
-                i.DtObsTime,
-                i.ForecastRegionName,
-                i.DamageExtentName,
-                i.ActivityInfluencedName,
-                registration)
+        dato_regobs = None
+        damage_extent = None
 
-            myfile.write(table_row)
+        if i.forecast:
+            danger_level = i.forecast.danger_level
+            for p in i.forecast.avalanche_problems:
+                if p.order == 1:
+                    problem_1 = p.problem
+                    weak_layer_1 = p.cause_name
+                    avalanche_type_1 = p.aval_type
+                if p.order == 2:
+                    problem_2 = p.problem
+                    weak_layer_2 = p.cause_name
+                    avalanche_type_2 = p.aval_type
+                if p.order == 3:
+                    problem_3 = p.problem
+                    weak_layer_3 = p.cause_name
+                    avalanche_type_3 = p.aval_type
 
+            if i.observations:
+                dato_regobs = i.observations[0].DtObsTime.date()
+                for obs in i.observations:
+                    for o in obs.Observations:
+                        if isinstance(o, go.Incident):
+                            damage_extent = o.DamageExtentName
 
-def make_incident_and_forecast_csvs(from_date, to_date, region_ids, region_name, get_new=True):
+        incident_and_dl.append({'Dato': incident_date,
+                                # 'Dato (regObs)': dato_regobs,
+                                'Region': i.region_name,
+                                'Kommune': i.municipality,
+                                'Dødsfall': i.fatalities,
+                                'Alvorsgrad': damage_extent,
+                                'Involverte': i.people_involved,
+                                'Aktivitet': i.activity,
+                                'Faregrad': danger_level,
+                                'Skredproblem 1': problem_1,
+                                'Skredtype 1': avalanche_type_1,
+                                'Svaktlag 1': weak_layer_1,
+                                'Skredproblem 2': problem_2,
+                                'Skredtype 2': avalanche_type_2,
+                                'Svaktlag 2': weak_layer_2,
+                                'Skredproblem 3': problem_3,
+                                'Skredtype 3': avalanche_type_3,
+                                'Svaktlag 3': weak_layer_3,
+                                'Kommentar': i.comment,
+                                'regObs': '{}'.format(i.regid)})
 
-    # The output
-    incident_csv = '{0}incident_{1}_{2}-{3}.csv'.format(env.output_folder, region_name, from_date.strftime('%Y'), to_date.strftime('%y'))
-    dl_and_problem_csv = '{0}forecast_{1}_{2}-{3}.csv'.format(env.output_folder, region_name, from_date.strftime('%Y'), to_date.strftime('%y'))
-
-    # The inn between
-    pickle_file_name = '{0}incident_and_forecast_{1}_{2}-{3}.pickle'.format(env.output_folder, region_name, from_date.strftime('%Y'), to_date.strftime('%y'))
-    all_forecasts, all_incidents = get_data(from_date, to_date, region_ids, pickle_file_name, get_new)
-
-    # Write to file
-    write_incidents_to_csv(all_incidents, incident_csv)
-    afdl.save_danger_and_problem_to_file(all_forecasts, dl_and_problem_csv)
-
-
-def make_sunnmoere():
-
-    # Get new or load from pickle.
-    get_new = True
-    region_name = "Sunnmøre"
-
-    from_date = dt.date(2012, 11, 30)
-    to_date = dt.date(2016, 6, 1)
-    region_ids = 119
-
-    make_incident_and_forecast_csvs(from_date, to_date, region_ids, region_name, get_new=get_new)
-
-    # Set dates
-    from_date = dt.date(2016, 11, 30)
-    to_date = dt.date(2017, 6, 1)
-    region_ids = 3024
-
-    make_incident_and_forecast_csvs(from_date, to_date, region_ids, region_name, get_new=get_new)
+    # Write observed problems to file
+    with open(output_incident_and_dl, 'w', encoding='utf-8') as f:
+        make_header = True
+        for i in incident_and_dl:
+            if make_header:
+                f.write(' ;'.join([fe.make_str(d) for d in i.keys()]) + '\n')
+                make_header = False
+            f.write(' ;'.join([fe.make_str(d) for d in i.values()]).replace('[', '').replace(']', '') + '\n')
 
 
 def make_dl_incident_markus():
@@ -190,5 +211,5 @@ def make_dl_incident_markus():
 
 if __name__ == "__main__":
 
-    make_sunnmoere()
     # make_dl_incident_markus()
+    make_forecasts_at_incidents_for_sander()

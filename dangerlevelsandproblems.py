@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-import os.path
-
+# -*- coding: utf-8 -*-
 import datetime as dt
 import os as os
 from varsomdata import makepickle as mp
@@ -8,9 +7,9 @@ from varsomdata import getdangers as gd
 from varsomdata import getmisc as gm
 from varsomdata import getobservations as go
 from varsomdata import makelogs as ml
+from varsomdata import fencoding as fe
 import setenvironment as env
 import pylab as plt
-
 
 __author__ = 'ragnarekker'
 
@@ -23,7 +22,7 @@ def _save_problems(problems, file_path):
     :return:
     """
 
-    if os.path.exists(file_path) == False:
+    if not os.path.exists(file_path):
         l = open(file_path, 'w', encoding='utf-8')
         l.write('{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}\t{9}\t{10}\t{11}\t{12}\n'
                 .format('Dato', 'region id', 'Region', 'FG', 'Faregrad', 'Opprinnelse',
@@ -72,18 +71,6 @@ def _save_problems_simple(problems, file_path):
             p.cause_name))
 
     l.close()
-
-
-def _make_str(s):
-    """If a string instance is Not given, Ikke gitt or None, return empty string."""
-
-    if s == 'Not given':
-        return ''
-    if s == 'Ikke gitt':
-        return ''
-    if s is None:
-        return ''
-    return str(s)
 
 
 def _save_danger_and_problem_to_file(warnings, file_path):
@@ -400,9 +387,9 @@ def make_avalanche_problemes_for_techel():
                     # ('URL', d.url),
                 ])
             if make_header:
-                f.write(' ;'.join([_make_str(d) for d in out_data.keys()]) + '\n')
+                f.write(' ;'.join([fe.make_str(d) for d in out_data.keys()]) + '\n')
                 make_header = False
-            f.write(' ;'.join([_make_str(d) for d in out_data.values()]) + '\n')
+            f.write(' ;'.join([fe.make_str(d) for d in out_data.values()]) + '\n')
 
     # Write forecasted dangers to file
     with open(output_forecast_dangers, 'w', encoding='utf-8') as f:
@@ -420,9 +407,9 @@ def make_avalanche_problemes_for_techel():
                     ('Main message', ' '.join(d.main_message_en.split()))
                 ])
             if make_header:
-                f.write(' ;'.join([_make_str(d) for d in out_data.keys()]) + '\n')
+                f.write(' ;'.join([fe.make_str(d) for d in out_data.keys()]) + '\n')
                 make_header = False
-            f.write(' ;'.join([_make_str(d) for d in out_data.values()]) + '\n')
+            f.write(' ;'.join([fe.make_str(d) for d in out_data.values()]) + '\n')
 
     # Write forecasted problems to file
     with open(output_forecast_problems, 'w', encoding='utf-8') as f:
@@ -449,9 +436,9 @@ def make_avalanche_problemes_for_techel():
                     # ('URL', p.url)
                 ])
             if make_header:
-                f.write(' ;'.join([_make_str(d) for d in out_data.keys()]) + '\n')
+                f.write(' ;'.join([fe.make_str(d) for d in out_data.keys()]) + '\n')
                 make_header = False
-            f.write(' ;'.join([_make_str(d) for d in out_data.values()]) + '\n')
+            f.write(' ;'.join([fe.make_str(d) for d in out_data.values()]) + '\n')
 
     # Write observed problems to file
     with open(output_observed_problems, 'w', encoding='utf-8') as f:
@@ -483,9 +470,9 @@ def make_avalanche_problemes_for_techel():
                     # ('URL', p.url)
                 ])
             if make_header:
-                f.write(' ;'.join([_make_str(d) for d in out_data.keys()]) + '\n')
+                f.write(' ;'.join([fe.make_str(d) for d in out_data.keys()]) + '\n')
                 make_header = False
-            f.write(' ;'.join([_make_str(d) for d in out_data.values()]) + '\n')
+            f.write(' ;'.join([fe.make_str(d) for d in out_data.values()]) + '\n')
 
     return
 
@@ -543,9 +530,9 @@ def make_forecasts_for_Christian():
                         ('Distribution', p.aval_distribution)
                     ])
                 if make_header:
-                    f.write(' ;'.join([_make_str(d) for d in out_data.keys()]) + '\n')
+                    f.write(' ;'.join([fe.make_str(d) for d in out_data.keys()]) + '\n')
                     make_header = False
-                f.write(' ;'.join([_make_str(d) for d in out_data.values()]) + '\n')
+                f.write(' ;'.join([fe.make_str(d) for d in out_data.values()]) + '\n')
 
 
 def make_forecasts_for_Heidi():
@@ -606,87 +593,72 @@ def make_forecasts_for_Heidi():
                         ('Distribution', p.aval_distribution)
                     ])
                 if make_header:
-                    f.write(' ;'.join([_make_str(d) for d in out_data.keys()]) + '\n')
+                    f.write(' ;'.join([fe.make_str(d) for d in out_data.keys()]) + '\n')
                     make_header = False
-                f.write(' ;'.join([_make_str(d) for d in out_data.values()]) + '\n')
+                f.write(' ;'.join([fe.make_str(d) for d in out_data.values()]) + '\n')
 
     pass
 
 
-def make_forecasts_at_incidents_for_anniken_and_emma():
-    """Hei!
+def make_forecasts_for_Thea():
+    """July 2018: Make list of avalanche forecasts danger levels for regions Voss, Romsdalen, Svartisen
+    and Salten (and those before them) for Thea Møllerhaug Lunde (Jernbanedirektoratet).
 
-    Vi vil gjerne ha faregradene tilbake til 2014/2015 for de dagene ulykkene inntraff, samt skredtype.
-    I denne omgang fokuserer vi ikke på skredproblem.
+    Voss-Bergen ligger i for det meste i Voss-regionen vår.
+    Mo i Rana-Fauske ligger i Svartisen og Salten.
+    Åndalsnes-Bjorli ligger i varslingsregionen Romsdalen."""
 
-    Ja vi ser på dødsulykker og har brukt tallene fra linken, takk for henvisningen.
+    pickle_file_name = '{0}201807_avalanche_forecasts_thea.pickle'.format(env.local_storage)
 
-    Ta gjerne ut en full liste med faregrad for skredhendelser fra 2016-2017 til 2014-2015
-    (de skredhendelsene som er på linken du la ved, det er disse vi tar utgangspunkt i) .
-
-    Takk for hjelpen!
-
-    Mvh Emma Gamme og Anniken Helene Aalerud
-
-    :return:
-
-    get forecasts and problems way back
-    get all incidents from varsom
-    pick out dl and avlatype
-    add dl and avaltype to the dates
-    """
-
-    pickle_file_name = '{0}dl_inci_anniken_and_emma.pickle'.format(env.local_storage)
-    output_incident_and_dl = '{0}Hendelse og faregrad til Anniken og Emma.csv'.format(env.output_folder)
-
-    years = ['2014-15', '2015-16', '2016-17']
-    get_new = True
+    get_new = False
+    all_dangers = []
 
     if get_new:
-        forecast_problems = []      # the problems have the danger level
-        varsom_incidents = gm.get_varsom_incidents(add_forecast_regions=True)
+        # Get Voss. ForecastRegionTID 124 form 2012-2016 and 3031 since.
+        # Get Romsdalen. ForecastRegionTID 118 from 2012-2016 and 3023 since.
+        # Get Svartisen. ForecastRegionTID 131 from 2012-2016 and 3017 since.
+        # Get Salten. ForecastRegionTID 133 form 2012-2016 and 3016 since.
+
+        years = ['2012-13', '2013-14', '2014-15', '2015-16']
+        region_ids = [124, 118, 131, 133]
 
         for y in years:
-            # Get forecast data. Different region ids from year to year.
-            region_ids = gm.get_forecast_regions(year=y)
             from_date, to_date = gm.get_forecast_dates(y)
-            forecast_problems += gp.get_forecasted_problems(region_ids, from_date, to_date, lang_key=1)
+            all_dangers += gd.get_forecasted_dangers(region_ids, from_date, to_date)
 
-        mp.pickle_anything([forecast_problems, varsom_incidents], pickle_file_name)
+        years = ['2016-17', '2017-18']
+        region_ids = [3031, 3023, 3017, 3016]
+
+        for y in years:
+            from_date, to_date = gm.get_forecast_dates(y)
+            all_dangers += gd.get_forecasted_dangers(region_ids, from_date, to_date)
+
+        mp.pickle_anything(all_dangers, pickle_file_name)
 
     else:
-        [forecast_problems, varsom_incidents] = mp.unpickle_anything(pickle_file_name)
+        all_dangers = mp.unpickle_anything(pickle_file_name)
 
-    incident_and_dl = []
-    for i in varsom_incidents:
-        incident_date = i.date
-        incident_region = i.region_id
-        for p in forecast_problems:
-            problem_date = p.date
-            problem_region = p.region_regobs_id
-            if incident_date == problem_date and incident_region == problem_region:
-                if p.order == 1:
-                    incident_and_dl.append({'Dato':incident_date,
-                                            'Region':i.region_name,
-                                            'Kommune':i.municipality,
-                                            'Dødsfall':i.fatalities,
-                                            'Involverte':i.people_involved,
-                                            'Aktivitet':i.activity,
-                                            'Faregrad':p.danger_level,
-                                            'Skredtype':p.aval_type,
-                                            'regObs id':i.regid})
+    output_forecast_problems = '{0}201807 Snøskredvarsel for Thea.txt'.format(env.output_folder)
 
-    # Write observed problems to file
-    with open(output_incident_and_dl, 'w', encoding='utf-8') as f:
+    import collections as coll
+
+    # Write forecasts to file
+    with open(output_forecast_problems, 'w', encoding='utf-8') as f:
         make_header = True
-        for i in incident_and_dl:
+        for d in all_dangers:
+            out_data = coll.OrderedDict([
+                    ('Date', dt.date.strftime(d.date, '%Y-%m-%d')),
+                    ('Region id', d.region_regobs_id),
+                    ('Region', d.region_name),
+                    ('DL', d.danger_level),
+                    ('Danger level', d.danger_level_name),
+                ])
             if make_header:
-                f.write(' ;'.join([_make_str(d) for d in i.keys()]) + '\n')
+                f.write(' ;'.join([fe.make_str(d) for d in out_data.keys()]) + '\n')
                 make_header = False
-            f.write(' ;'.join([_make_str(d) for d in i.values()]).replace('[', '').replace(']', '') + '\n')
+            f.write(' ;'.join([fe.make_str(d) for d in out_data.values()]) + '\n')
 
-
-    a = 1
+    pass
 
 
 def get_all_ofoten():
@@ -748,5 +720,4 @@ if __name__ == "__main__":
     # make_problems_for_BritSiv()
     # make_avalanche_problemes_for_techel()
     # make_forecasts_for_Christian()
-    # make_forecasts_at_incidents_for_anniken_and_emma()
-    make_forecasts_for_Heidi()
+    make_forecasts_for_Thea()

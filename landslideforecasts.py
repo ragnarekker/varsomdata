@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import datetime as dt
 import csv as csv
 from varsomdata import getforecastapi as gfa

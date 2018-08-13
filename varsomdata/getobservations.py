@@ -1446,7 +1446,6 @@ def get_snow_surface_observation(from_date, to_date, region_ids=None, location_i
     :param observer_nick:       [int or list of ints] Default None gives all.
     :param observer_competence: [string] Part of a observer nick name
     :param output:              [string] Options: 'List', 'DataFrame' and 'Count'. Default 'List'.
-    :param geohazard_tids:      [int or list of ints] Default None gives all.
     :param lang_key             [int] 1 is norwegian, 2 is english
 
     :return:
@@ -1472,7 +1471,6 @@ def get_weather_observation(from_date, to_date, region_ids=None, location_id=Non
     :param observer_nick:       [int or list of ints] Default None gives all.
     :param observer_competence: [string] Part of a observer nick name
     :param output:              [string] Options: 'List', 'DataFrame' and 'Count'. Default 'List'.
-    :param geohazard_tids:      [int or list of ints] Default None gives all.
     :param lang_key             [int] 1 is norwegian, 2 is english
 
     :return:
@@ -1873,11 +1871,31 @@ def _example_webapi_request():
             print('{0:.2f}%'.format(len(data) / responds['TotalMatches'] * 100))
 
         if len(data) < responds['TotalMatches']:
-            rssquery["Offset"] += 100
+            rssquery['Offset'] += 100
         else:
             more_available = False
 
     return data
+
+
+def _the_simplest_webapi_request():
+    """Example for demonstrating how simple an request to regObs web-api can be."""
+
+    import requests as rq
+
+    query = {'LangKey': 2,
+             'FromDate': '2018-03-01',
+             'ToDate': '2018-03-04',
+             'NumberOfRecords': 500}
+
+    url = 'https://api.nve.no/hydrology/' \
+          'regobs/webapi_v3.2.0/' \
+          'Search/Rss?geoHazard=10'
+
+    observations = rq.post(url, json=query).json()
+
+    a = observations
+    pass
 
 
 def _test_diff_in_reg_type_query():
@@ -1945,7 +1963,8 @@ if __name__ == "__main__":
     # ice_data = get_data(from_date='2016-10-01', to_date='2016-11-01', geohazard_tids=70, output='Nest')
     #
     #
-    data = _raw_play_ground()
+    # data = _raw_play_ground()
+    _the_simplest_webapi_request()
 
     a = 1
 

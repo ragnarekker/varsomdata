@@ -405,7 +405,7 @@ def _map_warning_to_problem(warnings):
 
 
 def get_forecasted_problems(region_ids, from_date, to_date, add_danger_level=True, lang_key=1):
-    """
+    """Function returning only forecasted problems. A specialized call of the more generic get_all_problems
 
     :param region_ids:
     :param from_date:

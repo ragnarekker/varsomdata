@@ -103,26 +103,6 @@ class DailyNumbers:
         # self.numbs_two_seasons_ago = None
 
 
-class MonthlyNumbers:
-    """
-    pr month
-    * list num pr geohazard
-    * obskorps
-    * svv, vegvesen, met, forsvaret, jbv, nve, naturopsynet,
-    * andre
-    """
-
-    def __init__(self, year, month):
-
-        self.month = month
-        self.year = year
-        self.all_obs = []
-
-    def add_to_all_obs(self, o):
-
-        self.all_obs.append(o)
-
-
 def _str(int_inn):
     """Change the int to string but make sure it has two digits. The int represents a month og day."""
 
@@ -300,14 +280,34 @@ def plot_regs_obs_numbs():
     plt.close()
 
 
+class MonthlyNumbers:
+    """
+    pr month
+    * list num pr geohazard
+    * obskorps
+    * svv, vegvesen, met, forsvaret, jbv, nve, naturopsynet,
+    * andre
+    """
+
+    def __init__(self, year, month):
+
+        self.month = month
+        self.year = year
+        self.all_obs = []
+
+    def add_to_all_obs(self, o):
+
+        self.all_obs.append(o)
+
+
 def table_regs_obs_numbs():
     """
 
     :return:
 
     pr month:
-    snow: obskorps, svv, elrapp, other_gov, voluntairy
-    ice: NVE, fjelloppsynet, voluntairy, webcam images
+    snow: obskorps, svv, elrapp, other_gov, voluntary
+    ice: NVE, fjelloppsynet, voluntary, webcam images
     water and dirt: NVE, elrapp, other_gov, voluntary
     *, **, ***, ****, *****
 

@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-
-__author__ = 'raek'
-
-import getdangers as gd
-import getobservations as go
-# import getobservations as getobservations
-import getkdvelements as gkdv
+from varsomdata import getdangers as gd
+from varsomdata import getobservations as go
+from varsomdata import getkdvelements as gkdv
+from varsomdata import readfile as rf
+from varsomdata import makepickle as mp
 import setenvironment as env
 import datetime as dt
-import readfile as rf
-import makepickle as mp
 import matplotlib as mpl
 import pylab as plb
 
+__author__ = 'raek'
 
-class ActivityAndDanger():
+
+class ActivityAndDanger:
 
     def __init__(self):
 
@@ -61,7 +60,7 @@ class ActivityAndDanger():
                 self.colour = 'pink'        # pink means something whent wrong
 
 
-class DataOnDateInRegion():
+class DataOnDateInRegion:
 
     def __init__(self, date, region_name):
 
@@ -77,14 +76,12 @@ class DataOnDateInRegion():
         self.highest_value = -1
 
 
-class IndexOfSizeAndNumber():
-
+class IndexOfSizeAndNumber:
 
     def __init__(self):
         self.estimated_num = None
         self.destructive_size = None
         self.index = None
-
 
     def add_configuration_row(self, row):
         self.estimated_num = row[0]
@@ -137,7 +134,7 @@ def step_1_make_data_set(region_ids, from_date, to_date):
     data_date_region = []
     for d in forecasted_dangers:
         danger_date = d.date
-        print '{0}'.format(danger_date)
+        print('{0}'.format(danger_date))
         danger_region_name = d.region_name
 
         data = DataOnDateInRegion(danger_date, danger_region_name)
@@ -476,7 +473,7 @@ if __name__ == "__main__":
            region_id.append(v.ID)
 
     from_date = dt.date(2015, 11, 30)
-    to_date = dt.date(2016, 06, 01)
+    to_date = dt.date(2016, 6, 1)
     #to_date = dt.date.today()
 
     # ## get and make the data set
@@ -498,7 +495,6 @@ if __name__ == "__main__":
     date_region, forecasted_dangers, elements = mp.unpickle_anything('{0}runforavalancheactivity_step_3.pickle'.format(env.local_storage))
     step_4_plot(date_region, forecasted_dangers, elements, '{0}Avalanches and dangers {1} to {2}'.format(env.plot_folder, from_date, to_date))
 
-
     # Do a count on observations..
     total_a = 0
     total_aa = 0
@@ -514,6 +510,5 @@ if __name__ == "__main__":
     for e in elements:
         if e.observation_count is not 0:
             used_elements.append(e)
-
 
     a = 1
