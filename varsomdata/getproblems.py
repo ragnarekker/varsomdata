@@ -1,8 +1,8 @@
 import datetime as dt
 from varsomdata import getobservations as go
 from varsomdata import getforecastapi as gfa
-from varsomdata import makelogs as ml
-from varsomdata import setcoreenvironment as cenv
+from utilities import makelogs as ml
+import setcoreenvironment as cenv
 
 # -*- coding: utf-8 -*-
 __author__ = 'raek'

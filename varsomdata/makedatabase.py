@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import datetime as dt
-from varsomdata import setcoreenvironment as cenv
+import setcoreenvironment as cenv
 from varsomdata import getobservations as go
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy import create_engine

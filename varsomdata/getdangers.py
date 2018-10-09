@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 __author__ = 'raek'
 
+"""
+"""
 
 import datetime as dt
 from varsomdata import getobservations as go
-from varsomdata import makelogs as ml
-from varsomdata import getmisc as gm
 from varsomdata import getforecastapi as gfa
-from varsomdata import setcoreenvironment as cenv
+import setcoreenvironment as cenv
 
 
 class AvalancheDanger:
@@ -57,7 +57,7 @@ class AvalancheDanger:
         # self.main_message_en = None                     # [String] The main message in english
 
         ##### obs eval 3 stuff
-        # self.forecast_correct = None                    # [String] Droppdown value if the forecast is correct or no
+        # self.forecast_correct = None                    # [String] Drop down value if the forecast is correct or no
         # self.forecast_correct_id = None                 # [int]
         # self.forecast_comment = None                    # [String] Comment from observer
 

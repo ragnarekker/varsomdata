@@ -2,10 +2,13 @@
 from varsomdata import getobservations as go
 from varsomdata import makepickle as mp
 from varsomdata import getmisc as gm
-from varsomdata import setcoreenvironment as cenv
-from varsomdata import makelogs as ml
+import setcoreenvironment as cenv
+from utilities import makelogs as ml
 import datetime as dt
 import os as os
+
+"""
+"""
 
 __author__ = 'raek'
 

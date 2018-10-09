@@ -4,8 +4,8 @@ import requests
 import datetime as dt
 from varsomdata import getdangers as gd
 from varsomdata import getproblems as gp
-from varsomdata import makelogs as ml
-from varsomdata import setcoreenvironment as cenv
+from utilities import makelogs as ml
+import setcoreenvironment as cenv
 
 __author__ = 'raek'
 

@@ -5,11 +5,9 @@ import requests as requests
 import csv as csv
 from varsomdata import getobservations as go
 from varsomdata import getdangers as gd
-from varsomdata import readfile as rf
-from varsomdata import makelogs as ml
-from varsomdata import fencoding as fe
+from utilities import fencoding as fe, readfile as rf, makelogs as ml
 from varsomdata import getkdvelements as kdv
-from varsomdata import setcoreenvironment as cenv
+import setcoreenvironment as cenv
 import setenvironment as env
 
 __author__ = 'raek'
@@ -498,11 +496,11 @@ def get_observation_dates(year, padding=dt.timedelta(days=0)):
     return from_date, to_date
 
 
-def get_forecast_regions(year, get_counties = False):
+def get_forecast_regions(year, get_b_regions=False):
     """Get valid forecast region ids for a given year.
 
     :param year:                 [String] as YYYY-YY
-    :param get_counties:         [Bool] Before te rest of norway was th counties, but now they are called B-regions.
+    :param get_b_regions:        [Bool] Before te rest of norway was th counties, but now they are called B-regions.
 
     :return:
 
@@ -534,16 +532,16 @@ def get_forecast_regions(year, get_counties = False):
         # Salten (133) was started in mars 2015.
         # We tested Nordeskioldland (130) in may 2015.
         region_ids = [106, 107, 108, 109, 110, 111, 112, 114, 115, 116, 117, 118, 119, 121, 122, 123, 124, 127, 128, 129, 130, 131, 132, 133]
-        if get_counties:
+        if get_b_regions:
             region_ids += [n for n in range(151, 171, 1)]
     elif year == '2015-16':
         region_ids = [106, 107, 108, 109, 110, 111, 112, 114, 115, 116, 117, 118, 119, 121, 122, 123, 124, 127, 128, 129, 130, 131, 132, 133]
-        if get_counties:
+        if get_b_regions:
             region_ids += [n for n in range(151, 171, 1)]
     elif year == '2016-17' or year == '2017-18':
         # Total makeover in november 2016
         region_ids = [3003, 3007, 3009, 3010, 3011, 3012, 3013, 3014, 3015, 3016, 3017, 3022, 3023, 3024, 3027, 3028, 3029, 3031, 3032, 3034, 3035]
-        if get_counties:
+        if get_b_regions:
             region_ids += [3001, 3002, 3004, 3005, 3006, 3008, 3018, 3019, 3020, 3021, 3025, 3026, 3030, 3033, 3036, 3037, 3038, 3039, 3040, 3041, 3042, 3043, 3044, 3045, 3046]
     else:
         region_ids = "No valid period given."
@@ -669,7 +667,7 @@ def get_forecast_region_for_coordinate(utm33x, utm33y, year):
         file_name = 'VarslingsOmrF_fra_2014_mars'
         id_offset = 100
     elif year == '2016-17' or year == '2017-18':
-        # total makeover this season. Introducing A and B regions. Ids at 3000.
+        # total makeover season 2016-17. Introducing A and B regions. Ids at 3000.
         file_name = 'VarslingsOmrF_fra_2016_des'
         id_offset = 0
     else:

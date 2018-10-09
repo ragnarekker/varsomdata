@@ -5,7 +5,7 @@ import os as os
 __author__ = 'raek'
 
 # If repository is used to run a scheduled task and output is saved on separate paths, set this to true
-operational = False
+operational = True
 
 if sys.platform == 'darwin':
     root_folder = '/Users/ragnarekker/Dropbox/Kode/Python/varsomdata/'
@@ -77,7 +77,7 @@ if root_folder:
         if not os.path.exists(web_images_regiondata_folder):
             os.makedirs(web_images_regiondata_folder)
         if not os.path.exists(web_images_regobsdata_folder):
-            os.makedirs(web_images_regiondata_folder)
+            os.makedirs(web_images_regobsdata_folder)
         if not os.path.exists(web_images_observerdata_folder):
             os.makedirs(web_images_observerdata_folder)
         if not os.path.exists(web_images_svvdata_folder):

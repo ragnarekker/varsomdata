@@ -2,12 +2,11 @@
 import datetime
 import requests
 from varsomdata import getforecastapi as fa
-from varsomdata import fencoding as fe
-from varsomdata import setcoreenvironment as cenv
+from utilities import fencoding as fe
+import setcoreenvironment as cenv
 from varsomdata import getkdvelements as gkdv
 from varsomdata import getdangers as gd
 from varsomdata import getproblems as gp
-from varsomdata import getobservations as go
 
 __author__ = 'raek'
 

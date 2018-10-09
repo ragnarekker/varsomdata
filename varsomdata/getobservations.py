@@ -3,8 +3,12 @@ import datetime as dt
 import requests as requests
 import pandas as pd
 import sys as sys
-from varsomdata import makelogs as ml
-from varsomdata import setcoreenvironment as cenv
+from utilities import makelogs as ml
+import setcoreenvironment as cenv
+
+"""
+
+"""
 
 __author__ = 'raek'
 
