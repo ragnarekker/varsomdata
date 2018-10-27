@@ -3,14 +3,13 @@
 data exists and files are newer that a given max datetime limit, these files are used to return data.
 Else, new requests are made."""
 
-from varsomdata import getobservations as go
-from varsomdata import makepickle as mp
-from varsomdata import getmisc as gm
 import setenvironment as env
+from varsomdata import getobservations as go
+from varsomdata import getmisc as gm
+from utilities import makepickle as mp
 from utilities import makelogs as ml
 import datetime as dt
 import os as os
-
 
 __author__ = 'raek'
 
