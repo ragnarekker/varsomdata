@@ -1932,6 +1932,7 @@ if __name__ == "__main__":
 
     # data = get_data_as_class('2017-08-01', '2018-02-15')
 
+    all_data_snow = get_data('2016-12-30', '2017-01-01', geohazard_tids=10)
     # land_slides = get_land_slide_obs('2018-01-01', '2018-02-01')
     # incident = get_incident('2012-03-01', '2012-03-10')
     # new_water_levels = get_water_level_2('2017-06-01', '2018-02-01')
@@ -1964,14 +1965,13 @@ if __name__ == "__main__":
     # two_obs = get_data(reg_ids=[130548, 130328], output='Nest')
     # two_obs_count = get_data(reg_ids=[130548, 130328],  output='Count nest')
     # two_observers = get_data(from_date='2016-12-30', to_date='2017-04-01', observer_ids=[6,10], output='Nest')
-    # all_data_snow = get_data('2016-12-30', '2017-01-01', geohazard_tids=10)
     # one_observer_count_list = get_data(from_date='2016-12-30', to_date='2017-04-01', observer_ids=6, output='Count list')
     # one_observer_count_nest = get_data(from_date='2012-01-01', to_date='2018-01-01', observer_ids=6, output='Count nest')
     # ice_data = get_data(from_date='2016-10-01', to_date='2016-11-01', geohazard_tids=70, output='Nest')
     #
     #
     # data = _raw_play_ground()
-    _the_simplest_webapi_request()
+    # _the_simplest_webapi_request()
 
     a = 1
 
