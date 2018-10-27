@@ -351,7 +351,7 @@ def get_avalanche_index(from_date, to_date, region_ids=None, observer_ids=None):
     danger_signs = go.get_danger_sign(from_date, to_date, region_ids=region_ids, observer_ids=observer_ids)
 
     # get index definition
-    index_definition = rf.read_configuration_file('{0}aval_dl_order_of_size_and_num.csv'.format(env.input_folder), AvalancheIndex)
+    index_definition = rf.read_configuration_file('{0}aval_dl_order_of_size_and_num.csv'.format(env.matrix_configurations), AvalancheIndex)
 
     avalanche_indexes = []
 
@@ -816,6 +816,21 @@ def get_varsom_incidents(add_forecast_regions=False, add_observations=False, add
                             i.add_forecast(f)
 
     return varsom_incidents
+
+
+def get_forecast_region_name(region_id):
+    """Method takes in the region id (same as ForecastRegionTID in regObs). It looks up the name in ForecastRegionKDV
+    and returns the region name.
+
+    :param region_id:    Region ID is an int as given i ForecastRegionKDV
+    :return:             Region Name string is returned
+    """
+
+    forecast_region_kdv = kdv.get_kdv('ForecastRegionKDV')
+    forecast_region_kdvelement = forecast_region_kdv[region_id]
+    forecast_region_name = forecast_region_kdvelement.Name
+
+    return forecast_region_name
 
 
 if __name__ == "__main__":

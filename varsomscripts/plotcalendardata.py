@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-"""The code for downloading and making the plots on ragnar.pythonanywhere.com/observerdata/ """
+"""The code for downloading and making the plots on ragnar.pythonanywhere.com/observerdata/
+
+Todo: I need to mow use of webfolder out from this module over to runonshedule where it is used. If not on a shedule for operational use, the tables and plots may be put in the outputfolder.
+"""
 
 import datetime as dt
 import matplotlib as mpl
@@ -163,7 +166,7 @@ def _get_dates(start, end, delta):
 
 def _make_plot(dates, observer_name=None, region_name=None, file_ext=".png", data_description=None):
     """If it is a custom data set region_name should be provided because it will be plotted by region.
-    observer_name and region_name determines the main groupiong of data. They should not be provided both.
+    observer_name and region_name determines the main grouping of data. They should not be provided both.
 
     :param dates:
     :param observer_name:
@@ -430,14 +433,18 @@ def _make_day_data_list(region_observations_list, m, frid=None, o=None):
 
 
 def make_observer_plots(all_observations_list, observer_list, months):
-    """Method prepares data for plotting and making the corresponding table for the observations for one
-    observer.
+    """Method prepares data for plotting and making the corresponding table for the observations for a list of
+    observers.
 
     :param all_observations_list:
-    :param observer_list:
+    :param observer_list:           [list of ObserverData]
     :param months:
     :return:
     """
+
+    # if not a list, make it so
+    if not isinstance(observer_list, list):
+        observer_list = [observer_list]
 
     for o in observer_list:
 
@@ -523,50 +530,16 @@ def make_svv_plots(all_observations_list, observer_dict, region_ids, months):
             _make_html(dates, region_name=region_name, data_description=data_description)
 
 
-def make_2017_18_plots():
-    """Plots both observations pr observer and pr region for display on web page for the season 2015-16.
-    Method includes a request for list of relevant observers."""
-
-    # list of months to be plotted
-    months = []
-    month = dt.date(2017, 11, 1)
-    while month < dt.date.today():
-        months.append(month)
-        almost_next = month + dt.timedelta(days=35)
-        month = dt.date(almost_next.year, almost_next.month, 1)
-
-    # Get all regions
-    region_ids = gm.get_forecast_regions('2017-18')
-
-    # get a list of relevant observers to plot and make pickle for adding to the web-folder
-    all_observations_nest = vp.get_all_observations('2017-18', output='Nest', geohazard_tids=10)
-    all_observations_list = vp.get_all_observations('2017-18', output='List', geohazard_tids=10)
-
-    observer_dict = {}
-    for o in all_observations_nest:
-        if o.ObserverId in observer_dict.keys():
-            observer_dict[o.ObserverId].add_one_observation_count()
-        else:
-            observer_dict[o.ObserverId] = ObserverData(o.ObserverId, o.NickName, observation_count_inn=1)
-
-    observer_list = []
-    ordered_observer_dict = col.OrderedDict(sorted(observer_dict.items(), key=lambda t: t[1].observation_count, reverse=True))
-    for k, v in ordered_observer_dict.items():
-        if v.observation_count > 4:
-            observer_list.append([v.observer_id, v.observer_nick, v.observation_count])
-
-    mp.pickle_anything(observer_list, '{0}observerlist.pickle'.format(env.web_pickle_folder))
-
-    # run the stuff
-    make_observer_plots(all_observations_list, observer_list, months)
-    make_region_plots(all_observations_list, region_ids, months)
-    make_svv_plots(all_observations_list, observer_dict, region_ids, months)
-
-
 if __name__ == "__main__":
 
-    make_2017_18_plots()
 
+    observer = ObserverData(10, 'Andreas@NVE')
+    all_observations = go.get_data_as_class(from_date='2018-09-1', to_date='2018-11-1', output='List')
+    month = [dt.date(2017, 11, 1)]
+
+    make_observer_plots(all_observations, observer, month)
+
+    pass
 
 
 

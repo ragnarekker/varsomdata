@@ -14,7 +14,6 @@ from varsomdata import getdangers as gd
 from varsomdata import getproblems as gp
 from varsomdata import getmisc as gm
 from utilities import makepickle as mp
-from varsomdata import getregobs as gro
 from varsomdata import getkdvelements as gkdv
 from utilities import makelogs as ml
 import setenvironment as env
@@ -435,7 +434,7 @@ def make_plots_for_region(region_id, problems, dangers, aval_indexes, start_date
     :return:
     """
 
-    region_name = gro.get_forecast_region_name(region_id)
+    region_name = gm.get_forecast_region_name(region_id)
 
     causes = []     # list of dates and causes
     for p in problems:
@@ -494,7 +493,7 @@ if __name__ == "__main__":
     to_date = dt.date.today() + dt.timedelta(days=2)
 
     # #### Start small - do one region
-    i = 3003 # Nordensköld Land
+    i = 3029 # Nordensköld Land
     problems, dangers, aval_indexes = get_data(i, from_date, to_date, get_new=True)
     make_plots_for_region(i, problems, dangers, aval_indexes, from_date, to_date)
 
