@@ -29,7 +29,7 @@ This said, lots of this works fine and all of it gives insight in how to read th
 `readfile.py`: When a read method is generic and can be utilized across modules, the method is placed here.<br>
 
 **Config:**<br>
-Configuration files as .json.<b>
+Configuration files as .json.<br>
 
 **Rescources:**<br>
 Configuration- or other files used in running scripts.<br>
