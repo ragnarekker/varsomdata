@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""The code for downloading and making the plots on ragnar.pythonanywhere.com/observerdata/"""
+"""The code for downloading and making the plots on ragnar.pythonanywhere.com/observerdata/ """
 
 import datetime as dt
 import matplotlib as mpl
