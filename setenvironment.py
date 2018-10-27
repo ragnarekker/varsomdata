@@ -1,90 +1,78 @@
 # -*- coding: utf-8 -*-
 import sys as sys
 import os as os
+import json as json
+from pathlib import Path
+from shutil import copyfile
 
 __author__ = 'raek'
 
-# If repository is used to run a scheduled task and output is saved on separate paths, set this to true
-operational = True
 
-if sys.platform == 'darwin':
-    root_folder = '/Users/ragnarekker/Dropbox/Kode/Python/varsomdata/'
-    local_storage = root_folder + 'localstorage/'
-    output_folder = root_folder + 'output/'
-    plot_folder = output_folder + 'plots/'
+def _load_config_json(path, name):
+    """Reading a json's in the config folder is a repetitive task. If config file is missing copy in the
+    template file in the same path, but prefixed with underscore (_).
 
-    if operational:
-        web_root_folder = '/Users/ragnarekker/Dropbox/Kode/Python/BottleSite/'
-        web_pickle_folder = web_root_folder
-        web_images_folder = web_root_folder + 'images/'
-        web_images_regiondata_folder = web_images_folder + 'regionplots/'
-        web_images_regobsdata_folder = web_images_folder + 'regobsplots/'
-        web_images_observerdata_folder = web_images_folder + 'observerplots/'
-        web_images_svvdata_folder = web_images_folder + 'svvplots/'
-        web_view_folder = web_root_folder + 'views/'
-    else:
-        web_root_folder = root_folder
-        web_pickle_folder = output_folder
-        web_images_folder = plot_folder
-        web_images_regiondata_folder = web_images_folder + 'regionplots/'
-        web_images_regobsdata_folder = web_images_folder + 'regobsplots/'
-        web_images_observerdata_folder = web_images_folder + 'observerplots/'
-        web_images_svvdata_folder = web_images_folder + 'svvplots/'
-        web_view_folder = output_folder + 'views/'
+    :param path:                [string]        full path of project
+    :param name:                [string]        name of config file
+    :return dict_of name:       [dictionary]    content of json returned as dict
+    """
 
-elif sys.platform == 'win32':
-    root_folder = 'C:\\Users\\raek\\Dropbox\\Kode\\Python\\varsomdata\\'
-    local_storage = root_folder + 'localstorage\\'
-    output_folder = root_folder + 'output\\'
-    plot_folder = output_folder + 'plots\\'
+    path_name_json = '{0}/config/{1}.json'.format(path, name)
+    path_name_template = '{0}/config/_{1}.json'.format(path, name)
 
-    if operational:
-        web_root_folder = 'C:\\Users\\raek\\Dropbox\\Kode\\Python\\BottleSite\\'
-        web_pickle_folder = web_root_folder
-        web_images_folder = web_root_folder + 'images\\'
-        web_images_regiondata_folder = web_images_folder + 'regionplots\\'
-        web_images_regobsdata_folder = web_images_folder + 'regobsplots\\'
-        web_images_observerdata_folder = web_images_folder + 'observerplots\\'
-        web_images_svvdata_folder = web_images_folder + 'svvplots\\'
-        web_view_folder = web_root_folder + 'views\\'
-    else:
-        web_root_folder = root_folder
-        web_pickle_folder = output_folder
-        web_images_folder = plot_folder
-        web_images_regiondata_folder = web_images_folder + 'regionplots\\'
-        web_images_regobsdata_folder = web_images_folder + 'regobsplots\\'
-        web_images_observerdata_folder = web_images_folder + 'observerplots\\'
-        web_images_svvdata_folder = web_images_folder + 'svvplots\\'
-        web_view_folder = output_folder + 'views\\'
+    config_json = Path(path_name_json)
 
-else:
-    print("The current operating system is not supported!")
-
-if root_folder:
     try:
-        # If folders doesnt exist, make them.
+        if not config_json.exists():
+            copyfile(path_name_template, path_name_json)
+        dict_of_name = json.loads(open(config_json).read())
+    except:
+        error_msg = sys.exc_info()[0]
+        print("setenvironment.py: Error creating folders: {}.".format(error_msg))
+        dict_of_name = {}
+
+    return dict_of_name
+
+
+project_path = str(Path(__file__).parent.resolve())
+folders = _load_config_json(project_path, 'folders')
+api = _load_config_json(project_path, 'api')
+
+# Set project folders
+kdv_elements_folder = project_path + folders['kdv_elements']
+local_storage = project_path + folders['local_storage']
+output_folder = project_path + folders['output']
+plot_folder = project_path + folders['plots']
+log_folder = project_path + folders['logs']
+
+# Create project folders if missing
+if project_path:
+    try:
+        # If log folder doesnt exist, make it.
+        if not os.path.exists(kdv_elements_folder):
+            os.makedirs(kdv_elements_folder)
         if not os.path.exists(local_storage):
             os.makedirs(local_storage)
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
         if not os.path.exists(plot_folder):
             os.makedirs(plot_folder)
-
-        if not os.path.exists(web_pickle_folder):
-            os.makedirs(web_pickle_folder)
-        if not os.path.exists(web_images_folder):
-            os.makedirs(web_images_folder)
-        if not os.path.exists(web_images_regiondata_folder):
-            os.makedirs(web_images_regiondata_folder)
-        if not os.path.exists(web_images_regobsdata_folder):
-            os.makedirs(web_images_regobsdata_folder)
-        if not os.path.exists(web_images_observerdata_folder):
-            os.makedirs(web_images_observerdata_folder)
-        if not os.path.exists(web_images_svvdata_folder):
-            os.makedirs(web_images_svvdata_folder)
-        if not os.path.exists(web_view_folder):
-            os.makedirs(web_view_folder)
+        if not os.path.exists(log_folder):
+            os.makedirs(log_folder)
 
     except:
         error_msg = sys.exc_info()[0]
         print("setenvironment.py: Error creating folders: {}.".format(error_msg))
+
+# Set resource folders
+forecast_region_shapes = project_path + folders['forecast_region_shapes']
+main_messages = project_path + folders['main_messages']
+matrix_configurations = project_path + folders['matrix_configurations']
+varsom_incidents = project_path + folders['varsom_incidents']
+
+# Set api variables
+odata_version = api['odata_version']
+web_api_version = api['web_api_version']
+forecast_api_version = api['forecast_api_version']
+registration_basestring = api['registration_basestring']
+personal_regObs_app_token = api['personal_regObs_app_token']

@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
+"""Contains methods for retrieving large data sets and adding them to local storage. If locally stored
+data exists and files are newer that a given max datetime limit, these files are used to return data.
+Else, new requests are made."""
+
 from varsomdata import getobservations as go
 from varsomdata import makepickle as mp
 from varsomdata import getmisc as gm
-import setcoreenvironment as cenv
+import setenvironment as env
 from utilities import makelogs as ml
 import datetime as dt
 import os as os
 
-"""
-"""
 
 __author__ = 'raek'
 
@@ -40,8 +42,8 @@ def get_all_observations(year, output='Nest', geohazard_tids=None, lang_key=1, m
     """
 
     from_date, to_date = gm.get_dates_from_season(year=year)
-    file_name_list = '{0}all_observations_list_{1}_lk{2}.pickle'.format(cenv.local_storage, year, lang_key)
-    file_name_nest = '{0}all_observations_nest_{1}_lk{2}.pickle'.format(cenv.local_storage, year, lang_key)
+    file_name_list = '{0}all_observations_list_{1}_lk{2}.pickle'.format(env.local_storage, year, lang_key)
+    file_name_nest = '{0}all_observations_nest_{1}_lk{2}.pickle'.format(env.local_storage, year, lang_key)
     get_new = True
     date_limit = dt.datetime.now() - dt.timedelta(hours=max_file_age)
 

@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+"""Methods for cleaning up encoding issues. Eg if there is trouble with encoding, file names or unix datetime
+is used, methods are put here."""
+
 import datetime as dt
 
 __author__ = 'ragnarekker'

@@ -1,0 +1,181 @@
+﻿danger_level;estimated_number;destructive_size;dl_x;num_x;x;y;colour
+1 Liten;Ingen;Ikke gitt;0;100;100;100;#729FCF
+1 Liten;Fra faretegn;Ikke gitt;0;200;200;100;#ccff66
+1 Liten;Ett (1);Ikke gitt;0;300;300;100;#E6E6E6
+1 Liten;Noen (2-5);Ikke gitt;0;400;400;100;#E6E6E6
+1 Liten;Flere (6-10);Ikke gitt;0;500;500;100;#E6E6E6
+1 Liten;Mange (10 eller mer);Ikke gitt;0;600;600;100;#E6E6E6
+1 Liten;Ingen;1 - Små;0;100;100;200;#E6E6E6
+1 Liten;Fra faretegn;1 - Små;0;200;200;200;#E6E6E6
+1 Liten;Ett (1);1 - Små;0;300;300;200;#ccff66
+1 Liten;Noen (2-5);1 - Små;0;400;400;200;#ccff66
+1 Liten;Flere (6-10);1 - Små;0;500;500;200;white
+1 Liten;Mange (10 eller mer);1 - Små;0;600;600;200;white
+1 Liten;Ingen;2 - Middels;0;100;100;300;#E6E6E6
+1 Liten;Fra faretegn;2 - Middels;0;200;200;300;#E6E6E6
+1 Liten;Ett (1);2 - Middels;0;300;300;300;#ccff66
+1 Liten;Noen (2-5);2 - Middels;0;400;400;300;#ccff66
+1 Liten;Flere (6-10);2 - Middels;0;500;500;300;white
+1 Liten;Mange (10 eller mer);2 - Middels;0;600;600;300;white
+1 Liten;Ingen;3 - Store;0;100;100;400;#E6E6E6
+1 Liten;Fra faretegn;3 - Store;0;200;200;400;#E6E6E6
+1 Liten;Ett (1);3 - Store;0;300;300;400;white
+1 Liten;Noen (2-5);3 - Store;0;400;400;400;white
+1 Liten;Flere (6-10);3 - Store;0;500;500;400;white
+1 Liten;Mange (10 eller mer);3 - Store;0;600;600;400;white
+1 Liten;Ingen;4 - Svært store;0;100;100;500;#E6E6E6
+1 Liten;Fra faretegn;4 - Svært store;0;200;200;500;#E6E6E6
+1 Liten;Ett (1);4 - Svært store;0;300;300;500;white
+1 Liten;Noen (2-5);4 - Svært store;0;400;400;500;white
+1 Liten;Flere (6-10);4 - Svært store;0;500;500;500;white
+1 Liten;Mange (10 eller mer);4 - Svært store;0;600;600;500;white
+1 Liten;Ingen;5 - Ekstremt store;0;100;100;600;#E6E6E6
+1 Liten;Fra faretegn;5 - Ekstremt store;0;200;200;600;#E6E6E6
+1 Liten;Ett (1);5 - Ekstremt store;0;300;300;600;white
+1 Liten;Noen (2-5);5 - Ekstremt store;0;400;400;600;white
+1 Liten;Flere (6-10);5 - Ekstremt store;0;500;500;600;white
+1 Liten;Mange (10 eller mer);5 - Ekstremt store;0;600;600;600;white
+2 Moderat;Ingen;Ikke gitt;600;100;700;100;#729FCF
+2 Moderat;Fra faretegn;Ikke gitt;600;200;800;100;#ffff00
+2 Moderat;Ett (1);Ikke gitt;600;300;900;100;#E6E6E6
+2 Moderat;Noen (2-5);Ikke gitt;600;400;1000;100;#E6E6E6
+2 Moderat;Flere (6-10);Ikke gitt;600;500;1100;100;#E6E6E6
+2 Moderat;Mange (10 eller mer);Ikke gitt;600;600;1200;100;#E6E6E6
+2 Moderat;Ingen;1 - Små;600;100;700;200;#E6E6E6
+2 Moderat;Fra faretegn;1 - Små;600;200;800;200;#E6E6E6
+2 Moderat;Ett (1);1 - Små;600;300;900;200;#ffff00
+2 Moderat;Noen (2-5);1 - Små;600;400;1000;200;#ffff00
+2 Moderat;Flere (6-10);1 - Små;600;500;1100;200;#ffff00
+2 Moderat;Mange (10 eller mer);1 - Små;600;600;1200;200;#ffff00
+2 Moderat;Ingen;2 - Middels;600;100;700;300;#E6E6E6
+2 Moderat;Fra faretegn;2 - Middels;600;200;800;300;#E6E6E6
+2 Moderat;Ett (1);2 - Middels;600;300;900;300;#ffff00
+2 Moderat;Noen (2-5);2 - Middels;600;400;1000;300;#ffff00
+2 Moderat;Flere (6-10);2 - Middels;600;500;1100;300;#ffff00
+2 Moderat;Mange (10 eller mer);2 - Middels;600;600;1200;300;white
+2 Moderat;Ingen;3 - Store;600;100;700;400;#E6E6E6
+2 Moderat;Fra faretegn;3 - Store;600;200;800;400;#E6E6E6
+2 Moderat;Ett (1);3 - Store;600;300;900;400;#ffff00
+2 Moderat;Noen (2-5);3 - Store;600;400;1000;400;#ffff00
+2 Moderat;Flere (6-10);3 - Store;600;500;1100;400;white
+2 Moderat;Mange (10 eller mer);3 - Store;600;600;1200;400;white
+2 Moderat;Ingen;4 - Svært store;600;100;700;500;#E6E6E6
+2 Moderat;Fra faretegn;4 - Svært store;600;200;800;500;#E6E6E6
+2 Moderat;Ett (1);4 - Svært store;600;300;900;500;white
+2 Moderat;Noen (2-5);4 - Svært store;600;400;1000;500;white
+2 Moderat;Flere (6-10);4 - Svært store;600;500;1100;500;white
+2 Moderat;Mange (10 eller mer);4 - Svært store;600;600;1200;500;white
+2 Moderat;Ingen;5 - Ekstremt store;600;100;700;600;#E6E6E6
+2 Moderat;Fra faretegn;5 - Ekstremt store;600;200;800;600;#E6E6E6
+2 Moderat;Ett (1);5 - Ekstremt store;600;300;900;600;white
+2 Moderat;Noen (2-5);5 - Ekstremt store;600;400;1000;600;white
+2 Moderat;Flere (6-10);5 - Ekstremt store;600;500;1100;600;white
+2 Moderat;Mange (10 eller mer);5 - Ekstremt store;600;600;1200;600;white
+3 Betydelig;Ingen;Ikke gitt;1200;100;1300;100;#729FCF
+3 Betydelig;Fra faretegn;Ikke gitt;1200;200;1400;100;#ff9900
+3 Betydelig;Ett (1);Ikke gitt;1200;300;1500;100;#E6E6E6
+3 Betydelig;Noen (2-5);Ikke gitt;1200;400;1600;100;#E6E6E6
+3 Betydelig;Flere (6-10);Ikke gitt;1200;500;1700;100;#E6E6E6
+3 Betydelig;Mange (10 eller mer);Ikke gitt;1200;600;1800;100;#E6E6E6
+3 Betydelig;Ingen;1 - Små;1200;100;1300;200;#E6E6E6
+3 Betydelig;Fra faretegn;1 - Små;1200;200;1400;200;#E6E6E6
+3 Betydelig;Ett (1);1 - Små;1200;300;1500;200;#ff9900
+3 Betydelig;Noen (2-5);1 - Små;1200;400;1600;200;#ff9900
+3 Betydelig;Flere (6-10);1 - Små;1200;500;1700;200;#ff9900
+3 Betydelig;Mange (10 eller mer);1 - Små;1200;600;1800;200;#ff9900
+3 Betydelig;Ingen;2 - Middels;1200;100;1300;300;#E6E6E6
+3 Betydelig;Fra faretegn;2 - Middels;1200;200;1400;300;#E6E6E6
+3 Betydelig;Ett (1);2 - Middels;1200;300;1500;300;#ff9900
+3 Betydelig;Noen (2-5);2 - Middels;1200;400;1600;300;#ff9900
+3 Betydelig;Flere (6-10);2 - Middels;1200;500;1700;300;#ff9900
+3 Betydelig;Mange (10 eller mer);2 - Middels;1200;600;1800;300;white
+3 Betydelig;Ingen;3 - Store;1200;100;1300;400;#E6E6E6
+3 Betydelig;Fra faretegn;3 - Store;1200;200;1400;400;#E6E6E6
+3 Betydelig;Ett (1);3 - Store;1200;300;1500;400;#ff9900
+3 Betydelig;Noen (2-5);3 - Store;1200;400;1600;400;#ff9900
+3 Betydelig;Flere (6-10);3 - Store;1200;500;1700;400;white
+3 Betydelig;Mange (10 eller mer);3 - Store;1200;600;1800;400;white
+3 Betydelig;Ingen;4 - Svært store;1200;100;1300;500;#E6E6E6
+3 Betydelig;Fra faretegn;4 - Svært store;1200;200;1400;500;#E6E6E6
+3 Betydelig;Ett (1);4 - Svært store;1200;300;1500;500;#ff9900
+3 Betydelig;Noen (2-5);4 - Svært store;1200;400;1600;500;white
+3 Betydelig;Flere (6-10);4 - Svært store;1200;500;1700;500;white
+3 Betydelig;Mange (10 eller mer);4 - Svært store;1200;600;1800;500;white
+3 Betydelig;Ingen;5 - Ekstremt store;1200;100;1300;600;#E6E6E6
+3 Betydelig;Fra faretegn;5 - Ekstremt store;1200;200;1400;600;#E6E6E6
+3 Betydelig;Ett (1);5 - Ekstremt store;1200;300;1500;600;white
+3 Betydelig;Noen (2-5);5 - Ekstremt store;1200;400;1600;600;white
+3 Betydelig;Flere (6-10);5 - Ekstremt store;1200;500;1700;600;white
+3 Betydelig;Mange (10 eller mer);5 - Ekstremt store;1200;600;1800;600;white
+4 Stor;Ingen;Ikke gitt;1800;100;1900;100;#729FCF
+4 Stor;Fra faretegn;Ikke gitt;1800;200;2000;100;#ff0000
+4 Stor;Ett (1);Ikke gitt;1800;300;2100;100;#E6E6E6
+4 Stor;Noen (2-5);Ikke gitt;1800;400;2200;100;#E6E6E6
+4 Stor;Flere (6-10);Ikke gitt;1800;500;2300;100;#E6E6E6
+4 Stor;Mange (10 eller mer);Ikke gitt;1800;600;2400;100;#E6E6E6
+4 Stor;Ingen;1 - Små;1800;100;1900;200;#E6E6E6
+4 Stor;Fra faretegn;1 - Små;1800;200;2000;200;#E6E6E6
+4 Stor;Ett (1);1 - Små;1800;300;2100;200;#ff0000
+4 Stor;Noen (2-5);1 - Små;1800;400;2200;200;#ff0000
+4 Stor;Flere (6-10);1 - Små;1800;500;2300;200;#ff0000
+4 Stor;Mange (10 eller mer);1 - Små;1800;600;2400;200;#ff0000
+4 Stor;Ingen;2 - Middels;1800;100;1900;300;#E6E6E6
+4 Stor;Fra faretegn;2 - Middels;1800;200;2000;300;#E6E6E6
+4 Stor;Ett (1);2 - Middels;1800;300;2100;300;#ff0000
+4 Stor;Noen (2-5);2 - Middels;1800;400;2200;300;#ff0000
+4 Stor;Flere (6-10);2 - Middels;1800;500;2300;300;#ff0000
+4 Stor;Mange (10 eller mer);2 - Middels;1800;600;2400;300;#ff0000
+4 Stor;Ingen;3 - Store;1800;100;1900;400;#E6E6E6
+4 Stor;Fra faretegn;3 - Store;1800;200;2000;400;#E6E6E6
+4 Stor;Ett (1);3 - Store;1800;300;2100;400;#ff0000
+4 Stor;Noen (2-5);3 - Store;1800;400;2200;400;#ff0000
+4 Stor;Flere (6-10);3 - Store;1800;500;2300;400;#ff0000
+4 Stor;Mange (10 eller mer);3 - Store;1800;600;2400;400;#ff0000
+4 Stor;Ingen;4 - Svært store;1800;100;1900;500;#E6E6E6
+4 Stor;Fra faretegn;4 - Svært store;1800;200;2000;500;#E6E6E6
+4 Stor;Ett (1);4 - Svært store;1800;300;2100;500;#ff0000
+4 Stor;Noen (2-5);4 - Svært store;1800;400;2200;500;#ff0000
+4 Stor;Flere (6-10);4 - Svært store;1800;500;2300;500;white
+4 Stor;Mange (10 eller mer);4 - Svært store;1800;600;2400;500;white
+4 Stor;Ingen;5 - Ekstremt store;1800;100;1900;600;#E6E6E6
+4 Stor;Fra faretegn;5 - Ekstremt store;1800;200;2000;600;#E6E6E6
+4 Stor;Ett (1);5 - Ekstremt store;1800;300;2100;600;white
+4 Stor;Noen (2-5);5 - Ekstremt store;1800;400;2200;600;white
+4 Stor;Flere (6-10);5 - Ekstremt store;1800;500;2300;600;white
+4 Stor;Mange (10 eller mer);5 - Ekstremt store;1800;600;2400;600;white
+5 Meget stor;Ingen;Ikke gitt;2400;100;2500;100;#729FCF
+5 Meget stor;Fra faretegn;Ikke gitt;2400;200;2600;100;white
+5 Meget stor;Ett (1);Ikke gitt;2400;300;2700;100;#E6E6E6
+5 Meget stor;Noen (2-5);Ikke gitt;2400;400;2800;100;#E6E6E6
+5 Meget stor;Flere (6-10);Ikke gitt;2400;500;2900;100;#E6E6E6
+5 Meget stor;Mange (10 eller mer);Ikke gitt;2400;600;3000;100;#E6E6E6
+5 Meget stor;Ingen;1 - Små;2400;100;2500;200;#E6E6E6
+5 Meget stor;Fra faretegn;1 - Små;2400;200;2600;200;#E6E6E6
+5 Meget stor;Ett (1);1 - Små;2400;300;2700;200;white
+5 Meget stor;Noen (2-5);1 - Små;2400;400;2800;200;white
+5 Meget stor;Flere (6-10);1 - Små;2400;500;2900;200;white
+5 Meget stor;Mange (10 eller mer);1 - Små;2400;600;3000;200;white
+5 Meget stor;Ingen;2 - Middels;2400;100;2500;300;#E6E6E6
+5 Meget stor;Fra faretegn;2 - Middels;2400;200;2600;300;#E6E6E6
+5 Meget stor;Ett (1);2 - Middels;2400;300;2700;300;white
+5 Meget stor;Noen (2-5);2 - Middels;2400;400;2800;300;white
+5 Meget stor;Flere (6-10);2 - Middels;2400;500;2900;300;white
+5 Meget stor;Mange (10 eller mer);2 - Middels;2400;600;3000;300;white
+5 Meget stor;Ingen;3 - Store;2400;100;2500;400;#E6E6E6
+5 Meget stor;Fra faretegn;3 - Store;2400;200;2600;400;#E6E6E6
+5 Meget stor;Ett (1);3 - Store;2400;300;2700;400;white
+5 Meget stor;Noen (2-5);3 - Store;2400;400;2800;400;white
+5 Meget stor;Flere (6-10);3 - Store;2400;500;2900;400;white
+5 Meget stor;Mange (10 eller mer);3 - Store;2400;600;3000;400;white
+5 Meget stor;Ingen;4 - Svært store;2400;100;2500;500;#E6E6E6
+5 Meget stor;Fra faretegn;4 - Svært store;2400;200;2600;500;#E6E6E6
+5 Meget stor;Ett (1);4 - Svært store;2400;300;2700;500;white
+5 Meget stor;Noen (2-5);4 - Svært store;2400;400;2800;500;white
+5 Meget stor;Flere (6-10);4 - Svært store;2400;500;2900;500;white
+5 Meget stor;Mange (10 eller mer);4 - Svært store;2400;600;3000;500;white
+5 Meget stor;Ingen;5 - Ekstremt store;2400;100;2500;600;#E6E6E6
+5 Meget stor;Fra faretegn;5 - Ekstremt store;2400;200;2600;600;#E6E6E6
+5 Meget stor;Ett (1);5 - Ekstremt store;2400;300;2700;600;white
+5 Meget stor;Noen (2-5);5 - Ekstremt store;2400;400;2800;600;white
+5 Meget stor;Flere (6-10);5 - Ekstremt store;2400;500;2900;600;white
+5 Meget stor;Mange (10 eller mer);5 - Ekstremt store;2400;600;3000;600;white

@@ -1,0 +1,12 @@
+{
+  "kdv_elements" : "/localstorage/",
+  "local_storage" : "/localstorage/",
+  "logs" : "/logs/",
+  "output" : "/output/",
+  "plots" : "/output/plots/",
+  "resources" : "/resources/",
+  "forecast_region_shapes" : "/resources/forecastregionshapes/",
+  "main_messages" : "/resources/mainmessages/",
+  "matrix_configurations" : "/resources/matrixconfigurations/",
+  "varsom_incidents" : "/resources/varsomincidents/"
+}

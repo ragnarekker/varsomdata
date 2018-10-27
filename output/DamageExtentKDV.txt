@@ -1,0 +1,11 @@
+ID   Order  IsActive  Langkey   Name                                              Description                                       
+0    0      1         1         Ikke spesifisert                                                                                    
+10   10     1         1         Påvirket ingenting                                                                                  
+13   13     1         1         Leteaksjon igangsatt                                                                                
+15   20     1         1         Trafikk hindret                                                                                     
+20   30     1         1         Kun materielle skader                                                                               
+25   40     1         1         Evakuering                                                                                          
+29   50     1         1         Nestenulykke                                                                                        
+30   60     1         1         Personer skadet                                                                                     
+40   70     1         1         Personer omkommet                                                                                   
+99   80     1         1         Annet                                                                                               

@@ -6,7 +6,7 @@ Both repository root- and core modules should be viewed as a work in progress. T
 This said, lots of this works fine and all of it gives insight in how to read the api's we have in Varsom.
 
 **Repository content:**<br>
-`avalancheactivity.py`:<br>
+`avalancheactivity.py`: Plots observed avalanche activity (including signs and single avalanches obs) against forecasted danger level.<br>
 `dangerlevelsandproblems.py`: Requests all forecasts (danger levels and problems) from the forecast api and writes to .csv file or plot.<br>
 `elrappdata.py`:<br>
 `forcastersregions.py`:<br>
@@ -44,7 +44,7 @@ This said, lots of this works fine and all of it gives insight in how to read th
 `makelogs.py`: Throughout the repository this module is used for creating log files.<br>
 `makepickle.py`: Handles pickling and unpickling for storing data.<br>
 `postobservations.py`: Code testing data posting to the regObs api.<br>
-`readfile.py`: Where a read method is generic and can be utilized across modules, the method is placed here.<br>
+`readfile.py`: When a read method is generic and can be utilized across modules, the method is placed here.<br>
 `setcoreenvironment.py`: Contains core environment variables such as api versions and folder-paths.<br>
 
 

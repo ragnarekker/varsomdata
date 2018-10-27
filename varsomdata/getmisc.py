@@ -1,14 +1,18 @@
 # -*- coding: utf-8 -*-
+"""Probably the most fun methods are here. They access different parts som the apis for small tasks. Here is
+a method for mapping old observations to the regions used when they were submitted and here is a method
+for retrieving info on trips submitted.
+"""
+
 import sys as sys
 import datetime as dt
 import requests as requests
 import csv as csv
+import setenvironment as env
 from varsomdata import getobservations as go
 from varsomdata import getdangers as gd
-from utilities import fencoding as fe, readfile as rf, makelogs as ml
 from varsomdata import getkdvelements as kdv
-import setcoreenvironment as cenv
-import setenvironment as env
+from utilities import fencoding as fe, readfile as rf, makelogs as ml
 
 __author__ = 'raek'
 
@@ -79,7 +83,7 @@ def get_trip(from_date, to_date, geohazard_tid=None, output='List'):
 
     odata_filter += "TripRegistrationTime gt datetime'{0}' and TripRegistrationTime lt datetime'{1}'".format(from_date, to_date)
 
-    url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/Trip/?$filter={1}&$format=json".format(cenv.odata_version, odata_filter)
+    url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/Trip/?$filter={1}&$format=json".format(env.odata_version, odata_filter)
 
     ml.log_and_print('[info] getmisc.py -> get_trip: ..to {0}'.format(url), print_it=True)
 
@@ -125,9 +129,9 @@ def get_observer_group_member(group_id=None, output='List'):
     """
 
     if group_id is None:
-        url = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/ObserverGroupMemberV/?$format=json'.format(cenv.odata_version)
+        url = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/ObserverGroupMemberV/?$format=json'.format(env.odata_version)
     else:
-        url = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/ObserverGroupMemberV/?$filter=ObserverGroupID%20eq%20{1}&$format=json'.format(cenv.odata_version, group_id)
+        url = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/ObserverGroupMemberV/?$filter=ObserverGroupID%20eq%20{1}&$format=json'.format(env.odata_version, group_id)
     ml.log_and_print("[info] getmisc.py -> get_observer_group_member: {0}".format(url))
 
     result = requests.get(url).json()
@@ -190,7 +194,7 @@ def get_registration(from_date, to_date, output='List', geohazard_tid=None, appl
     if "Web and app" in application_id:     # does not work..
         odata_filter += " and (ApplicationId eq guid'{0}' or ApplicationId eq guid'{1}')".format('', '')
 
-    url = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}/?$filter={2}&$format=json'.format(cenv.odata_version, 'Registration', odata_filter)
+    url = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}/?$filter={2}&$format=json'.format(env.odata_version, 'Registration', odata_filter)
     ml.log_and_print("[info] getmisc.py -> get_registration: ..to {0}".format(url), print_it=True)
 
     result = requests.get(url).json()
@@ -247,7 +251,7 @@ def get_obs_location(from_date, to_date):
 
     odata_filter = "DtRegTime gt datetime'{0}' and DtRegTime lt datetime'{1}' and langkey eq 1".format(from_date, to_date)
 
-    url = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/ObsLocationV/?$filter={1}&$format=json'.format(cenv.odata_version, odata_filter)
+    url = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/ObsLocationV/?$filter={1}&$format=json'.format(env.odata_version, odata_filter)
     result = requests.get(url).json()
     data = result['d']['results']
     ml.log_and_print('[info] getmisc.py -> get_obs_location: {0}'.format(url))
@@ -347,7 +351,7 @@ def get_avalanche_index(from_date, to_date, region_ids=None, observer_ids=None):
     danger_signs = go.get_danger_sign(from_date, to_date, region_ids=region_ids, observer_ids=observer_ids)
 
     # get index definition
-    index_definition = rf.read_configuration_file('{0}aval_dl_order_of_size_and_num.csv'.format(cenv.input_folder), AvalancheIndex)
+    index_definition = rf.read_configuration_file('{0}aval_dl_order_of_size_and_num.csv'.format(env.input_folder), AvalancheIndex)
 
     avalanche_indexes = []
 
@@ -399,15 +403,15 @@ def get_observer_v():
     Eg. request: https://api.nve.no/hydrology/regobs/v3.0.6/Odata.svc/ObserverV/?$filter=ObserverId%20lt%203000&$format=json
     """
 
-    url_1 = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/ObserverV/?$filter=ObserverId lt 3000&$format=json'.format(cenv.odata_version)
+    url_1 = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/ObserverV/?$filter=ObserverId lt 3000&$format=json'.format(env.odata_version)
     result_1 = requests.get(url_1).json()
     data_1 = result_1['d']['results']
 
-    url_2 = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/ObserverV/?$filter=ObserverId gt 2999 and ObserverId lt 6000&$format=json'.format(cenv.odata_version)
+    url_2 = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/ObserverV/?$filter=ObserverId gt 2999 and ObserverId lt 6000&$format=json'.format(env.odata_version)
     result_2 = requests.get(url_2).json()
     data_2 = result_2['d']['results']
 
-    url_3 = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/ObserverV/?$filter=ObserverId gt 5999&$format=json'.format(cenv.odata_version)
+    url_3 = 'http://api.nve.no/hydrology/regobs/{0}/Odata.svc/ObserverV/?$filter=ObserverId gt 5999&$format=json'.format(env.odata_version)
     result_3 = requests.get(url_3).json()
     data_3 = result_3['d']['results']
 
@@ -449,6 +453,9 @@ def get_forecast_dates(year, padding=dt.timedelta(days=0)):
         to_date = dt.date(2017, 6, 21)
     elif year == '2017-18':
         from_date = dt.date(2017, 11, 1)
+        to_date = dt.date(2018, 6, 1)
+    elif year == '2018-19':
+        from_date = dt.date(2018, 11, 1)
         to_date = dt.date.today() + dt.timedelta(days=2)
     else:
         from_date = "Undefined dates"
@@ -485,6 +492,9 @@ def get_observation_dates(year, padding=dt.timedelta(days=0)):
         to_date = dt.date(2017, 7, 1)
     elif year == '2017-18':
         from_date = dt.date(2017, 11, 1)
+        to_date = dt.date(2018, 7, 1)
+    elif year == '2018-19':
+        from_date = dt.date(2018, 10, 1)
         to_date = dt.date.today() + dt.timedelta(days=2)
     else:
         from_date = "Undefined dates"
@@ -573,6 +583,9 @@ def get_dates_from_season(year):
         to_date = dt.date(2017, 8, 31)
     elif year == '2017-18':
         from_date = dt.date(2017, 9, 1)
+        to_date = dt.date(2018, 9, 1)
+    elif year == '2018-19':
+        from_date = dt.date(2018, 9, 1)
         to_date = dt.date.today()
     else:
         from_date = 'Undefined dates'
@@ -584,6 +597,8 @@ def get_dates_from_season(year):
 def get_season_from_date(date_inn):
     """A date belongs to a season. This method returns it."""
 
+    if date_inn >= dt.date(2018, 9, 1) and date_inn < dt.date(2019, 9, 1):
+        return '2018-19'
     if date_inn >= dt.date(2017, 9, 1) and date_inn < dt.date(2018, 9, 1):
         return '2017-18'
     elif date_inn >= dt.date(2016, 9, 1) and date_inn < dt.date(2017, 9, 1):
@@ -675,7 +690,7 @@ def get_forecast_region_for_coordinate(utm33x, utm33y, year):
         file_name = 'VarslingsOmrF_fra_2016_des'
         id_offset = 0
 
-    shape_file = sf.Reader('{0}{1}'.format(cenv.forecast_region_shapes, file_name))
+    shape_file = sf.Reader('{0}{1}'.format(env.forecast_region_shapes, file_name))
     point = gty.MultiPoint([(utm33x, utm33y)]).convex_hull
     count = 0
     region = None
@@ -760,7 +775,7 @@ def get_varsom_incidents(add_forecast_regions=False, add_observations=False, add
                                     option is only taken into account if add_forecast_regions is true.
     """
 
-    incidents_file = '{}varsomsineskredulykker.csv'.format(cenv.input_folder)
+    incidents_file = '{}varsomsineskredulykker.csv'.format(env.input_folder)
     varsom_incidents = rf.read_csv_file(incidents_file, VarsomIncident)
 
     # map incident to forecast region
@@ -827,7 +842,7 @@ if __name__ == "__main__":
 
     # observer_list = get_observer_dict_for_2015_16_ploting()
     # import makepickle as mp
-    # mp.pickle_anything(observer_list, '{0}observerlist.pickle'.format(cenv.web_root_folder))
+    # mp.pickle_anything(observer_list, '{0}observerlist.pickle'.format(env.web_root_folder))
 
     # observer_nicks = get_observer_v()
     # trips = get_trip(from_date, to_date, output='csv')

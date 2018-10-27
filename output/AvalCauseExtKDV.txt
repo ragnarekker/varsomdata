@@ -1,0 +1,13 @@
+ID   Order  IsActive  Langkey   Name                                              Description                                       
+0    1      1         1         ikke gitt                                                                                           
+1    2      1         1         Temperatur                                                                                          
+2    3      1         1         Temperatur + sol                                                                                    
+3    4      1         1         Sol                                                                                                 
+4    5      1         1         Nysnø                                                                                               
+5    6      1         1         Vind                                                                                                
+6    7      1         1         Nysnø + vind                                                                                        
+7    8      1         1         Skare                                                                                               
+8    9      1         1         Overflaterim                                                                                        
+9    10     1         1         Sjiktovergang                                                                                       
+10   11     1         1         Hagl                                                                                                
+11   12     1         1         Begerkrystaller                                                                                     

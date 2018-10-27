@@ -107,7 +107,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2014-12-08 ;2014-12-08 10:36 ;119 ;Sunnmøre ;STRANDA ;OscarAlmgren ;***** ;2 ;2 Moderate ;Forecast to high
 2014-12-08 ;2014-12-08 11:17 ;122 ;Sogn ;SOGNDAL ;Andreas@nve ;***** ;3 ;3 Considerable ;Forecast correct
 2014-12-08 ;2014-12-08 14:41 ;116 ;Lofoten ;VÅGAN ;JonasD@ObsKorps ;***** ;0 ;0 Not given ;Forecast to high
-2014-12-08 ;2014-12-08 12:10 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2014-12-08 ;2014-12-08 12:10 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2014-12-08 ;2014-12-08 12:52 ;120 ;Nordfjord ;STRYN ;Vidar@obskorps ;*** ;3 ;3 Considerable ;
 2014-12-08 ;2014-12-08 14:06 ;126 ;Hemsedalfjella ;GOL ;Markus@NVE ;***** ;2 ;2 Moderate ;Forecast correct
 2014-12-09 ;2014-12-09 10:16 ;122 ;Sogn ;SOGNDAL ;StianL ;* ;2 ;2 Moderate ;Forecast to high
@@ -438,7 +438,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2014-12-29 ;2014-12-29 14:40 ;108 ;Tromsø ;TROMSØ ;MagnusH ;**** ;3 ;3 Considerable ;Forecast correct
 2014-12-29 ;2014-12-29 14:54 ;108 ;Tromsø ;TROMSØ ;Pål J ;Unknown ;3 ;3 Considerable ;
 2014-12-29 ;2014-12-29 11:56 ;121 ;Fjordane ;JØLSTER ;brit-siv@obskorps ;*** ;3 ;3 Considerable ;Forecast correct
-2014-12-29 ;2014-12-29 11:57 ;109 ;Balsfjord ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2014-12-29 ;2014-12-29 11:57 ;109 ;Balsfjord ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2014-12-29 ;2014-12-29 17:19 ;108 ;Tromsø ;TROMSØ ;Nilscf@regobsTroms ;Unknown ;3 ;3 Considerable ;Forecast correct
 2014-12-29 ;2014-12-29 12:35 ;119 ;Sunnmøre ;ØRSTA ;drift@svv ;* ;4 ;4 High ;
 2014-12-29 ;2014-12-29 16:46 ;120 ;Nordfjord ;HORNINDAL ;Bjørnar@Hagefonna ;Unknown ;3 ;3 Considerable ;
@@ -527,7 +527,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2015-01-02 ;2015-01-02 11:18 ;123 ;Jotunheimen ;VANG ;drift@svv ;* ;3 ;3 Considerable ;
 2015-01-02 ;2015-01-02 11:55 ;118 ;Romsdal ;RAUMA ;Urpu@Romsdal ;* ;3 ;3 Considerable ;Forecast correct
 2015-01-02 ;2015-01-02 16:45 ;129 ;Tamokdalen ;BALSFJORD ;Aadne@ObsKorps ;**** ;2 ;2 Moderate ;Forecast to high
-2015-01-02 ;2015-01-02 12:27 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2015-01-02 ;2015-01-02 12:27 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2015-01-02 ;2015-01-02 13:21 ;117 ;Trollheimen ;Oppdal ;knutinge@svv ;**** ;3 ;3 Considerable ;Forecast correct
 2015-01-02 ;2015-01-02 15:58 ;126 ;Hemsedalfjella ;HEMSEDAL ;Jørgen@obskorps ;**** ;3 ;3 Considerable ;Forecast correct
 2015-01-02 ;2015-01-02 14:56 ;125 ;Hallingskarvet ;ÅL ;steinar@obskorps ;* ;3 ;3 Considerable ;Forecast correct
@@ -633,8 +633,8 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2015-01-08 ;2015-01-08 10:00 ;126 ;Hemsedalfjella ;HEMSEDAL ;Jørgen@obskorps ;**** ;2 ;2 Moderate ;Forecast correct
 2015-01-08 ;2015-01-08 15:13 ;117 ;Trollheimen ;SUNNDAL ;knutinge@svv ;***** ;2 ;2 Moderate ;Forecast correct
 2015-01-08 ;2015-01-08 12:00 ;119 ;Sunnmøre ;ØRSTA ;Christer@obskorps ;*** ;2 ;2 Moderate ;Forecast correct
-2015-01-08 ;2015-01-08 12:07 ;109 ;Balsfjord ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
-2015-01-08 ;2015-01-08 14:23 ;109 ;Balsfjord ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2015-01-08 ;2015-01-08 12:07 ;109 ;Balsfjord ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
+2015-01-08 ;2015-01-08 14:23 ;109 ;Balsfjord ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2015-01-08 ;2015-01-08 13:18 ;117 ;Trollheimen ;Oppdal ;Eivind@SVV ;**** ;2 ;2 Moderate ;Forecast correct
 2015-01-08 ;2015-01-08 13:23 ;118 ;Romsdal ;NESSET ;knutinge@svv ;***** ;2 ;2 Moderate ;Forecast correct
 2015-01-08 ;2015-01-08 13:42 ;120 ;Nordfjord ;STRYN ;drift@svv ;* ;2 ;2 Moderate ;
@@ -1181,7 +1181,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2015-02-06 ;2015-02-06 11:54 ;115 ;Vesterålen ;SORTLAND ;Steinar@ObsKorps ;**** ;2 ;2 Moderate ;Forecast correct
 2015-02-06 ;2015-02-06 14:29 ;111 ;Lyngsalpan ;LYNGEN ;LyngenDavid@ObsKorps ;*** ;2 ;2 Moderate ;Forecast correct
 2015-02-06 ;2015-02-06 14:09 ;114 ;Narvik ;NARVIK ;Kaj@obskorps ;*** ;3 ;3 Considerable ;Forecast correct
-2015-02-06 ;2015-02-06 12:39 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@nve ;***** ;3 ;3 Considerable ;Forecast correct
+2015-02-06 ;2015-02-06 12:39 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@met ;***** ;3 ;3 Considerable ;Forecast correct
 2015-02-06 ;2015-02-06 12:53 ;118 ;Romsdal ;RAUMA ;Urpu@Romsdal ;*** ;2 ;2 Moderate ;Forecast correct
 2015-02-06 ;2015-02-06 12:50 ;124 ;Voss ;VOSS ;Njål@SVV ;**** ;2 ;2 Moderate ;Forecast correct
 2015-02-06 ;2015-02-06 17:32 ;110 ;Senja ;LENVIK ;Ukjent observatør ;Unknown ;3 ;3 Considerable ;Forecast to low
@@ -1334,7 +1334,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2015-02-13 ;2015-02-13 12:52 ;119 ;Sunnmøre ;VOLDA ;drift@svv ;* ;2 ;2 Moderate ;
 2015-02-13 ;2015-02-13 13:03 ;122 ;Sogn ;LUSTER ;martin@obskorps ;*** ;2 ;2 Moderate ;
 2015-02-13 ;2015-02-13 12:48 ;116 ;Lofoten ;VESTVÅGØY ;JonasD@ObsKorps ;***** ;2 ;2 Moderate ;Forecast correct
-2015-02-13 ;2015-02-13 12:57 ;109 ;Balsfjord ;TROMSØ ;HåvardT@nve ;***** ;3 ;3 Considerable ;Forecast to high
+2015-02-13 ;2015-02-13 12:57 ;109 ;Balsfjord ;TROMSØ ;HåvardT@met ;***** ;3 ;3 Considerable ;Forecast to high
 2015-02-13 ;2015-02-13 13:40 ;120 ;Nordfjord ;STRYN ;drift@svv ;* ;2 ;2 Moderate ;
 2015-02-13 ;2015-02-13 15:39 ;122 ;Sogn ;LUSTER ;jostein@nve ;***** ;2 ;2 Moderate ;Forecast correct
 2015-02-13 ;2015-02-13 14:21 ;118 ;Romsdal ;RAUMA ;halgeir@svv ;*** ;2 ;2 Moderate ;Forecast correct
@@ -1569,7 +1569,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2015-02-24 ;2015-02-24 11:57 ;107 ;Kåfjord ;KÅFJORD ;jan arild@NVE ;**** ;2 ;2 Moderate ;Forecast correct
 2015-02-24 ;2015-02-24 12:11 ;129 ;Tamokdalen ;BALSFJORD ;drift@svv ;* ;2 ;2 Moderate ;
 2015-02-24 ;2015-02-24 12:42 ;120 ;Nordfjord ;STRYN ;drift@svv ;* ;2 ;2 Moderate ;
-2015-02-24 ;2015-02-24 14:28 ;108 ;Tromsø ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2015-02-24 ;2015-02-24 14:28 ;108 ;Tromsø ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2015-02-24 ;2015-02-24 20:41 ;110 ;Senja ;BERG ;madspaatopp@senjaobs ;* ;2 ;2 Moderate ;Forecast correct
 2015-02-24 ;2015-02-24 13:19 ;115 ;Vesterålen ;SORTLAND ;Steinar@ObsKorps ;**** ;2 ;2 Moderate ;Forecast correct
 2015-02-24 ;2015-02-24 13:21 ;123 ;Jotunheimen ;LOM ;Albert ;**** ;2 ;2 Moderate ;Forecast correct
@@ -1706,7 +1706,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2015-03-03 ;2015-03-03 16:49 ;118 ;Romsdal ;RAUMA ;Hasse ;Unknown ;1 ;1 Low ;Forecast to high
 2015-03-03 ;2015-03-03 11:38 ;124 ;Voss ;VOSS ;drift@svv ;* ;3 ;3 Considerable ;
 2015-03-03 ;2015-03-03 11:48 ;107 ;Kåfjord ;KÅFJORD ;jan arild@NVE ;**** ;2 ;2 Moderate ;Forecast correct
-2015-03-03 ;2015-03-03 12:04 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2015-03-03 ;2015-03-03 12:04 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2015-03-03 ;2015-03-03 12:13 ;0 ; ;FAUSKE ;DagTheodor@SVV ;**** ;2 ;2 Moderate ;Forecast correct
 2015-03-03 ;2015-03-03 15:35 ;122 ;Sogn ;SOGNDAL ;martin@obskorps ;*** ;2 ;2 Moderate ;Forecast correct
 2015-03-03 ;2015-03-03 12:37 ;118 ;Romsdal ;RAUMA ;solveig@NVE ;***** ;1 ;1 Low ;
@@ -1766,7 +1766,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2015-03-05 ;2015-03-05 13:40 ;114 ;Narvik ;NARVIK ;drift@svv ;* ;1 ;1 Low ;
 2015-03-05 ;2015-03-05 13:42 ;113 ;Harstad ; ;Espen@ObsKorps ;**** ;2 ;2 Moderate ;Forecast correct
 2015-03-05 ;2015-03-05 13:56 ;120 ;Nordfjord ;STRYN ;drift@svv ;* ;3 ;3 Considerable ;
-2015-03-05 ;2015-03-05 15:22 ;109 ;Balsfjord ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2015-03-05 ;2015-03-05 15:22 ;109 ;Balsfjord ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2015-03-05 ;2015-03-05 15:29 ;123 ;Jotunheimen ;VANG ;Leif@ObsKorps ;**** ;2 ;2 Moderate ;Forecast correct
 2015-03-05 ;2015-03-05 16:04 ;122 ;Sogn ;SOGNDAL ;ÅgeMidthun@obskorps ;Unknown ;2 ;2 Moderate ;Forecast correct
 2015-03-05 ;2015-03-05 17:13 ;121 ;Fjordane ;JØLSTER ;drift@svv ;* ;2 ;2 Moderate ;
@@ -2223,7 +2223,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2015-03-27 ;2015-03-27 10:39 ;123 ;Jotunheimen ;VANG ;Leif@ObsKorps ;**** ;2 ;2 Moderate ;Forecast correct
 2015-03-27 ;2015-03-27 10:54 ;111 ;Lyngsalpan ;LYNGEN ;LyngenDavid@ObsKorps ;*** ;3 ;3 Considerable ;Forecast correct
 2015-03-27 ;2015-03-27 11:23 ;116 ;Lofoten ;VÅGAN ;JonasD@ObsKorps ;***** ;3 ;3 Considerable ;Forecast correct
-2015-03-27 ;2015-03-27 11:43 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@nve ;***** ;3 ;3 Considerable ;Forecast correct
+2015-03-27 ;2015-03-27 11:43 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@met ;***** ;3 ;3 Considerable ;Forecast correct
 2015-03-27 ;2015-03-27 11:45 ;0 ; ;FAUSKE ;per@SVV ;*** ;2 ;2 Moderate ;Forecast correct
 2015-03-27 ;2015-03-27 12:56 ;124 ;Voss ;MASFJORDEN ;drift@svv ;* ;2 ;2 Moderate ;
 2015-03-27 ;2015-03-27 12:16 ;128 ;Rauland ;VINJE ;svein loftsgarden ;**** ;2 ;2 Moderate ;Forecast correct
@@ -2366,7 +2366,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2015-04-03 ;2015-04-03 08:09 ;108 ;Tromsø ;KARLSØY ;drift@svv ;* ;2 ;2 Moderate ;
 2015-04-03 ;2015-04-03 08:26 ;124 ;Voss ;VOSS ;drift@svv ;* ;2 ;2 Moderate ;
 2015-04-03 ;2015-04-03 08:51 ;114 ;Narvik ;BALLANGEN ;drift@svv ;* ;2 ;2 Moderate ;
-2015-04-03 ;2015-04-03 13:03 ;108 ;Tromsø ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2015-04-03 ;2015-04-03 13:03 ;108 ;Tromsø ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2015-04-03 ;2015-04-03 13:26 ;111 ;Lyngsalpan ;LYNGEN ;MSA@nortind ;*** ;2 ;2 Moderate ;
 2015-04-03 ;2015-04-03 13:34 ;0 ; ;KVALSUND ;drift@svv ;* ;2 ;2 Moderate ;
 2015-04-03 ;2015-04-03 13:45 ;120 ;Nordfjord ;STRYN ;drift@svv ;* ;2 ;2 Moderate ;
@@ -2459,7 +2459,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2015-04-07 ;2015-04-07 10:59 ;114 ;Narvik ;BALLANGEN ;drift@svv ;* ;3 ;3 Considerable ;
 2015-04-07 ;2015-04-07 16:37 ;124 ;Voss ;VAKSDAL ;Tor Ivar SVV ;**** ;2 ;2 Moderate ;Forecast correct
 2015-04-07 ;2015-04-07 11:18 ;107 ;Kåfjord ;KÅFJORD ;jan arild@NVE ;**** ;2 ;2 Moderate ;Forecast to high
-2015-04-07 ;2015-04-07 12:50 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@nve ;***** ;3 ;3 Considerable ;Forecast correct
+2015-04-07 ;2015-04-07 12:50 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@met ;***** ;3 ;3 Considerable ;Forecast correct
 2015-04-07 ;2015-04-07 14:33 ;124 ;Voss ;VAKSDAL ;drift@svv ;* ;2 ;2 Moderate ;
 2015-04-07 ;2015-04-07 12:49 ;0 ; ;BODØ ;per@SVV ;*** ;3 ;3 Considerable ;Forecast correct
 2015-04-07 ;2015-04-07 18:49 ;116 ;Lofoten ;HADSEL ;JonasD@ObsKorps ;***** ;2 ;2 Moderate ;Forecast to high
@@ -2684,7 +2684,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2015-04-20 ;2015-04-20 10:48 ;131 ;Svartisen ;SALTDAL ;Jeanette@SVV ;**** ;1 ;1 Low ;
 2015-04-20 ;2015-04-20 10:53 ;114 ;Narvik ;NARVIK ;drift@svv ;* ;2 ;2 Moderate ;
 2015-04-20 ;2015-04-20 10:59 ;108 ;Tromsø ;TROMSØ ;PeterSchön@obskorps ;*** ;2 ;2 Moderate ;
-2015-04-20 ;2015-04-20 11:52 ;109 ;Balsfjord ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2015-04-20 ;2015-04-20 11:52 ;109 ;Balsfjord ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2015-04-20 ;2015-04-20 13:44 ;120 ;Nordfjord ;STRYN ;drift@svv ;* ;2 ;2 Moderate ;
 2015-04-20 ;2015-04-20 14:29 ;118 ;Romsdal ;RAUMA ;Urpu@Romsdal ;*** ;2 ;2 Moderate ;Forecast correct
 2015-04-20 ;2015-04-20 15:04 ;124 ;Voss ;VOSS ;Julie@SVV ;**** ;2 ;2 Moderate ;
@@ -2782,7 +2782,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2015-04-27 ;2015-04-27 13:04 ;118 ;Romsdal ;RAUMA ;Urpu@Romsdal ;*** ;1 ;1 Low ;Forecast correct
 2015-04-27 ;2015-04-27 17:24 ;108 ;Tromsø ;TROMSØ ;madspaatopp@senjaobs ;* ;2 ;2 Moderate ;Forecast correct
 2015-04-27 ;2015-04-27 13:33 ;113 ;Harstad ; ;Espen@ObsKorps ;**** ;2 ;2 Moderate ;Forecast correct
-2015-04-27 ;2015-04-27 14:03 ;108 ;Tromsø ;TROMSØ ;HåvardT@nve ;***** ;1 ;1 Low ;Forecast correct
+2015-04-27 ;2015-04-27 14:03 ;108 ;Tromsø ;TROMSØ ;HåvardT@met ;***** ;1 ;1 Low ;Forecast correct
 2015-04-27 ;2015-04-27 14:11 ;124 ;Voss ;VIK ;Julie@SVV ;**** ;2 ;2 Moderate ;
 2015-04-27 ;2015-04-27 14:33 ;120 ;Nordfjord ;STRYN ;drift@svv ;* ;2 ;2 Moderate ;
 2015-04-27 ;2015-04-27 18:18 ;112 ;Bardu ;BARDU ;rayvedal ;**** ;2 ;2 Moderate ;
@@ -2903,7 +2903,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2015-05-08 ;2015-05-08 08:33 ;108 ;Tromsø ;KARLSØY ;drift@svv ;* ;2 ;2 Moderate ;
 2015-05-08 ;2015-05-08 08:46 ;122 ;Sogn ;SOGNDAL ;martin@obskorps ;*** ;2 ;2 Moderate ;Forecast correct
 2015-05-08 ;2015-05-08 11:23 ;129 ;Tamokdalen ;BALSFJORD ;JonasD@ObsKorps ;***** ;3 ;3 Considerable ;Forecast correct
-2015-05-08 ;2015-05-08 12:25 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast to high
+2015-05-08 ;2015-05-08 12:25 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast to high
 2015-05-08 ;2015-05-08 13:22 ;107 ;Kåfjord ;KÅFJORD ;jan arild@NVE ;**** ;3 ;3 Considerable ;Forecast correct
 2015-05-08 ;2015-05-08 13:42 ;128 ;Rauland ;VINJE ;Siggen@obskorps ;*** ;1 ;1 Low ;
 2015-05-08 ;2015-05-08 13:46 ;123 ;Jotunheimen ;VANG ;Jens@SVV ;**** ;2 ;2 Moderate ;Forecast correct
@@ -3012,7 +3012,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2015-05-25 ;2015-05-25 18:13 ;126 ;Hemsedalfjella ;HEMSEDAL ;Jørgen@obskorps ;**** ;1 ;1 Low ;Forecast correct
 2015-05-25 ;2015-05-25 20:37 ;117 ;Trollheimen ;Oppdal ;torolav@obskorps ;**** ;2 ;2 Moderate ;Forecast correct
 2015-05-25 ;2015-05-25 21:00 ;124 ;Voss ;VOSS ;drift@svv ;* ;2 ;2 Moderate ;
-2015-05-26 ;2015-05-26 12:39 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2015-05-26 ;2015-05-26 12:39 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2015-05-26 ;2015-05-26 13:25 ;124 ;Voss ;VOSS ;drift@svv ;* ;2 ;2 Moderate ;
 2015-05-26 ;2015-05-26 16:00 ;122 ;Sogn ;LUSTER ;jostein@nve ;***** ;1 ;1 Low ;
 2015-05-26 ;2015-05-26 13:58 ;124 ;Voss ;VOSS ;Ragne@ObsKorps ;*** ;2 ;2 Moderate ;Forecast correct
@@ -3217,7 +3217,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2015-12-05 ;2015-12-05 09:33 ;121 ;Fjordane ;BALESTRAND ;drift@svv ;** ;4 ;4 High ;
 2015-12-05 ;2015-12-05 12:44 ;129 ;Tamokdalen ;BALSFJORD ;Aadne@ObsKorps ;**** ;2 ;2 Moderate ;
 2015-12-05 ;2015-12-05 11:40 ;123 ;Jotunheimen ;VANG ;Jens@SVV ;**** ;3 ;3 Considerable ;Forecast correct
-2015-12-05 ;2015-12-05 11:52 ;109 ;Balsfjord ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2015-12-05 ;2015-12-05 11:52 ;109 ;Balsfjord ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2015-12-05 ;2015-12-05 12:36 ;131 ;Svartisen ;RANA ;Gøran@ObsKorps ;*** ;2 ;2 Moderate ;
 2015-12-05 ;2015-12-05 12:58 ;107 ;Kåfjord ;KÅFJORD ;jan arild@NVE ;**** ;2 ;2 Moderate ;Forecast correct
 2015-12-05 ;2015-12-05 13:48 ;106 ;Alta ;ALTA ;Bjørnulf@ObsKorps ;**** ;2 ;2 Moderate ;Forecast correct
@@ -3363,7 +3363,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2015-12-14 ;2015-12-14 09:48 ;0 ; ;KVALSUND ;drift@svv ;** ;2 ;2 Moderate ;
 2015-12-14 ;2015-12-14 10:51 ;126 ;Hemsedalfjella ;ÅL ;Kari@ObsKorps ;*** ;2 ;2 Moderate ;Forecast to low
 2015-12-14 ;2015-12-14 12:14 ;0 ; ;TOKKE ;audun@svv ;*** ;1 ;1 Low ;Forecast correct
-2015-12-14 ;2015-12-14 12:32 ;109 ;Balsfjord ;TROMSØ ;HåvardT@nve ;***** ;3 ;3 Considerable ;Forecast correct
+2015-12-14 ;2015-12-14 12:32 ;109 ;Balsfjord ;TROMSØ ;HåvardT@met ;***** ;3 ;3 Considerable ;Forecast correct
 2015-12-14 ;2015-12-14 13:18 ;0 ; ;TOKKE ;jone@SVV ;*** ;1 ;1 Low ;Forecast correct
 2015-12-14 ;2015-12-14 14:06 ;111 ;Lyngsalpan ;LYNGEN ;LyngenDavid@ObsKorps ;*** ;3 ;3 Considerable ;Forecast correct
 2015-12-14 ;2015-12-14 14:04 ;114 ;Narvik ;NARVIK ;drift@svv ;** ;2 ;2 Moderate ;
@@ -3584,7 +3584,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2015-12-28 ;2015-12-28 11:00 ;108 ;Tromsø ;TROMSØ ;Snømann ;Unknown ;2 ;2 Moderate ;Forecast correct
 2015-12-28 ;2015-12-28 20:54 ;108 ;Tromsø ;TROMSØ ;Thorleif svendsen ;Unknown ;0 ;0 Not given ;
 2015-12-28 ;2015-12-28 12:45 ;108 ;Tromsø ;TROMSØ ;OAH@SVV ;*** ;2 ;2 Moderate ;Forecast correct
-2015-12-28 ;2015-12-28 12:49 ;108 ;Tromsø ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2015-12-28 ;2015-12-28 12:49 ;108 ;Tromsø ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2015-12-28 ;2015-12-28 13:04 ;122 ;Sogn ;LEIKANGER ;martin@obskorps ;*** ;2 ;2 Moderate ;Forecast correct
 2015-12-28 ;2015-12-28 13:24 ;120 ;Nordfjord ;STRYN ;drift@svv ;** ;2 ;2 Moderate ;
 2015-12-28 ;2015-12-28 13:23 ;0 ; ;FAUSKE ;DagTheodor@SVV ;**** ;2 ;2 Moderate ;
@@ -3768,7 +3768,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-01-08 ;2016-01-08 09:06 ;114 ;Narvik ;NARVIK ;drift@svv ;** ;1 ;1 Low ;
 2016-01-08 ;2016-01-08 09:15 ;122 ;Sogn ;LUSTER ;Siggen@obskorps ;*** ;1 ;1 Low ;
 2016-01-08 ;2016-01-08 09:24 ;116 ;Lofoten ;HADSEL ;Ragne@ObsKorps ;*** ;1 ;1 Low ;Forecast correct
-2016-01-08 ;2016-01-08 11:18 ;108 ;Tromsø ;TROMSØ ;HåvardT@nve ;***** ;1 ;1 Low ;Forecast correct
+2016-01-08 ;2016-01-08 11:18 ;108 ;Tromsø ;TROMSØ ;HåvardT@met ;***** ;1 ;1 Low ;Forecast correct
 2016-01-08 ;2016-01-08 11:54 ;107 ;Kåfjord ;KÅFJORD ;jan arild@NVE ;**** ;2 ;2 Moderate ;
 2016-01-08 ;2016-01-08 14:00 ;122 ;Sogn ;SOGNDAL ;Jan Helge@SVV ;*** ;1 ;1 Low ;Forecast correct
 2016-01-08 ;2016-01-08 12:18 ;115 ;Vesterålen ;SORTLAND ;Steinar@ObsKorps ;**** ;1 ;1 Low ;Forecast correct
@@ -4118,7 +4118,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-01-25 ;2016-01-25 09:31 ;114 ;Narvik ;NARVIK ;drift@svv ;** ;2 ;2 Moderate ;
 2016-01-25 ;2016-01-25 09:32 ;112 ;Bardu ;SALANGEN ;drift@svv ;** ;1 ;1 Low ;
 2016-01-25 ;2016-01-25 10:57 ;126 ;Hemsedalfjella ;HEMSEDAL ;Rune@obskorps ;**** ;0 ;0 Not given ;
-2016-01-25 ;2016-01-25 11:08 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@nve ;***** ;3 ;3 Considerable ;Forecast correct
+2016-01-25 ;2016-01-25 11:08 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@met ;***** ;3 ;3 Considerable ;Forecast correct
 2016-01-25 ;2016-01-25 11:50 ;111 ;Lyngsalpan ;LYNGEN ;LyngenDavid@ObsKorps ;*** ;1 ;1 Low ;Forecast to high
 2016-01-25 ;2016-01-25 11:55 ;126 ;Hemsedalfjella ;HEMSEDAL ;Rune@obskorps ;**** ;3 ;3 Considerable ;Forecast correct
 2016-01-25 ;2016-01-25 18:10 ;118 ;Romsdal ;VESTNES ;drift@svv ;** ;2 ;2 Moderate ;
@@ -4206,7 +4206,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-01-29 ;2016-01-29 11:21 ;107 ;Kåfjord ;KÅFJORD ;jan arild@NVE ;**** ;2 ;2 Moderate ;
 2016-01-29 ;2016-01-29 11:30 ;124 ;Voss ;VOSS ;sigrid@myrkdalen.no ;*** ;3 ;3 Considerable ;
 2016-01-29 ;2016-01-29 11:45 ;131 ;Svartisen ;MELØY ;drift@svv ;** ;1 ;1 Low ;
-2016-01-29 ;2016-01-29 11:46 ;109 ;Balsfjord ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2016-01-29 ;2016-01-29 11:46 ;109 ;Balsfjord ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2016-01-29 ;2016-01-29 12:22 ;124 ;Voss ;VIK ;drift@svv ;** ;4 ;4 High ;
 2016-01-29 ;2016-01-29 12:47 ;119 ;Sunnmøre ;VOLDA ;drift@svv ;** ;2 ;2 Moderate ;
 2016-01-29 ;2016-01-29 12:49 ;130 ;Nordenskioldland ;SVALBARD ;Jannicke@obskorps ;Unknown ;1 ;1 Low ;Forecast correct
@@ -4344,7 +4344,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-02-04 ;2016-02-04 12:05 ;119 ;Sunnmøre ;VOLDA ;drift@svv ;** ;3 ;3 Considerable ;
 2016-02-04 ;2016-02-04 19:05 ;131 ;Svartisen ;MELØY ;drift@svv ;** ;3 ;3 Considerable ;
 2016-02-04 ;2016-02-04 12:24 ;115 ;Vesterålen ;SORTLAND ;Steinar@ObsKorps ;**** ;3 ;3 Considerable ;Forecast correct
-2016-02-04 ;2016-02-04 12:29 ;108 ;Tromsø ;TROMSØ ;HåvardT@nve ;***** ;3 ;3 Considerable ;Forecast correct
+2016-02-04 ;2016-02-04 12:29 ;108 ;Tromsø ;TROMSØ ;HåvardT@met ;***** ;3 ;3 Considerable ;Forecast correct
 2016-02-04 ;2016-02-04 12:32 ;122 ;Sogn ;SOGNDAL ;Ingrid SVV ;*** ;2 ;2 Moderate ;
 2016-02-04 ;2016-02-04 12:35 ;0 ; ;KVALSUND ;drift@svv ;** ;2 ;2 Moderate ;
 2016-02-04 ;2016-02-04 13:28 ;114 ;Narvik ;NARVIK ;drift@svv ;** ;2 ;2 Moderate ;
@@ -4555,7 +4555,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-02-12 ;2016-02-12 09:20 ;113 ;Harstad ; ;drift@svv ;** ;0 ;0 Not given ;
 2016-02-12 ;2016-02-12 10:21 ;114 ;Narvik ;NARVIK ;drift@svv ;** ;2 ;2 Moderate ;
 2016-02-12 ;2016-02-12 10:39 ;118 ;Romsdal ;NESSET ;drift@svv ;** ;2 ;2 Moderate ;
-2016-02-12 ;2016-02-12 10:54 ;109 ;Balsfjord ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;
+2016-02-12 ;2016-02-12 10:54 ;109 ;Balsfjord ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;
 2016-02-12 ;2016-02-12 11:21 ;0 ; ;KVALSUND ;drift@svv ;** ;3 ;3 Considerable ;
 2016-02-12 ;2016-02-12 11:17 ;0 ; ;FAUSKE ;DagTheodor@SVV ;**** ;2 ;2 Moderate ;Forecast correct
 2016-02-12 ;2016-02-12 11:49 ;131 ;Svartisen ;MELØY ;drift@svv ;** ;3 ;3 Considerable ;
@@ -4633,7 +4633,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-02-15 ;2016-02-15 09:38 ;112 ;Bardu ;SALANGEN ;drift@svv ;** ;2 ;2 Moderate ;
 2016-02-15 ;2016-02-15 09:44 ;118 ;Romsdal ;NESSET ;drift@svv ;** ;3 ;3 Considerable ;
 2016-02-15 ;2016-02-15 10:00 ;0 ; ;KVALSUND ;drift@svv ;** ;2 ;2 Moderate ;
-2016-02-15 ;2016-02-15 11:00 ;108 ;Tromsø ;TROMSØ ;HåvardT@nve ;***** ;3 ;3 Considerable ;Forecast correct
+2016-02-15 ;2016-02-15 11:00 ;108 ;Tromsø ;TROMSØ ;HåvardT@met ;***** ;3 ;3 Considerable ;Forecast correct
 2016-02-15 ;2016-02-15 13:09 ;118 ;Romsdal ;VESTNES ;drift@svv ;** ;2 ;2 Moderate ;
 2016-02-15 ;2016-02-15 13:19 ;114 ;Narvik ;BALLANGEN ;Kaj@obskorps ;**** ;2 ;2 Moderate ;
 2016-02-15 ;2016-02-15 14:20 ;128 ;Rauland ;VINJE ;Bård Henning ;Unknown ;2 ;2 Moderate ;Forecast correct
@@ -5126,7 +5126,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-03-04 ;2016-03-04 07:54 ;114 ;Narvik ;NARVIK ;drift@svv ;** ;2 ;2 Moderate ;
 2016-03-04 ;2016-03-04 09:15 ;114 ;Narvik ;BALLANGEN ;drift@svv ;** ;2 ;2 Moderate ;
 2016-03-04 ;2016-03-04 09:39 ;119 ;Sunnmøre ;ØRSTA ;drift@svv ;** ;2 ;2 Moderate ;
-2016-03-04 ;2016-03-04 12:54 ;109 ;Balsfjord ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2016-03-04 ;2016-03-04 12:54 ;109 ;Balsfjord ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2016-03-04 ;2016-03-04 11:18 ;122 ;Sogn ;LEIKANGER ;martin@obskorps ;**** ;2 ;2 Moderate ;Forecast correct
 2016-03-04 ;2016-03-04 12:28 ;114 ;Narvik ;NARVIK ;Kaj@obskorps ;**** ;2 ;2 Moderate ;Forecast correct
 2016-03-04 ;2016-03-04 12:30 ;118 ;Romsdal ;NESSET ;drift@svv ;** ;2 ;2 Moderate ;
@@ -5264,7 +5264,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-03-10 ;2016-03-10 07:57 ;116 ;Lofoten ;VÅGAN ;JonasD@ObsKorps ;***** ;3 ;3 Considerable ;Forecast to low
 2016-03-10 ;2016-03-10 10:40 ;114 ;Narvik ;BALLANGEN ;drift@svv ;** ;2 ;2 Moderate ;
 2016-03-10 ;2016-03-10 11:50 ;121 ;Fjordane ;BALESTRAND ;SiljeM@Svv ;**** ;2 ;2 Moderate ;Forecast correct
-2016-03-10 ;2016-03-10 11:50 ;109 ;Balsfjord ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2016-03-10 ;2016-03-10 11:50 ;109 ;Balsfjord ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2016-03-10 ;2016-03-10 12:55 ;114 ;Narvik ;NARVIK ;Kaj@obskorps ;**** ;1 ;1 Low ;
 2016-03-10 ;2016-03-10 13:35 ;118 ;Romsdal ;VESTNES ;knutinge@svv ;***** ;2 ;2 Moderate ;Forecast correct
 2016-03-10 ;2016-03-10 13:56 ;114 ;Narvik ;NARVIK ;drift@svv ;** ;2 ;2 Moderate ;
@@ -5635,7 +5635,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-03-24 ;2016-03-24 11:20 ;122 ;Sogn ;LUSTER ;martin@obskorps ;**** ;1 ;1 Low ;Forecast correct
 2016-03-24 ;2016-03-24 11:38 ;117 ;Trollheimen ;Oppdal ;drift@svv ;** ;2 ;2 Moderate ;
 2016-03-24 ;2016-03-24 11:34 ;108 ;Tromsø ;TROMSØ ;martin@svv_gammel_profil ;*** ;2 ;2 Moderate ;Forecast correct
-2016-03-24 ;2016-03-24 12:14 ;109 ;Balsfjord ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2016-03-24 ;2016-03-24 12:14 ;109 ;Balsfjord ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2016-03-24 ;2016-03-24 12:55 ;131 ;Svartisen ;RANA ;Gøran@ObsKorps ;**** ;2 ;2 Moderate ;Forecast correct
 2016-03-24 ;2016-03-24 13:51 ;120 ;Nordfjord ;STRYN ;drift@svv ;** ;2 ;2 Moderate ;
 2016-03-24 ;2016-03-24 13:54 ;113 ;Harstad ; ;Espen@ObsKorps ;**** ;2 ;2 Moderate ;Forecast correct
@@ -5763,7 +5763,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-03-31 ;2016-03-31 07:36 ;108 ;Tromsø ;KARLSØY ;drift@svv ;** ;2 ;2 Moderate ;
 2016-03-31 ;2016-03-31 07:50 ;124 ;Voss ;VOSS ;drift@svv ;** ;2 ;2 Moderate ;
 2016-03-31 ;2016-03-31 10:03 ;117 ;Trollheimen ;Oppdal ;drift@svv ;** ;2 ;2 Moderate ;
-2016-03-31 ;2016-03-31 10:47 ;109 ;Balsfjord ;TROMSØ ;HåvardT@nve ;***** ;1 ;1 Low ;Forecast correct
+2016-03-31 ;2016-03-31 10:47 ;109 ;Balsfjord ;TROMSØ ;HåvardT@met ;***** ;1 ;1 Low ;Forecast correct
 2016-03-31 ;2016-03-31 11:23 ;111 ;Lyngsalpan ;LYNGEN ;JonasD@ObsKorps ;***** ;2 ;2 Moderate ;Forecast correct
 2016-03-31 ;2016-03-31 11:49 ;122 ;Sogn ;SOGNDAL ;Ingrid SVV ;**** ;2 ;2 Moderate ;Forecast correct
 2016-03-31 ;2016-03-31 12:21 ;123 ;Jotunheimen ;VANG ;Leif@ObsKorps ;**** ;2 ;2 Moderate ;Forecast correct
@@ -5966,7 +5966,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-04-11 ;2016-04-11 08:11 ;108 ;Tromsø ;KARLSØY ;drift@svv ;** ;1 ;1 Low ;
 2016-04-11 ;2016-04-11 08:37 ;124 ;Voss ;VOSS ;drift@svv ;** ;2 ;2 Moderate ;
 2016-04-11 ;2016-04-11 08:40 ;118 ;Romsdal ;RAUMA ;Halvor@NVE ;***** ;2 ;2 Moderate ;Forecast correct
-2016-04-11 ;2016-04-11 11:37 ;108 ;Tromsø ;TROMSØ ;HåvardT@nve ;***** ;1 ;1 Low ;Forecast to high
+2016-04-11 ;2016-04-11 11:37 ;108 ;Tromsø ;TROMSØ ;HåvardT@met ;***** ;1 ;1 Low ;Forecast to high
 2016-04-11 ;2016-04-11 12:44 ;111 ;Lyngsalpan ;LYNGEN ;Patrik@ObsKorps ;**** ;2 ;2 Moderate ;
 2016-04-11 ;2016-04-11 12:56 ;120 ;Nordfjord ;STRYN ;drift@svv ;** ;2 ;2 Moderate ;
 2016-04-11 ;2016-04-11 19:40 ;130 ;Nordenskioldland ;SVALBARD ;Jannicke@obskorps ;*** ;2 ;2 Moderate ;Forecast correct
@@ -6144,7 +6144,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-04-22 ;2016-04-22 11:34 ;118 ;Romsdal ;RAUMA ;Halvor@NVE ;***** ;3 ;3 Considerable ;Forecast correct
 2016-04-22 ;2016-04-22 10:59 ;122 ;Sogn ;SOGNDAL ;Ingrid SVV ;**** ;2 ;2 Moderate ;
 2016-04-22 ;2016-04-22 16:08 ;0 ; ;VALLE ;jone@SVV ;*** ;1 ;1 Low ;
-2016-04-22 ;2016-04-22 11:53 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2016-04-22 ;2016-04-22 11:53 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2016-04-22 ;2016-04-22 12:45 ;117 ;Trollheimen ;Hemne ;Gunne@SVV ;**** ;3 ;3 Considerable ;Forecast correct
 2016-04-22 ;2016-04-22 13:31 ;124 ;Voss ;VOSS ;Julie@SVV ;**** ;2 ;2 Moderate ;Forecast correct
 2016-04-22 ;2016-04-22 14:08 ;120 ;Nordfjord ;STRYN ;drift@svv ;** ;3 ;3 Considerable ;
@@ -6200,7 +6200,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-04-26 ;2016-04-26 14:17 ;120 ;Nordfjord ;STRYN ;drift@svv ;** ;2 ;2 Moderate ;
 2016-04-26 ;2016-04-26 14:33 ;114 ;Narvik ;NARVIK ;Kaj@obskorps ;**** ;2 ;2 Moderate ;Forecast correct
 2016-04-26 ;2016-04-26 15:40 ;118 ;Romsdal ;RAUMA ;Urpu@Romsdal ;**** ;2 ;2 Moderate ;Forecast correct
-2016-04-26 ;2016-04-26 14:56 ;109 ;Balsfjord ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2016-04-26 ;2016-04-26 14:56 ;109 ;Balsfjord ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2016-04-26 ;2016-04-27 09:44 ;127 ;Røldal ;ODDA ;Nils@obskorps ;*** ;1 ;1 Low ;Forecast correct
 2016-04-26 ;2016-04-27 08:09 ;116 ;Lofoten ;VÅGAN ;JonasD@ObsKorps ;***** ;1 ;1 Low ;Forecast correct
 2016-04-26 ;2016-04-26 20:08 ;108 ;Tromsø ;TROMSØ ;MagnusH ;**** ;1 ;1 Low ;Forecast correct
@@ -6243,7 +6243,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-04-29 ;2016-04-29 13:24 ;116 ;Lofoten ;LØDINGEN ;Steinar@ObsKorps ;**** ;2 ;2 Moderate ;Forecast correct
 2016-04-29 ;2016-04-29 12:37 ;114 ;Narvik ;NARVIK ;Kaj@obskorps ;**** ;2 ;2 Moderate ;Forecast correct
 2016-04-29 ;2016-04-29 12:38 ;107 ;Kåfjord ;KÅFJORD ;jan arild@NVE ;**** ;2 ;2 Moderate ;
-2016-04-29 ;2016-04-29 12:58 ;108 ;Tromsø ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2016-04-29 ;2016-04-29 12:58 ;108 ;Tromsø ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2016-04-29 ;2016-04-29 14:51 ;119 ;Sunnmøre ;ØRSTA ;torehum@svv ;***** ;2 ;2 Moderate ;Forecast correct
 2016-04-29 ;2016-04-29 15:15 ;128 ;Rauland ;VINJE ;svein loftsgarden ;**** ;1 ;1 Low ;
 2016-04-29 ;2016-04-29 13:51 ;120 ;Nordfjord ;STRYN ;drift@svv ;** ;2 ;2 Moderate ;
@@ -6287,7 +6287,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-05-02 ;2016-05-02 08:01 ;108 ;Tromsø ;KARLSØY ;drift@svv ;** ;2 ;2 Moderate ;
 2016-05-02 ;2016-05-02 20:23 ;111 ;Lyngsalpan ;LYNGEN ;Patrik@ObsKorps ;**** ;2 ;2 Moderate ;Forecast to high
 2016-05-02 ;2016-05-02 12:22 ;122 ;Sogn ;LUSTER ;Siggen@obskorps ;*** ; ; ;
-2016-05-02 ;2016-05-02 12:41 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@nve ;***** ;2 ;2 Moderate ;
+2016-05-02 ;2016-05-02 12:41 ;109 ;Balsfjord ;BALSFJORD ;HåvardT@met ;***** ;2 ;2 Moderate ;
 2016-05-02 ;2016-05-02 14:26 ;122 ;Sogn ;LUSTER ;martin@obskorps ;**** ;3 ;3 Considerable ;Forecast correct
 2016-05-02 ;2016-05-02 14:53 ;118 ;Romsdal ;RAUMA ;Urpu@Romsdal ;**** ;3 ;3 Considerable ;Forecast correct
 2016-05-02 ;2016-05-02 16:44 ;130 ;Nordenskioldland ;SVALBARD ;Jens Abild ;*** ;2 ;2 Moderate ;Forecast correct
@@ -6529,7 +6529,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-05-26 ;2016-05-27 11:56 ;118 ;Romsdal ;VESTNES ;torehum@svv ;***** ;1 ;1 Low ;Forecast correct
 2016-05-27 ;2016-05-27 12:28 ;131 ;Svartisen ;MELØY ;AnneMariaLeune@ObsKorps ;*** ;1 ;1 Low ;Forecast correct
 2016-05-27 ;2016-05-27 10:07 ;122 ;Sogn ;SOGNDAL ;martin@obskorps ;**** ;1 ;1 Low ;Forecast to high
-2016-05-27 ;2016-05-27 11:17 ;109 ;Balsfjord ;TROMSØ ;HåvardT@nve ;***** ;1 ;1 Low ;Forecast to high
+2016-05-27 ;2016-05-27 11:17 ;109 ;Balsfjord ;TROMSØ ;HåvardT@met ;***** ;1 ;1 Low ;Forecast to high
 2016-05-27 ;2016-05-30 11:57 ;115 ;Vesterålen ;SORTLAND ;Steinar@ObsKorps ;**** ;1 ;1 Low ;Forecast correct
 2016-05-27 ;2016-05-27 17:51 ;123 ;Jotunheimen ;LOM ;Siggen@obskorps ;*** ;1 ;1 Low ;
 2016-05-27 ;2016-05-27 23:45 ;107 ;Kåfjord ;KÅFJORD ;jan arild@NVE ;**** ;1 ;1 Low ;Forecast correct
@@ -6607,7 +6607,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-12-02 ;2016-12-02 20:31 ;3014 ;Lofoten og Vesterålen ;VÅGAN ;OleRoger ;*** ; ; ;
 2016-12-02 ;2016-12-02 11:56 ;3035 ;Vest-Telemark ;TOKKE ;audun@svv ;*** ;1 ;1 Low ;Forecast correct
 2016-12-02 ;2016-12-02 12:10 ;3011 ;Tromsø ;TROMSØ ;Andreas@SVV ;**** ;1 ;1 Low ;Forecast to high
-2016-12-02 ;2016-12-02 12:01 ;3010 ;Lyngen ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2016-12-02 ;2016-12-02 12:01 ;3010 ;Lyngen ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2016-12-02 ;2016-12-02 12:24 ;3027 ;Indre Fjordane ;GLOPPEN ;LarsO@obskorps ;*** ;2 ;2 Moderate ;Forecast correct
 2016-12-02 ;2016-12-02 12:29 ;3010 ;Lyngen ;LYNGEN ;Patrik@ObsKorps ;**** ; ; ;
 2016-12-02 ;2016-12-02 12:36 ;3023 ;Romsdal ;NESSET ;drift@svv ;** ;3 ;3 Considerable ;
@@ -6719,7 +6719,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2016-12-08 ;2016-12-08 10:57 ;3015 ;Ofoten ;BALLANGEN ;drift@svv ;** ;2 ;2 Moderate ;
 2016-12-08 ;2016-12-08 11:21 ;3011 ;Tromsø ;KARLSØY ;drift@svv ;** ;2 ;2 Moderate ;
 2016-12-08 ;2016-12-08 11:34 ;3009 ;Nord-Troms ;KÅFJORD ;jan arild@NVE ;**** ;2 ;2 Moderate ;
-2016-12-08 ;2016-12-08 12:59 ;3010 ;Lyngen ;BALSFJORD ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2016-12-08 ;2016-12-08 12:59 ;3010 ;Lyngen ;BALSFJORD ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2016-12-08 ;2016-12-08 13:39 ;3032 ;Hallingdal ;HEMSEDAL ;Siggen@obskorps ;*** ;1 ;1 Low ;
 2016-12-08 ;2016-12-08 18:28 ;3016 ;Salten ;FAUSKE ;SindreH@ObsKorps ;*** ;2 ;2 Moderate ;Forecast correct
 2016-12-08 ;2016-12-08 22:40 ;3011 ;Tromsø ;KARLSØY ;drift@svv ;** ;3 ;3 Considerable ;
@@ -7263,7 +7263,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2017-01-06 ;2017-01-06 10:42 ;3022 ;Trollheimen ;Oppdal ;torolav@obskorps ;**** ;2 ;2 Moderate ;Forecast to high
 2017-01-06 ;2017-01-06 10:57 ;3014 ;Lofoten og Vesterålen ;SORTLAND ;Steinar@ObsKorps ;**** ;3 ;3 Considerable ;Forecast correct
 2017-01-06 ;2017-01-06 11:52 ;3028 ;Jotunheimen ;VANG ;Leif@ObsKorps ;**** ;1 ;1 Low ;Forecast to high
-2017-01-06 ;2017-01-06 11:46 ;3010 ;Lyngen ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2017-01-06 ;2017-01-06 11:46 ;3010 ;Lyngen ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2017-01-06 ;2017-01-06 11:52 ;3013 ;Indre Troms ;BARDU ;mortenh@obskorps ;***** ;2 ;2 Moderate ;Forecast correct
 2017-01-06 ;2017-01-06 12:01 ;3031 ;Voss ;VOSS ;Njål@SVV ;**** ;3 ;3 Considerable ;Forecast correct
 2017-01-06 ;2017-01-06 15:06 ;3027 ;Indre Fjordane ;GLOPPEN ;LarsO@obskorps ;*** ;2 ;2 Moderate ;Forecast correct
@@ -7706,7 +7706,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2017-01-20 ;2017-01-20 09:44 ;3031 ;Voss ;VOSS ;drift@svv ;** ;3 ;3 Considerable ;
 2017-01-20 ;2017-01-20 10:56 ;3014 ;Lofoten og Vesterålen ;VÅGAN ;JonasD@ObsKorps ;***** ;3 ;3 Considerable ;Forecast correct
 2017-01-20 ;2017-01-20 15:58 ;3015 ;Ofoten ;NARVIK ;PeterSchön@obskorps ;**** ;3 ;3 Considerable ;Forecast correct
-2017-01-20 ;2017-01-20 10:05 ;3010 ;Lyngen ;TROMSØ ;HåvardT@nve ;***** ;3 ;3 Considerable ;Forecast correct
+2017-01-20 ;2017-01-20 10:05 ;3010 ;Lyngen ;TROMSØ ;HåvardT@met ;***** ;3 ;3 Considerable ;Forecast correct
 2017-01-20 ;2017-01-20 10:12 ;3011 ;Tromsø ;KARLSØY ;drift@svv ;** ;3 ;3 Considerable ;
 2017-01-20 ;2017-01-20 11:20 ;3023 ;Romsdal ;RAUMA ;Halvor@NVE ;***** ;2 ;2 Moderate ;Forecast correct
 2017-01-20 ;2017-01-20 10:33 ;3009 ;Nord-Troms ;KÅFJORD ;jan arild@NVE ;**** ;3 ;3 Considerable ;Forecast correct
@@ -7923,7 +7923,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2017-01-27 ;2017-01-27 12:15 ;3028 ;Jotunheimen ;VANG ;Leif@ObsKorps ;**** ;1 ;1 Low ;Forecast to high
 2017-01-27 ;2017-01-27 10:47 ;3015 ;Ofoten ;NARVIK ;drift@svv ;** ;3 ;3 Considerable ;
 2017-01-27 ;2017-01-27 12:10 ;3035 ;Vest-Telemark ;VALLE ;audun@svv ;*** ;1 ;1 Low ;Forecast correct
-2017-01-27 ;2017-01-27 11:24 ;3010 ;Lyngen ;BALSFJORD ;HåvardT@nve ;***** ;2 ;2 Moderate ;
+2017-01-27 ;2017-01-27 11:24 ;3010 ;Lyngen ;BALSFJORD ;HåvardT@met ;***** ;2 ;2 Moderate ;
 2017-01-27 ;2017-01-27 13:06 ;3015 ;Ofoten ;NARVIK ;Kaj@obskorps ;**** ;2 ;2 Moderate ;Forecast to high
 2017-01-27 ;2017-01-27 11:46 ;3028 ;Jotunheimen ;LOM ;Albert ;**** ;2 ;2 Moderate ;Forecast correct
 2017-01-27 ;2017-01-27 12:34 ;3010 ;Lyngen ;LYNGEN ;Patrik@ObsKorps ;**** ;2 ;2 Moderate ;Forecast to high
@@ -8218,7 +8218,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2017-02-08 ;2017-02-08 12:51 ;3031 ;Voss ;VOSS ;Ragne@ObsKorps ;**** ;2 ;2 Moderate ;Forecast correct
 2017-02-08 ;2017-02-08 13:35 ;3015 ;Ofoten ;NARVIK ;drift@svv ;** ;2 ;2 Moderate ;
 2017-02-08 ;2017-02-08 13:35 ;3027 ;Indre Fjordane ;STRYN ;drift@svv ;** ;1 ;1 Low ;
-2017-02-08 ;2017-02-08 15:50 ;3032 ;Hallingdal ;HEMSEDAL ;HåvardT@nve ;***** ;1 ;1 Low ;Forecast correct
+2017-02-08 ;2017-02-08 15:50 ;3032 ;Hallingdal ;HEMSEDAL ;HåvardT@met ;***** ;1 ;1 Low ;Forecast correct
 2017-02-08 ;2017-02-08 16:05 ;3032 ;Hallingdal ;HEMSEDAL ;Njål@SVV ;**** ;0 ;0 Not given ;
 2017-02-08 ;2017-02-08 14:37 ;3011 ;Tromsø ;TROMSØ ;Jimmy Halvardsson ;*** ;2 ;2 Moderate ;Forecast correct
 2017-02-08 ;2017-02-08 15:29 ;3032 ;Hallingdal ;HEMSEDAL ;torehum@svv ;***** ;1 ;1 Low ;Forecast correct
@@ -8986,7 +8986,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2017-03-08 ;2017-03-08 11:12 ;3023 ;Romsdal ;FRÆNA ;torehum@svv ;***** ;2 ;2 Moderate ;Forecast correct
 2017-03-08 ;2017-03-08 15:05 ;3031 ;Voss ;VOSS ;AnneMariaLeune@ObsKorps ;*** ;2 ;2 Moderate ;Forecast correct
 2017-03-08 ;2017-03-08 13:44 ;3031 ;Voss ;VOSS ;Jan Helge@SVV ;*** ;2 ;2 Moderate ;
-2017-03-08 ;2017-03-08 12:17 ;3010 ;Lyngen ;BALSFJORD ;HåvardT@nve ;***** ;1 ;1 Low ;Forecast correct
+2017-03-08 ;2017-03-08 12:17 ;3010 ;Lyngen ;BALSFJORD ;HåvardT@met ;***** ;1 ;1 Low ;Forecast correct
 2017-03-08 ;2017-03-08 12:25 ;3009 ;Nord-Troms ;KÅFJORD ;jan arild@NVE ;***** ;2 ;2 Moderate ;Forecast correct
 2017-03-08 ;2017-03-08 12:37 ;3031 ;Voss ;AURLAND ;Knut H ;Unknown ;1 ;1 Low ;
 2017-03-08 ;2017-03-08 15:21 ;3031 ;Voss ;VOSS ;LarsO@obskorps ;*** ;2 ;2 Moderate ;Forecast correct
@@ -9258,7 +9258,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2017-03-17 ;2017-03-17 09:52 ;3022 ;Trollheimen ;Oppdal ;torolav@obskorps ;***** ;2 ;2 Moderate ;Forecast to high
 2017-03-17 ;2017-03-17 10:14 ;3031 ;Voss ;VAKSDAL ;drift@svv ;** ;3 ;3 Considerable ;
 2017-03-17 ;2017-03-17 10:08 ;3024 ;Sunnmøre ;SANDE ;drift@svv ;** ;2 ;2 Moderate ;
-2017-03-17 ;2017-03-17 10:39 ;3010 ;Lyngen ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2017-03-17 ;2017-03-17 10:39 ;3010 ;Lyngen ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2017-03-17 ;2017-03-17 10:51 ;3032 ;Hallingdal ;HEMSEDAL ;Siggen@obskorps ;**** ;3 ;3 Considerable ;
 2017-03-17 ;2017-03-17 11:55 ;3032 ;Hallingdal ;ÅL ;steinar@obskorps ;*** ;3 ;3 Considerable ;Forecast correct
 2017-03-17 ;2017-03-17 13:41 ;3011 ;Tromsø ;TROMSØ ;harvey@ObsKorps ;** ;3 ;3 Considerable ;Forecast to low
@@ -9589,7 +9589,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2017-03-27 ;2017-03-27 11:59 ;3012 ;Sør-Troms ;GRATANGEN ;drift@svv ;** ;2 ;2 Moderate ;
 2017-03-27 ;2017-03-27 15:29 ;3009 ;Nord-Troms ;KÅFJORD ;PeterSchön@obskorps ;**** ;3 ;3 Considerable ;
 2017-03-27 ;2017-03-27 12:09 ;3012 ;Sør-Troms ;GRATANGEN ;drift@svv ;** ;2 ;2 Moderate ;
-2017-03-27 ;2017-03-27 12:40 ;3010 ;Lyngen ;BALSFJORD ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2017-03-27 ;2017-03-27 12:40 ;3010 ;Lyngen ;BALSFJORD ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2017-03-27 ;2017-03-27 12:32 ;3024 ;Sunnmøre ;NORDDAL ;drift@svv ;** ;2 ;2 Moderate ;
 2017-03-27 ;2017-03-27 12:53 ;3010 ;Lyngen ;LYNGEN ;Patrik@ObsKorps ;**** ;2 ;2 Moderate ;
 2017-03-27 ;2017-03-27 13:28 ;3007 ;Vest-Finnmark ;KVALSUND ;drift@svv ;** ;3 ;3 Considerable ;
@@ -9736,7 +9736,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2017-03-31 ;2017-03-31 08:55 ;3013 ;Indre Troms ;BARDU ;mortenh@obskorps ;***** ;3 ;3 Considerable ;Forecast correct
 2017-03-31 ;2017-03-31 11:14 ;3007 ;Vest-Finnmark ;ALTA ;Bjørnulf@ObsKorps ;**** ;2 ;2 Moderate ;Forecast to high
 2017-03-31 ;2017-03-31 11:49 ;3007 ;Vest-Finnmark ;HAMMERFEST ;jonas@obskorps.hammerfest ;*** ;3 ;3 Considerable ;Forecast correct
-2017-03-31 ;2017-03-31 11:46 ;3010 ;Lyngen ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2017-03-31 ;2017-03-31 11:46 ;3010 ;Lyngen ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2017-03-31 ;2017-03-31 12:40 ;3024 ;Sunnmøre ;VOLDA ;Sindre@FL-Hivolda ;Unknown ;0 ;0 Not given ;Forecast correct
 2017-03-31 ;2017-03-31 12:38 ;3007 ;Vest-Finnmark ;KVALSUND ;drift@svv ;** ;3 ;3 Considerable ;
 2017-03-31 ;2017-03-31 17:04 ;3011 ;Tromsø ;TROMSØ ;Andreas@nve ;***** ;2 ;2 Moderate ;Forecast correct
@@ -10038,7 +10038,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2017-04-10 ;2017-04-10 10:45 ;3007 ;Vest-Finnmark ;KVALSUND ;drift@svv ;** ;2 ;2 Moderate ;
 2017-04-10 ;2017-04-10 11:14 ;3011 ;Tromsø ;TROMSØ ;drift@svv ;** ;0 ;0 Not given ;
 2017-04-10 ;2017-04-10 12:08 ;3032 ;Hallingdal ;HOL ;steinar@obskorps ;*** ;2 ;2 Moderate ;Forecast correct
-2017-04-10 ;2017-04-10 11:53 ;3010 ;Lyngen ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2017-04-10 ;2017-04-10 11:53 ;3010 ;Lyngen ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2017-04-10 ;2017-04-10 12:17 ;3029 ;Indre Sogn ;LUSTER ;martin@obskorps ;**** ;2 ;2 Moderate ;Forecast correct
 2017-04-10 ;2017-04-10 14:05 ;3035 ;Vest-Telemark ;VINJE ;håkon@obskorps  ;*** ;2 ;2 Moderate ;Forecast correct
 2017-04-10 ;2017-04-10 16:41 ;3010 ;Lyngen ;TROMSØ ;paulv@UiT ;*** ;2 ;2 Moderate ;Forecast correct
@@ -10479,7 +10479,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2017-04-28 ;2017-04-28 13:57 ;3003 ;Nordenskiöld Land ;SVALBARD ;Jannicke@obskorps ;*** ;2 ;2 Moderate ;Forecast correct
 2017-04-28 ;2017-04-28 11:09 ;3031 ;Voss ;VOSS ;Ragne@ObsKorps ;**** ;2 ;2 Moderate ;Forecast correct
 2017-04-28 ;2017-04-28 13:47 ;3029 ;Indre Sogn ;LÆRDAL ;Leif@ObsKorps ;***** ;2 ;2 Moderate ;Forecast correct
-2017-04-28 ;2017-04-28 11:45 ;3010 ;Lyngen ;BALSFJORD ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2017-04-28 ;2017-04-28 11:45 ;3010 ;Lyngen ;BALSFJORD ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2017-04-28 ;2017-04-28 12:27 ;3029 ;Indre Sogn ;AURLAND ;Jens@SVV ;**** ;2 ;2 Moderate ;Forecast correct
 2017-04-28 ;2017-04-28 12:24 ;3032 ;Hallingdal ;HEMSEDAL ;Rune@obskorps ;**** ;2 ;2 Moderate ;Forecast correct
 2017-04-28 ;2017-04-28 13:10 ;3009 ;Nord-Troms ;KÅFJORD ;jan arild@NVE ;***** ;2 ;2 Moderate ;Forecast correct
@@ -10815,7 +10815,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2017-05-25 ;2017-05-25 23:46 ;3011 ;Tromsø ;TROMSØ ;torben@obskorps ;*** ;1 ;1 Low ;Forecast correct
 2017-05-26 ;2017-05-26 11:23 ;3007 ;Vest-Finnmark ;HAMMERFEST ;jonas@obskorps.hammerfest ;*** ;1 ;1 Low ;Forecast correct
 2017-05-26 ;2017-05-26 10:29 ;3009 ;Nord-Troms ;KÅFJORD ;jan arild@NVE ;***** ;1 ;1 Low ;
-2017-05-26 ;2017-05-26 10:59 ;3010 ;Lyngen ;BALSFJORD ;HåvardT@nve ;***** ;1 ;1 Low ;Forecast correct
+2017-05-26 ;2017-05-26 10:59 ;3010 ;Lyngen ;BALSFJORD ;HåvardT@met ;***** ;1 ;1 Low ;Forecast correct
 2017-05-26 ;2017-05-26 12:25 ;3017 ;Svartisen ;BEIARN ;DagTheodor@SVV ;***** ;1 ;1 Low ;
 2017-05-26 ;2017-05-26 12:17 ;3034 ;Hardanger ;ODDA ;Nils@obskorps ;*** ;1 ;1 Low ;Forecast correct
 2017-05-26 ;2017-05-26 12:33 ;3035 ;Vest-Telemark ;VINJE ;svein loftsgarden ;**** ;1 ;1 Low ;Forecast correct
@@ -11804,8 +11804,8 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2018-01-04 ;2018-01-04 13:57 ;3031 ;Voss ;VOSS ;drift@svv ;** ;1 ;1 Low ;
 2018-01-04 ;2018-01-04 12:13 ;3010 ;Lyngen ;LYNGEN ;Patrik@ObsKorps ;**** ;2 ;2 Moderate ;Forecast correct
 2018-01-04 ;2018-01-04 12:50 ;3022 ;Trollheimen ;SURNADAL ;Eivind@SVV ;**** ;2 ;2 Moderate ;Forecast correct
-2018-01-04 ;2018-01-05 12:43 ;3009 ;Nord-Troms ;KVÆNANGEN ;drift@svv ;** ;1 ;1 Low ;
 2018-01-04 ;2018-01-04 12:26 ;3009 ;Nord-Troms ;KVÆNANGEN ;drift@svv ;** ;0 ;0 Not given ;
+2018-01-04 ;2018-01-05 12:43 ;3009 ;Nord-Troms ;KVÆNANGEN ;drift@svv ;** ;1 ;1 Low ;
 2018-01-04 ;2018-01-04 13:57 ;3031 ;Voss ;VAKSDAL ;drift@svv ;** ;1 ;1 Low ;
 2018-01-04 ;2018-01-04 13:57 ;3023 ;Romsdal ;VESTNES ;drift@svv ;** ;2 ;2 Moderate ;
 2018-01-04 ;2018-01-04 14:02 ;3027 ;Indre Fjordane ;STRYN ;Andreas@nve ;***** ;2 ;2 Moderate ;Forecast correct
@@ -12705,8 +12705,8 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2018-02-04 ;2018-02-04 21:52 ;3022 ;Trollheimen ;Oppdal ;DW ;** ;2 ;2 Moderate ;Forecast correct
 2018-02-04 ;2018-02-04 13:38 ;3010 ;Lyngen ;LYNGEN ;Jimmy Halvardsson ;*** ;1 ;1 Low ;Forecast correct
 2018-02-04 ;2018-02-04 13:53 ;3027 ;Indre Fjordane ;GLOPPEN ;LarsO@obskorps ;**** ;2 ;2 Moderate ;
-2018-02-04 ;2018-02-04 13:31 ;3011 ;Tromsø ;KARLSØY ;martin@svv ;***** ;2 ;2 Moderate ;
 2018-02-04 ;2018-02-04 13:29 ;3024 ;Sunnmøre ;STRANDA ;Stig Løland@obskorps ;**** ;2 ;2 Moderate ;Forecast correct
+2018-02-04 ;2018-02-04 13:31 ;3011 ;Tromsø ;KARLSØY ;martin@svv ;***** ;2 ;2 Moderate ;
 2018-02-04 ;2018-02-04 13:56 ;3029 ;Indre Sogn ;LUSTER ;drift@svv ;** ;1 ;1 Low ;
 2018-02-04 ;2018-02-04 13:57 ;3027 ;Indre Fjordane ;STRYN ;drift@svv ;** ;2 ;2 Moderate ;
 2018-02-04 ;2018-02-04 16:19 ;3034 ;Hardanger ;ODDA ;Nils@obskorps ;*** ;2 ;2 Moderate ;Forecast correct
@@ -12804,8 +12804,8 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2018-02-08 ;2018-02-08 12:52 ;3031 ;Voss ;VIK ;Jan Helge@SVV ;**** ;2 ;2 Moderate ;
 2018-02-08 ;2018-02-16 22:21 ;3011 ;Tromsø ;KARLSØY ;drift@svv ;** ;1 ;1 Low ;
 2018-02-08 ;2018-02-08 12:16 ;3032 ;Hallingdal ;HEMSEDAL ;Arvid ;Unknown ;3 ;3 Considerable ;Forecast correct
-2018-02-08 ;2018-02-08 14:26 ;3024 ;Sunnmøre ;ØRSTA ;Trygve@friluftsliv_Hivolda ;Unknown ;2 ;2 Moderate ;
 2018-02-08 ;2018-02-08 12:44 ;3024 ;Sunnmøre ;ØRSTA ;Dagfinn@Friluftsliv_Hivolda ;Unknown ;2 ;2 Moderate ;
+2018-02-08 ;2018-02-08 14:26 ;3024 ;Sunnmøre ;ØRSTA ;Trygve@friluftsliv_Hivolda ;Unknown ;2 ;2 Moderate ;
 2018-02-08 ;2018-02-16 22:21 ;3027 ;Indre Fjordane ;EID ;drift@svv ;** ;2 ;2 Moderate ;
 2018-02-08 ;2018-02-16 22:21 ;3034 ;Hardanger ;ODDA ;drift@svv ;** ;3 ;3 Considerable ;
 2018-02-08 ;2018-02-16 22:21 ;3015 ;Ofoten ;BALLANGEN ;drift@svv ;** ;1 ;1 Low ;
@@ -13466,7 +13466,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2018-03-05 ;2018-03-05 13:44 ;3029 ;Indre Sogn ;SOGNDAL ;Sander@ObsKorps ;*** ;2 ;2 Moderate ;Forecast correct
 2018-03-05 ;2018-03-05 12:10 ;3009 ;Nord-Troms ;KÅFJORD ;jan arild@NVE ;***** ;2 ;2 Moderate ;Forecast correct
 2018-03-05 ;2018-03-05 12:08 ;3011 ;Tromsø ;TROMSØ ;martin@svv ;***** ;2 ;2 Moderate ;Forecast correct
-2018-03-05 ;2018-03-08 15:41 ;3011 ;Tromsø ;TROMSØ ;HåvardT@nve ;***** ;2 ;2 Moderate ;Forecast correct
+2018-03-05 ;2018-03-08 15:41 ;3011 ;Tromsø ;TROMSØ ;HåvardT@met ;***** ;2 ;2 Moderate ;Forecast correct
 2018-03-05 ;2018-03-05 13:32 ;3011 ;Tromsø ;BALSFJORD ;ToreV@met ;***** ;2 ;2 Moderate ;Forecast correct
 2018-03-05 ;2018-03-05 14:04 ;3009 ;Nord-Troms ;KÅFJORD ;drift@svv ;** ;2 ;2 Moderate ;
 2018-03-05 ;2018-03-05 14:04 ;3015 ;Ofoten ;BALLANGEN ;drift@svv ;** ;1 ;1 Low ;
@@ -15405,3 +15405,7 @@ Date ;Reg time ;Region id ;Region ;Municipal ;Nick ;Competence ;DL ;Danger level
 2018-05-29 ;2018-05-29 23:53 ;3003 ;Nordenskiöld Land ;SVALBARD ;Kjetil@obskorps ;**** ;1 ;1 Low ;Forecast correct
 2018-05-31 ;2018-05-31 13:55 ;3010 ;Lyngen ;BALSFJORD ;torben@obskorps ;*** ;0 ;0 Not given ;Forecast correct
 2018-06-08 ;2018-06-08 15:26 ;3028 ;Jotunheimen ;LUSTER ;Siggen@obskorps ;**** ;0 ;0 Not given ;
+2018-10-04 ;2018-10-04 21:50 ;3015 ;Ofoten ;NARVIK ;Kaj@obskorps ;**** ;1 ;1 Low ;
+2018-10-24 ;2018-10-24 15:43 ;3022 ;Trollheimen ;Oppdal ;aanon@forsvaret ;***** ;1 ;1 Low ;
+2018-10-26 ;2018-10-27 12:02 ;3023 ;Romsdal ;RAUMA ;kruse@nortind ;*** ;2 ;2 Moderate ;
+2018-10-27 ;2018-10-27 16:22 ;3024 ;Sunnmøre ;STORDAL ;Kristoffer ;* ;1 ;1 Low ;

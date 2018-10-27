@@ -1,0 +1,466 @@
+ID   Order  IsActive  Langkey   Name                                              Description                                       
+0           1         1         Ikke gitt                                                                                           
+100         1         1         Varslingsregion ikke gitt                         Områdeinndeling for snøobservasjoner (GeoHazardTID = 10)
+151  269    1         1         Østfold                                                                                             
+152  268    1         1         Akershus                                                                                            
+153  267    1         1         Oslo                                                                                                
+154  266    1         1         Hedmark                                                                                             
+155  265    1         1         Oppland                                                                                             
+156  264    1         1         Buskerud                                                                                            
+157  263    1         1         Vestfold                                                                                            
+158  262    1         1         Telemark                                                                                            
+159  261    1         1         Aust-Agder                                                                                          
+160  260    1         1         Vest-Agder                                                                                          
+161  259    1         1         Rogaland                                                                                            
+162  258    1         1         Hordaland                                                                                           
+163  257    1         1         Sogn og Fjordane                                                                                    
+164  256    1         1         Møre og Romsdal                                                                                     
+165  255    1         1         Sør-Trøndelag                                                                                       
+166  254    1         1         Nord-Trøndelag                                                                                      
+167  253    1         1         Nordland                                                                                            
+168  252    1         1         Troms                                                                                               
+169  251    1         1         Finnmark                                                                                            
+170  250    1         1         Svalbard                                                                                            
+200         1         1         Fylke ikke gitt                                   Områdeinndeling for jordobservasjoner (GeoHazardTID = 20)
+201  10     1         1         Østfold                                                                                             
+202  20     1         1         Akershus                                                                                            
+203  30     1         1         Oslo                                                                                                
+204  40     1         1         Hedmark                                                                                             
+205  50     1         1         Oppland                                                                                             
+206  60     1         1         Buskerud                                                                                            
+207  70     1         1         Vestfold                                                                                            
+208  80     1         1         Telemark                                                                                            
+209  90     1         1         Aust-Agder                                                                                          
+210  100    1         1         Vest-Agder                                                                                          
+211  110    1         1         Rogaland                                                                                            
+212  120    1         1         Hordaland                                                                                           
+214  130    1         1         Sogn og Fjordane                                                                                    
+215  140    1         1         Møre og Romsdal                                                                                     
+218  4      1         1         Nordland                                                                                            
+219  3      1         1         Troms                                                                                               
+220  2      1         1         Finnmark                                                                                            
+221  1      1         1         Svalbard                                                                                            
+250  170    1         1         Trøndelag                                                                                           
+300         1         1         Fylke ikke gitt                                   Områdeinndeling for våt-jordobservasjoner (GeoHazardTID = 30)
+301  10     1         1         Østfold                                                                                             
+302  20     1         1         Akershus                                                                                            
+303  30     1         1         Oslo                                                                                                
+304  40     1         1         Hedmark                                                                                             
+305  50     1         1         Oppland                                                                                             
+306  60     1         1         Buskerud                                                                                            
+307  70     1         1         Vestfold                                                                                            
+308  80     1         1         Telemark                                                                                            
+309  90     1         1         Aust-Agder                                                                                          
+310  100    1         1         Vest-Agder                                                                                          
+311  110    1         1         Rogaland                                                                                            
+312  120    1         1         Hordaland                                                                                           
+314  130    1         1         Sogn og Fjordane                                                                                    
+315  140    1         1         Møre og Romsdal                                                                                     
+316  150    1         1         Sør-Trøndelag                                                                                       
+317  160    1         1         Nord-Trøndelag                                                                                      
+318  170    1         1         Nordland                                                                                            
+319  180    1         1         Troms                                                                                               
+320  190    1         1         Finnmark                                                                                            
+321  200    1         1         Svalbard                                                                                            
+322  210    1         1         Jan Mayen                                                                                           
+323  220    1         1         Kontinentalsokkelen                                                                                 
+399  1000   1         1         Ukjent                                                                                              
+400         1         1         Fylke ikke gitt                                   Områdeinndeling for steinobservasjoner (GeoHazardTID = 40)
+401  10     1         1         Østfold                                                                                             
+402  20     1         1         Akershus                                                                                            
+403  30     1         1         Oslo                                                                                                
+404  40     1         1         Hedmark                                                                                             
+405  50     1         1         Oppland                                                                                             
+406  60     1         1         Buskerud                                                                                            
+407  70     1         1         Vestfold                                                                                            
+408  80     1         1         Telemark                                                                                            
+409  90     1         1         Aust-Agder                                                                                          
+410  100    1         1         Vest-Agder                                                                                          
+411  110    1         1         Rogaland                                                                                            
+412  120    1         1         Hordaland                                                                                           
+414  130    1         1         Sogn og Fjordane                                                                                    
+415  140    1         1         Møre og Romsdal                                                                                     
+416  150    1         1         Sør-Trøndelag                                                                                       
+417  160    1         1         Nord-Trøndelag                                                                                      
+418  170    1         1         Nordland                                                                                            
+419  180    1         1         Troms                                                                                               
+420  190    1         1         Finnmark                                                                                            
+421  200    1         1         Svalbard                                                                                            
+422  210    1         1         Jan Mayen                                                                                           
+423  220    1         1         Kontinentalsokkelen                                                                                 
+499  1000   1         1         Ukjent                                                                                              
+500  5      1         1         Trøndelag - Møre og Romsdal                       Trøndelag - Møre og Romsdal hoved-region          
+501  6      1         1         Sogn og Fjordane – Hordaland                      Sogn og Fjordane – Hordaland hoved-region         
+502  10     1         1         Rogaland – Agder                                  Rogaland – Agder hoved-region                     
+503  7      1         1         Østlandet                                         Østlandet hoved-region                            
+700         1         1         Fylke ikke gitt                                   Områdeinndeling for isobservasjoner (GeoHazardTID = 70)
+701  10     1         1         Østfold                                                                                             
+702  20     1         1         Akershus                                                                                            
+703  30     1         1         Oslo                                                                                                
+704  40     1         1         Hedmark                                                                                             
+705  50     1         1         Oppland                                                                                             
+706  60     1         1         Buskerud                                                                                            
+707  70     1         1         Vestfold                                                                                            
+708  80     1         1         Telemark                                                                                            
+709  90     1         1         Aust-Agder                                                                                          
+710  100    1         1         Vest-Agder                                                                                          
+711  110    1         1         Rogaland                                                                                            
+712  120    1         1         Hordaland                                                                                           
+714  130    1         1         Sogn og Fjordane                                                                                    
+715  140    1         1         Møre og Romsdal                                                                                     
+718  4      1         1         Nordland                                                                                            
+719  3      1         1         Troms                                                                                               
+720  2      1         1         Finnmark                                                                                            
+721  1      1         1         Svalbard                                                                                            
+750  750    1         1         Trøndelag                                                                                           
+801  5      1         1         Trøndelag - Møre og Romsdal                       Trøndelag - Møre og Romsdal hoved-region          
+802  6      1         1         Sogn og Fjordane – Hordaland                      Sogn og Fjordane – Hordaland hoved-region         
+803  10     1         1         Rogaland – Agder                                  Rogaland – Agder hoved-region                     
+804  7      1         1         Østlandet                                         Østlandet hoved-region                            
+1000        1         1         Ingen varslingsregion SE                          Svenske varslingsregioner                         
+1001        1         1         Treriksröset - Torne Träsk                                                                          
+1002        1         1         Riksgränsenfjällen                                                                                  
+1003        1         1         Abisko, Torne Träsk                                                                                 
+1004        1         1         Kebnekaise                                                                                          
+1005        1         1         Västra Gällivarefjällen                                                                             
+1006        1         1         Östra Gällivarefjällen                                                                              
+1007        1         1         Västra Jokkmokksfjällen                                                                             
+1008        1         1         Östra Jokkmokksfjällen                                                                              
+1009        1         1         Västra Arjeplogsfjällen                                                                             
+1010        1         1         Östra Arjeplogsfjällen                                                                              
+1011        1         1         Västra Vindel- och Tärnafjällen                                                                     
+1012        1         1         Östra Vindel- och Tärnafjällen                                                                      
+1013        1         1         Stekenjokksfjällen                                                                                  
+1014        1         1         Marsfjällen                                                                                         
+1015        1         1         Hotagen-Frostviken                                                                                  
+1016        1         1         Flatruet, Helags, Sylarna, Storlien                                                                 
+1017        1         1         Åre, Vålådalen, Oviksfjällen                                                                        
+1018        1         1         Ljungdalen, Funäsdalen                                                                              
+1019        1         1         Klövsjö, Vemdalen                                                                                   
+1020        1         1         Idre, Grövelsjön                                                                                    
+1021        1         1         Sälenfjällen                                                                                        
+2001        1         1         HALDENVASSDRAGET                                                                                    
+2002        1         1         GLOMMAVASSDRAGET                                                                                    
+2003        1         1         MOSSEVASSDRAGET                                                                                     
+2004        1         1         HØLENELVA                                                                                           
+2005        1         1         NESODDEN OG BUNNEFJORDEN                                                                            
+2006        1         1         NORDMARKVASSDRAGET                                                                                  
+2007        1         1         LYSAKERELVA                                                                                         
+2008        1         1         SANDVIKSELVA                                                                                        
+2009        1         1         ÅROSVASSDRAGET                                                                                      
+2010        1         1         HURUMLANDET ØST OG SØR                                                                              
+2011        1         1         LIERELVA                                                                                            
+2012        1         1         DRAMMENSVASSDRAGET                                                                                  
+2013        1         1         SANDEVASSDRAGET                                                                                     
+2014        1         1         AULIVASSDRAGET                                                                                      
+2015        1         1         NUMEDALSLÅGEN OG SILJANVASSDRAGET                                                                   
+2016        1         1         SKIENSVASSDRAGET                                                                                    
+2017        1         1         KRAGERØVASSDRAGET                                                                                   
+2018        1         1         VEGÅRSVASSDRAGET OG GJERSTADVASSDRAGET                                                              
+2019        1         1         ARENDALSVASSDRAGET                                                                                  
+2020        1         1         TOVDALSVASSDRAGET                                                                                   
+2021        1         1         OTRA                                                                                                
+2022        1         1         MANDALSELVA                                                                                         
+2023        1         1         AUDNA                                                                                               
+2024        1         1         LYGNA                                                                                               
+2025        1         1         KVINA                                                                                               
+2026        1         1         SIRA OG SOKNA                                                                                       
+2027        1         1         BJERKREIMVASSDRAGET                                                                                 
+2028        1         1         FIGGJO                                                                                              
+2029        1         1         STAVANGER OG SANDNES KOMMUNER                                                                       
+2030        1         1         FRAFJORDELVA                                                                                        
+2031        1         1         LYSEVASSDRAGET                                                                                      
+2032        1         1         JØRPELANDSÅNA                                                                                       
+2033        1         1         ÅRDALSELVA                                                                                          
+2034        1         1         RYFYLKEØYANE                                                                                        
+2035        1         1         ULLA OG FØRREELVA                                                                                   
+2036        1         1         SULDALSVASSDRAGET                                                                                   
+2037        1         1         SAUDAVASSDRAGET                                                                                     
+2038        1         1         VIKEDALSELVA                                                                                        
+2039        1         1         KYST NEDSTRAND-HAUGESUND-TITTELSNES                                                                 
+2040        1         1         KARMØY                                                                                              
+2041        1         1         ETNEVASSDRAGET                                                                                      
+2042        1         1         BLÅELVA                                                                                             
+2043        1         1         BØMLO                                                                                               
+2044        1         1         STORDØYA                                                                                            
+2045        1         1         HARDANGERFJORDEN ØST: SUNDE-ÆNES                                                                    
+2046        1         1         MAURANGERFJORDEN OG SILDEFJORDEN ØST                                                                
+2047        1         1         SAMLAFJORDEN SØR OG JONDAL KOMMUNE                                                                  
+2048        1         1         OPO                                                                                                 
+2049        1         1         TYSSO                                                                                               
+2050        1         1         EIDFJORDVASSDRAGET, KINSO OG SIMA                                                                   
+2051        1         1         OSAFJORDEN, ULVIKFJORDEN OG EIDFJORDEN NORD                                                         
+2052        1         1         GRANVINFJORDEN OG SAMLAFJORDEN NORD                                                                 
+2053        1         1         SÆVAREIDELVA                                                                                        
+2054        1         1         TYSNES OG AUSTEVOLL KOMMUNER                                                                        
+2055        1         1         SAMNANGERVASSDRAGET                                                                                 
+2056        1         1         BERGEN OG OMEGN                                                                                     
+2057        1         1         SOTRA                                                                                               
+2058        1         1         ØYGARDEN KOMMUNE                                                                                    
+2059        1         1         ASKØYA OG HOLSNØYA                                                                                  
+2060        1         1         OSTERØYA                                                                                            
+2061        1         1         BERGSDALSVASSDRAGET                                                                                 
+2062        1         1         VOSSOVASSDRAGET                                                                                     
+2063        1         1         EKSINGEDALSVASSDRAGET                                                                               
+2064        1         1         STEINSLANDSVASSDRAGET                                                                               
+2065        1         1         LINDÅSHALVØYA, SEIMSFJORDEN OG AUSTFJORDEN                                                          
+2066        1         1         FOSNØYA, RADØYA OG FEDJE                                                                            
+2067        1         1         MASFJORDEN                                                                                          
+2068        1         1         SOGNESJØEN SØR                                                                                      
+2069        1         1         YTRE SOGNEFJORDEN SØR: RUTLEDAL-VARMRÅK                                                             
+2070        1         1         VIKSVASSDRAGET                                                                                      
+2071        1         1         NÆRØYELVI                                                                                           
+2072        1         1         AURLANDSVASSDRAGET                                                                                  
+2073        1         1         LÆRDALSVASSDRAGET                                                                                   
+2074        1         1         ÅRDALSVASSDRAGET                                                                                    
+2075        1         1         FORTUNVASSDRAGET                                                                                    
+2076        1         1         JOSTEDØLA                                                                                           
+2077        1         1         ÅRØYVASSDRAGET                                                                                      
+2078        1         1         VETLEFJORDEN OG FJÆRLANDSFJORDEN                                                                    
+2079        1         1         HØYANGERVASSDRAGET                                                                                  
+2080        1         1         YTRE SOGNEFJORDEN NORD: KYRKJEBØ-RISNES                                                             
+2081        1         1         SOLUND KOMMUNE                                                                                      
+2082        1         1         GUDDALSVASSDRAGET                                                                                   
+2083        1         1         GAULARVASSDRAGET                                                                                    
+2084        1         1         JØLSTRA                                                                                             
+2085        1         1         OSELVVASSDRAGET                                                                                     
+2086        1         1         GJENGEDALSVASSDRAGET                                                                                
+2087        1         1         BREIMSVASSDRAGET                                                                                    
+2088        1         1         STRYNVASSDRAGET                                                                                     
+2089        1         1         HORNINDALVASSDRAGET                                                                                 
+2090        1         1         BREMANGERLANDET                                                                                     
+2091        1         1         SILDEGAPET                                                                                          
+2092        1         1         GUSDALELVA                                                                                          
+2093        1         1         ROVDEFJORDEN SØR OG SYVDEFJORDEN                                                                    
+2094        1         1         STIGEDALSELVA                                                                                       
+2095        1         1         ØRSTAVASSDRAGET                                                                                     
+2096        1         1         HAREIDLANDET OG GURSKØYA                                                                            
+2097        1         1         STORFJORDEN SØR, HJØRUNDFJORDEN OG SYKKYLVSFJORDEN                                                  
+2098        1         1         STORFJORDEN SØR, SUNNYLVSFJORDEN OG GEIRANGERFJORD                                                  
+2099        1         1         TAFJORDVASSDRAGET                                                                                   
+2100        1         1         VALLDØLA                                                                                            
+2101        1         1         ÅLESUND OG OMEGN                                                                                    
+2102        1         1         MIDTFJORDEN SØR OG ROMSDALSFJORDEN VEST                                                             
+2103        1         1         RAUMA                                                                                               
+2104        1         1         EIRA                                                                                                
+2105        1         1         GUSJÅVASSDRAGET                                                                                     
+2106        1         1         AUKRA, MISUND OG SANDØY KOMMUNER                                                                    
+2107        1         1         FRÆNFJORDEN, JULSUNDET OG HUSTADVIKA                                                                
+2108        1         1         KORNSTADFJORDEN OG BATNFJORDEN                                                                      
+2109        1         1         DRIVA                                                                                               
+2110        1         1         AVERØY, FREI OG KRISTIANDSUND KOMMUNER                                                              
+2111        1         1         KYST TINGVOLLFJORDEN-SURNADALSFJORDEN                                                               
+2112        1         1         SURNA                                                                                               
+2113        1         1         FJELNA                                                                                              
+2114        1         1         TUSTNA KOMMUNE OG ERTVÅGØY                                                                          
+2115        1         1         SMØLA KOMMUNE                                                                                       
+2116        1         1         RØSTA                                                                                               
+2117        1         1         HITRA KOMMUNE                                                                                       
+2118        1         1         FRØYA KOMMUNE                                                                                       
+2119        1         1         TRONDHEIMSLEIA ØST: STAMNES-AGDENES FYR                                                             
+2120        1         1         YTRE TRONDHEIMSFJORDEN: AGDENES FYR-GEITANESET                                                      
+2121        1         1         ORKLA                                                                                               
+2122        1         1         GAULA                                                                                               
+2123        1         1         NIDELVVASSDRAGET                                                                                    
+2124        1         1         STJØRDALSVASSDRAGET                                                                                 
+2125        1         1         ÅSENFJORDEN                                                                                         
+2126        1         1         TRONDHEIMSFJORDEN ØST: FROSTA-VERDALSØRA                                                            
+2127        1         1         VERDALSVASSDRAGET                                                                                   
+2128        1         1         SNÅSAVASSDRAGET                                                                                     
+2129        1         1         FOLLAVASSDRAGET                                                                                     
+2130        1         1         VERRANSUNDET                                                                                        
+2131        1         1         TRONDHEIMSFJORDEN VEST                                                                              
+2132        1         1         SKAUDALSVASSDRAGET                                                                                  
+2133        1         1         STJØRNFJORDEN                                                                                       
+2134        1         1         TEKSDALSELVA                                                                                        
+2135        1         1         STORDALSELVA                                                                                        
+2136        1         1         HOFSTADELVA                                                                                         
+2137        1         1         OSEN OG FLATANGER KOMMUNER                                                                          
+2138        1         1         ÅRGÅRDSVASSDRAGET OG BOGNA                                                                          
+2139        1         1         NAMSEN                                                                                              
+2140        1         1         SALSVATNVASSDRAGET                                                                                  
+2141        1         1         OPPLØYVASSDRAGET                                                                                    
+2142        1         1         INDRE FOLDA                                                                                         
+2143        1         1         VIKNA OG KYST FOLDFJORDEN-BINDALSFJORDEN                                                            
+2144        1         1         ÅBJØRA                                                                                              
+2145        1         1         BINDALSFJORDEN NORD                                                                                 
+2146        1         1         KYST RØYINGEN-VELFJORDEN                                                                            
+2147        1         1         VEGA KOMMUNE                                                                                        
+2148        1         1         LOMSDALSVASSDRAGET                                                                                  
+2149        1         1         VISTEN, HALSFJORDEN OG YTRE VEFSNFJORDEN ØST                                                        
+2150        1         1         ALSTEN OG TJØTTA                                                                                    
+2151        1         1         VEFSNA                                                                                              
+2152        1         1         FUSTA OG DREVJA                                                                                     
+2153        1         1         LEIRFJORD KOMMUNE                                                                                   
+2154        1         1         DØNNA OG HERØY KOMMUNER                                                                             
+2155        1         1         RØSSÅGA                                                                                             
+2156        1         1         RANAVASSDRAGET                                                                                      
+2157        1         1         KYST UTSKARPEN-NESNA-TONNES                                                                         
+2158        1         1         ØYER I NESNA, LURØY OG TRÆNA KOMMUNER                                                               
+2159        1         1         VESTRE SVARTISEN OG RØDØY KOMMUNE                                                                   
+2160        1         1         FYKANÅGA                                                                                            
+2161        1         1         BEIARELVA, MORSDALSFJORDEN OG NORDFJORDEN                                                           
+2162        1         1         SALTFJORDEN: NORDFJORDEN-SKJERSTAD                                                                  
+2163        1         1         SALTELVA                                                                                            
+2164        1         1         SULITJELMAVASSDRAGET                                                                                
+2165        1         1         KYST SALTSTRAUMEN-BODØ-TÅRNVIKFJELLET                                                               
+2166        1         1         FAGERBAKKVASSDRAGET OG LAKSÅGA                                                                      
+2167        1         1         KOBBELVVASSDRAGET                                                                                   
+2168        1         1         NORDFOLDA                                                                                           
+2169        1         1         YTRE DEL AV STEIGEN KOMMUNE                                                                         
+2170        1         1         SAGELVVASSDRAGET                                                                                    
+2171        1         1         HELLEMOVASSDRAGET                                                                                   
+2172        1         1         FORSÅVASSDRAGET                                                                                     
+2173        1         1         SKJOMAVASSDRAGET                                                                                    
+2174        1         1         INDRE OFOTFJORDEN                                                                                   
+2175        1         1         OFOTFJORDEN NORD: TANGVIK-BOGEN-SELNES                                                              
+2176        1         1         TJELDØYA                                                                                            
+2177        1         1         ØSTRE HINNØYA                                                                                       
+2178        1         1         VESTRE HINNØYA                                                                                      
+2179        1         1         VÅGAN KOMMUNE                                                                                       
+2180        1         1         VESTVÅGØY KOMMUNE                                                                                   
+2181        1         1         FLAKSTADØYA OG MOSKENESØYA                                                                          
+2182        1         1         VÆRØY KOMMUNE                                                                                       
+2183        1         1         RØST KOMMUNE                                                                                        
+2184        1         1         HADSELØYA                                                                                           
+2185        1         1         LANGØYA                                                                                             
+2186        1         1         ANDØYA                                                                                              
+2187        1         1         GRYTØYA, BJARKØYA OG SANDSØYA                                                                       
+2188        1         1         ROLLA                                                                                               
+2189        1         1         SKODDEBERGVASSDRAGET                                                                                
+2190        1         1         GRATANGEN OG LAVANGEN                                                                               
+2191        1         1         SALANGSELVA                                                                                         
+2192        1         1         ANDØRJA                                                                                             
+2193        1         1         SKØELVVASSDRAGET                                                                                    
+2194        1         1         LAKSELVA OG LYSELVVASSDRAGET                                                                        
+2195        1         1         SENJA VEST                                                                                          
+2196        1         1         MÅLSELVVASSDRAGET                                                                                   
+2197        1         1         KVALØYA OG TROMSØYA                                                                                 
+2198        1         1         NORDKJOSELVA                                                                                        
+2199        1         1         TROMSØYSUNDET OG GRØTSUNDET ØST, REINØYA OG KARLSØ                                                  
+2200        1         1         RINGVASSØYA                                                                                         
+2201        1         1         REBBENESØYA, GRYTØYA, NORD-KVALØYA OG HELGØYA                                                       
+2202        1         1         VANNA OG NORD-FUGLØYA                                                                               
+2203        1         1         LAKSELVA                                                                                            
+2204        1         1         SIGNALDALSELVA                                                                                      
+2205        1         1         SKIBOTNVASSDRAGET                                                                                   
+2206        1         1         KÅFJORDVASSDRAGET                                                                                   
+2207        1         1         ARNØYA OG LAUKØYA                                                                                   
+2208        1         1         REISAVASSDRAGET                                                                                     
+2209        1         1         KVÆNANGSVASSDRAGET                                                                                  
+2210        1         1         STORELVA/KVÆNANGEN NORD                                                                             
+2211        1         1         LOPPA KOMMUNE OG LANGFJORDEN                                                                        
+2212        1         1         ALTAVASSDRAGET                                                                                      
+2213        1         1         REPPARFJORDVASSDRAGET                                                                               
+2214        1         1         STJERNØYA                                                                                           
+2215        1         1         SEILAND                                                                                             
+2216        1         1         SØRØYA                                                                                              
+2217        1         1         KVALØYA                                                                                             
+2218        1         1         RUSSELVVASSDRAGET                                                                                   
+2219        1         1         INGØYA OG ROLVSØYA                                                                                  
+2220        1         1         NORDRE PORSANGERHALVØYA, MÅSØYA OG HJELMSØYA                                                        
+2221        1         1         MAGERØYA                                                                                            
+2222        1         1         VESTRE PORSANGEN                                                                                    
+2223        1         1         STABBURSELVA                                                                                        
+2224        1         1         LAKSELVVASSDRAGET                                                                                   
+2225        1         1         BØRSELVVASSDRAGET                                                                                   
+2226        1         1         ØSTRE PORSANGEN                                                                                     
+2227        1         1         YTRE LAKSEFJORDEN VEST                                                                              
+2228        1         1         STORELVA/INDRE LAKSEFJORDEN VEST                                                                    
+2229        1         1         ADAMSELVVASSDRAGET                                                                                  
+2230        1         1         YTRE LAKSEFJORDEN ØST                                                                               
+2231        1         1         NORDKINNHALVØYA NORD                                                                                
+2232        1         1         HOPSFJORDEN                                                                                         
+2233        1         1         LANGFJORDVASSDRAGET                                                                                 
+2234        1         1         TANA                                                                                                
+2235        1         1         STORDALSELVVASSDRAGET                                                                               
+2236        1         1         KONGSFJORDVASSDRAGET                                                                                
+2237        1         1         VESTERELVVASSDRAGET                                                                                 
+2238        1         1         SANDFJORDELVA                                                                                       
+2239        1         1         KOMAGELVA OG SKALLELVVASSDRAGET                                                                     
+2240        1         1         VESTRE JAKOBSELVA                                                                                   
+2241        1         1         BERGEBYELVA OG VESTERELVA                                                                           
+2242        1         1         REPPENELVA OG NYELVVASSDRAGET                                                                       
+2243        1         1         KLOKKERELVVASSDRAGET                                                                                
+2244        1         1         NEIDENVASSDRAGET                                                                                    
+2245        1         1         SKOGERØYA                                                                                           
+2246        1         1         PASVIKELVA                                                                                          
+2247        1         1         GRENSE JAKOBSELV                                                                                    
+2301        1         1         KEMIJOKI                                                                                            
+2302        1         1         TORNEELVEN                                                                                          
+2303        1         1         LULEELVEN                                                                                           
+2304        1         1         PITEELVEN                                                                                           
+2305        1         1         SKELLEFTEELVEN                                                                                      
+2306        1         1         UMEELVEN                                                                                            
+2307        1         1         ÅNGERMANELVEN                                                                                       
+2308        1         1         INDALSELVEN                                                                                         
+2309        1         1         LJUSNAN                                                                                             
+2310        1         1         DALELVEN                                                                                            
+2311        1         1         VANERN-GØTA ELV'S SIDENEDBØRFELT KLARAELVEN                                                         
+2312        1         1         VANERN-GØTA ELV'S SIDENEDBØRFELT NORSELVEN                                                          
+2313        1         1         VANERN-GØTA ELV'S SIDENEDBØRFELT BYELVEN                                                            
+2314        1         1         VANERN-GØTA ELV'S SIDENEDBØRFELT UPPERUDSELVEN                                                      
+2315        1         1         STRØMSÅN                                                                                            
+2800 7      1         1         Østlandet                                         Østlandet gruppering                              
+2801 10     1         1         Rogaland – Agder                                  Rogaland - Agder gruppering                       
+2802 6      1         1         Sogn og Fjordane – Hordaland                      Sogn og Fjordane – Hordaland gruppering           
+2803 5      1         1         Trøndelag – Møre og Romsdal                       Trøndelag - Møre og Romsdal gruppering            
+2804 4      1         1         Nordland                                          Nordland gruppering                               
+2805 3      1         1         Troms                                             Troms gruppering                                  
+2806 2      1         1         Finnmark                                          Finnmark gruppering                               
+2999        1         1         Ukjent                                                                                              
+3000 3000   1         1         Varslingsregion ikke gitt                                                                           
+3001 3101   1         1         Svalbard øst                                                                                        
+3002 3102   1         1         Svalbard vest                                                                                       
+3003 3003   1         1         Nordenskiöld Land                                                                                   
+3004 3104   1         1         Svalbard sør                                                                                        
+3005 3105   1         1         Øst-Finnmark                                                                                        
+3006 3106   1         1         Finnmarkskysten                                                                                     
+3007 3007   1         1         Vest-Finnmark                                                                                       
+3008 3108   1         1         Finnmarksvidda                                                                                      
+3009 3009   1         1         Nord-Troms                                                                                          
+3010 3010   1         1         Lyngen                                                                                              
+3011 3011   1         1         Tromsø                                                                                              
+3012 3012   1         1         Sør-Troms                                                                                           
+3013 3013   1         1         Indre Troms                                                                                         
+3014 3014   1         1         Lofoten og Vesterålen                                                                               
+3015 3015   1         1         Ofoten                                                                                              
+3016 3016   1         1         Salten                                                                                              
+3017 3017   1         1         Svartisen                                                                                           
+3018 3118   1         1         Helgeland                                                                                           
+3019 3119   1         1         Nord-Trøndelag                                                                                      
+3020 3120   1         1         Sør-Trøndelag                                                                                       
+3021 3121   1         1         Ytre Nordmøre                                                                                       
+3022 3022   1         1         Trollheimen                                                                                         
+3023 3023   1         1         Romsdal                                                                                             
+3024 3024   1         1         Sunnmøre                                                                                            
+3025 3125   1         1         Nord-Gudbrandsdalen                                                                                 
+3026 3126   1         1         Ytre Fjordane                                                                                       
+3027 3027   1         1         Indre Fjordane                                                                                      
+3028 3028   1         1         Jotunheimen                                                                                         
+3029 3029   1         1         Indre Sogn                                                                                          
+3030 3130   1         1         Ytre Sogn                                                                                           
+3031 3031   1         1         Voss                                                                                                
+3032 3032   1         1         Hallingdal                                                                                          
+3033 3133   1         1         Hordalandskysten                                                                                    
+3034 3034   1         1         Hardanger                                                                                           
+3035 3035   1         1         Vest-Telemark                                                                                       
+3036 3136   1         1         Rogaland                                                                                            
+3037 3137   1         1         Vest-Agder                                                                                          
+3038 3138   1         1         Aust-Agder                                                                                          
+3039 3139   1         1         Telemark sør                                                                                        
+3040 3140   1         1         Vestfold                                                                                            
+3041 3141   1         1         Buskerud sør                                                                                        
+3042 3142   1         1         Oppland sør                                                                                         
+3043 3143   1         1         Hedmark                                                                                             
+3044 3144   1         1         Akershus                                                                                            
+3045 3145   1         1         Oslo                                                                                                
+3046 3146   1         1         Østfold                                                                                             
+3500 30     1         1         Svalbard                                          Svalbard hoved-region                             
+3501 30     1         1         Troms og Finnmark                                 Troms og Finnmark hoved-region                    
+3502 30     1         1         Nordland                                          Nordland hoved-region                             
+3503 30     1         1         Nord-vestlandet                                   Nord-vestlandet hoved-region                      
+3504 30     1         1         Vestlandet                                        Vestlandet hoved-region                           
+3505 30     1         1         Langfjella                                        Langfjella hoved-region                           
+3506 30     1         1         Sør-Norge                                         Sør-Norge hoved-region                            
+3507 30     1         1         Østlandet                                         Østlandet hoved-region                            

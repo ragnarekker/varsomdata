@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+"""When a read method is generic and can be utilized across modules, the method is placed here."""
+
 from utilities import makelogs as ml
 
 __author__ = 'raek'

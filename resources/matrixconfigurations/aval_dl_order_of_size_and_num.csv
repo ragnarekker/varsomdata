@@ -1,0 +1,23 @@
+﻿EstimatedNum;DestructiveSize;order
+Ingen;Ikke gitt;1
+Observert faretegn;Observert faretegn;2
+Ett (1);1 - Små;3
+Noen (2-5);1 - Små;5
+Flere (6-10);1 - Små;7
+Mange (10 eller mer);1 - Små;8
+Ett (1);2 - Middels;4
+Noen (2-5);2 - Middels;9
+Flere (6-10);2 - Middels;12
+Mange (10 eller mer);2 - Middels;13
+Ett (1);3 - Store;6
+Noen (2-5);3 - Store;11
+Flere (6-10);3 - Store;16
+Mange (10 eller mer);3 - Store;17
+Ett (1);4 - Svært store;10
+Noen (2-5);4 - Svært store;15
+Flere (6-10);4 - Svært store;19
+Mange (10 eller mer);4 - Svært store;20
+Ett (1);5 - Ekstremt store;14
+Noen (2-5);5 - Ekstremt store;18
+Flere (6-10);5 - Ekstremt store;21
+Mange (10 eller mer);5 - Ekstremt store;22
