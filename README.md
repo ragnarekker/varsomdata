@@ -1,7 +1,7 @@
-# Varsom data repository
-This repository contains methods and modules for analysing data in regObs (observations) and Varsom (forecasts). Core functions can be used for accessing api's for regObs, the forecasting-api and the chartserver/gts which provides charts to seNorge and xGeo.
+# Varsomdata
+Here methods and modules for analysing data in regObs (observations) and Varsom (forecasts). Core functions can be used for accessing api's for regObs, the forecasting-api and the chartserver/gts which provides charts to seNorge and xGeo.
 
-Both repository root- and core modules should be viewed as a work in progress. This repository is developed as the need for data is encountered.
+All the modules should be viewed as a work in progress. This repository is developed as the need for data is encountered.
 
 This said, lots of this works fine and all of it gives insight in how to read the api's we have in Varsom.
 
