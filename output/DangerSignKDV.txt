@@ -1,0 +1,46 @@
+ID   Order  IsActive  Langkey   Name                                              Description                                       
+0    1      1         1         Ikke gitt                                                                                           
+1    2      1         1         Ingen faretegn observert                                                                            
+2    3      1         1         Ferske skred                                                                                        
+3    4      1         1         Drønn i snøen                                                                                       
+4    5      1         1         Ferske sprekker                                                                                     
+5    6      1         1         Stort snøfall                                     Brukes i elrapp                                   
+6    7      1         1         Rimkrystaller                                                                                       
+7    8      1         1         Rask temperaturstigning                                                                             
+8    9      1         1         Mye vann i snøen                                                                                    
+9    10     1         1         Fersk vindtransportert snø                                                                          
+99   99     1         1         Annet faretegn (spesifiser)                                                                         
+200  201    1         1         Ikke gitt                                                                                           
+201  202    1         1         Ingen faretegn observert                                                                            
+202  203    1         1         Intenst regnvær                                                                                     
+203  204    1         1         Intens snøsmelting                                                                                  
+204  211    1         1         Overvann i terreng                                                                                  
+205  212    1         1         Utilstrekkelig drenering                                                                            
+206  207    1         1         Stor vannføring i bekker/elver                                                                      
+207  208    1         1         Jordfarga bekker/elver                                                                              
+208  213    1         1         Sprekker/sig i terrenget                                                                            
+209  214    1         1         Observert jordskred                                                                                 
+212  205    1         1         Snødekke med mye vann                                                                               
+214  210    1         1         Bekker tar nye løp                                                                                  
+222  215    1         1         Massebevegelse langs skredkant                                                                      
+223  216    1         1         "Fulle trær"                                      Tre som bøyer seg                                 
+230  209    1         1         Erosjon langs bekker/elver                                                                          
+299  220    1         1         Andre faretegn (spesifiser)                                                                         
+600  600    1         1         Ikke gitt                                                                                           
+601  601    1         1         Ingen faretegn observert                                                                            
+611  611    1         1         Tette stikkrenner pga is                                                                            
+612  612    1         1         Tette stikkrenner pga rusk                                                                          
+621  621    1         1         Moderat vannstandsauke                                                                              
+622  622    1         1         Kraftig vannstandsauke                                                                              
+623  623    1         1         Høy vannstand/flom                                                                                  
+699  699    1         1         Annet (bruk kommentar)                                                                              
+700  700    1         1         Ikke gitt                                                                                           
+701  701    1         1         Ingen faretegn observert                                                                            
+705  705    1         1         Tynt isdekke                                                                                        
+711  711    1         1         Isen har løsnet fra land                                                                            
+712  712    1         1         innløpsosen er åpen                                                                                 
+713  713    1         1         Utløpsosen er åpen                                                                                  
+714  714    1         1         Store sprekker eller råker                                                                          
+720  720    1         1         Mye overvann                                                                                        
+730  730    1         1         økt vannføring                                                                                      
+799  799    1         1         Annet (bruk kommentar)                                                                              

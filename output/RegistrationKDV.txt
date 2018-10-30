@@ -1,0 +1,21 @@
+ID   Order  IsActive  Langkey   Name                                              Description                                       
+10   98     1         1         Notater                                           Tabellen brukes av alle (GeoHazardTID 10,20,30,40,60,70)
+11   97     1         1         Ulykke/hendelse                                   Tabellen brukes av GeoHazardTID 10,60,70          
+13   10     1         1         Faretegn                                          Tabellen brukes av alle (GeoHazardTID 10,20,30,40,60,70)
+14   14     1         1         Skader                                            Gjelder alle geohazard. Brukes kun av vann foreløpig.
+21   14     1         1         Vær                                               Tabellen brukes av snø (GeohazardTID = 10)        
+22   14     1         1         Snødekke                                          Tabellen brukes av snø (GeohazardTID = 10)        
+23   15     1         1         Snøprofil                                         Tabellen brukes av snø (GeohazardTID = 10)        
+25   16     1         1         Stabilitetstest                                   Tabellen brukes av snø (GeohazardTID = 10)        
+26   12     1         1         Skredhendelse                                     Tabellen brukes av snø (GeohazardTID = 10)        
+31   18     1         1         Skredfarevurdering                                Tabellen brukes av snø (GeohazardTID = 10)        
+32   17     1         1         Skredproblem                                      Tabellen brukes av snø (GeohazardTID = 10)        
+33   13     1         1         Skredaktivitet                                    Tabellen brukes av snø (GeohazardTID = 10)        
+50   8      1         1         Istykkelse                                        Tabellen brukes av is (GeohazardTID = 70)         
+51   7      1         1         Isdekningsgrad                                    Tabellen brukes av is (GeohazardTID = 70)         
+62   62     1         1         Vannstand                                         nye vannstand skjema for flom database prosjektet.
+71   71     1         1         Skredhendelse                                     Tabellen brukes av jord (GeohazardTID = 20,30og40)
+80   80     1         1         Hendelser                                         Grupperings type - Hendelser                      
+81   81     1         1         Skred og faretegn                                 Grupperings type - Skred og faretegn              
+82   82     1         1         Snødekke og vær                                   Grupperings type - Snødekke og vær                
+83   83     1         1         Vurderinger og problemer                          Grupperings type - Vurderinger og problemer       

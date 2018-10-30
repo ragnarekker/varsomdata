@@ -2,19 +2,18 @@
 import datetime
 import requests
 from varsomdata import getforecastapi as fa
-from varsomdata import fencoding as fe
-from varsomdata import setcoreenvironment as cenv
+from utilities import fencoding as fe
+import setenvironment as env
 from varsomdata import getkdvelements as gkdv
 from varsomdata import getdangers as gd
 from varsomdata import getproblems as gp
-from varsomdata import getobservations as go
 
 __author__ = 'raek'
 
 # Some global variables
-api_version = cenv.odata_version
-registration_basestring = cenv.registration_basestring
-kdv_elements_folder = cenv.kdv_elements_folder
+api_version = env.odata_version
+registration_basestring = env.registration_basestring
+kdv_elements_folder = env.kdv_elements_folder
 
 
 log = []
@@ -412,7 +411,7 @@ def get_problems_from_AvalancheWarningV(region_id, start_date, end_date):
     #odata_query = fe.add_norwegian_letters(odata_query)
 
     url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}?$filter={2}&$format=json".format(
-        cenv.api_version, view, odata_query)
+        env.api_version, view, odata_query)
     result = requests.get(url).json()
     try:
         result = result['d']['results']
@@ -467,7 +466,7 @@ def get_problems_from_AvalancheWarningV(region_id, start_date, end_date):
 
 # now in getforecastapi.py
 def get_problems_from_AvalancheWarnProblemV(region_id, start_date, end_date):
-    '''AvalancheWarnProblemV used from 2012-11-15 to today. It selects only problems linked to published
+    """AvalancheWarnProblemV used from 2012-11-15 to today. It selects only problems linked to published
     warnings.
 
     * There was made changes to the view in des 2013 which I think affected destructive size
@@ -544,7 +543,7 @@ def get_problems_from_AvalancheWarnProblemV(region_id, start_date, end_date):
         AdviceText: "Se etter områder hvor vinden nylig har lagt fra seg fokksnø, typisk bak rygger, i renneformasjoner og søkk. Lokale vindeffekter og skiftende vindretning kan gi stor variasjon i hvor fokksnøen legger seg. Snø som sprekker opp rundt skiene/brettet er et typisk tegn. Unngå områder med fokksnø til den har fått stabilisert seg. Det er størst sannsynlighet for å løse ut skred på kul-formasjoner i terrenget og der fokksnøen er myk."
     }
 
-    '''
+    """
     region_name = get_forecast_region_name(region_id)
     aval_cause_kdv = gkdv.get_kdv('AvalCauseKDV')
     view = "AvalancheWarnProblemV"
@@ -557,7 +556,7 @@ def get_problems_from_AvalancheWarnProblemV(region_id, start_date, end_date):
     #odata_query = fe.add_norwegian_letters(odata_query)
 
     url = "http://api.nve.no/hydrology/regobs/{0}/Odata.svc/{1}?$filter={2}&$format=json".format(
-        cenv.api_version, view, odata_query)
+        env.api_version, view, odata_query)
     result = requests.get(url).json()
     try:
         result = result['d']['results']

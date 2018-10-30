@@ -1,0 +1,10 @@
+ID   Order  IsActive  Langkey   Name                                              Description                                       
+0    0      1         1         Ikke observert                                                                                      
+101  10     1         1         Svært mye tørr løssnø (>30cm)                                                                       
+102  20     1         1         Mye tørr løssnø (10-30cm)                                                                           
+103  30     1         1         Litt tørr løssnø (1-10cm)                                                                           
+104  40     1         1         Våt løssnø                                                                                          
+105  50     1         1         Vindpakket hard                                                                                     
+106  60     1         1         Vindpakket myk                                                                                      
+107  70     1         1         Skare                                                                                               
+108  80     1         1         Annet                                                                                               

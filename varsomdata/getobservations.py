@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
+"""Contains classes and methods for accessing all on the regObs webapi."""
+
 import datetime as dt
 import requests as requests
 import pandas as pd
 import sys as sys
-from varsomdata import makelogs as ml
-from varsomdata import setcoreenvironment as cenv
+from utilities import makelogs as ml
+import setenvironment as env
 
 __author__ = 'raek'
 
@@ -190,7 +192,7 @@ def _make_one_request(from_date=None, to_date=None, reg_id=None, registration_ty
                 'NumberOfRecords': None,  # int
                 'Offset': 0}
 
-    url = 'https://api.nve.no/hydrology/regobs/webapi_{0}/Search/Rss?geoHazard=0'.format(cenv.web_api_version)
+    url = 'https://api.nve.no/hydrology/regobs/webapi_{0}/Search/Rss?geoHazard=0'.format(env.web_api_version)
     # url = 'http://tst-h-web03.nve.no/regobswebapi/Search/Rss?geoHazard=0'
     # url = 'https://api.nve.no/hydrology/demo/regobs/webapi_v3.2/Search/Rss?geoHazard=0'
 
@@ -553,10 +555,15 @@ class AvalancheActivityObs2(Registration, Location, Observer):
 
         self.EstimatedNumTID = d['FullObject']['EstimatedNumTID']
         self.EstimatedNumName = d['FullObject']['EstimatedNumTName']
+
         self.DtStart = _stringtime_2_datetime(d['FullObject']['DtStart'])
         self.DtEnd = _stringtime_2_datetime(d['FullObject']['DtEnd'])
+        if self.DtStart is not None and self.DtEnd is not None:
+            self.DtMiddleTime = self.DtStart + (self.DtEnd - self.DtStart) / 2      # Middle time of activity period
+        else:
+            self.DtMiddleTime = None
 
-        self.ValidExposition = d['FullObject']['ValidExposition']  # int of eight char. First char is N, second is NE etc.
+        self.ValidExposition = d['FullObject']['ValidExposition']    # int of eight char. First char is N, second is NE etc.
         self.ExposedHeight1 = d['FullObject']['ExposedHeight1']      # upper height
         self.ExposedHeight2 = d['FullObject']['ExposedHeight2']      # lower height
         self.ExposedHeightComboTID = d['FullObject']['ExposedHeightComboTID']
@@ -1812,7 +1819,7 @@ def _raw_play_ground():
     #            'TextSearch': None,                 # virker ikke
                 'Offset': 0}
 
-    url = 'https://api.nve.no/hydrology/regobs/webapi_{0}/Search/Rss?geoHazard=0'.format(cenv.web_api_version)
+    url = 'https://api.nve.no/hydrology/regobs/webapi_{0}/Search/Rss?geoHazard=0'.format(env.web_api_version)
     url = 'https://api.nve.no/hydrology/regobs/webapi_v3.2.0/Search/Rss?geoHazard=0'
 
     more_available = True
@@ -1925,6 +1932,7 @@ if __name__ == "__main__":
 
     # data = get_data_as_class('2017-08-01', '2018-02-15')
 
+    all_data_snow = get_data('2016-12-30', '2017-01-01', geohazard_tids=10)
     # land_slides = get_land_slide_obs('2018-01-01', '2018-02-01')
     # incident = get_incident('2012-03-01', '2012-03-10')
     # new_water_levels = get_water_level_2('2017-06-01', '2018-02-01')
@@ -1957,14 +1965,13 @@ if __name__ == "__main__":
     # two_obs = get_data(reg_ids=[130548, 130328], output='Nest')
     # two_obs_count = get_data(reg_ids=[130548, 130328],  output='Count nest')
     # two_observers = get_data(from_date='2016-12-30', to_date='2017-04-01', observer_ids=[6,10], output='Nest')
-    # all_data_snow = get_data('2016-12-30', '2017-01-01', geohazard_tids=10)
     # one_observer_count_list = get_data(from_date='2016-12-30', to_date='2017-04-01', observer_ids=6, output='Count list')
     # one_observer_count_nest = get_data(from_date='2012-01-01', to_date='2018-01-01', observer_ids=6, output='Count nest')
     # ice_data = get_data(from_date='2016-10-01', to_date='2016-11-01', geohazard_tids=70, output='Nest')
     #
     #
     # data = _raw_play_ground()
-    _the_simplest_webapi_request()
+    # _the_simplest_webapi_request()
 
     a = 1
 

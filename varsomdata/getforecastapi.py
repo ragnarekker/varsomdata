@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
+"""Contains methods for accessing data on the forecast api's. See api.nve.no for more info"""
 
 import requests
 import datetime as dt
-from varsomdata import getdangers as gd
-from varsomdata import getproblems as gp
-from varsomdata import makelogs as ml
-from varsomdata import setcoreenvironment as cenv
+from varsomdata import varsomclasses as vc
+from utilities import makelogs as ml
+import setenvironment as env
 
 __author__ = 'raek'
 
 
-def get_warnings_as_json(region_ids, from_date, to_date, lang_key=1, recursive_count=5):
-    """Selects warnings and returns the json structured as given on the api .
+def get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=1, recursive_count=5):
+    """Selects warnings and returns the json structured as given on the api.
 
-    :param region_id:       [int or list of ints]       RegionID as given in the forecast api [1-99] or in regObs [101-199]
+    :param region_ids:      [int or list of ints]       RegionID as given in the forecast api [1-99] or in regObs [101-199]
     :param from_date:       [date or string as yyyy-mm-dd]
     :param to_date:         [date or string as yyyy-mm-dd]
     :param lang_key:        [int]                       Language setting. 1 is norwegian and 2 is english.
@@ -44,26 +44,26 @@ def get_warnings_as_json(region_ids, from_date, to_date, lang_key=1, recursive_c
             region_id = region_id - 100
 
         url = "http://api01.nve.no/hydrology/forecast/avalanche/{4}/api/AvalancheWarningByRegion/Detail/{0}/{3}/{1}/{2}"\
-            .format(region_id, from_date, to_date, lang_key, cenv.forecast_api_version)
+            .format(region_id, from_date, to_date, lang_key, env.forecast_api_version)
 
         # If at first you don't succeed, try and try again.
         try:
             warnings_region = requests.get(url).json()
-            ml.log_and_print('[info] getforecastapi.py -> get_warnings_as_json: {0} warnings found for {1} in {2} to {3}'
+            ml.log_and_print('[info] getforecastapi.py -> get_avalanche_warnings_as_json: {0} warnings found for {1} in {2} to {3}'
                              .format(len(warnings_region), region_id, from_date, to_date))
             warnings += warnings_region
 
         except:
-            ml.log_and_print('[error] getforecastapi.py -> get_warnings_as_json: EXCEPTION. RECURSIVE COUNT {0} for {1} in {2} to {3}'
+            ml.log_and_print('[error] getforecastapi.py -> get_avalanche_warnings_as_json: EXCEPTION. RECURSIVE COUNT {0} for {1} in {2} to {3}'
                              .format(recursive_count, region_id, from_date, to_date))
             if recursive_count > 1:
                 recursive_count -= 1        # count down
-                warnings += get_warnings_as_json(region_id, from_date, to_date, lang_key, recursive_count=recursive_count)
+                warnings += get_avalanche_warnings_as_json(region_id, from_date, to_date, lang_key, recursive_count=recursive_count)
 
     return warnings
 
 
-def get_warnings(region_ids, from_date, to_date, lang_key=1):
+def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1):
     """Selects warnings and returns a list of AvalancheDanger Objects. This method adds the
     avalanche problems to the warning.
 
@@ -75,7 +75,7 @@ def get_warnings(region_ids, from_date, to_date, lang_key=1):
     :return avalanche_danger_list: List of AvalancheDanger objects
     """
 
-    warnings_as_json = get_warnings_as_json(region_ids, from_date, to_date, lang_key=lang_key)
+    warnings_as_json = get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=lang_key)
     avalanche_warning_list = []
     exception_counter = 0
 
@@ -90,7 +90,7 @@ def get_warnings(region_ids, from_date, to_date, lang_key=1):
             avalanche_forecast = w['AvalancheDanger']
             avalanche_nowcast = w['AvalancheWarning']
 
-            warning = gd.AvalancheDanger(region_id, region_name, 'Forecast API', date, danger_level, danger_level_name)
+            warning = vc.AvalancheDanger(region_id, region_name, 'Forecast API', date, danger_level, danger_level_name)
             warning.set_source('Forecast')
             warning.set_nick(author)
             warning.set_avalanche_nowcast(avalanche_nowcast)
@@ -137,7 +137,7 @@ def get_warnings(region_ids, from_date, to_date, lang_key=1):
                     exposed_height_fill = p['ExposedHeightFill']                # based on values in exp heigt 1 and 2 this colores the mountain
                     valid_expositions = p['ValidExpositions']                   # north is first cahr and it goes clockwize
 
-                    problem = gp.AvalancheProblem(region_id, region_name, date, order, cause_name, 'Forecast', problem_inn=problem_name)
+                    problem = vc.AvalancheProblem(region_id, region_name, date, order, cause_name, 'Forecast', problem_inn=problem_name)
 
                     problem.set_cause_tid(cause_tid)
                     problem.set_problem(problem_name, problem_tid)
@@ -159,7 +159,7 @@ def get_warnings(region_ids, from_date, to_date, lang_key=1):
             avalanche_warning_list.append(warning)
 
         except:
-            ml.log_and_print('[error] getForecastApi -> get_warnings: Exception at {0} of {1}'.format(len(avalanche_warning_list) + exception_counter, len(warnings_as_json)))
+            ml.log_and_print('[error] getForecastApi -> get_avalanche_warnings: Exception at {0} of {1}'.format(len(avalanche_warning_list) + exception_counter, len(warnings_as_json)))
             exception_counter += 1
 
     # Sort by date
@@ -178,7 +178,7 @@ def get_valid_regids(region_id, from_date, to_date):
     :return:            {RegID:date, RegID:date, ...}
     """
 
-    warnings = get_warnings_as_json(region_id, from_date, to_date)
+    warnings = get_avalanche_warnings_as_json(region_id, from_date, to_date)
     valid_regids = {}
 
     for w in warnings:
@@ -228,7 +228,7 @@ def get_landslide_warnings_as_json(municipality, from_date, to_date, lang_key=1,
             landslide_warnings += landslide_warnings_municipal
 
         except:
-            ml.log_and_print('[error] getforecastapi.py -> get_warnings_as_json: EXCEPTION. RECURSIVE COUNT {0} for {1} in {2} to {3}'
+            ml.log_and_print('[error] getforecastapi.py -> get_avalanche_warnings_as_json: EXCEPTION. RECURSIVE COUNT {0} for {1} in {2} to {3}'
                              .format(recursive_count, m, from_date, to_date))
             if recursive_count > 1:
                 recursive_count -= 1        # count down
@@ -239,9 +239,8 @@ def get_landslide_warnings_as_json(municipality, from_date, to_date, lang_key=1,
 
 if __name__ == "__main__":
 
-    get_landslide_warnings_as_json(1201, dt.date(2018, 1, 1), dt.date(2018, 4, 1))
-    # get data for Bardu (112) and Tamokdalen (129)
-    # warnings = get_warnings([3022, 3014], dt.date(2016, 12, 1), dt.date(2016, 12, 21))
-    # p = get_valid_regids(10, "2013-03-01", "2013-03-09")
+    land_slide_warnings = get_landslide_warnings_as_json([1201], dt.date(2018, 1, 1), dt.date(2018, 4, 1))
+    warnings = get_avalanche_warnings([3022, 3014], dt.date(2016, 12, 1), dt.date(2016, 12, 21))
+    # p = get_valid_regids(10, '2013-03-01', '2013-03-09')
 
-    a = 1
+    pass
