@@ -324,7 +324,7 @@ def make_avalanche_problemes_for_techel():
             forecast_problems += gp.get_forecasted_problems(region_ids, from_date, to_date, lang_key=2)
             forecast_dangers += gd.get_forecasted_dangers(region_ids, from_date, to_date, lang_key=2)
 
-            # Get observed data. All data is mapped to new set of regions.
+            # Get observed data. All older data in regObs have been mapped to new regions.
             region_ids = gm.get_forecast_regions(year='2016-17')
             from_date, to_date = gm.get_forecast_dates(y, padding=dt.timedelta(days=20))
             this_years_observed_dangers = gd.get_observed_dangers(region_ids, from_date, to_date, lang_key=2)

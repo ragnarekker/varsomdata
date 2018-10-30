@@ -304,15 +304,55 @@ class AvalancheProblem:
         self.lang_key = lang_key_inn
 
     def map_to_eaws_problems(self):
-        """
-
-        :return:
+        """The EAWS problems are:
 
         eaws_problems = ['New snow',
-                         'Wind-drifted snow',
-                         'Persistent waek layers',
-                         'Wet snow',
-                         'Gliding snow']
+                 'Wind-drifted snow',
+                 'Persistent waek layers',
+                 'Wet snow',
+                 'Gliding snow']
+
+        Mapping forecasts to EAWS problems: For the forecasts, we have a classification of avalanche
+        problem type. These are mapped to EAWS problems in the following way:
+
+        Loose dry avalanches --> New snow
+        Loose wet avalanches --> Wet snow
+        Storm slab avalanches --> New snow
+        Wind slab avalanches --> Wind-drifted snow
+        New snow --> New snow
+        Persistent slab avalanches --> Persistent weak layers
+        Persistent weak layer --> Persistent weak layers
+        Persistent deep slab avalanches --> Persistent weak layers
+        Wet snow --> Wet snow
+        Wet slab avalanches --> Wet snow
+        Glide avalanches --> Gliding snow
+
+
+        Mapping observations to EAWS problems: For the observations, we don’t have a classification of
+        avalanche problems yet. The mapping is therefore somewhat more complex.
+
+        Some avalanche types give the avalanche problem directly:
+
+        Loose dry avalanche --> New snow
+        Loose wet avalanche --> Wet snow
+        Wet slab avalanche --> Wet snow
+        Glide avalanche --> Gliding snow
+
+        The expected avalanche type does not always give the problem. Neither is it mandatory for an observer
+        to include avalanche type in the observation. In some cases, weak layers correspond directly to an
+        avalanche problem:
+
+        Poor bonding between layers in wind deposited snow --> Wind-drifted snow
+        Wet snow / melting near the ground --> Gliding snow
+        Wet snow on the surface --> Wet snow
+        Water pooling in / above snow layers --> Wet snow
+
+        The cases of dry slabs require some more inspection. First, if the slab over the weak layer is
+        soft the avalanche problems are classified as “new snow” problems. Else, if it has a buried weak
+        layer of surface hoar or of faceted snow the problem is classified as a persistent weak layer.
+
+
+        :return:
         """
 
         # problem_tid is available in the forecasts.

@@ -548,7 +548,7 @@ def get_forecast_regions(year, get_b_regions=False):
         region_ids = [106, 107, 108, 109, 110, 111, 112, 114, 115, 116, 117, 118, 119, 121, 122, 123, 124, 127, 128, 129, 130, 131, 132, 133]
         if get_b_regions:
             region_ids += [n for n in range(151, 171, 1)]
-    elif year == '2016-17' or year == '2017-18':
+    elif year == '2016-17' or year == '2017-18' or year == '2018-19':
         # Total makeover in november 2016
         region_ids = [3003, 3007, 3009, 3010, 3011, 3012, 3013, 3014, 3015, 3016, 3017, 3022, 3023, 3024, 3027, 3028, 3029, 3031, 3032, 3034, 3035]
         if get_b_regions:
