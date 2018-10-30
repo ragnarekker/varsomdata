@@ -25,7 +25,7 @@ from varsomdata import getmisc as gm
 from utilities import fencoding as fe
 import setenvironment as env
 
-__author__ = 'raek'
+__author__ = 'Ragnar Ekker'
 
 years = ['2014-15', '2015-16', '2016-17', '2017-18']
 
