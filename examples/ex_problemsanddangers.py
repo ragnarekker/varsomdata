@@ -68,7 +68,7 @@ for y in years:
 """When all problems and dangers are received and mapped to their original regions, we can make an additional mapping
 to the EAWS problems. Note that observations in regObs do not focus on the classification of the problem, but
 the week layer and its properties in the snow pack and its ability give avalanches. To read more about this problem
-see the documentation in AvalancheProblem.map_to_eaws_problems()"""
+see the documentation in AvalancheProblem.map_to_eaws_problems."""
 
 for p in forecast_problems:
     p.map_to_eaws_problems()
