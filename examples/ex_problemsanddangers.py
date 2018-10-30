@@ -12,7 +12,7 @@ get_forecast_regions in varsomdata/getmisc.py.
 
 All observations in regObs are mapped to new regions
 when new regions are introduced. To make a data set of observations which may be compared to old forecasts
-all observatons are mapped to the old regions with the method get_forecast_region_for_coordinate in
+all observations are mapped to the old regions with the method get_forecast_region_for_coordinate in
 varsomdata/getmisc.py.
 
 It takes time to make requests. Approx 20min pr year requested. Progress can be followed in the log files.
