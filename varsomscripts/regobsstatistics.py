@@ -1,106 +1,14 @@
 # -*- coding: utf-8 -*-
+"""Module for calculating and plotting overall performance of regOss."""
+
 import setenvironment as env
-import datetime as dt
 from varsomdata import getvarsompickles as gvp
 from matplotlib import pyplot as plt
 import matplotlib.patches as mpatches
+
 import numpy as np
 
 __author__ = 'ragnarekker'
-
-
-class DailyNumbers:
-
-    def __init__(self, month_inn, day_inn):
-
-        self.month = month_inn
-        self.day = day_inn
-
-        self.regs_this_season = []
-        self.regs_this_season_num = None
-        self.regs_prev_season = []
-        self.regs_prev_season_num = None
-        self.regs_two_seasons_ago = []
-        self.regs_two_seasons_ago_num = None
-
-        self.obs_this_season = []
-        self.obs_this_season_num = None
-        self.obs_prev_season = []
-        self.obs_prev_season_num = None
-        self.obs_two_seasons_ago = []
-        self.obs_two_seasons_ago_num = None
-
-        self.numbs_this_season = None
-        self.numbs_prev_season = None
-        self.numbs_two_seasons_ago = None
-        
-    def add_regs_this_season(self, o):
-        self.regs_this_season.append(o)
-        self.regs_this_season_num = len(self.regs_this_season)
-        self._update_numbs()
-
-    def add_regs_prev_season(self, o):
-        self.regs_prev_season.append(o)
-        self.regs_prev_season_num = len(self.regs_prev_season)
-        self._update_numbs()
-
-    def add_regs_two_seasons_ago(self, o):
-        self.regs_two_seasons_ago.append(o)
-        self.regs_two_seasons_ago_num = len(self.regs_two_seasons_ago)
-        self._update_numbs()
-
-    def add_obs_this_season(self, o):
-        self.obs_this_season.append(o)
-        self.obs_this_season_num = len(self.obs_this_season)
-        self._update_numbs()
-
-    def add_obs_prev_season(self, o):
-        self.obs_prev_season.append(o)
-        self.obs_prev_season_num = len(self.obs_prev_season)
-        self._update_numbs()
-
-    def add_obs_two_seasons_ago(self, o):
-        self.obs_two_seasons_ago.append(o)
-        self.obs_two_seasons_ago_num = len(self.obs_two_seasons_ago)
-        self._update_numbs()
-
-    def _update_numbs(self):
-        if self.obs_this_season_num and self.regs_this_season_num:
-            if self.regs_this_season_num > 0:
-                self.numbs_this_season = self.obs_this_season_num/self.regs_this_season_num
-            else:
-                self.numbs_this_season = 0
-                
-        if self.obs_prev_season_num and self.regs_prev_season_num:
-            if self.regs_prev_season_num > 0:
-                self.numbs_prev_season = self.obs_prev_season_num/self.regs_prev_season_num
-            else:
-                self.numbs_prev_season = 0
-                
-        if self.obs_two_seasons_ago_num and self.regs_two_seasons_ago_num:
-            if self.regs_two_seasons_ago_num > 0:
-                self.numbs_two_seasons_ago = self.obs_two_seasons_ago_num/self.regs_two_seasons_ago_num
-            else:
-                self.numbs_two_seasons_ago = 0
-
-    def none_to_zero(self):
-        # method not used
-
-        self.regs_this_season_num = None
-        self.obs_this_season_num = None
-        # self.numbs_this_season = None
-
-        if self.regs_prev_season_num is None:
-            self.regs_prev_season_num = 0
-        if self.obs_prev_season_num is None:
-            self.obs_prev_season_num = 0
-        # self.numbs_prev_season = None
-
-        if self.regs_two_seasons_ago_num is None:
-            self.regs_two_seasons_ago_num = 0
-        if self.obs_two_seasons_ago_num is None:
-            self.obs_two_seasons_ago_num = 0
-        # self.numbs_two_seasons_ago = None
 
 
 def _str(int_inn):
@@ -156,14 +64,117 @@ def _smooth(list_of_numbers, crop_for_season=False):
     return full_np_array, full_list_smooth
 
 
-def plot_regs_obs_numbs():
+class DailyNumbers:
 
-    all_obs_201718_list = gvp.get_all_observations('2017-18', output='List', max_file_age=23)
-    all_obs_201718_nest = gvp.get_all_observations('2017-18', output='Nest', max_file_age=23)
+    def __init__(self, month_inn, day_inn):
+
+        self.month = month_inn
+        self.day = day_inn
+
+        self.regs_this_season = []
+        self.regs_this_season_num = None
+        self.regs_prev_season = []
+        self.regs_prev_season_num = None
+        self.regs_two_seasons_ago = []
+        self.regs_two_seasons_ago_num = None
+
+        self.obs_this_season = []
+        self.obs_this_season_num = None
+        self.obs_prev_season = []
+        self.obs_prev_season_num = None
+        self.obs_two_seasons_ago = []
+        self.obs_two_seasons_ago_num = None
+
+        self.numbs_this_season = None
+        self.numbs_prev_season = None
+        self.numbs_two_seasons_ago = None
+
+    def add_regs_this_season(self, o):
+        self.regs_this_season.append(o)
+        self.regs_this_season_num = len(self.regs_this_season)
+        self._update_numbs()
+
+    def add_regs_prev_season(self, o):
+        self.regs_prev_season.append(o)
+        self.regs_prev_season_num = len(self.regs_prev_season)
+        self._update_numbs()
+
+    def add_regs_two_seasons_ago(self, o):
+        self.regs_two_seasons_ago.append(o)
+        self.regs_two_seasons_ago_num = len(self.regs_two_seasons_ago)
+        self._update_numbs()
+
+    def add_obs_this_season(self, o):
+        self.obs_this_season.append(o)
+        self.obs_this_season_num = len(self.obs_this_season)
+        self._update_numbs()
+
+    def add_obs_prev_season(self, o):
+        self.obs_prev_season.append(o)
+        self.obs_prev_season_num = len(self.obs_prev_season)
+        self._update_numbs()
+
+    def add_obs_two_seasons_ago(self, o):
+        self.obs_two_seasons_ago.append(o)
+        self.obs_two_seasons_ago_num = len(self.obs_two_seasons_ago)
+        self._update_numbs()
+
+    def _update_numbs(self):
+        if self.obs_this_season_num and self.regs_this_season_num:
+            if self.regs_this_season_num > 0:
+                self.numbs_this_season = self.obs_this_season_num / self.regs_this_season_num
+            else:
+                self.numbs_this_season = 0
+
+        if self.obs_prev_season_num and self.regs_prev_season_num:
+            if self.regs_prev_season_num > 0:
+                self.numbs_prev_season = self.obs_prev_season_num / self.regs_prev_season_num
+            else:
+                self.numbs_prev_season = 0
+
+        if self.obs_two_seasons_ago_num and self.regs_two_seasons_ago_num:
+            if self.regs_two_seasons_ago_num > 0:
+                self.numbs_two_seasons_ago = self.obs_two_seasons_ago_num / self.regs_two_seasons_ago_num
+            else:
+                self.numbs_two_seasons_ago = 0
+
+    def none_to_zero(self):
+        # method not used
+
+        self.regs_this_season_num = None
+        self.obs_this_season_num = None
+        # self.numbs_this_season = None
+
+        if self.regs_prev_season_num is None:
+            self.regs_prev_season_num = 0
+        if self.obs_prev_season_num is None:
+            self.obs_prev_season_num = 0
+        # self.numbs_prev_season = None
+
+        if self.regs_two_seasons_ago_num is None:
+            self.regs_two_seasons_ago_num = 0
+        if self.obs_two_seasons_ago_num is None:
+            self.obs_two_seasons_ago_num = 0
+        # self.numbs_two_seasons_ago = None
+
+
+def plot_regs_obs_numbs(output_folder):
+    """Plots the last tree seasons of regobs data to 4 subplots the daily total of observations,
+    forms, forms pr observation and the seasonal total.
+
+    :param output_folder:
+    :return:
+
+    TODO: get the x-axis right
+    """
+
+    # Get data
+    all_obs_201819_list = gvp.get_all_observations('2018-19', output='List', max_file_age=23)
+    all_obs_201819_nest = gvp.get_all_observations('2018-19', output='Nest', max_file_age=23)
+    all_obs_201718_list = gvp.get_all_observations('2017-18', output='List')
+    all_obs_201718_nest = gvp.get_all_observations('2017-18', output='Nest')
     all_obs_201617_list = gvp.get_all_observations('2016-17', output='List')
     all_obs_201617_nest = gvp.get_all_observations('2016-17', output='Nest')
-    all_obs_201516_list = gvp.get_all_observations('2015-16', output='List')
-    all_obs_201516_nest = gvp.get_all_observations('2015-16', output='Nest')
 
     # Make dict with all dates and a empty DailyNumbers object
     all_year = {}
@@ -179,35 +190,23 @@ def plot_regs_obs_numbs():
                 all_year[_str(m) + _str(d)] = DailyNumbers(m, d)
 
     # Add data to the DailyNumbers
-    for o in all_obs_201718_list:
+    for o in all_obs_201819_list:
         all_year[_str(o.DtObsTime.month) + _str(o.DtObsTime.day)].add_obs_this_season(o)
 
-    for o in all_obs_201718_nest:
+    for o in all_obs_201819_nest:
         all_year[_str(o.DtObsTime.month) + _str(o.DtObsTime.day)].add_regs_this_season(o)
 
-    for o in all_obs_201617_list:
+    for o in all_obs_201718_list:
         all_year[_str(o.DtObsTime.month) + _str(o.DtObsTime.day)].add_obs_prev_season(o)
 
-    for o in all_obs_201617_nest:
+    for o in all_obs_201718_nest:
         all_year[_str(o.DtObsTime.month) + _str(o.DtObsTime.day)].add_regs_prev_season(o)
 
-    for o in all_obs_201516_list:
+    for o in all_obs_201617_list:
         all_year[_str(o.DtObsTime.month) + _str(o.DtObsTime.day)].add_obs_two_seasons_ago(o)
 
-    for o in all_obs_201516_nest:
+    for o in all_obs_201617_nest:
         all_year[_str(o.DtObsTime.month) + _str(o.DtObsTime.day)].add_regs_two_seasons_ago(o)
-
-    # Prepare lists for plotting
-    # dates = all_year.keys()
-    # dates = [str(d) for d in dates]
-    #
-    # dates_scarce = []
-    # for d in dates:
-    #     a = d[2:4]
-    #     if str(d[2:4]) == str('01'):
-    #         dates_scarce.append(d)
-    #     else:
-    #         dates_scarce.append(None)
 
     obs_this_season, obs_this_season_smooth = _smooth([v.obs_this_season_num for k, v in all_year.items()], crop_for_season=True)
     regs_this_season, regs_this_season_smooth = _smooth([v.regs_this_season_num for k, v in all_year.items()], crop_for_season=True)
@@ -233,10 +232,11 @@ def plot_regs_obs_numbs():
 
     # Make legend
     legend_handles = []
-    legend_handles.append(mpatches.Patch(color='0.2', label="2017-18"))
-    legend_handles.append(mpatches.Patch(color='blue', label="2016-17"))
-    legend_handles.append(mpatches.Patch(color='red', label="2015-16"))
+    legend_handles.append(mpatches.Patch(color='0.2', label="2018-19"))
+    legend_handles.append(mpatches.Patch(color='blue', label="2017-18"))
+    legend_handles.append(mpatches.Patch(color='red', label="2016-17"))
 
+    # Make plots
     plt.subplot2grid((4, 1), (0, 0), rowspan=1)
     plt.title("Antall skjema daglig")
     plt.plot(obs_this_season, color='0.1', linewidth=0.2)
@@ -276,7 +276,7 @@ def plot_regs_obs_numbs():
 
     # plt.grid(color='0.6', linestyle='--', linewidth=0.7, zorder=0)
 
-    plt.savefig('{}regobsstatistics.png'.format(env.web_images_regobsdata_folder))
+    plt.savefig('{}numbersof3seasons.png'.format(output_folder))
     plt.close()
 
 
@@ -330,5 +330,6 @@ def table_regs_obs_numbs():
 
 if __name__ == '__main__':
 
-    ##plot_regs_obs_numbs()
-    table_regs_obs_numbs()
+    # plot_regs_obs_numbs()
+    # table_regs_obs_numbs()
+    plot_regs_obs_numbs(env.plot_folder)

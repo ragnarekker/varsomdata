@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+"""
+
+"""
 from varsomdata import getobservations as go
 from varsomdata import getforecastapi as gfa
 from varsomdata import getmisc as gm

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from utilities import makelogs as ml
 from varsomscripts import plotcalendardata as pcd
+from varsomscripts import regobsstatistics as rs
 from varsomscripts import plotdangerandproblem as pdap
 from varsomdata import getvarsompickles as vp
 from varsomdata import getmisc as gm
