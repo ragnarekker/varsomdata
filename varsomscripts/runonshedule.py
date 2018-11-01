@@ -15,7 +15,6 @@ import datetime as dt
 __author__ = 'raek'
 log_reference = 'runonshedule.py -> '
 
-
 """    if operational:
         web_root_folder = '/Users/ragnarekker/Dropbox/Kode/Python/BottleSite/'
         web_pickle_folder = web_root_folder
