@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
-"""Module for calculating and plotting overall performance of regOss."""
+"""Module for calculating and plotting overall performance of regObs."""
 
 import setenvironment as env
 from varsomdata import getvarsompickles as gvp
 from matplotlib import pyplot as plt
 import matplotlib.patches as mpatches
-
+import os as os
 import numpy as np
+import datetime as dt
 
 __author__ = 'ragnarekker'
 
@@ -23,6 +24,7 @@ def _str(int_inn):
 
 
 def _sum_list(list_inn):
+    """Returns a new list where every entry is the sum of entries thus far in list_inn."""
 
     sum_this_far = 0
     sum_list = []
@@ -37,12 +39,19 @@ def _sum_list(list_inn):
 
 
 def _smooth(list_of_numbers, crop_for_season=False):
+    """Smooths a list of numbers with a sliding hanning window. If list_of_numbers represents the current
+    season, days after today are cropped away.
+
+    :param list_of_numbers:
+    :param crop_for_season:
+    :return:
+    """
 
     length_of_season = len(list_of_numbers)
 
     if crop_for_season:
-        number_of_days = (dt.date.today() - dt.date(2018, 9, 1)).days
-        list_of_numbers = list_of_numbers[:number_of_days]
+        number_of_days_to_crop = (dt.date.today() - dt.date(2019, 9, 1)).days
+        list_of_numbers = list_of_numbers[:number_of_days_to_crop]
 
     window_size = 11
     window = np.hanning(window_size)
@@ -158,8 +167,8 @@ class DailyNumbers:
         # self.numbs_two_seasons_ago = None
 
 
-def plot_regs_obs_numbs(output_folder):
-    """Plots the last tree seasons of regobs data to 4 subplots the daily total of observations,
+def plot_numbers_of_3_seasons(output_folder=env.plot_folder+'regobsplots/'):
+    """Plots the last tree seasons of regObs data to 4 subplots the daily total of observations,
     forms, forms pr observation and the seasonal total.
 
     :param output_folder:
@@ -274,7 +283,11 @@ def plot_regs_obs_numbs(output_folder):
     plt.plot(sum_obs_two_seasons_ago, color='red')
     plt.legend(handles=legend_handles)
 
+    plt.gcf().text(0.78, 0.06, 'Figur laget {0:%Y-%m-%d %H:%M}'.format(dt.datetime.now()), color='0.5')
     # plt.grid(color='0.6', linestyle='--', linewidth=0.7, zorder=0)
+
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
 
     plt.savefig('{}numbersof3seasons.png'.format(output_folder))
     plt.close()
@@ -332,4 +345,4 @@ if __name__ == '__main__':
 
     # plot_regs_obs_numbs()
     # table_regs_obs_numbs()
-    plot_regs_obs_numbs(env.plot_folder)
+    plot_numbers_of_3_seasons()

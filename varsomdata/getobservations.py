@@ -192,7 +192,7 @@ def _make_one_request(from_date=None, to_date=None, reg_id=None, registration_ty
                 'NumberOfRecords': None,  # int
                 'Offset': 0}
 
-    url = 'https://api.nve.no/hydrology/regobs/webapi_{0}/Search/Rss?geoHazard=0'.format(env.web_api_version)
+    url = 'https://api.nve.no/hydrology/regobs/webapi_{0}/Search/All'.format(env.web_api_version)
     # url = 'http://tst-h-web03.nve.no/regobswebapi/Search/Rss?geoHazard=0'
     # url = 'https://api.nve.no/hydrology/demo/regobs/webapi_v3.2/Search/Rss?geoHazard=0'
 
@@ -1803,24 +1803,25 @@ def _raw_play_ground():
 
     # query object posted in the request
     rssquery = {'LangKey': 1,
-    #            'RegId': 146437,
+                'RegId': 176528,
     #            'ObserverGuid': None,               # '4d11f3cc-07c5-4f43-837a-6597d318143c',
     #            'SelectedRegistrationTypes': [{'Id': 83, 'SubTypes': [30]}], #_reg_types_dict([10, 11, 12, 13]),    # list dict with type and sub type
     #            'SelectedRegions': None,
-                'SelectedGeoHazards': [60],         # list int
+    #            'SelectedGeoHazards': [60],         # list int
     #            'ObserverNickName': None,           # "jostein",
     #            'ObserverId': None,
     #            'ObserverCompetence': None,         # list int
     #            'GroupId': None,
     #            'LocationId': None,
-    #            'FromDate': '2017-08-02',
-    #            'ToDate': '2018-02-05',
+                'FromDate': '2017-08-02',
+                'ToDate': '2018-02-05',
                 'NumberOfRecords': None,            # int
     #            'TextSearch': None,                 # virker ikke
                 'Offset': 0}
 
-    url = 'https://api.nve.no/hydrology/regobs/webapi_{0}/Search/Rss?geoHazard=0'.format(env.web_api_version)
-    url = 'https://api.nve.no/hydrology/regobs/webapi_v3.2.0/Search/Rss?geoHazard=0'
+    url = 'https://api.nve.no/hydrology/regobs/webapi_{0}/Search/All'.format(env.web_api_version)
+    # url = 'https://api.nve.no/hydrology/regobs/webapi_v3.2.0/Search/Rss?geoHazard=0'
+    # url = 'http://tst-h-web03.nve.no/regobswebapi/Search/Rss?geoHazard=0'
 
     more_available = True
 
@@ -1861,7 +1862,7 @@ def _example_webapi_request():
                 'NumberOfRecords': None,            # int. How many records are to be returned pr request. Default 100.
                 'Offset': 0}
 
-    url = 'https://api.nve.no/hydrology/regobs/webapi_v3.2.0/Search/Rss?geoHazard=0'
+    url = 'https://api.nve.no/hydrology/regobs/webapi_v3.2.0/Search/All'
 
     more_available = True       # while true, request more observations
 
@@ -1932,7 +1933,7 @@ if __name__ == "__main__":
 
     # data = get_data_as_class('2017-08-01', '2018-02-15')
 
-    all_data_snow = get_data('2016-12-30', '2017-01-01', geohazard_tids=10)
+    # all_data_snow = get_data('2016-12-30', '2017-01-01', geohazard_tids=10)
     # land_slides = get_land_slide_obs('2018-01-01', '2018-02-01')
     # incident = get_incident('2012-03-01', '2012-03-10')
     # new_water_levels = get_water_level_2('2017-06-01', '2018-02-01')
@@ -1970,7 +1971,7 @@ if __name__ == "__main__":
     # ice_data = get_data(from_date='2016-10-01', to_date='2016-11-01', geohazard_tids=70, output='Nest')
     #
     #
-    # data = _raw_play_ground()
+    data = _raw_play_ground()
     # _the_simplest_webapi_request()
 
     a = 1
