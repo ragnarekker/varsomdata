@@ -595,11 +595,19 @@ def get_dates_from_season(year):
 
 
 def get_season_from_date(date_inn):
-    """A date belongs to a season. This method returns it."""
+    """A date belongs to a season. This method returns it.
 
-    if date_inn >= dt.date(2018, 9, 1) and date_inn < dt.date(2019, 9, 1):
+    :param date_inn:    datetime.date object
+    :return:
+    """
+
+    if date_inn >= dt.date(2020, 9, 1) and date_inn < dt.date(2021, 9, 1):
+        return '2020-21'
+    elif date_inn >= dt.date(2019, 9, 1) and date_inn < dt.date(2020, 9, 1):
+        return '2019-20'
+    elif date_inn >= dt.date(2018, 9, 1) and date_inn < dt.date(2019, 9, 1):
         return '2018-19'
-    if date_inn >= dt.date(2017, 9, 1) and date_inn < dt.date(2018, 9, 1):
+    elif date_inn >= dt.date(2017, 9, 1) and date_inn < dt.date(2018, 9, 1):
         return '2017-18'
     elif date_inn >= dt.date(2016, 9, 1) and date_inn < dt.date(2017, 9, 1):
         return '2016-17'

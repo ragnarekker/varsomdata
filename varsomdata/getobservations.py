@@ -528,7 +528,9 @@ class AvalancheActivityObs(Registration, Location, Observer):
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
 
+        self.EstimatedNumTID = d['FullObject']['EstimatedNumTID']
         self.EstimatedNumName = d['FullObject']['EstimatedNumTName']
+
         self.DestructiveSizeName = d['FullObject']['DestructiveSizeTName']
         self.Aspect = d['FullObject']['Aspect']
         self.HeightStartingZone = d['FullObject']['HeigthStartZone']
@@ -1931,7 +1933,7 @@ def _test_diff_in_reg_type_query():
 
 if __name__ == "__main__":
 
-    # data = get_data_as_class('2017-08-01', '2018-02-15')
+    data = get_data_as_class('2016-12-10', '2016-12-15')
 
     # all_data_snow = get_data('2016-12-30', '2017-01-01', geohazard_tids=10)
     # land_slides = get_land_slide_obs('2018-01-01', '2018-02-01')
@@ -1971,8 +1973,10 @@ if __name__ == "__main__":
     # ice_data = get_data(from_date='2016-10-01', to_date='2016-11-01', geohazard_tids=70, output='Nest')
     #
     #
-    data = _raw_play_ground()
+    # data = _raw_play_ground()
     # _the_simplest_webapi_request()
+
+
 
     a = 1
 

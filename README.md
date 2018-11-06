@@ -36,6 +36,7 @@ Configuration- or other files used in running scripts.<br>
 
 **Varsomscripts:**<br>
 `avalancheactivity.py`: Plots observed avalanche activity (including signs and single avalanches obs) against forecasted danger level.<br>
+`countstuff.py`: Methods and analysis of observations as a whole. Looks mostly on when, where and who of observations over year(s).<br>
 `dangerlevelsandproblems.py`: Requests all forecasts (danger levels and problems) from the forecast api and writes to .csv file or plot.<br>
 `elrappdata.py`:<br>
 `forcastersregions.py`:<br>
@@ -47,10 +48,8 @@ Configuration- or other files used in running scripts.<br>
 `localstorage`: Folder holding part of a calculation or data set. Eg, requesting data may take time, so a .pickle of the data set may be stored locally while working on the analysis.<br>
 `mainmessages.py`: Finds all main messages used in the forecasts and counts occurrences and tags danger levels, avalanche problems, avalanche types etc used in the forecasts when the main message was used.<br>
 `matrix.py`:<br>
-`observations.py`: Methods and analysis of observations as a whole. Looks mostly on when, where and who of observations over year(s).<br>
 `output`: Folder for saving plots and data files made by the different modules.<br>
 `plotdangerandproblem.py`: The code for downloading and making the plots on ragnar.pythonanywhere.com/dangerandproblem/<br>
 `plotcalendardata.py`: The code for downloading and making the plots on ragnar.pythonanywhere.com/observerdata/<br>
 `regobsstatistics.py`: Seasonal plots over data in regObs. Eg observations pr day, annual sum etc./<br>
-`runonshedule.py`: Contains the code which runs the modules and makes the file transfer to ragnar.pythonanywhere.com/observerdata/<br>
 `setenvironment.py`: Contains environment variables such as api versions and folder-paths.<br>

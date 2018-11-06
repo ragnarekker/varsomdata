@@ -153,7 +153,10 @@ if __name__ == '__main__':
     # avalanche_ext_kdv = get_kdv('AvalancheExtKDV')
     # avalanche_kdv = get_kdv('AvalancheKDV')
     #
-    forecast_region_KDV = get_kdv('ForecastRegionKDV')
-    write_kdv_dictionary(forecast_region_KDV, '{0}ForecastRegionKDV'.format(env.output_folder))
+    # forecast_region_KDV = get_kdv('ForecastRegionKDV')
+    # write_kdv_dictionary(forecast_region_KDV, '{0}ForecastRegionKDV'.format(env.output_folder))
+
+    estimated_num_KDV = get_kdv('EstimatedNumKDV')
+    write_kdv_dictionary(estimated_num_KDV, '{0}EstimatedNumKDV'.format(env.output_folder))
 
     a = 1

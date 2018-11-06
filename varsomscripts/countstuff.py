@@ -2,11 +2,12 @@
 """
 
 """
+
 from varsomdata import getobservations as go
 from varsomdata import getforecastapi as gfa
 from varsomdata import getmisc as gm
-from varsomdata import makepickle as mp
 from varsomdata import getvarsompickles as gvp
+from utilities import makepickle as mp
 import setenvironment as env
 import collections as cols
 import datetime as dt
@@ -426,10 +427,68 @@ def count_of_water_forms_used():
     pass
 
 
+def count_all_avalanches(year='2017-18'):
+    """How many avalanches?
+
+    jaas [30-10-2018 6:14 PM]
+    sit og driv med ein presentasjon til IKAR ettermøte. Er det lett å ta ut talet på kor mange skred
+    det er innrapportert på regObs sist vinter? viss mogeleg delt på farteikn-skred, ulykke/hending,
+    og skredaktivitet. (er klar over at dette vert veldig ca, men interessant om det er 100, 1000,
+    eller 10000)"""
+
+    all_observations = gvp.get_all_observations(year=year, output='List')
+
+    danger_signs_all = []
+    danger_signs_count_activity = 0
+    danger_signs_count_no_danger = 0
+    avalanches_all = []
+    avalanche_activities_all = []
+    avalanche_activities_count_activity = 0
+    avalanche_activities_count_no_activity = 0
+
+    # I thought nobody used this form - it turned out it was used 2 times in 2017-18.
+    old_avalanche_activity_forms = 0
+
+    for o in all_observations:
+
+        if isinstance(o, go.AvalancheActivityObs2) or isinstance(o, go.AvalancheActivityObs):
+            avalanche_activities_all.append(o)
+
+            if isinstance(o, go.AvalancheActivityObs):
+                old_avalanche_activity_forms += 1
+
+            if o.EstimatedNumTID == 1:   # no activity
+                avalanche_activities_count_no_activity += 1
+            else:
+                avalanche_activities_count_activity += 1
+
+        if isinstance(o, go.AvalancheObs):
+            avalanches_all.append(o)
+
+        if isinstance(o, go.DangerObs):
+            danger_signs_all.append(o)
+            if o.DangerSignTID == 1:    # no dangers
+                danger_signs_count_no_danger += 1
+            if o.DangerSignTID == 2:    # avalanche activity
+                danger_signs_count_activity += 1
+
+    print("SKRED OBSERVERT VINTERN 2017-18")
+    print("")
+    print("Skredaktivitet som faretegn: {}".format(danger_signs_count_activity))
+    print("Ingen faretegn observert: {}".format(danger_signs_count_no_danger))
+    print("")
+    print("Observert skredaktivitet: {}".format(avalanche_activities_count_activity))
+    print("Ingen skredaktivitet observert: {}".format(avalanche_activities_count_no_activity))
+    print("")
+    print("Antall skredhendelser observert: {}".format(len(avalanches_all)))
+
+
 if __name__ == '__main__':
 
     # find_fun_facts()
     # pick_winners_at_conference()
-    write_to_file_all_obs()
+    # write_to_file_all_obs()
     # pick_winners_varsom_friflyt_konk_2018()
     # count_of_water_forms_used()
+    count_all_avalanches()
+

@@ -27,9 +27,10 @@ def _observation_is_not_empty(o):
 
 
 def get_all_observations(year, output='Nest', geohazard_tids=None, lang_key=1, max_file_age=23):
-    """Specialized method for getting all observations for one season (1. sept to 31. august). If request has been
-    made the last 23hrs, data is retrieved from a locally stored pickle, if not, new request is made to the
-    regObs api.
+    """Specialized method for getting all observations for one season (1. sept to 31. august).
+    For the current season (at the time of writing, 2018-19), if request has been made the last 23hrs,
+    data is retrieved from a locally stored pickle, if not, new request is made to the regObs api. Previous
+    seasons are not requested if a pickle is found in local storage.
 
     :param year:                [string] Eg. '2017-18'
     :param output:              [string] 'Nest' or 'List'
@@ -46,14 +47,18 @@ def get_all_observations(year, output='Nest', geohazard_tids=None, lang_key=1, m
     get_new = True
     date_limit = dt.datetime.now() - dt.timedelta(hours=max_file_age)
 
+    # if we are well out of the current season (30 days) its little chance the data set has changed.
+    current_season = gm.get_season_from_date(dt.date.today() - dt.timedelta(30))
+
     if geohazard_tids:
         if not isinstance(geohazard_tids, list):
             geohazard_tids = [geohazard_tids]
 
     if os.path.exists(file_name_list):
-        # if file is newer than the time Ive set for it, dont make new.
-        if year == '2017-18':
+        # if file contains a season long gone, dont make new.
+        if year == current_season:
             file_age = dt.datetime.fromtimestamp(os.path.getmtime(file_name_list))
+            # If file is newer than the given time limit, dont make new.
             if file_age > date_limit:
                 # If file size larger than that of an nearly empty file, dont make new.
                 if os.path.getsize(file_name_list) > 100:   # 100 bytes limit
