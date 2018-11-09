@@ -465,7 +465,7 @@ def count_all_avalanches(year='2017-18'):
         if isinstance(o, go.AvalancheObs):
             avalanches_all.append(o)
 
-        if isinstance(o, go.DangerObs):
+        if isinstance(o, go.DangerSign):
             danger_signs_all.append(o)
             if o.DangerSignTID == 1:    # no dangers
                 danger_signs_count_no_danger += 1

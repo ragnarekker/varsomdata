@@ -239,7 +239,7 @@ def step_3_count_occurances(date_region, elements):
             if str(d.forecast[0].danger_level) in e.danger_level:
 
                 # if danger sign
-                if isinstance(d.most_valued_observation, go.DangerObs):
+                if isinstance(d.most_valued_observation, go.DangerSign):
                     danger_sign_name = d.most_valued_observation.DangerSignName
                     if e.estimated_number == "Fra faretegn" and 'Ikke gitt' in e.destructive_size and 'Ferske skred' in danger_sign_name:
                         e.observation_count += 1

@@ -401,7 +401,7 @@ def _make_day_data_list(region_observations_list, m, frid=None, o=None):
                     nic_pr_regid[ao.RegID] = ao.NickName
 
                 # observations pr regid (might be more) and pictures are pictures and not what they are of
-                if isinstance(ao, go.Picture) and ao.RegistrationTID != 23:
+                if isinstance(ao, go.PictureObservation) and ao.RegistrationTID != 23:
                     observation_name = 'Bilde'
                 else:
                     observation_name = ao.RegistrationName

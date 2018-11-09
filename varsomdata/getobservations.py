@@ -432,7 +432,7 @@ class Observer:
         self.CompetenceLevelName = d['CompetenceLevelName']
 
 
-class PictureOnly:
+class Picture:
 
     def __init__(self, d):
 
@@ -458,7 +458,7 @@ class Pictures:
 
         self.Pictures = []
         for p in d['Pictures']:
-            picture = PictureOnly(p)
+            picture = Picture(p)
             if picture.RegistrationTID == RegistrationTID:
                 self.Pictures.append(picture)
 
@@ -478,9 +478,9 @@ class Observation(Registration, Location, Observer):
             elif r['RegistrationTid'] == 11:
                 observation = Incident({**d, **r})
             elif r['RegistrationTid'] == 12:
-                observation = Picture({**d, **r})
+                observation = PictureObservation({**d, **r})
             elif r['RegistrationTid'] == 13:
-                observation = DangerObs({**d, **r})
+                observation = DangerSign({**d, **r})
             elif r['RegistrationTid'] == 14:
                 observation = DamageObs({**d, **r})
             elif r['RegistrationTid'] == 21:
@@ -524,7 +524,7 @@ class Observation(Registration, Location, Observer):
 
         self.Pictures = []
         for p in d['Pictures']:
-            self.Pictures.append(Picture({**d, **p}))
+            self.Pictures.append(PictureObservation({**d, **p}))
 
         self.LangKey = int(d['LangKey'])
 
@@ -738,7 +738,7 @@ class AvalancheObs(Registration, Location, Observer, Pictures):
         self.LangKey = d['LangKey']
 
 
-class DangerObs(Registration, Location, Observer, Pictures):
+class DangerSign(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -910,14 +910,14 @@ class GeneralObservation(Registration, Location, Observer, Pictures):
         self.LangKey = d['LangKey']
 
 
-class Picture(Registration, Location, Observer, PictureOnly):
+class PictureObservation(Registration, Location, Observer, Picture):
 
     def __init__(self, d):
 
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
-        PictureOnly.__init__(self, d)
+        Picture.__init__(self, d)
 
         self.LangKey = d['LangKey']
 
@@ -1568,7 +1568,7 @@ def get_picture(from_date, to_date, region_ids=None, location_id=None, group_id=
     :return:
     """
 
-    return _get_general(Picture, 12, from_date=from_date, to_date=to_date,
+    return _get_general(PictureObservation, 12, from_date=from_date, to_date=to_date,
                         region_ids=region_ids, location_id=location_id, group_id=group_id,
                         observer_ids=observer_ids, observer_nick=observer_nick, observer_competence=observer_competence,
                         output=output, geohazard_tids=geohazard_tids, lang_key=lang_key)
@@ -1646,7 +1646,7 @@ def get_danger_sign(from_date, to_date, region_ids=None, location_id=None, group
     :return:
     """
 
-    return _get_general(DangerObs, 13, from_date=from_date, to_date=to_date,
+    return _get_general(DangerSign, 13, from_date=from_date, to_date=to_date,
                         region_ids=region_ids, location_id=location_id, group_id=group_id,
                         observer_ids=observer_ids, observer_nick=observer_nick, observer_competence=observer_competence,
                         output=output, geohazard_tids=geohazard_tids, lang_key=lang_key)

@@ -18,12 +18,22 @@ avalanche_activity_2 = go.get_avalanche_activity_2('2017-03-01', '2017-03-10')
 # Observations of singe avalanches
 avalanche_obs = go.get_avalanche('2015-03-01', '2015-03-10')
 
+# Observations of avalanches given as a danger sign (DangerSignTID = 2).
+# A query might be specified on region, eg region_id=3011 is Tromsø.
+all_danger_signs = go.get_danger_sign('2018-03-01', '2018-03-10', region_ids=3011)
+avalanche_danger_signs = []
+for o in all_danger_signs:
+    if o.DangerSignTID == 2:  # danger sign is avalanche activity
+        avalanche_danger_signs.append(o)
+
 # Note that in this example dates are given as strings, but may also be given as date objects.
 # Se ex_observations for more examples on queries.
 
 # Picture url and metadata are in the pictures list on each observation.
+# note that the picture of danger signs does not know which danger sig the picture is of, so some pictures
+# might be of other danger signs.
 all_pictures = []
-for a in avalanche_activity + avalanche_activity_2 + avalanche_obs:
+for a in avalanche_activity + avalanche_activity_2 + avalanche_obs + avalanche_danger_signs:
     for p in a.Pictures:
         all_pictures.append(p)
 
