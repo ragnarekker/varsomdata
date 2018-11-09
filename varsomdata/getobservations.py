@@ -432,6 +432,17 @@ class Observer:
         self.CompetenceLevelName = d['CompetenceLevelName']
 
 
+class Pictures:
+
+    def __init__(self, d, RegistrationTID):
+
+        self.Pictures = []
+        for p in d['Pictures']:
+            picture = PictureOnly(p)
+            if picture.RegistrationTID == RegistrationTID:
+                self.Pictures.append(picture)
+
+
 class Observation(Registration, Location, Observer):
 
     def __init__(self, d):
@@ -516,7 +527,7 @@ class AllRegistrations(Registration, Location, Observer):
         self.LangKey = int(d['LangKey'])
 
 
-class AvalancheActivityObs(Registration, Location, Observer):
+class AvalancheActivityObs(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -527,6 +538,8 @@ class AvalancheActivityObs(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.EstimatedNumTID = d['FullObject']['EstimatedNumTID']
         self.EstimatedNumName = d['FullObject']['EstimatedNumTName']
@@ -543,7 +556,7 @@ class AvalancheActivityObs(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
-class AvalancheActivityObs2(Registration, Location, Observer):
+class AvalancheActivityObs2(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -554,6 +567,8 @@ class AvalancheActivityObs2(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.EstimatedNumTID = d['FullObject']['EstimatedNumTID']
         self.EstimatedNumName = d['FullObject']['EstimatedNumTName']
@@ -671,7 +686,7 @@ class AvalancheEvalProblem2(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
-class AvalancheObs(Registration, Location, Observer):
+class AvalancheObs(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -682,6 +697,8 @@ class AvalancheObs(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.AvalancheName = d['FullObject']['AvalancheTName']
         self.AvalancheTriggerName = d['FullObject']['AvalancheTriggerTName']
@@ -859,17 +876,15 @@ class GeneralObservation(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
-class Picture(Registration, Location, Observer):
+class PictureOnly:
 
     def __init__(self, d):
-
-        Registration.__init__(self, d)
-        Location.__init__(self, d)
-        Observer.__init__(self, d)
 
         self.FullObject = d['FullObject']
 
         self.PictureID = d['FullObject']['PictureID']
+        self.URLoriginal = env.image_basestring_original + '{}'.format(self.PictureID)
+        self.URLlarge = env.image_basestring_large + '{}'.format(self.PictureID)
         self.Photographer = d['FullObject']['Photographer']
         self.Copyright = d['FullObject']['Copyright']
         self.Aspect = d['FullObject']['Aspect']
@@ -878,7 +893,17 @@ class Picture(Registration, Location, Observer):
         self.RegistrationTID = d['FullObject']['RegistrationTID']
         self.RegistrationName = d['FullObject']['RegistrationTName']
         self.PictureComment = d['FullObject']['PictureComment']
-        self.Comment = d['FullObject']['Comment']
+        # self.Comment = d['FullObject']['Comment']
+
+
+class Picture(Registration, Location, Observer, PictureOnly):
+
+    def __init__(self, d):
+
+        Registration.__init__(self, d)
+        Location.__init__(self, d)
+        Observer.__init__(self, d)
+        PictureOnly.__init__(self, d)
 
         self.LangKey = d['LangKey']
 
@@ -1951,9 +1976,9 @@ if __name__ == "__main__":
     # pictures = get_picture('2018-01-28', '2018-02-01')
     # general_obs = get_general_observation('2018-01-20', '2018-02-01')
     # danger_signs = get_danger_sign('2017-03-01', '2017-03-10', geohazard_tids=10)
-    # avalanch_activity = get_avalanche_activity('2015-03-01', '2015-03-10')
-    # avalanch_activity_2 = get_avalanche_activity_2('2017-03-01', '2017-03-10')
-    # avalanch_obs = get_avalanche('2015-03-01', '2015-03-10')
+    avalanch_activity = get_avalanche_activity('2015-03-01', '2015-03-10')
+    avalanch_activity_2 = get_avalanche_activity_2('2017-03-01', '2017-03-10')
+    avalanch_obs = get_avalanche('2015-03-01', '2015-03-10')
     # problems = get_avalanche_problem_2('2017-03-01', '2017-03-10')
     # danger_signs_data = get_data('2017-03-01', '2017-04-01', geohazard_tids=10, output='Count nest', registration_types=13)
     # avalanche_evaluations_3 = get_avalanche_evaluation_3('2017-03-01', '2017-03-10')
@@ -1979,6 +2004,3 @@ if __name__ == "__main__":
 
 
     a = 1
-
-
-
