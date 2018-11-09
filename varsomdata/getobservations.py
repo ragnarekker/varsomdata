@@ -432,6 +432,26 @@ class Observer:
         self.CompetenceLevelName = d['CompetenceLevelName']
 
 
+class PictureOnly:
+
+    def __init__(self, d):
+
+        self.FullObject = d['FullObject']
+
+        self.PictureID = d['FullObject']['PictureID']
+        self.URLoriginal = env.image_basestring_original + '{}'.format(self.PictureID)
+        self.URLlarge = env.image_basestring_large + '{}'.format(self.PictureID)
+        self.Photographer = d['FullObject']['Photographer']
+        self.Copyright = d['FullObject']['Copyright']
+        self.Aspect = d['FullObject']['Aspect']
+        # self.GeoHazardTID = d['FullObject']['GeoHazardTID']
+        # self.GeoHazardName = d['FullObject']['GeoHazardTName']
+        self.RegistrationTID = d['FullObject']['RegistrationTID']
+        self.RegistrationName = d['FullObject']['RegistrationTName']
+        self.PictureComment = d['FullObject']['PictureComment']
+        # self.Comment = d['FullObject']['Comment']
+
+
 class Pictures:
 
     def __init__(self, d, RegistrationTID):
@@ -643,7 +663,7 @@ class AvalancheEvalProblem(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
-class AvalancheEvalProblem2(Registration, Location, Observer):
+class AvalancheEvalProblem2(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -654,6 +674,8 @@ class AvalancheEvalProblem2(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.AvalancheProblemID = d['FullObject']['AvalancheEvalProblemID']
 
@@ -716,7 +738,7 @@ class AvalancheObs(Registration, Location, Observer, Pictures):
         self.LangKey = d['LangKey']
 
 
-class DangerObs(Registration, Location, Observer):
+class DangerObs(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -727,6 +749,8 @@ class DangerObs(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.Comment = d['FullObject']['Comment']
         self.DangerSignName = d['FullObject']['DangerSignTName']
@@ -735,7 +759,7 @@ class DangerObs(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
-class Incident(Registration, Location, Observer):
+class Incident(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -746,6 +770,8 @@ class Incident(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.ActivityInfluencedTID = d['FullObject']['ActivityInfluencedTID']
         self.ActivityInfluencedName = d['FullObject']['ActivityInfluencedTName']
@@ -764,7 +790,7 @@ class Incident(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
-class AvalancheEvaluation3(Registration, Location, Observer):
+class AvalancheEvaluation3(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -775,6 +801,8 @@ class AvalancheEvaluation3(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.AvalancheEvaluation = d['FullObject']['AvalancheEvaluation']
         self.AvalancheDevelopment = d['FullObject']['AvalancheDevelopment']
@@ -786,7 +814,7 @@ class AvalancheEvaluation3(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
-class AvalancheEvaluation2(Registration, Location, Observer):
+class AvalancheEvaluation2(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -797,6 +825,8 @@ class AvalancheEvaluation2(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.AvalancheEvaluation = d['FullObject']['AvalancheEvaluation']
         self.AvalancheDevelopment = d['FullObject']['AvalancheDevelopment']
@@ -820,7 +850,7 @@ class AvalancheEvaluation2(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
-class AvalancheEvaluation(Registration, Location, Observer):
+class AvalancheEvaluation(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -831,6 +861,8 @@ class AvalancheEvaluation(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.AvalancheDangerTID = d['FullObject']['AvalancheDangerTID']
         self.AvalancheDangerName = d['FullObject']['AvalancheDangerTName']
@@ -853,7 +885,7 @@ class AvalancheEvaluation(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
-class GeneralObservation(Registration, Location, Observer):
+class GeneralObservation(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -865,6 +897,8 @@ class GeneralObservation(Registration, Location, Observer):
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
 
+        Pictures.__init__(self, d, self.RegistrationTID)
+
         self.ObsHeader = d['FullObject']['ObsHeader']
         self.ObsComment = d['FullObject']['ObsComment']
         self.Comment = d['FullObject']['Comment']
@@ -874,26 +908,6 @@ class GeneralObservation(Registration, Location, Observer):
             self.URLs.append({'URLLine': u['UrlLine'], 'URLDescription': u['UrlDescription']})
 
         self.LangKey = d['LangKey']
-
-
-class PictureOnly:
-
-    def __init__(self, d):
-
-        self.FullObject = d['FullObject']
-
-        self.PictureID = d['FullObject']['PictureID']
-        self.URLoriginal = env.image_basestring_original + '{}'.format(self.PictureID)
-        self.URLlarge = env.image_basestring_large + '{}'.format(self.PictureID)
-        self.Photographer = d['FullObject']['Photographer']
-        self.Copyright = d['FullObject']['Copyright']
-        self.Aspect = d['FullObject']['Aspect']
-        # self.GeoHazardTID = d['FullObject']['GeoHazardTID']
-        # self.GeoHazardName = d['FullObject']['GeoHazardTName']
-        self.RegistrationTID = d['FullObject']['RegistrationTID']
-        self.RegistrationName = d['FullObject']['RegistrationTName']
-        self.PictureComment = d['FullObject']['PictureComment']
-        # self.Comment = d['FullObject']['Comment']
 
 
 class Picture(Registration, Location, Observer, PictureOnly):
@@ -908,7 +922,7 @@ class Picture(Registration, Location, Observer, PictureOnly):
         self.LangKey = d['LangKey']
 
 
-class WeatherObservation(Registration, Location, Observer):
+class WeatherObservation(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -919,6 +933,8 @@ class WeatherObservation(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.PrecipitationTID = d['FullObject']['PrecipitationTID']
         self.PrecipitationName = d['FullObject']['PrecipitationName']
@@ -932,7 +948,7 @@ class WeatherObservation(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
-class SnowSurfaceObservation(Registration, Location, Observer):
+class SnowSurfaceObservation(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -943,6 +959,8 @@ class SnowSurfaceObservation(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.SnowDepth = d['FullObject']['SnowDepth']
         self.NewSnowDepth24 = d['FullObject']['NewSnowDepth24']
@@ -960,7 +978,7 @@ class SnowSurfaceObservation(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
-class DamageObs(Registration, Location, Observer):
+class DamageObs(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -971,6 +989,8 @@ class DamageObs(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.DamageTypeTID = d['FullObject']['DamageTypeTID']
         self.DamageTypeName = d['FullObject']['DamageTypeTName']
@@ -984,7 +1004,7 @@ class DamageObs(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
-class SnowProfile(Registration, Location, Observer):
+class SnowProfile(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -995,6 +1015,8 @@ class SnowProfile(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.PictureID = d['FullObject']['PictureID']
         self.Photographer = d['FullObject']['Photographer']
@@ -1006,7 +1028,7 @@ class SnowProfile(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
-class ColumnTest(Registration, Location, Observer):
+class ColumnTest(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -1017,6 +1039,8 @@ class ColumnTest(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.CompressionTestID = d['FullObject']['CompressionTestID']
         self.CompressionTestTID = d['FullObject']['CompressionTestTID']
@@ -1044,7 +1068,7 @@ class IceThicknessLayer:
         self.IceLayerThickness = l['IceLayerThickness']
 
 
-class IceThickness(Registration, Location, Observer):
+class IceThickness(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -1055,6 +1079,8 @@ class IceThickness(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.SnowDepth = d['FullObject']['SnowDepth']
         self.SlushSnow = d['FullObject']['SlushSnow']
@@ -1071,7 +1097,7 @@ class IceThickness(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
-class IceCover(Registration, Location, Observer):
+class IceCover(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -1082,6 +1108,8 @@ class IceCover(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.IceCoverBeforeTID = d['FullObject']['IceCoverBeforeTID']
         self.IceCoverBeforeName = d['FullObject']['IceCoverBeforeTName']
@@ -1097,7 +1125,7 @@ class IceCover(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
-class WaterLevel(Registration, Location, Observer):
+class WaterLevel(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
         Registration.__init__(self, d)
@@ -1107,6 +1135,8 @@ class WaterLevel(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.WaterLevelDescribed = d['FullObject']['WaterLevelDescribed']
         self.WaterLevelValue = d['FullObject']['WaterLevelValue']
@@ -1164,7 +1194,7 @@ class WaterLevel2(Registration, Location, Observer):
         self.LangKey = d['LangKey']
 
 
-class LandSlideObs(Registration, Location, Observer):
+class LandSlideObs(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -1175,6 +1205,8 @@ class LandSlideObs(Registration, Location, Observer):
         self.FullObject = d['FullObject']
         self.RegistrationTID = int(d['RegistrationTid'])
         self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
 
         self.DtLandSlideTime = _stringtime_2_datetime(d['FullObject']['DtLandSlideTime'])
         self.DtLandSlideTimeEnd = _stringtime_2_datetime(d['FullObject']['DtLandSlideTimeEnd'])
@@ -1976,9 +2008,9 @@ if __name__ == "__main__":
     # pictures = get_picture('2018-01-28', '2018-02-01')
     # general_obs = get_general_observation('2018-01-20', '2018-02-01')
     # danger_signs = get_danger_sign('2017-03-01', '2017-03-10', geohazard_tids=10)
-    avalanch_activity = get_avalanche_activity('2015-03-01', '2015-03-10')
-    avalanch_activity_2 = get_avalanche_activity_2('2017-03-01', '2017-03-10')
-    avalanch_obs = get_avalanche('2015-03-01', '2015-03-10')
+    # avalanche_activity = get_avalanche_activity('2015-03-01', '2015-03-10')
+    # avalanche_activity_2 = get_avalanche_activity_2('2017-03-01', '2017-03-10')
+    # avalanche_obs = get_avalanche('2015-03-01', '2015-03-10')
     # problems = get_avalanche_problem_2('2017-03-01', '2017-03-10')
     # danger_signs_data = get_data('2017-03-01', '2017-04-01', geohazard_tids=10, output='Count nest', registration_types=13)
     # avalanche_evaluations_3 = get_avalanche_evaluation_3('2017-03-01', '2017-03-10')
@@ -1996,11 +2028,9 @@ if __name__ == "__main__":
     # one_observer_count_list = get_data(from_date='2016-12-30', to_date='2017-04-01', observer_ids=6, output='Count list')
     # one_observer_count_nest = get_data(from_date='2012-01-01', to_date='2018-01-01', observer_ids=6, output='Count nest')
     # ice_data = get_data(from_date='2016-10-01', to_date='2016-11-01', geohazard_tids=70, output='Nest')
-    #
-    #
+
     # data = _raw_play_ground()
     # _the_simplest_webapi_request()
 
+    pass
 
-
-    a = 1
