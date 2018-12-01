@@ -783,7 +783,7 @@ def get_varsom_incidents(add_forecast_regions=False, add_observations=False, add
                                     option is only taken into account if add_forecast_regions is true.
     """
 
-    incidents_file = '{}varsomsineskredulykker.csv'.format(env.input_folder)
+    incidents_file = '{}varsomsineskredulykker.csv'.format(env.varsom_incidents)
     varsom_incidents = rf.read_csv_file(incidents_file, VarsomIncident)
 
     # map incident to forecast region

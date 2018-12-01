@@ -7,8 +7,7 @@ from datetime import date as date
 
 if __name__ == '__main__':
 
-    '''Lists how many times different forecasters hva made a forecast for a given reigon.
-    '''
+    """Lists how many times different forecasters hva made a forecast for a given reigon."""
 
     # Get all regions
     # regions = gkdv.get_kdv('ForecastRegionKDV')
