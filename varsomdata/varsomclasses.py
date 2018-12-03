@@ -55,8 +55,8 @@ class AvalancheDanger:
 
         #### forecast stuff
         self.avalanche_problems = []                    # [list of gp.AvalanchProblems] In forecasts there are always problems
-        # self.main_message_no = None                     # [String] The main message in norwegian
-        # self.main_message_en = None                     # [String] The main message in english
+        self.main_message_no = None                     # [String] The main message in norwegian
+        self.main_message_en = None                     # [String] The main message in english
 
         ##### obs eval 3 stuff
         # self.forecast_correct = None                    # [String] Drop down value if the forecast is correct or no
@@ -134,6 +134,60 @@ class AvalancheDanger:
     def add_metadata(self, key, value):
         self.metadata[key] = value
 
+    def to_dict(self):
+        """
+        Convert the object to a dictionary
+        :return: dictionary representation of the AvalancheDanger class
+        """
+        _dict = {'metadata': self.metadata,                              # [dictionary] {key:value, key:value, ..}
+        'region_regobs_id': self.region_regobs_id ,             # [int]
+        'region_name': self.region_name,              # [String]
+        'data_table': self.data_table, # [String]
+        #'': self.set_date(date_inn),                         # [date]
+        'danger_level': self.danger_level,            # [Int]
+        'danger_level_name': self.danger_level_name,  # [String]
+
+        #### Values declared when needed.
+        'nick': self.nick,                                # [String] regObs NickName of observer or forecaster who issued the avalanche danger
+        'source': self.source,                              # [String] Usually 'Observasjon' or 'Varsel'
+        'avalanche_forecast': self.avalanche_forecast,                  # [String] Written forecast.
+        'avalanche_nowcast': self.avalanche_nowcast,                   # [String] The summery of the snowcover now
+        # fix: 'municipal_name': self.municipal_name,
+        'main_message_no': self.main_message_no,  # [String] The main message in norwegian
+        'main_message_en': self.main_message_en  # [String] The main message in english
+
+        ##### obs eval 3 stuff
+        # fix: 'forecast_correct': self.forecast_correct                    # [String] Drop down value if the forecast is correct or no
+        # fix: 'forecast_correct_id': self.forecast_correct_id                 # [int]
+        # fix: 'forecast_comment': self.forecast_comment
+              }
+        #### add avalanche problems
+        for _problem in self.avalanche_problems:
+            problem_prefix = f"avalanche_problem_{_problem.order}_"
+            _ap_dict = {f'{problem_prefix}cause_tid': _problem.cause_tid, # [int] Avalanche cause ID(TID in regObs). Only used in avalanche problems from dec 2014 and newer.
+            f'{problem_prefix}cause_name': _problem.cause_name,
+            f'{problem_prefix}source': _problem.source,
+            f'{problem_prefix}problem': _problem.problem,
+            f'{problem_prefix}problem_tid': _problem.problem_tid, # [int]       ID used in regObs
+            f'{problem_prefix}main_cause': _problem.main_cause,  # [String] Problems/weaklayers are grouped into main problems the season 2014/15
+            f'{problem_prefix}aval_type': _problem.aval_type,  # [String]    Avalanche Type
+            f'{problem_prefix}aval_type_tid': _problem.aval_type_tid, # [int]       ID used in regObs
+            f'{problem_prefix}aval_size': _problem.aval_size,  # [String]    Avalanche Size
+            f'{problem_prefix}aval_size_tid': _problem.aval_size_tid
+            }
+            #'': self.avalanche_problems = []                    # [list of gp.AvalanchProblems] In forecasts there are always problems
+            _dict.update(_ap_dict)
+        return _dict
+
+    def to_df(self):
+        """
+        Convert the object to a Pandas.Series
+        :return: pandas.DataFrame representation of the AvalancheDanger class
+        """
+        import pandas
+        return pandas.DataFrame([self.to_dict])
+    # DOES NOT WORK YET
+
 
 class AvalancheProblem:
 
@@ -158,7 +212,7 @@ class AvalancheProblem:
         """
 
         # In nov 2016 we updated all regions to have ids in th 3000´s. GIS and regObs equal.
-        # Before that GIS har numbers 0-99 and regObs 100-199. Messy..
+        # Before that GIS had numbers 0-99 and regObs 100-199. Messy..
         # Convention is regObs ids always
         if region_regobs_id_inn < 100:
             region_regobs_id_inn += 100
