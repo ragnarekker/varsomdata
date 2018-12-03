@@ -1,10 +1,18 @@
 # -*- coding: utf-8 -*-
+"""At request we make data for people needing information on incidents in regions over a period, on incidents
+in regions mapped to danger levels og avalanche problems forecasted or observed. Sometimes incidents raw from
+regObs (untouched by human hands) or sometimes from the data sett on varsom; the select data sett of incidents
+that are quality checked to some degree. All the scripts to make data is in this module."""
+
 from varsomdata import getdangers as gd
 from varsomdata import getobservations as go
-from varsomdata import makepickle as mp
+from utilities import makepickle as mp
 from varsomdata import getmisc as gm
 from utilities import fencoding as fe
+from utilities import makemisc as mm
 import setenvironment as env
+import datetime as dt
+
 
 __author__ = 'raek'
 
@@ -209,7 +217,93 @@ def make_dl_incident_markus():
     return
 
 
+def incident_troms_winter_2018_for_markus():
+    """Communication dated 2018-11-29
+
+    Hei Ragnar og Jostein
+
+    Kan en av dere hjelpe meg å ta ut et plott som viser antall registrerte ulykker og hendelser i
+    varslingsregionene Tromsø, Lyngen, Sør-Troms og Indre-Troms for
+    perioden 15.02 – 15.05.
+
+    ...
+
+    Er du interessert i det som ligger i registrert i
+    regObs eller det som er kvalitetssikkert data  og ligger på varsom?
+
+    Skal du ha hendelser som har hatt konsekvens?
+
+    Skal hendelsene plottes i tid eller vises i kart?
+
+    ...
+
+    Varsom
+    Ikke nødvendigvis konsekvens
+    Tid
+
+    :return:
+    """
+
+    pickle_file_name = '{0}incident_troms_winter_2018_for_markus.pickle'.format(env.local_storage)
+    from_date = dt.date(2018, 2, 15)   # '2018-02-15'
+    to_date = dt.date(2018, 5, 15)    # '2018-05-15'
+
+    # Tromsø, Lyngen, Sør-Troms og Indre-Troms
+    regions = [3011, 3010, 3012, 3013]
+
+    get_new = False
+
+    if get_new:
+        all_varsom_incidents = gm.get_varsom_incidents(add_forecast_regions=True, add_observations=True)
+        all_regobs_avalobs_and_incidents = go.get_data_as_class(from_date, to_date, registration_types=[11, 26], region_ids=regions, output='Nest')
+
+        mp.pickle_anything([all_varsom_incidents, all_regobs_avalobs_and_incidents], pickle_file_name)
+
+    else:
+        [all_varsom_incidents, all_regobs_avalobs_and_incidents] = mp.unpickle_anything(pickle_file_name)
+
+    varsom_incidents = mm.make_date_int_dict(start_date=from_date, end_date=to_date)
+    regobs_avalobs_and_incidents = mm.make_date_int_dict(start_date=from_date, end_date=to_date)
+
+    for i in all_varsom_incidents:
+        if from_date <= i.date <= to_date:
+            if i.region_id in regions:
+                if i.date in varsom_incidents.keys():
+                    varsom_incidents[i.date] += 1
+
+    for i in all_regobs_avalobs_and_incidents:
+        if from_date <= i.DtObsTime.date() <= to_date:
+            if i.ForecastRegionTID in regions:
+                if i.DtObsTime.date() in regobs_avalobs_and_incidents.keys():
+                    regobs_avalobs_and_incidents[i.DtObsTime.date()] += 1
+
+    sum_varsom = sum(varsom_incidents.values())
+    sum_regobs = sum(regobs_avalobs_and_incidents.values())
+
+    varsom_incident_troms_winter_2018_for_markus = '{0}varsom_incident_troms_winter_2018_for_markus.csv'.format(env.output_folder)
+    regobs_incident_troms_winter_2018_for_markus = '{0}regobs_incident_troms_winter_2018_for_markus.csv'.format(env.output_folder)
+
+    with open(varsom_incident_troms_winter_2018_for_markus, 'w', encoding='utf-8') as f:
+        make_header = True
+        for k, v in varsom_incidents.items():
+            if make_header:
+                f.write('date; number\n')
+                make_header = False
+            f.write('{}; {}\n'.format(k, v))
+
+    with open(regobs_incident_troms_winter_2018_for_markus, 'w', encoding='utf-8') as f:
+        make_header = True
+        for k, v in regobs_avalobs_and_incidents.items():
+            if make_header:
+                f.write('date; number\n')
+                make_header = False
+            f.write('{}; {}\n'.format(k, v))
+
+    pass
+
+
 if __name__ == "__main__":
 
     # make_dl_incident_markus()
-    make_forecasts_at_incidents_for_sander()
+    # make_forecasts_at_incidents_for_sander()
+    incident_troms_winter_2018_for_markus()

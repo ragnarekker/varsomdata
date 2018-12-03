@@ -3,8 +3,8 @@ from varsomdata import getdangers as gd
 import datetime as dt
 from varsomdata import getkdvelements as gkdv
 from varsomdata import getobservations as go
-from varsomdata import makepickle as mp
-import setcoreenvironment as env
+from utilities import makepickle as mp
+import setenvironment as env
 from varsomdata import getmisc as gm
 
 __author__ = 'raek'
