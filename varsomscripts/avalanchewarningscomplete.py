@@ -24,5 +24,4 @@ if __name__ == '__main__':
 
     warnings_ = gf.get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1)
 
-    df_0 = warnings_[4].to_df()
-    a=0
+    df_0 = warnings_[4].to_dict()
