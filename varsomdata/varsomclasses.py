@@ -13,7 +13,10 @@ __author__ = 'raek'
 
 
 class AvalancheDanger:
+    """
+    TODO: Split forecast and now-cast into to different classes with the same base-class they inherit from.
 
+    """
     def __init__(self, region_id_inn, region_name_inn, data_table_inn, date_inn, danger_level_inn, danger_level_name_inn):
         """AvalancheDanger object tries to be common ground for three different tables in regObs and
         one from the forecast.
@@ -181,12 +184,12 @@ class AvalancheDanger:
 
     def to_df(self):
         """
-        Convert the object to a Pandas.Series
+        Convert the object to a Pandas.DataFrame
         :return: pandas.DataFrame representation of the AvalancheDanger class
         """
         import pandas
-        return pandas.DataFrame([self.to_dict])
-    # DOES NOT WORK YET
+        _d = self.to_dict()
+        return pandas.DataFrame.from_dict(_d)
 
 
 class AvalancheProblem:
@@ -489,6 +492,39 @@ class AvalancheProblem:
 
     def add_metadata(self, key, value):
         self.metadata[key] = value
+
+
+class MountainWeather:
+
+    def __init__(self, region_regobs_id_inn, region_name_inn, date_inn, order_inn, cause_name_inn, source_inn, problem_inn=None):
+        """The MountainWeather is published with each avalanche bulletin.
+
+        Parameters part of the constructor:
+        :param region_regobs_id_inn:       [int]       Region ID is as given in ForecastRegionKDV.
+        :param region_name_inn:     [String]    Region name as given in ForecastRegionKDV.
+        :param date_inn:            [Date]      Date for avalanche problem.
+        :param order_inn:           [int]       The index* of the avalanche problem.
+        :param cause_name_inn:      [String]    Avalanche cause/weak layer. For newer problems this as given in AvalCauseKDV.
+        :param source_inn:          [String]    The source of the data. Normally 'Observation' or 'Forecast'.
+        :param problem_inn          [String]    The avalanche problem. Not given in observations (only forecasts) pr nov 2016.
+
+
+
+        Other variables declared with initiation:
+        metadata = []       [list with dictionaries [{},{},..] ]
+        """
+
+        # In nov 2016 we updated all regions to have ids in th 3000´s. GIS and regObs equal.
+        # Before that GIS had numbers 0-99 and regObs 100-199. Messy..
+        # Convention is regObs ids always
+        if region_regobs_id_inn < 100:
+            region_regobs_id_inn += 100
+
+        self.metadata = {}              # dictionary {key:value, key:value, ..}
+        self.region_regobs_id = region_regobs_id_inn
+        self.region_name = region_name_inn
+        self.date = None
+        self.set_date(date_inn)
 
 
 class KDVelement:
