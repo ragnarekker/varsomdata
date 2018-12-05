@@ -8,20 +8,15 @@ import pandas
 __author__ = 'kmunve'
 
 
-def get_warnings_():
-    """Get avalanche warnings including problems and weather for analysis."""
-    pass
-
-
 def test_AvalancheDanger_to_dict():
     region_ids = [3022]  # Trollheimen
 
-    from_date = dt.date(2017, 12, 1)
-    to_date = dt.date(2017, 12, 5)
+    from_date = dt.date(2018, 12, 1)
+    to_date = dt.date(2018, 12, 5)
 
     warnings_ = gf.get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1)
 
-    _d = warnings_[4].to_dict()
+    _d = warnings_[2].to_dict()
 
     df = pandas.DataFrame.from_dict(_d)
 
@@ -29,13 +24,16 @@ def test_AvalancheDanger_to_dict():
 
 
 def test_MountainWeather_class():
+    """
+    Requires "forecast_api_version" : "v4.0.1" in /config/api.json
+    """
     region_ids = [3022]  # Trollheimen
 
     from_date = dt.date(2018, 12, 1)
     to_date = dt.date(2018, 12, 4)
 
     warnings_as_json = gf.get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=1)
-    #warnings_ = gf.get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1)
+    warnings_ = gf.get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1)
 
     w = warnings_as_json[2]
     mw = w['MountainWeather']
@@ -87,5 +85,5 @@ def test_MountainWeather_class():
     k = 'm'
 
 if __name__ == '__main__':
-    test_MountainWeather_class()
-    #test_AvalancheDanger_to_dict()
+    #test_MountainWeather_class()
+    test_AvalancheDanger_to_dict()

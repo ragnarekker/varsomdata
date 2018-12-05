@@ -60,6 +60,7 @@ class AvalancheDanger:
         self.avalanche_problems = []                    # [list of gp.AvalanchProblems] In forecasts there are always problems
         self.main_message_no = None                     # [String] The main message in norwegian
         self.main_message_en = None                     # [String] The main message in english
+        self.mountain_weather = None                    # contains a MountainWeather object if available
 
         ##### obs eval 3 stuff
         # self.forecast_correct = None                    # [String] Drop down value if the forecast is correct or no
@@ -99,6 +100,9 @@ class AvalancheDanger:
         self.avalanche_problems.append(problem_inn)
         # make sure lowest index (main problem) is first
         self.avalanche_problems.sort(key=lambda problems: problems.order)
+
+    def set_mountain_weather(self, json_obj):
+        self.mountain_weather = MountainWeather(json_obj)
 
     def set_main_message_no(self, main_message_no_inn):
         # Remove double spaces, tabs, newlines etc
@@ -496,35 +500,81 @@ class AvalancheProblem:
 
 class MountainWeather:
 
-    def __init__(self, region_regobs_id_inn, region_name_inn, date_inn, order_inn, cause_name_inn, source_inn, problem_inn=None):
-        """The MountainWeather is published with each avalanche bulletin.
+    def __init__(self):
+        """
+        The MountainWeather is published with each avalanche bulletin.
 
-        Parameters part of the constructor:
-        :param region_regobs_id_inn:       [int]       Region ID is as given in ForecastRegionKDV.
-        :param region_name_inn:     [String]    Region name as given in ForecastRegionKDV.
-        :param date_inn:            [Date]      Date for avalanche problem.
-        :param order_inn:           [int]       The index* of the avalanche problem.
-        :param cause_name_inn:      [String]    Avalanche cause/weak layer. For newer problems this as given in AvalCauseKDV.
-        :param source_inn:          [String]    The source of the data. Normally 'Observation' or 'Forecast'.
-        :param problem_inn          [String]    The avalanche problem. Not given in observations (only forecasts) pr nov 2016.
+        Requires forecast_api_version = 4.0.1 or higher in /config/api.json
 
 
+        mw = w['MountainWeather']
+        """
+        self.precip_most_exposed = None
+        self.precip_region = None
+        self.wind_speed = None
+        self.wind_direction = None
+        self.change_wind_speed = None
+        self.change_wind_direction = None
+        self.change_hour_of_day_start = None
+        self.change_hour_of_day_stop = None
+        self.temperature_min = None
+        self.temperature_max = None
+        self.temperature_elevation = None
+        self.freezing_level = None
+        self.fl_hour_of_day_start = None
+        self.fl_hour_of_day_stop = None
 
-        Other variables declared with initiation:
-        metadata = []       [list with dictionaries [{},{},..] ]
+    def from_json(self, json_obj):
         """
 
-        # In nov 2016 we updated all regions to have ids in th 3000´s. GIS and regObs equal.
-        # Before that GIS had numbers 0-99 and regObs 100-199. Messy..
-        # Convention is regObs ids always
-        if region_regobs_id_inn < 100:
-            region_regobs_id_inn += 100
+        :param json_obj: the content of the "MountainWeather" tag in the return from get_warnings_as_json
+                         in getforecastapi.py (e.g. w['MountainWeather'])
+        :return: A MountainWeather object
+        """
 
-        self.metadata = {}              # dictionary {key:value, key:value, ..}
-        self.region_regobs_id = region_regobs_id_inn
-        self.region_name = region_name_inn
-        self.date = None
-        self.set_date(date_inn)
+        for _mt in json_obj['MeasurementTypes']:
+            if _mt['Id'] == 10:  # precipitation
+                for _st in _mt['MeasurementSubTypes']:
+                    if _st['Id'] == 60:  # most exposed
+                        self.precip_most_exposed = float(_st['Value'])
+                    elif _st['Id'] == 70:  # regional average
+                        self.precip_region = float(_st['Value'])
+
+            elif _mt['Id'] == 20:  # wind
+                for _st in _mt['MeasurementSubTypes']:
+                    if _st['Id'] == 20:  # wind_speed
+                        self.wind_speed = _st['Value']
+                    elif _st['Id'] == 50:  # wind_direction
+                        self.wind_direction = _st['Value']
+
+            elif _mt['Id'] == 30:  # changing wind
+                for _st in _mt['MeasurementSubTypes']:
+                    if _st['Id'] == 20:  # wind_speed
+                        self.change_wind_speed = _st['Value']
+                    elif _st['Id'] == 50:  # wind_direction
+                        self.change_wind_direction = _st['Value']
+                    elif _st['Id'] == 100:  # hour_of_day_start
+                        self.change_hour_of_day_start = int(_st['Value'])
+                    elif _st['Id'] == 110:  # hour_of_day_stop
+                        self.change_hour_of_day_stop = int(_st['Value'])
+
+            elif _mt['Id'] == 40:  # temperature
+                for _st in _mt['MeasurementSubTypes']:
+                    if _st['Id'] == 30:  # temperature_min
+                        self.temperature_min = float(_st['Value'])
+                    elif _st['Id'] == 70:  # temperature_max
+                        self.temperature_max = float(_st['Value'])
+                    elif _st['Id'] == 90:  # temperature_elevation
+                        self.temperature_elevation = float(_st['Value'])
+
+            elif _mt['Id'] == 50:  # freezing level
+                for _st in _mt['MeasurementSubTypes']:
+                    if _st['Id'] == 90:  # wind_speed
+                        self.freezing_level = float(_st['Value'])
+                    elif _st['Id'] == 100:  # hour_of_day_start
+                        self.fl_hour_of_day_start = int(_st['Value'])
+                    elif _st['Id'] == 110:  # hour_of_day_stop
+                        self.fl_hour_of_day_stop = int(_st['Value'])
 
 
 class KDVelement:

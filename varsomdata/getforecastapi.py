@@ -90,11 +90,17 @@ def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1):
             avalanche_forecast = w['AvalancheDanger']
             avalanche_nowcast = w['AvalancheWarning']
 
+
             warning = vc.AvalancheDanger(region_id, region_name, 'Forecast API', date, danger_level, danger_level_name)
             warning.set_source('Forecast')
             warning.set_nick(author)
             warning.set_avalanche_nowcast(avalanche_nowcast)
             warning.set_avalanche_forecast(avalanche_forecast)
+
+            try:
+                warning.set_mountain_weather(w['MountainWeather'])
+            except:
+                ml.log_and_print('No MountainWeather tag found in json-string - set forecast_api_version to 4.0.1 or higher')
 
             # http://www.varsom.no/Snoskred/Senja/?date=18.03.2015
             # http://www.varsom.no/snoskredvarsling/varsel/Indre%20Sogn/2017-01-19
@@ -239,7 +245,7 @@ def get_landslide_warnings_as_json(municipality, from_date, to_date, lang_key=1,
 
 if __name__ == "__main__":
 
-    land_slide_warnings = get_landslide_warnings_as_json([1201], dt.date(2018, 1, 1), dt.date(2018, 4, 1))
+    #land_slide_warnings = get_landslide_warnings_as_json([1201], dt.date(2018, 1, 1), dt.date(2018, 4, 1))
     warnings = get_avalanche_warnings([3022, 3014], dt.date(2016, 12, 1), dt.date(2016, 12, 21))
     # p = get_valid_regids(10, '2013-03-01', '2013-03-09')
 
