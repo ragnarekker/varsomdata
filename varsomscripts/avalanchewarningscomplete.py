@@ -38,7 +38,7 @@ def test_MountainWeather_class():
     w = warnings_as_json[2]
     mw = w['MountainWeather']
 
-    for _mt in w['MountainWeather']['MeasurementTypes']:
+    for _mt in mw['MeasurementTypes']:
         if _mt['Id'] == 10: # precipitation
             for _st in _mt['MeasurementSubTypes']:
                 if _st['Id'] == 60: # most exposed
@@ -85,5 +85,5 @@ def test_MountainWeather_class():
     k = 'm'
 
 if __name__ == '__main__':
-    #test_MountainWeather_class()
-    test_AvalancheDanger_to_dict()
+    test_MountainWeather_class()
+    #test_AvalancheDanger_to_dict()

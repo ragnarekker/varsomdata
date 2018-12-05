@@ -102,7 +102,9 @@ class AvalancheDanger:
         self.avalanche_problems.sort(key=lambda problems: problems.order)
 
     def set_mountain_weather(self, json_obj):
-        self.mountain_weather = MountainWeather(json_obj)
+        _mw = MountainWeather()
+        _mw.from_json(json_obj)
+        self.mountain_weather = _mw
 
     def set_main_message_no(self, main_message_no_inn):
         # Remove double spaces, tabs, newlines etc

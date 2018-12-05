@@ -80,94 +80,99 @@ def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1):
     exception_counter = 0
 
     for w in warnings_as_json:
+        #try:
+        region_id = int(w['RegionId'])
+        region_name = w['RegionName']
+        date = dt.datetime.strptime(w['ValidFrom'][0:10], '%Y-%m-%d').date()
+        danger_level = int(w['DangerLevel'])
+        danger_level_name = w['DangerLevelName']
+        author = w['Author']
+        avalanche_forecast = w['AvalancheDanger']
+
         try:
-            region_id = int(w['RegionId'])
-            region_name = w['RegionName']
-            date = dt.datetime.strptime(w['ValidFrom'][0:10], '%Y-%m-%d').date()
-            danger_level = int(w['DangerLevel'])
-            danger_level_name = w['DangerLevelName']
-            author = w['Author']
-            avalanche_forecast = w['AvalancheDanger']
             avalanche_nowcast = w['AvalancheWarning']
+        except:
+            avalanche_nowcast = ''
+            ml.log_and_print('No nowcast available.')
 
 
-            warning = vc.AvalancheDanger(region_id, region_name, 'Forecast API', date, danger_level, danger_level_name)
-            warning.set_source('Forecast')
-            warning.set_nick(author)
-            warning.set_avalanche_nowcast(avalanche_nowcast)
-            warning.set_avalanche_forecast(avalanche_forecast)
+        warning = vc.AvalancheDanger(region_id, region_name, 'Forecast API', date, danger_level, danger_level_name)
+        warning.set_source('Forecast')
+        warning.set_nick(author)
+        warning.set_avalanche_nowcast(avalanche_nowcast)
+        warning.set_avalanche_forecast(avalanche_forecast)
 
-            try:
-                warning.set_mountain_weather(w['MountainWeather'])
-            except:
-                ml.log_and_print('No MountainWeather tag found in json-string - set forecast_api_version to 4.0.1 or higher')
+        try:
+            warning.set_mountain_weather(w['MountainWeather'])
+        except:
+            ml.log_and_print('No MountainWeather tag found in json-string - set forecast_api_version to 4.0.1 or higher')
 
-            # http://www.varsom.no/Snoskred/Senja/?date=18.03.2015
-            # http://www.varsom.no/snoskredvarsling/varsel/Indre%20Sogn/2017-01-19
-            varsom_name = region_name  # .replace(u'æ', u'a').replace(u'ø', u'o').replace(u'å', u'a')
-            varsom_date = date.strftime("%Y-%m-%d")
-            url = "http://www.varsom.no/snoskredvarsling/varsel/{0}/{1}".format(varsom_name, varsom_date)
-            warning.set_url(url)
+        # http://www.varsom.no/Snoskred/Senja/?date=18.03.2015
+        # http://www.varsom.no/snoskredvarsling/varsel/Indre%20Sogn/2017-01-19
+        varsom_name = region_name  # .replace(u'æ', u'a').replace(u'ø', u'o').replace(u'å', u'a')
+        varsom_date = date.strftime("%Y-%m-%d")
+        url = "http://www.varsom.no/snoskredvarsling/varsel/{0}/{1}".format(varsom_name, varsom_date)
+        warning.set_url(url)
 
-            if lang_key == 1:
-                warning.set_main_message_no(w['MainText'])
-            if lang_key == 2:
-                warning.set_main_message_en(w['MainText'])
+        if lang_key == 1:
+            warning.set_main_message_no(w['MainText'])
+        if lang_key == 2:
+            warning.set_main_message_en(w['MainText'])
 
-            if w['AvalancheProblems'] is not None:
-                for p in w['AvalancheProblems']:
+        if w['AvalancheProblems'] is not None:
+            for p in w['AvalancheProblems']:
 
-                    order = p['AvalancheProblemId']              # sort order of the avalanche problems in this forecast
-                    problem_tid = p['AvalancheProblemTypeId']
-                    problem_name = p['AvalancheProblemTypeName']
-                    cause_tid = p['AvalCauseId']                            # weak layer
-                    cause_name = p['AvalCauseName']
+                order = p['AvalancheProblemId']              # sort order of the avalanche problems in this forecast
+                problem_tid = p['AvalancheProblemTypeId']
+                problem_name = p['AvalancheProblemTypeName']
+                cause_tid = p['AvalCauseId']                            # weak layer
+                cause_name = p['AvalCauseName']
 
-                    aval_main_type_tid = p['AvalancheTypeId']               # used on varsom
-                    aval_main_type_name = p['AvalancheTypeName']
-                    aval_type_tid = p['AvalancheExtId']                     # used in regObs
-                    aval_type_name = p['AvalancheExtName']
+                aval_main_type_tid = p['AvalancheTypeId']               # used on varsom
+                aval_main_type_name = p['AvalancheTypeName']
+                aval_type_tid = p['AvalancheExtId']                     # used in regObs
+                aval_type_name = p['AvalancheExtName']
 
-                    destructive_size_tid = p['DestructiveSizeExtId']
-                    destructive_size_name = p['DestructiveSizeExtName']
+                destructive_size_tid = p['DestructiveSizeExtId']
+                destructive_size_name = p['DestructiveSizeExtName']
 
-                    trigger_tid = p['AvalTriggerSimpleId']
-                    trigger_name = p['AvalTriggerSimpleName']
-                    distribution_tid = p['AvalPropagationId']
-                    distribution_name = p['AvalPropagationName']
-                    probability_tid = p['AvalProbabilityId']
-                    probability_name = p['AvalProbabilityName']
+                trigger_tid = p['AvalTriggerSimpleId']
+                trigger_name = p['AvalTriggerSimpleName']
+                distribution_tid = p['AvalPropagationId']
+                distribution_name = p['AvalPropagationName']
+                probability_tid = p['AvalProbabilityId']
+                probability_name = p['AvalProbabilityName']
 
-                    exposed_height_1 = p['ExposedHeight1']
-                    exposed_height_2 = p['ExposedHeight2']
-                    exposed_height_fill = p['ExposedHeightFill']                # based on values in exp heigt 1 and 2 this colores the mountain
-                    valid_expositions = p['ValidExpositions']                   # north is first cahr and it goes clockwize
+                exposed_height_1 = p['ExposedHeight1']
+                exposed_height_2 = p['ExposedHeight2']
+                exposed_height_fill = p['ExposedHeightFill']                # based on values in exp heigt 1 and 2 this colores the mountain
+                valid_expositions = p['ValidExpositions']                   # north is first cahr and it goes clockwize
 
-                    problem = vc.AvalancheProblem(region_id, region_name, date, order, cause_name, 'Forecast', problem_inn=problem_name)
+                problem = vc.AvalancheProblem(region_id, region_name, date, order, cause_name, 'Forecast', problem_inn=problem_name)
 
-                    problem.set_cause_tid(cause_tid)
-                    problem.set_problem(problem_name, problem_tid)
-                    problem.set_aval_type(aval_type_name, aval_type_tid)
-                    problem.set_aval_size(destructive_size_name, destructive_size_tid)
-                    problem.set_aval_trigger(trigger_name, trigger_tid)
-                    problem.set_aval_distribution(distribution_name)
-                    problem.set_aval_probability(probability_name)
+                problem.set_cause_tid(cause_tid)
+                problem.set_problem(problem_name, problem_tid)
+                problem.set_aval_type(aval_type_name, aval_type_tid)
+                problem.set_aval_size(destructive_size_name, destructive_size_tid)
+                problem.set_aval_trigger(trigger_name, trigger_tid)
+                problem.set_aval_distribution(distribution_name)
+                problem.set_aval_probability(probability_name)
 
-                    problem.set_danger_level(danger_level_name, danger_level)
-                    problem.set_url(url)
+                problem.set_danger_level(danger_level_name, danger_level)
+                problem.set_url(url)
 
-                    problem.set_regobs_table('AvalancheWarnProblem')
-                    problem.set_nick_name(author)
-                    problem.set_lang_key(lang_key)
+                problem.set_regobs_table('AvalancheWarnProblem')
+                problem.set_nick_name(author)
+                problem.set_lang_key(lang_key)
 
-                    warning.add_problem(problem)
+                warning.add_problem(problem)
 
-            avalanche_warning_list.append(warning)
-
+        avalanche_warning_list.append(warning)
+        '''
         except:
             ml.log_and_print('[error] getForecastApi -> get_avalanche_warnings: Exception at {0} of {1}'.format(len(avalanche_warning_list) + exception_counter, len(warnings_as_json)))
             exception_counter += 1
-
+        '''
     # Sort by date
     avalanche_danger_list = sorted(avalanche_warning_list, key=lambda AvalancheDanger: AvalancheDanger.date)
 
