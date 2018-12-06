@@ -3,6 +3,7 @@
 
 import datetime as dt
 from varsomdata import getforecastapi as gf
+from varsomdata import varsomclasses as vc
 import pandas
 
 __author__ = 'kmunve'
@@ -35,10 +36,12 @@ def test_MountainWeather_class():
     warnings_as_json = gf.get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=1)
     warnings_ = gf.get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1)
 
-    w = warnings_as_json[2]
-    mw = w['MountainWeather']
+    w = warnings_as_json[0]
+    mw = vc.MountainWeather()
+    mw.from_json(w['MountainWeather'])
 
-    for _mt in mw['MeasurementTypes']:
+    """
+    for _mt in w['MountainWeather']['MeasurementTypes']:
         if _mt['Id'] == 10: # precipitation
             for _st in _mt['MeasurementSubTypes']:
                 if _st['Id'] == 60: # most exposed
@@ -81,9 +84,10 @@ def test_MountainWeather_class():
                     fl_hour_of_day_start = int(_st['Value'])
                 elif _st['Id'] == 110: # hour_of_day_stop
                     fl_hour_of_day_stop = int(_st['Value'])
-
+        """
     k = 'm'
 
+
 if __name__ == '__main__':
-    test_MountainWeather_class()
-    #test_AvalancheDanger_to_dict()
+    #test_MountainWeather_class()
+    test_AvalancheDanger_to_dict()

@@ -149,7 +149,7 @@ class AvalancheDanger:
         :return: dictionary representation of the AvalancheDanger class
         """
         _dict = {'metadata': self.metadata,                              # [dictionary] {key:value, key:value, ..}
-        'region_regobs_id': self.region_regobs_id ,             # [int]
+        'region_regobs_id': self.region_regobs_id,             # [int]
         'region_name': self.region_name,              # [String]
         'data_table': self.data_table, # [String]
         #'': self.set_date(date_inn),                         # [date]
@@ -556,15 +556,21 @@ class MountainWeather:
                     elif _st['Id'] == 50:  # wind_direction
                         self.change_wind_direction = _st['Value']
                     elif _st['Id'] == 100:  # hour_of_day_start
-                        self.change_hour_of_day_start = int(_st['Value'])
+                        try:
+                            self.change_hour_of_day_start = int(_st['Value'])
+                        except TypeError:
+                            self.change_hour_of_day_start = 0
                     elif _st['Id'] == 110:  # hour_of_day_stop
-                        self.change_hour_of_day_stop = int(_st['Value'])
+                        try:
+                            self.change_hour_of_day_stop = int(_st['Value'])
+                        except TypeError:
+                            self.change_hour_of_day_stop = 0
 
             elif _mt['Id'] == 40:  # temperature
                 for _st in _mt['MeasurementSubTypes']:
                     if _st['Id'] == 30:  # temperature_min
                         self.temperature_min = float(_st['Value'])
-                    elif _st['Id'] == 70:  # temperature_max
+                    elif _st['Id'] == 40:  # temperature_max
                         self.temperature_max = float(_st['Value'])
                     elif _st['Id'] == 90:  # temperature_elevation
                         self.temperature_elevation = float(_st['Value'])
