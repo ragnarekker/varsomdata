@@ -17,7 +17,9 @@ class AvalancheDanger:
     TODO: Split forecast and now-cast into to different classes with the same base-class they inherit from.
 
     """
-    def __init__(self, region_id_inn, region_name_inn, data_table_inn, date_inn, danger_level_inn, danger_level_name_inn):
+
+    def __init__(self, region_id_inn, region_name_inn, data_table_inn, date_inn, danger_level_inn,
+                 danger_level_name_inn):
         """AvalancheDanger object tries to be common ground for three different tables in regObs and
         one from the forecast.
 
@@ -41,12 +43,12 @@ class AvalancheDanger:
         if region_id_inn < 100:
             region_id_inn += 100
 
-        self.metadata = {}                              # [dictionary] {key:value, key:value, ..}
-        self.region_regobs_id = region_id_inn           # [int]
-        self.region_name = region_name_inn              # [String]
-        self.data_table = data_table_inn                # [String]
-        self.set_date(date_inn)                         # [date]
-        self.danger_level = danger_level_inn            # [Int]
+        self.metadata = {}  # [dictionary] {key:value, key:value, ..}
+        self.region_regobs_id = region_id_inn  # [int]
+        self.region_name = region_name_inn  # [String]
+        self.data_table = data_table_inn  # [String]
+        self.set_date(date_inn)  # [date]
+        self.danger_level = danger_level_inn  # [Int]
         self.danger_level_name = danger_level_name_inn  # [String]
 
         #### Values declared when needed.
@@ -57,10 +59,10 @@ class AvalancheDanger:
         # self.municipal_name = None
 
         #### forecast stuff
-        self.avalanche_problems = []                    # [list of gp.AvalanchProblems] In forecasts there are always problems
-        self.main_message_no = None                     # [String] The main message in norwegian
-        self.main_message_en = None                     # [String] The main message in english
-        self.mountain_weather = None                    # contains a MountainWeather object if available
+        self.avalanche_problems = []  # [list of gp.AvalanchProblems] In forecasts there are always problems
+        self.main_message_no = None  # [String] The main message in norwegian
+        self.main_message_en = None  # [String] The main message in english
+        self.mountain_weather = None  # contains a MountainWeather object if available
 
         ##### obs eval 3 stuff
         # self.forecast_correct = None                    # [String] Drop down value if the forecast is correct or no
@@ -87,10 +89,10 @@ class AvalancheDanger:
         try:
             self.municipal_name = municipal_inn
         except ValueError:
-            print("Got ValueError on setting municipal name on {0} for {1}.")\
+            print("Got ValueError on setting municipal name on {0} for {1}.") \
                 .format(self.date, self.region_name)
         except:
-            print("Got un expected error on setting municipal name on {0} for {1}.")\
+            print("Got un expected error on setting municipal name on {0} for {1}.") \
                 .format(self.date, self.region_name)
 
     def set_url(self, url_inn):
@@ -148,43 +150,57 @@ class AvalancheDanger:
         Convert the object to a dictionary
         :return: dictionary representation of the AvalancheDanger class
         """
-        _dict = {'metadata': self.metadata,                              # [dictionary] {key:value, key:value, ..}
-        'region_regobs_id': self.region_regobs_id,             # [int]
-        'region_name': self.region_name,              # [String]
-        'data_table': self.data_table, # [String]
-        #'': self.set_date(date_inn),                         # [date]
-        'danger_level': self.danger_level,            # [Int]
-        'danger_level_name': self.danger_level_name,  # [String]
+        _dict = {'metadata': self.metadata,  # [dictionary] {key:value, key:value, ..}
+                 'region_regobs_id': self.region_regobs_id,  # [int]
+                 'region_name': self.region_name,  # [String]
+                 'data_table': self.data_table,  # [String]
+                 'danger_level': self.danger_level,  # [Int]
+                 'danger_level_name': self.danger_level_name,  # [String]
+                 'nick': self.nick,
+                 # [String] regObs NickName of observer or forecaster who issued the avalanche danger
+                 'source': self.source,  # [String] Usually 'Observasjon' or 'Varsel'
+                 'avalanche_forecast': self.avalanche_forecast,  # [String] Written forecast.
+                 'avalanche_nowcast': self.avalanche_nowcast,  # [String] The summery of the snowcover now
+                 'main_message_no': self.main_message_no,  # [String] The main message in norwegian
+                 'main_message_en': self.main_message_en,  # [String] The main message in english
 
-        #### Values declared when needed.
-        'nick': self.nick,                                # [String] regObs NickName of observer or forecaster who issued the avalanche danger
-        'source': self.source,                              # [String] Usually 'Observasjon' or 'Varsel'
-        'avalanche_forecast': self.avalanche_forecast,                  # [String] Written forecast.
-        'avalanche_nowcast': self.avalanche_nowcast,                   # [String] The summery of the snowcover now
-        # fix: 'municipal_name': self.municipal_name,
-        'main_message_no': self.main_message_no,  # [String] The main message in norwegian
-        'main_message_en': self.main_message_en  # [String] The main message in english
+                 # mountain weather stuff
+                 "mw_precip_most_exposed": self.mountain_weather.precip_most_exposed,
+                 "mw_precip_region": self.mountain_weather.precip_region,
+                 "mw_wind_speed": self.mountain_weather.wind_speed,
+                 "mw_wind_direction": self.mountain_weather.wind_direction,
+                 "mw_change_wind_speed": self.mountain_weather.change_wind_speed,
+                 "mw_change_wind_direction": self.mountain_weather.change_wind_direction,
+                 "mw_change_hour_of_day_start": self.mountain_weather.change_hour_of_day_start,
+                 "mw_change_hour_of_day_stop": self.mountain_weather.change_hour_of_day_stop,
+                 "mw_temperature_min": self.mountain_weather.temperature_min,
+                 "mw_temperature_max": self.mountain_weather.temperature_max,
+                 "mw_temperature_elevation": self.mountain_weather.temperature_elevation,
+                 "mw_freezing_level": self.mountain_weather.freezing_level,
+                 "mw_fl_hour_of_day_start": self.mountain_weather.fl_hour_of_day_start,
+                 "mw_fl_hour_of_day_stop": self.mountain_weather.fl_hour_of_day_stop
 
-        ##### obs eval 3 stuff
-        # fix: 'forecast_correct': self.forecast_correct                    # [String] Drop down value if the forecast is correct or no
-        # fix: 'forecast_correct_id': self.forecast_correct_id                 # [int]
-        # fix: 'forecast_comment': self.forecast_comment
-              }
+                 ##### obs eval 3 stuff
+                 # fix: 'forecast_correct': self.forecast_correct                    # [String] Drop down value if the forecast is correct or no
+                 # fix: 'forecast_correct_id': self.forecast_correct_id                 # [int]
+                 # fix: 'forecast_comment': self.forecast_comment
+                 }
         #### add avalanche problems
         for _problem in self.avalanche_problems:
             problem_prefix = f"avalanche_problem_{_problem.order}_"
             _ap_dict = {f'{problem_prefix}cause_tid': _problem.cause_tid, # [int] Avalanche cause ID(TID in regObs). Only used in avalanche problems from dec 2014 and newer.
-            f'{problem_prefix}cause_name': _problem.cause_name,
-            f'{problem_prefix}source': _problem.source,
-            f'{problem_prefix}problem': _problem.problem,
-            f'{problem_prefix}problem_tid': _problem.problem_tid, # [int]       ID used in regObs
-            f'{problem_prefix}main_cause': _problem.main_cause,  # [String] Problems/weaklayers are grouped into main problems the season 2014/15
-            f'{problem_prefix}aval_type': _problem.aval_type,  # [String]    Avalanche Type
-            f'{problem_prefix}aval_type_tid': _problem.aval_type_tid, # [int]       ID used in regObs
-            f'{problem_prefix}aval_size': _problem.aval_size,  # [String]    Avalanche Size
-            f'{problem_prefix}aval_size_tid': _problem.aval_size_tid
-            }
-            #'': self.avalanche_problems = []                    # [list of gp.AvalanchProblems] In forecasts there are always problems
+                        f'{problem_prefix}cause_name': _problem.cause_name,
+                        f'{problem_prefix}source': _problem.source,
+                        f'{problem_prefix}problem': _problem.problem,
+                        f'{problem_prefix}problem_tid': _problem.problem_tid,  # [int]       ID used in regObs
+                        f'{problem_prefix}main_cause': _problem.main_cause,
+                        # [String] Problems/weaklayers are grouped into main problems the season 2014/15
+                        f'{problem_prefix}aval_type': _problem.aval_type,  # [String]    Avalanche Type
+                        f'{problem_prefix}aval_type_tid': _problem.aval_type_tid,  # [int]       ID used in regObs
+                        f'{problem_prefix}aval_size': _problem.aval_size,  # [String]    Avalanche Size
+                        f'{problem_prefix}aval_size_tid': _problem.aval_size_tid
+                        }
+
             _dict.update(_ap_dict)
         return _dict
 
@@ -200,7 +216,8 @@ class AvalancheDanger:
 
 class AvalancheProblem:
 
-    def __init__(self, region_regobs_id_inn, region_name_inn, date_inn, order_inn, cause_name_inn, source_inn, problem_inn=None):
+    def __init__(self, region_regobs_id_inn, region_name_inn, date_inn, order_inn, cause_name_inn, source_inn,
+                 problem_inn=None):
         """The AvalancheProblem object is useful since there are 3 different tables to get regObs-data from and 2 tables
         from forecasts. Thus avalanche problems are saved in 5 ways. The structure of this object is based on the
         "latest" model and the other/older ways to save avalanche problems on may be mapped to these.
@@ -226,27 +243,27 @@ class AvalancheProblem:
         if region_regobs_id_inn < 100:
             region_regobs_id_inn += 100
 
-        self.metadata = {}              # dictionary {key:value, key:value, ..}
+        self.metadata = {}  # dictionary {key:value, key:value, ..}
         self.region_regobs_id = region_regobs_id_inn
         self.region_name = region_name_inn
         self.date = None
         self.set_date(date_inn)
         self.order = order_inn
-        self.cause_tid = None           # [int] Avalanche cause ID(TID in regObs). Only used in avalanche problems from dec 2014 and newer.
+        self.cause_tid = None  # [int] Avalanche cause ID(TID in regObs). Only used in avalanche problems from dec 2014 and newer.
         self.cause_name = cause_name_inn
         self.source = source_inn
         self.problem = problem_inn
-        self.problem_tid = None         # [int]       ID used in regObs
-        self.main_cause = None          # [String] Problems/weaklayers are grouped into main problems the season 2014/15
+        self.problem_tid = None  # [int]       ID used in regObs
+        self.main_cause = None  # [String] Problems/weaklayers are grouped into main problems the season 2014/15
 
         # The following variables are declared on a needed basis.
 
         # self.regid = None               # [int]       Registration ID in regObs.
         # self.municipal_name = None      # [String]
-        self.aval_type = None           # [String]    Avalanche Type
-        self.aval_type_tid = None       # [int]       ID used in regObs
-        self.aval_size = None           # [String]    Avalanche Size
-        self.aval_size_tid = None       # [int]       ID used in regObs
+        self.aval_type = None  # [String]    Avalanche Type
+        self.aval_type_tid = None  # [int]       ID used in regObs
+        self.aval_size = None  # [String]    Avalanche Size
+        self.aval_size_tid = None  # [int]       ID used in regObs
         # self.aval_trigger = None        # [String]    Avalanche Trigger
         # self.aval_trigger_tid = None    # [int]       ID used in regObs
         # self.aval_probability = None    # [String]    Probability for an avalanche to release
@@ -288,10 +305,10 @@ class AvalancheProblem:
         try:
             self.municipal_name = municipal_inn
         except ValueError:
-            print("Got ValueError on setting municipal name on {0} for {1}.")\
+            print("Got ValueError on setting municipal name on {0} for {1}.") \
                 .format(self.date, self.region_name)
         except:
-            print("Got un expected error on setting municipal name on {0} for {1}.")\
+            print("Got un expected error on setting municipal name on {0} for {1}.") \
                 .format(self.date, self.region_name)
 
     def set_regid(self, regid_inn):
@@ -314,7 +331,6 @@ class AvalancheProblem:
 
     def set_aval_probability(self, aval_probability_inn):
         self.aval_probability = aval_probability_inn
-
 
     def set_aval_distribution(self, aval_distribution_inn):
         self.aval_distribution = aval_distribution_inn
@@ -343,8 +359,8 @@ class AvalancheProblem:
             #     self.cause_attribute_thin = 'The collapsing weak layer is thin < 3 cm.'
 
         else:
-            ml.log_and_print('getproblems -> AvalancheProblem.set_aval_cause_attributes: Avalanche problem class wrong for cause attributes.')
-
+            ml.log_and_print(
+                'getproblems -> AvalancheProblem.set_aval_cause_attributes: Avalanche problem class wrong for cause attributes.')
 
     def set_problem(self, problem_inn, problem_tid_inn=None):
         self.problem = problem_inn
@@ -420,48 +436,48 @@ class AvalancheProblem:
 
         # problem_tid is available in the forecasts.
         problem_tid_to_eaws_problems = {
-                 0: 'Not given',
-                 3: 'New snow',                # Loose dry avalanches
-                 5: 'Wet snow',                # Loose wet avalanches
-                 7: 'New snow',                # Storm slab avlanches
-                10: 'Wind-drifted snow',       # Wind slab avalanches
-                20: 'New snow',                # New snow
-                30: 'Persistent weak layers',  # Persistent slab avalanches
-                35: 'Persistent weak layers',  # Persistent weak layer
-                37: 'Persistent weak layers',  # Persistent deep slab avalanches
-                40: 'Wet snow',                # Wet snow
-                45: 'Wet snow',                # Wet slab avalanches
-                50: 'Gliding snow'}            # Glide avalanches
+            0: 'Not given',
+            3: 'New snow',  # Loose dry avalanches
+            5: 'Wet snow',  # Loose wet avalanches
+            7: 'New snow',  # Storm slab avlanches
+            10: 'Wind-drifted snow',  # Wind slab avalanches
+            20: 'New snow',  # New snow
+            30: 'Persistent weak layers',  # Persistent slab avalanches
+            35: 'Persistent weak layers',  # Persistent weak layer
+            37: 'Persistent weak layers',  # Persistent deep slab avalanches
+            40: 'Wet snow',  # Wet snow
+            45: 'Wet snow',  # Wet slab avalanches
+            50: 'Gliding snow'}  # Glide avalanches
 
         # AvalancheExtKDV holds information on avalanche type (self.aval_type)
         # id40:Corice and id30:Slush flow not included
         # id20:Dry slab in not uniquely mapped to an avalanche problem
         avalanche_ext_tid_to_eaws_problems = {
-                10: 'New snow',     # Loose dry avalanche
-                15: 'Wet snow',     # Loose wet avalanche
-                #20: ,              # Dry slab avalanche
-                25: 'Wet snow',     # Wet slab avalanche
-                27: 'Gliding snow'} # Glide avalanche
-                #30: ,              # Slush avalanche
-                #40: ,              # Cornice
+            10: 'New snow',  # Loose dry avalanche
+            15: 'Wet snow',  # Loose wet avalanche
+            # 20: ,              # Dry slab avalanche
+            25: 'Wet snow',  # Wet slab avalanche
+            27: 'Gliding snow'}  # Glide avalanche
+        # 30: ,              # Slush avalanche
+        # 40: ,              # Cornice
 
         aval_cause_to_eaws_problems = {
-                #10: ,   # Buried weak layer of new snow
-                #11: ,   # Buried weak layer of surface hoar
-                #12: ,   # Buried weak layer of graupel
-                #13: ,   # Buried weak layer of faceted snow near surface
-                #14: ,   # Poor bonding between crust and overlying snow
-                15: 'Wind-drifted snow',   # Poor bonding between layers in wind deposited snow
-                #16: ,   # Buried weak layer of faceted snow near the ground
-                #17: ,   # Buried weak layer of faceted snow near vegetation
-                #18: ,   # Buried weak layer of faceted snow above a crust
-                #19: ,   # Buried weak layer of faceted snow beneath a crust
-                20: 'Gliding snow',   # Wet snow / melting near the ground
-                21: 'Wet snow',   # Wet snow on the surface
-                22: 'Wet snow'}   # Water pooling in / above snow layers
-                #23: ,   # Water - saturated snow
-                #24: ,   # Loose snow
-                #25: ,   # Rain / rise in temperature / solar heating
+            # 10: ,   # Buried weak layer of new snow
+            # 11: ,   # Buried weak layer of surface hoar
+            # 12: ,   # Buried weak layer of graupel
+            # 13: ,   # Buried weak layer of faceted snow near surface
+            # 14: ,   # Poor bonding between crust and overlying snow
+            15: 'Wind-drifted snow',  # Poor bonding between layers in wind deposited snow
+            # 16: ,   # Buried weak layer of faceted snow near the ground
+            # 17: ,   # Buried weak layer of faceted snow near vegetation
+            # 18: ,   # Buried weak layer of faceted snow above a crust
+            # 19: ,   # Buried weak layer of faceted snow beneath a crust
+            20: 'Gliding snow',  # Wet snow / melting near the ground
+            21: 'Wet snow',  # Wet snow on the surface
+            22: 'Wet snow'}  # Water pooling in / above snow layers
+        # 23: ,   # Water - saturated snow
+        # 24: ,   # Loose snow
+        # 25: ,   # Rain / rise in temperature / solar heating
 
         self.eaws_problem = None
 
@@ -485,7 +501,7 @@ class AvalancheProblem:
                                 self.eaws_problem = 'New snow'
                             else:
                                 self.eaws_problem = 'Wind-drifted snow'
-                                #self.eaws_problem = None
+                                # self.eaws_problem = None
                     if self.cause_tid in [11, 13, 16, 17, 18, 19]:
                         self.eaws_problem = 'Persistent weak layers'
 
@@ -604,7 +620,7 @@ class KDVelement:
 
         if get_header is True:
             return '{0: <5}{1: <7}{2: <10}{3: <10}{4: <50}{5: <50}'.format(
-                   'ID', 'Order', 'IsActive', 'Langkey', 'Name', 'Description')
+                'ID', 'Order', 'IsActive', 'Langkey', 'Name', 'Description')
         else:
             # in case sort order None (not given) make it an empty string
             sort_order = self.SortOrder
@@ -612,4 +628,4 @@ class KDVelement:
                 sort_order = ''
 
             return '{0: <5}{1: <7}{2: <10}{3: <10}{4: <50}{5: <50}'.format(
-                   self.ID, sort_order, self.IsActive, self.Langkey, self.Name, self.Description)
+                self.ID, sort_order, self.IsActive, self.Langkey, self.Name, self.Description)
