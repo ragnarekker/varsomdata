@@ -166,20 +166,20 @@ class AvalancheDanger:
                  'main_message_en': self.main_message_en,  # [String] The main message in english
 
                  # mountain weather stuff
-                 "mw_precip_most_exposed": self.mountain_weather.precip_most_exposed,
-                 "mw_precip_region": self.mountain_weather.precip_region,
-                 "mw_wind_speed": self.mountain_weather.wind_speed,
-                 "mw_wind_direction": self.mountain_weather.wind_direction,
-                 "mw_change_wind_speed": self.mountain_weather.change_wind_speed,
-                 "mw_change_wind_direction": self.mountain_weather.change_wind_direction,
-                 "mw_change_hour_of_day_start": self.mountain_weather.change_hour_of_day_start,
-                 "mw_change_hour_of_day_stop": self.mountain_weather.change_hour_of_day_stop,
-                 "mw_temperature_min": self.mountain_weather.temperature_min,
-                 "mw_temperature_max": self.mountain_weather.temperature_max,
-                 "mw_temperature_elevation": self.mountain_weather.temperature_elevation,
-                 "mw_freezing_level": self.mountain_weather.freezing_level,
-                 "mw_fl_hour_of_day_start": self.mountain_weather.fl_hour_of_day_start,
-                 "mw_fl_hour_of_day_stop": self.mountain_weather.fl_hour_of_day_stop
+                 "mountain_weather_precip_most_exposed": self.mountain_weather.precip_most_exposed,
+                 "mountain_weather_precip_region": self.mountain_weather.precip_region,
+                 "mountain_weather_wind_speed": self.mountain_weather.wind_speed,
+                 "mountain_weather_wind_direction": self.mountain_weather.wind_direction,
+                 "mountain_weather_change_wind_speed": self.mountain_weather.change_wind_speed,
+                 "mountain_weather_change_wind_direction": self.mountain_weather.change_wind_direction,
+                 "mountain_weather_change_hour_of_day_start": self.mountain_weather.change_hour_of_day_start,
+                 "mountain_weather_change_hour_of_day_stop": self.mountain_weather.change_hour_of_day_stop,
+                 "mountain_weather_temperature_min": self.mountain_weather.temperature_min,
+                 "mountain_weather_temperature_max": self.mountain_weather.temperature_max,
+                 "mountain_weather_temperature_elevation": self.mountain_weather.temperature_elevation,
+                 "mountain_weather_freezing_level": self.mountain_weather.freezing_level,
+                 "mountain_weather_fl_hour_of_day_start": self.mountain_weather.fl_hour_of_day_start,
+                 "mountain_weather_fl_hour_of_day_stop": self.mountain_weather.fl_hour_of_day_stop
 
                  ##### obs eval 3 stuff
                  # fix: 'forecast_correct': self.forecast_correct                    # [String] Drop down value if the forecast is correct or no
@@ -187,6 +187,25 @@ class AvalancheDanger:
                  # fix: 'forecast_comment': self.forecast_comment
                  }
         #### add avalanche problems
+        # generate dummy keys for three potential avalanche problems
+        for n in range(1, 4):
+            problem_prefix = f"avalanche_problem_{n}_"
+            _ap_dict = {f'{problem_prefix}cause_tid': 0, # [int] Avalanche cause ID(TID in regObs). Only used in avalanche problems from dec 2014 and newer.
+                        f'{problem_prefix}cause_name': 'Not given',
+                        f'{problem_prefix}source': '',
+                        f'{problem_prefix}problem': 'Not given',
+                        f'{problem_prefix}problem_tid': 0,  # [int]       ID used in regObs
+                        f'{problem_prefix}main_cause': 'Not given',
+                        # [String] Problems/weaklayers are grouped into main problems the season 2014/15
+                        f'{problem_prefix}aval_type': 'Not given',  # [String]    Avalanche Type
+                        f'{problem_prefix}aval_type_tid': 0,  # [int]       ID used in regObs
+                        f'{problem_prefix}aval_size': 'Not given',  # [String]    Avalanche Size
+                        f'{problem_prefix}aval_size_tid': 0
+                        }
+
+            _dict.update(_ap_dict)
+
+        # insert values for the issued avalanche problem(s)
         for _problem in self.avalanche_problems:
             problem_prefix = f"avalanche_problem_{_problem.order}_"
             _ap_dict = {f'{problem_prefix}cause_tid': _problem.cause_tid, # [int] Avalanche cause ID(TID in regObs). Only used in avalanche problems from dec 2014 and newer.

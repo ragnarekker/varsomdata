@@ -17,7 +17,7 @@ def test_AvalancheDanger_to_dict():
 
     warnings_ = gf.get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1)
 
-    _d = warnings_[2].to_dict()
+    _d = warnings_[0].to_dict()
 
     k = 'm'
 
@@ -30,15 +30,12 @@ def test_AvalancheDanger_as_df():
     region_ids = [3022]  # Trollheimen
 
     from_date = dt.date(2018, 12, 1)
-    to_date = dt.date(2018, 12, 5)
+    to_date = dt.date(2018, 12, 6)
 
     warnings_ = gf.get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1, as_dict=True)
 
-    # d_list = []
-    # for w in warnings_:
-    #     d_list.append(w.to_dict())
-
     df = pandas.DataFrame.from_dict(warnings_)
+    df.to_csv(r'../localstorage/aval_danger.csv', header=True)
 
     k = 'm'
 
