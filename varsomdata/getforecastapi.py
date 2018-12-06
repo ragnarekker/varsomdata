@@ -63,7 +63,7 @@ def get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=1, r
     return warnings
 
 
-def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1):
+def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1, as_dict=False):
     """Selects warnings and returns a list of AvalancheDanger Objects. This method adds the
     avalanche problems to the warning.
 
@@ -71,8 +71,9 @@ def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1):
     :param from_date:   [date or string as yyyy-mm-dd]
     :param to_date:     [date or string as yyyy-mm-dd]
     :param lang_key:    [int]                       Language setting. 1 is norwegian and 2 is english.
+    :param as_dict:     [bool]                      when True, it returns a list of dictionaries instead of AvalancheDanger objects
 
-    :return avalanche_danger_list: List of AvalancheDanger objects
+    :return avalanche_danger_list: List of AvalancheDanger objects or AvalancheDanger dictionaries (see as_dict)
     """
 
     warnings_as_json = get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=lang_key)
@@ -167,14 +168,19 @@ def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1):
 
                 warning.add_problem(problem)
 
-        avalanche_warning_list.append(warning)
+        if as_dict:
+            avalanche_warning_list.append(warning.to_dict())
+            avalanche_danger_list = sorted(avalanche_warning_list, key=lambda AvalancheDanger: AvalancheDanger['date'])
+        else:
+            avalanche_warning_list.append(warning)
+            # Sort by date
+            avalanche_danger_list = sorted(avalanche_warning_list, key=lambda AvalancheDanger: AvalancheDanger.date)
         '''
         except:
             ml.log_and_print('[error] getForecastApi -> get_avalanche_warnings: Exception at {0} of {1}'.format(len(avalanche_warning_list) + exception_counter, len(warnings_as_json)))
             exception_counter += 1
         '''
-    # Sort by date
-    avalanche_danger_list = sorted(avalanche_warning_list, key=lambda AvalancheDanger: AvalancheDanger.date)
+
 
     return avalanche_danger_list
 

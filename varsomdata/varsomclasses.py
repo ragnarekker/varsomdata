@@ -153,6 +153,7 @@ class AvalancheDanger:
         _dict = {'metadata': self.metadata,  # [dictionary] {key:value, key:value, ..}
                  'region_regobs_id': self.region_regobs_id,  # [int]
                  'region_name': self.region_name,  # [String]
+                 'date': self.date,
                  'data_table': self.data_table,  # [String]
                  'danger_level': self.danger_level,  # [Int]
                  'danger_level_name': self.danger_level_name,  # [String]
