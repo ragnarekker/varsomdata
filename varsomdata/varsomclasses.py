@@ -2,7 +2,6 @@
 """All classes of varsomdata. Well, not all. regObs classes are found in getobservations.py and some very special
 custom fits are found un getmisc.py.
 
-todo: MountainWeather
 """
 
 import datetime as dt
@@ -13,10 +12,6 @@ __author__ = 'raek'
 
 
 class AvalancheDanger:
-    """
-    TODO: Split forecast and now-cast into to different classes with the same base-class they inherit from.
-
-    """
 
     def __init__(self, region_id_inn, region_name_inn, data_table_inn, date_inn, danger_level_inn,
                  danger_level_name_inn):
