@@ -60,8 +60,8 @@ def test_MountainWeather_class():
 
 def test_AvalancheWarning_class():
     """
-        Requires "forecast_api_version" : "v4.0.1" in /config/api.json
-        """
+    Requires "forecast_api_version" : "v4.0.1" in /config/api.json
+    """
     region_ids = [3003]
 
     from_date = dt.date(2018, 12, 3)
@@ -80,8 +80,18 @@ def test_AvalancheWarning_class():
     k = 'm'
 
 
+def test_get_avalanche_warnings():
+    region_ids = [3003]
+    from_date = dt.date(2018, 12, 3)
+    to_date = dt.date(2018, 12, 7)
+    aw = gf.get_avalanche_warnings_2(region_ids, from_date, to_date, lang_key=1, as_dict=False)
+    aw_dict = aw = gf.get_avalanche_warnings_2(region_ids, from_date, to_date, lang_key=1, as_dict=True)
+    k = 'm'
+
+
 if __name__ == '__main__':
     #test_MountainWeather_class()
-    test_AvalancheWarning_class()
+    #test_AvalancheWarning_class()
+    test_get_avalanche_warnings()
     #test_AvalancheDanger_to_dict()
     #test_AvalancheDanger_as_df()

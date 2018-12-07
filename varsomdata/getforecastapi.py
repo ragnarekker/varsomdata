@@ -186,10 +186,26 @@ class AvalancheWarning:
         :return: dictionary representation of the AvalancheWarning class
         """
         _dict = {'reg_id': self.reg_id,
+                 'region_id': self.region_id,
                  'region_name': self.region_name,
+                 'date_valid': self.date_valid,
+                 'region_type_id': self.region_type_id,
+                 'region_type_name': self.region_type_name,
+                 'utm_east': self.utm_east,
+                 'utm_north': self.utm_north,
+                 'utm_zone': self.utm_zone,
+                 'valid_from': self.valid_from,
+                 'valid_to': self.valid_to,
                  'danger_level': self.danger_level,
                  'danger_level_name': self.danger_level_name,
-
+                 'main_text': self.main_text,
+                 'author': self.author,
+                 'avalanche_danger': self.avalanche_danger,
+                 'emergency_warning': self.emergency_warning,
+                 'snow_surface': self.snow_surface,
+                 'current_weak_layers': self.current_weak_layers,
+                 'latest_avalanche_activity': self.latest_avalanche_activity,
+                 'latest_observations': self.latest_observations,
                  # mountain weather stuff
                  "mountain_weather_precip_most_exposed": self.mountain_weather.precip_most_exposed,
                  "mountain_weather_precip_region": self.mountain_weather.precip_region,
@@ -205,60 +221,65 @@ class AvalancheWarning:
                  "mountain_weather_freezing_level": self.mountain_weather.freezing_level,
                  "mountain_weather_fl_hour_of_day_start": self.mountain_weather.fl_hour_of_day_start,
                  "mountain_weather_fl_hour_of_day_stop": self.mountain_weather.fl_hour_of_day_stop
-
-                 ##### obs eval 3 stuff
-                 # fix: 'forecast_correct': self.forecast_correct                    # [String] Drop down value if the forecast is correct or no
-                 # fix: 'forecast_correct_id': self.forecast_correct_id                 # [int]
-                 # fix: 'forecast_comment': self.forecast_comment
                  }
-        #### add avalanche problems
+
         # generate dummy keys for three potential avalanche problems
         for n in range(1, 4):
             problem_prefix = f"avalanche_problem_{n}_"
-            _ap_dict = {f'{problem_prefix}cause_tid': 0,
-                        # [int] Avalanche cause ID(TID in regObs). Only used in avalanche problems from dec 2014 and newer.
+            _ap_dict = {f'{problem_prefix}problem_id': 0,
+                        f'{problem_prefix}type_id': 0,
+                        f'{problem_prefix}type_name': 'Not given',
+                        f'{problem_prefix}problem_type_id': 0,
+                        f'{problem_prefix}problem_type_name': 'Not given',
+                        f'{problem_prefix}ext_id': 0,
+                        f'{problem_prefix}ext_name': 'Not given',
+                        f'{problem_prefix}cause_id': 0,
                         f'{problem_prefix}cause_name': 'Not given',
-                        f'{problem_prefix}source': '',
-                        f'{problem_prefix}problem': 'Not given',
-                        f'{problem_prefix}problem_tid': 0,  # [int]       ID used in regObs
-                        f'{problem_prefix}main_cause': 'Not given',
-                        # [String] Problems/weaklayers are grouped into main problems the season 2014/15
-                        f'{problem_prefix}aval_type': 'Not given',  # [String]    Avalanche Type
-                        f'{problem_prefix}aval_type_tid': 0,  # [int]       ID used in regObs
-                        f'{problem_prefix}aval_size': 'Not given',  # [String]    Avalanche Size
-                        f'{problem_prefix}aval_size_tid': 0
+                        f'{problem_prefix}destructive_size_ext_id': 0,
+                        f'{problem_prefix}destructive_size_ext_name': 'Not given',
+                        f'{problem_prefix}probability_id': 0,
+                        f'{problem_prefix}probability_name': 'Not given',
+                        f'{problem_prefix}trigger_simple_id': 0,
+                        f'{problem_prefix}trigger_simple_name': 'Not given',
+                        f'{problem_prefix}distribution_id': 0,
+                        f'{problem_prefix}distribution_name': 'Not given',
+                        f'{problem_prefix}exposed_height_fill': 0,
+                        f'{problem_prefix}exposed_height_1': 0,
+                        f'{problem_prefix}exposed_height_2': 0,
+                        f'{problem_prefix}valid_expositions': '00000000',
+                        f'{problem_prefix}advice': 'Not given'
                         }
-
             _dict.update(_ap_dict)
 
         # insert values for the issued avalanche problem(s)
         for _problem in self.avalanche_problems:
-            problem_prefix = f"avalanche_problem_{_problem.order}_"
-            _ap_dict = {f'{problem_prefix}cause_tid': _problem.cause_tid,
-                        # [int] Avalanche cause ID(TID in regObs). Only used in avalanche problems from dec 2014 and newer.
-                        f'{problem_prefix}cause_name': _problem.cause_name,
-                        f'{problem_prefix}source': _problem.source,
-                        f'{problem_prefix}problem': _problem.problem,
-                        f'{problem_prefix}problem_tid': _problem.problem_tid,  # [int]       ID used in regObs
-                        f'{problem_prefix}main_cause': _problem.main_cause,
-                        # [String] Problems/weaklayers are grouped into main problems the season 2014/15
-                        f'{problem_prefix}aval_type': _problem.aval_type,  # [String]    Avalanche Type
-                        f'{problem_prefix}aval_type_tid': _problem.aval_type_tid,  # [int]       ID used in regObs
-                        f'{problem_prefix}aval_size': _problem.aval_size,  # [String]    Avalanche Size
-                        f'{problem_prefix}aval_size_tid': _problem.aval_size_tid
+            problem_prefix = f"avalanche_problem_{_problem.avalanche_problem_id}_"
+            _ap_dict = {f'{problem_prefix}problem_id': _problem.avalanche_problem_id,
+                        f'{problem_prefix}type_id': _problem.avalanche_type_id,
+                        f'{problem_prefix}type_name': _problem.avalanche_type_name,
+                        f'{problem_prefix}problem_type_id': _problem.avalanche_problem_type_id,
+                        f'{problem_prefix}problem_type_name': _problem.avalanche_problem_type_name,
+                        f'{problem_prefix}ext_id': _problem.avalanche_ext_id,
+                        f'{problem_prefix}ext_name': _problem.avalanche_ext_name,
+                        f'{problem_prefix}cause_id': _problem.aval_cause_id,
+                        f'{problem_prefix}cause_name': _problem.aval_cause_name,
+                        f'{problem_prefix}destructive_size_ext_id': _problem.destructive_size_ext_id,
+                        f'{problem_prefix}destructive_size_ext_name': _problem.destructive_size_ext_name,
+                        f'{problem_prefix}probability_id': _problem.aval_probability_id,
+                        f'{problem_prefix}probability_name': _problem.aval_probability_name,
+                        f'{problem_prefix}trigger_simple_id': _problem.aval_trigger_simple_id,
+                        f'{problem_prefix}trigger_simple_name': _problem.aval_trigger_simple_name,
+                        f'{problem_prefix}distribution_id': _problem.aval_distribution_id,
+                        f'{problem_prefix}distribution_name': _problem.aval_distribution_name,
+                        f'{problem_prefix}exposed_height_fill': _problem.exposed_height_fill,
+                        f'{problem_prefix}exposed_height_1': _problem.exposed_height_1,
+                        f'{problem_prefix}exposed_height_2': _problem.exposed_height_2,
+                        f'{problem_prefix}valid_expositions': _problem.valid_expositions,
+                        f'{problem_prefix}advice': _problem.avalanche_advice
                         }
 
             _dict.update(_ap_dict)
         return _dict
-
-    def to_df(self):
-        """
-        Convert the object to a Pandas.DataFrame
-        :return: pandas.DataFrame representation of the AvalancheDanger class
-        """
-        import pandas
-        _d = self.to_dict()
-        return pandas.DataFrame.from_dict(_d)
 
 
 class AvalancheWarningProblem:
@@ -644,7 +665,7 @@ def get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=1, r
     if not isinstance(region_ids, list):
         region_ids = [region_ids]
 
-    warnings = []
+    warnings_ = []
     recursive_count_default = recursive_count   # need the default for later
 
     for region_id in region_ids:
@@ -666,19 +687,37 @@ def get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=1, r
             warnings_region = requests.get(url).json()
             ml.log_and_print('[info] getforecastapi.py -> get_avalanche_warnings_as_json: {0} warnings found for {1} in {2} to {3}'
                              .format(len(warnings_region), region_id, from_date, to_date))
-            warnings += warnings_region
+            warnings_ += warnings_region
 
         except:
             ml.log_and_print('[error] getforecastapi.py -> get_avalanche_warnings_as_json: EXCEPTION. RECURSIVE COUNT {0} for {1} in {2} to {3}'
                              .format(recursive_count, region_id, from_date, to_date))
             if recursive_count > 1:
                 recursive_count -= 1        # count down
-                warnings += get_avalanche_warnings_as_json(region_id, from_date, to_date, lang_key, recursive_count=recursive_count)
+                warnings_ += get_avalanche_warnings_as_json(region_id, from_date, to_date, lang_key, recursive_count=recursive_count)
 
-    return warnings
+    return warnings_
 
 
-# Todo: rename to get_avalanche_dangers
+# Todo: rename to get_avalanche_warnings (see todo for next method)
+def get_avalanche_warnings_2(region_ids, from_date, to_date, lang_key=1, as_dict=False):
+    warnings_as_json = get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=lang_key)
+    avalanche_warnings = []
+    for w in warnings_as_json:
+        _aw = AvalancheWarning()
+        _aw.from_dict(w)
+
+        if as_dict:
+            avalanche_warnings.append(_aw.to_dict())
+            avalanche_warnings = sorted(avalanche_warnings, key=lambda aw: aw['date_valid'])  # Sort by date
+        else:
+            avalanche_warnings.append(_aw)
+            avalanche_warnings = sorted(avalanche_warnings, key=lambda aw: aw.date_valid)  # Sort by date
+
+    return avalanche_warnings
+
+
+# Todo: rename to get_avalanche_dangers - make sure it is refactored in all scripts
 def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1, as_dict=False):
     """Selects warnings and returns a list of AvalancheDanger Objects. This method adds the
     avalanche problems to the warning.
