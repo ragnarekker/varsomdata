@@ -249,197 +249,39 @@ class AvalancheWarning:
         return pandas.DataFrame.from_dict(_d)
 
 
-class AvalancheProblem:
+class AvalancheWarningProblem:
 
-    def __init__(self, region_regobs_id_inn, region_name_inn, date_inn, order_inn, cause_name_inn, source_inn,
-                 problem_inn=None):
-        """The AvalancheProblem object is useful since there are 3 different tables to get regObs-data from and 2 tables
-        from forecasts. Thus avalanche problems are saved in 5 ways. The structure of this object is based on the
-        "latest" model and the other/older ways to save avalanche problems on may be mapped to these.
-
-        Parameters part of the constructor:
-        :param region_regobs_id_inn:       [int]       Region ID is as given in ForecastRegionKDV.
-        :param region_name_inn:     [String]    Region name as given in ForecastRegionKDV.
-        :param date_inn:            [Date]      Date for avalanche problem.
-        :param order_inn:           [int]       The index* of the avalanche problem.
-        :param cause_name_inn:      [String]    Avalanche cause/weak layer. For newer problems this as given in AvalCauseKDV.
-        :param source_inn:          [String]    The source of the data. Normally 'Observation' or 'Forecast'.
-        :param problem_inn          [String]    The avalanche problem. Not given in observations (only forecasts) pr nov 2016.
-
-        * Index doensnt allways start on 0 and count +1. A rule is that the higher the index the higher the priority.
-
-        Other variables declared with initiation:
-        metadata = []       [list with dictionaries [{},{},..] ]
-
-        "AvalancheTypeId": 10,
-        "AvalancheTypeName": "Flakskred",
-        "AvalancheProblemTypeId": 30,
-        "AvalancheProblemTypeName": "Vedvarende svakt lag",
-        "AvalancheExtId": 15,
-        "AvalancheExtName": "Våte løssnøskred",
-        "AvalCauseId": 21,
-        "AvalCauseName": "Snødeket gjennomfuktet og ustabilt fra overflaten",
-        "DestructiveSizeExtId": 6,
-        "DestructiveSizeExtName": "Store",
-        "AvalProbabilityId": 7,
-        "AvalProbabilityName": "Meget sannsynlig",
-        "AvalTriggerSimpleId": 21,
-        "AvalTriggerSimpleName": "Liten tilleggsbelastning",
-        "AvalPropagationId": 3,
-        "AvalPropagationName": "Mange bratte heng",
-        "ExposedHeightFill": 1,
-        "ExposedHeight1": 600,
-        "ExposedHeight2": 0,
-        "ValidExpositions": 10000011,
-        "Avalancheadvice": "Det krever mye kunnskap å gjenkjenne hvor det svake laget er gjemt. Drønnelyder, skytende sprekker og ferske skred er tydelige tegn, men fravær av tegn betyr ikke at det er trygt. Gjør svært konservative vegvalg, særlig i ukjent terreng, etter snøfall og perioder med temperaturstigning. Hold god avstand til hverandre og til løsneområdene. NB, fjernutløsning er mulig."
-
-
+    def __init__(self):
         """
-
-        # In nov 2016 we updated all regions to have ids in th 3000´s. GIS and regObs equal.
-        # Before that GIS had numbers 0-99 and regObs 100-199. Messy..
-        # Convention is regObs ids always
-        if region_regobs_id_inn < 100:
-            region_regobs_id_inn += 100
+        The AvalancheWarningProblem object contains the AvalancheProblems published as part of an AvalancheWarning.
+        You find the API documentation here: http://api.nve.no/doc/snoeskredvarsel/#avalanchewarningbyregion
+        """
+        self.avalanche_type_id = 0  # [int]
+        self.avalanche_type_name = 'Not given'  # [string]
+        self.avalanche_problem_type_id = 0  # [int],
+        self.avalanche_problem_type_name = 'Not given'  # [string]
+        self.avalanche_ext_id = 0  # [int],
+        self.avalanche_ext_name = 'Not given'  # [string]
+        self.aval_cause_id = 0  # [int],
+        self.aval_cause_name = 'Not given'  # [string]
+        self.destructive_size_ext_id = 0  # [int],
+        self.destructive_size_ext_name = 'Not given'  # [string]
+        self.aval_probability_id = 0  # [int],
+        self.aval_probability_name = 'Not given'  # [string]
+        self.aval_trigger_simple_id = 0  # [int],
+        self.aval_trigger_simple_name = 'Not given'  # [string]
+        self.aval_propagation_id = 0  # [int],
+        self.aval_propagation_name = 'Not given'  # [string]
+        self.exposed_height_fill = 0  # [int],
+        self.exposed_height_1 = 0  # [int],
+        self.exposed_height_2 = 0  # [int],
+        self.valid_expositions = '00000000'  # [string] of digits, one for each of the eight sectors, starting with N and moving clockwise,1=True, 0=False
+        self.avalanche_advice = 'Not given'  # [string]
 
         self.metadata = {}  # dictionary {key:value, key:value, ..}
-        self.region_regobs_id = region_regobs_id_inn
-        self.region_name = region_name_inn
-        self.date = None
-        self.set_date(date_inn)
-        self.order = order_inn
-        self.cause_tid = None  # [int] Avalanche cause ID(TID in regObs). Only used in avalanche problems from dec 2014 and newer.
-        self.cause_name = cause_name_inn
-        self.source = source_inn
-        self.problem = problem_inn
-        self.problem_tid = None  # [int]       ID used in regObs
-        self.main_cause = None  # [String] Problems/weaklayers are grouped into main problems the season 2014/15
 
-        # The following variables are declared on a needed basis.
-
-        # self.regid = None               # [int]       Registration ID in regObs.
-        # self.municipal_name = None      # [String]
-        self.aval_type = None  # [String]    Avalanche Type
-        self.aval_type_tid = None  # [int]       ID used in regObs
-        self.aval_size = None  # [String]    Avalanche Size
-        self.aval_size_tid = None  # [int]       ID used in regObs
-        # self.aval_trigger = None        # [String]    Avalanche Trigger
-        # self.aval_trigger_tid = None    # [int]       ID used in regObs
-        # self.aval_probability = None    # [String]    Probability for an avalanche to release
-        # self.aval_distribution = None   # [String]    Avalanche distribution in the terrain. Named AvalPropagation in regObs.
-        # self.registration_time = None   # [datetime]  DtRegTime is when problem was registrered by the regobs database.
-        # self.regobs_table = None        # [String]    Table in regObs database.
-        # self.url = None                 # [String]    Url to forecast or observation
-        # self.nick_name = None           # [String]
-        # self.competence_level = None    # [String]
-        # self.danger_level = None        # [Int]       In some cases it is conveniant to add the forecasted danger level to the object.
-        # self.danger_level_name = None   # [String]
-        # self.eaws_problem = None        # [String]  in english
-        # self.cause_attribute_crystal_tid = None   # [Int]
-        # self.cause_attribute_light_tid = None     # [Int]
-        # self.cause_attribute_soft_tid = None      # [Int]
-        # self.cause_attribute_thin_tid = None      # [Int]
-        # self.cause_attribute_crystal = None       # [String]
-        # self.cause_attribute_light = None         # [String]
-        # self.cause_attribute_soft = None          # [String]
-        # self.cause_attribute_thin = None          # [String]
-
-    def set_date(self, date_inn):
-
-        # makes sure we only have the dat, but we keep the datetime as metadata
-        if isinstance(date_inn, dt.datetime):
-            self.add_metadata("Original DtObsTime", date_inn)
-            date_inn = date_inn.date()
-
-        self.date = date_inn
-
-    def set_registration_time(self, registration_time_inn):
-        # DtRegTime is when the problem was registered in regObs.
-        self.registration_time = registration_time_inn
-
-    def set_cause_tid(self, cause_tid_inn):
-        self.cause_tid = cause_tid_inn
-
-    def set_municipal(self, municipal_inn):
-        try:
-            self.municipal_name = municipal_inn
-        except ValueError:
-            print("Got ValueError on setting municipal name on {0} for {1}.") \
-                .format(self.date, self.region_name)
-        except:
-            print("Got un expected error on setting municipal name on {0} for {1}.") \
-                .format(self.date, self.region_name)
-
-    def set_regid(self, regid_inn):
-        self.regid = regid_inn
-
-    def set_url(self, url_inn):
-        self.url = url_inn
-
-    def set_aval_type(self, aval_type_inn, aval_type_tid_inn=None):
-        self.aval_type = aval_type_inn
-        self.aval_type_tid = aval_type_tid_inn
-
-    def set_aval_size(self, aval_size_inn, aval_size_tid_inn=None):
-        self.aval_size = aval_size_inn
-        self.aval_size_tid = aval_size_tid_inn
-
-    def set_aval_trigger(self, aval_trigger_inn, aval_trigger_tid_inn=None):
-        self.aval_trigger = aval_trigger_inn
-        self.aval_trigger_tid = aval_trigger_tid_inn
-
-    def set_aval_probability(self, aval_probability_inn):
-        self.aval_probability = aval_probability_inn
-
-    def set_aval_distribution(self, aval_distribution_inn):
-        self.aval_distribution = aval_distribution_inn
-
-    def set_aval_cause_attributes(self, problem_object):
-
-        if isinstance(problem_object, go.AvalancheEvalProblem2):
-            self.cause_attribute_crystal_tid = problem_object.AvalCauseAttributeCrystalTID
-            self.cause_attribute_light_tid = problem_object.AvalCauseAttributeLightTID
-            self.cause_attribute_soft_tid = problem_object.AvalCauseAttributeSoftTID
-            self.cause_attribute_thin_tid = problem_object.AvalCauseAttributeThinTID
-
-            self.cause_attribute_crystal = problem_object.AvalCauseAttributeCrystalName
-            self.cause_attribute_light = problem_object.AvalCauseAttributeLightName
-            self.cause_attribute_soft = problem_object.AvalCauseAttributeSoftName
-            self.cause_attribute_thin = problem_object.AvalCauseAttributeThinName
-
-            # This was fixed on api in nov 2017.
-            # if self.lang_key == 2 and self.cause_attribute_crystal_tid > 0:
-            #     self.cause_attribute_crystal = 'A big and identifiable crystal in the weak layer.'
-            # if self.lang_key == 2 and self.cause_attribute_light_tid > 0:
-            #     self.cause_attribute_light = 'The weak layer collapses easily and clean (easy propagation).'
-            # if self.lang_key == 2 and self.cause_attribute_soft_tid > 0:
-            #     self.cause_attribute_soft = 'The overlying slab is soft.'
-            # if self.lang_key == 2 and self.cause_attribute_thin_tid > 0:
-            #     self.cause_attribute_thin = 'The collapsing weak layer is thin < 3 cm.'
-
-        else:
-            ml.log_and_print(
-                'getproblems -> AvalancheProblem.set_aval_cause_attributes: Avalanche problem class wrong for cause attributes.')
-
-    def set_problem(self, problem_inn, problem_tid_inn=None):
-        self.problem = problem_inn
-        self.problem_tid = problem_tid_inn
-
-    def set_regobs_table(self, table_inn):
-        self.regobs_table = table_inn
-
-    def set_nick_name(self, nick_name_inn):
-        self.nick_name = nick_name_inn
-
-    def set_competence_level(self, competence_level_inn):
-        self.competence_level = competence_level_inn
-
-    def set_danger_level(self, danger_level_name_inn, danger_level_inn):
-        self.danger_level = danger_level_inn
-        self.danger_level_name = danger_level_name_inn
-
-    def set_lang_key(self, lang_key_inn):
-        self.lang_key = lang_key_inn
+    def __repr__(self):
+        return f"{self.__class__.__name__}"
 
     def map_to_eaws_problems(self):
         """The EAWS problems are:
@@ -492,7 +334,8 @@ class AvalancheProblem:
 
         :return:
         """
-
+        pass  # Todo: check out later.
+        """
         # problem_tid is available in the forecasts.
         problem_tid_to_eaws_problems = {
             0: 'Not given',
@@ -570,9 +413,35 @@ class AvalancheProblem:
 
         else:
             ml.log_and_print('getproblems.py -> AvalancheProblem.map_to_eaws_problems: Unknown source.')
+        
+        """
 
     def add_metadata(self, key, value):
         self.metadata[key] = value
+
+    def from_dict(self, _d):
+
+        self.avalanche_type_id = _d["AvalancheTypeId"]  # 10
+        self.avalanche_type_name = _d["AvalancheTypeName"]  # "Flakskred",
+        self.avalanche_problem_type_id = _d["AvalancheProblemTypeId"]  # 30,
+        self.avalanche_problem_type_name = _d["AvalancheProblemTypeName"]  # "Vedvarende svakt lag",
+        self.avalanche_ext_id = _d["AvalancheExtId"]  # 15,
+        self.avalanche_ext_name = _d["AvalancheExtName"]  # "Våte løssnøskred",
+        self.aval_cause_id = _d["AvalCauseId"]  # 21,
+        self.aval_cause_name = _d["AvalCauseName"]  # "Snødeket gjennomfuktet og ustabilt fra overflaten",
+        self.destructive_size_ext_id = _d["DestructiveSizeExtId"]  # 6,
+        self.destructive_size_ext_name = _d["DestructiveSizeExtName"]  # "Store",
+        self.aval_probability_id = _d["AvalProbabilityId"]  # 7,
+        self.aval_probability_name = _d["AvalProbabilityName"]  # "Meget sannsynlig",
+        self.aval_trigger_simple_id = _d["AvalTriggerSimpleId"]  # 21,
+        self.aval_trigger_simple_name = _d["AvalTriggerSimpleName"]  # "Liten tilleggsbelastning",
+        self.aval_propagation_id = _d["AvalPropagationId"]  # 3,
+        self.aval_propagation_name = _d["AvalPropagationName"]  # "Mange bratte heng",
+        self.exposed_height_fill = _d["ExposedHeightFill"]  # 1,
+        self.exposed_height_1 = _d["ExposedHeight1"]  # 600,
+        self.exposed_height_2 = _d["ExposedHeight2"]  # 0,
+        self.valid_expositions = _d["ValidExpositions"]  # 10000011,
+        self.avalanche_advice = _d["Avalancheadvice"]  # "Det krever mye kunnskap å gjenkjenne hvor det svake laget er gjemt. Drønnelyder, skytende sprekker og ferske skred er tydelige tegn, men fravær av tegn betyr ikke at det er trygt. Gjør svært konservative vegvalg, særlig i ukjent terreng, etter snøfall og perioder med temperaturstigning. Hold god avstand til hverandre og til løsneområdene. NB, fjernutløsning er mulig."
 
 
 class MountainWeather:
