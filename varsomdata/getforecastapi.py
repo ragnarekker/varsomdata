@@ -3,8 +3,7 @@
 Contains methods for accessing data on the forecast api's. See api.nve.no for more info
 
 Modifications:
-- 06.12.2018, kmunve: added class AvalancheWarning, MountainWeather, AvalancheProblem
-- 06.12.2018, kmunve: Class AvalancheProblem was moved from varsomclasses.py
+- 06.12.2018, kmunve: added class AvalancheWarning, MountainWeather, AvalancheWarningProblem
 """
 
 import requests
@@ -62,6 +61,16 @@ class AvalancheWarning:
         return f"{self.__class__.__name__}(RegObsID: {self.reg_id}, Region: {self.region_name} ({self.region_id}), " \
                f"Valid from: {self.valid_from})"
 
+    def __str__(self):
+        _ap_str = 'Avalanche problems:\n'
+        for ap in self.avalanche_problems:
+            _ap_str += f"{ap}\n"
+        return f"Avalanche warning for {self.region_name} ({self.region_id}) - {self.date_valid}\n" \
+               f"Danger level: {self.danger_level}\n" \
+               f"{self.main_text:50}\n" \
+               f"{_ap_str}" \
+               f"{self.get_url()}"
+
     def set_reg_id(self, _):
         if isinstance(_, str):
             self.reg_id = int(_)
@@ -117,10 +126,13 @@ class AvalancheWarning:
         else:
             self.valid_to = dt.datetime.strptime(date_in, '%Y-%m-%dT%H:%M:%S')
 
-    def add_problem(self, problem_in):
-        self.avalanche_problems.append(problem_in)
+    def set_avalanche_problems(self, problems):
+        for p in problems:
+            _ap = AvalancheWarningProblem()
+            _ap.from_dict(p)
+            self.avalanche_problems.append(_ap)
         # make sure lowest index (main problem) is first
-        self.avalanche_problems.sort(key=lambda problems: problems.order)
+        self.avalanche_problems.sort(key=lambda _p: _p.avalanche_problem_id)
 
     def set_mountain_weather(self, _d):
         _mw = MountainWeather()
@@ -131,7 +143,7 @@ class AvalancheWarning:
         self.metadata[key] = value
 
     def get_url(self):
-        return f'{self.base_url_no}/{self.region_name}/{self.date_valid}'
+        return requests.utils.quote(f'{self.base_url_no}/{self.region_name}/{self.date_valid}', safe="/:")
 
     def from_dict(self, _d):
         """
@@ -166,14 +178,14 @@ class AvalancheWarning:
         self.latest_avalanche_activity = _d['LatestAvalancheActivity']
         self.latest_observations = _d['LatestObservations']
         self.set_mountain_weather(_d['MountainWeather'])  # [MountainWeather object]
-        #self.set_avalanche_problems()  # [List of AvalancheProblem objects]
+        self.set_avalanche_problems(_d['AvalancheProblems'])  # [List of AvalancheProblem objects]
 
     def to_dict(self):
         """
         Convert the object to a dictionary
         :return: dictionary representation of the AvalancheWarning class
         """
-        _dict = {'reg_id': self.region_reg_id,
+        _dict = {'reg_id': self.reg_id,
                  'region_name': self.region_name,
                  'danger_level': self.danger_level,
                  'danger_level_name': self.danger_level_name,
@@ -256,32 +268,109 @@ class AvalancheWarningProblem:
         The AvalancheWarningProblem object contains the AvalancheProblems published as part of an AvalancheWarning.
         You find the API documentation here: http://api.nve.no/doc/snoeskredvarsel/#avalanchewarningbyregion
         """
+        self.avalanche_problem_id = 0  # the order of multiple problems as [int] between 1-3
         self.avalanche_type_id = 0  # [int]
         self.avalanche_type_name = 'Not given'  # [string]
-        self.avalanche_problem_type_id = 0  # [int],
+        self.avalanche_problem_type_id = 0  # [int]
         self.avalanche_problem_type_name = 'Not given'  # [string]
-        self.avalanche_ext_id = 0  # [int],
+        self.avalanche_ext_id = 0  # [int]
         self.avalanche_ext_name = 'Not given'  # [string]
-        self.aval_cause_id = 0  # [int],
+        self.aval_cause_id = 0  # [int]
         self.aval_cause_name = 'Not given'  # [string]
-        self.destructive_size_ext_id = 0  # [int],
+        self.destructive_size_ext_id = 0  # [int]
         self.destructive_size_ext_name = 'Not given'  # [string]
-        self.aval_probability_id = 0  # [int],
+        self.aval_probability_id = 0  # [int]
         self.aval_probability_name = 'Not given'  # [string]
-        self.aval_trigger_simple_id = 0  # [int],
+        self.aval_trigger_simple_id = 0  # [int]
         self.aval_trigger_simple_name = 'Not given'  # [string]
-        self.aval_propagation_id = 0  # [int],
-        self.aval_propagation_name = 'Not given'  # [string]
-        self.exposed_height_fill = 0  # [int],
-        self.exposed_height_1 = 0  # [int],
-        self.exposed_height_2 = 0  # [int],
+        self.aval_distribution_id = 0  # [int] - JSON name is incorrectly AvalPropagationId
+        self.aval_distribution_name = 'Not given'  # [string]
+        self.exposed_height_fill = 0  # [int]
+        self.exposed_height_1 = 0  # [int]
+        self.exposed_height_2 = 0  # [int]
         self.valid_expositions = '00000000'  # [string] of digits, one for each of the eight sectors, starting with N and moving clockwise,1=True, 0=False
         self.avalanche_advice = 'Not given'  # [string]
 
         self.metadata = {}  # dictionary {key:value, key:value, ..}
 
     def __repr__(self):
-        return f"{self.__class__.__name__}"
+        return f"{self.__class__.__name__}(Problem {self.avalanche_problem_id}: {self.avalanche_problem_type_name})"
+
+    def __str__(self):
+        return f"Problem {self.avalanche_problem_id}: {self.avalanche_problem_type_name} " \
+               f"(Trigger: {self.aval_trigger_simple_name}, Size: {self.destructive_size_ext_name})"
+
+    def set_avalanche_problem_id(self, _):
+        if isinstance(_, str):
+            self.avalanche_problem_id = int(_)
+        else:
+            self.avalanche_problem_id = _
+
+    def set_avalanche_type_id(self, _):
+        if isinstance(_, str):
+            self.avalanche_type_id = int(_)
+        else:
+            self.avalanche_type_id = _
+
+    def set_avalanche_problem_type_id(self, _):
+        if isinstance(_, str):
+            self.avalanche_problem_type_id = int(_)
+        else:
+            self.avalanche_problem_type_id = _
+
+    def set_avalanche_ext_id(self, _):
+        if isinstance(_, str):
+            self.avalanche_ext_id = int(_)
+        else:
+            self.avalanche_ext_id = _
+
+    def set_aval_cause_id(self, _):
+        if isinstance(_, str):
+            self.aval_cause_id = int(_)
+        else:
+            self.aval_cause_id = _
+
+    def set_destructive_size_ext_id(self, _):
+        if isinstance(_, str):
+            self.destructive_size_ext_id = int(_)
+        else:
+            self.destructive_size_ext_id = _
+
+    def set_aval_probability_id(self, _):
+        if isinstance(_, str):
+            self.aval_probability_id = int(_)
+        else:
+            self.aval_probability_id = _
+
+    def set_aval_trigger_simple_id(self, _):
+        if isinstance(_, str):
+            self.aval_trigger_simple_id = int(_)
+        else:
+            self.aval_trigger_simple_id = _
+
+    def set_aval_distribution_id(self, _):
+        if isinstance(_, str):
+            self.aval_distribution_id = int(_)
+        else:
+            self.aval_distribution_id = _
+
+    def set_exposed_height_fill(self, _):
+        if isinstance(_, str):
+            self.exposed_height_fill = int(_)
+        else:
+            self.exposed_height_fill = _
+
+    def set_exposed_height_1(self, _):
+        if isinstance(_, str):
+            self.exposed_height_1 = int(_)
+        else:
+            self.exposed_height_1 = _
+
+    def set_exposed_height_2(self, _):
+        if isinstance(_, str):
+            self.exposed_height_2 = int(_)
+        else:
+            self.exposed_height_2 = _
 
     def map_to_eaws_problems(self):
         """The EAWS problems are:
@@ -420,28 +509,28 @@ class AvalancheWarningProblem:
         self.metadata[key] = value
 
     def from_dict(self, _d):
-
-        self.avalanche_type_id = _d["AvalancheTypeId"]  # 10
+        self.set_avalanche_problem_id(_d["AvalancheProblemId"])
+        self.set_avalanche_type_id(_d["AvalancheTypeId"])  # 10
         self.avalanche_type_name = _d["AvalancheTypeName"]  # "Flakskred",
-        self.avalanche_problem_type_id = _d["AvalancheProblemTypeId"]  # 30,
+        self.set_avalanche_problem_type_id(_d["AvalancheProblemTypeId"])  # 30,
         self.avalanche_problem_type_name = _d["AvalancheProblemTypeName"]  # "Vedvarende svakt lag",
-        self.avalanche_ext_id = _d["AvalancheExtId"]  # 15,
+        self.set_avalanche_ext_id(_d["AvalancheExtId"])  # 15,
         self.avalanche_ext_name = _d["AvalancheExtName"]  # "Våte løssnøskred",
-        self.aval_cause_id = _d["AvalCauseId"]  # 21,
+        self.set_aval_cause_id(_d["AvalCauseId"])  # 21,
         self.aval_cause_name = _d["AvalCauseName"]  # "Snødeket gjennomfuktet og ustabilt fra overflaten",
-        self.destructive_size_ext_id = _d["DestructiveSizeExtId"]  # 6,
+        self.set_destructive_size_ext_id(_d["DestructiveSizeExtId"])
         self.destructive_size_ext_name = _d["DestructiveSizeExtName"]  # "Store",
-        self.aval_probability_id = _d["AvalProbabilityId"]  # 7,
+        self.set_aval_probability_id(_d["AvalProbabilityId"])
         self.aval_probability_name = _d["AvalProbabilityName"]  # "Meget sannsynlig",
-        self.aval_trigger_simple_id = _d["AvalTriggerSimpleId"]  # 21,
+        self.set_aval_trigger_simple_id(_d["AvalTriggerSimpleId"])
         self.aval_trigger_simple_name = _d["AvalTriggerSimpleName"]  # "Liten tilleggsbelastning",
-        self.aval_propagation_id = _d["AvalPropagationId"]  # 3,
-        self.aval_propagation_name = _d["AvalPropagationName"]  # "Mange bratte heng",
-        self.exposed_height_fill = _d["ExposedHeightFill"]  # 1,
-        self.exposed_height_1 = _d["ExposedHeight1"]  # 600,
-        self.exposed_height_2 = _d["ExposedHeight2"]  # 0,
+        self.set_aval_distribution_id(_d["AvalPropagationId"])
+        self.aval_distribution_name = _d["AvalPropagationName"]  # "Mange bratte heng",
+        self.set_exposed_height_fill(_d["ExposedHeightFill"])
+        self.set_exposed_height_1(_d["ExposedHeight1"])
+        self.set_exposed_height_2(_d["ExposedHeight2"])
         self.valid_expositions = _d["ValidExpositions"]  # 10000011,
-        self.avalanche_advice = _d["Avalancheadvice"]  # "Det krever mye kunnskap å gjenkjenne hvor det svake laget er gjemt. Drønnelyder, skytende sprekker og ferske skred er tydelige tegn, men fravær av tegn betyr ikke at det er trygt. Gjør svært konservative vegvalg, særlig i ukjent terreng, etter snøfall og perioder med temperaturstigning. Hold god avstand til hverandre og til løsneområdene. NB, fjernutløsning er mulig."
+        self.avalanche_advice = _d["AvalancheAdvice"]  # "Det krever mye kunnskap å gjenkjenne hvor det svake laget er gjemt. Drønnelyder, skytende sprekker og ferske skred er tydelige tegn, men fravær av tegn betyr ikke at det er trygt. Gjør svært konservative vegvalg, særlig i ukjent terreng, etter snøfall og perioder med temperaturstigning. Hold god avstand til hverandre og til løsneområdene. NB, fjernutløsning er mulig."
 
 
 class MountainWeather:
@@ -524,9 +613,15 @@ class MountainWeather:
                     if _st['Id'] == 90:  # wind_speed
                         self.freezing_level = float(_st['Value'])
                     elif _st['Id'] == 100:  # hour_of_day_start
-                        self.fl_hour_of_day_start = int(_st['Value'])
+                        if isinstance(_st['Value'], type(None)):
+                            self.fl_hour_of_day_start = -1
+                        else:
+                            self.fl_hour_of_day_start = int(_st['Value'])
                     elif _st['Id'] == 110:  # hour_of_day_stop
-                        self.fl_hour_of_day_stop = int(_st['Value'])
+                        if isinstance(_st['Value'], type(None)):
+                            self.fl_hour_of_day_stop = -1
+                        else:
+                            self.fl_hour_of_day_stop = int(_st['Value'])
 
 
 # Todo: rename to get_avalanche_dangers_as_json
@@ -701,7 +796,6 @@ def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1, as_dict=F
             ml.log_and_print('[error] getForecastApi -> get_avalanche_warnings: Exception at {0} of {1}'.format(len(avalanche_warning_list) + exception_counter, len(warnings_as_json)))
             exception_counter += 1
         '''
-
 
     return avalanche_danger_list
 

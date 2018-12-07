@@ -62,10 +62,10 @@ def test_AvalancheWarning_class():
     """
         Requires "forecast_api_version" : "v4.0.1" in /config/api.json
         """
-    region_ids = [3022]  # Trollheimen
+    region_ids = [3003]
 
-    from_date = dt.date(2018, 12, 1)
-    to_date = dt.date(2018, 12, 4)
+    from_date = dt.date(2018, 12, 3)
+    to_date = dt.date(2018, 12, 7)
 
     warnings_as_json = gf.get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=1)
 
@@ -75,9 +75,6 @@ def test_AvalancheWarning_class():
         _aw.from_dict(w)
         warnings_.append(_aw)
 
-    url_ = warnings_[0].get_url()
-
-    print(url_)
     print(warnings_[0])
 
     k = 'm'
