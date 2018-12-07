@@ -58,6 +58,10 @@ class AvalancheWarning:
         self.metadata = {}  # [dictionary] {key:value, key:value, ..}
         self.base_url_no = 'http://www.varsom.no/snoskredvarsling/varsel'  # [String]
 
+    def __repr__(self):
+        return f"{self.__class__.__name__}(RegObsID: {self.reg_id}, Region: {self.region_name} ({self.region_id}), " \
+               f"Valid from: {self.valid_from})"
+
     def set_reg_id(self, _):
         if isinstance(_, str):
             self.reg_id = int(_)
@@ -593,6 +597,9 @@ class MountainWeather:
         self.freezing_level = -1.
         self.fl_hour_of_day_start = -1
         self.fl_hour_of_day_stop = -1
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}"
 
     def from_dict(self, _d):
         """

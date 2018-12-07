@@ -77,6 +77,9 @@ def test_AvalancheWarning_class():
 
     url_ = warnings_[0].get_url()
 
+    print(url_)
+    print(warnings_[0])
+
     k = 'm'
 
 
