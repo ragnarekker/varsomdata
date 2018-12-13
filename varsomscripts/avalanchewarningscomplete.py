@@ -85,13 +85,27 @@ def test_get_avalanche_warnings():
     from_date = dt.date(2018, 12, 3)
     to_date = dt.date(2018, 12, 7)
     aw = gf.get_avalanche_warnings_2(region_ids, from_date, to_date, lang_key=1, as_dict=False)
-    aw_dict = aw = gf.get_avalanche_warnings_2(region_ids, from_date, to_date, lang_key=1, as_dict=True)
+    aw_dict = gf.get_avalanche_warnings_2(region_ids, from_date, to_date, lang_key=1, as_dict=True)
+
+    df = pandas.DataFrame(aw_dict)
+    df.to_csv('../localstorage/test_aw_dict.csv', index_label='index')
+
     k = 'm'
+
+
+def get_season_17_18():
+    region_ids = [3003,3007,3009,3010,3011,3012,3013,3014,3015,3016,3017,3022,3023,3024,3027,3028,3029,3031,3032,3034,3035]
+    from_date = dt.date(2017, 12, 1)
+    to_date = dt.date(2018, 5, 31)
+    aw_dict = gf.get_avalanche_warnings_2(region_ids, from_date, to_date, lang_key=1, as_dict=True)
+    df = pandas.DataFrame(aw_dict)
+    df.to_csv('../localstorage/norwegian_avalanche_warnings_season_17_18.csv', index_label='index')
 
 
 if __name__ == '__main__':
     #test_MountainWeather_class()
     #test_AvalancheWarning_class()
-    test_get_avalanche_warnings()
+    #test_get_avalanche_warnings()
     #test_AvalancheDanger_to_dict()
     #test_AvalancheDanger_as_df()
+    get_season_17_18()

@@ -7,6 +7,7 @@ Modifications:
 """
 
 import requests
+import re
 import datetime as dt
 from varsomdata import varsomclasses as vc
 from utilities import makelogs as ml
@@ -592,9 +593,17 @@ class MountainWeather:
             if _mt['Id'] == 10:  # precipitation
                 for _st in _mt['MeasurementSubTypes']:
                     if _st['Id'] == 60:  # most exposed
-                        self.precip_most_exposed = float(_st['Value'])
+                        try:
+                            self.precip_most_exposed = float(_st['Value'])
+                        except TypeError:
+                            self.precip_most_exposed = -1.
                     elif _st['Id'] == 70:  # regional average
-                        self.precip_region = float(_st['Value'])
+                        try:
+                            self.precip_region = float(_st['Value'])
+                        except TypeError:
+                            self.precip_region = -1.
+                        except ValueError:
+                            self.precip_region = float(re.sub('[^\-\d+]', '', _st['Value']))
 
             elif _mt['Id'] == 20:  # wind
                 for _st in _mt['MeasurementSubTypes']:
@@ -623,16 +632,30 @@ class MountainWeather:
             elif _mt['Id'] == 40:  # temperature
                 for _st in _mt['MeasurementSubTypes']:
                     if _st['Id'] == 30:  # temperature_min
-                        self.temperature_min = float(_st['Value'])
+                        try:
+                            self.temperature_min = float(_st['Value'])
+                        except TypeError:
+                            self.temperature_min = -999.9
                     elif _st['Id'] == 40:  # temperature_max
-                        self.temperature_max = float(_st['Value'])
+                        try:
+                            self.temperature_max = float(_st['Value'])
+                        except TypeError:
+                            self.temperature_max = -999.9
+                        except ValueError:
+                            self.temperature_max = -999.9
                     elif _st['Id'] == 90:  # temperature_elevation
-                        self.temperature_elevation = float(_st['Value'])
+                        try:
+                            self.temperature_elevation = float(_st['Value'])
+                        except TypeError:
+                            self.temperature_elevation = -1.
 
             elif _mt['Id'] == 50:  # freezing level
                 for _st in _mt['MeasurementSubTypes']:
-                    if _st['Id'] == 90:  # wind_speed
-                        self.freezing_level = float(_st['Value'])
+                    if _st['Id'] == 90:  # freezing_level
+                        try:
+                            self.freezing_level = float(_st['Value'])
+                        except TypeError:
+                            self.freezing_level = -1
                     elif _st['Id'] == 100:  # hour_of_day_start
                         if isinstance(_st['Value'], type(None)):
                             self.fl_hour_of_day_start = -1
