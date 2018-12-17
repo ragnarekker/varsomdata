@@ -18,8 +18,6 @@ def _stringtime_2_datetime(stringtime):
 
     :param stringtime:
     :return:           The date and time as datetime object
-
-
     """
 
     if stringtime is None:
