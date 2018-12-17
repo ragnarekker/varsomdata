@@ -6,6 +6,7 @@ import requests as requests
 import pandas as pd
 import sys as sys
 from utilities import makelogs as ml
+from dateutil.parser import parse as parse
 import setenvironment as env
 
 __author__ = 'raek'
@@ -16,7 +17,7 @@ def _stringtime_2_datetime(stringtime):
     Method returns a normal datetime object.
 
     :param stringtime:
-    :return:           The date as datetime object
+    :return:           The date and time as datetime object
 
 
     """
@@ -29,13 +30,13 @@ def _stringtime_2_datetime(stringtime):
         unix_datetime_in_seconds = unix_date_time/1000 # For some reason they are given in miliseconds
         date = dt.datetime.fromtimestamp(int(unix_datetime_in_seconds))
 
-    else:                           # regobs api gives local time
-        if '.' in stringtime:       # though sometimes with seconds given with decimal places
-            non_decimal_stringtime = stringtime[0:stringtime.index('.')]
-            stringtime = non_decimal_stringtime
-
-        date = dt.datetime.strptime(stringtime, '%Y-%m-%dT%H:%M:%S')
-        ### DOES REGOBS API RETURN UT TIME??? ###
+    else:
+        # if '.' in stringtime:       # though sometimes with seconds given with decimal places
+        #     non_decimal_stringtime = stringtime[0:stringtime.index('.')]
+        #     stringtime = non_decimal_stringtime
+        #
+        # date = dt.datetime.strptime(stringtime, '%Y-%m-%dT%H:%M:%S')
+        date = parse(stringtime)
 
     return date
 
@@ -88,6 +89,7 @@ def _reg_types_dict(registration_tids=None):
     31	Skredfarevurdering
     32	Skredproblem
     33	Skredaktivitet
+    36  Toppnoed snøprofil (fra dec 2018)
     40	Snøskredvarsel
     50	Istykkelse
     51	Isdekningsgrad
@@ -123,7 +125,7 @@ def _reg_types_dict(registration_tids=None):
             registration_dicts.append({'Id': 82, 'SubTypes': [21]})
         elif registration_tid == 22:  # Snødekke
             registration_dicts.append({'Id': 82, 'SubTypes': [22]})
-        elif registration_tid == 23:  # Snøprofil
+        elif registration_tid == 23:  # Snøprofil som bilder før dec 2018
             registration_dicts.append({'Id': 82, 'SubTypes': [23]})
         elif registration_tid == 25:  # Stabilitetstest
             registration_dicts.append({'Id': 82, 'SubTypes': [25]})
@@ -141,6 +143,8 @@ def _reg_types_dict(registration_tids=None):
             registration_dicts.append({'Id': 83, 'SubTypes': [32]})
         elif registration_tid == 33:  # Skredaktivitet
             registration_dicts.append({'Id': 81, 'SubTypes': [33]})
+        elif registration_tid == 36:  # Snøprofil
+            registration_dicts.append({'Id': 82, 'SubTypes': [36]})
         elif registration_tid == 50:  # Istykkelse
             registration_dicts.append({'Id': 50, 'SubTypes': []})
         elif registration_tid == 51:  # Isdekningsgrad
@@ -448,8 +452,8 @@ class Picture:
         # self.GeoHazardName = d['FullObject']['GeoHazardTName']
         self.RegistrationTID = d['FullObject']['RegistrationTID']
         self.RegistrationName = d['FullObject']['RegistrationTName']
-        self.PictureComment = d['FullObject']['PictureComment']
-        # self.Comment = d['FullObject']['Comment']
+        # self.PictureComment = d['FullObject']['PictureComment']
+        self.Comment = d['FullObject']['Comment']
 
 
 class Pictures:
@@ -487,8 +491,9 @@ class Observation(Registration, Location, Observer):
                 observation = WeatherObservation({**d, **r})
             elif r['RegistrationTid'] == 22:
                 observation = SnowSurfaceObservation({**d, **r})
+            # Snow profile has a new form and TID pr dec 2018
             elif r['RegistrationTid'] == 23:
-                observation = SnowProfile({**d, **r})
+                observation = SnowProfilePicture({**d, **r})
             elif r['RegistrationTid'] == 25:
                 observation = ColumnTest({**d, **r})
             elif r['RegistrationTid'] == 26:
@@ -505,6 +510,8 @@ class Observation(Registration, Location, Observer):
                 observation = AvalancheEvalProblem2({**d, **r})
             elif r['RegistrationTid'] == 33:
                 observation = AvalancheActivityObs2({**d, **r})
+            elif r['RegistrationTid'] == 36:
+                observation = SnowProfile({**d, **r})
             elif r['RegistrationTid'] == 50:
                 observation = IceThickness({**d, **r})
             elif r['RegistrationTid'] == 51:
@@ -1004,7 +1011,7 @@ class DamageObs(Registration, Location, Observer, Pictures):
         self.LangKey = d['LangKey']
 
 
-class SnowProfile(Registration, Location, Observer, Pictures):
+class SnowProfilePicture(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
 
@@ -1023,8 +1030,32 @@ class SnowProfile(Registration, Location, Observer, Pictures):
         self.Copyright = d['FullObject']['Copyright']
         self.RegistrationTID = d['FullObject']['RegistrationTID']
         self.RegistrationName = d['FullObject']['RegistrationTName']
-        self.PictureComment = d['FullObject']['PictureComment']
+        # self.PictureComment = d['FullObject']['PictureComment']
         self.Comment = d['FullObject']['Comment']
+        self.LangKey = d['LangKey']
+
+
+class SnowProfile(Registration, Location, Observer, Pictures):
+
+    def __init__(self, d):
+
+        Registration.__init__(self, d)
+        Location.__init__(self, d)
+        Observer.__init__(self, d)
+
+        self.FullObject = d['FullObject']
+        self.RegistrationTID = int(d['RegistrationTid'])
+        self.RegistrationName = d['RegistrationName']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
+
+        self.TotalDepth = d['FullObject']['TotalDepth']
+        self.AttachmentID = d['FullObject']['AttachmentID']
+        self.Comment = d['FullObject']['Comment']
+        self.StratProfile = d['FullObject']['StratProfile']
+        self.SnowTemp = d['FullObject']['SnowTemp']
+        self.SnowDensity = d['FullObject']['SnowDensity']
+        self.CompressionTest = d['FullObject']['CompressionTest']
         self.LangKey = d['LangKey']
 
 
@@ -1448,9 +1479,9 @@ def get_column_test(from_date, to_date, region_ids=None, location_id=None, group
                         output=output, lang_key=lang_key)
 
 
-def get_snow_profile(from_date, to_date, region_ids=None, location_id=None, group_id=None,
+def get_snow_profile_picture(from_date, to_date, region_ids=None, location_id=None, group_id=None,
         observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
-    """Gets observations of snow profiles. Pr now these are provided as pictures.
+    """Gets observations of snow profiles. Before dec 2018 these were provided as pictures.
 
     :param from_date:           [date] A query returns [from_date, to_date]
     :param to_date:             [date] A query returns [from_date, to_date]
@@ -1466,7 +1497,32 @@ def get_snow_profile(from_date, to_date, region_ids=None, location_id=None, grou
     :return:
     """
 
-    return _get_general(SnowProfile, 23, from_date=from_date, to_date=to_date,
+    return _get_general(SnowProfilePicture, 23, from_date=from_date, to_date=to_date,
+                        region_ids=region_ids, location_id=location_id, group_id=group_id,
+                        observer_ids=observer_ids, observer_nick=observer_nick, observer_competence=observer_competence,
+                        output=output, lang_key=lang_key)
+
+
+
+def get_snow_profile(from_date, to_date, region_ids=None, location_id=None, group_id=None,
+        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+    """Gets observations of snow profiles. Before dec 2018 these were provided as pictures.
+
+    :param from_date:           [date] A query returns [from_date, to_date]
+    :param to_date:             [date] A query returns [from_date, to_date]
+    :param region_ids:          [int or list of ints] If region_ids = None, all regions are selected
+    :param location_id:         [int] LocationID as given in the ObsLocation table in regObs.
+    :param group_id:            [int] ObserverGroupID as given in the ObserverGroup table in regObs.
+    :param observer_ids:        [int or list of ints] If observer_ids = None, all observers are selected
+    :param observer_nick:       [int or list of ints] Default None gives all.
+    :param observer_competence: [string] Part of a observer nick name
+    :param output:              [string] Options: 'List', 'DataFrame' and 'Count'. Default 'List'.
+    :param lang_key             [int] 1 is norwegian, 2 is english
+
+    :return:
+    """
+
+    return _get_general(SnowProfile, 36, from_date=from_date, to_date=to_date,
                         region_ids=region_ids, location_id=location_id, group_id=group_id,
                         observer_ids=observer_ids, observer_nick=observer_nick, observer_competence=observer_competence,
                         output=output, lang_key=lang_key)
@@ -1862,9 +1918,9 @@ def _raw_play_ground():
 
     # query object posted in the request
     rssquery = {'LangKey': 1,
-                'RegId': 176528,
+    #            'RegId': 176528,
     #            'ObserverGuid': None,               # '4d11f3cc-07c5-4f43-837a-6597d318143c',
-    #            'SelectedRegistrationTypes': [{'Id': 83, 'SubTypes': [30]}], #_reg_types_dict([10, 11, 12, 13]),    # list dict with type and sub type
+                'SelectedRegistrationTypes': [{'Id': 82, 'SubTypes': [36]}], #_reg_types_dict([10, 11, 12, 13]),    # list dict with type and sub type
     #            'SelectedRegions': None,
     #            'SelectedGeoHazards': [60],         # list int
     #            'ObserverNickName': None,           # "jostein",
@@ -1872,8 +1928,8 @@ def _raw_play_ground():
     #            'ObserverCompetence': None,         # list int
     #            'GroupId': None,
     #            'LocationId': None,
-                'FromDate': '2017-08-02',
-                'ToDate': '2018-02-05',
+                'FromDate': '2018-12-13',
+                'ToDate': '2018-12-16',
                 'NumberOfRecords': None,            # int
     #            'TextSearch': None,                 # virker ikke
                 'Offset': 0}
@@ -1990,7 +2046,7 @@ def _test_diff_in_reg_type_query():
 
 if __name__ == "__main__":
 
-    data = get_data_as_class('2016-12-10', '2016-12-15')
+    # data = get_data_as_class('2016-12-10', '2016-12-15')
 
     # all_data_snow = get_data('2016-12-30', '2017-01-01', geohazard_tids=10)
     # land_slides = get_land_slide_obs('2018-01-01', '2018-02-01')
@@ -2000,14 +2056,15 @@ if __name__ == "__main__":
     # ice_cover = get_ice_cover('2018-01-20', '2018-02-10')
     # ice_thicks = get_ice_thickness('2018-01-20', '2018-02-10')
     # columns = get_column_test('2018-01-20', '2018-02-10')
-    # snow_profiles = get_snow_profile('2018-01-20', '2018-02-10')
+    # old_snow_profiles = get_snow_profile_picture('2018-01-25', '2018-02-05')
+    # snow_profiles = get_snow_profile('2018-12-13', '2018-12-16')
     # general = _get_general(AllRegistrations, None, '2018-01-21', '2018-02-01')
     # damages = get_damage_observation('2017-01-01', '2018-02-01')
     # snow_surface = get_snow_surface_observation('2018-01-28', '2018-02-01')
     # weather = get_weather_observation('2018-01-28', '2018-02-01')
     # pictures = get_picture('2018-01-28', '2018-02-01')
     # general_obs = get_general_observation('2018-01-20', '2018-02-01')
-    # danger_signs = get_danger_sign('2017-03-01', '2017-03-10', geohazard_tids=10)
+    # danger_signs = get_danger_sign('2017-12-13', '2017-12-16', geohazard_tids=10)
     # avalanche_activity = get_avalanche_activity('2015-03-01', '2015-03-10')
     # avalanche_activity_2 = get_avalanche_activity_2('2017-03-01', '2017-03-10')
     # avalanche_obs = get_avalanche('2015-03-01', '2015-03-10')
