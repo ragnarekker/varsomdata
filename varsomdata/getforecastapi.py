@@ -9,6 +9,7 @@ Modifications:
 import requests
 import re
 import datetime as dt
+import numpy as np
 from varsomdata import varsomclasses as vc
 from utilities import makelogs as ml
 import setenvironment as env
@@ -25,14 +26,18 @@ class AvalancheWarning:
         """
         Init class properties
         """
-        self.reg_id = None  # [int]
-        self.region_id = None  # [int]
-        self.region_name = None  # [String]
-        self.region_type_id = None  # [int]
-        self.region_type_name = None  # [String]
-        self.utm_east = None  # [int]
-        self.utm_north = None  # [int]
-        self.utm_zone = None  # [int]
+        # Set internal variables
+        self._nan_str = 'Not given'
+        self._nan_value = np.nan
+
+        self.reg_id = self._nan_value  # [int]
+        self.region_id = self._nan_value  # [int]
+        self.region_name = self._nan_str  # [String]
+        self.region_type_id = self._nan_value  # [int]
+        self.region_type_name = self._nan_str  # [String]
+        self.utm_east = self._nan_value  # [int]
+        self.utm_north = self._nan_value  # [int]
+        self.utm_zone = self._nan_value  # [int]
         self.valid_from = None  # [datetime]
         self.valid_to = None  # [datetime]
         self.date_valid = None  # [datetime]
@@ -42,17 +47,17 @@ class AvalancheWarning:
 
         self.next_warning_time = None  # [datetime]
         self.publish_time = None  # [datetime]
-        self.danger_level = None  # [int]
-        self.danger_level_name = None  # [String]
-        self.main_text = None  # [String]
-        self.author = None  # [String]
-        self.avalanche_danger = None  # [String]
-        self.emergency_warning = None  # [String]
-        self.snow_surface = None  # [String]
-        self.current_weak_layers = None  # [String]
-        self.latest_avalanche_activity = None  # [String]
-        self.latest_observations = None  # [String]
-        self.mountain_weather = None  # [MountainWeather object]
+        self.danger_level = self._nan_value  # [int]
+        self.danger_level_name = self._nan_str  # [String]
+        self.main_text = self._nan_str  # [String]
+        self.author = self._nan_str  # [String]
+        self.avalanche_danger = self._nan_value  # [String]
+        self.emergency_warning = self._nan_str  # [String]
+        self.snow_surface = self._nan_str  # [String]
+        self.current_weak_layers = self._nan_str  # [String]
+        self.latest_avalanche_activity = self._nan_str  # [String]
+        self.latest_observations = self._nan_str  # [String]
+        self.mountain_weather = self._nan_str  # [MountainWeather object]
         self.avalanche_problems = []  # [List of AvalancheProblem objects]
 
         self.metadata = {}  # [dictionary] {key:value, key:value, ..}
@@ -562,21 +567,25 @@ class MountainWeather:
     Requires forecast_api_version = 4.0 or higher in /config/api.json
     """
     def __init__(self):
+        # Set internal variables
+        self._nan_str = 'Not given'
+        self._nan_value = np.nan
+
         # Init properties
-        self.precip_most_exposed = -1.
-        self.precip_region = -1.
-        self.wind_speed = -1.
-        self.wind_direction = 'Not given'
-        self.change_wind_speed = -1.
-        self.change_wind_direction = 'Not given'
-        self.change_hour_of_day_start = -1
-        self.change_hour_of_day_stop = -1
-        self.temperature_min = -999.
-        self.temperature_max = -999.
-        self.temperature_elevation = -1.
-        self.freezing_level = -1.
-        self.fl_hour_of_day_start = -1
-        self.fl_hour_of_day_stop = -1
+        self.precip_most_exposed = self._nan_value
+        self.precip_region = self._nan_value
+        self.wind_speed = self._nan_value
+        self.wind_direction = self._nan_str
+        self.change_wind_speed = self._nan_value
+        self.change_wind_direction = self._nan_str
+        self.change_hour_of_day_start = self._nan_value
+        self.change_hour_of_day_stop = self._nan_value
+        self.temperature_min = self._nan_value
+        self.temperature_max = self._nan_value
+        self.temperature_elevation = self._nan_value
+        self.freezing_level = self._nan_value
+        self.fl_hour_of_day_start = self._nan_value
+        self.fl_hour_of_day_stop = self._nan_value
 
     def __repr__(self):
         return f"{self.__class__.__name__}"
@@ -596,12 +605,12 @@ class MountainWeather:
                         try:
                             self.precip_most_exposed = float(_st['Value'])
                         except TypeError:
-                            self.precip_most_exposed = -1.
+                            self.precip_most_exposed = self._nan_value
                     elif _st['Id'] == 70:  # regional average
                         try:
                             self.precip_region = float(_st['Value'])
                         except TypeError:
-                            self.precip_region = -1.
+                            self.precip_region = self._nan_value
                         except ValueError:
                             self.precip_region = float(re.sub('[^\-\d+]', '', _st['Value']))
 
@@ -622,12 +631,12 @@ class MountainWeather:
                         try:
                             self.change_hour_of_day_start = int(_st['Value'])
                         except TypeError:
-                            self.change_hour_of_day_start = 0
+                            self.change_hour_of_day_start = self._nan_value
                     elif _st['Id'] == 110:  # hour_of_day_stop
                         try:
                             self.change_hour_of_day_stop = int(_st['Value'])
                         except TypeError:
-                            self.change_hour_of_day_stop = 0
+                            self.change_hour_of_day_stop = self._nan_value
 
             elif _mt['Id'] == 40:  # temperature
                 for _st in _mt['MeasurementSubTypes']:
@@ -635,19 +644,19 @@ class MountainWeather:
                         try:
                             self.temperature_min = float(_st['Value'])
                         except TypeError:
-                            self.temperature_min = -999.9
+                            self.temperature_min = self._nan_value
                     elif _st['Id'] == 40:  # temperature_max
                         try:
                             self.temperature_max = float(_st['Value'])
                         except TypeError:
-                            self.temperature_max = -999.9
+                            self.temperature_max = self._nan_value
                         except ValueError:
-                            self.temperature_max = -999.9
+                            self.temperature_max = self._nan_value
                     elif _st['Id'] == 90:  # temperature_elevation
                         try:
                             self.temperature_elevation = float(_st['Value'])
                         except TypeError:
-                            self.temperature_elevation = -1.
+                            self.temperature_elevation = self._nan_value
 
             elif _mt['Id'] == 50:  # freezing level
                 for _st in _mt['MeasurementSubTypes']:
@@ -655,15 +664,15 @@ class MountainWeather:
                         try:
                             self.freezing_level = float(_st['Value'])
                         except TypeError:
-                            self.freezing_level = -1
+                            self.freezing_level = self._nan_value
                     elif _st['Id'] == 100:  # hour_of_day_start
                         if isinstance(_st['Value'], type(None)):
-                            self.fl_hour_of_day_start = -1
+                            self.fl_hour_of_day_start = self._nan_value
                         else:
                             self.fl_hour_of_day_start = int(_st['Value'])
                     elif _st['Id'] == 110:  # hour_of_day_stop
                         if isinstance(_st['Value'], type(None)):
-                            self.fl_hour_of_day_stop = -1
+                            self.fl_hour_of_day_stop = self._nan_value
                         else:
                             self.fl_hour_of_day_stop = int(_st['Value'])
 
