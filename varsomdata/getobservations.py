@@ -434,6 +434,18 @@ class Observer:
         self.CompetenceLevelName = d['CompetenceLevelName']
 
 
+class Pictures:
+    """A parent class for listing of picture related to the form in question."""
+
+    def __init__(self, d, RegistrationTID):
+
+        self.Pictures = []
+        for p in d['Pictures']:
+            picture = Picture(p)
+            if picture.RegistrationTID == RegistrationTID:
+                self.Pictures.append(picture)
+
+
 class Picture:
 
     def __init__(self, d):
@@ -452,17 +464,6 @@ class Picture:
         self.RegistrationName = d['FullObject']['RegistrationTName']
         # self.PictureComment = d['FullObject']['PictureComment']
         self.Comment = d['FullObject']['Comment']
-
-
-class Pictures:
-
-    def __init__(self, d, RegistrationTID):
-
-        self.Pictures = []
-        for p in d['Pictures']:
-            picture = Picture(p)
-            if picture.RegistrationTID == RegistrationTID:
-                self.Pictures.append(picture)
 
 
 class Observation(Registration, Location, Observer):
@@ -1033,6 +1034,104 @@ class SnowProfilePicture(Registration, Location, Observer, Pictures):
         self.LangKey = d['LangKey']
 
 
+class StratProfileLayer:
+
+    def __init__(self, l):
+
+        self.DepthTop = l['DepthTop']
+        self.Thickness = l['Thickness']
+        self.GrainFormPrimaryTID = l['GrainFormPrimaryTID']
+        self.GrainFormPrimaryName = l['GrainFormPrimaryTName']
+        self.GrainFormSecondaryTID = l['GrainFormSecondaryTID']
+        self.GrainFormSecondaryName = l['GrainFormSecondaryTName']
+        self.GrainSizeAvg = l['GrainSizeAvg']/10            # error in api
+        self.GrainSizeAvgMax = l['GrainSizeAvgMax']/10      # error in api
+        self.HardnessTID = l['HardnessTID']
+        self.HardnessName = l['HardnessTName']
+        self.HardnessBottomTID = l['HardnessBottomTID']
+        self.HardnessBottomName = l['HardnessBottomTName']
+        self.WetnessTID = l['WetnessTID']
+        self.WetnessName = l['WetnessTName']
+        self.CriticalLayerTID = l['CriticalLayerTID']
+        self.CriticalLayerName = l['CriticalLayerTName']
+        self.Comment = l['Comment']
+        self.SortOrder = l['SortOrder']
+
+
+class SnowTempLayer:
+
+    def __init__(self, l):
+
+        self.Depth = l['Depth']
+        self.SnowTemp = l['SnowTemp']
+
+
+class SnowDensity:
+
+    def __init__(self, d):
+
+        self.CylinderDiameter = d['CylinderDiameter']
+        self.TareWeight = d['TareWeight']
+        self.Comment = d['Comment']
+
+        self.Layers = []
+        for l in d['Layers']:
+            layer = SnowDensityLayer(l)
+            self.Layers.append(layer)
+
+
+class SnowDensityLayer:
+
+    def __init__(self, l):
+
+        self.DensityProfileLayerID = l['DensityProfileLayerID']
+        self.Depth = l['Depth']
+        self.Thickness = l['Thickness']
+        self.Density = l['Density']
+        self.Comment = l['Comment']
+        self.Weight = l['Weight']
+        self.WaterEquivalent = self.Density * self.Thickness
+        # wrong on api
+        # self.WaterEquivalent = l['WaterEquivalent']
+
+
+class ProfileColumnTest:
+
+    def __init__(self, t):
+        self.CompressionTestID = t['CompressionTestID']
+        self.CompressionTestTID = t['CompressionTestTID']
+        self.CompressionTestName = t['CompressionTestTName']
+        self.TapsFracture = t['TapsFracture']
+        self.TapsFullPropagation = t['TapsFullPropagation']
+        self.PropagationTID = t['PropagationTID']
+        self.PropagationName = t['PropagationTName']
+        self.FractureDepth = t['FractureDepth']
+        self.StabilityEvalTID = t['StabilityEvalTID']
+        self.StabilityEvalName = t['StabilityEvalTName']
+        self.ComprTestFractureTID = t['ComprTestFractureTID']
+        self.IncludeInSnowProfile = t['IncludeInSnowProfile']
+        self.ComprTestFractureName = t['ComprTestFractureTName']
+        self.Comment = t['Comment']
+
+
+class ColumnTest(Registration, Location, Observer, Pictures, ProfileColumnTest):
+
+    def __init__(self, d):
+        Registration.__init__(self, d)
+        Location.__init__(self, d)
+        Observer.__init__(self, d)
+
+        self.FullObject = d['FullObject']
+        self.RegistrationTID = int(d['RegistrationTid'])
+        self.RegistrationName = d['RegistrationName']
+        self.LangKey = d['LangKey']
+
+        Pictures.__init__(self, d, self.RegistrationTID)
+
+        # Not all column tests are in the profile, but the ProfileColumnTest class contains the common values.
+        ProfileColumnTest.__init__(self, d['FullObject'])
+
+
 class SnowProfile(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
@@ -1050,40 +1149,27 @@ class SnowProfile(Registration, Location, Observer, Pictures):
         self.TotalDepth = d['FullObject']['TotalDepth']
         self.AttachmentID = d['FullObject']['AttachmentID']
         self.Comment = d['FullObject']['Comment']
-        self.StratProfile = d['FullObject']['StratProfile']
-        self.SnowTemp = d['FullObject']['SnowTemp']
-        self.SnowDensity = d['FullObject']['SnowDensity']
-        self.CompressionTest = d['FullObject']['CompressionTest']
-        self.LangKey = d['LangKey']
 
+        self.StratProfile = []
+        for sp in d['FullObject']['StratProfile']['Layers']:
+            layer = StratProfileLayer(sp)
+            self.StratProfile.append(layer)
 
-class ColumnTest(Registration, Location, Observer, Pictures):
+        self.SnowTemp = []
+        for st in d['FullObject']['SnowTemp']['Layers']:
+            layer = SnowTempLayer(st)
+            self.SnowTemp.append(layer)
 
-    def __init__(self, d):
+        self.SnowDensities = []
+        for sd in d['FullObject']['SnowDensity']:
+            snow_density = SnowDensity(sd)
+            self.SnowDensities.append(snow_density)
 
-        Registration.__init__(self, d)
-        Location.__init__(self, d)
-        Observer.__init__(self, d)
+        self.ColumnTests = []
+        for ct in d['FullObject']['CompressionTest']:
+            column_test = ProfileColumnTest(ct)
+            self.ColumnTests.append(column_test)
 
-        self.FullObject = d['FullObject']
-        self.RegistrationTID = int(d['RegistrationTid'])
-        self.RegistrationName = d['RegistrationName']
-
-        Pictures.__init__(self, d, self.RegistrationTID)
-
-        self.CompressionTestID = d['FullObject']['CompressionTestID']
-        self.CompressionTestTID = d['FullObject']['CompressionTestTID']
-        self.CompressionTestName = d['FullObject']['CompressionTestTName']
-        self.TapsFracture = d['FullObject']['TapsFracture']
-        self.TapsFullPropagation = d['FullObject']['TapsFullPropagation']
-        self.PropagationTID = d['FullObject']['PropagationTID']
-        self.PropagationName = d['FullObject']['PropagationTName']
-        self.FractureDepth = d['FullObject']['FractureDepth']
-        self.StabilityEvalTID = d['FullObject']['StabilityEvalTID']
-        self.StabilityEvalName = d['FullObject']['StabilityEvalTName']
-        self.ComprTestFractureTID = d['FullObject']['ComprTestFractureTID']
-        self.ComprTestFractureName = d['FullObject']['ComprTestFractureTName']
-        self.Comment = d['FullObject']['Comment']
         self.LangKey = d['LangKey']
 
 
