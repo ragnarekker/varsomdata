@@ -85,17 +85,24 @@ class AvalanceCause():
         self.cause_name = AvalCauseKDV[self.cause_tid].Name
 
 
-def plot_causes(region_name, from_date, to_date, causes):
+def plot_causes(region_name, from_date, to_date, causes, plot_folder=env.plot_folder + 'regionplots/'):
     """
 
+    :param region_name:
+    :param from_date:
+    :param to_date:
     :param causes:
+    :param plot_folder:
     :return:
     """
 
-    filename = u'{0} skredproblemer {1}-{2}'.format(region_name, from_date.strftime('%Y'), to_date.strftime('%y'))
-    ml.log_and_print('[info] {0}plot_causes: Plotting {1}'.format(log_reference, filename), print_it=True)
+    if not os.path.exists(plot_folder):
+        os.makedirs(plot_folder)
 
-    AvalCauseKDV = gkdv.get_kdv("AvalCauseKDV")
+    filename = u'{0} skredproblemer {1}-{2}'.format(region_name, from_date.strftime('%Y'), to_date.strftime('%y'))
+    ml.log_and_print("[info] {0}plot_causes: Plotting {1}".format(log_reference, filename), print_it=True)
+
+    AvalCauseKDV = gkdv.get_kdv('AvalCauseKDV')
     list_of_causes = [0, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
     #list_of_causes = set([c.cause_tid for c in causes])
     list_of_cause_names = [AvalCauseKDV[tid].Name for tid in list_of_causes]
@@ -107,7 +114,7 @@ def plot_causes(region_name, from_date, to_date, causes):
         dict_of_causes[c.cause_tid].append(c)
 
     #Start plotting
-    fsize = (16 , 7)
+    fsize = (16, 7)
     plt.figure(figsize=fsize)
     plt.clf()
 
@@ -117,9 +124,9 @@ def plot_causes(region_name, from_date, to_date, causes):
         for v in values:
             x  = (v.date-from_date).days
             if 'Forecast' in v.source:
-                plt.hlines(y-0.1, x, x+1, lw = 4, color = 'red')        # ofset the line 0.1 up
+                plt.hlines(y-0.1, x, x+1, lw=4, color='red')        # ofset the line 0.1 up
             if 'Observation' in v.source:
-                plt.hlines(y+0.1, x, x+1, lw = 4, color = 'blue')      # ofset the line 0.1 down
+                plt.hlines(y+0.1, x, x+1, lw=4, color='blue')      # ofset the line 0.1 down
         y += 1
 
 
@@ -178,11 +185,11 @@ def plot_causes(region_name, from_date, to_date, causes):
 
     fig = plt.gcf()
     fig.subplots_adjust(left=0.2)
-    plt.savefig(u'{0}{1}'.format(env.web_images_regiondata_folder, filename))
+    plt.savefig(u'{0}{1}'.format(plot_folder, filename))
     plt.close(fig)
 
 
-def plot_danger_levels(region_name, start_date, end_date, danger_levels, aval_indexes):
+def plot_danger_levels(region_name, start_date, end_date, danger_levels, aval_indexes, plot_folder=env.plot_folder + 'regionplots/'):
     """Plots the danger levels as bars and makes a small cake diagram with distribution.
 
     :param region_name:     [String] Name of forecast region
@@ -190,8 +197,12 @@ def plot_danger_levels(region_name, start_date, end_date, danger_levels, aval_in
     :param end_date:
     :param danger_levels:
     :param aval_indexes:
+    :param plot_folder:
     :return:
     """
+
+    if not os.path.exists(plot_folder):
+        os.makedirs(plot_folder)
 
     filename = '{0} faregrader {1}-{2}'.format(region_name, start_date.strftime('%Y'), end_date.strftime('%y'))
     ml.log_and_print("[info] {0}plot_danger_levels: Plotting {1}".format(log_reference, filename), print_it=True)
@@ -355,8 +366,8 @@ def plot_danger_levels(region_name, start_date, end_date, danger_levels, aval_in
 
     forecast_correct_np_values = np.asarray(forecast_correct_values, int)
     plt.scatter(forecast_correct_dates, forecast_correct_np_values, s=50., c=forecast_correct_colours, alpha=0.5)
-    plt.yticks(range(-1, 2, 1), ['For lav','Riktig','    For høy'])
-    plt.ylabel('Stemmer varslet faregrad?')
+    plt.yticks(range(-1, 2, 1), ["For lav", "Riktig", "    For høy"])
+    plt.ylabel("Stemmer varslet faregrad?")
 
     # this is an inset pie of the distribution of dangerlevels OVER the main axes
     xfrac = 0.15
@@ -382,7 +393,7 @@ def plot_danger_levels(region_name, start_date, end_date, danger_levels, aval_in
 
     # figuretext in observed dangerlevels subplot
     w_number, e_number, fract_same = compare_danger_levels(danger_levels)
-    fig.text(0.15, 0.25, ' Totalt {0} varslet faregrader og {1} observerte faregrader \n og det er {2}% samsvar mellom det som er observert og varslet.'
+    fig.text(0.15, 0.25, " Totalt {0} varslet faregrader og {1} observerte faregrader \n og det er {2}% samsvar mellom det som er observert og varslet."
              .format(w_number, e_number, int(round(fract_same*100, 0))), fontsize = 14)
 
     # fractions to the right in the forecast correct subplot
@@ -398,7 +409,7 @@ def plot_danger_levels(region_name, start_date, end_date, danger_levels, aval_in
     if -1 in forecast_correct_distr.keys(): fig.text(0.91, 0.11, '{0}%'.format(  int(round(forecast_correct_distr[-1]/float(len(forecast_correct_values))*100, 0))) ,fontsize = 14)
 
     # This saves the figure to file
-    plt.savefig(u'{0}{1}'.format(env.web_images_regiondata_folder, filename))#,dpi=90)
+    plt.savefig(u'{0}{1}'.format(plot_folder, filename))#,dpi=90)
     fig.tight_layout()
     plt.close(fig)
 
@@ -424,7 +435,7 @@ def compare_danger_levels(danger_levels):
     return len(forecasts), len(observations), fract_same
 
 
-def make_plots_for_region(region_id, problems, dangers, aval_indexes, start_date, end_date):
+def make_plots_for_region(region_id, problems, dangers, aval_indexes, start_date, end_date, plot_folder=env.plot_folder + 'regionplots/'):
     """This method prepares data for plotting and calls on the plot methods. Pure administration.
 
     :param region_id:       [int]   Forecast region ID as given in ForecastRegionKDV
@@ -449,59 +460,39 @@ def make_plots_for_region(region_id, problems, dangers, aval_indexes, start_date
     if len(danger_levels) is not 0:
 
         # Danger level histograms
-        plot_danger_levels(region_name, start_date, end_date, danger_levels, aval_indexes)
+        plot_danger_levels(region_name, start_date, end_date, danger_levels, aval_indexes, plot_folder=plot_folder)
 
         # Cause horizontal line plots
-        if end_date > dt.date(2014, 11, 1) and start_date > dt.date(2014, 11, 1): # Early years dont have this avalanche problem
-            plot_causes(region_name, start_date, end_date, causes)
+        if end_date > dt.date(2014, 11, 1) and start_date > dt.date(2014, 11, 1):   # Early years dont have this avalanche problem
+            plot_causes(region_name, start_date, end_date, causes, plot_folder=plot_folder)
 
 
-def make_2017_18_plots():
+def make_2018_19_plots(plot_folder=env.plot_folder + 'regionplots/'):
     """Makes all plots for all regions and saves to web-app folder."""
 
-    from_date = dt.date(2017, 11, 15)
+    from_date = dt.date(2018, 11, 15)
     to_date = dt.date.today() + dt.timedelta(days=2)
-    if dt.date.today().year == 2017:
-        to_date = dt.date(2018, 1, 1)
+    if dt.date.today().year == 2018:
+        to_date = dt.date(2019, 1, 1)
 
-    region_ids = gm.get_forecast_regions('2017-18')
+    region_ids = gm.get_forecast_regions('2018-19')
 
     for i in region_ids:
         problems, dangers, aval_indexes = get_data(i, from_date, to_date, get_new=True)
-        make_plots_for_region(i, problems, dangers, aval_indexes, from_date, to_date)
-
-
-def make_2016_17_plots():
-    """Makes all plots for all regions and saves to web-app folder."""
-
-    from_date = dt.date(2016, 11, 15)
-    to_date = dt.date.today() + dt.timedelta(days=2)
-
-    region_ids = gm.get_forecast_regions('2016-17')
-
-    for i in region_ids:
-        problems, dangers, aval_indexes = get_data(i, from_date, to_date, get_new=True)
-        make_plots_for_region(i, problems, dangers, aval_indexes, from_date, to_date)
+        make_plots_for_region(i, problems, dangers, aval_indexes, from_date, to_date, plot_folder=plot_folder)
 
 
 if __name__ == "__main__":
 
-    # make_2017_18_plots()
+    # make_2018_19_plots()
 
-    from_date = dt.date(2018, 10, 1)
-    to_date = dt.date(2019, 6, 1)
-    to_date = dt.date.today() + dt.timedelta(days=2)
-
+    # from_date = dt.date(2018, 10, 1)
+    # to_date = dt.date(2019, 6, 1)
+    # to_date = dt.date.today() + dt.timedelta(days=2)
+    #
     # #### Start small - do one region
-    i = 3029 # Nordensköld Land
-    problems, dangers, aval_indexes = get_data(i, from_date, to_date, get_new=True)
-    make_plots_for_region(i, problems, dangers, aval_indexes, from_date, to_date)
-
-    # All regions pr 2016-2017
-    # region_ids = [3003,3007,3009,3010,3011,3012,3013,3014,3015,3016,3017,3022,3023,3024,3027,3028,3029,3031,3032,3034,3035]  # two first years had more regions. Uncomment if making plots for 2012-13 and 2013-14
-
-    # for i in region_ids:
-    # problems, dangers, aval_indexes = get_data(i, from_date, to_date, data_from="request")
+    # i = 3029    # Indre Sogn
+    # problems, dangers, aval_indexes = get_data(i, from_date, to_date, get_new=True)
     # make_plots_for_region(i, problems, dangers, aval_indexes, from_date, to_date)
 
     pass

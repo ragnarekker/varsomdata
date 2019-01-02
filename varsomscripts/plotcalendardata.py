@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-"""The code for downloading and making the plots on ragnar.pythonanywhere.com/observerdata/
-
-Todo: I need to mow use of webfolder out from this module over to runonshedule where it is used. If not on a shedule for operational use, the tables and plots may be put in the outputfolder.
-"""
+"""The code for downloading and making the plots on ragnar.pythonanywhere.com/observerdata/ etc"""
 
 import datetime as dt
 import matplotlib as mpl
@@ -10,12 +7,12 @@ import pylab as plb
 import collections as col
 import calendar as cal
 from varsomdata import getobservations as go
+from varsomdata import getvarsompickles as gvp
 from varsomdata import getkdvelements as gkdv
 from varsomdata import getmisc as gm
-from utilities import makepickle as mp
 from utilities import makelogs as ml
-from varsomdata import getvarsompickles as vp
 import setenvironment as env
+import os as os
 
 __author__ = 'raek'
 
@@ -54,12 +51,10 @@ class DayData:
         self.set_x()                    # x and y positions in plot set based on date
         self.set_y()
 
-
     def set_properties(self):
         self.box_size_x = 100
         self.box_size_y = 100
         self.cell_colour = 'white'
-
 
     def add_observations(self, observations):
         self.observations = col.Counter(observations)
@@ -67,43 +62,40 @@ class DayData:
         if self.number_obs > 0:
             self.cell_colour = 'gainsboro'
 
-
     def add_regids(self, reg_ids):
         self.reg_ids = col.Counter(reg_ids)
-
 
     def add_nicks(self, nicks):
         self.nick_names = col.Counter(nicks)
 
-
     def add_obs_pr_regid(self, obs_pr_regid):
         self.obs_pr_regid = obs_pr_regid
-
 
     def add_loc_pr_regid(self, loc_pr_regid):
         self.loc_pr_regid = loc_pr_regid
 
-
     def add_nic_pr_regid(self, nic_pr_regid):
         self.nic_pr_regid = nic_pr_regid
-
 
     def set_x(self):
         self.x = self.week_day * 100
 
-
     def set_y(self):
         year = self.date.year
         month = self.date.month
-        first, last  = cal.monthrange(year, month)
+        first, last = cal.monthrange(year, month)
+
         first_week = dt.date(year, month, 1).isocalendar()[1]
         # make sure to get last week of previous year if needed
         if month == 1 and first != 1:
             first_week = 0
+
         last_week = dt.date(year, month, last).isocalendar()[1]
+        # make sure to get the last week if is is in the new year
+        if month == 12 and self.week_no == 1:
+            self.week_no = 53
 
         self.y = -100 * (self.week_no - first_week)
-
 
     def get_obs_pos(self, obs_type):
 
@@ -119,7 +111,7 @@ class DayData:
             return 86, 38, 'lightskyblue', 'k'
         elif obs_type == 'Vær':
             return 86, 14, 'lightskyblue', 'k'
-        elif obs_type == 'Snøprofil':
+        elif 'Snøprofil' in obs_type:
             return 62, 14, 'white', 'k'
         elif obs_type == 'Stabilitetstest':
             return 38, 14, 'white', 'k'
@@ -164,7 +156,7 @@ def _get_dates(start, end, delta):
         curr += delta
 
 
-def _make_plot(dates, observer_name=None, region_name=None, file_ext=".png", data_description=None):
+def _make_plot(dates, observer_name=None, region_name=None, file_ext='.png', data_description=None, plot_folder=env.plot_folder):
     """If it is a custom data set region_name should be provided because it will be plotted by region.
     observer_name and region_name determines the main grouping of data. They should not be provided both.
 
@@ -173,26 +165,38 @@ def _make_plot(dates, observer_name=None, region_name=None, file_ext=".png", dat
     :param region_name:
     :param file_ext:
     :param data_description:    Custom description for naming plot-files
+    :param plot_folder:         Folder for saving the plots.
     :return:
     """
 
     if data_description is not None:
         if 'svv_i_' in data_description:
-            folder = env.web_images_svvdata_folder
+            folder = plot_folder + 'svvplots/'
         else:
-            folder = env.web_images_folder
+            folder = plot_folder
+
+        if not os.path.exists(folder):
+            os.makedirs(folder)
+
         plot_file_name = '{0}{1}_{2}{3:02d}'.format(folder, data_description, dates[0].date.year, dates[0].date.month)
+
     else:
         if region_name is not None:
-            plot_file_name = '{0}{1}_regiondata_{2}{3:02d}'.format(env.web_images_regiondata_folder, region_name, dates[0].date.year, dates[0].date.month)
+            folder = plot_folder + 'regionplots/'
+            if not os.path.exists(folder):
+                os.makedirs(folder)
+            plot_file_name = '{0}{1}_regiondata_{2}{3:02d}'.format(folder, region_name, dates[0].date.year, dates[0].date.month)
+
         else:
             if observer_name is not None:
-                plot_file_name = '{0}observerdata_{1}_{2}{3:02d}'.format(env.web_images_observerdata_folder, dates[0].observer_id, dates[0].date.year, dates[0].date.month)
+                folder = plot_folder + 'observerplots/'
+                if not os.path.exists(folder):
+                    os.makedirs(folder)
+                plot_file_name = '{0}observerdata_{1}_{2}{3:02d}'.format(folder, dates[0].observer_id, dates[0].date.year, dates[0].date.month)
+
             else:
                 ml.log_and_print("[warning] plotcalendardata.py -> _make_plot: Need ObserverID and/or forecastRegionTID to make this work.", print_it=True)
                 plot_file_name = 'no_good_plot'
-
-
 
     # Figure dimensions
     fsize = (18, 13)
@@ -205,14 +209,14 @@ def _make_plot(dates, observer_name=None, region_name=None, file_ext=".png", dat
     for d in dates:
         x = int(d.x)-d.box_size_x
         y = int(d.y)-d.box_size_y
-        rect = mpl.patches.Rectangle((x, y), d.box_size_x , d.box_size_y, facecolor=d.cell_colour)
+        rect = mpl.patches.Rectangle((x, y), d.box_size_x, d.box_size_y, facecolor=d.cell_colour)
         ax.add_patch(rect)
 
         # The date in top left corner
         plb.text(x+6, y+84, '{0}'.format(d.date.day), fontsize=20)
 
         # plot circles with individual observation count
-        for k,v in d.observations.items():
+        for k, v in d.observations.items():
             relative_x, relative_y, obs_colour, obs_edge = d.get_obs_pos(k)
             circ = mpl.patches.Circle((x+relative_x, y+relative_y), d.box_size_x/11, facecolor=obs_colour, edgecolor=obs_edge)
             ax.add_patch(circ)
@@ -239,13 +243,24 @@ def _make_plot(dates, observer_name=None, region_name=None, file_ext=".png", dat
     # add weeknumbers
     year = dates[0].date.year
     month = dates[0].date.month
-    first, last  = cal.monthrange(year, month)
+    first, last = cal.monthrange(year, month)
     first_week = dt.date(year, month, 1).isocalendar()[1]
+
     # make sure to get last week of previous year if needed
     if month == 1 and first != 1:
         first_week = 0
     last_week = dt.date(year, month, last).isocalendar()[1]
-    week_nos = range(first_week, last_week+1, 1)
+
+    # make sure to handle if the last week is in the next year
+    if month == 12 and last_week == 1:
+        last_week = 53
+
+    week_nos = list(range(first_week, last_week+1, 1))
+
+    # and if the last week is 53, it is in fact week 1 of the next year.
+    if month == 12 and last_week == 53:
+        week_nos[-1] = 1
+
     index = -100
     for wn in week_nos:
         plb.text(-15, index+60, 'Uke {0}'.format(wn), fontsize=20, rotation=90)
@@ -292,24 +307,28 @@ def _make_plot(dates, observer_name=None, region_name=None, file_ext=".png", dat
     plb.close()
 
 
-def _make_html(dates, observer_id=None, region_name=None, data_description=None):
-    """Method serves both plots for selected obserevars or selected regions.
+def _make_html(dates, observer_id=None, region_name=None, data_description=None, html_folder=env.output_folder + 'views/'):
+    """Method serves both plots for selected observers or selected regions.
 
     :param dates:
     :param observer_id:
-    :param region_name:     If doing observers region_name=None else we are doing regions and this is a region name
+    :param region_name:         If doing observers: region_name=None else: we are doing regions and this is a region name.
     :param data_description:
+    :param html_folder:         Output folder for the html files generated.
     :return:
     """
 
+    if not os.path.exists(html_folder):
+        os.makedirs(html_folder)
+
     if data_description is not None:
-        html_file_name = '{0}{1}_{2}{3:02d}.html'.format(env.web_view_folder, data_description, dates[0].date.year, dates[0].date.month)
+        html_file_name = '{0}{1}_{2}{3:02d}.html'.format(html_folder, data_description, dates[0].date.year, dates[0].date.month)
     else:
         if region_name is not None:
-            html_file_name = '{0}{1}_regiondata_{2}{3:02d}.html'.format(env.web_view_folder, region_name, dates[0].date.year, dates[0].date.month)
+            html_file_name = '{0}{1}_regiondata_{2}{3:02d}.html'.format(html_folder, region_name, dates[0].date.year, dates[0].date.month)
         else:
             if observer_id is not None:
-                html_file_name = '{0}observerdata_{1}_{2}{3:02d}.html'.format(env.web_view_folder, observer_id, dates[0].date.year, dates[0].date.month)
+                html_file_name = '{0}observerdata_{1}_{2}{3:02d}.html'.format(html_folder, observer_id, dates[0].date.year, dates[0].date.month)
             else:
                 ml.log_and_print("[warning] plotcalendardata.py -> _make_html: Got to have region and/or observer to make this work.", print_it=True)
                 html_file_name = 'no_good_html'
@@ -375,7 +394,7 @@ def _make_day_data_list(region_observations_list, m, frid=None, o=None):
         if frid is not None:
             dd = DayData(d, region_id=id)
         if o is not None:
-            dd = DayData(d, observer_id=o[0])
+            dd = DayData(d, observer_id=o.observer_id)
         if frid is None and o is None:
             ml.log_and_print("[warning] plotcalendardata.py -> _make_day_data_list: No region id og observer id provided. Unable to make DayData list.")
             return []
@@ -432,13 +451,15 @@ def _make_day_data_list(region_observations_list, m, frid=None, o=None):
     return dates
 
 
-def make_observer_plots(all_observations_list, observer_list, months):
+def make_observer_plots(all_observations_list, observer_list, months, plot_folder=env.plot_folder, html_folder=env.output_folder + 'views/'):
     """Method prepares data for plotting and making the corresponding table for the observations for a list of
     observers.
 
     :param all_observations_list:
     :param observer_list:           [list of ObserverData]
     :param months:
+    :param plot_folder:         Folder for saving the plots.
+    :param html_folder:         Output folder for the html files generated.
     :return:
     """
 
@@ -448,24 +469,26 @@ def make_observer_plots(all_observations_list, observer_list, months):
 
     for o in observer_list:
 
-        ml.log_and_print("[info] plotcalendardata.py -> make_observer_plots: {} {}".format(o[0], o[1]))
-        observers_observations_list = [all_obs for all_obs in all_observations_list if all_obs.ObserverId == o[0]]
+        ml.log_and_print("[info] plotcalendardata.py -> make_observer_plots: {} {}".format(o.observer_id, o.observer_nick))
+        observers_observations_list = [all_obs for all_obs in all_observations_list if all_obs.ObserverId == o.observer_id]
 
         # plot one month at the time
         for m in months:
             dates = _make_day_data_list(observers_observations_list, m, o=o)
 
-            _make_plot(dates, observer_name=o[1])
-            _make_html(dates, observer_id=o[0])
+            _make_plot(dates, observer_name=o.observer_nick, plot_folder=plot_folder)
+            _make_html(dates, observer_id=o.observer_id, html_folder=html_folder)
 
 
-def make_region_plots(all_observations_list, region_ids, months):
+def make_region_plots(all_observations_list, region_ids, months, plot_folder=env.plot_folder, html_folder=env.output_folder + 'views/'):
     """Method prepares data for plotting and making the corresponding table for the observations for one
     region.
 
     :param all_observations_list:
     :param region_ids:
     :param months:
+    :param plot_folder:         Folder for saving the plots.
+    :param html_folder:         Output folder for the html files generated.
     :return:
     """
 
@@ -479,11 +502,21 @@ def make_region_plots(all_observations_list, region_ids, months):
         for m in months:
             dates = _make_day_data_list(region_observations_list, m, frid=frid)
 
-            _make_plot(dates, region_name=region_name)
-            _make_html(dates, region_name=region_name)
+            _make_plot(dates, region_name=region_name, plot_folder=plot_folder)
+            _make_html(dates, region_name=region_name, html_folder=html_folder)
 
 
-def make_svv_plots(all_observations_list, observer_dict, region_ids, months):
+def make_svv_plots(all_observations_list, observer_dict, region_ids, months, plot_folder=env.plot_folder, html_folder=env.output_folder + 'views/'):
+    """
+
+    :param all_observations_list:
+    :param observer_dict:
+    :param region_ids:
+    :param months:
+    :param plot_folder:         Folder for saving the plots.
+    :param html_folder:         Output folder for the html files generated.
+    :return:
+    """
 
     # Make a list of all svv observers.
     # Look for members of groups with names containing 'svv' or 'vegvesen' or
@@ -526,50 +559,17 @@ def make_svv_plots(all_observations_list, observer_dict, region_ids, months):
         # plot one month at the time
         for m in months:
             dates = _make_day_data_list(region_observations_list, m, frid=frid)
-            _make_plot(dates, region_name=region_name, data_description=data_description)
-            _make_html(dates, region_name=region_name, data_description=data_description)
+            _make_plot(dates, region_name=region_name, data_description=data_description, plot_folder=plot_folder)
+            _make_html(dates, region_name=region_name, data_description=data_description, html_folder=html_folder)
 
 
 if __name__ == "__main__":
 
+    observer = [ObserverData(325, 'Siggen@obskorps'), ObserverData(10, 'Andreas@nve')]
 
-    observer = ObserverData(10, 'Andreas@NVE')
-    all_observations = go.get_data_as_class(from_date='2018-09-1', to_date='2018-11-1', output='List')
-    month = [dt.date(2017, 11, 1)]
+    all_observations = gvp.get_all_observations('2018-19', output='List', geohazard_tids=10)
+    month = [dt.date(2018, 11, 1), dt.date(2018, 12, 1)]
 
     make_observer_plots(all_observations, observer, month)
 
     pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
