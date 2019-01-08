@@ -772,7 +772,7 @@ def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1, as_dict=F
             avalanche_nowcast = w['AvalancheWarning']
         except:
             avalanche_nowcast = ''
-            # ml.log_and_print('No nowcast available.')
+            ml.log_and_print('No nowcast available.')
 
 
         warning = vc.AvalancheDanger(region_id, region_name, 'Forecast API', date, danger_level, danger_level_name)
@@ -784,7 +784,7 @@ def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1, as_dict=F
         try:
             warning.set_mountain_weather(w['MountainWeather'])
         except:
-            # ml.log_and_print('No MountainWeather tag found in json-string - set forecast_api_version to 4.0.1 or higher')
+            ml.log_and_print('No MountainWeather tag found in json-string - set forecast_api_version to 4.0.1 or higher')
             pass
 
         # http://www.varsom.no/Snoskred/Senja/?date=18.03.2015
