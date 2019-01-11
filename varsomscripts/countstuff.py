@@ -463,6 +463,28 @@ def total_2018_and_part_water():
     to_date = dt.date(2018, 12, 31)
     all_observations = go.get_data(from_date, to_date, output='Count nest')
     all_water_observ = go.get_data(from_date, to_date, geohazard_tids=60, output='Count nest')
+    all_snow_observ = go.get_data(from_date, to_date, geohazard_tids=10, output='Count nest')
+    all_dirt_observ = go.get_data(from_date, to_date, geohazard_tids=[20,30,40], output='Count nest')
+    all_ice_observ = go.get_data(from_date, to_date, geohazard_tids=70, output='Count nest')
+
+    # all_observations_2016 = gvp.get_all_observations('2016')
+    # all_forms_2016 = gvp.get_all_observations('2016', output='List')
+    #
+    # all_observations_2017 = gvp.get_all_observations('2017')
+    # all_forms_2017 = gvp.get_all_observations('2017', output='List')
+    #
+    # all_observations_2018 = gvp.get_all_observations('2018')
+    # all_forms_2018 = gvp.get_all_observations('2018', output='List')
+
+    all_observations_2015_16 = gvp.get_all_observations('2015-16')
+    all_forms_2015_16 = gvp.get_all_observations('2015-16', output='List')
+
+    all_observations_2016_17 = gvp.get_all_observations('2016-17')
+    all_forms_2016_17 = gvp.get_all_observations('2016-17', output='List')
+
+    all_observations_2017_18 = gvp.get_all_observations('2017-18')
+    all_forms_2017_18 = gvp.get_all_observations('2017-18', output='List')
+
 
     pass
 

@@ -587,6 +587,9 @@ def get_dates_from_season(year):
     elif year == '2018-19':
         from_date = dt.date(2018, 9, 1)
         to_date = dt.date.today()
+    elif year in ['2012', '2013', '2014', '2015', '2016', '2017', '2018']:
+        from_date = dt.date(int(year), 1, 1)
+        to_date = dt.date(int(year), 12, 31)
     else:
         from_date = 'Undefined dates'
         to_date = 'Undefined dates'
