@@ -32,7 +32,7 @@ def get_all_observations(year, output='Nest', geohazard_tids=None, lang_key=1, m
     data is retrieved from a locally stored pickle, if not, new request is made to the regObs api. Previous
     seasons are not requested if a pickle is found in local storage.
 
-    :param year:                [string] Eg. '2017-18'
+    :param year:                [string] Eg. season '2017-18' (sept-sept) or one single year '2018'
     :param output:              [string] 'Nest' or 'List'
     :param geohazard_tids:      [int or list of ints] Default None gives all. Note, pickle stores all, but this option returns a select
     :param lang_key             [int] 1 is norwegian, 2 is english

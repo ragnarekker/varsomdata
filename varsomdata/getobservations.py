@@ -1380,13 +1380,13 @@ def _get_general(registration_class_type, registration_types, from_date, to_date
         ml.log_and_print('getobservations.py -> _get_general: Illegal output option.')
         return list
 
-    # In these methods "Count" is obviously to count the list ov observations weras in the more general get_data
-    # counting a list and counting a nested list of full registrations are two different tings.
+    # In these methods "Count" is obviously to count the list of forms, where as in the more general get_data
+    # counting a list and counting a nested list of full observations are two different things.
     output_for_get_data = output
     if output == 'Count':
         output_for_get_data = 'Count list'
 
-    # Dataframes are based on the lists
+    # Data frames are based on the lists
     if output == 'DataFrame':
         output_for_get_data = 'List'
 
@@ -1585,7 +1585,6 @@ def get_snow_profile_picture(from_date, to_date, region_ids=None, location_id=No
                         region_ids=region_ids, location_id=location_id, group_id=group_id,
                         observer_ids=observer_ids, observer_nick=observer_nick, observer_competence=observer_competence,
                         output=output, lang_key=lang_key)
-
 
 
 def get_snow_profile(from_date, to_date, region_ids=None, location_id=None, group_id=None,
