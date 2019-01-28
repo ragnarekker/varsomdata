@@ -590,9 +590,48 @@ class MountainWeather:
     def __repr__(self):
         return f"{self.__class__.__name__}"
 
-    def from_dict(self, _d):
+    def from_api_region(self, region_id, d):
         """
 
+        :param region_id:
+        :param d:
+        :return:
+        """
+        api_url = f"http://h-web03.nve.no/APSapi/TimeSeriesReader.svc/MountainWeather/{region_id}/{d}/en/true"
+        api_return = requests.get(api_url).json()
+
+        for item_ in api_return:
+            if item_['Attribute'] == 'FreezingLevelAltitude':
+                self.freezing_level = np.float(item_['Value'])
+            elif item_['Attribute'] == 'MaxTemperature':
+                self.temperature_max = np.float(item_['Value'])
+            elif item_['Attribute'] == 'MinTemperature':
+                self.temperature_min = np.float(item_['Value'])
+            elif item_['Attribute'] == 'Precipitation_MostExposed_Median':
+                self.precip_most_exposed = np.float(item_['Value'])
+            elif item_['Attribute'] == 'Precipitation_overall_ThirdQuartile':
+                self.precip_region = np.float(item_['Value'])
+            elif item_['Attribute'] == 'TemperatureElevation':
+                self.temperature_elevation = np.float(item_['Value'])
+            elif item_['Attribute'] == 'WindClassification':
+                self.wind_speed = np.float(item_['Value'])
+            elif item_['Attribute'] == 'WindDirection':
+                self.wind_direction = np.float(item_['Value'])
+
+        self.change_wind_speed = self._nan_value
+        self.change_wind_direction = self._nan_str
+        self.change_hour_of_day_start = self._nan_value
+        self.change_hour_of_day_stop = self._nan_value
+
+        self.fl_hour_of_day_start = self._nan_value
+        self.fl_hour_of_day_stop = self._nan_value
+        k = 'm'
+
+
+    def from_dict(self, _d):
+        """
+        Populate the MountainWeather class with the content of the "MountainWeather" tag in the return from
+        get_warnings_as_json.
         :param _d: the content of the "MountainWeather" tag in the return from get_warnings_as_json
                          in getforecastapi.py (e.g. w['MountainWeather'])
         :return: A MountainWeather object
