@@ -638,7 +638,6 @@ class MountainWeather:
         self.fl_hour_of_day_start = self._nan_value
         self.fl_hour_of_day_stop = self._nan_value
 
-
     def from_dict(self, _d):
         """
         Populate the MountainWeather class with the content of the "MountainWeather" tag in the return from

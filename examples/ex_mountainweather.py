@@ -8,8 +8,9 @@ __author__ = 'kmu'
 
 from varsomdata import getforecastapi as gf
 
+# Get mountain weather for single avalanche forecasting region
 mw = gf.MountainWeather()
-mw.from_api_region(3024, '2017-11-22')
+mw.from_api_region(3014, '2019-01-27')
 
 print(mw)
-k = 'm'
+
