@@ -11,4 +11,5 @@ from varsomdata import getforecastapi as gf
 mw = gf.MountainWeather()
 mw.from_api_region(3024, '2017-11-22')
 
-
+print(mw)
+k = 'm'

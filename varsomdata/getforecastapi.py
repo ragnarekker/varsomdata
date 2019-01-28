@@ -587,18 +587,30 @@ class MountainWeather:
         self.fl_hour_of_day_start = self._nan_value
         self.fl_hour_of_day_stop = self._nan_value
 
+        self.date_valid = self._nan_str
+        self.region_id = self._nan_value
+
     def __repr__(self):
-        return f"{self.__class__.__name__}"
+        return f"Class: ({self.__class__.__name__})\nRegionID: {self.region_id}, Date: {self.date_valid}\nPrecipitation (max): {self.precip_most_exposed}\nTemperature (max): {self.temperature_max}\nWind speed: {self.wind_speed}\n"
 
     def from_api_region(self, region_id, d):
         """
-
-        :param region_id:
-        :param d:
-        :return:
+        Populate MountainWeather class by calling the MountainWeather-API.
+        :param region_id: The ID of the forecasting region as integer.
+        :param d: the date as string with format: YYYY-MM-DD
         """
+        try:
+            yy_, mm_, dd_ = d.split('-')
+            date_valid = dt.date(int(yy_), int(mm_), int(dd_))
+        except ValueError:
+            print(f'Please provide a valid date as YYYY-MM-DD!\nGot {d}')
+            raise
+
         api_url = f"http://h-web03.nve.no/APSapi/TimeSeriesReader.svc/MountainWeather/{region_id}/{d}/en/true"
         api_return = requests.get(api_url).json()
+
+        self.region_id = region_id
+        self.date_valid = date_valid
 
         for item_ in api_return:
             if item_['Attribute'] == 'FreezingLevelAltitude':
@@ -614,9 +626,9 @@ class MountainWeather:
             elif item_['Attribute'] == 'TemperatureElevation':
                 self.temperature_elevation = np.float(item_['Value'])
             elif item_['Attribute'] == 'WindClassification':
-                self.wind_speed = np.float(item_['Value'])
+                self.wind_speed = item_['Value']
             elif item_['Attribute'] == 'WindDirection':
-                self.wind_direction = np.float(item_['Value'])
+                self.wind_direction = item_['Value']
 
         self.change_wind_speed = self._nan_value
         self.change_wind_direction = self._nan_str
@@ -625,7 +637,6 @@ class MountainWeather:
 
         self.fl_hour_of_day_start = self._nan_value
         self.fl_hour_of_day_stop = self._nan_value
-        k = 'm'
 
 
     def from_dict(self, _d):
