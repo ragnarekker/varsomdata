@@ -22,8 +22,7 @@ def _observation_is_not_empty(o):
         if o.ObsComment is None and o.ObsHeader is None and o.Comment is None and len(o.URLs) == 0:
             return False
 
-    else:
-        return True
+    return True
 
 
 def get_all_observations(year, output='Nest', geohazard_tids=None, lang_key=1, max_file_age=23):
@@ -119,8 +118,8 @@ def get_all_observations(year, output='Nest', geohazard_tids=None, lang_key=1, m
 
 if __name__ == "__main__":
 
-    all_regs = get_all_observations('2017-18', output='List')
-    all_regs = get_all_observations('2016-17', output='List')
-    all_regs = get_all_observations('2015-16', output='List')
+    # all_regs = get_all_observations('2017-18', output='List')
+    # all_regs = get_all_observations('2016-17', output='List')
+    # all_regs = get_all_observations('2015-16', output='List')
 
     pass

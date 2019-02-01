@@ -1,0 +1,86 @@
+Totalt antall observasjoner; 359
+Totalt antall skjema; 1247
+
+WaterLevel2;185
+GeneralObservation;104
+DamageObs;210
+PictureObservation;731
+Picture_Vannstand;209
+DangerSign;17
+Picture_Notater;336
+Picture_Skader;182
+Picture_Faretegn;4
+
+marthefroshaug;2
+Gjermund Nilsen;1
+rue@nve;7
+drift@svv;17
+torehum@svv;1
+Søren@nve;10
+bli@nve;9
+pvaa@nve.no;21
+Ingeborg@nve;15
+Engebret;3
+Christian@NVE;4
+Tfjell;1
+Marcel van der Velpen;1
+Priska@NVE;1
+Ragnar@NVE;5
+paulv@UiT;2
+Trine Lise@NVE;6
+ide@nve;2
+Solveig@NVE;1
+eva fNVE;1
+krdy@nve.no;4
+krst;2
+jostein@nve;6
+Siggen@obskorps;8
+MNJ;5
+Steinar_69;6
+Kalle@Skred.AS;6
+Sim;7
+Albert;1
+MoS@NVE;5
+Knut M. Møen;5
+Per Ludvig;2
+Tommy@NVE;5
+Aen;10
+Kjartan;13
+Turid;1
+MortenDue;2
+Hervé@NVE;14
+abjo@nve.no;1
+tjg@nve;1
+Fred@nve;1
+avat@nve.no;6
+tuh@nve;2
+Morten Skoglund;2
+viggom;1
+ibni@nve.no;2
+hrb@nve.no;6
+Frodetk@nve;1
+rzo;1
+Gamlefar;3
+hae@nve.no;2
+Emil Cederström ;1
+Kemnitz;6
+Olaf Årthun. ;4
+martin@svv;1
+gunnard@svv;2
+GretheHM@NVE;1
+haam;66
+alol;1
+idst;3
+Brefo;6
+Lina;2
+Anki;1
+Ivar;6
+ojs;1
+marmel;6
+Liss@nve;1
+oaj;1
+IngarN;3
+BLytskjold;1
+Jerstad;1
+Gauto;3
+Urskaufugl;1

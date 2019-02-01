@@ -102,12 +102,12 @@ def write_to_file_all_obs():
     """Writes to file all dates and the number of observations on the dates.
     Both the total and the numbers pr geohazard."""
 
-    years = ['2012-13', '2013-14', '2014-15', '2015-16', '2016-17', '2017-18']
+    years = ['2012-13', '2013-14', '2014-15', '2015-16', '2016-17', '2017-18', '2018-19']
     all_observations = []
     for y in years:
         all_observations += gvp.get_all_observations(y)
 
-    num_at_date = _make_date_obscount_dict()          # number of obs pr day pr geohaz
+    num_at_date = _make_date_obscount_dict()          # number of obs pr day pr geohazard
 
     for o in all_observations:
         date = o.DtObsTime.date()
@@ -365,19 +365,26 @@ def pick_winners_varsom_friflyt_konk_2018():
 
 
 def count_of_water_forms_used():
-    """Which forms are use for observing water"""
+    """Which forms are use for observing water. Which users submit how much."""
 
-    year = '2017-18'
+    year = '2018'
     all_water_obs_list = gvp.get_all_observations(year, output='List', geohazard_tids=60, max_file_age=230)
     all_water_obs_nest = gvp.get_all_observations(year, output='Nest', geohazard_tids=60, max_file_age=230)
 
     form_count = {}
     for o in all_water_obs_list:
-        form_name = o.RegistrationName
+        form_name = o.__class__.__name__
         if form_name in form_count.keys():
             form_count[form_name] += 1
         else:
             form_count[form_name] = 1
+
+        if 'Picture' in form_name:
+            form_name = 'Picture_{}'.format(o.RegistrationName)
+            if form_name in form_count.keys():
+                form_count[form_name] += 1
+            else:
+                form_count[form_name] = 1
 
     observation_count = len(all_water_obs_nest)
     user_count = {}
@@ -459,34 +466,68 @@ def count_all_avalanches(year='2017-18'):
 
 def total_2018_and_part_water():
 
-    from_date = dt.date(2018, 1, 1)
-    to_date = dt.date(2018, 12, 31)
-    all_observations = go.get_data(from_date, to_date, output='Count nest')
-    all_water_observ = go.get_data(from_date, to_date, geohazard_tids=60, output='Count nest')
-    all_snow_observ = go.get_data(from_date, to_date, geohazard_tids=10, output='Count nest')
-    all_dirt_observ = go.get_data(from_date, to_date, geohazard_tids=[20,30,40], output='Count nest')
-    all_ice_observ = go.get_data(from_date, to_date, geohazard_tids=70, output='Count nest')
+    # from_date = dt.date(2018, 1, 1)
+    # to_date = dt.date(2018, 12, 31)
+    # all_observations = go.get_data(from_date, to_date, output='Count nest')
+    # all_water_observ = go.get_data(from_date, to_date, geohazard_tids=60, output='Count nest')
+    # all_snow_observ = go.get_data(from_date, to_date, geohazard_tids=10, output='Count nest')
+    # all_dirt_observ = go.get_data(from_date, to_date, geohazard_tids=[20,30,40], output='Count nest')
+    # all_ice_observ = go.get_data(from_date, to_date, geohazard_tids=70, output='Count nest')
 
     # all_observations_2016 = gvp.get_all_observations('2016')
     # all_forms_2016 = gvp.get_all_observations('2016', output='List')
+
+    years = ['2013', '2014', '2015', '2016', '2017', '2018']
+    
+    for y in years:
+        
+        all_observations = gvp.get_all_observations(y)
+        all_forms = gvp.get_all_observations(y, output='List')
+
+        all_water_forms = [f for f in all_forms if f.GeoHazardTID == 60 and not isinstance(f, go.PictureObservation)]
+        all_water_pictures = [f for f in all_forms if f.GeoHazardTID == 60 and isinstance(f, go.PictureObservation)]
+
+        all_snow_forms = [f for f in all_forms if f.GeoHazardTID == 10 and not isinstance(f, go.PictureObservation)]
+        all_snow_pictures = [f for f in all_forms if f.GeoHazardTID == 10 and isinstance(f, go.PictureObservation)]
+
+        all_dirt_forms = [f for f in all_forms if f.GeoHazardTID in [20,30,40] and not isinstance(f, go.PictureObservation)]
+        all_dirt_pictures = [f for f in all_forms if f.GeoHazardTID in [20,30,40] and isinstance(f, go.PictureObservation)]
+
+        all_ice_forms = [f for f in all_forms if f.GeoHazardTID == 70 and not isinstance(f, go.PictureObservation)]
+        all_ice_pictures = [f for f in all_forms if f.GeoHazardTID == 70 and isinstance(f, go.PictureObservation)]
+
+        print(y)
+
+        print("All observations:\t{0}".format(len(all_observations)))
+        print("All forms:\t{0}".format(len(all_forms)))
+
+        print("Snow forms:\t{0}".format(len(all_snow_forms)))
+        print("Snow pictures:\t{0}".format(len(all_snow_pictures)))
+
+        print("Water forms:\t{0}".format(len(all_water_forms)))
+        print("Water pictures:\t{0}".format(len(all_water_pictures)))
+
+        print("Dirt forms:\t{0}".format(len(all_dirt_forms)))
+        print("Dirt pictures:\t{0}".format(len(all_dirt_pictures)))
+
+        print("Ice forms:\t{0}".format(len(all_ice_forms)))
+        print("Ice pictures:\t{0}".format(len(all_ice_pictures)))
+
+        print()
+
+
+    # all_observations_2015_16 = gvp.get_all_observations('2015-16')
+    # all_forms_2015_16 = gvp.get_all_observations('2015-16', output='List')
     #
-    # all_observations_2017 = gvp.get_all_observations('2017')
-    # all_forms_2017 = gvp.get_all_observations('2017', output='List')
+    # all_observations_2016_17 = gvp.get_all_observations('2016-17')
+    # all_forms_2016_17 = gvp.get_all_observations('2016-17', output='List')
     #
-    # all_observations_2018 = gvp.get_all_observations('2018')
-    # all_forms_2018 = gvp.get_all_observations('2018', output='List')
-
-    all_observations_2015_16 = gvp.get_all_observations('2015-16')
-    all_forms_2015_16 = gvp.get_all_observations('2015-16', output='List')
-
-    all_observations_2016_17 = gvp.get_all_observations('2016-17')
-    all_forms_2016_17 = gvp.get_all_observations('2016-17', output='List')
-
-    all_observations_2017_18 = gvp.get_all_observations('2017-18')
-    all_forms_2017_18 = gvp.get_all_observations('2017-18', output='List')
+    # all_observations_2017_18 = gvp.get_all_observations('2017-18')
+    # all_forms_2017_18 = gvp.get_all_observations('2017-18', output='List')
 
 
     pass
+
 
 if __name__ == '__main__':
 
@@ -494,7 +535,7 @@ if __name__ == '__main__':
     # pick_winners_at_conference()
     # write_to_file_all_obs()
     # pick_winners_varsom_friflyt_konk_2018()
-    # count_of_water_forms_used()
+    count_of_water_forms_used()
     # count_all_avalanches()
-    total_2018_and_part_water()
+    # total_2018_and_part_water()
 
