@@ -6,8 +6,8 @@ import pylab as plt
 import datetime as dt
 import os as os
 
-import matplotlib
-matplotlib.use('Agg')  # Generate images without having a window appear. See https://matplotlib.org/faq/howto_faq.html
+# import matplotlib
+# matplotlib.use('Agg')  # Generate images without having a window appear. See https://matplotlib.org/faq/howto_faq.html
 import matplotlib.pyplot as pplt
 
 from varsomdata import getdangers as gd
@@ -72,7 +72,11 @@ class AvalanceCause():
 
     def __init__(self, cause_tid, date, source):
 
-        self.cause_tid = cause_tid
+        if cause_tid is None:
+            self.cause_tid = 0
+        else:
+            self.cause_tid = cause_tid
+
         self.date = date
         self.source = source
         self.cause_name = None
@@ -484,7 +488,7 @@ def make_2018_19_plots(plot_folder=env.plot_folder + 'regionplots/'):
 
 if __name__ == "__main__":
 
-    # make_2018_19_plots()
+    make_2018_19_plots()
 
     # from_date = dt.date(2018, 10, 1)
     # to_date = dt.date(2019, 6, 1)
