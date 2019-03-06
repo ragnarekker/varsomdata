@@ -757,11 +757,15 @@ def get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=1, r
 
         # In nov 2016 we updated all regions to have ids in th 3000´s. GIS and regObs equal.
         # Before that GIS har numbers 0-99 and regObs 100-199. Messy..
+        # Also, new api dont support old forecasts due to model changes.
         if region_id > 100 and region_id < 3000:
             region_id = region_id - 100
+            api_version = env.forecast_api_version_archive
+        else:
+            api_version = env.forecast_api_version
 
         url = "http://api01.nve.no/hydrology/forecast/avalanche/{4}/api/AvalancheWarningByRegion/Detail/{0}/{3}/{1}/{2}"\
-            .format(region_id, from_date, to_date, lang_key, env.forecast_api_version)
+            .format(region_id, from_date, to_date, lang_key, api_version)
 
         # If at first you don't succeed, try and try again.
         try:
@@ -814,6 +818,7 @@ def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1, as_dict=F
 
     warnings_as_json = get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=lang_key)
     avalanche_warning_list = []
+    avalanche_danger_list = []
     exception_counter = 0
 
     for w in warnings_as_json:
@@ -830,7 +835,7 @@ def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1, as_dict=F
             avalanche_nowcast = w['AvalancheWarning']
         except:
             avalanche_nowcast = ''
-            ml.log_and_print('No nowcast available.')
+            # ml.log_and_print('No nowcast available.')
 
 
         warning = vc.AvalancheDanger(region_id, region_name, 'Forecast API', date, danger_level, danger_level_name)
@@ -842,7 +847,7 @@ def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1, as_dict=F
         try:
             warning.set_mountain_weather(w['MountainWeather'])
         except:
-            ml.log_and_print('No MountainWeather tag found in json-string - set forecast_api_version to 4.0.1 or higher')
+            # ml.log_and_print('No MountainWeather tag found in json-string - set forecast_api_version to 4.0.1 or higher')
             pass
 
         # http://www.varsom.no/Snoskred/Senja/?date=18.03.2015

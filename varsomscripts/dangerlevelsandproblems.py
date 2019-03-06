@@ -658,54 +658,6 @@ def make_forecasts_for_Thea():
     pass
 
 
-def make_forecasts_for_Sander():
-    """2018 August: Hei igjen Ragnar.
-    Har du statistikk på varsla faregrad over ein heil sesong for Noreg? Eit snitt. XX dagar med faregrad 1,
-    XX dagar med faregrad 2, XX dagar med faregrad 3.... fordelt på XX varslingsdagar.
-
-    :return:
-    """
-
-    pickle_file_name = '{0}201808_avalanche_forecasts_sander.pickle'.format(env.local_storage)
-
-    get_new = False
-    all_dangers = []
-
-    if get_new:
-
-        years = ['2012-13', '2013-14', '2014-15', '2015-16']
-        for y in years:
-            from_date, to_date = gm.get_forecast_dates(y)
-            region_ids = gm.get_forecast_regions(y, get_b_regions=True)
-            all_dangers += gd.get_forecasted_dangers(region_ids, from_date, to_date)
-
-        years = ['2016-17', '2017-18']
-        for y in years:
-            from_date, to_date = gm.get_forecast_dates(y)
-            region_ids = gm.get_forecast_regions(y, get_b_regions=True)
-            all_dangers += gd.get_forecasted_dangers(region_ids, from_date, to_date)
-
-        mp.pickle_anything(all_dangers, pickle_file_name)
-
-    else:
-        all_dangers = mp.unpickle_anything(pickle_file_name)
-
-    output_forecast_problems = '{0}201808 Faregrader for Sander.txt'.format(env.output_folder)
-
-    import pandas as pd
-
-    all_dangers_dict = []
-    for a in all_dangers:
-        all_dangers_dict.append(a.__dict__)
-
-    col_names = list(all_dangers_dict[0].keys())
-    all_dangers_df = pd.DataFrame(all_dangers_dict, columns=col_names, index=range(0, len(all_dangers_dict),1))
-
-
-
-    a = 1
-
-
 def get_all_ofoten():
     """Dangers and problems for Ofoten (former Narvik). Writes file to .csv"""
 
@@ -760,10 +712,72 @@ def get_all_ofoten():
     return all_warnings, all_evaluations
 
 
+def make_forecasts_for_Espen_at_sweco():
+    """Hei. I forbindelse med et prosjekt i Sørreisa i Troms ønsker vi å gi råd til vår kunde om evakuering av bygg
+    i skredutsatt terreng. Som en del av vår vurdering hadde det vært veldig nyttig med statistikk for varslingen,
+    altså statistikk om hvor ofte de ulike faregradene er varslet. Er det mulig å få tak i slik statistikk?
+    Gjerne så langt tilbake i tid som mulig. Vennlig hilsen Espen Eidsvåg"""
+
+    pickle_file_name = '{0}forecasts_sorreisa_espen.pickle'.format(env.local_storage)
+
+    get_new = True
+    all_dangers = []
+
+    if get_new:
+
+        years = ['2012-13', '2013-14', '2014-15', '2015-16']
+        region_ids = [110, 112]     # Senja, Bardu
+        for y in years:
+            from_date, to_date = gm.get_forecast_dates(y)
+            for region_id in region_ids:
+                all_dangers += gd.get_forecasted_dangers(region_id, from_date, to_date)
+
+        years = ['2016-17', '2017-18', '2018-19']
+        region_ids = [3012,3013]  # Sør Troms, Indre Troms
+        for y in years:
+            from_date, to_date = gm.get_forecast_dates(y)
+            for region_id in region_ids:
+                all_dangers += gd.get_forecasted_dangers(region_id, from_date, to_date)
+
+        mp.pickle_anything(all_dangers, pickle_file_name)
+
+    else:
+        all_dangers = mp.unpickle_anything(pickle_file_name)
+
+    output_forecast_problems = '{0}Varsel for Sørreisa.Espen Eidsvåg Sweco.csv'.format(env.output_folder)
+
+    import collections as coll
+
+    # Write forecasts to file
+    with open(output_forecast_problems, 'w', encoding='utf-8') as f:
+        make_header = True
+        for d in all_dangers:
+            for p in d.avalanche_problems:
+                out_data = coll.OrderedDict([
+                        ('Date', dt.date.strftime(p.date, '%Y-%m-%d')),
+                        ('Region id', p.region_regobs_id),
+                        ('Region', p.region_name),
+                        ('DL', p.danger_level),
+                        ('Danger level', p.danger_level_name),
+                        ('Problem order', p.order),
+                        ('Problem', p.problem),
+                        ('Cause/ weaklayer', p.cause_name),
+                        ('Type', p.aval_type),
+                        ('Size', p.aval_size),
+                        ('Trigger', p.aval_trigger),
+                        ('Probability', p.aval_probability),
+                        ('Distribution', p.aval_distribution)
+                    ])
+                if make_header:
+                    f.write(' ;'.join([fe.make_str(d) for d in out_data.keys()]) + '\n')
+                    make_header = False
+                f.write(' ;'.join([fe.make_str(d) for d in out_data.values()]) + '\n')
+
+
 if __name__ == "__main__":
 
     # make_problems_for_BritSiv()
     # make_avalanche_problemes_for_techel()
     # make_forecasts_for_Christian()
     # make_forecasts_for_Thea()
-    make_forecasts_for_Sander()
+    make_forecasts_for_Espen_at_sweco()

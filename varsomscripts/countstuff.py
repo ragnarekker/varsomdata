@@ -533,9 +533,9 @@ if __name__ == '__main__':
 
     # find_fun_facts()
     # pick_winners_at_conference()
-    # write_to_file_all_obs()
+    write_to_file_all_obs()
     # pick_winners_varsom_friflyt_konk_2018()
-    count_of_water_forms_used()
+    # count_of_water_forms_used()
     # count_all_avalanches()
     # total_2018_and_part_water()
 
