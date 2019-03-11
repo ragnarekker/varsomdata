@@ -102,10 +102,30 @@ def get_season_17_18():
     df.to_csv('../localstorage/norwegian_avalanche_warnings_season_17_18.csv', index_label='index')
 
 
+def get_season_18_19():
+    region_ids = [3003,3007,3009,3010,3011,3012,3013,3014,3015,3016,3017,3022,3023,3024,3027,3028,3029,3031,3032,3034,3035]
+    from_date = dt.date(2018, 12, 1)
+    to_date = dt.date(2019, 3, 11)
+    aw_dict = gf.get_avalanche_warnings_2(region_ids, from_date, to_date, lang_key=1, as_dict=True)
+    df = pandas.DataFrame(aw_dict)
+    df.to_csv('../localstorage/norwegian_avalanche_warnings_season_18_19.csv', index_label='index')
+
+
+def get_svalbard_regional_forecasts():
+    region_ids = [3001, 3002, 3003, 3004]
+    from_date = dt.date(2016, 12, 1)
+    to_date = dt.date(2019, 2, 7)
+    aw_dict = gf.get_avalanche_warnings_2(region_ids, from_date, to_date, lang_key=1, as_dict=True)
+    df = pandas.DataFrame(aw_dict)
+    df.to_csv('../localstorage/svalbard_forecasts.csv', index_label='index')
+
+
 if __name__ == '__main__':
     #test_MountainWeather_class()
     #test_AvalancheWarning_class()
     #test_get_avalanche_warnings()
     #test_AvalancheDanger_to_dict()
     #test_AvalancheDanger_as_df()
-    get_season_17_18()
+    # get_season_17_18()
+    get_season_18_19()
+    #get_svalbard_regional_forecasts()
