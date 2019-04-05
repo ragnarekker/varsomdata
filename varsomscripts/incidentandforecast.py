@@ -117,7 +117,7 @@ def make_forecasts_at_incidents_for_sander():
             f.write(' ;'.join([fe.make_str(d) for d in i.values()]).replace('[', '').replace(']', '') + '\n')
 
 
-def make_dl_incident_markus():
+def make_dl_incident_markus(get_new=False):
     """
     From the beginning of time:
 
@@ -134,8 +134,8 @@ def make_dl_incident_markus():
     """
 
     pickle_file_name = '{0}incident_on_dl3_for_markus.pickle'.format(env.local_storage)
-    years = ['2012-13', '2013-14', '2014-15', '2015-16', '2016-17']
-    get_new = False
+    years = ['2012-13', '2013-14', '2014-15', '2015-16', '2016-17', '2017-2018', '2018-2019']
+
 
     all_dangers = []
     all_incidents = []
@@ -304,6 +304,6 @@ def incident_troms_winter_2018_for_markus():
 
 if __name__ == "__main__":
 
-    # make_dl_incident_markus()
+    make_dl_incident_markus(True)
     # make_forecasts_at_incidents_for_sander()
-    incident_troms_winter_2018_for_markus()
+    #incident_troms_winter_2018_for_markus()

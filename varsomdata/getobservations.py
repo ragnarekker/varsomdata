@@ -56,6 +56,7 @@ def _make_data_frame(list_of_data):
         for l in list_of_data:
             observation_values = list(l.__dict__.values())
             data_frame.loc[i] = observation_values
+            #data_frame.append(observation_values, ignore_index=True)  # does not work
             i += 1
 
     return data_frame

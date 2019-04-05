@@ -5,6 +5,7 @@ Script to retrieve regobs data relevant for forecast analysis at NVE.
 __author__ = 'kmu'
 
 import datetime as dt
+#import pandas as pd
 from varsomdata import getobservations as go
 
 
@@ -26,6 +27,14 @@ def get_danger_signs(from_date, to_date, region_ids):
     return df
 
 
+def get_incident(from_date, to_date, region_ids=None, location_id=None, group_id=None, observer_ids=None, observer_nick=None, observer_competence=None, output='List', geohazard_tids=None, lang_key=1):
+    inc_list = go.get_incident(from_date, to_date, region_ids=None, location_id=None, group_id=None, observer_ids=None, observer_nick=None, observer_competence=None, output='List', geohazard_tids=10, lang_key=1)
+
+    df = go._make_data_frame(inc_list)
+
+    return df
+
+
 if __name__ == "__main__":
     region_ids = [3003, 3007, 3009, 3010, 3011, 3012, 3013, 3014, 3015, 3016, 3017, 3022, 3023, 3024, 3027, 3028, 3029,
                   3031, 3032, 3034, 3035]
@@ -33,9 +42,10 @@ if __name__ == "__main__":
     to_date = dt.date(2018, 2, 15)
 
     #all_data_snow = get_snow_obs(from_date, to_date)
-    ds = get_danger_signs(from_date, to_date, region_ids)
+    #ds = get_danger_signs(from_date, to_date, region_ids)
+    inc = get_incident(from_date, to_date, region_ids=region_ids)
 
-    pass
+    k = 'm'
 
 
     #aw_dict = gf.get_avalanche_warnings_2(region_ids, from_date, to_date, lang_key=1, as_dict=True)
