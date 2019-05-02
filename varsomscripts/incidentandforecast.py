@@ -16,6 +16,97 @@ import datetime as dt
 
 __author__ = 'raek'
 
+def make_forecasts_at_incidents_for_mala(get_new=False):
+    """Lager csv med alle varsomhendelser sammen med faregrad og de aktuelle skredproblemene
+    (svakt lag, skredtype og skredproblemnavnert). Der det er gjort en regObs observasjon
+    med «hendelse/ulykke» skjema fylt ut har jeg også lagt på skadeomfangsvurderingen.
+    """
+
+    pickle_file_name = '{0}dl_inci_mala.pickle'.format(env.local_storage)
+    output_incident_and_dl = '{0}incidents_mala.csv'.format(env.output_folder)
+
+
+    if get_new:
+        varsom_incidents = gm.get_varsom_incidents(add_forecast_regions=True, add_forecasts=True, add_observations=False)
+        mp.pickle_anything(varsom_incidents, pickle_file_name)
+    else:
+        varsom_incidents = mp.unpickle_anything(pickle_file_name)
+
+    incident_and_dl = []
+
+    for i in varsom_incidents:
+
+        incident_date = i.date
+        danger_level = None
+
+        problem_1 = None
+        problem_2 = None
+        problem_3 = None
+
+        avalanche_type_1 = None
+        avalanche_type_2 = None
+        avalanche_type_3 = None
+
+        weak_layer_1 = None
+        weak_layer_2 = None
+        weak_layer_3 = None
+
+        dato_regobs = None
+        damage_extent = None
+
+        if i.forecast:
+            danger_level = i.forecast.danger_level
+            for p in i.forecast.avalanche_problems:
+                if p.order == 1:
+                    problem_1 = p.problem
+                    weak_layer_1 = p.cause_name
+                    avalanche_type_1 = p.aval_type
+                if p.order == 2:
+                    problem_2 = p.problem
+                    weak_layer_2 = p.cause_name
+                    avalanche_type_2 = p.aval_type
+                if p.order == 3:
+                    problem_3 = p.problem
+                    weak_layer_3 = p.cause_name
+                    avalanche_type_3 = p.aval_type
+
+            if i.observations:
+                dato_regobs = i.observations[0].DtObsTime.date()
+                for obs in i.observations:
+                    for o in obs.Observations:
+                        if isinstance(o, go.Incident):
+                            damage_extent = o.DamageExtentName
+
+        incident_and_dl.append({'Date': incident_date,
+                                # 'Dato (regObs)': dato_regobs,
+                                'Region_id': i.region_id,
+                                'Region': i.region_name,
+                                'Fatalities': i.fatalities,
+                                'Damage_extent': damage_extent,
+                                'People_involved': i.people_involved,
+                                'Activity': i.activity,
+                                'Danger_level': danger_level,
+                                'Avalanche_problem_1': problem_1,
+                                'Avalanche_type_1': avalanche_type_1,
+                                'Weak_layer_1': weak_layer_1,
+                                'Avalanche_problem_2': problem_2,
+                                'Avalanche_type_2': avalanche_type_2,
+                                'Weak_layer_2': weak_layer_2,
+                                'Avalanche_problem_3': problem_3,
+                                'Avalanche_type_3': avalanche_type_3,
+                                'Weak_layer_3': weak_layer_3,
+                                'Comment': i.comment,
+                                'regObs_id': '{}'.format(i.regid)})
+
+    # Write observed problems to file
+    with open(output_incident_and_dl, 'w', encoding='utf-8') as f:
+        make_header = True
+        for i in incident_and_dl:
+            if make_header:
+                f.write(';'.join([fe.make_str(d) for d in i.keys()]) + '\n')
+                make_header = False
+            f.write(';'.join([fe.make_str(d) for d in i.values()]).replace('[', '').replace(']', '') + '\n')
+
 
 def make_forecasts_at_incidents_for_sander():
     """Lager csv med alle varsomhendelser sammen med faregrad og de aktuelle skredproblemene 
@@ -304,6 +395,7 @@ def incident_troms_winter_2018_for_markus():
 
 if __name__ == "__main__":
 
-    make_dl_incident_markus(True)
+    # make_dl_incident_markus(True)
+    make_forecasts_at_incidents_for_mala(True)
     # make_forecasts_at_incidents_for_sander()
     #incident_troms_winter_2018_for_markus()

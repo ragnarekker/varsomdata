@@ -23,9 +23,9 @@ def _stringtime_2_datetime(stringtime):
     if stringtime is None:
         return None
 
-    elif '/Date(' in stringtime:      # oData gives unix time. Unix date time in milliseconds from 1.1.1970
+    elif '/Date(' in stringtime:  # oData gives unix time. Unix date time in milliseconds from 1.1.1970
         unix_date_time = int(stringtime[6:-2])
-        unix_datetime_in_seconds = unix_date_time/1000 # For some reason they are given in miliseconds
+        unix_datetime_in_seconds = unix_date_time / 1000  # For some reason they are given in miliseconds
         date = dt.datetime.fromtimestamp(int(unix_datetime_in_seconds))
 
     else:
@@ -56,7 +56,7 @@ def _make_data_frame(list_of_data):
         for l in list_of_data:
             observation_values = list(l.__dict__.values())
             data_frame.loc[i] = observation_values
-            #data_frame.append(observation_values, ignore_index=True)  # does not work
+            # data_frame.append(observation_values, ignore_index=True)  # does not work
             i += 1
 
     return data_frame
@@ -115,7 +115,7 @@ def _reg_types_dict(registration_tids=None):
         elif registration_tid == 11:  # Ulykke/hendelse
             registration_dicts.append({'Id': 80, 'SubTypes': [11]})
         elif registration_tid == 12:  # Bilder
-            return None               # Images cover all observation types
+            return None  # Images cover all observation types
         elif registration_tid == 13:  # Faretegn
             registration_dicts.append({'Id': 81, 'SubTypes': [13]})
         elif registration_tid == 14:  # Skader
@@ -155,14 +155,16 @@ def _reg_types_dict(registration_tids=None):
         elif registration_tid == 71:  # Jordskredhendelse
             registration_dicts.append({'Id': 71, 'SubTypes': [0, 1, 2, 4, 11, 6, 7, 8, 10]})
         else:
-            ml.log_and_print("[warning] getobservations.py -> _reg_types_dict: RegistrationTID {0} not supported (yet).".format(registration_tid))
+            ml.log_and_print(
+                "[warning] getobservations.py -> _reg_types_dict: RegistrationTID {0} not supported (yet).".format(
+                    registration_tid))
 
     return registration_dicts
 
 
 def _make_one_request(from_date=None, to_date=None, reg_id=None, registration_types=None,
-        region_ids=None, location_id=None, observer_id=None, observer_nick=None, observer_competence=None,
-        group_id=None, output='List', geohazard_tids=None, lang_key=1, recursive_count=5):
+                      region_ids=None, location_id=None, observer_id=None, observer_nick=None, observer_competence=None,
+                      group_id=None, output='List', geohazard_tids=None, lang_key=1, recursive_count=5):
     """Part of get_data method. Parameters the same except observer_id and reg_id can not be lists."""
 
     # Dates in the web-api request are strings
@@ -211,7 +213,8 @@ def _make_one_request(from_date=None, to_date=None, reg_id=None, registration_ty
             data += responds['Results']
 
             if output == 'Count nest':
-                ml.log_and_print("[info] getobservations.py -> _make_one_request: total matches {0}".format(responds['TotalMatches']))
+                ml.log_and_print("[info] getobservations.py -> _make_one_request: total matches {0}".format(
+                    responds['TotalMatches']))
                 return [responds['TotalMatches']]
 
             # log request status
@@ -230,11 +233,14 @@ def _make_one_request(from_date=None, to_date=None, reg_id=None, registration_ty
                     more_available = False
 
             else:
-                ml.log_and_print("[error] getobservations.py -> _make_one_request: http {0} {1}".format(r.status_code, r.reason))
+                ml.log_and_print(
+                    "[error] getobservations.py -> _make_one_request: http {0} {1}".format(r.status_code, r.reason))
 
         except Exception:
             error_msg = sys.exc_info()[0]
-            ml.log_and_print("[error] getobservations.py -> _make_one_request: EXCEPTION. RECURSIVE COUNT {0} {1}".format(recursive_count, error_msg))
+            ml.log_and_print(
+                "[error] getobservations.py -> _make_one_request: EXCEPTION. RECURSIVE COUNT {0} {1}".format(
+                    recursive_count, error_msg))
 
             # When exception occurred, start requesting again. All that has happened in this scope is not important.
             # Call this method again and make sure the received data goes direct to return at the bottom.
@@ -262,8 +268,8 @@ def _make_one_request(from_date=None, to_date=None, reg_id=None, registration_ty
 
 
 def get_data(from_date=None, to_date=None, registration_types=None, reg_ids=None, region_ids=None, location_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, group_id=None,
-        output='List', geohazard_tids=None, lang_key=1):
+             observer_ids=None, observer_nick=None, observer_competence=None, group_id=None,
+             output='List', geohazard_tids=None, lang_key=1):
     """Gets data from regObs webapi. Each observation returned as a dictionary in a list.
 
     :param from_date:           [string] 'yyyy-mm-dd'. Result includes from date.
@@ -301,18 +307,18 @@ def get_data(from_date=None, to_date=None, registration_types=None, reg_ids=None
         observer_ids = [observer_ids]
 
     if not isinstance(reg_ids, list):
-            reg_ids = [reg_ids]
+        reg_ids = [reg_ids]
 
     # if output requested is 'Count' a number is expected, else a list og observations
     all_data = []
 
     for reg_id in reg_ids:
         for observer_id in observer_ids:
-
             data = _make_one_request(
                 from_date=from_date, to_date=to_date, lang_key=lang_key, reg_id=reg_id,
                 registration_types=registration_types, region_ids=region_ids, geohazard_tids=geohazard_tids,
-                observer_id=observer_id, observer_nick=observer_nick, observer_competence=observer_competence, group_id=group_id, location_id=location_id, output=output)
+                observer_id=observer_id, observer_nick=observer_nick, observer_competence=observer_competence,
+                group_id=group_id, location_id=location_id, output=output)
 
             all_data += data
 
@@ -347,9 +353,10 @@ def get_data(from_date=None, to_date=None, registration_types=None, reg_ids=None
         return None
 
 
-def get_data_as_class(from_date=None, to_date=None, registration_types=None, reg_ids=None, region_ids=None, location_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, group_id=None,
-        output='Nest', geohazard_tids=None, lang_key=1):
+def get_data_as_class(from_date=None, to_date=None, registration_types=None, reg_ids=None, region_ids=None,
+                      location_id=None,
+                      observer_ids=None, observer_nick=None, observer_competence=None, group_id=None,
+                      output='Nest', geohazard_tids=None, lang_key=1):
     """Uses the get_data method and maps all data to their respective class. Returns data as list or nest.
 
     :param from_date:           [string] 'yyyy-mm-dd'. Result includes from date.
@@ -410,7 +417,6 @@ class Registration:
 class Location:
 
     def __init__(self, d):
-
         self.LocationName = d['LocationName']
         self.LocationID = d['LocationId']
 
@@ -429,7 +435,6 @@ class Location:
 class Observer:
 
     def __init__(self, d):
-
         self.NickName = d['NickName']
         self.ObserverId = int(d['ObserverId'])
         self.CompetenceLevelName = d['CompetenceLevelName']
@@ -450,7 +455,6 @@ class Pictures:
 class Picture:
 
     def __init__(self, d):
-
         self.FullObject = d['FullObject']
 
         self.PictureID = d['FullObject']['PictureID']
@@ -539,7 +543,6 @@ class Observation(Registration, Location, Observer):
 class AllRegistrations(Registration, Location, Observer):
 
     def __init__(self, d):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -557,7 +560,6 @@ class AllRegistrations(Registration, Location, Observer):
 class AvalancheActivityObs(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -603,13 +605,14 @@ class AvalancheActivityObs2(Registration, Location, Observer, Pictures):
         self.DtStart = _stringtime_2_datetime(d['FullObject']['DtStart'])
         self.DtEnd = _stringtime_2_datetime(d['FullObject']['DtEnd'])
         if self.DtStart is not None and self.DtEnd is not None:
-            self.DtMiddleTime = self.DtStart + (self.DtEnd - self.DtStart) / 2      # Middle time of activity period
+            self.DtMiddleTime = self.DtStart + (self.DtEnd - self.DtStart) / 2  # Middle time of activity period
         else:
             self.DtMiddleTime = None
 
-        self.ValidExposition = d['FullObject']['ValidExposition']    # int of eight char. First char is N, second is NE etc.
-        self.ExposedHeight1 = d['FullObject']['ExposedHeight1']      # upper height
-        self.ExposedHeight2 = d['FullObject']['ExposedHeight2']      # lower height
+        self.ValidExposition = d['FullObject'][
+            'ValidExposition']  # int of eight char. First char is N, second is NE etc.
+        self.ExposedHeight1 = d['FullObject']['ExposedHeight1']  # upper height
+        self.ExposedHeight2 = d['FullObject']['ExposedHeight2']  # lower height
         self.ExposedHeightComboTID = d['FullObject']['ExposedHeightComboTID']
 
         self.AvalancheExtName = d['FullObject']['AvalancheExtTName']
@@ -627,7 +630,6 @@ class AvalancheEvalProblem0(Registration, Location, Observer):
     List in AvalancheEvaluation. The avalanche problems where just text."""
 
     def __init__(self, d, id, tid, name):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -646,7 +648,6 @@ class AvalancheEvalProblem(Registration, Location, Observer):
     """List in AvalancheEvaluation2"""
 
     def __init__(self, d, p):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -673,7 +674,6 @@ class AvalancheEvalProblem(Registration, Location, Observer):
 class AvalancheEvalProblem2(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -704,9 +704,10 @@ class AvalancheEvalProblem2(Registration, Location, Observer, Pictures):
         self.DestructiveSizeName = d['FullObject']['DestructiveSizeTName']
         self.AvalPropagationName = d['FullObject']['AvalPropagationTName']
 
-        self.ValidExposition = d['FullObject']['ValidExposition']  # int of eight char. First char is N, second is NE etc.
-        self.ExposedHeight1 = d['FullObject']['ExposedHeight1']      # upper height
-        self.ExposedHeight2 = d['FullObject']['ExposedHeight2']      # lower height
+        self.ValidExposition = d['FullObject'][
+            'ValidExposition']  # int of eight char. First char is N, second is NE etc.
+        self.ExposedHeight1 = d['FullObject']['ExposedHeight1']  # upper height
+        self.ExposedHeight2 = d['FullObject']['ExposedHeight2']  # lower height
         self.ExposedHeightComboTID = d['FullObject']['ExposedHeightComboTID']
 
         self.AvalancheExtName = d['FullObject']['AvalancheExtTName']
@@ -718,7 +719,6 @@ class AvalancheEvalProblem2(Registration, Location, Observer, Pictures):
 class AvalancheObs(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -748,7 +748,6 @@ class AvalancheObs(Registration, Location, Observer, Pictures):
 class DangerSign(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -769,7 +768,6 @@ class DangerSign(Registration, Location, Observer, Pictures):
 class Incident(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -796,11 +794,47 @@ class Incident(Registration, Location, Observer, Pictures):
         self.GeoHazardTID = d['GeoHazardTid']
         self.LangKey = d['LangKey']
 
+    def to_dict(self):
+        """
+        Convert the object to a dictionary
+        :return: dictionary representation of the AvalancheWarning class
+        """
+        _dict = {'RegistrationTID': self.RegistrationTID,
+                 'RegistrationName': self.RegistrationName,
+                 'RegID': self.RegID,
+                 'DtObsTime': self.DtObsTime,
+                 'DtRegTime': self.DtRegTime,
+                 'ActivityInfluencedTID': self.ActivityInfluencedTID,
+                 'ActivityInfluencedName': self.ActivityInfluencedName,
+                 'DamageExtentTID': self.DamageExtentTID,
+                 'DamageExtentName': self.DamageExtentName,
+                 'IncidentHeader': self.IncidentHeader,
+                 'IncidentIngress': self.IncidentIngress,
+                 'IncidentText': self.IncidentText,
+                 'GeoHazardName': self.GeoHazardName,
+                 'GeoHazardTID': self.GeoHazardTID,
+                 'LangKey': self.LangKey,
+                 'LocationName': self.LocationName,
+                 'LocationID': self.LocationID,
+                 'UTMZone': self.UTMZone,
+                 'UTMEast': self.UTMEast,
+                 'UTMNorth': self.UTMNorth,
+                 'Latitude': self.Latitude,
+                 'Longitude': self.Longitude,
+                 'ForecastRegionName': self.ForecastRegionName,
+                 'ForecastRegionTID': self.ForecastRegionTID,
+                 'MunicipalName': self.MunicipalName,
+                 'NickName': self.NickName,
+                 'ObserverId': self.ObserverId,
+                 'CompetenceLevelName': self.CompetenceLevelName
+                 }
+
+        return _dict
+
 
 class AvalancheEvaluation3(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -843,9 +877,10 @@ class AvalancheEvaluation2(Registration, Location, Observer, Pictures):
         self.ExposedClimateTID = d['FullObject']['ExposedClimateTID']
         self.ExposedClimateTName = d['FullObject']['ExposedClimateTName']
 
-        self.ValidExposition = d['FullObject']['ValidExposition']  # int of eight char. First char is N, second is NE etc.
-        self.ExposedHeight1 = d['FullObject']['ExposedHeight1']      # upper height
-        self.ExposedHeight2 = d['FullObject']['ExposedHeight2']      # lower height
+        self.ValidExposition = d['FullObject'][
+            'ValidExposition']  # int of eight char. First char is N, second is NE etc.
+        self.ExposedHeight1 = d['FullObject']['ExposedHeight1']  # upper height
+        self.ExposedHeight2 = d['FullObject']['ExposedHeight2']  # lower height
         self.ExposedHeightComboTID = d['FullObject']['ExposedHeightComboTID']
         self.Comment = d['FullObject']['Comment']
 
@@ -877,11 +912,14 @@ class AvalancheEvaluation(Registration, Location, Observer, Pictures):
 
         self.AvalancheProblems = []
         if d['FullObject']['AvalancheProblemTID1'] != 0:
-            self.AvalancheProblems.append(AvalancheEvalProblem0(d, 1, d['FullObject']['AvalancheProblemTID1'], d['FullObject']['AvalancheProblemTName1']))
+            self.AvalancheProblems.append(AvalancheEvalProblem0(d, 1, d['FullObject']['AvalancheProblemTID1'],
+                                                                d['FullObject']['AvalancheProblemTName1']))
         if d['FullObject']['AvalancheProblemTID2'] != 0:
-            self.AvalancheProblems.append(AvalancheEvalProblem0(d, 2, d['FullObject']['AvalancheProblemTID2'], d['FullObject']['AvalancheProblemTName2']))
+            self.AvalancheProblems.append(AvalancheEvalProblem0(d, 2, d['FullObject']['AvalancheProblemTID2'],
+                                                                d['FullObject']['AvalancheProblemTName2']))
         if d['FullObject']['AvalancheProblemTID3'] != 0:
-            self.AvalancheProblems.append(AvalancheEvalProblem0(d, 3, d['FullObject']['AvalancheProblemTID3'], d['FullObject']['AvalancheProblemTName3']))
+            self.AvalancheProblems.append(AvalancheEvalProblem0(d, 3, d['FullObject']['AvalancheProblemTID3'],
+                                                                d['FullObject']['AvalancheProblemTName3']))
 
         self.ValidExposition = d['FullObject']['ValidExposition']
         self.ValidHeightFrom = d['FullObject']['ValidHeightFrom']
@@ -895,7 +933,6 @@ class AvalancheEvaluation(Registration, Location, Observer, Pictures):
 class GeneralObservation(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -920,7 +957,6 @@ class GeneralObservation(Registration, Location, Observer, Pictures):
 class PictureObservation(Registration, Location, Observer, Picture):
 
     def __init__(self, d):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -932,7 +968,6 @@ class PictureObservation(Registration, Location, Observer, Picture):
 class WeatherObservation(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -958,7 +993,6 @@ class WeatherObservation(Registration, Location, Observer, Pictures):
 class SnowSurfaceObservation(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -988,7 +1022,6 @@ class SnowSurfaceObservation(Registration, Location, Observer, Pictures):
 class DamageObs(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -1006,7 +1039,8 @@ class DamageObs(Registration, Location, Observer, Pictures):
 
         self.Pictures = []
         for p in d['Pictures']:
-            self.Pictures.append({'PictureID': p['TypicalValue2'], 'PictureComment': p['TypicalValue1'], 'FullObject': p['FullObject']})
+            self.Pictures.append(
+                {'PictureID': p['TypicalValue2'], 'PictureComment': p['TypicalValue1'], 'FullObject': p['FullObject']})
 
         self.LangKey = d['LangKey']
 
@@ -1014,7 +1048,6 @@ class DamageObs(Registration, Location, Observer, Pictures):
 class SnowProfilePicture(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -1038,15 +1071,14 @@ class SnowProfilePicture(Registration, Location, Observer, Pictures):
 class StratProfileLayer:
 
     def __init__(self, l):
-
         self.DepthTop = l['DepthTop']
         self.Thickness = l['Thickness']
         self.GrainFormPrimaryTID = l['GrainFormPrimaryTID']
         self.GrainFormPrimaryName = l['GrainFormPrimaryTName']
         self.GrainFormSecondaryTID = l['GrainFormSecondaryTID']
         self.GrainFormSecondaryName = l['GrainFormSecondaryTName']
-        self.GrainSizeAvg = l['GrainSizeAvg']/10            # error in api
-        self.GrainSizeAvgMax = l['GrainSizeAvgMax']/10      # error in api
+        self.GrainSizeAvg = l['GrainSizeAvg'] / 10  # error in api
+        self.GrainSizeAvgMax = l['GrainSizeAvgMax'] / 10  # error in api
         self.HardnessTID = l['HardnessTID']
         self.HardnessName = l['HardnessTName']
         self.HardnessBottomTID = l['HardnessBottomTID']
@@ -1062,7 +1094,6 @@ class StratProfileLayer:
 class SnowTempLayer:
 
     def __init__(self, l):
-
         self.Depth = l['Depth']
         self.SnowTemp = l['SnowTemp']
 
@@ -1070,7 +1101,6 @@ class SnowTempLayer:
 class SnowDensity:
 
     def __init__(self, d):
-
         self.CylinderDiameter = d['CylinderDiameter']
         self.TareWeight = d['TareWeight']
         self.Comment = d['Comment']
@@ -1084,7 +1114,6 @@ class SnowDensity:
 class SnowDensityLayer:
 
     def __init__(self, l):
-
         self.DensityProfileLayerID = l['DensityProfileLayerID']
         self.Depth = l['Depth']
         self.Thickness = l['Thickness']
@@ -1177,7 +1206,6 @@ class SnowProfile(Registration, Location, Observer, Pictures):
 class IceThicknessLayer:
 
     def __init__(self, l):
-
         self.IceLayerID = l['IceLayerID']
         self.IceLayerTID = l['IceLayerTID']
         self.IceLayerName = l['IceLayerTName']
@@ -1187,7 +1215,6 @@ class IceThicknessLayer:
 class IceThickness(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -1216,7 +1243,6 @@ class IceThickness(Registration, Location, Observer, Pictures):
 class IceCover(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -1266,7 +1292,6 @@ class WaterLevel(Registration, Location, Observer, Pictures):
 class WaterLevelMeasurement:
 
     def __init__(self, m):
-
         self.WaterLevelMeasurementId = m['WaterLevelMeasurementId']
         self.WaterLevelValue = m['WaterLevelValue']
         self.DtMeasurementTime = m['DtMeasurementTime']
@@ -1313,7 +1338,6 @@ class WaterLevel2(Registration, Location, Observer):
 class LandSlideObs(Registration, Location, Observer, Pictures):
 
     def __init__(self, d):
-
         Registration.__init__(self, d)
         Location.__init__(self, d)
         Observer.__init__(self, d)
@@ -1356,8 +1380,8 @@ class LandSlideObs(Registration, Location, Observer, Pictures):
 
 
 def _get_general(registration_class_type, registration_types, from_date, to_date, region_ids=None, location_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, group_id=None,
-        output='List', geohazard_tids=None, lang_key=1):
+                 observer_ids=None, observer_nick=None, observer_competence=None, group_id=None,
+                 output='List', geohazard_tids=None, lang_key=1):
     """Gets observations of a requested type and maps them to one requested class.
 
     :param registration_class_type: [class for the requested observations]
@@ -1394,7 +1418,8 @@ def _get_general(registration_class_type, registration_types, from_date, to_date
     data_with_more = get_data(from_date=from_date, to_date=to_date, region_ids=region_ids, observer_ids=observer_ids,
                               observer_nick=observer_nick, observer_competence=observer_competence,
                               group_id=group_id, location_id=location_id, lang_key=lang_key,
-                              output=output_for_get_data, registration_types=registration_types, geohazard_tids=geohazard_tids)
+                              output=output_for_get_data, registration_types=registration_types,
+                              geohazard_tids=geohazard_tids)
 
     # wash out all other observation types
     data = []
@@ -1420,7 +1445,7 @@ def _get_general(registration_class_type, registration_types, from_date, to_date
 
 
 def get_land_slide_obs(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+                       observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
     """Gets observations of land slide observations in the LandSlideObs table in regObs.
 
     :param from_date:           [date] A query returns [from_date, to_date]
@@ -1444,7 +1469,7 @@ def get_land_slide_obs(from_date, to_date, region_ids=None, location_id=None, gr
 
 
 def get_water_level_2(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+                      observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
     """Gets observations of water level from the WaterLevel2 table which was put to use in 2017.
 
     :param from_date:           [date] A query returns [from_date, to_date]
@@ -1468,7 +1493,7 @@ def get_water_level_2(from_date, to_date, region_ids=None, location_id=None, gro
 
 
 def get_water_level(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+                    observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
     """Gets observations of water level from the WaterLevel table. Ths was the first modelling of this form and
     was phased out in 2017.
 
@@ -1493,7 +1518,7 @@ def get_water_level(from_date, to_date, region_ids=None, location_id=None, group
 
 
 def get_ice_cover(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+                  observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
     """Gets observations of ice cover from the IceCoverObs table.
 
     :param from_date:           [date] A query returns [from_date, to_date]
@@ -1517,7 +1542,7 @@ def get_ice_cover(from_date, to_date, region_ids=None, location_id=None, group_i
 
 
 def get_ice_thickness(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+                      observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
     """Gets observations of ice thickness from the IceThicknessObs table.
 
     :param from_date:           [date] A query returns [from_date, to_date]
@@ -1541,7 +1566,7 @@ def get_ice_thickness(from_date, to_date, region_ids=None, location_id=None, gro
 
 
 def get_column_test(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+                    observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
     """Gets observations of snow profiles. Pr now these are provided as pictures.
 
     :param from_date:           [date] A query returns [from_date, to_date]
@@ -1565,7 +1590,8 @@ def get_column_test(from_date, to_date, region_ids=None, location_id=None, group
 
 
 def get_snow_profile_picture(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+                             observer_ids=None, observer_nick=None, observer_competence=None, output='List',
+                             lang_key=1):
     """Gets observations of snow profiles. Before dec 2018 these were provided as pictures.
 
     :param from_date:           [date] A query returns [from_date, to_date]
@@ -1589,7 +1615,7 @@ def get_snow_profile_picture(from_date, to_date, region_ids=None, location_id=No
 
 
 def get_snow_profile(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+                     observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
     """Gets observations of snow profiles. Before dec 2018 these were provided as pictures.
 
     :param from_date:           [date] A query returns [from_date, to_date]
@@ -1613,7 +1639,8 @@ def get_snow_profile(from_date, to_date, region_ids=None, location_id=None, grou
 
 
 def get_damage_observation(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', geohazard_tids=None, lang_key=1):
+                           observer_ids=None, observer_nick=None, observer_competence=None, output='List',
+                           geohazard_tids=None, lang_key=1):
     """Gets observations like given in SnowSurfaceObservation table with RegistrationTID = 22.
     View is shared by all the geohazards so the filter includes geohazard_tid if only some geohazards are needed.
 
@@ -1639,7 +1666,8 @@ def get_damage_observation(from_date, to_date, region_ids=None, location_id=None
 
 
 def get_snow_surface_observation(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+                                 observer_ids=None, observer_nick=None, observer_competence=None, output='List',
+                                 lang_key=1):
     """Gets observations like given in SnowSurfaceObservation table with RegistrationTID = 22.
     View is used by GeoHazard = 10 (snow).
 
@@ -1664,7 +1692,7 @@ def get_snow_surface_observation(from_date, to_date, region_ids=None, location_i
 
 
 def get_weather_observation(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+                            observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
     """Gets observations like given in WeatherObservation table with RegistrationTID = 21.
     View is used by GeoHazard = 10 (snow).
 
@@ -1689,7 +1717,8 @@ def get_weather_observation(from_date, to_date, region_ids=None, location_id=Non
 
 
 def get_picture(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', geohazard_tids=None, lang_key=1):
+                observer_ids=None, observer_nick=None, observer_competence=None, output='List', geohazard_tids=None,
+                lang_key=1):
     """Gets observations like given in Picture table with RegistrationTID = 12.
     View is shared by all the geohazards so the filter includes geohazard_tid if only some geohazards are needed.
 
@@ -1715,7 +1744,8 @@ def get_picture(from_date, to_date, region_ids=None, location_id=None, group_id=
 
 
 def get_general_observation(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', geohazard_tids=None, lang_key=1):
+                            observer_ids=None, observer_nick=None, observer_competence=None, output='List',
+                            geohazard_tids=None, lang_key=1):
     """Gets observations like given in GeneralObs table with RegistrationTID = 10.
     View is shared by all the geo hazards so the filter includes geohazard_tid if only some geohazards are needed.
 
@@ -1741,7 +1771,8 @@ def get_general_observation(from_date, to_date, region_ids=None, location_id=Non
 
 
 def get_all_registrations(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', geohazard_tids=None, lang_key=1):
+                          observer_ids=None, observer_nick=None, observer_competence=None, output='List',
+                          geohazard_tids=None, lang_key=1):
     """Gets observations like given in AllRegistrationsV. View is shared by all the geohazards so the filter
     includes geohazard_tid if only some geohazards are needed.
 
@@ -1767,7 +1798,8 @@ def get_all_registrations(from_date, to_date, region_ids=None, location_id=None,
 
 
 def get_danger_sign(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', geohazard_tids=None, lang_key=1):
+                    observer_ids=None, observer_nick=None, observer_competence=None, output='List', geohazard_tids=None,
+                    lang_key=1):
     """Gets observations like given in DangerObsV table with RegistrationTID = 13.
     View is shared by all the geohazards so the filter includes geohazard_tid if only some geohazards are needed.
 
@@ -1793,7 +1825,8 @@ def get_danger_sign(from_date, to_date, region_ids=None, location_id=None, group
 
 
 def get_incident(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', geohazard_tids=None, lang_key=1):
+                 observer_ids=None, observer_nick=None, observer_competence=None, output='List', geohazard_tids=None,
+                 lang_key=1):
     """Gets observations like given the Incident table with RegistrationTID = 11.
     Table is shared by all the geohazards so the filter includes geohazard_tid if only some geohazards are needed.
 
@@ -1819,7 +1852,7 @@ def get_incident(from_date, to_date, region_ids=None, location_id=None, group_id
 
 
 def get_avalanche(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+                  observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
     """Gets observations as given in the AvalancheObs table with RegistrationTID = 26.
     These are observations of single avalanches, often related to incidents. It is specific for snow observations.
 
@@ -1844,7 +1877,7 @@ def get_avalanche(from_date, to_date, region_ids=None, location_id=None, group_i
 
 
 def get_avalanche_activity(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+                           observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
     """Gets observations as given in AvalancheActivityObs table with RegistrationTID = 27.
     It is specific for snow observations. The table was introduced at the beginning an phased out in in january 2016.
 
@@ -1869,7 +1902,8 @@ def get_avalanche_activity(from_date, to_date, region_ids=None, location_id=None
 
 
 def get_avalanche_activity_2(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+                             observer_ids=None, observer_nick=None, observer_competence=None, output='List',
+                             lang_key=1):
     """Gets observations like given in AvalancheActivityObs2 table with RegistrationTID = 33.
     It is specific for snow observations. The table was introduced in january 2016.
 
@@ -1894,7 +1928,8 @@ def get_avalanche_activity_2(from_date, to_date, region_ids=None, location_id=No
 
 
 def get_avalanche_evaluation(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+                             observer_ids=None, observer_nick=None, observer_competence=None, output='List',
+                             lang_key=1):
     """Gets observations like given in AvalancheEvaluation table with RegistrationTID = 28.
     It contains avalanche problems. It is specific for snow observations.
     The table was used winter and spring 2012. Last observatins jan/beb 2013 by drift@svv..
@@ -1920,7 +1955,8 @@ def get_avalanche_evaluation(from_date, to_date, region_ids=None, location_id=No
 
 
 def get_avalanche_evaluation_2(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+                               observer_ids=None, observer_nick=None, observer_competence=None, output='List',
+                               lang_key=1):
     """Gets observations like given in AvalancheEvaluation2 table with RegistrationTID = 30.
     It contains the avalanche problems used at the time. It is specific for snow observations.
     The table was introduced December 2012 and phased out winter 2014. It was last used May 2014.
@@ -1946,7 +1982,8 @@ def get_avalanche_evaluation_2(from_date, to_date, region_ids=None, location_id=
 
 
 def get_avalanche_evaluation_3(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+                               observer_ids=None, observer_nick=None, observer_competence=None, output='List',
+                               lang_key=1):
     """Gets observations like given in AvalancheEvaluation3 table with RegistrationTID = 31.
     It is specific for snow observations. The table was introduced in february 2014.
 
@@ -1971,7 +2008,7 @@ def get_avalanche_evaluation_3(from_date, to_date, region_ids=None, location_id=
 
 
 def get_avalanche_problem_2(from_date, to_date, region_ids=None, location_id=None, group_id=None,
-        observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
+                            observer_ids=None, observer_nick=None, observer_competence=None, output='List', lang_key=1):
     """Gets observations given in AvalancheEvalProblem2 table with RegistrationTID = 31. It is specific for snow observations.
     The table was introduced winter 2014 with the first observation was February 2014. It is currently in use (Oct 2017).
 
@@ -2002,20 +2039,21 @@ def _raw_play_ground():
 
     # query object posted in the request
     rssquery = {'LangKey': 1,
-    #            'RegId': 176528,
-    #            'ObserverGuid': None,               # '4d11f3cc-07c5-4f43-837a-6597d318143c',
-                'SelectedRegistrationTypes': [{'Id': 82, 'SubTypes': [36]}], #_reg_types_dict([10, 11, 12, 13]),    # list dict with type and sub type
-    #            'SelectedRegions': None,
-    #            'SelectedGeoHazards': [60],         # list int
-    #            'ObserverNickName': None,           # "jostein",
-    #            'ObserverId': None,
-    #            'ObserverCompetence': None,         # list int
-    #            'GroupId': None,
-    #            'LocationId': None,
+                #            'RegId': 176528,
+                #            'ObserverGuid': None,               # '4d11f3cc-07c5-4f43-837a-6597d318143c',
+                'SelectedRegistrationTypes': [{'Id': 82, 'SubTypes': [36]}],
+                # _reg_types_dict([10, 11, 12, 13]),    # list dict with type and sub type
+                #            'SelectedRegions': None,
+                #            'SelectedGeoHazards': [60],         # list int
+                #            'ObserverNickName': None,           # "jostein",
+                #            'ObserverId': None,
+                #            'ObserverCompetence': None,         # list int
+                #            'GroupId': None,
+                #            'LocationId': None,
                 'FromDate': '2018-12-13',
                 'ToDate': '2018-12-16',
-                'NumberOfRecords': None,            # int
-    #            'TextSearch': None,                 # virker ikke
+                'NumberOfRecords': None,  # int
+                #            'TextSearch': None,                 # virker ikke
                 'Offset': 0}
 
     url = 'https://api.nve.no/hydrology/regobs/webapi_{0}/Search/All'.format(env.web_api_version)
@@ -2050,20 +2088,20 @@ def _example_webapi_request():
     data = []  # data from one query
 
     # query object posted in the request
-    rssquery = {'LangKey': 1,                       # Int. 1 is norwegian
-    #             'SelectedRegistrationTypes': [{'Id': 83, 'SubTypes': [30]}],  # list of dict with observation type and sub type
-    #             'SelectedRegions': None,
-                'SelectedGeoHazards': [10],         # list int. 10 is snow
-    #             'ObserverNickName': None,           # String. Part of observer nick name. Eg. "NGI",
-    #             'ObserverCompetence': None,         # list int
+    rssquery = {'LangKey': 1,  # Int. 1 is norwegian
+                #             'SelectedRegistrationTypes': [{'Id': 83, 'SubTypes': [30]}],  # list of dict with observation type and sub type
+                #             'SelectedRegions': None,
+                'SelectedGeoHazards': [10],  # list int. 10 is snow
+                #             'ObserverNickName': None,           # String. Part of observer nick name. Eg. "NGI",
+                #             'ObserverCompetence': None,         # list int
                 'FromDate': '2017-12-02',
                 'ToDate': '2017-12-05',
-                'NumberOfRecords': None,            # int. How many records are to be returned pr request. Default 100.
+                'NumberOfRecords': None,  # int. How many records are to be returned pr request. Default 100.
                 'Offset': 0}
 
     url = 'https://api.nve.no/hydrology/regobs/webapi_v3.2.0/Search/All'
 
-    more_available = True       # while true, request more observations
+    more_available = True  # while true, request more observations
 
     # get data from regObs api. It returns 100 items at a time. If more, continue requesting with an offset. Paging.
     while more_available:
@@ -2129,7 +2167,6 @@ def _test_diff_in_reg_type_query():
 
 
 if __name__ == "__main__":
-
     # data = get_data_as_class('2016-12-10', '2016-12-15')
 
     # all_data_snow = get_data('2016-12-30', '2017-01-01', geohazard_tids=10)
@@ -2174,4 +2211,3 @@ if __name__ == "__main__":
     # _the_simplest_webapi_request()
 
     pass
-

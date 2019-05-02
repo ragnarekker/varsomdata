@@ -114,10 +114,18 @@ def get_season_18_19():
 def get_svalbard_regional_forecasts():
     region_ids = [3001, 3002, 3003, 3004]
     from_date = dt.date(2016, 12, 1)
-    to_date = dt.date(2019, 2, 7)
+    to_date = dt.date(2019, 4, 30)
     aw_dict = gf.get_avalanche_warnings_2(region_ids, from_date, to_date, lang_key=1, as_dict=True)
     df = pandas.DataFrame(aw_dict)
     df.to_csv('../localstorage/svalbard_forecasts.csv', index_label='index')
+
+def get_svalbard_regional_forecasts_2015():
+    region_ids = [130]
+    from_date = dt.date(2014, 12, 1)
+    to_date = dt.date(2015, 5, 31)
+    aw_dict = gf.get_avalanche_warnings_2(region_ids, from_date, to_date, lang_key=1, as_dict=True)
+    df = pandas.DataFrame(aw_dict)
+    df.to_csv('../localstorage/svalbard_forecasts_2015.csv', index_label='index')
 
 
 if __name__ == '__main__':
@@ -127,5 +135,7 @@ if __name__ == '__main__':
     #test_AvalancheDanger_to_dict()
     #test_AvalancheDanger_as_df()
     # get_season_17_18()
-    get_season_18_19()
-    #get_svalbard_regional_forecasts()
+    # get_season_18_19()
+    # get_svalbard_regional_forecasts()
+    get_svalbard_regional_forecasts_2015()
+

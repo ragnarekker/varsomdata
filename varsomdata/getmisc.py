@@ -791,7 +791,8 @@ def get_varsom_incidents(add_forecast_regions=False, add_observations=False, add
                                     option is only taken into account if add_forecast_regions is true.
     """
 
-    incidents_file = '{}varsomsineskredulykker.csv'.format(env.varsom_incidents)
+    # incidents_file = '{}varsomsineskredulykker.csv'.format(env.varsom_incidents)
+    incidents_file = '{}varsomincidents3.csv'.format(env.varsom_incidents)
     varsom_incidents = rf.read_csv_file(incidents_file, VarsomIncident)
 
     # map incident to forecast region
@@ -812,7 +813,7 @@ def get_varsom_incidents(add_forecast_regions=False, add_observations=False, add
                             i.add_observation(o)
 
         if add_forecasts:
-            years = ['2014-15', '2015-16', '2016-17', '2017-18']        # the years with data
+            years = ['2014-15', '2015-16', '2016-17', '2017-18', '2018-19']        # the years with data
 
             all_forecasts = []
             for y in years:

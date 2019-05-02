@@ -182,11 +182,21 @@ class AvalancheWarning:
         self.author = _d['Author']
         self.avalanche_danger = _d['AvalancheDanger']
         self.emergency_warning = _d['EmergencyWarning']
-        self.snow_surface = _d['SnowSurface']
-        self.current_weak_layers = _d['CurrentWeaklayers']
-        self.latest_avalanche_activity = _d['LatestAvalancheActivity']
-        self.latest_observations = _d['LatestObservations']
-        self.set_mountain_weather(_d['MountainWeather'])  # [MountainWeather object]
+        try:
+            self.snow_surface = _d['SnowSurface']
+            self.current_weak_layers = _d['CurrentWeaklayers']
+            self.latest_avalanche_activity = _d['LatestAvalancheActivity']
+            self.latest_observations = _d['LatestObservations']
+        except KeyError:
+            _msg = 'Old format - option not available'
+            self.snow_surface = _msg
+            self.current_weak_layers = _msg
+            self.latest_avalanche_activity = _msg
+            self.latest_observations = _msg
+        try:
+            self.set_mountain_weather(_d['MountainWeather'])  # [MountainWeather object]
+        except KeyError:
+            self.mountain_weather = 'Not given'
         self.set_avalanche_problems(_d['AvalancheProblems'])  # [List of AvalancheProblem objects]
 
     def to_dict(self):

@@ -298,7 +298,7 @@ def make_problems_for_BritSiv():
     _save_problems(all_problems, output_filename)
 
 
-def make_avalanche_problemes_for_techel():
+def make_avalanche_problemes_for_techel(get_new=False):
     """Gets forecastes and observed avalanche problems and dangers for Frank Techel.
 
     Takes 20-30 min to run a year.
@@ -308,8 +308,7 @@ def make_avalanche_problemes_for_techel():
 
     pickle_file_name = '{0}runavalancheproblems_techel.pickle'.format(env.local_storage)
 
-    years = ['2014-15', '2015-16', '2016-17', '2017-18']
-    get_new = False
+    years = ['2014-15', '2015-16', '2016-17', '2017-18', '2018-19']
 
     if get_new:
         forecast_problems = []
@@ -658,6 +657,60 @@ def make_forecasts_for_Thea():
     pass
 
 
+def get_all_svalbard():
+    """Dangers and problems for Ofoten (former Narvik). Writes file to .csv"""
+
+    get_new = True
+    get_observations = False
+    write_csv = True
+    plot_dangerlevels_simple = False
+
+    select_years = ['2014-15', '2015-16', '2016-17', '2017-18', '2018-19']
+    region_id_old = 130      # Nordenskjøldland used from 2015 until nov 2016
+    region_id_new = 3003     # Nordenskjøldland introduced in november 2016
+
+    warnings_pickle = '{0}allforecasteddangerlevels_svalbard_2015_19.pickle'.format(env.local_storage)
+    warnings_csv = '{0}Faregrader_Svalbard_2014_19.csv'.format(env.output_folder)
+    warnings_plot = '{0}Faregrader_Svalbard_2015_19.png'.format(env.output_folder)
+
+    if get_new:
+        all_warnings = []
+        all_evaluations = []
+
+        for y in select_years:
+
+            if y in ['2016-17', '2017-18', '2018-19']:
+                region_id = region_id_new
+            else:
+                region_id = region_id_old
+
+            from_date, to_date = gm.get_forecast_dates(year=y)
+
+            all_warnings += gd.get_forecasted_dangers(region_id,  from_date, to_date)
+            if get_observations:
+                all_evaluations += go.get_avalanche_evaluation_3(from_date, to_date, region_id)
+
+        mp.pickle_anything([all_warnings, all_evaluations], warnings_pickle)
+
+    else:
+        [all_warnings, all_evaluations] = mp.unpickle_anything(warnings_pickle)
+
+    if write_csv:
+        # write to csv files
+        _save_danger_and_problem_to_file(all_warnings, warnings_csv)
+
+    elif plot_dangerlevels_simple:
+        # Make simple plot
+        from_date = gm.get_forecast_dates(select_years[0])[0]
+        to_date = gm.get_forecast_dates(select_years[-1])[1]
+        _make_plot_dangerlevels_simple(all_warnings, all_evaluations, warnings_plot, from_date, to_date)
+
+    else:
+        print("No output selected")
+
+    return all_warnings, all_evaluations
+
+
 def get_all_ofoten():
     """Dangers and problems for Ofoten (former Narvik). Writes file to .csv"""
 
@@ -777,7 +830,8 @@ def make_forecasts_for_Espen_at_sweco():
 if __name__ == "__main__":
 
     # make_problems_for_BritSiv()
-    # make_avalanche_problemes_for_techel()
+    # make_avalanche_problemes_for_techel(True)
+    get_all_svalbard()
     # make_forecasts_for_Christian()
     # make_forecasts_for_Thea()
-    make_forecasts_for_Espen_at_sweco()
+    # make_forecasts_for_Espen_at_sweco()
