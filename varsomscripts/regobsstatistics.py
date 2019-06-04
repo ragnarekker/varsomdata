@@ -178,12 +178,12 @@ def plot_numbers_of_3_seasons(output_folder=env.plot_folder+'regobsplots/'):
     """
 
     # Get data
-    all_obs_201819_list = gvp.get_all_observations('2018-19', output='List', max_file_age=23)
-    all_obs_201819_nest = gvp.get_all_observations('2018-19', output='Nest', max_file_age=23)
-    all_obs_201718_list = gvp.get_all_observations('2017-18', output='List')
-    all_obs_201718_nest = gvp.get_all_observations('2017-18', output='Nest')
-    all_obs_201617_list = gvp.get_all_observations('2016-17', output='List')
-    all_obs_201617_nest = gvp.get_all_observations('2016-17', output='Nest')
+    all_obs_201819_list = gvp.get_all_observations('2018-19', output='FlatList', max_file_age=23)
+    all_obs_201819_nest = gvp.get_all_observations('2018-19', output='List', max_file_age=23)
+    all_obs_201718_list = gvp.get_all_observations('2017-18', output='FlatList')
+    all_obs_201718_nest = gvp.get_all_observations('2017-18', output='List')
+    all_obs_201617_list = gvp.get_all_observations('2016-17', output='FlatList')
+    all_obs_201617_nest = gvp.get_all_observations('2016-17', output='List')
 
     # Make dict with all dates and a empty DailyNumbers object
     all_year = {}
@@ -326,8 +326,8 @@ def table_regs_obs_numbs():
 
     """
 
-    all_obs_201718_list = gvp.get_all_observations('2017-18', output='List', max_file_age=230)
-    all_obs_201718_nest = gvp.get_all_observations('2017-18', output='Nest', max_file_age=230)
+    all_obs_201718_list = gvp.get_all_observations('2017-18', output='FlatList', max_file_age=230)
+    all_obs_201718_nest = gvp.get_all_observations('2017-18', output='List', max_file_age=230)
 
     monthly_numbs = {}
 

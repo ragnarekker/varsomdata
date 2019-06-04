@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-"""
-Contains methods for accessing data on the forecast api's. See api.nve.no for more info
+"""Contains methods for accessing data on the forecast api's. See api.nve.no for more info
 
 Modifications:
 - 06.12.2018, kmunve: added class AvalancheWarning, MountainWeather, AvalancheWarningProblem
+- 24.05.2019, reak: changed logging python native logging and renamed get_avalanche_warnings_2 to get_avalanche_warnings
 """
 
 import requests
@@ -11,20 +11,19 @@ import re
 import datetime as dt
 import numpy as np
 from varsomdata import varsomclasses as vc
-from utilities import makelogs as ml
 import setenvironment as env
+import logging as lg
 
-__author__ = 'raek'
+__author__ = 'raek and kmunve'
 
 
 class AvalancheWarning:
-    """
-    AvalancheWarning represents the returns from http://api.nve.no/doc/snoeskredvarsel/#avalanchewarningbyregion as a Python object.
+    """AvalancheWarning represents the returns from
+    http://api.nve.no/doc/snoeskredvarsel/#avalanchewarningbyregion as a Python object.
     """
 
     def __init__(self):
-        """
-        Init class properties
+        """Init class properties
         """
         # Set internal variables
         self._nan_str = 'Not given'
@@ -141,7 +140,7 @@ class AvalancheWarning:
             # make sure lowest index (main problem) is first
             self.avalanche_problems.sort(key=lambda _p: _p.avalanche_problem_id)
         except TypeError:
-            ml.log_and_print('getforecastapi.py -> AvalancheWarning.set_avalanche_problems(): TypeError')
+            lg.error("getforecastapi.py -> AvalancheWarning.set_avalanche_problems(): TypeError")
 
     def set_mountain_weather(self, _d):
         _mw = MountainWeather()
@@ -155,8 +154,9 @@ class AvalancheWarning:
         return requests.utils.quote(f'{self.base_url_no}/{self.region_name}/{self.date_valid}', safe="/:")
 
     def from_dict(self, _d):
-        """
-        Create AvalancheWarning object from JSON string returned by http://api.nve.no/doc/snoeskredvarsel/#avalanchewarningbyregion
+        """Create AvalancheWarning object from JSON string returned by
+        http://api.nve.no/doc/snoeskredvarsel/#avalanchewarningbyregion
+
         :param _d: the return from get_warnings_as_json
         """
 
@@ -200,8 +200,8 @@ class AvalancheWarning:
         self.set_avalanche_problems(_d['AvalancheProblems'])  # [List of AvalancheProblem objects]
 
     def to_dict(self):
-        """
-        Convert the object to a dictionary
+        """Convert the object to a dictionary
+
         :return: dictionary representation of the AvalancheWarning class
         """
         _dict = {'reg_id': self.reg_id,
@@ -226,25 +226,25 @@ class AvalancheWarning:
                  'latest_avalanche_activity': self.latest_avalanche_activity,
                  'latest_observations': self.latest_observations,
                  # mountain weather stuff
-                 "mountain_weather_precip_most_exposed": self.mountain_weather.precip_most_exposed,
-                 "mountain_weather_precip_region": self.mountain_weather.precip_region,
-                 "mountain_weather_wind_speed": self.mountain_weather.wind_speed,
-                 "mountain_weather_wind_direction": self.mountain_weather.wind_direction,
-                 "mountain_weather_change_wind_speed": self.mountain_weather.change_wind_speed,
-                 "mountain_weather_change_wind_direction": self.mountain_weather.change_wind_direction,
-                 "mountain_weather_change_hour_of_day_start": self.mountain_weather.change_hour_of_day_start,
-                 "mountain_weather_change_hour_of_day_stop": self.mountain_weather.change_hour_of_day_stop,
-                 "mountain_weather_temperature_min": self.mountain_weather.temperature_min,
-                 "mountain_weather_temperature_max": self.mountain_weather.temperature_max,
-                 "mountain_weather_temperature_elevation": self.mountain_weather.temperature_elevation,
-                 "mountain_weather_freezing_level": self.mountain_weather.freezing_level,
-                 "mountain_weather_fl_hour_of_day_start": self.mountain_weather.fl_hour_of_day_start,
-                 "mountain_weather_fl_hour_of_day_stop": self.mountain_weather.fl_hour_of_day_stop
+                 'mountain_weather_precip_most_exposed': self.mountain_weather.precip_most_exposed,
+                 'mountain_weather_precip_region': self.mountain_weather.precip_region,
+                 'mountain_weather_wind_speed': self.mountain_weather.wind_speed,
+                 'mountain_weather_wind_direction': self.mountain_weather.wind_direction,
+                 'mountain_weather_change_wind_speed': self.mountain_weather.change_wind_speed,
+                 'mountain_weather_change_wind_direction': self.mountain_weather.change_wind_direction,
+                 'mountain_weather_change_hour_of_day_start': self.mountain_weather.change_hour_of_day_start,
+                 'mountain_weather_change_hour_of_day_stop': self.mountain_weather.change_hour_of_day_stop,
+                 'mountain_weather_temperature_min': self.mountain_weather.temperature_min,
+                 'mountain_weather_temperature_max': self.mountain_weather.temperature_max,
+                 'mountain_weather_temperature_elevation': self.mountain_weather.temperature_elevation,
+                 'mountain_weather_freezing_level': self.mountain_weather.freezing_level,
+                 'mountain_weather_fl_hour_of_day_start': self.mountain_weather.fl_hour_of_day_start,
+                 'mountain_weather_fl_hour_of_day_stop': self.mountain_weather.fl_hour_of_day_stop
                  }
 
         # generate dummy keys for three potential avalanche problems
         for n in range(1, 4):
-            problem_prefix = f"avalanche_problem_{n}_"
+            problem_prefix = f'avalanche_problem_{n}_'
             _ap_dict = {f'{problem_prefix}problem_id': 0,
                         f'{problem_prefix}type_id': 0,
                         f'{problem_prefix}type_name': 'Not given',
@@ -272,7 +272,7 @@ class AvalancheWarning:
 
         # insert values for the issued avalanche problem(s)
         for _problem in self.avalanche_problems:
-            problem_prefix = f"avalanche_problem_{_problem.avalanche_problem_id}_"
+            problem_prefix = f'avalanche_problem_{_problem.avalanche_problem_id}_'
             _ap_dict = {f'{problem_prefix}problem_id': _problem.avalanche_problem_id,
                         f'{problem_prefix}type_id': _problem.avalanche_type_id,
                         f'{problem_prefix}type_name': _problem.avalanche_type_name,
@@ -304,10 +304,10 @@ class AvalancheWarning:
 class AvalancheWarningProblem:
 
     def __init__(self):
-        """
-        The AvalancheWarningProblem object contains the AvalancheProblems published as part of an AvalancheWarning.
+        """The AvalancheWarningProblem object contains the AvalancheProblems published as part of an AvalancheWarning.
         You find the API documentation here: http://api.nve.no/doc/snoeskredvarsel/#avalanchewarningbyregion
         """
+
         self.avalanche_problem_id = 0  # the order of multiple problems as [int] between 1-3
         self.avalanche_type_id = 0  # [int]
         self.avalanche_type_name = 'Not given'  # [string]
@@ -541,7 +541,7 @@ class AvalancheWarningProblem:
                 self.eaws_problem = problem_tid_to_eaws_problems[self.problem_tid]
 
         else:
-            ml.log_and_print('getproblems.py -> AvalancheProblem.map_to_eaws_problems: Unknown source.')
+            lg.warning("getproblems.py -> AvalancheProblem.map_to_eaws_problems: Unknown source.")
         
         """
 
@@ -549,36 +549,36 @@ class AvalancheWarningProblem:
         self.metadata[key] = value
 
     def from_dict(self, _d):
-        self.set_avalanche_problem_id(_d["AvalancheProblemId"])
-        self.set_avalanche_type_id(_d["AvalancheTypeId"])  # 10
-        self.avalanche_type_name = _d["AvalancheTypeName"]  # "Flakskred",
-        self.set_avalanche_problem_type_id(_d["AvalancheProblemTypeId"])  # 30,
-        self.avalanche_problem_type_name = _d["AvalancheProblemTypeName"]  # "Vedvarende svakt lag",
-        self.set_avalanche_ext_id(_d["AvalancheExtId"])  # 15,
-        self.avalanche_ext_name = _d["AvalancheExtName"]  # "Våte løssnøskred",
-        self.set_aval_cause_id(_d["AvalCauseId"])  # 21,
-        self.aval_cause_name = _d["AvalCauseName"]  # "Snødeket gjennomfuktet og ustabilt fra overflaten",
-        self.set_destructive_size_ext_id(_d["DestructiveSizeExtId"])
-        self.destructive_size_ext_name = _d["DestructiveSizeExtName"]  # "Store",
-        self.set_aval_probability_id(_d["AvalProbabilityId"])
-        self.aval_probability_name = _d["AvalProbabilityName"]  # "Meget sannsynlig",
-        self.set_aval_trigger_simple_id(_d["AvalTriggerSimpleId"])
-        self.aval_trigger_simple_name = _d["AvalTriggerSimpleName"]  # "Liten tilleggsbelastning",
-        self.set_aval_distribution_id(_d["AvalPropagationId"])
-        self.aval_distribution_name = _d["AvalPropagationName"]  # "Mange bratte heng",
-        self.set_exposed_height_fill(_d["ExposedHeightFill"])
-        self.set_exposed_height_1(_d["ExposedHeight1"])
-        self.set_exposed_height_2(_d["ExposedHeight2"])
-        self.valid_expositions = _d["ValidExpositions"]  # 10000011,
-        self.avalanche_advice = _d["AvalancheAdvice"]  # "Det krever mye kunnskap å gjenkjenne hvor det svake laget er gjemt. Drønnelyder, skytende sprekker og ferske skred er tydelige tegn, men fravær av tegn betyr ikke at det er trygt. Gjør svært konservative vegvalg, særlig i ukjent terreng, etter snøfall og perioder med temperaturstigning. Hold god avstand til hverandre og til løsneområdene. NB, fjernutløsning er mulig."
+        self.set_avalanche_problem_id(_d['AvalancheProblemId'])
+        self.set_avalanche_type_id(_d['AvalancheTypeId'])  # 10
+        self.avalanche_type_name = _d['AvalancheTypeName']  # 'Flakskred',
+        self.set_avalanche_problem_type_id(_d['AvalancheProblemTypeId'])  # 30,
+        self.avalanche_problem_type_name = _d['AvalancheProblemTypeName']  # 'Vedvarende svakt lag',
+        self.set_avalanche_ext_id(_d['AvalancheExtId'])  # 15,
+        self.avalanche_ext_name = _d['AvalancheExtName']  # 'Våte løssnøskred',
+        self.set_aval_cause_id(_d['AvalCauseId'])  # 21,
+        self.aval_cause_name = _d['AvalCauseName']  # 'Snødeket gjennomfuktet og ustabilt fra overflaten',
+        self.set_destructive_size_ext_id(_d['DestructiveSizeExtId'])
+        self.destructive_size_ext_name = _d['DestructiveSizeExtName']  # 'Store',
+        self.set_aval_probability_id(_d['AvalProbabilityId'])
+        self.aval_probability_name = _d['AvalProbabilityName']  # 'Meget sannsynlig',
+        self.set_aval_trigger_simple_id(_d['AvalTriggerSimpleId'])
+        self.aval_trigger_simple_name = _d['AvalTriggerSimpleName']  # 'Liten tilleggsbelastning',
+        self.set_aval_distribution_id(_d['AvalPropagationId'])
+        self.aval_distribution_name = _d['AvalPropagationName']  # 'Mange bratte heng',
+        self.set_exposed_height_fill(_d['ExposedHeightFill'])
+        self.set_exposed_height_1(_d['ExposedHeight1'])
+        self.set_exposed_height_2(_d['ExposedHeight2'])
+        self.valid_expositions = _d['ValidExpositions']  # 10000011,
+        self.avalanche_advice = _d['AvalancheAdvice']  # 'Det krever mye kunnskap å gjenkjenne hvor det svake laget er gjemt. Drønnelyder, skytende sprekker og ferske skred er tydelige tegn, men fravær av tegn betyr ikke at det er trygt. Gjør svært konservative vegvalg, særlig i ukjent terreng, etter snøfall og perioder med temperaturstigning. Hold god avstand til hverandre og til løsneområdene. NB, fjernutløsning er mulig.'
 
 
 class MountainWeather:
-    """
-    The MountainWeather is published with each avalanche bulletin.
+    """The MountainWeather is published with each avalanche bulletin.
     The API returns it as ['MountainWeather'] since version 4.
     Requires forecast_api_version = 4.0 or higher in /config/api.json
     """
+
     def __init__(self):
         # Set internal variables
         self._nan_str = 'Not given'
@@ -738,9 +738,9 @@ class MountainWeather:
                             else:
                                 self.fl_hour_of_day_stop = int(_st['Value'])
         except TypeError:
-            ml.log_and_print('getforecastapi.py -> MountainWeather.from_dict(): TypeError source.')
+            lg.error('getforecastapi.py -> MountainWeather.from_dict(): TypeError source.')
 
-# Todo: rename to get_avalanche_dangers_as_json
+
 def get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=1, recursive_count=5):
     """Selects warnings and returns the json structured as given on the api.
 
@@ -778,18 +778,18 @@ def get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=1, r
         else:
             api_version = env.forecast_api_version
 
-        url = "http://api01.nve.no/hydrology/forecast/avalanche/{4}/api/AvalancheWarningByRegion/Detail/{0}/{3}/{1}/{2}"\
+        url = 'http://api01.nve.no/hydrology/forecast/avalanche/{4}/api/AvalancheWarningByRegion/Detail/{0}/{3}/{1}/{2}'\
             .format(region_id, from_date, to_date, lang_key, api_version)
 
         # If at first you don't succeed, try and try again.
         try:
             warnings_region = requests.get(url).json()
-            ml.log_and_print('[info] getforecastapi.py -> get_avalanche_warnings_as_json: {0} warnings found for {1} in {2} to {3}'
-                             .format(len(warnings_region), region_id, from_date, to_date))
+            lg.info("getforecastapi.py -> get_avalanche_warnings_as_json: {0} warnings found for {1} in {2} to {3}"
+                    .format(len(warnings_region), region_id, from_date, to_date))
             warnings_ += warnings_region
 
         except:
-            ml.log_and_print('[error] getforecastapi.py -> get_avalanche_warnings_as_json: EXCEPTION. RECURSIVE COUNT {0} for {1} in {2} to {3}'
+            lg.error("getforecastapi.py -> get_avalanche_warnings_as_json: EXCEPTION. RECURSIVE COUNT {0} for {1} in {2} to {3}"
                              .format(recursive_count, region_id, from_date, to_date))
             if recursive_count > 1:
                 recursive_count -= 1        # count down
@@ -798,8 +798,19 @@ def get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=1, r
     return warnings_
 
 
-# Todo: rename to get_avalanche_warnings (see todo for next method)
-def get_avalanche_warnings_2(region_ids, from_date, to_date, lang_key=1, as_dict=False):
+def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1, as_dict=False):
+    """Selects warnings and returns a list of AvalancheDanger Objects. This method adds the
+    avalanche problems to the warning.
+
+    :param region_ids:  [int or list of ints] RegionID as given in the forecast api [1-99] or in regObs [101-199]
+    :param from_date:   [date or string as yyyy-mm-dd]
+    :param to_date:     [date or string as yyyy-mm-dd]
+    :param lang_key:    [int] Language setting. 1 is norwegian and 2 is english.
+    :param as_dict:     [bool] when True, it returns a list of dictionaries instead of AvalancheDanger objects
+
+    :return avalanche_danger_list: List of AvalancheDanger objects or AvalancheDanger dictionaries (see as_dict)
+    """
+
     warnings_as_json = get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=lang_key)
     avalanche_warnings = []
     for w in warnings_as_json:
@@ -816,16 +827,16 @@ def get_avalanche_warnings_2(region_ids, from_date, to_date, lang_key=1, as_dict
     return avalanche_warnings
 
 
-# Todo: rename to get_avalanche_dangers - make sure it is refactored in all scripts
-def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1, as_dict=False):
+# todo: remove deprecated method
+def get_avalanche_warnings_deprecated(region_ids, from_date, to_date, lang_key=1, as_dict=False):
     """Selects warnings and returns a list of AvalancheDanger Objects. This method adds the
     avalanche problems to the warning.
 
-    :param region_ids:  [int or list of ints]       RegionID as given in the forecast api [1-99] or in regObs [101-199]
+    :param region_ids:  [int or list of ints] RegionID as given in the forecast api [1-99] or in regObs [101-199]
     :param from_date:   [date or string as yyyy-mm-dd]
     :param to_date:     [date or string as yyyy-mm-dd]
-    :param lang_key:    [int]                       Language setting. 1 is norwegian and 2 is english.
-    :param as_dict:     [bool]                      when True, it returns a list of dictionaries instead of AvalancheDanger objects
+    :param lang_key:    [int] Language setting. 1 is norwegian and 2 is english.
+    :param as_dict:     [bool] when True, it returns a list of dictionaries instead of AvalancheDanger objects
 
     :return avalanche_danger_list: List of AvalancheDanger objects or AvalancheDanger dictionaries (see as_dict)
     """
@@ -849,7 +860,7 @@ def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1, as_dict=F
             avalanche_nowcast = w['AvalancheWarning']
         except:
             avalanche_nowcast = ''
-            # ml.log_and_print('No nowcast available.')
+            lg.debug("No nowcast available.")
 
 
         warning = vc.AvalancheDanger(region_id, region_name, 'Forecast API', date, danger_level, danger_level_name)
@@ -861,7 +872,7 @@ def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1, as_dict=F
         try:
             warning.set_mountain_weather(w['MountainWeather'])
         except:
-            # ml.log_and_print('No MountainWeather tag found in json-string - set forecast_api_version to 4.0.1 or higher')
+            lg.debug("No MountainWeather tag found in json-string - set forecast_api_version to 4.0.1 or higher")
             pass
 
         # http://www.varsom.no/Snoskred/Senja/?date=18.03.2015
@@ -933,7 +944,7 @@ def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1, as_dict=F
             avalanche_danger_list = sorted(avalanche_warning_list, key=lambda AvalancheDanger: AvalancheDanger.date)
         '''
         except:
-            ml.log_and_print('[error] getForecastApi -> get_avalanche_warnings: Exception at {0} of {1}'.format(len(avalanche_warning_list) + exception_counter, len(warnings_as_json)))
+            lg.error("getForecastApi -> get_avalanche_warnings_deprecated: Exception at {0} of {1}".format(len(avalanche_warning_list) + exception_counter, len(warnings_as_json)))
             exception_counter += 1
         '''
 
@@ -995,13 +1006,13 @@ def get_landslide_warnings_as_json(municipality, from_date, to_date, lang_key=1,
         # If at first you don't succeed, try and try again.
         try:
             landslide_warnings_municipal = requests.get(url, headers=headers).json()
-            ml.log_and_print('[info] getforecastapi.py -> get_landslide_warnings_as_json: {0} warnings found for {1} in {2} to {3}'
-                             .format(len(landslide_warnings_municipal), m, from_date, to_date))
+            lg.info("getforecastapi.py -> get_landslide_warnings_as_json: {0} warnings found for {1} in {2} to {3}"
+                    .format(len(landslide_warnings_municipal), m, from_date, to_date))
             landslide_warnings += landslide_warnings_municipal
 
         except:
-            ml.log_and_print('[error] getforecastapi.py -> get_avalanche_warnings_as_json: EXCEPTION. RECURSIVE COUNT {0} for {1} in {2} to {3}'
-                             .format(recursive_count, m, from_date, to_date))
+            lg.error("getforecastapi.py -> get_avalanche_warnings_as_json: EXCEPTION. RECURSIVE COUNT {0} for {1} in {2} to {3}"
+                     .format(recursive_count, m, from_date, to_date))
             if recursive_count > 1:
                 recursive_count -= 1        # count down
                 landslide_warnings += get_landslide_warnings_as_json(m, from_date, to_date, lang_key, recursive_count=recursive_count)
@@ -1011,7 +1022,7 @@ def get_landslide_warnings_as_json(municipality, from_date, to_date, lang_key=1,
 
 if __name__ == "__main__":
 
-    #land_slide_warnings = get_landslide_warnings_as_json([1201], dt.date(2018, 1, 1), dt.date(2018, 4, 1))
+    # land_slide_warnings = get_landslide_warnings_as_json([1201], dt.date(2018, 1, 1), dt.date(2018, 4, 1))
     warnings = get_avalanche_warnings([3022, 3014], dt.date(2016, 12, 1), dt.date(2016, 12, 21))
     # p = get_valid_regids(10, '2013-03-01', '2013-03-09')
 

@@ -1,0 +1,166 @@
+325;siggen@obskorps;78
+298;koltjessem;1010
+720;frank skjeldnes;21
+241;hae@nve.no;15
+21;leif@obskorps;9
+1682;olavwv;5
+1231;liss@nve;77
+3211;håkon;2
+6110;priska@nve;5
+867;tjugen;8
+11014;koltjessem;1
+614;jbr@nve.no;4
+289;hammerfest kommune;73
+9542;tjg@nve;1
+1015;hålogaland kraft as;25
+3621;espen@rkh;6
+3594;edvardi;47
+5292;tuh@nve;4
+584;bjørn - statkraft vinje;15
+2870;salvesen@obskorps;6
+3123;krille;1
+4763;radiosugge;92
+13604;mrjorgen;2
+3467;rubenroos;28
+8986;torstein r;4
+13557;bananos;1
+3628;henning;3
+2869;norsk folkehjelp meråker;4
+3732;christian@røde kors;1
+1375;bruseth ;3
+1722;dan86a;1
+3763;chris;3
+9156;johnny johnsen;3
+691;merakerredningstjeneste;6
+2808;tve@statskog.no;14
+2855;llo;9
+11630;gjs@statskog.no;9
+4118;tj;12
+3433;torbjørn;16
+45;jostein@nve;18
+2985;amund@forsvaret;12
+586;rune - trønderenergi;4
+7771;jossa;4
+3436;martin@svv;1
+299;franklin (franklin@getmail.no);86
+10988;jankarlsen;9
+6553;altakraftlag;2
+6726;hermansen ;26
+931;olaf årthun. ;10
+7253;bal;2
+11106;kgs;1
+3092;stureth;1
+11848;kristiandragsten;1
+6718;leo z;89
+623;ljoslandshytta.no;6
+12722;isfiskern;1
+11401;tobias brox;10
+12631;ulvenveien;1
+3393;guro@svv;1
+11809;jonas hals;11
+6554;håkon;3
+2844;klo@statskog.no;19
+2812;abj;12
+3814;trond baadstø;2
+10909;båss;24
+227;solveig@nve;1
+747;msa@nortind;1
+2802;abonden;5
+1739;frode vassenden;9
+1294;asbjørnf;9
+12454;dimitri;1
+12460;asgeire;1
+2853;jim@statskog.no;6
+12389;tommy;2
+1407;utgård;2
+3762;arve.tvede;2
+11703;olav krogsæter;7
+1352;magnusu;6
+12161;larsinj;1
+2832;modøl;1
+173;tommy@nve;1
+3702;atle;8
+395;ketil - statkraft trondheim;10
+11131;janm;4
+11454;tango-tango;2
+4904;cecilie;1
+2805;soj@statskog.no;10
+1695;marius rosøy;5
+11579;hurum turistforening ;11
+10943;isfisker2018;3
+11704;lkp;1
+11707;johnkg;1
+11721;mlr;1
+2859;kristian.sivertsen@statskog.no;2
+7847;reidar kv;3
+11525;jada97;2
+11518;trygg av natur;2
+239;rayvedal;2
+2800;tgu;2
+3447;gunnard@svv;1
+3587;toma;1
+11429;jan-fredrik;1
+11393;eivindo;2
+3593;am@daastol.com;1
+6504;ragnar standal;1
+6501;kristian25;1
+11394;jim helge;2
+11332;kjeete;1
+234;frodetk@nve;1
+6946;hv;1
+845;ellen;7
+11259;boya;1
+9171;stranden;5
+7608;espenun;2
+3556;frode lund;6
+3637;ljanss;1
+3654;ragnar standal;1
+205;ingeborg@nve;1
+3230;erik holmqvist;1
+7014;agnes@svv;1
+1164;klanggard;1
+3307;thaustorm;1
+11231;veståsen;1
+6531;nils;1
+1712;lars rogstad;6
+1179;blackbird;2
+10973;erlnd;1
+6819;morten@forsvaret;3
+112;steinar@obskorps;1
+11146;josteinb;1
+1683;arøys1;9
+2775;ok67;10
+3451;stian@wyssen;1
+11140;helaar;2
+11142;ulrike jüse;2
+4730;bjørn-are;4
+592;galtung;2
+6095;fauxdinand;1
+6445;amaoutdoor;1
+11161;o2;1
+11017;sklett;1
+7146;nils f;1
+11008;steffendebeuker;2
+780;milslukern;1
+1617;håkon@obskorps ;2
+10992;vgunleik;1
+10914;thomas sandholt lund;1
+2906;atle;1
+2;awa@nve.no;3
+10980;odd;1
+1131;s-e;3
+3201;larseid;1
+6654;ek;1
+3610;isfiskern;3
+6463;halvheiden;1
+1702;jimmy;1
+10911;sti.lar;1
+7201;blytskjold;1
+7;rue@nve;3
+42;markus@nve;1
+1667;jonkr@trønderenergi;1
+41;torehum@svv;1
+10649;joanna;3
+3228;elinl;1
+3434;roym;1
+10334;giselaa;1

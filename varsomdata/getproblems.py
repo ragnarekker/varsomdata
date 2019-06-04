@@ -200,13 +200,13 @@ def get_all_problems(region_ids, from_date, to_date, add_danger_level=True, prob
         evaluations_1 = go.get_avalanche_evaluation(region_ids=region_ids, from_date=from_date, to_date=to_date, lang_key=lang_key)
         evaluations_2 = go.get_avalanche_evaluation_2(region_ids=region_ids, from_date=from_date, to_date=to_date, lang_key=lang_key)
         eval_problems_2 = go.get_avalanche_problem_2(region_ids=region_ids, from_date=from_date, to_date=to_date, lang_key=lang_key)
-        warnings = gfa.get_avalanche_warnings(region_ids=region_ids, from_date=from_date, to_date=to_date, lang_key=lang_key)
+        warnings = gfa.get_avalanche_warnings_deprecated(region_ids=region_ids, from_date=from_date, to_date=to_date, lang_key=lang_key)
 
     elif problems_from == 'Forecast':
         evaluations_1 = []
         evaluations_2 = []
         eval_problems_2 = []
-        warnings = gfa.get_avalanche_warnings(region_ids=region_ids, from_date=from_date, to_date=to_date, lang_key=lang_key)
+        warnings = gfa.get_avalanche_warnings_deprecated(region_ids=region_ids, from_date=from_date, to_date=to_date, lang_key=lang_key)
 
     elif problems_from == 'Observation':
         evaluations_1 = go.get_avalanche_evaluation(region_ids=region_ids, from_date=from_date, to_date=to_date, lang_key=lang_key)
@@ -231,7 +231,7 @@ def get_all_problems(region_ids, from_date, to_date, add_danger_level=True, prob
 
         # If only looking for observations, warnings with danger level not got.
         if problems_from == 'Observation':
-            warnings = gfa.get_avalanche_warnings(region_ids=region_ids, from_date=from_date, to_date=to_date, lang_key=lang_key)
+            warnings = gfa.get_avalanche_warnings_deprecated(region_ids=region_ids, from_date=from_date, to_date=to_date, lang_key=lang_key)
 
         all_non_zero_warnings = [w for w in warnings if w.danger_level != 0]
         all_non_zero_warnings.sort(key=lambda AvalancheDanger: AvalancheDanger.date)

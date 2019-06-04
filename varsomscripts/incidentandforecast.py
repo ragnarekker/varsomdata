@@ -346,7 +346,7 @@ def incident_troms_winter_2018_for_markus():
 
     if get_new:
         all_varsom_incidents = gm.get_varsom_incidents(add_forecast_regions=True, add_observations=True)
-        all_regobs_avalobs_and_incidents = go.get_data_as_class(from_date, to_date, registration_types=[11, 26], region_ids=regions, output='Nest')
+        all_regobs_avalobs_and_incidents = go.get_all_observations(from_date, to_date, registration_types=[11, 26], region_ids=regions, output='List')
 
         mp.pickle_anything([all_varsom_incidents, all_regobs_avalobs_and_incidents], pickle_file_name)
 

@@ -207,9 +207,9 @@ def get_registration(from_date, to_date, output='List', geohazard_tid=None, appl
         data = get_registration(from_date, date_in_middle, output='Raw', geohazard_tid=geohazard_tid, application_id=application_id) \
                  + get_registration(date_in_middle, to_date, output='Raw', geohazard_tid=geohazard_tid, application_id=application_id)
 
-    if output=='Raw':
+    if output == 'Raw':
         return data
-    elif output=='List':
+    elif output == 'List':
         data_out = [Registration(d) for d in data]
         observer_nicks = get_observer_v()
         # NickName is not originally in the Registration table
@@ -645,7 +645,7 @@ def get_forecast_region_for_regid(reg_id):
     region_id, region_name, observation = None, None, None
 
     try:
-        observation = go.get_data_as_class(reg_ids=reg_id)
+        observation = go.get_all_observations(reg_ids=reg_id)
         utm33x = observation[0].UTMEast
         utm33y = observation[0].UTMNorth
         date = observation[0].DtObsTime
@@ -808,7 +808,7 @@ def get_varsom_incidents(add_forecast_regions=False, add_observations=False, add
                 if add_observations:
                     i.add_observation(observation[0])
                     if len(i.regid) > 1:
-                        observations = go.get_data_as_class(reg_ids=i.regid[1:])
+                        observations = go.get_all_observations(reg_ids=i.regid[1:])
                         for o in observations:
                             i.add_observation(o)
 

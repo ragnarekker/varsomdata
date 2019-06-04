@@ -157,8 +157,8 @@ def pickle_warnings(regions, date_from, date_to, pickle_file_name):
 
     # get all warning and problems for this region and then loop though them joining them on date
     for r in regions:
-        warnings_no = gfa.get_avalanche_warnings(r, date_from, date_to)
-        warnings_en = gfa.get_avalanche_warnings(r, date_from, date_to, lang_key=2)
+        warnings_no = gfa.get_avalanche_warnings_deprecated(r, date_from, date_to)
+        warnings_en = gfa.get_avalanche_warnings_deprecated(r, date_from, date_to, lang_key=2)
 
         # loop trough all the norwegian forecasts
         for i in range(0, len(warnings_no), 1):

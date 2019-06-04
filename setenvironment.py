@@ -2,6 +2,8 @@
 import sys as sys
 import os as os
 import json as json
+import logging as lg
+import datetime as dt
 from pathlib import Path
 from shutil import copyfile
 
@@ -63,6 +65,11 @@ if project_path:
     except:
         error_msg = sys.exc_info()[0]
         print("setenvironment.py: Error creating folders: {}.".format(error_msg))
+
+lg.basicConfig(filename='{0}get_obs_{1}.log'.format(log_folder, dt.date.today()),
+               format='%(asctime)s: [%(levelname)s] %(message)s',
+               datefmt='%H:%M',
+               level=lg.INFO)
 
 # Set resource folders
 forecast_region_shapes = project_path + folders['forecast_region_shapes']

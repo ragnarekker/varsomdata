@@ -470,7 +470,7 @@ def make_observer_plots(all_observations_list, observer_list, months, plot_folde
     for o in observer_list:
 
         ml.log_and_print("[info] plotcalendardata.py -> make_observer_plots: {} {}".format(o.observer_id, o.observer_nick))
-        observers_observations_list = [all_obs for all_obs in all_observations_list if all_obs.ObserverId == o.observer_id]
+        observers_observations_list = [all_obs for all_obs in all_observations_list if all_obs.ObserverID == o.observer_id]
 
         # plot one month at the time
         for m in months:
@@ -548,7 +548,7 @@ def make_svv_plots(all_observations_list, observer_dict, region_ids, months, plo
 
     svv_observer_ids = list(svv_observer_dict.keys())
 
-    svv_observations_list = [all_obs for all_obs in all_observations_list if all_obs.ObserverId in svv_observer_ids]
+    svv_observations_list = [all_obs for all_obs in all_observations_list if all_obs.ObserverID in svv_observer_ids]
 
     for frid in region_ids:
         region_observations_list = [all_obs for all_obs in svv_observations_list if all_obs.ForecastRegionTID == frid]

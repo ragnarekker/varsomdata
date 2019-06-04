@@ -48,7 +48,7 @@ class AllRegistrations(Base):
     CompetenceLevelName = Column(String(128))
 
     ForecastRegionTID = Column(Integer)
-    ObserverId = Column(Integer)
+    ObserverID = Column(Integer)
     RowNumber = Column(Integer, primary_key=True)
     GeoHazardName = Column(String(128))
     RegistrationName = Column(String(128))
@@ -75,7 +75,7 @@ class AllRegistrations(Base):
         self.CompetenceLevelName = d.CompetenceLevelName
 
         self.ForecastRegionTID = d.ForecastRegionTID
-        self.ObserverId = d.ObserverId
+        self.ObserverID = d.ObserverID
         self.RowNumber = d.RowNumber
         self.GeoHazardName = d.GeoHazardName
         self.RegistrationName = d.RegistrationName
@@ -91,7 +91,7 @@ if __name__ == "__main__":
     to_date = dt.date(2016, 5, 1)
     region_ids = 116
 
-    all_data = go.get_all_registrations(from_date, to_date, region_ids)
+    all_data = go.get_all_observations(from_date, to_date, region_ids)
 
     Base.metadata.create_all()
     Session = sessionmaker(bind=engine)

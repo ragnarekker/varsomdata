@@ -1,0 +1,3477 @@
+7409;Heiden;179041
+784;Hans Erik@ferdaråd;171723
+3787;Håvard;186410
+12740;NrhAstri;185925
+1294;AsbjørnF;191284
+5994;erlend@nordfjordfhs;175768
+11549;Kasper haugland;182521
+12957;Helga;187148
+12079;Radicalex1;179400
+11551;Marius@vossvgs;182540
+7060;OleBjorsvik;190124
+5994;erlend@nordfjordfhs;175768
+1150;martin;173275
+628;Rune;179034
+3116;NRH Emil Fillingsnes ;176724
+754;einar@nortindBOF;175539
+3569;David@midttroms ;176126
+628;Rune;189815
+489;jan@nordfjordfhs;184839
+12273;Ragnhild ;188797
+6014;Thosko ;180117
+152;Snowman;192939
+12068;Gox;179391
+11556;Ingvild@vossvgs;181244
+12826;s.helg. ;187162
+628;Rune;189529
+11902;LaererJEP;184627
+6638;andrejenssen.no;174200
+7409;Heiden;179818
+9526;Andreas W;171105
+1379;Martin Haugland;177787
+11572;RasmusRamstad;179943
+3569;David@midttroms ;173265
+1637;Finn@regobs Troms;179509
+11798;Bergsfjordlodge;183976
+931;Olaf Årthun. ;188488
+758;RVigdal;168241
+242;halvor_d@nortind;190135
+855; roald@nortind;176127
+8930;OleNy@nordfjordfhs;184945
+4043;Hakon@nortind;185354
+8204;mnskeyser;191783
+6306;DagF@UNIS;170660
+7100;carlthemtnbum;186135
+1186;Sindre@nortind;170785
+12567;Olav;183820
+12455;Sebastian Qvist;182704
+7587;saaj@nortind;179749
+4005;KatjaPe;194026
+997;Smfoot;187459
+11784;SveinarLS;185181
+810;Kjetil G;185349
+64;Erling Snøva;185106
+489;jan@nordfjordfhs;182311
+8193;Gjermund;194316
+874;Sjur Mork;190266
+6850;Bjodybda;189218
+6440;Sondre@SkredAS;189939
+8886;obr;186517
+4006;HoltH@unis;183634
+9417;torjekosmo;173450
+5994;erlend@nordfjordfhs;180554
+6197;Simone;171597
+9176;PetterHorthe;187020
+4082;Iver;177963
+1006;Pål Andersen;191207
+3689;elke@unis;190970
+1150;martin;170529
+1272;Erlend;176422
+1701;KAR;177798
+6578;Frode;178891
+3072;Arne@regobs;179003
+771;Wfarns;181818
+874;Sjur Mork;193062
+11902;LaererJEP;186199
+12077;MortimerSand;179808
+152;Snowman;176721
+6209;Adam;188845
+3493;RichardFjellaksel;185350
+152;Snowman;185565
+1293;SNO-Liv;182081
+6306;DagF@UNIS;169456
+3683;Marina@NorskeRedningshunder;182821
+3745;Gaute;175917
+11468;Jesper@ANG;194361
+3816;stian@nortind;185966
+560;bjorgnar;181028
+152;Snowman;192576
+12162;SiljeSk;180151
+3625;Jens Arne Gjørsvik ;178733
+8930;OleNy@nordfjordfhs;176716
+6306;DagF@UNIS;170411
+3816;stian@nortind;186238
+7951;Alexander@sbo.nu ;173135
+6440;Sondre@SkredAS;189939
+12367;espen@norconsult;183786
+10995;steinar;181248
+6842;LPLænn;174458
+1694;rB;175961
+10644;Essah;168335
+6209;Adam;178736
+9796;Toggs;187130
+8930;OleNy@nordfjordfhs;184945
+3072;Arne@regobs;187777
+7926;Laurits Hansen;178120
+1321;oormasen;177875
+1433;kjetims@regobsTroms;189029
+7926;Laurits Hansen;178667
+7518;Eirik;169117
+863;Kristoffergh88;176707
+2959;Charlotte;187943
+6209;Adam;177269
+7498;Mellera;180320
+3295;Kristin;170532
+11784;SveinarLS;187786
+3933;Kasper.E;185008
+11927;Frode@nla;179017
+240;Svartn@regobsTroms;181583
+3787;Håvard;186407
+13106;Charlotte@Friluftsliv_HiVolda;188664
+12079;Radicalex1;179976
+6025;Erik;190133
+11674;Einar;176224
+3570;Thomas;191581
+12926;Pada;187956
+7452;SteinS;183524
+152;Snowman;191590
+3745;Gaute;184420
+1481;MariE;195536
+3473;Anders;177644
+3751;Snowsnake;174758
+4043;Hakon@nortind;173494
+3754;JanErik;175790
+6883;LarsMartin;181975
+931;Olaf Årthun. ;183148
+11641;adadranger;175832
+793;Endre;176610
+3551;HEA;171452
+8579;MathiasVindal;176013
+12078;ThomasH;180140
+1001;Asmkar;185133
+13629;Kab;192235
+3569;David@midttroms ;188445
+134;svmo;173349
+11021;JonasD@nortind.no;171076
+672;OleRoger;176307
+3923;Mortenknaps;175225
+12144;Erling;179958
+1174;Thorleif svendsen;192550
+794;Jonas.hansen@live.no;173332
+12077;MortimerSand;179901
+3562;eskildskov;186593
+4120;Laurids@USNnaturguide;192431
+11021;JonasD@nortind.no;171076
+64;Erling Snøva;170635
+6306;DagF@UNIS;187891
+1193;pmbakke@nortind;178586
+12107;Maritagk@vossvgs;181242
+397;kruse@nortind;168255
+2830;OleK;185013
+12826;s.helg. ;187081
+550;Ørjan@student_uio;172556
+11021;JonasD@nortind.no;171217
+1505;Olivia@regobsTroms;186451
+3497;NjålØ;175837
+931;Olaf Årthun. ;188489
+64;Erling Snøva;172423
+3562;eskildskov;186230
+3116;NRH Emil Fillingsnes ;185566
+727;Tore K;185251
+12076;Morten;183960
+2868;emmawichardt;181528
+931;Olaf Årthun. ;188489
+3398;haldan;187816
+3569;David@midttroms ;186276
+3493;RichardFjellaksel;183423
+8649;S.Brochmann@ANG;181393
+3426;thoresb@nortind;182523
+1001;Asmkar;177270
+3149;elin@nrh;185934
+12076;Morten;180403
+11956;Ernest;185292
+7810;ToreK;174327
+7673;Kimslimxxl;176562
+12073;Lasse på fjellet;180591
+1117;Philip;178721
+12081;Ole E;179543
+794;Jonas.hansen@live.no;170179
+3787;Håvard;186419
+1286;OddmundR;192153
+9171;Stranden;193430
+12912;Jonas Junker;186679
+8217;NinaS;184368
+1637;Finn@regobs Troms;184605
+3052;seb@regobsTroms;181517
+1677;Bjørg@hemsedal;185103
+1193;pmbakke@nortind;175879
+6801;Ole Tonny @rkh;190240
+7100;carlthemtnbum;187537
+1589;jkvn@alf;186527
+11798;Bergsfjordlodge;177176
+475;Snømann;183120
+6955;Reidarbj;176587
+373;j.hansen;184779
+3569;David@midttroms ;183955
+3689;elke@unis;172183
+6440;Sondre@SkredAS;173943
+3683;Marina@NorskeRedningshunder;176038
+3683;Marina@NorskeRedningshunder;189103
+7452;SteinS;186331
+3551;HEA;192556
+397;kruse@nortind;168225
+281;Bjørnar@Hagefonna;184316
+6850;Bjodybda;191607
+810;Kjetil G;184680
+11310;AStrand;178606
+1289;mrtnlvs;169527
+11450;LarssonMartin;176906
+949;HåTo;192743
+3834;Maria Leganger;175661
+12075;Laderen;179806
+547;Sigbjørn;188246
+4250;Lars Berge;189858
+1701;KAR;177798
+7518;Eirik;194444
+2815;Michael ;193371
+3894;Ivarg;187800
+2879;Jonasl;176613
+7125;Thomas1990@frivillig;180791
+12095;OliverHarding;189230
+3683;Marina@NorskeRedningshunder;176703
+12296;sylvia@ang;192166
+152;Snowman;176913
+11778;Vegard;185989
+152;Snowman;178335
+11937;Robin@Friluftsliv_Hivolda;179562
+13728;Stidrog;193898
+9171;Stranden;185116
+3295;Kristin;186182
+794;Jonas.hansen@live.no;179332
+12292;Ella@ANG;192158
+986;Jens Rev;194834
+7036;Lars Sollie;172629
+11784;SveinarLS;178825
+1321;oormasen;175921
+11133;Omi@nordfjordfhs;175479
+12074;Stian ;179395
+12106;maren@vossvgs;182542
+9171;Stranden;192094
+12946;Vhoeston;187075
+10425;NilsArne@SkredAS;194076
+6306;DagF@UNIS;190084
+12012;Sigrid@Friluftsliv_Hivolda;189513
+1566;Snorre;184931
+8217;NinaS;184366
+1505;Olivia@regobsTroms;183822
+6266;Multiknut ;177666
+7983;Vetlesulen;185449
+3072;Arne@regobs;177064
+12273;Ragnhild ;181168
+3052;seb@regobsTroms;182052
+825;Julia@rkh;177817
+7810;ToreK;171641
+240;Svartn@regobsTroms;190268
+794;Jonas.hansen@live.no;189066
+3072;Arne@regobs;189557
+11778;Vegard;177034
+1626;andrea@regobsTroms;189206
+785;KrLarsen;193071
+152;Snowman;177032
+12024;Johannes_SB@Naturguide_HVO;179973
+11849;Beddari1;187592
+489;jan@nordfjordfhs;186797
+874;Sjur Mork;192951
+7842;Larso;179651
+931;Olaf Årthun. ;181826
+7451;stian hovi;177622
+3123;Krille;195276
+698;sjur@nortind;181511
+2879;Jonasl;185178
+3052;seb@regobsTroms;181525
+3540;Christian S.;178040
+11106;kgs;174604
+4272;RuRo;173025
+3096;timdassler@regobsTroms;184536
+1186;Sindre@nortind;183670
+4006;HoltH@unis;191601
+785;KrLarsen;179271
+11778;Vegard;185989
+3497;NjålØ;185012
+3704;ThomasN;181596
+3816;stian@nortind;176853
+931;Olaf Årthun. ;177136
+11029;HelgeL;173249
+3704;ThomasN;185765
+1589;jkvn@alf;181415
+3531;Gomsted;184587
+1571;V;180168
+3846;Lukas Heck;190424
+12072;Toppturmartin;179397
+475;Snømann;176180
+4250;Lars Berge;190030
+6209;Adam;178736
+12134;LarsBandasj;179877
+152;Snowman;190471
+11798;Bergsfjordlodge;180725
+12946;Vhoeston;187075
+3072;Arne@regobs;175293
+1274;Mikael Amlert SBO/IFMGA;189007
+8277;MagneH;185353
+4762;Esben;177549
+11641;adadranger;177468
+240;Svartn@regobsTroms;183847
+1490;KristianH;172624
+1293;SNO-Liv;190323
+1640;emilso;180174
+3846;Lukas Heck;186197
+11557;kåæfvossvgs;182541
+6306;DagF@UNIS;179247
+1626;andrea@regobsTroms;186770
+8971;Marthe;178199
+3476;JonDahlRasmussen;189010
+6209;Adam;176893
+1402;StigArveJohansen@Helgeland;187929
+1289;mrtnlvs;179564
+6306;DagF@UNIS;182693
+12020;Ludde;179124
+4250;Lars Berge;184166
+3116;NRH Emil Fillingsnes ;185566
+3123;Krille;170676
+6306;DagF@UNIS;170411
+1274;Mikael Amlert SBO/IFMGA;189750
+794;Jonas.hansen@live.no;189066
+794;Jonas.hansen@live.no;170842
+3683;Marina@NorskeRedningshunder;185976
+1571;V;180168
+754;einar@nortindBOF;170701
+475;Snømann;183492
+6850;Bjodybda;184065
+11798;Bergsfjordlodge;177416
+4762;Esben;177549
+1293;SNO-Liv;188604
+3683;Marina@NorskeRedningshunder;174757
+1657;Marte;169709
+11784;SveinarLS;188308
+11106;kgs;174955
+3846;Lukas Heck;177138
+1300;Rune Holen;178421
+3787;Håvard;186414
+794;Jonas.hansen@live.no;171834
+667;JJ;184667
+698;sjur@nortind;184408
+8857;Eirikr;191452
+6214;Kjoers;189389
+4006;HoltH@unis;168273
+11003;Bjaoey;170450
+12926;Pada;191821
+1321;oormasen;174312
+784;Hans Erik@ferdaråd;174943
+63;VetleØvrebotten;177734
+1505;Olivia@regobsTroms;177038
+7518;Eirik;194311
+1657;Marte;176213
+3834;Maria Leganger;176512
+3834;Maria Leganger;177635
+3072;Arne@regobs;190222
+3846;Lukas Heck;186592
+6912;Stanis@frivillig;180004
+6306;DagF@UNIS;187897
+931;Olaf Årthun. ;172343
+3683;Marina@NorskeRedningshunder;177272
+11194;BAMBI;183841
+12186;ChristinaEriksen;181574
+5994;erlend@nordfjordfhs;180554
+6257;Audun@unis;194651
+3787;Håvard;178489
+4250;Lars Berge;185409
+8045;kbl@NRH;174193
+6665;Eirik Fjær;189771
+11106;kgs;171127
+11003;Bjaoey;181810
+7614;ØyeflatenYngve ;187051
+3173;Håkon Sælen;179030
+8132;tikvam;179933
+12078;ThomasH;179775
+4120;Laurids@USNnaturguide;178039
+1626;andrea@regobsTroms;187122
+1589;jkvn@alf;186527
+6665;Eirik Fjær;185227
+6469;LarsBukkehave;179155
+6399;Kristoffer Løvvold;184920
+12584;BackyardSvalbard;185544
+2861;linda_medskipaabeina;183558
+12352;Vevo;186188
+1293;SNO-Liv;174718
+12079;Radicalex1;180473
+3096;timdassler@regobsTroms;183810
+3745;Gaute;173373
+2959;Charlotte;185014
+1294;AsbjørnF;179620
+11106;kgs;174604
+8930;OleNy@nordfjordfhs;180565
+1566;Snorre;183830
+496;Ole Andreas Jenssen;193724
+2861;linda_medskipaabeina;188731
+152;Snowman;190523
+7370;Hans;178730
+3052;seb@regobsTroms;190207
+12508;Sturla;184347
+2959;Charlotte;191307
+12095;OliverHarding;179988
+3584;Gudmund;188427
+12241;Gustaf Larsson;185111
+7673;Kimslimxxl;176562
+152;Snowman;190256
+4351;KjetilMorken;175369
+1168;Nilscf@regobsTroms;173016
+6483;Dannyal;168845
+8456;Marte;178597
+63;VetleØvrebotten;176973
+12076;Morten;183960
+2883;SivK;185413
+3072;Arne@regobs;183293
+7125;Thomas1990@frivillig;170456
+6912;Stanis@frivillig;187666
+3209;sindrejh;177826
+8193;Gjermund;177944
+12068;Gox;179579
+1187;Robert Ulfsnes;170673
+1577;bjafje;170348
+3683;Marina@NorskeRedningshunder;179027
+3505;Gunnar;172992
+11090;lakune;191609
+3787;Håvard;186407
+4006;HoltH@unis;182299
+152;Snowman;176538
+63;VetleØvrebotten;176996
+64;Erling Snøva;174896
+1299;Kaptajn Fjeld;185010
+3551;HEA;190682
+3562;eskildskov;186725
+240;Svartn@regobsTroms;192103
+1701;KAR;173028
+2802;Abonden;176910
+1202;olamk;179376
+1293;SNO-Liv;175451
+4061;oholsen;175475
+3584;Gudmund;180321
+7518;Eirik;175169
+4250;Lars Berge;185848
+348;ErikEB@rkh;170500
+12180;HaraldO;183797
+672;OleRoger;177177
+12347;derute.no;185228
+4250;Lars Berge;192455
+1168;Nilscf@regobsTroms;172763
+7951;Alexander@sbo.nu ;173420
+12165;Danny;180179
+11956;Ernest;182662
+1481;MariE;187622
+4228;Eivind ;183821
+4006;HoltH@unis;186221
+4082;Iver;186254
+281;Bjørnar@Hagefonna;179022
+3134;Fredrik@SBO;191092
+230;kjetilhd;177970
+1214;JL ;184164
+7626;Andrine ;186046
+6209;Adam;184361
+1001;Asmkar;191762
+7810;ToreK;171641
+6665;Eirik Fjær;188114
+1132;erlendb;179696
+6014;Thosko ;176586
+1481;MariE;195536
+11057;marit;174683
+931;Olaf Årthun. ;172745
+949;HåTo;176007
+6850;Bjodybda;189020
+6197;Simone;191671
+1294;AsbjørnF;179123
+152;Snowman;183857
+6209;Adam;177988
+3687;ØH;168286
+1274;Mikael Amlert SBO/IFMGA;189629
+2861;linda_medskipaabeina;189641
+4351;KjetilMorken;183940
+3896;Knut;181959
+6741;jorgenP;187806
+5877;Hallfw;189332
+1117;Philip;178738
+4120;Laurids@USNnaturguide;176869
+3569;David@midttroms ;183955
+1589;jkvn@alf;178995
+461;Markus;184947
+152;Snowman;189194
+12020;Ludde;179124
+4272;RuRo;177070
+11701;AndreasBreden;176382
+8823;Esten;184283
+11798;Bergsfjordlodge;178580
+489;jan@nordfjordfhs;192660
+785;KrLarsen;194905
+1577;bjafje;179871
+152;Snowman;179814
+891;Marius;186029
+230;kjetilhd;169817
+3507;Jonasoestrem ;179965
+496;Ole Andreas Jenssen;183339
+7772;Abelsen;168248
+3497;NjålØ;186049
+12073;Lasse på fjellet;179398
+2826;Martin;191204
+8823;Esten;185726
+152;Snowman;192886
+6306;DagF@UNIS;189637
+3704;ThomasN;194096
+1093;ragniko;186007
+6013;Guro@friluftsliv_hivolda;186406
+11196;tmeling@nortind.no;177786
+874;Sjur Mork;176727
+776;Skipatrulje Myrkdalen;184876
+1001;Asmkar;185133
+4037;Thomas;188937
+11194;BAMBI;177534
+6209;Adam;179326
+785;KrLarsen;177901
+1321;oormasen;189797
+1577;bjafje;184568
+3562;eskildskov;186725
+752;endre@nortind;174508
+4250;Lars Berge;184576
+12104;emil@vossvgs;182538
+6612;Lynum;181590
+793;Endre;186422
+152;Snowman;193813
+3683;Marina@NorskeRedningshunder;180006
+1481;MariE;188816
+11937;Robin@Friluftsliv_Hivolda;185996
+12002;EirikJH;182815
+7526;Vemund@Friluftsliv_HiVolda;183480
+1274;Mikael Amlert SBO/IFMGA;189839
+3625;Jens Arne Gjørsvik ;178733
+3096;timdassler@regobsTroms;189222
+12076;Morten;184964
+2835;Kristoffer;179922
+4006;HoltH@unis;193998
+3689;elke@unis;190970
+12352;Vevo;181781
+8021;NRHSpockeli;185920
+475;Snømann;173977
+196;mikal@nortind;187760
+1624;Anderseskeland;177649
+1168;Nilscf@regobsTroms;182831
+864;tomive;185587
+6883;LarsMartin;177761
+7587;saaj@nortind;175751
+10923;Jorgenb;187785
+7951;Alexander@sbo.nu ;175677
+6946;HV;170338
+3963;Nohr;191218
+3032;SigmundS;169737
+3683;Marina@NorskeRedningshunder;184416
+1481;MariE;177613
+3745;Gaute;175882
+489;jan@nordfjordfhs;182311
+7587;saaj@nortind;173510
+784;Hans Erik@ferdaråd;180350
+6197;Simone;191671
+1293;SNO-Liv;168227
+931;Olaf Årthun. ;189293
+6306;DagF@UNIS;171612
+12952;MortenUrrang;187127
+2835;Kristoffer;176745
+785;KrLarsen;173363
+12165;Danny;180179
+1742;edda@regobsTroms;186787
+1168;Nilscf@regobsTroms;185231
+1295;sondrekv;185182
+152;Snowman;176511
+12032;Halvard@Friluftsliv_Hivolda;179278
+12367;espen@norconsult;183308
+3562;eskildskov;186441
+3570;Thomas;187783
+3683;Marina@NorskeRedningshunder;169801
+8217;NinaS;184368
+6209;Adam;184102
+1566;Snorre;170549
+628;Rune;179945
+11644;Carina89;175833
+2900;trond_olav@nortind;175977
+3569;David@midttroms ;187024
+2900;trond_olav@nortind;176719
+10284;larstc;183858
+3505;Gunnar;173677
+1099;Fredrik Backe;179632
+7440;Maria;185020
+3052;seb@regobsTroms;181525
+7139;Lisa;174479
+6197;Simone;171501
+8190;Carlo;177066
+6850;Bjodybda;187948
+12490;Vegard;182999
+12089;Ajo;179432
+672;OleRoger;185990
+152;Snowman;185578
+2861;linda_medskipaabeina;183558
+4351;KjetilMorken;181626
+3149;elin@nrh;185935
+8414;kaarepolitinrh;189164
+794;Jonas.hansen@live.no;170842
+11551;Marius@vossvgs;182540
+1186;Sindre@nortind;175839
+8930;OleNy@nordfjordfhs;182174
+1626;andrea@regobsTroms;177782
+3628;Henning;189912
+3584;Gudmund;174040
+6665;Eirik Fjær;173193
+9171;Stranden;170557
+2802;Abonden;183089
+1274;Mikael Amlert SBO/IFMGA;189646
+8914;torsteinbjoergen;191606
+1711;Håvard Engen;183439
+6014;Thosko ;184606
+12951;olliulla;187117
+7868;Oysteine;178849
+3683;Marina@NorskeRedningshunder;177799
+7409;Heiden;191103
+6306;DagF@UNIS;172113
+12141;Marcos;179959
+11681;pålr;179276
+152;Snowman;176697
+6306;DagF@UNIS;188864
+1289;mrtnlvs;168744
+8022;stigwk@nrh;172694
+12095;OliverHarding;179989
+10899;Danielogreen;181602
+1299;Kaptajn Fjeld;170443
+152;Snowman;187320
+7370;Hans;171525
+3540;Christian S.;178040
+867;Tjugen;168195
+7242;Hvitblikk;184165
+11999;abata;178899
+13546;jakleven;191784
+64;Erling Snøva;187865
+2802;Abonden;176329
+12076;Morten;188314
+6306;DagF@UNIS;190084
+12367;espen@norconsult;183308
+12077;MortimerSand;179402
+12016;Jonasj;179042
+3072;Arne@regobs;189790
+4351;KjetilMorken;181626
+475;Snømann;183492
+949;HåTo;177266
+429;Daniel Larsen ;185152
+1694;rB;173648
+8930;OleNy@nordfjordfhs;180565
+238;BjørnEmil;179916
+2861;linda_medskipaabeina;191328
+7597;Oddbjørn;177784
+6306;DagF@UNIS;188864
+1186;Sindre@nortind;183670
+3689;elke@unis;172215
+11192;HenningH;172330
+1589;jkvn@alf;181415
+1264;Cecilie@regobsTroms;179991
+152;Snowman;179412
+12878;Sondre;187133
+6306;DagF@UNIS;190350
+11304;Ragnhild;183137
+11674;Einar;179265
+1694;rB;173802
+7125;Thomas1990@frivillig;180067
+3497;NjålØ;176922
+4310;Fjellfanten2405;187480
+3551;HEA;192556
+1168;Nilscf@regobsTroms;176601
+461;Markus;187465
+784;Hans Erik@ferdaråd;171717
+8930;OleNy@nordfjordfhs;183129
+667;JJ;172504
+784;Hans Erik@ferdaråd;180331
+1694;rB;175810
+11784;SveinarLS;187786
+152;Snowman;190766
+496;Ole Andreas Jenssen;183339
+1299;Kaptajn Fjeld;187153
+1286;OddmundR;169540
+152;Snowman;178383
+7526;Vemund@Friluftsliv_HiVolda;183480
+3745;Gaute;178194
+1225;Sofia@regobsTroms;182202
+3787;Håvard;186415
+12105;emma@vossvg;181203
+4120;Laurids@USNnaturguide;178137
+1186;Sindre@nortind;175839
+758;RVigdal;180134
+874;Sjur Mork;192851
+4006;HoltH@unis;168361
+784;Hans Erik@ferdaråd;192736
+4250;Lars Berge;186643
+461;Markus;186583
+3497;NjålØ;185012
+466;Rune Aa;180626
+794;Jonas.hansen@live.no;174581
+874;Sjur Mork;192851
+1299;Kaptajn Fjeld;170443
+3072;Arne@regobs;183421
+1031;Lars Linaker;169970
+2861;linda_medskipaabeina;179521
+863;Kristoffergh88;170647
+3621;Espen@rkh;186548
+2861;linda_medskipaabeina;178419
+3639;JonKjetil@NordfjordFHS;175815
+3787;Håvard;186407
+12105;emma@vossvg;179766
+12909;Morten N;186613
+3173;Håkon Sælen;169718
+825;Julia@rkh;188853
+4043;Hakon@nortind;183675
+8766;Sondrewenaas;179048
+3497;NjålØ;184524
+1589;jkvn@alf;178995
+8021;NRHSpockeli;187378
+8033;Nrhfjone;186586
+1264;Cecilie@regobsTroms;183805
+1150;martin;170520
+4272;RuRo;186547
+3683;Marina@NorskeRedningshunder;189019
+12095;OliverHarding;180165
+489;jan@nordfjordfhs;186423
+12278;inna;181044
+6306;DagF@UNIS;170660
+3628;Henning;190006
+6209;Adam;184326
+152;Snowman;179411
+11779;Havode;176979
+4061;oholsen;176754
+3194;perheimdal;185125
+11057;marit;171130
+3068;Christian@regobsTroms;179035
+340;Arntover;180414
+489;jan@nordfjordfhs;176723
+1294;AsbjørnF;181164
+1186;Sindre@nortind;174801
+12591;MarStofr;184147
+11194;BAMBI;177534
+11896;Halfdan ;178122
+7520;SimonPudderhund;168269
+3497;NjålØ;185012
+1460;OBay-Lar;178837
+152;Snowman;176675
+4250;Lars Berge;186745
+8021;NRHSpockeli;179954
+754;einar@nortindBOF;170074
+2959;Charlotte;191710
+1299;Kaptajn Fjeld;170072
+6883;LarsMartin;189313
+6197;Simone;191861
+1186;Sindre@nortind;170945
+3569;David@midttroms ;176078
+12535;EmilH;183415
+12411;danielt;182700
+63;VetleØvrebotten;177419
+3090;DW;180102
+1293;SNO-Liv;178235
+4043;Hakon@nortind;189149
+152;Snowman;185560
+972;hermstad;180086
+7452;SteinS;185624
+6558;Larsah;175504
+672;OleRoger;170420
+4250;Lars Berge;189858
+6031;havardhoyvik;187462
+6639;PowderBird;178850
+11194;BAMBI;183841
+8879;talonlibre;183992
+1577;bjafje;177989
+771;Wfarns;181818
+6416;inka;179990
+13729;Bjorndb;193905
+240;Svartn@regobsTroms;173389
+785;KrLarsen;194449
+12077;MortimerSand;179402
+1608;Odd Erik;185443
+12296;sylvia@ang;181594
+2861;linda_medskipaabeina;183599
+3704;ThomasN;176209
+3476;JonDahlRasmussen;187269
+8930;OleNy@nordfjordfhs;184407
+1215;VegardVB;186225
+11305;HaakonS;173652
+4006;HoltH@unis;193988
+11895;KjellaugM@friluftsliv_hivolda ;185626
+802;Rolf B.;177898
+12642;oyhansen;184956
+152;Snowman;178844
+6893;kristinamolland;191332
+7867;EspenR;176403
+1321;oormasen;175555
+3300;Drablo;185206
+794;Jonas.hansen@live.no;177914
+13336;erik79;190250
+11872;Fabri;178131
+11754;Dessmo;178239
+776;Skipatrulje Myrkdalen;176178
+523;AndreasL;172741
+3090;DW;188228
+11468;Jesper@ANG;183834
+1626;andrea@regobsTroms;185945
+7526;Vemund@Friluftsliv_HiVolda;188464
+1402;StigArveJohansen@Helgeland;174331
+6257;Audun@unis;194836
+1117;Philip;180098
+2834;helgeloc;190539
+2883;SivK;176730
+1168;Nilscf@regobsTroms;174323
+8649;S.Brochmann@ANG;183332
+11572;RasmusRamstad;179943
+1566;Snorre;176717
+12076;Morten;179811
+3096;timdassler@regobsTroms;183966
+3745;Gaute;173952
+3745;Gaute;183627
+11733;Eah92;176599
+12273;Ragnhild ;193916
+1004;Simon;180501
+1117;Philip;175417
+3628;Henning;189514
+1225;Sofia@regobsTroms;179941
+12002;EirikJH;178923
+698;sjur@nortind;175816
+281;Bjørnar@Hagefonna;170929
+3531;Gomsted;186285
+12080;Jacko;179403
+4006;HoltH@unis;187469
+3846;Lukas Heck;183844
+2900;trond_olav@nortind;175179
+7060;OleBjorsvik;189212
+1321;oormasen;175555
+12067;Larsen;179984
+1295;sondrekv;189645
+11184;Søjdis;172121
+13106;Charlotte@Friluftsliv_HiVolda;189380
+2900;trond_olav@nortind;178581
+7242;Hvitblikk;184487
+628;Rune;186700
+3072;Arne@regobs;175293
+152;Snowman;193219
+3569;David@midttroms ;179619
+11155;Davewragg;182389
+4006;HoltH@unis;194448
+3836;Fjellboms;180395
+1481;MariE;178687
+12081;Ole E;179405
+3689;elke@unis;194285
+64;Erling Snøva;173184
+1295;sondrekv;184798
+7452;SteinS;183524
+1168;Nilscf@regobsTroms;192064
+8132;tikvam;179933
+3846;Lukas Heck;194083
+7370;Hans;177267
+11106;kgs;189460
+1657;Marte;176213
+3123;Krille;177248
+348;ErikEB@rkh;187103
+3097;Eiska;186951
+11124;Sunnivsk;179285
+152;Snowman;178830
+429;Daniel Larsen ;181591
+12071;Toppturmathias;180385
+672;OleRoger;170420
+11641;adadranger;183831
+3569;David@midttroms ;173377
+3846;Lukas Heck;176659
+12950;Connie Myking ;187109
+3039;Turkite;194206
+1614;thogund;179756
+152;Snowman;176523
+489;jan@nordfjordfhs;181793
+489;jan@nordfjordfhs;182806
+12730;Heradstveit@NRH;185921
+4762;Esben;177746
+6209;Adam;176729
+1321;oormasen;184686
+348;ErikEB@rkh;170500
+1168;Nilscf@regobsTroms;174649
+12490;Vegard;182999
+196;mikal@nortind;189132
+134;svmo;184597
+698;sjur@nortind;181511
+12641;Stig;184919
+6850;Bjodybda;189020
+6306;DagF@UNIS;171612
+3569;David@midttroms ;188445
+475;Snømann;169359
+63;VetleØvrebotten;177915
+461;Markus;184191
+1187;Robert Ulfsnes;170848
+3834;Maria Leganger;176743
+3787;Håvard;169001
+152;Snowman;177043
+12535;EmilH;184665
+6665;Eirik Fjær;183388
+3834;Maria Leganger;177806
+7867;EspenR;186109
+8886;obr;191747
+12143;Ffliland;179960
+11124;Sunnivsk;188134
+6306;DagF@UNIS;190130
+1186;Sindre@nortind;183827
+12070;Toppturvegard;179393
+867;Tjugen;184118
+489;jan@nordfjordfhs;186167
+2826;Martin;191450
+3123;Krille;193790
+4243;Bfrisvold;186053
+397;kruse@nortind;168225
+2959;Charlotte;183825
+4006;HoltH@unis;178571
+12608;Ellisiv@Friluftsliv_Hivolda;191446
+11849;Beddari1;187592
+1577;bjafje;179157
+13355;Sondre;190349
+6665;Eirik Fjær;186669
+4243;Bfrisvold;190378
+1742;edda@regobsTroms;186787
+6801;Ole Tonny @rkh;191748
+7587;saaj@nortind;175786
+1566;Snorre;175420
+794;Jonas.hansen@live.no;171834
+867;Tjugen;184778
+12032;Halvard@Friluftsliv_Hivolda;179278
+7745;Merete;185221
+12016;Jonasj;179042
+1626;andrea@regobsTroms;170533
+1119;knut;174315
+3627;EspenDM;177281
+12614;Lene Fisker ;184534
+1150;martin;172913
+4250;Lars Berge;188148
+1004;Simon;180501
+2900;trond_olav@nortind;175977
+3584;Gudmund;180274
+3497;NjålØ;179431
+11321;Grums.obs;177345
+1168;Nilscf@regobsTroms;177791
+6209;Adam;176204
+12874;Martinhaslevang;186394
+754;einar@nortindBOF;185567
+12076;Morten;188314
+1264;Cecilie@regobsTroms;183805
+240;Svartn@regobsTroms;187824
+1001;Asmkar;178119
+10923;Jorgenb;187784
+12952;MortenUrrang;187127
+2861;linda_medskipaabeina;191610
+3836;Fjellboms;189015
+1589;jkvn@alf;181513
+12367;espen@norconsult;183385
+11895;KjellaugM@friluftsliv_hivolda ;187629
+628;Rune;174465
+7951;Alexander@sbo.nu ;177058
+6209;Adam;184100
+1577;bjafje;179854
+1168;Nilscf@regobsTroms;172763
+9171;Stranden;192958
+12107;Maritagk@vossvgs;181242
+8218;Leikny;183438
+6578;Frode;178892
+1589;jkvn@alf;186665
+810;Kjetil G;185378
+1225;Sofia@regobsTroms;183950
+64;Erling Snøva;189096
+3531;Gomsted;186285
+1354;Gaute@rkhskred;189523
+1264;Cecilie@regobsTroms;179794
+7520;SimonPudderhund;168260
+1657;Marte;171476
+3493;RichardFjellaksel;191108
+1321;oormasen;184664
+2826;Martin;188200
+12076;Morten;187456
+12331;MAS;181531
+12080;Jacko;179809
+3569;David@midttroms ;185105
+785;KrLarsen;192860
+152;Snowman;183838
+1186;Sindre@nortind;170104
+6850;Bjodybda;183854
+12504;Preben@frivillig;183842
+1214;JL ;193535
+6257;Audun@unis;195060
+7526;Vemund@Friluftsliv_HiVolda;191208
+12032;Halvard@Friluftsliv_Hivolda;179561
+1571;V;180675
+11512;Thomas@SNO ;186532
+12012;Sigrid@Friluftsliv_Hivolda;190492
+1225;Sofia@regobsTroms;185144
+1299;Kaptajn Fjeld;189215
+3814;Trond Baadstø;177085
+13106;Charlotte@Friluftsliv_HiVolda;188664
+7498;Mellera;180320
+12450;Sivert Hennum;182677
+672;OleRoger;188250
+1214;JL ;183384
+3778;Arve;177823
+1174;Thorleif svendsen;187471
+1761;Erwin;187131
+1168;Nilscf@regobsTroms;172142
+12107;Maritagk@vossvgs;182539
+12608;Ellisiv@Friluftsliv_Hivolda;184782
+9305;perheimdal ;193077
+3704;ThomasN;185363
+9171;Stranden;178854
+784;Hans Erik@ferdaråd;181387
+4111;reuter@slf.ch;192059
+152;Snowman;193823
+12826;s.helg. ;188494
+1589;jkvn@alf;180598
+1117;Philip;175417
+11438;krissikross;174344
+152;Snowman;177082
+874;Sjur Mork;195133
+12593;Henrik;184614
+3754;JanErik;173438
+1293;SNO-Liv;175451
+4043;Hakon@nortind;173678
+1215;VegardVB;186630
+4006;HoltH@unis;182170
+3090;DW;177268
+1294;AsbjørnF;193646
+1168;Nilscf@regobsTroms;172627
+1354;Gaute@rkhskred;175821
+2826;Martin;191203
+12508;Sturla;191187
+1187;Robert Ulfsnes;175665
+12076;Morten;184964
+802;Rolf B.;188135
+7867;EspenR;189364
+1187;Robert Ulfsnes;189098
+7518;Eirik;194290
+11549;Kasper haugland;182521
+1193;pmbakke@nortind;177967
+12871;Emilieaamodt;187159
+13167;Olekav;189227
+1001;Asmkar;180127
+12079;Radicalex1;179400
+4061;oholsen;176830
+11124;Sunnivsk;188722
+2959;Charlotte;183825
+3745;Gaute;187944
+1193;pmbakke@nortind;184968
+12295;Mathis@ANG;181268
+8033;Nrhfjone;186143
+1168;Nilscf@regobsTroms;174203
+7951;Alexander@sbo.nu ;173988
+1566;Snorre;184931
+7614;ØyeflatenYngve ;176025
+794;Jonas.hansen@live.no;179664
+559;Stig Anton Hordvik;188778
+11556;Ingvild@vossvgs;182515
+6018;Henrikforce;177500
+6209;Adam;191567
+489;jan@nordfjordfhs;182806
+784;Hans Erik@ferdaråd;192534
+152;Snowman;180091
+3295;Kristin;183373
+12295;Mathis@ANG;187809
+3506;Lars;174023
+6214;Kjoers;171564
+11872;Fabri;178131
+1117;Philip;176218
+1299;Kaptajn Fjeld;170072
+784;Hans Erik@ferdaråd;175266
+3505;Gunnar;177802
+628;Rune;179034
+489;jan@nordfjordfhs;174987
+1214;JL ;191309
+12146;ET;179975
+7951;Alexander@sbo.nu ;184212
+3569;David@midttroms ;175051
+12367;espen@norconsult;185212
+931;Olaf Årthun. ;175668
+8649;S.Brochmann@ANG;183332
+1566;Snorre;176717
+489;jan@nordfjordfhs;181955
+64;Erling Snøva;180349
+784;Hans Erik@ferdaråd;175252
+6578;Frode;178892
+3531;Gomsted;186285
+7370;Hans;185199
+2861;linda_medskipaabeina;177258
+12048;Asbr;179255
+1742;edda@regobsTroms;176894
+152;Snowman;191587
+11209;Pistol;172518
+7452;SteinS;186331
+64;Erling Snøva;174711
+3116;NRH Emil Fillingsnes ;185566
+3745;Gaute;176982
+7036;Lars Sollie;178006
+152;Snowman;193819
+874;Sjur Mork;176727
+867;Tjugen;193217
+4043;Hakon@nortind;173678
+7139;Lisa;181425
+64;Erling Snøva;185422
+12076;Morten;179986
+7452;SteinS;186331
+7125;Thomas1990@frivillig;179825
+12078;ThomasH;179928
+672;OleRoger;175756
+8190;Carlo;190386
+4006;HoltH@unis;168273
+12076;Morten;184405
+475;Snømann;184894
+6842;LPLænn;174458
+3689;elke@unis;173925
+3917;Frank J Formo;189957
+7772;Abelsen;191613
+1168;Nilscf@regobsTroms;174649
+12384;Gunnar;182093
+1119;knut;181971
+2900;trond_olav@nortind;185606
+3778;Arve;171635
+7926;Laurits Hansen;178667
+4006;HoltH@unis;169473
+12608;Ellisiv@Friluftsliv_Hivolda;184508
+13167;Olekav;189227
+1193;pmbakke@nortind;172387
+152;Snowman;192577
+4061;oholsen;180014
+4037;Thomas;176482
+6306;DagF@UNIS;171612
+1168;Nilscf@regobsTroms;188686
+3096;timdassler@regobsTroms;185208
+489;jan@nordfjordfhs;186797
+6912;Stanis@frivillig;180166
+6578;Frode;178891
+1694;rB;176325
+2947;Brauten;192573
+3224;Lund;184589
+7036;Lars Sollie;178006
+1225;Sofia@regobsTroms;188321
+3569;David@midttroms ;189519
+397;kruse@nortind;185690
+6209;Adam;184137
+11902;LaererJEP;184627
+1202;olamk;179376
+949;HåTo;172743
+3497;NjålØ;178446
+12641;Stig;184919
+7614;ØyeflatenYngve ;176025
+8283;Morten Asbjørnsen;177653
+196;mikal@nortind;177539
+4534;marista;178985
+8204;mnskeyser;168082
+7511;silsilje;178883
+1402;StigArveJohansen@Helgeland;174332
+3745;Gaute;178339
+2861;linda_medskipaabeina;180023
+12067;Larsen;179984
+152;Snowman;185571
+785;KrLarsen;186939
+3836;Fjellboms;179760
+1168;Nilscf@regobsTroms;192064
+6306;DagF@UNIS;170411
+12629;Jennekman;184698
+3896;Knut;181959
+1230;bergbjørn@nortind;181572
+4006;HoltH@unis;194276
+475;Snømann;177452
+240;Svartn@regobsTroms;192148
+3505;Gunnar;177802
+3816;stian@nortind;184150
+13336;erik79;190144
+802;Rolf B.;182606
+6612;Lynum;177009
+1701;KAR;173028
+13089;Jossen;188480
+5220;Steffenfjelldal;177904
+3846;Lukas Heck;186762
+7125;Thomas1990@frivillig;170456
+1286;OddmundR;183290
+12477;jan_o2;185319
+6306;DagF@UNIS;172113
+1214;JL ;183808
+2883;SivK;185413
+6306;DagF@UNIS;169456
+489;jan@nordfjordfhs;183972
+8204;mnskeyser;171207
+12106;maren@vossvgs;182542
+230;kjetilhd;179038
+1193;pmbakke@nortind;176270
+7242;Hvitblikk;179911
+64;Erling Snøva;175741
+6214;Kjoers;189965
+1168;Nilscf@regobsTroms;190263
+1259;Toftagen;179813
+472;Kåre Ø;186286
+11305;HaakonS;173659
+6257;Audun@unis;187446
+1193;pmbakke@nortind;177967
+11537;Marte@vossvgs;179770
+3493;RichardFjellaksel;173391
+752;endre@nortind;173468
+1286;OddmundR;183418
+3704;ThomasN;189189
+4006;HoltH@unis;168273
+7440;Maria;179972
+12068;Gox;179391
+7867;EspenR;176403
+785;KrLarsen;177901
+1481;MariE;172105
+12081;Ole E;179978
+6493;D.E.snøbrett;187704
+1259;Toftagen;191442
+1742;edda@regobsTroms;179970
+3923;Mortenknaps;175225
+134;svmo;180129
+461;Markus;186583
+11895;KjellaugM@friluftsliv_hivolda ;185626
+7546;Pdohlie;182761
+672;OleRoger;177007
+11106;kgs;185709
+784;Hans Erik@ferdaråd;192736
+1259;Toftagen;175319
+1293;SNO-Liv;178842
+11196;tmeling@nortind.no;177955
+152;Snowman;193824
+12076;Morten;185857
+7951;Alexander@sbo.nu ;177191
+7951;Alexander@sbo.nu ;173246
+3505;Gunnar;174175
+8277;MagneH;175303
+3745;Gaute;177922
+4006;HoltH@unis;192541
+931;Olaf Årthun. ;190265
+3834;Maria Leganger;177806
+1626;andrea@regobsTroms;175474
+12034;Petterhove;179145
+4006;HoltH@unis;192541
+3787;Håvard;179866
+7370;Hans;185199
+1294;AsbjørnF;186874
+13031;Berit;192014
+348;ErikEB@rkh;175178
+188;lakrisr;190234
+9171;Stranden;186493
+11021;JonasD@nortind.no;170334
+152;Snowman;192961
+9171;Stranden;193052
+12608;Ellisiv@Friluftsliv_Hivolda;191327
+4250;Lars Berge;192038
+771;Wfarns;181578
+672;OleRoger;177177
+3497;NjålØ;178446
+11304;Ragnhild;173655
+6214;Kjoers;184537
+152;Snowman;189193
+785;KrLarsen;174632
+3571;KineHok;190675
+240;Svartn@regobsTroms;192148
+628;Rune;176114
+874;Sjur Mork;194811
+11929;Moda;178261
+1119;knut;182347
+12071;Toppturmathias;179624
+3497;NjålØ;190024
+11163;oscar@randoscando;185109
+8879;talonlibre;191065
+11554;Ingeborg@vossvgs ;181202
+1626;andrea@regobsTroms;191318
+1168;Nilscf@regobsTroms;189035
+7614;ØyeflatenYngve ;176025
+3569;David@midttroms ;188445
+3090;DW;189191
+2815;Michael ;189217
+2815;Michael ;185377
+966;Christer;182556
+3506;Lars;170640
+3569;David@midttroms ;195044
+793;Endre;186710
+754;einar@nortindBOF;174673
+3584;Gudmund;180409
+931;Olaf Årthun. ;183313
+6306;DagF@UNIS;179595
+11106;kgs;180257
+7709;PhilipK;169040
+12071;Toppturmathias;179396
+1186;Sindre@nortind;175164
+3754;JanErik;173237
+11155;Davewragg;182389
+4082;Iver;189187
+4250;Lars Berge;190136
+3569;David@midttroms ;178719
+5994;erlend@nordfjordfhs;171111
+11731;O Bjørgaas;187814
+3569;David@midttroms ;187058
+12331;MAS;190340
+7100;carlthemtnbum;170950
+3039;Turkite;185714
+628;Rune;174778
+3861;Sindrebal;188620
+1452;PerMHall;172691
+10822;trulski;184967
+1481;MariE;193614
+3569;David@midttroms ;187058
+8886;obr;186517
+1577;bjafje;169776
+6209;Adam;179380
+11124;Sunnivsk;191266
+802;Rolf B.;190203
+12826;s.helg. ;188497
+2879;Jonasl;183671
+152;Snowman;193220
+12074;Stian ;180583
+1289;mrtnlvs;168744
+3861;Sindrebal;189504
+8766;Sondrewenaas;190018
+825;Julia@rkh;177817
+2826;Martin;185975
+1001;Asmkar;185133
+12037;Øyvind Angard ;181966
+3689;elke@unis;172215
+11731;O Bjørgaas;187814
+1001;Asmkar;178119
+1577;bjafje;179157
+1481;MariE;196048
+12076;Morten;180403
+11094;Jens-Erik;170654
+348;ErikEB@rkh;170487
+3295;Kristin;183165
+1119;knut;177645
+7753;Colomblanc;185779
+698;sjur@nortind;189785
+1169;larsbard;181184
+698;sjur@nortind;188415
+1225;Sofia@regobsTroms;174833
+1289;mrtnlvs;178910
+3683;Marina@NorskeRedningshunder;182755
+1214;JL ;191597
+949;HåTo;190569
+11163;oscar@randoscando;190358
+12075;Laderen;179406
+8021;NRHSpockeli;185774
+7498;Mellera;174243
+13133;Pierre-Marie Lefeuvre;191190
+9171;Stranden;191645
+8760;Bjørn;174346
+3562;eskildskov;184505
+3745;Gaute;173373
+7518;Eirik;175280
+754;einar@nortindBOF;176492
+1289;mrtnlvs;179564
+2826;Martin;180804
+2861;linda_medskipaabeina;191813
+2826;Martin;192031
+4272;RuRo;177070
+752;endre@nortind;173829
+3562;eskildskov;186018
+1694;rB;179535
+3562;eskildskov;187575
+9171;Stranden;192318
+12073;Lasse på fjellet;179398
+2900;trond_olav@nortind;176719
+7644;AslakW;170185
+9805;masor;177554
+12075;Laderen;179406
+3493;RichardFjellaksel;173391
+559;Stig Anton Hordvik;185037
+12067;Larsen;179392
+3683;Marina@NorskeRedningshunder;179498
+3778;Arve;174146
+794;Jonas.hansen@live.no;170179
+754;einar@nortindBOF;174862
+3584;Gudmund;174040
+4006;HoltH@unis;186573
+3508;Jantore;178076
+712;lillerodvann;173170
+3505;Gunnar;176928
+754;einar@nortindBOF;172661
+538;2rhenrik;176104
+240;Svartn@regobsTroms;187824
+3745;Gaute;173972
+7440;Maria;191111
+152;Snowman;180090
+8930;OleNy@nordfjordfhs;175656
+3683;Marina@NorskeRedningshunder;176240
+874;Sjur Mork;190387
+12074;Stian ;180583
+11572;RasmusRamstad;179943
+12180;HaraldO;191221
+12104;emil@vossvgs;182538
+1614;thogund;186598
+8204;mnskeyser;175500
+6850;Bjodybda;189218
+1762;SRM;177625
+489;jan@nordfjordfhs;192660
+12076;Morten;188600
+12077;MortimerSand;179932
+3194;perheimdal;185125
+11540;Lea;175302
+1762;SRM;177625
+6912;Stanis@frivillig;187823
+152;Snowman;186437
+8759;Guttorm;174934
+3173;Håkon Sælen;179784
+11029;HelgeL;173249
+864;tomive;185587
+3569;David@midttroms ;172402
+3787;Håvard;190251
+1289;mrtnlvs;168744
+4082;Iver;177803
+8900;Joachim;186434
+429;Daniel Larsen ;182209
+3745;Gaute;179214
+1286;OddmundR;175034
+2861;linda_medskipaabeina;183559
+1589;jkvn@alf;186665
+12002;EirikJH;182815
+8766;Sondrewenaas;180197
+2815;Michael ;179942
+3546;Knut H;178398
+3116;NRH Emil Fillingsnes ;185949
+1001;Asmkar;190237
+628;Rune;181920
+6214;Kjoers;186759
+3161;yngve@nrh;185964
+8217;NinaS;184366
+3149;elin@nrh;185915
+6209;Adam;189192
+1274;Mikael Amlert SBO/IFMGA;189099
+7370;Hans;178730
+11784;SveinarLS;177062
+1259;Toftagen;178860
+3745;Gaute;175898
+13422;ajbiagio;190818
+1119;knut;178915
+152;Snowman;178351
+2883;SivK;185154
+4272;RuRo;186547
+7626;Andrine ;186046
+3787;Håvard;186419
+3745;Gaute;183625
+8033;Nrhfjone;185614
+11003;Bjaoey;170450
+12073;Lasse på fjellet;180591
+12037;Øyvind Angard ;188320
+4006;HoltH@unis;171137
+3497;NjålØ;176922
+1193;pmbakke@nortind;189543
+1321;oormasen;184696
+9381;0dB;185119
+4006;HoltH@unis;192684
+2835;Kristoffer;179922
+12073;Lasse på fjellet;179626
+5994;erlend@nordfjordfhs;189956
+3778;Arve;171514
+12343;Tenstad;181931
+712;lillerodvann;173170
+785;KrLarsen;173123
+12872;Erling Hovden;187119
+3123;Krille;189108
+12593;Henrik;184163
+11488;Vildehammers;189000
+4250;Lars Berge;186643
+3546;Knut H;177953
+1259;Toftagen;179813
+466;Rune Aa;178977
+1321;oormasen;184670
+8240;Paul;171074
+4272;RuRo;177070
+3497;NjålØ;179431
+12367;espen@norconsult;185212
+1163;Steinar@NRH;185887
+2883;SivK;176730
+12553;Lars@thinkoutside;190631
+752;endre@nortind;174455
+784;Hans Erik@ferdaråd;181387
+1041;ave016;183965
+6214;Kjoers;189389
+6214;Kjoers;184313
+3836;Fjellboms;180189
+12551;KalleANG;183635
+11021;JonasD@nortind.no;170060
+1710;Christen@norskluftambulanse;178911
+12145;KristofferH;179962
+489;jan@nordfjordfhs;183972
+6612;Lynum;183968
+4250;Lars Berge;185848
+7983;Vetlesulen;185234
+7526;Vemund@Friluftsliv_HiVolda;185000
+1169;larsbard;181266
+11929;Moda;178261
+3924;kenneth@SHUVoss;179904
+3689;elke@unis;193628
+550;Ørjan@student_uio;172556
+7868;Oysteine;177755
+784;Hans Erik@ferdaråd;180350
+3173;Håkon Sælen;179784
+6257;Audun@unis;186619
+3123;Krille;191911
+1169;larsbard;190663
+698;sjur@nortind;173304
+6257;Audun@unis;187012
+784;Hans Erik@ferdaråd;172315
+3551;HEA;171484
+11784;SveinarLS;178825
+12101;Ali;179948
+2826;Martin;193900
+8193;Gjermund;187085
+1657;Marte;171609
+4264;NRH Howard;176720
+1187;Robert Ulfsnes;185202
+489;jan@nordfjordfhs;187475
+874;Sjur Mork;190388
+1004;Simon;180501
+3778;Arve;176744
+4120;Laurids@USNnaturguide;192431
+2861;linda_medskipaabeina;190143
+6912;Stanis@frivillig;185454
+1710;Christen@norskluftambulanse;180729
+2815;Michael ;189217
+1321;oormasen;174763
+3896;Knut;180990
+11539;Arnt-Olav@vossvgs;182532
+230;kjetilhd;177970
+12296;sylvia@ang;187810
+3570;Thomas;187783
+8914;torsteinbjoergen;191914
+4043;Hakon@nortind;173494
+3704;ThomasN;178274
+802;Rolf B.;189791
+8930;OleNy@nordfjordfhs;171644
+712;lillerodvann;173033
+3683;Marina@NorskeRedningshunder;179027
+8132;tikvam;179933
+12950;Connie Myking ;187109
+9149;Linda;179934
+11003;Bjaoey;177947
+4250;Lars Berge;172566
+1119;knut;178915
+1420;asgeirrusti;170849
+6209;Adam;188848
+2835;Kristoffer;178871
+785;KrLarsen;193066
+3493;RichardFjellaksel;183297
+12508;Sturla;193273
+1294;AsbjørnF;193284
+11133;Omi@nordfjordfhs;174986
+1150;martin;173275
+4037;Thomas;178368
+1710;Christen@norskluftambulanse;172616
+949;HåTo;190673
+11902;LaererJEP;186199
+12296;sylvia@ang;192166
+2959;Charlotte;183825
+3090;DW;188214
+6908;Tobias1;176442
+4006;HoltH@unis;193914
+874;Sjur Mork;194811
+12508;Sturla;183845
+6209;Adam;188845
+13127;jshuseby;188889
+1571;V;180587
+3221;ØHenjum;168230
+8190;Carlo;184800
+1132;erlendb;170843
+523;AndreasL;172741
+8765;Kurt aho;175437
+8930;OleNy@nordfjordfhs;186017
+931;Olaf Årthun. ;186909
+4250;Lars Berge;189551
+628;Rune;177959
+3923;Mortenknaps;175225
+1293;SNO-Liv;177036
+3584;Gudmund;180409
+12091;Vilmoe;179780
+64;Erling Snøva;176490
+12104;emil@vossvgs;179771
+3476;JonDahlRasmussen;189010
+825;Julia@rkh;172685
+6399;Kristoffer Løvvold;186158
+3143;Isaac@SBO;194464
+2826;Martin;181249
+11196;tmeling@nortind.no;172946
+2959;Charlotte;186782
+810;Kjetil G;185378
+348;ErikEB@rkh;189147
+1321;oormasen;175921
+2959;Charlotte;186782
+931;Olaf Årthun. ;181826
+3149;elin@nrh;186323
+1657;Marte;176574
+1577;bjafje;170348
+3846;Lukas Heck;186940
+3683;Marina@NorskeRedningshunder;173681
+7842;Larso;179651
+12294;Ida@ANG;181601
+3134;Fredrik@SBO;170341
+3787;Håvard;172237
+1186;Sindre@nortind;170945
+11021;JonasD@nortind.no;170124
+1626;andrea@regobsTroms;177782
+1292;Frankhave;177091
+2861;linda_medskipaabeina;191813
+1294;AsbjørnF;181419
+1168;Nilscf@regobsTroms;185231
+7587;saaj@nortind;175751
+3569;David@midttroms ;193827
+667;JJ;186252
+7511;silsilje;178883
+12078;ThomasH;179928
+1294;AsbjørnF;193645
+1193;pmbakke@nortind;175533
+1274;Mikael Amlert SBO/IFMGA;189731
+3562;eskildskov;186593
+10995;steinar;184115
+4082;Iver;177963
+4351;KjetilMorken;178951
+3787;Håvard;172448
+2815;Michael ;176672
+8277;MagneH;175303
+3683;Marina@NorskeRedningshunder;171506
+8971;Marthe;178199
+3683;Marina@NorskeRedningshunder;168448
+949;HåTo;180603
+2900;trond_olav@nortind;176392
+7242;Hvitblikk;185379
+7100;carlthemtnbum;173007
+3562;eskildskov;194455
+1638;andreas@Narvik;190526
+3032;SigmundS;171150
+12878;Sondre;188498
+8204;mnskeyser;171413
+3683;Marina@NorskeRedningshunder;184910
+758;RVigdal;168183
+8930;OleNy@nordfjordfhs;178596
+6946;HV;193901
+6665;Eirik Fjær;185227
+11779;Havode;176979
+1289;mrtnlvs;182713
+2819;mats@regobsTroms;174648
+628;Rune;180576
+3052;seb@regobsTroms;179982
+1293;SNO-Liv;190983
+1286;OddmundR;187008
+931;Olaf Årthun. ;176189
+6493;D.E.snøbrett;187704
+11556;Ingvild@vossvgs;182515
+3090;DW;172510
+3143;Isaac@SBO;189515
+6801;Ole Tonny @rkh;191843
+784;Hans Erik@ferdaråd;174943
+810;Kjetil G;185365
+7526;Vemund@Friluftsliv_HiVolda;191208
+4006;HoltH@unis;194276
+12071;Toppturmathias;179624
+12180;HaraldO;188102
+11849;Beddari1;186497
+12071;Toppturmathias;180182
+7983;Vetlesulen;185234
+6639;PowderBird;176563
+7127;la7rpa;181185
+12291;Johansen;181778
+12034;Petterhove;179145
+4006;HoltH@unis;180986
+6399;Kristoffer Løvvold;186158
+11962;Morgan@Friluftsliv_Hivolda;179279
+12067;Larsen;180161
+3506;Lars;171511
+3546;Knut H;177953
+4602;Ruben;185229
+8879;talonlibre;171498
+6257;Audun@unis;194651
+12076;Morten;180533
+152;Snowman;192933
+1186;Sindre@nortind;175164
+6257;Audun@unis;187665
+12054;John;180160
+12371;Lindab;187037
+6912;Stanis@frivillig;185026
+8190;Carlo;185656
+560;bjorgnar;181031
+7139;Lisa;171520
+12076;Morten;180533
+6632;JPG;176753
+4006;HoltH@unis;185777
+3476;JonDahlRasmussen;187269
+3569;David@midttroms ;176126
+9149;Linda;180721
+3497;NjålØ;175837
+3221;ØHenjum;168230
+3505;Gunnar;172992
+2802;Abonden;177636
+281;Bjørnar@Hagefonna;172427
+3745;Gaute;179374
+12897;Markus;186504
+11731;O Bjørgaas;187814
+12095;OliverHarding;187968
+4602;Ruben;185229
+2861;linda_medskipaabeina;179521
+784;Hans Erik@ferdaråd;174554
+2868;emmawichardt;181270
+1354;Gaute@rkhskred;189523
+4120;Laurids@USNnaturguide;173473
+489;jan@nordfjordfhs;184948
+9080;Ttkleiven;191603
+8204;mnskeyser;177794
+1742;edda@regobsTroms;179970
+489;jan@nordfjordfhs;187633
+11124;Sunnivsk;181433
+784;Hans Erik@ferdaråd;179373
+12296;sylvia@ang;187957
+785;KrLarsen;175456
+11021;JonasD@nortind.no;170498
+3584;Gudmund;174185
+12142;Randokalle;179961
+794;Jonas.hansen@live.no;175411
+3505;Gunnar;174175
+5378;Morten H;182487
+13687;Per;192938
+6493;D.E.snøbrett;174456
+1293;SNO-Liv;168227
+2826;Martin;193051
+3072;Arne@regobs;171620
+8204;mnskeyser;191783
+2770;Eltervaag;194368
+3683;Marina@NorskeRedningshunder;186209
+7597;Oddbjørn;177784
+8456;Marte;184802
+6031;havardhoyvik;187274
+11829;MarkusA;190534
+64;Erling Snøva;173650
+1505;Olivia@regobsTroms;181575
+6912;Stanis@frivillig;187666
+240;Svartn@regobsTroms;190268
+11674;Einar;176224
+9171;Stranden;184858
+3787;Håvard;186411
+3569;David@midttroms ;179619
+11081;ev.he;170543
+1225;Sofia@regobsTroms;183783
+3704;ThomasN;193713
+559;Stig Anton Hordvik;186676
+3787;Håvard;180739
+240;Svartn@regobsTroms;192148
+7983;Vetlesulen;185449
+794;Jonas.hansen@live.no;171834
+3569;David@midttroms ;173265
+12077;MortimerSand;179808
+9171;Stranden;186838
+3816;stian@nortind;184150
+1566;Snorre;183830
+3097;Eiska;186951
+12436;Onkel J;183829
+1225;Sofia@regobsTroms;185850
+560;bjorgnar;182322
+1214;JL ;183808
+12997;KLBerggrav;187774
+9305;perheimdal ;183312
+10284;larstc;183858
+550;Ørjan@student_uio;183062
+6209;Adam;176201
+11894;TimMRiesen;178121
+4006;HoltH@unis;186773
+11519;Edvin;184161
+2861;linda_medskipaabeina;177258
+3569;David@midttroms ;186284
+569;ojs;170194
+12079;Radicalex1;180147
+64;Erling Snøva;175620
+1294;AsbjørnF;186874
+785;KrLarsen;192858
+6850;Bjodybda;187948
+11700;Palmelo;176381
+794;Jonas.hansen@live.no;173124
+3704;ThomasN;170658
+1289;mrtnlvs;178910
+6801;Ole Tonny @rkh;191748
+2891;Håvard Myklebust;170659
+785;KrLarsen;168249
+6031;havardhoyvik;187462
+152;Snowman;190525
+4272;RuRo;173025
+1099;Fredrik Backe;179632
+6240;aam;185466
+784;Hans Erik@ferdaråd;171717
+152;Snowman;184991
+810;Kjetil G;190212
+1505;Olivia@regobsTroms;184138
+4006;HoltH@unis;186573
+4006;HoltH@unis;178709
+3493;RichardFjellaksel;183297
+3505;Gunnar;176928
+8132;tikvam;179933
+6031;havardhoyvik;189831
+3834;Maria Leganger;177635
+3816;stian@nortind;185966
+7810;ToreK;187669
+4250;Lars Berge;188148
+3683;Marina@NorskeRedningshunder;184059
+8930;OleNy@nordfjordfhs;189225
+11537;Marte@vossvgs;182514
+1168;Nilscf@regobsTroms;174205
+4006;HoltH@unis;189014
+12076;Morten;180403
+4351;KjetilMorken;183940
+1117;Philip;176218
+3745;Gaute;184448
+3531;Gomsted;184587
+2959;Charlotte;183825
+152;Snowman;180840
+12730;Heradstveit@NRH;185582
+6632;JPG;181280
+3161;yngve@nrh;185974
+3628;Henning;189908
+1168;Nilscf@regobsTroms;175305
+1321;oormasen;174141
+11995;Poggen;178851
+3072;Arne@regobs;171826
+1193;pmbakke@nortind;183685
+4006;HoltH@unis;186774
+3689;elke@unis;183628
+152;Snowman;192937
+11488;Vildehammers;174631
+4348;Calle;191465
+672;OleRoger;176307
+13115;Mr.knarf;190112
+3072;Arne@regobs;181271
+3072;Arne@regobs;179003
+6013;Guro@friluftsliv_hivolda;186406
+3683;Marina@NorskeRedningshunder;173857
+1321;oormasen;170314
+11196;tmeling@nortind.no;178250
+3745;Gaute;185730
+1296;Runar Helskog;175872
+3161;yngve@nrh;185964
+4006;HoltH@unis;171409
+752;endre@nortind;174724
+152;Snowman;193818
+283;Jarle Steinar;186554
+6306;DagF@UNIS;189848
+11801;Mons;182522
+1293;SNO-Liv;190323
+1215;VegardVB;180208
+8886;obr;191747
+1701;KAR;177999
+1169;larsbard;191177
+461;Markus;190686
+4043;Hakon@nortind;173678
+11196;tmeling@nortind.no;175177
+1577;bjafje;179157
+12076;Morten;185857
+3426;thoresb@nortind;177591
+1295;sondrekv;186546
+559;Stig Anton Hordvik;186932
+12095;OliverHarding;180165
+11196;tmeling@nortind.no;178506
+12411;danielt;182398
+11956;Ernest;181627
+3787;Håvard;186418
+1225;Sofia@regobsTroms;185144
+6612;Lynum;181590
+3704;ThomasN;186580
+11576;Jimmyr;175300
+784;Hans Erik@ferdaråd;175250
+6912;Stanis@frivillig;187823
+1701;KAR;180135
+4120;Laurids@USNnaturguide;173473
+501;suiraM;176090
+784;Hans Erik@ferdaråd;171727
+11954;sunnmøreski;178436
+11749;Jonolav;176712
+3149;elin@nrh;185584
+6013;Guro@friluftsliv_hivolda;184325
+8021;NRHSpockeli;187111
+1626;andrea@regobsTroms;170533
+7370;Hans;177267
+1321;oormasen;189797
+1293;SNO-Liv;190322
+784;Hans Erik@ferdaråd;180317
+2861;linda_medskipaabeina;186004
+3569;David@midttroms ;170394
+7125;Thomas1990@frivillig;180791
+12081;Ole E;179543
+12078;ThomasH;179399
+152;Snowman;176498
+8456;Marte;184802
+1321;oormasen;175555
+11304;Ragnhild;173655
+152;Snowman;185405
+11903;SondreS;178178
+7455;Anna Nystedt;176651
+6665;Eirik Fjær;183388
+8259;aslak;185816
+1225;Sofia@regobsTroms;183950
+1710;Christen@norskluftambulanse;178911
+6630;Kjetså;180204
+152;Snowman;190470
+1186;Sindre@nortind;170785
+2826;Martin;185975
+857;Geo;176704
+931;Olaf Årthun. ;176189
+4850;Åsmund Steen;188104
+5091;rolfjorge;172597
+12242;daniel@sognekraft;180841
+3134;Fredrik@SBO;187937
+672;OleRoger;176307
+7186;Amaanum;181538
+1761;Erwin;177057
+1174;Thorleif svendsen;187471
+1637;Finn@regobs Troms;169260
+1004;Simon;180501
+11937;Robin@Friluftsliv_Hivolda;185996
+758;RVigdal;186892
+11106;kgs;185732
+3497;NjålØ;185434
+4006;HoltH@unis;193998
+7518;Eirik;185122
+1299;Kaptajn Fjeld;189681
+8217;NinaS;184367
+3745;Gaute;173373
+1117;Philip;178721
+4043;Hakon@nortind;173494
+11124;Sunnivsk;190690
+5994;erlend@nordfjordfhs;189931
+2815;Michael ;170322
+3683;Marina@NorskeRedningshunder;182821
+11681;pålr;179276
+3562;eskildskov;189682
+6612;Lynum;186776
+11674;Einar;176224
+489;jan@nordfjordfhs;182543
+4006;HoltH@unis;178440
+6197;Simone;193024
+11731;O Bjørgaas;187814
+1481;MariE;179762
+3072;Arne@regobs;169632
+746;Jimmy Halvardsson;169944
+754;einar@nortindBOF;185567
+3123;Krille;188986
+12069;Skigubben;180396
+7526;Vemund@Friluftsliv_HiVolda;188464
+7587;saaj@nortind;183056
+784;Hans Erik@ferdaråd;180350
+4272;RuRo;177070
+1624;Anderseskeland;173657
+3745;Gaute;176930
+9526;Andreas W;185161
+9080;Ttkleiven;191186
+3861;Sindrebal;182397
+628;Rune;168198
+1215;VegardVB;180481
+776;Skipatrulje Myrkdalen;188090
+1168;Nilscf@regobsTroms;173016
+7613;Morten Fineide ;177804
+10995;steinar;179921
+7125;Thomas1990@frivillig;170456
+11956;Ernest;181542
+1589;jkvn@alf;177879
+2959;Charlotte;187943
+7587;saaj@nortind;175786
+12063;Vegard Tufte;186047
+1431;Hege;185153
+12621;Ingvild_Stordal;184717
+12448;Rune;182669
+1214;JL ;183146
+1192;HannahV@regobsTroms;195029
+2900;trond_olav@nortind;176392
+3683;Marina@NorskeRedningshunder;185042
+3584;Gudmund;174079
+3787;Håvard;187651
+4235;Aasen;190139
+3682;arnedk;185357
+3493;RichardFjellaksel;192049
+1321;oormasen;184670
+7673;Kimslimxxl;176562
+1571;V;179401
+1295;sondrekv;189645
+1274;Mikael Amlert SBO/IFMGA;188641
+3683;Marina@NorskeRedningshunder;194461
+1004;Simon;180501
+3683;Marina@NorskeRedningshunder;185859
+10216;Stein Torbjørn ;181776
+489;jan@nordfjordfhs;184948
+3816;stian@nortind;182364
+8021;NRHSpockeli;179019
+3072;Arne@regobs;183421
+6162;BastianH;184918
+6306;DagF@UNIS;189848
+12505;Audun;183172
+1296;Runar Helskog;189018
+1168;Nilscf@regobsTroms;175305
+3787;Håvard;186414
+1577;bjafje;188935
+7125;Thomas1990@frivillig;176473
+11386;Thor;174083
+1321;oormasen;180839
+4006;HoltH@unis;182490
+8456;Marte;190063
+1481;MariE;186389
+6266;Multiknut ;176219
+559;Stig Anton Hordvik;189995
+7951;Alexander@sbo.nu ;182208
+664;stigf;191611
+7370;Hans;185199
+1163;Steinar@NRH;185642
+1402;StigArveJohansen@Helgeland;181287
+1168;Nilscf@regobsTroms;172516
+373;j.hansen;184779
+1163;Steinar@NRH;187448
+3493;RichardFjellaksel;183766
+2861;linda_medskipaabeina;179529
+7867;EspenR;189364
+7370;Hans;185199
+3149;elin@nrh;186136
+7452;SteinS;183815
+3569;David@midttroms ;173265
+11512;Thomas@SNO ;186498
+1119;knut;174315
+11464;Eirin;174457
+931;Olaf Årthun. ;177792
+6801;Ole Tonny @rkh;190240
+11933;Lea@Friluftsliv_hivolda;185396
+12105;emma@vossvg;179766
+4243;Bfrisvold;190378
+13526;Arnulf1;191388
+7370;Hans;176914
+12291;Johansen;181778
+1214;JL ;191309
+11163;oscar@randoscando;185109
+11895;KjellaugM@friluftsliv_hivolda ;187629
+152;Snowman;185613
+12095;OliverHarding;180169
+3295;Kristin;183138
+7440;Maria;179972
+3052;seb@regobsTroms;185902
+5994;erlend@nordfjordfhs;175729
+2815;Michael ;174561
+4006;HoltH@unis;183816
+12294;Ida@ANG;185237
+12674;Njål;185218
+6612;Lynum;183968
+281;Bjørnar@Hagefonna;187043
+1006;Pål Andersen;191207
+11106;kgs;185732
+7889;Hans ;183985
+6209;Adam;176729
+1694;rB;175644
+1259;Toftagen;178860
+7867;EspenR;177628
+349;Jon_Frantzen@regobsTroms;183792
+12367;espen@norconsult;190520
+1168;Nilscf@regobsTroms;193381
+4351;KjetilMorken;183940
+3813;PK@NRH;191598
+6306;DagF@UNIS;182369
+1041;ave016;183965
+3683;Marina@NorskeRedningshunder;170656
+12508;Sturla;191589
+1657;Marte;171609
+6018;Henrikforce;179594
+559;Stig Anton Hordvik;189997
+3683;Marina@NorskeRedningshunder;189103
+1589;jkvn@alf;180598
+2889;Ola Basecamp;186934
+1117;Philip;179935
+7409;Heiden;179818
+9070;Taguleng;177929
+12508;Sturla;193372
+4006;HoltH@unis;186221
+3745;Gaute;173920
+3628;Henning;189906
+3497;NjålØ;178446
+12081;Ole E;180535
+8823;Esten;181573
+752;endre@nortind;190134
+11149;nemis;179011
+3689;elke@unis;193628
+1225;Sofia@regobsTroms;185144
+628;Rune;179945
+7518;Eirik;194290
+785;KrLarsen;193716
+1168;Nilscf@regobsTroms;183989
+11133;Omi@nordfjordfhs;175479
+3584;Gudmund;180409
+11194;BAMBI;178255
+11872;Fabri;178131
+8930;OleNy@nordfjordfhs;186017
+2900;trond_olav@nortind;175179
+4243;Bfrisvold;186053
+1640;emilso;181209
+152;Snowman;187110
+12032;Halvard@Friluftsliv_Hivolda;179561
+1733;Karin;181599
+6257;Audun@unis;187454
+6257;Audun@unis;187101
+3683;Marina@NorskeRedningshunder;174481
+754;einar@nortindBOF;173467
+667;JJ;186252
+628;Rune;179874
+776;Skipatrulje Myrkdalen;188090
+152;Snowman;190724
+12145;KristofferH;182561
+3551;HEA;171445
+3745;Gaute;170932
+6663;MK;181046
+1292;Frankhave;168762
+7242;Hvitblikk;185238
+1186;Sindre@nortind;194306
+1299;Kaptajn Fjeld;184529
+771;Wfarns;181578
+12074;Stian ;179395
+152;Snowman;179345
+152;Snowman;178833
+746;Jimmy Halvardsson;169944
+628;Rune;174778
+712;lillerodvann;175453
+152;Snowman;186766
+1694;rB;176862
+1638;andreas@Narvik;189172
+12589;Robin;184142
+6416;inka;179990
+8879;talonlibre;191065
+1119;knut;182346
+8033;Nrhfjone;185961
+1481;MariE;184923
+1293;SNO-Liv;181254
+1321;oormasen;180839
+4006;HoltH@unis;187097
+6638;andrejenssen.no;174200
+3173;Håkon Sælen;169719
+3628;Henning;189549
+4006;HoltH@unis;187660
+1299;Kaptajn Fjeld;185419
+1215;VegardVB;189406
+3295;Kristin;183506
+4006;HoltH@unis;182490
+9171;Stranden;191940
+1186;Sindre@nortind;194306
+1321;oormasen;174141
+6209;Adam;189192
+6209;Adam;177988
+3682;arnedk;185357
+7842;Larso;171626
+3149;elin@nrh;185985
+874;Sjur Mork;192951
+11124;Sunnivsk;188473
+152;Snowman;190258
+7125;Thomas1990@frivillig;180791
+13106;Charlotte@Friluftsliv_HiVolda;189380
+2826;Martin;180804
+3683;Marina@NorskeRedningshunder;186172
+1119;knut;177645
+5994;erlend@nordfjordfhs;174553
+1214;JL ;183296
+2861;linda_medskipaabeina;190245
+240;Svartn@regobsTroms;181583
+863;Kristoffergh88;185036
+1214;JL ;183422
+1710;Christen@norskluftambulanse;178911
+240;Svartn@regobsTroms;187824
+4006;HoltH@unis;183131
+7409;Heiden;190769
+9070;Taguleng;177403
+12826;s.helg. ;187081
+4082;Iver;177963
+1589;jkvn@alf;186527
+4250;Lars Berge;172566
+8190;Carlo;190170
+1490;KristianH;186540
+3497;NjålØ;179431
+12104;emil@vossvgs;179771
+3787;Håvard;180739
+12071;Toppturmathias;179396
+12740;NrhAstri;185925
+3569;David@midttroms ;170395
+3072;Arne@regobs;189557
+11008;SteffenDeBeuker;183657
+3787;Håvard;178489
+3704;ThomasN;170952
+969;J-E Nysæther;172798
+4006;HoltH@unis;183131
+475;Snømann;177452
+6209;Adam;188916
+12078;ThomasH;179399
+758;RVigdal;186892
+11551;Marius@vossvgs;182540
+3861;Sindrebal;188443
+3061;Anne@regobsTroms;190506
+727;Tore K;185251
+8971;Marthe;184647
+496;Ole Andreas Jenssen;183409
+1577;bjafje;177989
+1225;Sofia@regobsTroms;183783
+11124;Sunnivsk;192732
+1694;rB;176483
+152;Snowman;189195
+4250;Lars Berge;190030
+11133;Omi@nordfjordfhs;175479
+7036;Lars Sollie;172629
+4006;HoltH@unis;193394
+3230;Erik Holmqvist;179050
+1490;KristianH;172624
+12411;danielt;187793
+3068;Christian@regobsTroms;187803
+489;jan@nordfjordfhs;171579
+240;Svartn@regobsTroms;191890
+1614;thogund;186598
+3562;eskildskov;176747
+11124;Sunnivsk;185124
+1150;martin;172913
+1294;AsbjørnF;193514
+874;Sjur Mork;195133
+1293;SNO-Liv;184248
+6612;Lynum;177009
+1624;Anderseskeland;177201
+4037;Thomas;187047
+3787;Håvard;179010
+6025;Erik;190133
+7526;Vemund@Friluftsliv_HiVolda;185583
+3061;Anne@regobsTroms;190506
+3569;David@midttroms ;178719
+1119;knut;182720
+242;halvor_d@nortind;177981
+12054;John;180160
+7153;a.slatten;186793
+3778;Arve;190248
+6912;Stanis@frivillig;187663
+794;Jonas.hansen@live.no;169070
+3745;Gaute;176986
+2770;Eltervaag;180834
+6266;Multiknut ;176220
+4006;HoltH@unis;192952
+240;Svartn@regobsTroms;184014
+6257;Audun@unis;195060
+4006;HoltH@unis;170971
+7597;Oddbjørn;177784
+1168;Nilscf@regobsTroms;173016
+12508;Sturla;191589
+560;bjorgnar;185314
+11937;Robin@Friluftsliv_Hivolda;179562
+784;Hans Erik@ferdaråd;173453
+672;OleRoger;177435
+3836;Fjellboms;169236
+281;Bjørnar@Hagefonna;177960
+3963;Nohr;189926
+1168;Nilscf@regobsTroms;176601
+712;lillerodvann;172892
+3928;SjantN;186927
+11539;Arnt-Olav@vossvgs;182517
+6031;havardhoyvik;187652
+698;sjur@nortind;174731
+12502;Jusku;183448
+8886;obr;191899
+794;Jonas.hansen@live.no;180449
+11962;Morgan@Friluftsliv_Hivolda;179279
+8190;Carlo;191461
+3569;David@midttroms ;193827
+3754;JanErik;173438
+11895;KjellaugM@friluftsliv_hivolda ;190820
+152;Snowman;190522
+931;Olaf Årthun. ;177792
+1225;Sofia@regobsTroms;179941
+3787;Håvard;186411
+8204;mnskeyser;171413
+8966;Birgit;191143
+3754;JanErik;172592
+12071;Toppturmathias;180182
+1626;andrea@regobsTroms;183788
+8823;Esten;184300
+874;Sjur Mork;193062
+6440;Sondre@SkredAS;173943
+7772;Abelsen;174472
+2815;Michael ;182122
+1187;Robert Ulfsnes;170903
+11798;Bergsfjordlodge;193690
+3683;Marina@NorskeRedningshunder;179634
+6948;Pål ;187770
+6209;Adam;189461
+12107;Maritagk@vossvgs;182539
+6493;D.E.snøbrett;174456
+4250;Lars Berge;188148
+281;Bjørnar@Hagefonna;178185
+4088;Haakonschj;175441
+1299;Kaptajn Fjeld;193786
+11001;splitboardmannen;169447
+7951;Alexander@sbo.nu ;171760
+7139;Lisa;171520
+11537;Marte@vossvgs;182514
+4043;Hakon@nortind;185354
+776;Skipatrulje Myrkdalen;188090
+1013;Marcel van der Velpen;178326
+1321;oormasen;177875
+3571;KineHok;192066
+8766;Sondrewenaas;180197
+698;sjur@nortind;175816
+12496;Daniel.sogndalfhs;183085
+3689;elke@unis;193285
+475;Snømann;183785
+1193;pmbakke@nortind;175365
+3569;David@midttroms ;191472
+726;knut;189948
+8971;Marthe;174803
+3683;Marina@NorskeRedningshunder;184980
+12957;Helga;187148
+12076;Morten;185410
+12079;Radicalex1;179625
+3814;Trond Baadstø;183584
+12078;ThomasH;180104
+8021;NRHSpockeli;185562
+1169;larsbard;191099
+1481;MariE;171395
+3627;EspenDM;177281
+794;Jonas.hansen@live.no;180449
+12429;AndersThorbeck;182567
+559;Stig Anton Hordvik;185110
+1293;SNO-Liv;190671
+3072;Arne@regobs;171716
+3704;ThomasN;170545
+1238;HelgeSvandal@frivillig;177717
+7452;SteinS;183815
+6197;Simone;191861
+3071;Gustav;182070
+7125;Thomas1990@frivillig;176473
+628;Rune;174465
+628;Rune;182676
+966;Christer;182556
+1481;MariE;179762
+13674;Aile;192850
+1608;Odd Erik;181406
+11962;Morgan@Friluftsliv_Hivolda;179279
+1259;Toftagen;177793
+2815;Michael ;179942
+1286;OddmundR;183290
+1041;ave016;175372
+1031;Lars Linaker;183851
+4250;Lars Berge;176037
+11798;Bergsfjordlodge;177195
+11094;Jens-Erik;170654
+8217;NinaS;184368
+2944;Veglind;177918
+3946;Arnto;174817
+7518;Eirik;175169
+794;Jonas.hansen@live.no;171123
+6578;Frode;171622
+8190;Carlo;177074
+12926;Pada;191821
+1577;bjafje;172572
+6014;Thosko ;175448
+64;Erling Snøva;175402
+13479;Desh;191114
+3569;David@midttroms ;189519
+3072;Arne@regobs;171620
+7370;Hans;176914
+12089;Ajo;179432
+712;lillerodvann;173033
+1238;HelgeSvandal@frivillig;177707
+1274;Mikael Amlert SBO/IFMGA;188641
+152;Snowman;184990
+12508;Sturla;193372
+6096;Mads Hansen ;178885
+3096;timdassler@regobsTroms;183835
+2948;kp@nortind;186036
+1289;mrtnlvs;169527
+1187;Robert Ulfsnes;180398
+3540;Christian S.;178806
+152;Snowman;185406
+672;OleRoger;188250
+4006;HoltH@unis;187660
+2900;trond_olav@nortind;181934
+3787;Håvard;179009
+752;endre@nortind;174455
+712;lillerodvann;175453
+152;Snowman;178389
+3161;yngve@nrh;183677
+6162;BastianH;184918
+3493;RichardFjellaksel;190016
+4006;HoltH@unis;183634
+11133;Omi@nordfjordfhs;175479
+3052;seb@regobsTroms;189857
+4762;Esben;177745
+9171;Stranden;192201
+3194;perheimdal;186930
+4006;HoltH@unis;194448
+11194;BAMBI;178255
+4082;Iver;186254
+1117;Philip;175417
+12367;espen@norconsult;183383
+8893;JHans1;186235
+3497;NjålØ;177767
+2861;linda_medskipaabeina;191328
+6663;MK;181046
+152;Snowman;190521
+4006;HoltH@unis;192841
+3161;yngve@nrh;185964
+12367;espen@norconsult;183408
+2826;Martin;180399
+628;Rune;180576
+857;Geo;176704
+5378;Morten H;182487
+3683;Marina@NorskeRedningshunder;171506
+240;Svartn@regobsTroms;185462
+784;Hans Erik@ferdaråd;174943
+5106;Pedda;185213
+4006;HoltH@unis;180986
+3683;Marina@NorskeRedningshunder;185849
+4250;Lars Berge;173268
+6306;DagF@UNIS;182338
+12608;Ellisiv@Friluftsliv_Hivolda;191446
+3209;sindrejh;182797
+1099;Fredrik Backe;179632
+3683;Marina@NorskeRedningshunder;179196
+1214;JL ;191319
+4351;KjetilMorken;189307
+1626;andrea@regobsTroms;186770
+12076;Morten;179404
+6739;Kristian ;185069
+5786;Martine Slåtten;176395
+6306;DagF@UNIS;169456
+12210;Hellefriisb;181163
+4264;NRH Howard;185937
+1638;andreas@Narvik;181988
+6266;Multiknut ;178610
+134;svmo;175780
+7868;Oysteine;178897
+1168;Nilscf@regobsTroms;172143
+810;Kjetil G;185365
+11512;Thomas@SNO ;181807
+8028;MonikaHW@nrh;186215
+1566;Snorre;175420
+3836;Fjellboms;180776
+8190;Carlo;177074
+3683;Marina@NorskeRedningshunder;179196
+3667;AstridL;185654
+3569;David@midttroms ;182086
+1294;AsbjørnF;184342
+3540;Christian S.;178040
+11895;KjellaugM@friluftsliv_hivolda ;190820
+1637;Finn@regobs Troms;179509
+4006;HoltH@unis;185777
+11641;adadranger;183831
+758;RVigdal;180134
+1626;andrea@regobsTroms;186770
+3507;Jonasoestrem ;179965
+825;Julia@rkh;187909
+12331;MAS;183804
+3072;Arne@regobs;181271
+8217;NinaS;189009
+672;OleRoger;177408
+8823;Esten;184283
+3787;Håvard;186417
+12296;sylvia@ang;191812
+12144;Erling;179958
+3562;eskildskov;186018
+4006;HoltH@unis;187144
+6209;Adam;184100
+969;J-E Nysæther;173239
+12079;Radicalex1;180590
+489;jan@nordfjordfhs;182543
+11798;Bergsfjordlodge;190940
+12241;Gustaf Larsson;185111
+1293;SNO-Liv;181254
+12032;Halvard@Friluftsliv_Hivolda;179561
+3683;Marina@NorskeRedningshunder;174687
+6209;Adam;177988
+785;KrLarsen;182380
+4043;Hakon@nortind;194724
+825;Julia@rkh;188853
+1433;kjetims@regobsTroms;186800
+3689;elke@unis;174557
+7868;Oysteine;178897
+12076;Morten;179811
+3778;Arve;171514
+1293;SNO-Liv;190983
+6209;Adam;184102
+3090;DW;183892
+8190;Carlo;191461
+672;OleRoger;177007
+12107;Maritagk@vossvgs;179772
+3497;NjålØ;185434
+8218;Leikny;183438
+3776;torbjorn@regobs;182668
+11124;Sunnivsk;178386
+7613;Morten Fineide ;177804
+4061;oholsen;175475
+7452;SteinS;185576
+7951;Alexander@sbo.nu ;169751
+11681;pålr;179276
+3846;Lukas Heck;194082
+3562;eskildskov;186230
+13127;jshuseby;188889
+3505;Gunnar;173677
+8930;OleNy@nordfjordfhs;179642
+784;Hans Erik@ferdaråd;171104
+489;jan@nordfjordfhs;186423
+4310;Fjellfanten2405;175842
+13127;jshuseby;188889
+12110;AWenk;185978
+8930;OleNy@nordfjordfhs;176716
+2861;linda_medskipaabeina;183560
+152;Snowman;190469
+12076;Morten;185410
+7242;Hvitblikk;183735
+152;Snowman;179368
+8190;Carlo;177467
+12367;espen@norconsult;190513
+3096;timdassler@regobsTroms;189223
+1294;AsbjørnF;172211
+8204;mnskeyser;180185
+3683;Marina@NorskeRedningshunder;185976
+12081;Ole E;179807
+1321;oormasen;170314
+475;Snømann;176180
+785;KrLarsen;195034
+3090;DW;172510
+281;Bjørnar@Hagefonna;184316
+7125;Thomas1990@frivillig;170456
+9171;Stranden;194358
+1214;JL ;193535
+1481;MariE;178687
+11681;pålr;179276
+3068;Christian@regobsTroms;187805
+11872;Fabri;178410
+12675;krzepta;185222
+118;Seth@nortind;179977
+3569;David@midttroms ;182086
+754;einar@nortindBOF;173719
+784;Hans Erik@ferdaråd;179373
+3493;RichardFjellaksel;183423
+489;jan@nordfjordfhs;191576
+3052;seb@regobsTroms;189857
+785;KrLarsen;180604
+754;einar@nortindBOF;177650
+1225;Sofia@regobsTroms;182202
+8930;OleNy@nordfjordfhs;184945
+6266;Multiknut ;176607
+7842;Larso;178600
+6801;Ole Tonny @rkh;191993
+1293;SNO-Liv;181783
+397;kruse@nortind;175163
+8930;OleNy@nordfjordfhs;178135
+63;VetleØvrebotten;177419
+3052;seb@regobsTroms;190207
+12032;Halvard@Friluftsliv_Hivolda;179817
+8456;Marte;184802
+152;Snowman;193812
+3173;Håkon Sælen;180163
+1657;Marte;176533
+754;einar@nortindBOF;173185
+11872;Fabri;178254
+3846;Lukas Heck;186592
+754;einar@nortindBOF;173534
+3816;stian@nortind;184262
+3149;elin@nrh;185985
+4850;Åsmund Steen;177911
+3506;Lars;169091
+12091;Vilmoe;179776
+2900;trond_olav@nortind;178584
+7614;ØyeflatenYngve ;187051
+785;KrLarsen;175823
+152;Snowman;177260
+628;Rune;177959
+4250;Lars Berge;184166
+11681;pålr;176880
+12012;Sigrid@Friluftsliv_Hivolda;189513
+7597;Oddbjørn;177784
+12069;Skigubben;189937
+152;Snowman;185518
+698;sjur@nortind;184409
+3834;Maria Leganger;176512
+4037;Thomas;187047
+12360;Stian Kanstad;181901
+3683;Marina@NorskeRedningshunder;180421
+6209;Adam;188848
+3569;David@midttroms ;172402
+11572;RasmusRamstad;180613
+1321;oormasen;175921
+1001;Asmkar;190352
+11798;Bergsfjordlodge;179359
+8190;Carlo;184800
+4250;Lars Berge;186745
+949;HåTo;192742
+1608;Odd Erik;181391
+240;Svartn@regobsTroms;183847
+3161;yngve@nrh;183509
+1481;MariE;184923
+3569;David@midttroms ;182086
+6306;DagF@UNIS;179247
+2861;linda_medskipaabeina;177864
+3683;Marina@NorskeRedningshunder;190032
+1186;Sindre@nortind;174801
+931;Olaf Årthun. ;183313
+1132;erlendb;167743
+12367;espen@norconsult;190513
+2861;linda_medskipaabeina;191610
+12004;MarkusOL@ANG;181423
+6665;Eirik Fjær;189771
+1215;VegardVB;176188
+8930;OleNy@nordfjordfhs;186017
+4061;oholsen;176176
+4006;HoltH@unis;178571
+64;Erling Snøva;174614
+3704;ThomasN;175481
+8033;Nrhfjone;185614
+6883;LarsMartin;177761
+1168;Nilscf@regobsTroms;177791
+3569;David@midttroms ;172402
+863;Kristoffergh88;177067
+6209;Adam;184801
+1490;KristianH;172624
+754;einar@nortindBOF;185567
+7139;Lisa;191107
+11106;kgs;171127
+7370;Hans;171525
+867;Tjugen;189359
+4006;HoltH@unis;182170
+348;ErikEB@rkh;187106
+13112;SimonC;189664
+673;Zico;190242
+1186;Sindre@nortind;176417
+475;Snømann;183120
+3584;Gudmund;188429
+4348;Calle;191312
+11106;kgs;174955
+8204;mnskeyser;173371
+1577;bjafje;181858
+11895;KjellaugM@friluftsliv_hivolda ;190649
+1694;rB;180260
+3689;elke@unis;173925
+9176;PetterHorthe;187020
+785;KrLarsen;168226
+12296;sylvia@ang;192050
+8277;MagneH;179953
+8021;NRHSpockeli;179019
+12076;Morten;179404
+4351;KjetilMorken;176646
+11196;tmeling@nortind.no;185093
+12107;Maritagk@vossvgs;179772
+489;jan@nordfjordfhs;187145
+12675;krzepta;185222
+628;Rune;182676
+1657;Marte;173338
+802;Rolf B.;186649
+3493;RichardFjellaksel;192049
+11872;Fabri;178410
+2819;mats@regobsTroms;174648
+931;Olaf Årthun. ;186233
+931;Olaf Årthun. ;186909
+1626;andrea@regobsTroms;183969
+784;Hans Erik@ferdaråd;174570
+12079;Radicalex1;179976
+12076;Morten;184964
+4082;Iver;186253
+1289;mrtnlvs;169527
+3506;Lars;174023
+7772;Abelsen;185555
+4006;HoltH@unis;186601
+4250;Lars Berge;178922
+12105;emma@vossvg;179766
+3508;Jantore;178076
+3584;Gudmund;179622
+6209;Adam;184137
+8930;OleNy@nordfjordfhs;183129
+3787;Håvard;178489
+1413;Marte;187732
+240;Svartn@regobsTroms;184012
+11163;oscar@randoscando;181487
+2830;OleK;195441
+931;Olaf Årthun. ;175668
+3787;Håvard;186417
+152;Snowman;178826
+802;Rolf B.;185071
+8217;NinaS;184366
+4250;Lars Berge;176037
+3836;Fjellboms;180184
+898;BEE;189393
+4006;HoltH@unis;170971
+1481;MariE;181171
+3787;Håvard;186412
+1655;Matias ;171139
+3787;Håvard;182186
+8823;Esten;181573
+3497;NjålØ;187917
+1505;Olivia@regobsTroms;190188
+7125;Thomas1990@frivillig;180791
+11932;EllenMarte@friluftsliv_hivolda;190485
+7409;Heiden;190769
+12331;MAS;183806
+7100;carlthemtnbum;180610
+1577;bjafje;170026
+11198;Karin;178724
+13257;Hoksor;190028
+874;Sjur Mork;176727
+230;kjetilhd;179038
+2900;trond_olav@nortind;175167
+9796;Toggs;187130
+4228;Eivind ;183821
+134;svmo;183396
+1119;knut;182720
+2959;Charlotte;191307
+3846;Lukas Heck;177941
+3569;David@midttroms ;175051
+1608;Odd Erik;184323
+9069;Thomas N;178982
+11880;Per Stian;188063
+672;OleRoger;185990
+3546;Knut H;177232
+3497;NjålØ;185175
+11539;Arnt-Olav@vossvgs;182517
+12076;Morten;180403
+11184;Søjdis;172122
+2900;trond_olav@nortind;178581
+11194;BAMBI;177252
+4006;HoltH@unis;192552
+6209;Adam;189461
+12067;Larsen;180158
+628;Rune;175546
+12070;Toppturvegard;179393
+3787;Håvard;178312
+12069;Skigubben;179394
+6469;LarsBukkehave;181546
+9149;Linda;179934
+12950;Connie Myking ;187109
+6257;Audun@unis;194823
+1321;oormasen;174312
+2861;linda_medskipaabeina;189641
+281;Bjørnar@Hagefonna;177960
+1589;jkvn@alf;178802
+240;Svartn@regobsTroms;173389
+1296;Runar Helskog;175872
+949;HåTo;190570
+3683;Marina@NorskeRedningshunder;169976
+2826;Martin;193795
+1577;bjafje;170348
+11880;Per Stian;188306
+417;Ane-Marte;192176
+6946;HV;170191
+1193;pmbakke@nortind;185542
+784;Hans Erik@ferdaråd;179252
+6306;DagF@UNIS;190130
+12608;Ellisiv@Friluftsliv_Hivolda;191327
+11937;Robin@Friluftsliv_Hivolda;185996
+2815;Michael ;191184
+11540;Lea;175302
+3778;Arve;185515
+12078;ThomasH;180401
+11196;tmeling@nortind.no;177955
+6739;Kristian ;189013
+3683;Marina@NorskeRedningshunder;182635
+5994;erlend@nordfjordfhs;171111
+8134;Pudderheimer;176229
+12294;Ida@ANG;183826
+9171;Stranden;186717
+12081;Ole E;180671
+12959;Natalia Z;188481
+1294;AsbjørnF;172212
+2815;Michael ;179942
+1733;Karin;181599
+5994;erlend@nordfjordfhs;189931
+8346;Mikel;178894
+3096;timdassler@regobsTroms;183179
+13752;Ruben;194390
+12369;Audunhr;182000
+9171;Stranden;185330
+8190;Carlo;190386
+3569;David@midttroms ;186750
+4006;HoltH@unis;182170
+2835;Kristoffer;168235
+931;Olaf Årthun. ;171411
+475;Snømann;183785
+1293;SNO-Liv;177036
+1614;thogund;179966
+672;OleRoger;177408
+3704;ThomasN;167731
+12071;Toppturmathias;180385
+429;Daniel Larsen ;186609
+12105;emma@vossvg;181203
+825;Julia@rkh;187909
+242;halvor_d@nortind;192523
+1214;JL ;184164
+6440;Sondre@SkredAS;190961
+1694;rB;178211
+6214;Kjoers;172742
+4006;HoltH@unis;180786
+11106;kgs;180262
+1274;Mikael Amlert SBO/IFMGA;188641
+1293;SNO-Liv;178842
+4006;HoltH@unis;178264
+8190;Carlo;184800
+475;Snømann;184894
+3628;Henning;189904
+1577;bjafje;179854
+3090;DW;177268
+754;einar@nortindBOF;174505
+1694;rB;187856
+12632;Mad-ass;184804
+12071;Toppturmathias;180385
+3896;Knut;180990
+6018;Henrikforce;177500
+3052;seb@regobsTroms;181517
+8204;mnskeyser;173371
+4082;Iver;171122
+3569;David@midttroms ;186284
+240;Svartn@regobsTroms;181585
+12450;Sivert Hennum;182677
+2826;Martin;180593
+12002;EirikJH;178923
+240;Svartn@regobsTroms;191890
+1294;AsbjørnF;193710
+916;TorkilE;194979
+3834;Maria Leganger;176512
+7518;Eirik;169117
+1214;JL ;183808
+2861;linda_medskipaabeina;191328
+3683;Marina@NorskeRedningshunder;179314
+11571;Kalla86;175301
+11155;Davewragg;171688
+3116;NRH Emil Fillingsnes ;181562
+1321;oormasen;184664
+1299;Kaptajn Fjeld;185010
+1657;Marte;173767
+9171;Stranden;186493
+1505;Olivia@regobsTroms;183136
+64;Erling Snøva;176338
+7526;Vemund@Friluftsliv_HiVolda;176564
+2891;Håvard Myklebust;170659
+8886;obr;191899
+8217;NinaS;184368
+7518;Eirik;175280
+754;einar@nortindBOF;172883
+429;Daniel Larsen ;186608
+523;AndreasL;170548
+4217;Per-Arne ;181532
+1215;VegardVB;183849
+152;Snowman;176909
+3787;Håvard;178489
+1168;Nilscf@regobsTroms;172516
+3096;timdassler@regobsTroms;183810
+1168;Nilscf@regobsTroms;185912
+2900;trond_olav@nortind;175167
+11556;Ingvild@vossvgs;181244
+3551;HEA;192917
+628;Rune;174776
+1163;Steinar@NRH;185969
+1321;oormasen;174763
+12075;Laderen;179806
+3569;David@midttroms ;177466
+1169;larsbard;180153
+11707;JohnKG;179212
+559;Stig Anton Hordvik;189997
+4250;Lars Berge;190252
+12508;Sturla;191996
+3209;sindrejh;186757
+12296;sylvia@ang;192051
+6197;Simone;193024
+2889;Ola Basecamp;187536
+7983;Vetlesulen;183856
+3230;Erik Holmqvist;178003
+4083;dimitrigeo;172138
+6266;Multiknut ;177666
+784;Hans Erik@ferdaråd;192528
+4006;HoltH@unis;183816
+1299;Kaptajn Fjeld;170178
+3562;eskildskov;184505
+6209;Adam;176204
+6306;DagF@UNIS;189320
+784;Hans Erik@ferdaråd;172112
+8204;mnskeyser;188593
+1481;MariE;171395
+914;EirikAA;185156
+6234;Ruben;181238
+8021;NRHSpockeli;185917
+1694;rB;176102
+11008;SteffenDeBeuker;183657
+11778;Vegard;189527
+12032;Halvard@Friluftsliv_Hivolda;179278
+701;SveinOlav;191080
+1163;Steinar@NRH;185644
+550;Ørjan@student_uio;169958
+7409;Heiden;191103
+3946;Arnto;174817
+3683;Marina@NorskeRedningshunder;189034
+1004;Simon;180501
+794;Jonas.hansen@live.no;180449
+1186;Sindre@nortind;170945
+931;Olaf Årthun. ;177136
+1119;knut;179036
+8930;OleNy@nordfjordfhs;178596
+1168;Nilscf@regobsTroms;173469
+6578;Frode;171622
+802;Rolf B.;183891
+670;TH;192945
+3836;Fjellboms;172513
+874;Sjur Mork;190387
+784;Hans Erik@ferdaråd;179737
+11902;LaererJEP;186199
+9080;Ttkleiven;191104
+12367;espen@norconsult;184610
+12076;Morten;188600
+9417;torjekosmo;173450
+3834;Maria Leganger;177277
+3569;David@midttroms ;171094
+11937;Robin@Friluftsliv_Hivolda;179562
+672;OleRoger;176328
+776;Skipatrulje Myrkdalen;176178
+6665;Eirik Fjær;186923
+867;Tjugen;189942
+3473;Anders;177646
+11464;Eirin;174457
+3683;Marina@NorskeRedningshunder;174689
+6912;Stanis@frivillig;185026
+11880;Per Stian;188306
+8022;stigwk@nrh;182813
+1293;SNO-Liv;184248
+7452;SteinS;185624
+11895;KjellaugM@friluftsliv_hivolda ;190649
+931;Olaf Årthun. ;180109
+1710;Christen@norskluftambulanse;178911
+3787;Håvard;186419
+8823;Esten;185828
+8930;OleNy@nordfjordfhs;171644
+1505;Olivia@regobsTroms;190090
+3493;RichardFjellaksel;186722
+2861;linda_medskipaabeina;177258
+3039;Turkite;194206
+12608;Ellisiv@Friluftsliv_Hivolda;184782
+3072;Arne@regobs;175293
+3704;ThomasN;177716
+3221;ØHenjum;168230
+7452;SteinS;185412
+6088;Snømann;178147
+3683;Marina@NorskeRedningshunder;184980
+4272;RuRo;173025
+7810;ToreK;174326
+3497;NjålØ;184524
+3569;David@midttroms ;179616
+12002;EirikJH;178923
+6209;Adam;179380
+794;Jonas.hansen@live.no;173332
+12140;Olve;179963
+7440;Maria;185020
+691;Merakerredningstjeneste;173166
+3123;Krille;190599
+3787;Håvard;178312
+969;J-E Nysæther;173239
+11995;Poggen;178851
+152;Snowman;193820
+919;MerrickM;195742
+12146;ET;179975
+6266;Multiknut ;186947
+152;Snowman;191591
+11003;Bjaoey;181716
+3569;David@midttroms ;181252
+784;Hans Erik@ferdaråd;180350
+3123;Krille;189001
+3493;RichardFjellaksel;183423
+152;Snowman;185608
+3704;ThomasN;175481
+3497;NjålØ;179649
+1626;andrea@regobsTroms;185945
+3778;Arve;174190
+3689;elke@unis;193285
+785;KrLarsen;193716
+672;OleRoger;177435
+1193;pmbakke@nortind;172498
+3562;eskildskov;176747
+784;Hans Erik@ferdaråd;192534
+1299;Kaptajn Fjeld;184529
+12411;danielt;182559
+12080;Jacko;180008
+1294;AsbjørnF;193645
+11106;kgs;180262
+1274;Mikael Amlert SBO/IFMGA;189530
+13099;Gunnar Leistad;188561
+13099;Gunnar Leistad;188561
+2861;linda_medskipaabeina;190245
+7810;ToreK;171641
+547;Sigbjørn;183909
+7139;Lisa;181425
+7542;Birke;186792
+794;Jonas.hansen@live.no;169969
+1289;mrtnlvs;169527
+810;Kjetil G;185349
+8579;MathiasVindal;176728
+10923;Jorgenb;187784
+784;Hans Erik@ferdaråd;177219
+1132;erlendb;179697
+12076;Morten;180080
+12073;Lasse på fjellet;179626
+11902;LaererJEP;184121
+8930;OleNy@nordfjordfhs;178135
+7613;Morten Fineide ;180607
+4250;Lars Berge;186436
+7587;saaj@nortind;173510
+3562;eskildskov;186018
+8930;OleNy@nordfjordfhs;175656
+891;Marius;186031
+3954;Odd;186120
+11977;Brage;178696
+11539;Arnt-Olav@vossvgs;182517
+12067;Larsen;179392
+3569;David@midttroms ;170404
+7125;Thomas1990@frivillig;174511
+1614;thogund;186598
+1481;MariE;181171
+13106;Charlotte@Friluftsliv_HiVolda;188664
+6893;kristinamolland;191332
+3628;Henning;180764
+13422;ajbiagio;190821
+489;jan@nordfjordfhs;187633
+11196;tmeling@nortind.no;182680
+152;Snowman;186764
+3683;Marina@NorskeRedningshunder;175428
+11583;HenrikLangeland;175308
+10284;larstc;183858
+152;Snowman;192578
+7644;AslakW;170185
+1566;Snorre;184931
+12553;Lars@thinkoutside;189379
+3704;ThomasN;193713
+6481;Mads;186888
+1505;Olivia@regobsTroms;175419
+2868;emmawichardt;187301
+7125;Thomas1990@frivillig;179825
+1193;pmbakke@nortind;184398
+1202;olamk;179376
+7596;Astrid;189188
+11537;Marte@vossvgs;179770
+3569;David@midttroms ;170404
+11675;KevinGray;176142
+6946;HV;193392
+3787;Håvard;186413
+12076;Morten;179404
+1294;AsbjørnF;193710
+64;Erling Snøva;175886
+1119;knut;182346
+794;Jonas.hansen@live.no;175411
+11867;ØyvindG;179117
+2868;emmawichardt;187939
+3569;David@midttroms ;181252
+628;Rune;174777
+3097;Eiska;186951
+7060;OleBjorsvik;189212
+2772;Pål@nortind;185241
+3683;Marina@NorskeRedningshunder;169047
+8649;S.Brochmann@ANG;181393
+11583;HenrikLangeland;175308
+784;Hans Erik@ferdaråd;180702
+6013;Guro@friluftsliv_hivolda;184325
+3778;Arve;177639
+3161;yngve@nrh;185841
+12071;Toppturmathias;179624
+1626;andrea@regobsTroms;187122
+1571;V;180408
+6254;Ingrid Innerdal ;185722
+11849;Beddari1;186497
+6665;Eirik Fjær;188114
+1001;Asmkar;186408
+6214;Kjoers;171564
+785;KrLarsen;168249
+1577;bjafje;179854
+11933;Lea@Friluftsliv_hivolda;185396
+9796;Toggs;187130
+240;Svartn@regobsTroms;184014
+1571;V;180587
+134;svmo;169194
+3546;Knut H;178398
+2815;Michael ;184649
+8579;MathiasVindal;176013
+4006;HoltH@unis;187144
+1117;Philip;176566
+726;knut;189941
+8207;Anette;183474
+8204;mnskeyser;177794
+1481;MariE;177613
+3072;Arne@regobs;169632
+3173;Håkon Sælen;169825
+12069;Skigubben;179394
+8190;Carlo;177467
+183;GordieS;182705
+1214;JL ;183291
+11512;Thomas@SNO ;181809
+1264;Cecilie@regobsTroms;179794
+1186;Sindre@nortind;183827
+7842;Larso;178600
+6665;Eirik Fjær;180069
+12588;KjerstiBS;184469
+11196;tmeling@nortind.no;175162
+5994;erlend@nordfjordfhs;171606
+11681;pålr;179276
+1433;kjetims@regobsTroms;189029
+1168;Nilscf@regobsTroms;182831
+3816;stian@nortind;187529
+12080;Jacko;179403
+3459;SonSten;175176
+4088;Haakonschj;186152
+2834;helgeloc;190539
+931;Olaf Årthun. ;190264
+863;Kristoffergh88;177067
+7546;Pdohlie;182761
+4250;Lars Berge;184576
+13127;jshuseby;188889
+3493;RichardFjellaksel;191108
+1577;bjafje;184568
+7409;Heiden;179041
+672;OleRoger;176307
+3149;elin@nrh;186485
+1657;Marte;173313
+1710;Christen@norskluftambulanse;175681
+784;Hans Erik@ferdaråd;171104
+1300;Rune Holen;185249
+1638;andreas@Narvik;188948
+1321;oormasen;184686
+1742;edda@regobsTroms;176894
+4250;Lars Berge;173268
+4226;Martin Sann;180411
+7709;PhilipK;169040
+8204;mnskeyser;171623
+3123;Krille;193790
+3683;Marina@NorskeRedningshunder;177987
+6306;DagF@UNIS;190350
+3569;David@midttroms ;189519
+2826;Martin;186715
+1193;pmbakke@nortind;178176
+134;svmo;178848
+3627;EspenDM;177281
+3072;Arne@regobs;177064
+3055;gjranhansen;186533
+3569;David@midttroms ;171094
+11798;Bergsfjordlodge;177161
+7868;Oysteine;178849
+152;Snowman;178357
+3754;JanErik;173438
+348;ErikEB@rkh;175178
+12101;Ali;179948
+11784;SveinarLS;188308
+3745;Gaute;177709
+776;Skipatrulje Myrkdalen;170638
+3683;Marina@NorskeRedningshunder;186651
+12069;Skigubben;180396
+7036;Lars Sollie;178006
+11880;Per Stian;189534
+6946;HV;192686
+1193;pmbakke@nortind;189616
+1710;Christen@norskluftambulanse;175681
+12080;Jacko;179809
+152;Snowman;190722
+3628;Henning;190029
+11641;adadranger;185427
+3704;ThomasN;185363
+3072;Arne@regobs;187297
+3209;sindrejh;185130
+12071;Toppturmathias;180385
+12715;morten.h@norskeredningshunder;185548
+12508;Sturla;193273
+6306;DagF@UNIS;179595
+3116;NRH Emil Fillingsnes ;188940
+1274;Mikael Amlert SBO/IFMGA;189648
+6257;Audun@unis;187101
+1354;Gaute@rkhskred;189523
+7951;Alexander@sbo.nu ;171760
+4006;HoltH@unis;187469
+6257;Audun@unis;187501
+12872;Erling Hovden;187119
+1259;Toftagen;175319
+429;Daniel Larsen ;186609
+3924;kenneth@SHUVoss;179904
+2830;OleK;191441
+1041;ave016;183794
+3787;Håvard;178489
+776;Skipatrulje Myrkdalen;180141
+12337;TheRealAndreas;181598
+12371;Lindab;185439
+931;Olaf Årthun. ;188488
+3689;elke@unis;171832
+3628;Henning;189550
+8823;Esten;184283
+1186;Sindre@nortind;170785
+3683;Marina@NorskeRedningshunder;169976
+7951;Alexander@sbo.nu ;173135
+3683;Marina@NorskeRedningshunder;185467
+1215;VegardVB;192037
+6266;Multiknut ;186916
+1571;V;180177
+4120;Laurids@USNnaturguide;178039
+7125;Thomas1990@frivillig;180067
+12080;Jacko;180008
+3683;Marina@NorskeRedningshunder;189182
+806;fink;185960
+11246;heppatytto13v;173104
+3787;Håvard;186416
+134;svmo;183936
+7626;Andrine ;189702
+8823;Esten;181573
+6257;Audun@unis;194563
+3787;Håvard;180739
+794;Jonas.hansen@live.no;169969
+3775;Bast - Trollheimen Skitouring;194463
+794;Jonas.hansen@live.no;179664
+11784;SveinarLS;185181
+784;Hans Erik@ferdaråd;175252
+1505;Olivia@regobsTroms;187765
+6209;Adam;189192
+3569;David@midttroms ;195044
+1186;Sindre@nortind;170785
+9526;Andreas W;171105
+784;Hans Erik@ferdaråd;179730
+11694;Emilie;176271
+2861;linda_medskipaabeina;178419
+784;Hans Erik@ferdaråd;179252
+1225;Sofia@regobsTroms;179460
+1214;JL ;183291
+3689;elke@unis;174557
+7810;ToreK;187669
+1119;knut;178915
+6257;Audun@unis;174202
+12878;Sondre;186405
+3834;Maria Leganger;176898
+13539;StRuben_NO;191909
+4043;Hakon@nortind;176918
+1119;knut;181971
+475;Snømann;169359
+489;jan@nordfjordfhs;187145
+931;Olaf Årthun. ;183148
+3143;Isaac@SBO;189515
+4006;HoltH@unis;168361
+8823;Esten;185446
+8766;Sondrewenaas;190018
+3569;David@midttroms ;185105
+3090;DW;189191
+931;Olaf Årthun. ;186233
+802;Rolf B.;185914
+12032;Halvard@Friluftsliv_Hivolda;179817
+3505;Gunnar;190121
+1169;larsbard;180155
+2900;trond_olav@nortind;175174
+8204;mnskeyser;187863
+11194;BAMBI;179166
+2900;trond_olav@nortind;175174
+3683;Marina@NorskeRedningshunder;182821
+1657;Marte;171567
+152;Snowman;185428
+152;Snowman;187112
+3628;Henning;181177
+7810;ToreK;187669
+1168;Nilscf@regobsTroms;190263
+13711;Martin Øen;193307
+3569;David@midttroms ;173377
+8204;mnskeyser;168082
+4043;Hakon@nortind;176918
+12273;Ragnhild ;190542
+1710;Christen@norskluftambulanse;174930
+12110;AWenk;181281
+3787;Håvard;182186
+6014;Thosko ;185369
+11778;Vegard;177034
+784;Hans Erik@ferdaråd;179856
+10991;Backyard Svalbard;169320
+2959;Charlotte;191710
+12076;Morten;179811
+1321;oormasen;177875
+7753;Colomblanc;191389
+3639;JonKjetil@NordfjordFHS;175815
+1481;MariE;192800
+3834;Maria Leganger;176743
+7370;Hans;177267
+11847;Bjørn;177764
+1193;pmbakke@nortind;176067
+12241;Gustaf Larsson;185111
+1571;V;180408
+11681;pålr;177984
+369;MIR;191770
+2861;linda_medskipaabeina;190143
+672;OleRoger;185990
+13127;jshuseby;188889
+11554;Ingeborg@vossvgs ;181202
+12081;Ole E;179807
+11801;Mons;182522
+11149;nemis;171627
+6306;DagF@UNIS;170660
+12076;Morten;185410
+1710;Christen@norskluftambulanse;173614
+754;einar@nortindBOF;173164
+1150;martin;185346
+1193;pmbakke@nortind;178586
+1571;V;180668
+1571;V;180408
+7242;Hvitblikk;172585
+793;Endre;188472
+11196;tmeling@nortind.no;180081
+4250;Lars Berge;192455
+11759;Sofieeriksson;184849
+794;Jonas.hansen@live.no;175421
+754;einar@nortindBOF;170192
+1168;Nilscf@regobsTroms;172627
+11927;Frode@nla;179895
+3497;NjålØ;185012
+12367;espen@norconsult;183765
+12951;olliulla;187118
+784;Hans Erik@ferdaråd;192736
+12296;sylvia@ang;187957
+1742;edda@regobsTroms;192019
+1214;JL ;183422
+3778;Arve;170542
+3569;David@midttroms ;181252
+489;jan@nordfjordfhs;187633
+7409;Heiden;190769
+12081;Ole E;179405
+11956;Ernest;181540
+1293;SNO-Liv;188603
+4250;Lars Berge;178922
+240;Svartn@regobsTroms;173389
+13335;Sarace;190140
+1293;SNO-Liv;182081
+152;Snowman;193814
+11829;MarkusA;186379
+6209;Adam;176204
+1286;OddmundR;187008
+3754;JanErik;172592
+6306;DagF@UNIS;189637
+863;Kristoffergh88;177068
+3194;perheimdal;183446
+6257;Audun@unis;187501
+628;Rune;189529
+134;svmo;183936
+1193;pmbakke@nortind;176469
+7867;EspenR;176403
+3090;DW;188311
+11192;HenningH;172330
+3426;thoresb@nortind;175091
+11798;Bergsfjordlodge;182312
+1168;Nilscf@regobsTroms;189035
+559;Stig Anton Hordvik;186676
+12076;Morten;179986
+3459;SonSten;177801
+752;endre@nortind;174685
+1701;KAR;177999
+1187;Robert Ulfsnes;170903
+64;Erling Snøva;180523
+1041;ave016;175391
+152;Snowman;190257
+6031;havardhoyvik;187274
+11223;Potus;172617
+997;Smfoot;187459
+12837;Jmhalset@sognekraft;191045
+3027;IvarL;180112
+7542;Birke;186792
+1293;SNO-Liv;171083
+3689;elke@unis;175116
+3569;David@midttroms ;186284
+1294;AsbjørnF;191178
+11155;Davewragg;171688
+3143;Isaac@SBO;191498
+1168;Nilscf@regobsTroms;183989
+785;KrLarsen;186939
+8766;Sondrewenaas;176614
+1299;Kaptajn Fjeld;187153
+11895;KjellaugM@friluftsliv_hivolda ;187629
+2947;Brauten;192574
+698;sjur@nortind;183515
+523;AndreasL;170548
+2802;Abonden;182133
+1571;V;179401
+1701;KAR;177798
+628;Rune;189815
+152;Snowman;192885
+152;Snowman;193815
+8930;OleNy@nordfjordfhs;179642
+152;Snowman;183836
+12367;espen@norconsult;190513
+5994;erlend@nordfjordfhs;175768
+9149;Linda;180782
+3745;Gaute;173373
+134;svmo;184597
+7526;Vemund@Friluftsliv_HiVolda;185583
+1761;Erwin;177057
+802;Rolf B.;190203
+3683;Marina@NorskeRedningshunder;191896
+7370;Hans;171525
+6801;Ole Tonny @rkh;191993
+1614;thogund;179966
+1293;SNO-Liv;190671
+12077;MortimerSand;179901
+2770;Eltervaag;176580
+863;Kristoffergh88;173258
+12081;Ole E;179978
+472;Kåre Ø;184974
+4250;Lars Berge;185409
+2788;TorsteinSve;173374
+2826;Martin;191206
+11488;Vildehammers;189000
+3834;Maria Leganger;193471
+1293;SNO-Liv;193297
+4250;Lars Berge;192038
+1626;andrea@regobsTroms;183969
+12826;s.helg. ;187162
+8879;talonlibre;171498
+3434;Roym;168218
+12141;Marcos;179959
+3221;ØHenjum;168230
+3052;seb@regobsTroms;179982
+776;Skipatrulje Myrkdalen;184876
+3071;Gustav;182070
+3123;Krille;177248
+4082;Iver;171122
+12608;Ellisiv@Friluftsliv_Hivolda;184508
+12081;Ole E;179807
+11975;Viddekongen;178617
+1001;Asmkar;179433
+6209;Adam;191402
+397;kruse@nortind;175163
+6850;Bjodybda;184065
+628;Rune;179945
+134;svmo;175780
+6209;Adam;188838
+969;J-E Nysæther;172798
+134;svmo;180129
+1193;pmbakke@nortind;177967
+2868;emmawichardt;183853
+667;JJ;172504
+931;Olaf Årthun. ;172745
+64;Erling Snøva;176698
+12414;Halvor89;182560
+11557;kåæfvossvgs;182541
+1168;Nilscf@regobsTroms;172627
+3704;ThomasN;176209
+3493;RichardFjellaksel;183766
+152;Snowman;190728
+11163;oscar@randoscando;189792
+12186;ChristinaEriksen;181570
+7452;SteinS;185412
+1119;knut;177643
+1577;bjafje;170348
+3096;timdassler@regobsTroms;183974
+3569;David@midttroms ;194224
+3569;David@midttroms ;191472
+3090;DW;188311
+6209;Adam;184330
+8971;Marthe;183772
+4238;Charlie;188503
+1225;Sofia@regobsTroms;179460
+6209;Adam;184326
+1640;emilso;180174
+785;KrLarsen;180605
+3861;Sindrebal;189889
+3584;Gudmund;174189
+7526;Vemund@Friluftsliv_HiVolda;185000
+3090;DW;175327
+1294;AsbjørnF;178193
+3926;Kaia;174600
+6912;Stanis@frivillig;180004
+3072;Arne@regobs;183293
+152;Snowman;183837
+6031;havardhoyvik;187652
+11583;HenrikLangeland;176667
+12079;Radicalex1;180590
+281;Bjørnar@Hagefonna;175981
+7125;Thomas1990@frivillig;169640
+11798;Bergsfjordlodge;179743
+7587;saaj@nortind;187098
+3096;timdassler@regobsTroms;186597
+240;Svartn@regobsTroms;185462
+3683;Marina@NorskeRedningshunder;177668
+13133;Pierre-Marie Lefeuvre;191191
+7867;EspenR;184120
+6209;Adam;173009
+12907;havardft;186612
+7983;Vetlesulen;184001
+3816;stian@nortind;185367
+6612;Lynum;186776

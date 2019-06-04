@@ -10,7 +10,7 @@ from varsomdata import getobservations as go
 
 
 def get_snow_obs(from_date, to_date):
-    all_data_snow = go.get_data_as_class(from_date, to_date, geohazard_tids=10)
+    all_data_snow = go.get_all_observations(from_date, to_date, geohazard_tids=10)
     return all_data_snow
 
 
@@ -48,6 +48,6 @@ if __name__ == "__main__":
     k = 'm'
 
 
-    #aw_dict = gf.get_avalanche_warnings_2(region_ids, from_date, to_date, lang_key=1, as_dict=True)
+    #aw_dict = gf.get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1, as_dict=True)
     #df = pandas.DataFrame(aw_dict)
     #df.to_csv('../localstorage/norwegian_avalanche_warnings_season_17_18.csv', index_label='index')

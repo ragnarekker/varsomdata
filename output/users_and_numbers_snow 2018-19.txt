@@ -1,0 +1,895 @@
+1481;marie;14
+11124;sunnivsk;34
+919;merrickm;2
+547;sigbjørn;16
+2830;olek;6
+13799;hiasi;1
+3123;krille;21
+1174;thorleif svendsen;3
+874;sjur mork;9
+6257;audun@unis;18
+3569;david@midttroms ;31
+785;krlarsen;24
+1192;hannahv@regobstroms;1
+916;torkile;1
+13770;karine;1
+9417;torjekosmo;9
+332;egilg;1
+986;jens rev;1
+13231;birte;1
+3689;elke@unis;13
+4043;hakon@nortind;8
+13765;oyystein;1
+4006;holth@unis;46
+3683;marina@norskeredningshunder;60
+9805;masor;2
+3143;isaac@sbo;4
+3775;bast - trollheimen skitouring;3
+3562;eskildskov;11
+7518;eirik;8
+13753;aksel;1
+9557;eivind;1
+13752;ruben;1
+8193;gjermund;4
+9171;stranden;18
+2770;eltervaag;3
+11468;jesper@ang;2
+1186;sindre@nortind;12
+3039;turkite;11
+4005;katjape;6
+13743;vidarn;1
+867;tjugen;15
+3704;thomasn;20
+13738;jon apodaka;1
+3846;lukas heck;13
+1169;larsbard;14
+10425;nilsarne@skredas;2
+12553;lars@thinkoutside;8
+12273;ragnhild ;5
+13479;desh;2
+6946;hv;11
+13728;stidrog;1
+2826;martin;35
+13729;bjorndb;1
+152;snowman;118
+13730;påle;1
+3068;christian@regobstroms;4
+520;strømqvist;1
+3551;hea;9
+1299;kaptajn fjeld;12
+1626;andrea@regobstroms;13
+1294;asbjørnf;22
+11798;bergsfjordlodge;13
+496;ole andreas jenssen;4
+1214;jl ;13
+3834;maria leganger;8
+1168;nilscf@regobstroms;25
+12508;sturla;7
+2815;michael ;12
+13711;martin øen;1
+1293;sno-liv;19
+9381;0db;2
+9305;perheimdal ;4
+13703;olav;1
+6612;lynum;5
+8517;routsi;2
+6197;simone;5
+3061;anne@regobstroms;3
+794;jonas.hansen@live.no;37
+6440;sondre@skredas;4
+11512;thomas@sno ;23
+6665;eirik fjær;23
+12904;ingvildlh;2
+670;th;1
+13687;per;1
+2959;charlotte;7
+1225;sofia@regobstroms;11
+13681;wergelan;1
+8766;sondrewenaas;5
+11992;kristine ausen;2
+12773;asle;1
+949;håto;15
+1505;olivia@regobstroms;15
+127;tomas;1
+13660;tiiti;1
+784;hans erik@ferdaråd;34
+489;jan@nordfjordfhs;31
+2947;brauten;4
+1274;mikael amlert sbo/ifmga;12
+13420;amalie;1
+6063;høgtuva;1
+13652;jpv;1
+4250;lars berge;19
+4120;laurids@usnnaturguide;5
+6306;dagf@unis;24
+1286;oddmundr;10
+12551;kalleang;2
+13632;toso;1
+13633;sisu;1
+13643;ørjan;1
+13629;kab;1
+12920;marie;1
+417;ane-marte;1
+12296;sylvia@ang;7
+12292;ella@ang;2
+3571;kinehok;2
+1733;karin;8
+3493;richardfjellaksel;13
+1215;vegardvb;12
+11113;kjerstioi;1
+7139;lisa;9
+13615;g;1
+5949;modyr;2
+13571;rune @brustad-hanssen foto ;2
+1762;srm;4
+13031;berit;1
+7416;knut storvik;1
+1742;edda@regobstroms;5
+13614;lolafsen;1
+4111;reuter@slf.ch;1
+6801;ole tonny @rkh;4
+13622;ingvild;1
+240;svartn@regobstroms;12
+1230;bergbjørn@nortind;2
+13616;arno;1
+13539;struben_no;1
+957;traktor1;1
+8914;torsteinbjoergen;2
+3943;bjørn;1
+8021;nrhspockeli;12
+8886;obr;4
+712;lillerodvann;11
+4348;calle;3
+13582;benjamin gerard grosso;1
+348;erikeb@rkh;7
+8204;mnskeyser;20
+12926;pada;2
+3961;kennetn;1
+242;halvor_d@nortind;3
+2861;linda_medskipaabeina;24
+13546;jakleven;1
+1001;asmkar;15
+369;mir;1
+3884;havard berg;1
+9080;ttkleiven;4
+13201;havhje;3
+13566;sveinungbr;1
+6850;bjodybda;7
+7497;eirik bjørklund;1
+3570;thomas;5
+11784;sveinarls;6
+664;stigf;1
+11090;lakune;1
+12751;frodewiersen@nrh;1
+11081;ev.he;3
+13592;markus;1
+3813;pk@nrh;1
+6209;adam;34
+7772;abelsen;4
+8857;eirikr;1
+825;julia@rkh;5
+8190;carlo;8
+12608;ellisiv@friluftsliv_hivolda;4
+1259;toftagen;8
+3667;astridl;2
+12371;lindab;3
+7626;andrine ;3
+4228;eivind ;4
+461;markus;6
+8740;lommelun;1
+6893;kristinamolland;1
+838;chda;1
+13526;arnulf1;1
+13133;pierre-marie lefeuvre;3
+13510;geir;1
+7753;colomblanc;2
+7526;vemund@friluftsliv_hivolda;6
+3963;nohr;2
+13516;elin;1
+1265;bbjornara@nrh;4
+1006;pål andersen;11
+3745;gaute;29
+7409;heiden;4
+7440;maria;4
+281;bjørnar@hagefonna;13
+3134;fredrik@sbo;4
+701;sveinolav;1
+3732;christian@røde kors;1
+4579;krpe;1
+8966;birgit;1
+12180;haraldo;9
+8879;talonlibre;3
+12837;jmhalset@sognekraft;2
+8875;gamsten;1
+698;sjur@nortind;14
+11895;kjellaugm@friluftsliv_hivolda ;4
+6748;vegardrye;1
+11194;bambi;11
+1638;andreas@narvik;4
+11829;markusa;3
+3962;haakonz;1
+11932;ellenmarte@friluftsliv_hivolda;1
+12012;sigrid@friluftsliv_hivolda;2
+8649;s.brochmann@ang;6
+4243;bfrisvold;4
+8862;martinenyh;1
+11163;oscar@randoscando;4
+12959;natalia z;3
+13336;erik79;2
+13083;rise;1
+673;zico;1
+931;olaf årthun. ;18
+188;lakrisr;1
+12367;espen@norconsult;11
+3072;arne@regobs;18
+3778;arve;14
+13355;sondre;1
+810;kjetil g;5
+12331;mas;4
+3052;seb@regobstroms;7
+802;rolf b.;14
+4073;øyvindd;4
+752;endre@nortind;10
+4235;aasen;1
+7060;olebjorsvik;2
+6025;erik;1
+3787;håvard;27
+7018;tor.erik.moen;2
+13115;mr.knarf;2
+3505;gunnar;6
+559;stig anton hordvik;13
+13330;cabronfoil;2
+13335;sarace;1
+11583;henriklangeland;4
+13329;anders eide;1
+340;arntover;4
+3497;njålø;14
+11802;runar;3
+8456;marte;3
+3628;henning;12
+13257;hoksor;1
+842;lda;1
+1748;idaelisabeth@narvik;2
+4131;seija;3
+1526;eimund@regobstroms;1
+5994;erlend@nordfjordfhs;8
+3917;frank j formo;1
+726;knut;2
+12069;skigubben;5
+7617;runes;10
+3224;lund;7
+3861;sindrebal;7
+13314;macl3an;1
+11817;bj ørn;1
+13302;kjetil;1
+628;rune;22
+6214;kjoers;8
+6031;havardhoyvik;4
+1321;oormasen;13
+11880;per stian;4
+1015;hålogaland kraft as;1
+1577;bjafje;20
+492;ole martin k;2
+1295;sondrekv;6
+13112;simonc;1
+12478;vilde;1
+1193;pmbakke@nortind;18
+13223;melosira_arctica;1
+3194;perheimdal;6
+11778;vegard;3
+1354;gaute@rkhskred;3
+12715;morten.h@norskeredningshunder;3
+11106;kgs;11
+12352;vevo;3
+898;bee;1
+13106;charlotte@friluftsliv_hivolda;2
+7867;espenr;5
+5877;hallfw;2
+6883;larsmartin;3
+7520;simonpudderhund;4
+13188;strandmo1@gmail.com;1
+11838;boyum;1
+3096;timdassler@regobstroms;13
+8930;oleny@nordfjordfhs;13
+4351;kjetilmorken;7
+3090;dw;9
+7596;astrid;1
+4082;iver;8
+13160;erä-oula;1
+13162;surnadal;1
+8414;kaarepolitinrh;1
+196;mikal@nortind;5
+11149;nemis;4
+12095;oliverharding;9
+13167;olekav;1
+3816;stian@nortind;14
+1187;robert ulfsnes;7
+64;erling snøva;20
+8179;vegard@nrh;3
+7256;jon helge;1
+8217;ninas;4
+1296;runar helskog;3
+3836;fjellboms;10
+3476;jondahlrasmussen;2
+2834;helgeloc;1
+1433;kjetims@regobstroms;2
+6739;kristian ;2
+11752;andreasstenberg;1
+11488;vildehammers;2
+3116;nrh emil fillingsnes ;6
+4037;thomas;5
+7606;robin.zweigel@gmail.com;1
+13127;jshuseby;1
+456;bk683;1
+12076;morten;21
+13089;jossen;1
+4238;charlie;2
+9642;fredrik;2
+13099;gunnar leistad;1
+13032;sizzles;2
+793;endre;12
+12826;s.helg. ;6
+2950;urax;1
+3584;gudmund;10
+12878;sondre;3
+6473;chillpadde;1
+9170;asbjorn_eggebo;1
+13072;joschas;1
+13674;aile;2
+12037;øyvind angard ;3
+12772;stein-nla;1
+10995;steinar;8
+13054;shogg;4
+672;oleroger;11
+13053;mkarl;3
+3093;ole.kanstad;1
+13342;ana maria bouzada;4
+13422;ajbiagio;3
+7948;valsø;1
+4850;åsmund steen;3
+776;skipatrulje myrkdalen;5
+13042; andreas dahl;1
+1172;bjørnm;2
+11674;einar;4
+1402;stigarvejohansen@helgeland;4
+2868;emmawichardt;9
+2788;torsteinsve;2
+4216;andbels;1
+3857;stefanw;2
+11920;emil@friluftsliv_hivolda;1
+1694;rb;13
+3398;haldan;2
+8947;jr;2
+12411;danielt;5
+6912;stanis@frivillig;8
+12997;klberggrav;1
+6948;pål ;1
+3894;ivarg;1
+10923;jorgenb;2
+12295;mathis@ang;6
+118;seth@nortind;3
+6741;jorgenp;1
+6493;d.e.snøbrett;2
+1413;marte;1
+12576;borulf@rkh;2
+11731;o bjørgaas;1
+11849;beddari1;2
+7810;torek;4
+7100;carlthemtnbum;8
+2889;ola basecamp;2
+12725;saf;2
+4310;fjellfanten2405;3
+13045;ingebjorg;1
+997;smfoot;2
+1163;steinar@nrh;8
+12989;troms politiet;1
+3295;kristin;7
+6018;henrikforce;5
+8067;catrin nrh;1
+9796;toggs;2
+12952;mortenurrang;1
+12872;erling hovden;1
+12950;connie myking ;1
+7587;saaj@nortind;8
+1761;erwin;3
+12957;helga;1
+12947;ops208 møre og romsdal;1
+7614;øyeflatenyngve ;2
+12946;vhoeston;1
+12871;emilieaamodt;1
+12951;olliulla;2
+9176;petterhorthe;3
+12711;andy perkins;5
+3097;eiska;2
+6266;multiknut ;7
+612;matsb;4
+3928;sjantn;1
+4746;rispudding;2
+4088;haakonschj;5
+12414;halvor89;3
+6481;mads;1
+12938;anders;1
+12929;mats;1
+12960;mrf;1
+758;rvigdal;4
+12931;skåden;1
+7542;birke;2
+7153;a.slatten;1
+10968;ifmga guide;4
+3209;sindrejh;4
+4046;swordfish;2
+12914;vf;1
+1589;jkvn@alf;9
+8033;nrhfjone;13
+429;daniel larsen ;8
+283;jarle steinar;3
+827;håvardkreyhansen;2
+1614;thogund;3
+11641;adadranger;6
+7160;mattis ;1
+3055;gjranhansen;2
+1490;kristianh;3
+11956;ernest;6
+6469;larsbukkehave;7
+12912;jonas junker;1
+12907;havardft;1
+12909;morten n;1
+12899;andrekra;1
+3621;espen@rkh;1
+11120;atleadne;1
+2784;sondrep;2
+3149;elin@nrh;8
+4264;nrh howard;8
+12897;markus;1
+8900;joachim;1
+6013;guro@friluftsliv_hivolda;2
+12874;martinhaslevang;1
+11568;lillelang;2
+12876;brage;1
+4272;ruro;3
+3531;gomsted;2
+7452;steins;6
+8658;kreke;1
+667;jj;5
+8028;monikahw@nrh;1
+8893;jhans1;1
+1595;pos;1
+12644;ricki93;2
+8048;nrh_monika&milo;2
+472;kåre ø;2
+9319;tord1;2
+11902;laererjep;4
+6399;kristoffer løvvold;2
+12841;dennis@statnett;1
+12842;geirove@sognekraft;1
+12347;derute.no;4
+12860;rew;1
+3954;odd;1
+12063;vegard tufte;1
+3071;gustav;2
+2948;kp@nortind;1
+12730;heradstveit@nrh;3
+891;marius;2
+11937;robin@friluftsliv_hivolda;2
+1093;ragniko;2
+12110;awenk;2
+3161;yngve@nrh;7
+3157;nrh ak sogn;1
+12740;nrhastri;1
+806;fink;1
+8823;esten;6
+8259;aslak;1
+6254;ingrid innerdal ;1
+10809;øgull@330;6
+397;kruse@nortind;5
+864;tomive;1
+754;einar@nortindbof;17
+2900;trond_olav@nortind;10
+4233;barskefjone;1
+12584;backyardsvalbard;3
+12706;marcel;1
+11933;lea@friluftsliv_hivolda;1
+12701;gisleb;1
+12697;rebeccaskoog;1
+6240;aam;1
+12815;sondre;1
+7242;hvitblikk;8
+2883;sivk;4
+4259;siv;1
+7983;vetlesulen;4
+3682;arnedk;1
+8277;magneh;4
+1150;martin;6
+6014;thosko ;5
+12694;rillew;1
+1608;odd erik;7
+12477;jan_o2;1
+560;bjorgnar;4
+708;tomelby;1
+1300;rune holen;2
+12294;ida@ang;3
+12676;bjørn;1
+7745;merete;1
+12666;ida;5
+2772;pål@nortind;3
+3300;drablo;1
+727;tore k;2
+9526;andreas w;3
+914;eirikaa;1
+12674;njål;1
+7370;hans;5
+5106;pedda;1
+4602;ruben;1
+1431;hege;1
+12673;kim;1
+12241;gustaf larsson;2
+2879;jonasl;4
+12675;krzepta;1
+1677;bjørg@hemsedal;1
+11196;tmeling@nortind.no;13
+9001;svsj;1
+863;kristoffergh88;7
+12645;tim;1
+12642;oyhansen;1
+3933;kasper.e;1
+12643;espen lunde-ness;1
+12662;marjo;1
+12641;stig;1
+808;sigrid@myrkdalen.no;2
+6162;bastianh;1
+475;snømann;8
+1566;snorre;5
+10822;trulski;1
+11759;sofieeriksson;1
+373;j.hansen;1
+12535;emilh;2
+11788;mrbergentz;2
+12629;jennekman;1
+8971;marthe;5
+12632;mad-ass;1
+12621;ingvild_stordal;1
+1637;finn@regobs troms;5
+134;svmo;9
+12589;robin;2
+12593;henrik;2
+9070;taguleng;3
+12607;runem;1
+12614;lene fisker ;1
+1738;erlend_valldalnatur;2
+12588;kjerstibs;1
+1420;asgeirrusti;2
+7951;alexander@sbo.nu ;14
+11519;edvin;1
+12591;marstofr;1
+12504;preben@frivillig;2
+7889;hans ;1
+1041;ave016;5
+12436;onkel j;1
+10284;larstc;1
+12567;olav;1
+1031;lars linaker;2
+12564;desibel jr;1
+12324;mpt@rødekors;1
+349;jon_frantzen@regobstroms;1
+1264;cecilie@regobstroms;3
+1657;marte;14
+1701;kar;7
+11008;steffendebeuker;1
+3751;snowsnake;2
+8207;anette;2
+12502;jusku;1
+11947;andersvt;1
+1711;håvard engen;3
+8218;leikny;2
+3814;trond baadstø;2
+12545;oyshar;1
+12038;rjs;3
+84;ine-therese;1
+2802;abonden;7
+12496;daniel.sogndalfhs;1
+550;ørjan@student_uio;3
+12505;audun;1
+11304;ragnhild;2
+12495;cecilie;1
+12002;eirikjh;2
+8022;stigwk@nrh;3
+7546;pdohlie;1
+12490;vegard;1
+183;gordies;1
+12450;sivert hennum;1
+3776;torbjorn@regobs;2
+1119;knut;10
+1289;mrtnlvs;8
+12455;sebastian qvist;1
+12024;johannes_sb@naturguide_hvo;3
+11539;arnt-olav@vossvgs;2
+12106;maren@vossvgs;1
+11801;mons;1
+11549;kasper haugland;2
+12448;rune;1
+966;christer;1
+11551;marius@vossvgs;2
+11557;kåæfvossvgs;1
+12104;emil@vossvgs;2
+11556;ingvild@vossvgs;3
+11537;marte@vossvgs;2
+12107;maritagk@vossvgs;3
+3426;thoresb@nortind;3
+12145;kristofferh;2
+12429;andersthorbeck;1
+5378;morten h;1
+7690;pernille landrø;2
+3892;kristian;1
+11155;davewragg;2
+12404;mkorsvoll;1
+1710;christen@norskluftambulanse;7
+7451;stian hovi;3
+12328;magnus;1
+12392;runarvalla;1
+12384;gunnar;1
+3283;sven-are;1
+12369;audunhr;2
+3896;knut;3
+12343;tenstad;1
+473;bjornm;1
+11003;bjaoey;5
+10216;stein torbjørn ;1
+12291;johansen;1
+771;wfarns;2
+12186;christinaeriksen;2
+12337;therealandreas;1
+12360;stian kanstad;1
+1679;ronnyf;1
+7186;amaanum;1
+10899;danielogreen;1
+4217;per-arne ;1
+12004;markusol@ang;1
+12105;emma@vossvg;3
+11554;ingeborg@vossvgs ;2
+6234;ruben;1
+1640;emilso;2
+12210;hellefriisb;1
+7127;la7rpa;1
+1682;olavwv;1
+6663;mk;1
+7125;thomas1990@frivillig;9
+12278;inna;1
+9149;linda;4
+11220;fransen;2
+12242;daniel@sognekraft;1
+12231;bettinalundin;1
+3221;øhenjum;2
+1571;v;7
+12081;ole e;6
+3040;øystein øye bjørdal;2
+11572;rasmusramstad;2
+466;rune aa;2
+7613;morten fineide ;2
+12281;helgreid;1
+12079;radicalex1;6
+12074;stian ;2
+6907;åsmund;1
+12073;lasse på fjellet;4
+1004;simon;1
+4064;ola;1
+8346;mikel;3
+4226;martin sann;1
+7059;didrik abrahamsen;1
+12071;toppturmathias;4
+12078;thomash;6
+8052;vidarg@nrh;2
+12175;kristian;1
+12165;danny;1
+12162;siljesk;1
+12054;john;1
+12067;larsen;5
+6630;kjetså;1
+12068;gox;7
+3027;ivarl;2
+7498;mellera;2
+3173;håkon sælen;8
+1117;philip;11
+972;hermstad;1
+8185;eb;1
+4702;ken heine;1
+12146;et;1
+12080;jacko;3
+12077;mortimersand;5
+1586;nils@alf;1
+4061;oholsen;11
+12101;ali;1
+6416;inka;1
+12140;olve;1
+2835;kristoffer;4
+12142;randokalle;1
+12143;ffliland;1
+12144;erling;1
+238;bjørnemil;1
+11437;fisback;3
+12141;marcos;1
+3924;kenneth@shuvoss;1
+3507;jonasoestrem ;1
+1026;øystein;3
+11927;frode@nla;2
+7048;sussi;1
+8132;tikvam;1
+12134;larsbandasj;1
+12123;torkg;1
+12091;vilmoe;2
+12075;laderen;2
+2804;hanes;1
+12032;halvard@friluftsliv_hivolda;3
+7842;larso;3
+1718;tord@nordfjordfhs;1
+1099;fredrik backe;1
+1132;erlendb;4
+12089;ajo;1
+12070;toppturvegard;1
+1202;olamk;1
+12072;toppturmartin;1
+11962;morgan@friluftsliv_hivolda;1
+12048;asbr;1
+11681;pålr;4
+11707;johnkg;1
+3230;erik holmqvist;2
+230;kjetilhd;3
+11867;øyvindg;1
+2940;juha@frivillig;2
+12018;mlindborg;1
+6218;pål pettersen;1
+12034;petterhove;1
+12016;jonasj;1
+4534;marista;1
+9069;thomas n;1
+11997;mattisxc;1
+11996;jornf;1
+11999;abata;1
+10835;sofie@ski;1
+6578;frode;3
+1460;obay-lar;2
+7868;oysteine;3
+6096;mads hansen ;1
+11995;poggen;1
+6639;powderbird;2
+12020;ludde;1
+7511;silsilje;1
+3540;christian s.;2
+3625;jens arne gjørsvik ;1
+11977;brage;1
+11986;helgehamster;1
+11310;astrand;1
+6632;jpg;2
+11198;karin;1
+7926;laurits hansen;2
+11975;viddekongen;1
+11954;sunnmøreski;1
+3546;knut h;3
+11872;fabri;3
+1013;marcel van der velpen;1
+11754;dessmo;1
+11929;moda;1
+3130;noknvo;1
+11896;halfdan ;1
+6737;anniken;1
+3475;fjeldal@nortind;1
+3508;jantore;1
+11894;timmriesen;1
+11899;johan;1
+3754;janerik;5
+11870;martehh;1
+11873;anders ;1
+2944;veglind;1
+11903;sondres;2
+63;vetleøvrebotten;6
+7036;lars sollie;2
+5220;steffenfjelldal;1
+7597;oddbjørn;1
+7630;silb;1
+3459;sonsten;3
+1379;martin haugland;1
+4762;esben;4
+8347;kvaal;1
+11847;bjørn;1
+11848;kristiandragsten;1
+1238;helgesvandal@frivillig;2
+8283;morten asbjørnsen;1
+3473;anders;2
+6538;aeilefsen;1
+1624;anderseskeland;3
+6088;snømann;1
+11001;splitboardmannen;2
+3627;espendm;1
+11321;grums.obs;1
+1292;frankhave;2
+11793;helgebamsen;1
+11779;havode;1
+7573;ruben@vossvgs;1
+11450;larssonmartin;1
+8895;idar;1
+11763;fnugg;1
+11749;jonolav;1
+8579;mathiasvindal;2
+857;geo;1
+3939;andhol@shuvoss;1
+6955;reidarbj;1
+7673;kimslimxxl;1
+11733;eah92;1
+7455;anna nystedt;1
+6908;tobias1;2
+1272;erlend;1
+11701;andreasbreden;1
+5786;martine slåtten;1
+11700;palmelo;1
+11694;emilie;1
+855; roald@nortind;2
+8134;pudderheimer;1
+11675;kevingray;1
+538;2rhenrik;1
+501;suiram;1
+327;vr-skipatrulje;1
+11644;carina89;1
+3639;jonkjetil@nordfjordfhs;1
+8765;kurt aho;1
+6558;larsah;1
+11133;omi@nordfjordfhs;2
+2866;tore@hrsguide;1
+649;trygvesande;1
+11540;lea;1
+6858;hvego;2
+11571;kalla86;1
+11576;jimmyr;1
+11555;maren;1
+6842;lplænn;2
+8759;guttorm;4
+3946;arnto;1
+3923;mortenknaps;1
+2819;mats@regobstroms;1
+11057;marit;2
+3926;kaia;1
+11464;eirin;1
+11438;krissikross;1
+8760;bjørn;1
+6638;andrejenssen.no;1
+8045;kbl@nrh;1
+11386;thor;1
+3506;lars;4
+11305;haakons;2
+6086;kenneth jonassen;1
+969;j-e nysæther;2
+1696;knut@nrh;1
+11029;helgel;1
+691;merakerredningstjeneste;1
+11246;heppatytto13v;1
+1452;permhall;1
+523;andreasl;2
+11227;tommy;1
+5091;rolfjorge;1
+11223;potus;1
+6108;sindret;1
+11207;rolf;1
+11209;pistol;1
+11192;henningh;1
+11024;arvseg;1
+4083;dimitrigeo;1
+3032;sigmunds;3
+11184;søjdis;2
+11177;erlend;1
+3977;are@friluftsliv-hivolda;1
+11021;jonasd@nortind.no;6
+1655;matias ;1
+8240;paul;1
+6433;torgeirsh;1
+2891;håvard myklebust;1
+11094;jens-erik;1
+10991;backyard svalbard;2
+569;ojs;1
+7709;philipk;2
+7644;aslakw;1
+746;jimmy halvardsson;1
+3119;nekken@nrh;1
+11023;aksnes;1
+11006;nanna;1
+6483;dannyal;1
+10644;essah;2
+3687;øh;1
+3434;roym;1

@@ -159,7 +159,7 @@ def get_forecasted_dangers(region_ids, from_date, to_date, include_ikke_vurdert=
     """
 
     # get all warning and problems for this region and then loop though them joining them where dates match.
-    region_warnings = gfa.get_avalanche_warnings(region_ids, from_date, to_date, lang_key=lang_key)
+    region_warnings = gfa.get_avalanche_warnings_deprecated(region_ids, from_date, to_date, lang_key=lang_key)
 
     if not include_ikke_vurdert:
         all_non_zero_warnings = []

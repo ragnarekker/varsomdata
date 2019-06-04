@@ -1,0 +1,2233 @@
+298;Koltjessem;182165
+298;Koltjessem;183004
+6718;Leo Z;176076
+1015;Hålogaland Kraft AS;172189
+45;jostein@nve;189538
+11809;Jonas Hals;178426
+298;Koltjessem;180828
+6654;EK;172854
+298;Koltjessem;176237
+298;Koltjessem;172735
+298;Koltjessem;193544
+3702;Atle;169313
+298;Koltjessem;186281
+6819;Morten@forsvaret;172248
+298;Koltjessem;169502
+298;Koltjessem;177812
+2800;tgu;174899
+4763;Radiosugge;174005
+298;Koltjessem;178916
+3594;EdvardI;169053
+298;Koltjessem;195431
+845;ellen;171355
+298;Koltjessem;181987
+6095;Fauxdinand;170361
+299;Franklin (franklin@getmail.no);176295
+6553;AltaKraftlag;188640
+1231;Liss@nve;192412
+298;Koltjessem;171639
+6718;Leo Z;176214
+325;Siggen@obskorps;193300
+2805;soj@statskog.no;176151
+298;Koltjessem;182204
+298;Koltjessem;193391
+3307;thaustorm;172591
+6718;Leo Z;185981
+298;Koltjessem;196004
+691;Merakerredningstjeneste;188307
+298;Koltjessem;183317
+298;Koltjessem;178267
+298;Koltjessem;179457
+6726;Hermansen ;171086
+298;Koltjessem;184005
+298;Koltjessem;178273
+298;Koltjessem;178615
+4763;Radiosugge;181804
+298;Koltjessem;178272
+298;Koltjessem;172784
+289;Hammerfest Kommune;193517
+298;Koltjessem;173489
+21;Leif@ObsKorps;188373
+298;Koltjessem;196011
+298;Koltjessem;182147
+4763;Radiosugge;185132
+299;Franklin (franklin@getmail.no);174610
+6718;Leo Z;177773
+3594;EdvardI;169054
+325;Siggen@obskorps;169350
+298;Koltjessem;190834
+3433;Torbjørn;185506
+299;Franklin (franklin@getmail.no);180400
+298;Koltjessem;194731
+6726;Hermansen ;188435
+299;Franklin (franklin@getmail.no);176400
+3467;rubenroos;169310
+1231;Liss@nve;192008
+299;Franklin (franklin@getmail.no);173819
+298;Koltjessem;195378
+11393;Eivindo;174150
+298;Koltjessem;195365
+614;jbr@nve.no;185524
+6718;Leo Z;178603
+298;Koltjessem;186267
+298;Koltjessem;172752
+6718;Leo Z;177949
+289;Hammerfest Kommune;170749
+298;Koltjessem;178917
+298;Koltjessem;194728
+1231;Liss@nve;194002
+298;Koltjessem;195394
+298;Koltjessem;179456
+3610;Isfiskern;168317
+298;Koltjessem;175333
+298;Koltjessem;171634
+13604;mrjorgen;192100
+6726;Hermansen ;180296
+241;hae@nve.no;193426
+9542;tjg@nve;193304
+298;Koltjessem;176756
+4763;Radiosugge;189525
+2870;Salvesen@obskorps;192563
+241;hae@nve.no;192275
+1683;arøys1;168924
+6718;Leo Z;176699
+298;Koltjessem;185451
+298;Koltjessem;180209
+298;Koltjessem;177993
+298;Koltjessem;194208
+1231;Liss@nve;193184
+298;Koltjessem;196012
+11393;Eivindo;174184
+289;Hammerfest Kommune;175571
+2985;Amund@forsvaret;172421
+298;Koltjessem;171316
+298;Koltjessem;188688
+6554;Håkon;184484
+6726;Hermansen ;179816
+4763;Radiosugge;192030
+4763;Radiosugge;168771
+395;Ketil - Statkraft Trondheim;179507
+6726;Hermansen ;175221
+298;Koltjessem;179448
+298;Koltjessem;193089
+298;Koltjessem;186445
+10992;Vgunleik;169323
+6718;Leo Z;168629
+298;Koltjessem;196087
+298;Koltjessem;169499
+298;Koltjessem;195358
+298;Koltjessem;176019
+3211;Håkon;168939
+298;Koltjessem;195382
+6718;Leo Z;179321
+2844;klo@statskog.no;177400
+1231;Liss@nve;173010
+45;jostein@nve;168743
+298;Koltjessem;177656
+584;Bjørn - Statkraft Vinje;169222
+298;Koltjessem;189700
+2844;klo@statskog.no;184019
+298;Koltjessem;171312
+298;Koltjessem;173847
+298;Koltjessem;171141
+298;Koltjessem;179445
+6718;Leo Z;169428
+298;Koltjessem;193781
+298;Koltjessem;180018
+6718;Leo Z;181616
+298;Koltjessem;178448
+298;Koltjessem;177301
+289;Hammerfest Kommune;171239
+298;Koltjessem;193539
+10909;BåSS;168793
+298;Koltjessem;172083
+2855;LLO;190531
+289;Hammerfest Kommune;169961
+298;Koltjessem;188328
+1131;S-E;168349
+298;Koltjessem;170967
+298;Koltjessem;182213
+3467;rubenroos;183683
+1015;Hålogaland Kraft AS;189972
+931;Olaf Årthun. ;173660
+325;Siggen@obskorps;192974
+691;Merakerredningstjeneste;173165
+298;Koltjessem;178444
+395;Ketil - Statkraft Trondheim;179515
+299;Franklin (franklin@getmail.no);180123
+298;Koltjessem;190832
+6110;Priska@NVE;168229
+3594;EdvardI;181605
+241;hae@nve.no;187381
+3594;EdvardI;176603
+298;Koltjessem;172755
+298;Koltjessem;173764
+298;Koltjessem;185459
+299;Franklin (franklin@getmail.no);181407
+3467;rubenroos;169141
+11332;KjeETe;173810
+298;Koltjessem;187496
+3393;guro@svv;184938
+325;Siggen@obskorps;172027
+4118;TJ;178554
+298;Koltjessem;178925
+845;ellen;171736
+298;Koltjessem;172066
+3594;EdvardI;170569
+298;Koltjessem;177810
+298;Koltjessem;169513
+298;Koltjessem;176438
+298;Koltjessem;170316
+6718;Leo Z;183651
+6718;Leo Z;179146
+289;Hammerfest Kommune;172876
+298;Koltjessem;171143
+3610;Isfiskern;169039
+1015;Hålogaland Kraft AS;191273
+289;Hammerfest Kommune;169963
+299;Franklin (franklin@getmail.no);180573
+241;hae@nve.no;168203
+3556;Frode Lund;173134
+298;Koltjessem;180819
+298;Koltjessem;179161
+298;Koltjessem;192975
+395;Ketil - Statkraft Trondheim;179502
+298;Koltjessem;180848
+298;Koltjessem;195433
+6726;Hermansen ;175836
+298;Koltjessem;180012
+298;Koltjessem;192715
+298;Koltjessem;168294
+289;Hammerfest Kommune;172879
+298;Koltjessem;195374
+2805;soj@statskog.no;175716
+325;Siggen@obskorps;169287
+298;Koltjessem;195562
+395;Ketil - Statkraft Trondheim;179512
+298;Koltjessem;180019
+298;Koltjessem;172779
+1231;Liss@nve;177780
+298;Koltjessem;169494
+1231;Liss@nve;173464
+298;Koltjessem;187383
+4763;Radiosugge;182828
+298;Koltjessem;192965
+1231;Liss@nve;180122
+298;Koltjessem;182167
+298;Koltjessem;196096
+1231;Liss@nve;189162
+3467;rubenroos;170067
+298;Koltjessem;169491
+2985;Amund@forsvaret;172310
+6718;Leo Z;177776
+298;Koltjessem;170317
+298;Koltjessem;195988
+299;Franklin (franklin@getmail.no);181799
+584;Bjørn - Statkraft Vinje;181222
+4763;Radiosugge;190510
+298;Koltjessem;174830
+289;Hammerfest Kommune;175771
+298;Koltjessem;172761
+299;Franklin (franklin@getmail.no);184263
+298;Koltjessem;169868
+1231;Liss@nve;177781
+298;Koltjessem;180825
+298;Koltjessem;176020
+299;Franklin (franklin@getmail.no);187262
+1231;Liss@nve;170323
+298;Koltjessem;178280
+298;Koltjessem;169742
+298;Koltjessem;169493
+11809;Jonas Hals;184795
+298;Koltjessem;169510
+298;Koltjessem;174640
+6718;Leo Z;178778
+10909;BåSS;183336
+298;Koltjessem;193094
+298;Koltjessem;193049
+298;Koltjessem;169407
+2775;Ok67;168922
+298;Koltjessem;190845
+623;ljoslandshytta.no;185641
+298;Koltjessem;190847
+2985;Amund@forsvaret;172333
+298;Koltjessem;180002
+3763;Chris;191067
+4763;Radiosugge;182823
+3467;rubenroos;170223
+2853;jim@statskog.no;176111
+241;hae@nve.no;194649
+298;Koltjessem;172700
+298;Koltjessem;174826
+11721;MLR;176431
+298;Koltjessem;195440
+6718;Leo Z;181213
+299;Franklin (franklin@getmail.no);181557
+298;Koltjessem;174638
+45;jostein@nve;168457
+298;Koltjessem;169505
+11630;gjs@statskog.no;175785
+6718;Leo Z;176696
+1231;Liss@nve;172406
+1231;Liss@nve;178839
+298;Koltjessem;195390
+298;Koltjessem;188326
+3621;Espen@rkh;170048
+7771;Jossa;189488
+2844;klo@statskog.no;184021
+298;Koltjessem;180617
+45;jostein@nve;169495
+2775;Ok67;169038
+298;Koltjessem;168292
+10909;BåSS;177406
+720;Frank Skjeldnes;173980
+298;Koltjessem;180824
+298;Koltjessem;173506
+2855;LLO;190527
+298;Koltjessem;172737
+3594;EdvardI;174207
+3436;martin@svv;189471
+4118;TJ;189816
+325;Siggen@obskorps;196117
+11809;Jonas Hals;178428
+298;Koltjessem;190851
+2985;Amund@forsvaret;183731
+6726;Hermansen ;172235
+299;Franklin (franklin@getmail.no);174807
+298;Koltjessem;178453
+298;Koltjessem;178924
+298;Koltjessem;180854
+298;Koltjessem;179659
+10988;Jankarlsen;182718
+241;hae@nve.no;194647
+4763;Radiosugge;173822
+298;Koltjessem;193785
+325;Siggen@obskorps;169371
+289;Hammerfest Kommune;172882
+298;Koltjessem;176435
+298;Koltjessem;176433
+298;Koltjessem;175332
+298;Koltjessem;181985
+11525;Jada97;175321
+298;Koltjessem;177661
+298;Koltjessem;174820
+1015;Hålogaland Kraft AS;170718
+298;Koltjessem;193648
+298;Koltjessem;193548
+299;Franklin (franklin@getmail.no);175150
+6726;Hermansen ;172324
+298;Koltjessem;196000
+11703;Olav Krogsæter;181269
+298;Koltjessem;193545
+289;Hammerfest Kommune;177240
+584;Bjørn - Statkraft Vinje;192663
+298;Koltjessem;178437
+845;ellen;172028
+4730;Bjørn-Are;170879
+298;Koltjessem;177995
+2844;klo@statskog.no;177245
+298;Koltjessem;194732
+1015;Hålogaland Kraft AS;187222
+395;Ketil - Statkraft Trondheim;179503
+299;Franklin (franklin@getmail.no);177262
+298;Koltjessem;172795
+4763;Radiosugge;183672
+298;Koltjessem;173768
+1667;jonkr@trønderenergi;168573
+2808;tve@statskog.no;180608
+4763;Radiosugge;181013
+1407;Utgård;169460
+931;Olaf Årthun. ;178127
+3594;EdvardI;171624
+298;Koltjessem;174645
+298;Koltjessem;178903
+4763;Radiosugge;173381
+325;Siggen@obskorps;169516
+298;Koltjessem;173849
+3762;arve.tvede;173644
+3434;Roym;168219
+11579;Hurum turistforening ;176901
+298;Koltjessem;184010
+2855;LLO;190537
+298;Koltjessem;172721
+298;Koltjessem;178604
+298;Koltjessem;170955
+325;Siggen@obskorps;173386
+6718;Leo Z;172610
+298;Koltjessem;195392
+299;Franklin (franklin@getmail.no);180397
+298;Koltjessem;179995
+298;Koltjessem;193082
+10988;Jankarlsen;188691
+298;Koltjessem;192970
+298;Koltjessem;192967
+298;Koltjessem;172753
+3433;Torbjørn;183487
+298;Koltjessem;182839
+298;Koltjessem;170981
+5292;tuh@nve;193167
+11579;Hurum turistforening ;175311
+298;Koltjessem;174641
+3628;Henning;191456
+4763;Radiosugge;168236
+10988;Jankarlsen;188694
+298;Koltjessem;193810
+325;Siggen@obskorps;178123
+298;Koltjessem;187966
+4118;TJ;168339
+1682;Olavwv;169078
+1231;Liss@nve;171286
+298;Koltjessem;193085
+289;Hammerfest Kommune;193523
+6718;Leo Z;183652
+298;Koltjessem;182840
+298;Koltjessem;189697
+298;Koltjessem;171314
+11630;gjs@statskog.no;176681
+298;Koltjessem;181879
+298;Koltjessem;186274
+395;Ketil - Statkraft Trondheim;179517
+298;Koltjessem;180852
+298;Koltjessem;178456
+299;Franklin (franklin@getmail.no);178531
+298;Koltjessem;195999
+6501;Kristian25;174157
+298;Koltjessem;172780
+584;Bjørn - Statkraft Vinje;169226
+1231;Liss@nve;170643
+11579;Hurum turistforening ;175316
+298;Koltjessem;187497
+10988;Jankarlsen;182716
+325;Siggen@obskorps;194737
+2775;Ok67;171621
+1131;S-E;169264
+11630;gjs@statskog.no;183681
+11703;Olav Krogsæter;176399
+325;Siggen@obskorps;183561
+298;Koltjessem;171317
+299;Franklin (franklin@getmail.no);178380
+1015;Hålogaland Kraft AS;170724
+298;Koltjessem;169385
+298;Koltjessem;183177
+6718;Leo Z;176692
+289;Hammerfest Kommune;193521
+3467;rubenroos;172839
+1015;Hålogaland Kraft AS;180691
+4763;Radiosugge;180747
+241;hae@nve.no;188839
+299;Franklin (franklin@getmail.no);180392
+298;Koltjessem;176024
+1352;MagnusU;181246
+298;Koltjessem;175331
+298;Koltjessem;186444
+241;hae@nve.no;193206
+298;Koltjessem;179657
+4763;Radiosugge;191569
+1231;Liss@nve;194097
+1231;Liss@nve;187733
+6726;Hermansen ;176101
+1231;Liss@nve;186400
+298;Koltjessem;192972
+6726;Hermansen ;171294
+1375;Bruseth ;172988
+6718;Leo Z;181612
+11809;Jonas Hals;183319
+2805;soj@statskog.no;175722
+299;Franklin (franklin@getmail.no);183273
+3467;rubenroos;170068
+289;Hammerfest Kommune;169964
+325;Siggen@obskorps;195195
+298;Koltjessem;195361
+298;Koltjessem;172787
+298;Koltjessem;169382
+298;Koltjessem;172070
+3587;Toma;174319
+298;Koltjessem;188681
+2802;Abonden;176275
+298;Koltjessem;174821
+298;Koltjessem;185463
+298;Koltjessem;182842
+298;Koltjessem;192966
+298;Koltjessem;168309
+584;Bjørn - Statkraft Vinje;192661
+2808;tve@statskog.no;189820
+12389;Tommy;182181
+299;Franklin (franklin@getmail.no);183259
+2844;klo@statskog.no;177253
+4763;Radiosugge;171489
+299;Franklin (franklin@getmail.no);187538
+2985;Amund@forsvaret;183730
+298;Koltjessem;176439
+289;Hammerfest Kommune;171983
+298;Koltjessem;177303
+3433;Torbjørn;169242
+6718;Leo Z;181619
+11704;LKP;176401
+298;Koltjessem;174822
+325;Siggen@obskorps;192244
+845;ellen;171602
+2855;LLO;190530
+3433;Torbjørn;190571
+325;Siggen@obskorps;172626
+289;Hammerfest Kommune;174410
+298;Koltjessem;179465
+298;Koltjessem;194188
+298;Koltjessem;190849
+2832;Modøl;180172
+7771;Jossa;189489
+931;Olaf Årthun. ;181827
+298;Koltjessem;169745
+4763;Radiosugge;187914
+42;Markus@NVE;168738
+298;Koltjessem;180618
+3594;EdvardI;184708
+10909;BåSS;170544
+3628;Henning;191457
+298;Koltjessem;182166
+325;Siggen@obskorps;173019
+3594;EdvardI;172595
+11401;Tobias Brox;174192
+298;Koltjessem;172757
+2805;soj@statskog.no;176150
+299;Franklin (franklin@getmail.no);178572
+4763;Radiosugge;174322
+1164;klanggard;172914
+325;Siggen@obskorps;192857
+299;Franklin (franklin@getmail.no);181395
+720;Frank Skjeldnes;170772
+4763;Radiosugge;191898
+298;Koltjessem;169405
+9171;Stranden;173229
+325;Siggen@obskorps;169288
+6726;Hermansen ;176333
+3228;ElinL;168239
+289;Hammerfest Kommune;175739
+1683;arøys1;171737
+298;Koltjessem;173853
+3594;EdvardI;189276
+289;Hammerfest Kommune;193518
+3594;EdvardI;181785
+299;Franklin (franklin@getmail.no);178404
+4763;Radiosugge;191086
+298;Koltjessem;195997
+325;Siggen@obskorps;170661
+298;Koltjessem;185457
+298;Koltjessem;168779
+298;Koltjessem;189693
+298;Koltjessem;186261
+298;Koltjessem;187379
+298;Koltjessem;172793
+6718;Leo Z;168333
+298;Koltjessem;168304
+1231;Liss@nve;195489
+298;Koltjessem;178614
+299;Franklin (franklin@getmail.no);188298
+298;Koltjessem;172771
+6718;Leo Z;180195
+298;Koltjessem;176235
+298;Koltjessem;180016
+289;Hammerfest Kommune;177241
+298;Koltjessem;178602
+298;Koltjessem;173495
+3594;EdvardI;188037
+2808;tve@statskog.no;178133
+298;Koltjessem;176440
+298;Koltjessem;173508
+298;Koltjessem;176018
+298;Koltjessem;173772
+298;Koltjessem;195992
+298;Koltjessem;177482
+3433;Torbjørn;169248
+298;Koltjessem;181026
+298;Koltjessem;174825
+1375;Bruseth ;175247
+298;Koltjessem;169983
+1231;Liss@nve;170629
+298;Koltjessem;180013
+325;Siggen@obskorps;169085
+298;Koltjessem;168291
+298;Koltjessem;180849
+298;Koltjessem;192712
+298;Koltjessem;183322
+3702;Atle;179443
+6718;Leo Z;172107
+298;Koltjessem;184008
+298;Koltjessem;195995
+584;Bjørn - Statkraft Vinje;174591
+1617;håkon@obskorps ;168990
+2808;tve@statskog.no;180111
+299;Franklin (franklin@getmail.no);183275
+1231;Liss@nve;172407
+298;Koltjessem;170313
+1682;Olavwv;174318
+4763;Radiosugge;171999
+4763;Radiosugge;169199
+298;Koltjessem;169512
+298;Koltjessem;169869
+298;Koltjessem;172760
+11518;Trygg av natur;174812
+325;Siggen@obskorps;169104
+298;Koltjessem;170352
+325;Siggen@obskorps;194000
+325;Siggen@obskorps;169630
+298;Koltjessem;177295
+298;Koltjessem;168780
+3467;rubenroos;193280
+45;jostein@nve;168537
+298;Koltjessem;188689
+11579;Hurum turistforening ;176882
+7608;espenun;173264
+298;Koltjessem;193384
+6819;Morten@forsvaret;172251
+241;hae@nve.no;192529
+298;Koltjessem;176441
+298;Koltjessem;169518
+298;Koltjessem;182846
+298;Koltjessem;182156
+41;torehum@svv;168314
+298;Koltjessem;190695
+4763;Radiosugge;187915
+2808;tve@statskog.no;190780
+395;Ketil - Statkraft Trondheim;179516
+7146;Nils F;169967
+2855;LLO;190532
+6718;Leo Z;179736
+12460;Asgeire;182725
+9156;Johnny Johnsen;190956
+298;Koltjessem;185445
+1131;S-E;169263
+691;Merakerredningstjeneste;190814
+2;awa@nve.no;168844
+298;Koltjessem;176749
+298;Koltjessem;177289
+298;Koltjessem;186264
+298;Koltjessem;177291
+6554;Håkon;171815
+4763;Radiosugge;191431
+4730;Bjørn-Are;169337
+289;Hammerfest Kommune;171243
+298;Koltjessem;179158
+6718;Leo Z;179148
+298;Koltjessem;195627
+6718;Leo Z;169283
+1231;Liss@nve;173017
+298;Koltjessem;179661
+2853;jim@statskog.no;176109
+289;Hammerfest Kommune;174415
+614;jbr@nve.no;194189
+7847;Reidar KV;172426
+298;Koltjessem;169981
+298;Koltjessem;169506
+4763;Radiosugge;190229
+11259;boya;173384
+298;Koltjessem;169748
+298;Koltjessem;196010
+3594;EdvardI;184705
+289;Hammerfest Kommune;191288
+6553;AltaKraftlag;175974
+1739;Frode Vassenden;183002
+3621;Espen@rkh;193203
+298;Koltjessem;178271
+298;Koltjessem;172701
+298;Koltjessem;183178
+298;Koltjessem;176023
+298;Koltjessem;172697
+395;Ketil - Statkraft Trondheim;179511
+298;Koltjessem;172274
+6718;Leo Z;171884
+298;Koltjessem;174637
+298;Koltjessem;195983
+298;Koltjessem;196088
+298;Koltjessem;170353
+9171;Stranden;173217
+1739;Frode Vassenden;179929
+298;Koltjessem;193536
+1231;Liss@nve;191346
+11142;Ulrike Jüse;171750
+298;Koltjessem;181885
+1294;AsbjørnF;168943
+7201;BLytskjold;168747
+298;Koltjessem;181986
+298;Koltjessem;171315
+691;Merakerredningstjeneste;190583
+298;Koltjessem;180616
+298;Koltjessem;170350
+6718;Leo Z;171529
+11579;Hurum turistforening ;175287
+4904;Cecilie;178217
+3467;rubenroos;171367
+10649;Joanna;167803
+8986;Torstein R;191706
+10909;BåSS;183335
+10909;BåSS;170187
+298;Koltjessem;182211
+299;Franklin (franklin@getmail.no);188294
+3594;EdvardI;181610
+298;Koltjessem;168295
+298;Koltjessem;177489
+584;Bjørn - Statkraft Vinje;192658
+10909;BåSS;183337
+10943;Isfisker2018;176856
+3433;Torbjørn;190573
+298;Koltjessem;177473
+298;Koltjessem;193083
+298;Koltjessem;177657
+298;Koltjessem;192714
+11630;gjs@statskog.no;190385
+325;Siggen@obskorps;171300
+6718;Leo Z;172611
+298;Koltjessem;173507
+298;Koltjessem;172770
+10914;Thomas Sandholt Lund;169321
+298;Koltjessem;173492
+691;Merakerredningstjeneste;181494
+4763;Radiosugge;180746
+1231;Liss@nve;173340
+298;Koltjessem;188882
+11131;JanM;171642
+1231;Liss@nve;170704
+298;Koltjessem;176758
+298;Koltjessem;194192
+10909;BåSS;170985
+298;Koltjessem;181041
+720;Frank Skjeldnes;195881
+298;Koltjessem;195367
+299;Franklin (franklin@getmail.no);184305
+3621;Espen@rkh;192169
+3654;Ragnar Standal;173036
+299;Franklin (franklin@getmail.no);181775
+298;Koltjessem;185452
+298;Koltjessem;168289
+298;Koltjessem;181995
+298;Koltjessem;186051
+10909;BåSS;170992
+931;Olaf Årthun. ;169259
+298;Koltjessem;172762
+298;Koltjessem;177307
+1739;Frode Vassenden;178143
+1231;Liss@nve;171284
+45;jostein@nve;168461
+298;Koltjessem;179451
+11106;kgs;186924
+10943;Isfisker2018;171291
+4763;Radiosugge;172238
+298;Koltjessem;169872
+298;Koltjessem;177660
+325;Siggen@obskorps;192572
+289;Hammerfest Kommune;171984
+299;Franklin (franklin@getmail.no);173270
+298;Koltjessem;170959
+298;Koltjessem;193388
+298;Koltjessem;177997
+298;Koltjessem;181040
+11394;Jim Helge;174172
+5292;tuh@nve;190655
+3467;rubenroos;169279
+1231;Liss@nve;189838
+298;Koltjessem;185448
+298;Koltjessem;180855
+289;Hammerfest Kommune;175737
+6726;Hermansen ;171729
+298;Koltjessem;178601
+10909;BåSS;170190
+298;Koltjessem;192719
+298;Koltjessem;179464
+2985;Amund@forsvaret;173091
+298;Koltjessem;178919
+11579;Hurum turistforening ;175292
+7253;BAL;178401
+298;Koltjessem;180838
+298;Koltjessem;180620
+21;Leif@ObsKorps;168929
+13557;Bananos;191596
+6726;Hermansen ;172894
+3594;EdvardI;172447
+298;Koltjessem;169851
+298;Koltjessem;170285
+298;Koltjessem;193807
+298;Koltjessem;179994
+4763;Radiosugge;173380
+298;Koltjessem;190827
+10909;BåSS;168798
+6726;Hermansen ;174454
+1739;Frode Vassenden;178144
+6110;Priska@NVE;183239
+298;Koltjessem;178268
+298;Koltjessem;169749
+298;Koltjessem;171310
+3702;Atle;169311
+298;Koltjessem;172709
+298;Koltjessem;171146
+298;Koltjessem;168303
+3433;Torbjørn;190572
+3467;rubenroos;173266
+4763;Radiosugge;172730
+4763;Radiosugge;172901
+299;Franklin (franklin@getmail.no);184301
+298;Koltjessem;177665
+298;Koltjessem;168413
+584;Bjørn - Statkraft Vinje;174592
+298;Koltjessem;173845
+11579;Hurum turistforening ;175296
+10909;BåSS;168752
+298;Koltjessem;179162
+299;Franklin (franklin@getmail.no);184220
+298;Koltjessem;196102
+298;Koltjessem;177497
+10943;Isfisker2018;168913
+1294;AsbjørnF;176348
+2802;Abonden;176346
+11131;JanM;178895
+298;Koltjessem;172727
+298;Koltjessem;172696
+3594;EdvardI;181609
+325;Siggen@obskorps;195451
+298;Koltjessem;177101
+1375;Bruseth ;191094
+298;Koltjessem;169397
+298;Koltjessem;172775
+298;Koltjessem;174643
+4763;Radiosugge;174177
+298;Koltjessem;193398
+2844;klo@statskog.no;177456
+1712;Lars Rogstad;171540
+1683;arøys1;168789
+1015;Hålogaland Kraft AS;179611
+3467;rubenroos;186790
+325;Siggen@obskorps;181018
+6726;Hermansen ;188486
+6463;HalvHeiden;169256
+289;Hammerfest Kommune;175572
+298;Koltjessem;196084
+3702;Atle;179439
+298;Koltjessem;195985
+298;Koltjessem;195991
+298;Koltjessem;168290
+3594;EdvardI;169111
+2802;Abonden;183073
+298;Koltjessem;172756
+4763;Radiosugge;176191
+5292;tuh@nve;190656
+614;jbr@nve.no;178110
+298;Koltjessem;176432
+298;Koltjessem;173484
+298;Koltjessem;188682
+298;Koltjessem;172699
+298;Koltjessem;172776
+298;Koltjessem;174818
+298;Koltjessem;179993
+298;Koltjessem;193080
+298;Koltjessem;188322
+298;Koltjessem;192968
+298;Koltjessem;179663
+325;Siggen@obskorps;168282
+298;Koltjessem;178901
+9171;Stranden;173222
+3467;rubenroos;169258
+298;Koltjessem;178454
+584;Bjørn - Statkraft Vinje;189357
+298;Koltjessem;193081
+1294;AsbjørnF;168999
+241;hae@nve.no;194977
+298;Koltjessem;184357
+298;Koltjessem;185460
+298;Koltjessem;182841
+11809;Jonas Hals;184793
+325;Siggen@obskorps;195054
+325;Siggen@obskorps;184145
+298;Koltjessem;169973
+299;Franklin (franklin@getmail.no);181962
+298;Koltjessem;189703
+298;Koltjessem;180850
+298;Koltjessem;172092
+289;Hammerfest Kommune;169960
+11401;Tobias Brox;185016
+298;Koltjessem;195444
+3467;rubenroos;173647
+298;Koltjessem;168775
+298;Koltjessem;179164
+6110;Priska@NVE;195055
+298;Koltjessem;171524
+325;Siggen@obskorps;168638
+298;Koltjessem;168772
+931;Olaf Årthun. ;172437
+298;Koltjessem;179160
+298;Koltjessem;196097
+298;Koltjessem;178282
+867;Tjugen;188870
+298;Koltjessem;196007
+298;Koltjessem;169864
+298;Koltjessem;196003
+4763;Radiosugge;171062
+3433;Torbjørn;170010
+298;Koltjessem;176434
+298;Koltjessem;173766
+298;Koltjessem;181030
+299;Franklin (franklin@getmail.no);187373
+1702;Jimmy;169041
+2775;Ok67;168766
+298;Koltjessem;185455
+4763;Radiosugge;171138
+6718;Leo Z;170926
+3594;EdvardI;180203
+3433;Torbjørn;185502
+289;Hammerfest Kommune;174586
+1015;Hålogaland Kraft AS;172015
+239;rayvedal;174725
+2870;Salvesen@obskorps;192566
+325;Siggen@obskorps;193799
+289;Hammerfest Kommune;168455
+298;Koltjessem;177294
+205;Ingeborg@nve;172983
+3433;Torbjørn;185688
+3594;EdvardI;173251
+298;Koltjessem;173478
+2808;tve@statskog.no;182178
+867;Tjugen;189457
+298;Koltjessem;195412
+1712;Lars Rogstad;172326
+7;rue@nve;167747
+4763;Radiosugge;178247
+4763;Radiosugge;191180
+298;Koltjessem;192971
+298;Koltjessem;181980
+298;Koltjessem;177483
+298;Koltjessem;183318
+298;Koltjessem;177814
+299;Franklin (franklin@getmail.no);178424
+720;Frank Skjeldnes;173978
+298;Koltjessem;192973
+298;Koltjessem;182847
+4763;Radiosugge;189493
+289;Hammerfest Kommune;172881
+298;Koltjessem;171145
+298;Koltjessem;170966
+6718;Leo Z;171676
+298;Koltjessem;172769
+289;Hammerfest Kommune;172877
+3433;Torbjørn;183491
+299;Franklin (franklin@getmail.no);178349
+1712;Lars Rogstad;172325
+1352;MagnusU;181232
+298;Koltjessem;193389
+298;Koltjessem;169393
+298;Koltjessem;171527
+299;Franklin (franklin@getmail.no);183967
+4763;Radiosugge;174616
+4118;TJ;177541
+3621;Espen@rkh;170047
+1722;dan86a;191091
+299;Franklin (franklin@getmail.no);187243
+241;hae@nve.no;168911
+298;Koltjessem;168296
+298;Koltjessem;176022
+298;Koltjessem;176437
+298;Koltjessem;169746
+298;Koltjessem;180851
+21;Leif@ObsKorps;169066
+11579;Hurum turistforening ;175286
+6819;Morten@forsvaret;172250
+2812;Abj;177199
+298;Koltjessem;181035
+21;Leif@ObsKorps;193441
+298;Koltjessem;172080
+298;Koltjessem;172719
+299;Franklin (franklin@getmail.no);177059
+298;Koltjessem;170961
+1231;Liss@nve;191341
+298;Koltjessem;181990
+298;Koltjessem;180207
+298;Koltjessem;172778
+4763;Radiosugge;183824
+298;Koltjessem;177488
+325;Siggen@obskorps;191100
+3467;rubenroos;169036
+298;Koltjessem;173475
+298;Koltjessem;169399
+325;Siggen@obskorps;192292
+298;Koltjessem;177310
+2805;soj@statskog.no;177293
+298;Koltjessem;193087
+298;Koltjessem;169515
+2985;Amund@forsvaret;172415
+298;Koltjessem;173041
+298;Koltjessem;172732
+325;Siggen@obskorps;188650
+325;Siggen@obskorps;195194
+298;Koltjessem;171629
+2808;tve@statskog.no;172317
+298;Koltjessem;189701
+6718;Leo Z;185983
+1231;Liss@nve;192011
+298;Koltjessem;195993
+298;Koltjessem;196098
+298;Koltjessem;177664
+45;jostein@nve;168274
+298;Koltjessem;169511
+299;Franklin (franklin@getmail.no);180128
+298;Koltjessem;172766
+298;Koltjessem;184000
+2859;kristian.sivertsen@statskog.no;176916
+298;Koltjessem;180017
+298;Koltjessem;179450
+298;Koltjessem;181997
+298;Koltjessem;169394
+298;Koltjessem;193396
+720;Frank Skjeldnes;193881
+11008;SteffenDeBeuker;169567
+298;Koltjessem;177304
+6726;Hermansen ;174893
+325;Siggen@obskorps;169624
+3594;EdvardI;168443
+298;Koltjessem;193791
+298;Koltjessem;173493
+1682;Olavwv;194902
+298;Koltjessem;193806
+3702;Atle;179441
+6718;Leo Z;169210
+298;Koltjessem;177487
+6718;Leo Z;181614
+298;Koltjessem;180005
+2775;Ok67;168945
+11401;Tobias Brox;180789
+298;Koltjessem;177097
+6718;Leo Z;168252
+298;Koltjessem;172103
+298;Koltjessem;179449
+6726;Hermansen ;174726
+325;Siggen@obskorps;195450
+298;Koltjessem;173763
+298;Koltjessem;180206
+1015;Hålogaland Kraft AS;179606
+3211;Håkon;195418
+11703;Olav Krogsæter;180888
+298;Koltjessem;170974
+298;Koltjessem;195428
+298;Koltjessem;194213
+1739;Frode Vassenden;182938
+325;Siggen@obskorps;168283
+1231;Liss@nve;188959
+2812;Abj;174188
+1695;Marius Rosøy;177284
+298;Koltjessem;185465
+298;Koltjessem;190831
+298;Koltjessem;178605
+1682;Olavwv;195560
+298;Koltjessem;193652
+289;Hammerfest Kommune;171724
+298;Koltjessem;187967
+1015;Hålogaland Kraft AS;185894
+6445;AMAoutdoor;170319
+3637;Ljanss;173274
+298;Koltjessem;177499
+298;Koltjessem;186260
+11401;Tobias Brox;181274
+298;Koltjessem;190852
+298;Koltjessem;176236
+298;Koltjessem;171630
+298;Koltjessem;172774
+298;Koltjessem;178749
+298;Koltjessem;180200
+298;Koltjessem;177100
+298;Koltjessem;169980
+298;Koltjessem;168328
+325;Siggen@obskorps;190540
+10334;giselaa;167603
+298;Koltjessem;174646
+298;Koltjessem;194727
+298;Koltjessem;172057
+3594;EdvardI;188032
+1231;Liss@nve;187782
+3594;EdvardI;181604
+720;Frank Skjeldnes;189590
+11809;Jonas Hals;184796
+298;Koltjessem;188327
+3763;Chris;176419
+11146;Josteinb;171618
+1231;Liss@nve;191355
+298;Koltjessem;192717
+6718;Leo Z;179143
+298;Koltjessem;178445
+2844;klo@statskog.no;177251
+298;Koltjessem;196105
+2869;Norsk Folkehjelp Meråker;190803
+10909;BåSS;168796
+4118;TJ;187105
+1695;Marius Rosøy;177282
+298;Koltjessem;186266
+1015;Hålogaland Kraft AS;189973
+298;Koltjessem;173044
+3467;rubenroos;169035
+3732;Christian@Røde kors;191110
+298;Koltjessem;173476
+623;ljoslandshytta.no;178228
+2869;Norsk Folkehjelp Meråker;191296
+2802;Abonden;182139
+325;Siggen@obskorps;195050
+298;Koltjessem;171142
+289;Hammerfest Kommune;175738
+298;Koltjessem;171318
+298;Koltjessem;172791
+289;Hammerfest Kommune;193516
+298;Koltjessem;183169
+298;Koltjessem;178751
+4730;Bjørn-Are;169113
+298;Koltjessem;171148
+298;Koltjessem;179202
+4763;Radiosugge;175284
+1695;Marius Rosøy;177287
+1015;Hålogaland Kraft AS;184930
+298;Koltjessem;168783
+1231;Liss@nve;189163
+4118;TJ;176308
+298;Koltjessem;189699
+298;Koltjessem;195628
+298;Koltjessem;176026
+10909;BåSS;170546
+298;Koltjessem;183173
+298;Koltjessem;193789
+299;Franklin (franklin@getmail.no);183266
+3628;Henning;191454
+3433;Torbjørn;170008
+298;Koltjessem;180847
+298;Koltjessem;173490
+45;jostein@nve;168750
+3433;Torbjørn;170009
+298;Koltjessem;180820
+6718;Leo Z;171030
+298;Koltjessem;178281
+4118;TJ;189683
+298;Koltjessem;172777
+4763;Radiosugge;189526
+6718;Leo Z;179324
+298;Koltjessem;190840
+298;Koltjessem;195563
+325;Siggen@obskorps;169090
+298;Koltjessem;183168
+298;Koltjessem;180832
+4763;Radiosugge;174290
+9156;Johnny Johnsen;184661
+298;Koltjessem;188324
+325;Siggen@obskorps;168586
+298;Koltjessem;170983
+298;Koltjessem;172076
+298;Koltjessem;173855
+6718;Leo Z;181191
+289;Hammerfest Kommune;171237
+2853;jim@statskog.no;176113
+6718;Leo Z;169234
+299;Franklin (franklin@getmail.no);174461
+6718;Leo Z;176594
+4763;Radiosugge;173247
+1015;Hålogaland Kraft AS;191297
+720;Frank Skjeldnes;196024
+298;Koltjessem;172249
+3594;EdvardI;188033
+298;Koltjessem;169529
+1231;Liss@nve;169024
+11703;Olav Krogsæter;178098
+289;Hammerfest Kommune;175568
+6718;Leo Z;169229
+1294;AsbjørnF;182791
+867;Tjugen;194156
+298;Koltjessem;180003
+21;Leif@ObsKorps;168930
+11401;Tobias Brox;180788
+298;Koltjessem;172792
+4763;Radiosugge;174459
+10909;BåSS;168794
+298;Koltjessem;195984
+299;Franklin (franklin@getmail.no);173248
+3594;EdvardI;171504
+298;Koltjessem;178750
+298;Koltjessem;180827
+298;Koltjessem;176017
+298;Koltjessem;177305
+298;Koltjessem;179469
+298;Koltjessem;172275
+298;Koltjessem;194194
+45;jostein@nve;168277
+867;Tjugen;184942
+298;Koltjessem;186050
+3556;Frode Lund;173131
+720;Frank Skjeldnes;171710
+3447;gunnard@svv;174340
+1683;arøys1;169048
+298;Koltjessem;177492
+298;Koltjessem;169972
+4763;Radiosugge;181960
+298;Koltjessem;181037
+4118;TJ;185651
+1712;Lars Rogstad;172327
+2844;klo@statskog.no;177250
+298;Koltjessem;195567
+298;Koltjessem;196083
+298;Koltjessem;169383
+2808;tve@statskog.no;180606
+298;Koltjessem;178438
+298;Koltjessem;195981
+325;Siggen@obskorps;192571
+6718;Leo Z;171789
+298;Koltjessem;169521
+298;Koltjessem;168778
+298;Koltjessem;182212
+11401;Tobias Brox;174296
+1231;Liss@nve;194098
+7771;Jossa;173046
+298;Koltjessem;168298
+298;Koltjessem;178906
+298;Koltjessem;173043
+11401;Tobias Brox;174299
+4763;Radiosugge;172902
+298;Koltjessem;180007
+298;Koltjessem;172794
+298;Koltjessem;180844
+6718;Leo Z;176690
+298;Koltjessem;173487
+298;Koltjessem;193078
+298;Koltjessem;169522
+586;Rune - Trønderenergi;183604
+11630;gjs@statskog.no;183682
+2812;Abj;177147
+298;Koltjessem;183170
+298;Koltjessem;169509
+2870;Salvesen@obskorps;192560
+1231;Liss@nve;187900
+584;Bjørn - Statkraft Vinje;181219
+298;Koltjessem;172056
+299;Franklin (franklin@getmail.no);179980
+4763;Radiosugge;172147
+10909;BåSS;170851
+10909;BåSS;170189
+3467;rubenroos;172429
+298;Koltjessem;179452
+6718;Leo Z;176215
+298;Koltjessem;195990
+289;Hammerfest Kommune;168456
+298;Koltjessem;169496
+298;Koltjessem;177308
+298;Koltjessem;193542
+298;Koltjessem;177996
+298;Koltjessem;193552
+325;Siggen@obskorps;191586
+4763;Radiosugge;170325
+298;Koltjessem;174824
+298;Koltjessem;195570
+6718;Leo Z;169233
+4763;Radiosugge;191707
+4118;TJ;186179
+298;Koltjessem;195989
+298;Koltjessem;169744
+6554;Håkon;171813
+298;Koltjessem;187490
+298;Koltjessem;182845
+298;Koltjessem;188690
+112;Steinar@ObsKorps;172012
+1739;Frode Vassenden;178059
+298;Koltjessem;173042
+623;ljoslandshytta.no;176896
+11848;KristianDragsten;186236
+11809;Jonas Hals;184794
+298;Koltjessem;178753
+2906;Atle;169285
+298;Koltjessem;176231
+298;Koltjessem;195369
+298;Koltjessem;193050
+298;Koltjessem;170980
+1231;Liss@nve;189165
+298;Koltjessem;178921
+298;Koltjessem;193792
+1231;Liss@nve;169065
+6718;Leo Z;171883
+298;Koltjessem;193543
+298;Koltjessem;195405
+2808;tve@statskog.no;176184
+11579;Hurum turistforening ;176875
+298;Koltjessem;183174
+2808;tve@statskog.no;180193
+298;Koltjessem;177311
+3230;Erik Holmqvist;172880
+298;Koltjessem;193091
+4763;Radiosugge;191568
+720;Frank Skjeldnes;193880
+6718;Leo Z;177777
+325;Siggen@obskorps;193100
+45;jostein@nve;169032
+298;Koltjessem;179454
+298;Koltjessem;194193
+11703;Olav Krogsæter;179258
+298;Koltjessem;168773
+1294;AsbjørnF;170356
+298;Koltjessem;181876
+2;awa@nve.no;168847
+720;Frank Skjeldnes;173601
+298;Koltjessem;178920
+2775;Ok67;169877
+298;Koltjessem;170965
+11703;Olav Krogsæter;176597
+298;Koltjessem;171523
+298;Koltjessem;173851
+2844;klo@statskog.no;184023
+325;Siggen@obskorps;172625
+299;Franklin (franklin@getmail.no);180371
+6726;Hermansen ;172234
+1015;Hålogaland Kraft AS;189821
+3594;EdvardI;188053
+298;Koltjessem;173474
+298;Koltjessem;193808
+592;Galtung;170539
+4763;Radiosugge;181963
+298;Koltjessem;169498
+1179;Blackbird;171517
+3433;Torbjørn;185685
+2844;klo@statskog.no;184015
+12454;Dimitri;182699
+298;Koltjessem;193095
+298;Koltjessem;190848
+298;Koltjessem;190843
+13604;mrjorgen;191938
+720;Frank Skjeldnes;189591
+11140;Helaar;171519
+3467;rubenroos;193282
+10988;Jankarlsen;188693
+6726;Hermansen ;181904
+298;Koltjessem;196104
+289;Hammerfest Kommune;174414
+298;Koltjessem;195566
+298;Koltjessem;194736
+298;Koltjessem;171636
+4763;Radiosugge;175450
+1015;Hålogaland Kraft AS;179608
+11518;Trygg av natur;174985
+5292;tuh@nve;190604
+298;Koltjessem;172095
+298;Koltjessem;178611
+298;Koltjessem;195442
+3556;Frode Lund;173132
+298;Koltjessem;193096
+325;Siggen@obskorps;181439
+1231;Liss@nve;171293
+299;Franklin (franklin@getmail.no);181507
+6718;Leo Z;176216
+11707;JohnKG;176409
+10909;BåSS;170188
+289;Hammerfest Kommune;191289
+298;Koltjessem;182143
+298;Koltjessem;177300
+298;Koltjessem;178004
+298;Koltjessem;184007
+298;Koltjessem;187377
+299;Franklin (franklin@getmail.no);181964
+298;Koltjessem;194215
+298;Koltjessem;172767
+298;Koltjessem;186262
+11809;Jonas Hals;184797
+298;Koltjessem;171144
+6718;Leo Z;176193
+2812;Abj;174186
+298;Koltjessem;178908
+6726;Hermansen ;172323
+12631;Ulvenveien;184925
+4763;Radiosugge;180805
+298;Koltjessem;193400
+298;Koltjessem;177102
+4763;Radiosugge;173649
+845;ellen;173654
+298;Koltjessem;171522
+325;Siggen@obskorps;192160
+298;Koltjessem;181870
+298;Koltjessem;176227
+173;Tommy@NVE;179887
+298;Koltjessem;187489
+298;Koltjessem;186282
+720;Frank Skjeldnes;189592
+584;Bjørn - Statkraft Vinje;189354
+298;Koltjessem;176750
+6718;Leo Z;168630
+298;Koltjessem;193650
+3451;stian@wyssen;171581
+298;Koltjessem;178442
+298;Koltjessem;171313
+2812;Abj;177198
+2869;Norsk Folkehjelp Meråker;191290
+2775;Ok67;171538
+298;Koltjessem;184004
+298;Koltjessem;188325
+298;Koltjessem;196101
+298;Koltjessem;178284
+3610;Isfiskern;168318
+298;Koltjessem;179470
+299;Franklin (franklin@getmail.no);180402
+4763;Radiosugge;170324
+298;Koltjessem;169865
+298;Koltjessem;180199
+298;Koltjessem;179447
+8986;Torstein R;191720
+4763;Radiosugge;191179
+298;Koltjessem;172781
+298;Koltjessem;179996
+6718;Leo Z;171440
+298;Koltjessem;182210
+298;Koltjessem;173850
+592;Galtung;170536
+298;Koltjessem;179163
+9171;Stranden;169063
+298;Koltjessem;178457
+298;Koltjessem;181038
+289;Hammerfest Kommune;171986
+298;Koltjessem;181871
+298;Koltjessem;171632
+2775;Ok67;169876
+289;Hammerfest Kommune;174413
+780;Milslukern;169581
+298;Koltjessem;170286
+298;Koltjessem;181996
+1231;Liss@nve;192010
+289;Hammerfest Kommune;177238
+239;rayvedal;168503
+2805;soj@statskog.no;175726
+298;Koltjessem;177099
+298;Koltjessem;178451
+298;Koltjessem;185464
+289;Hammerfest Kommune;171244
+3594;EdvardI;189277
+298;Koltjessem;180621
+298;Koltjessem;193651
+298;Koltjessem;186280
+11014;koltjessem;194183
+4763;Radiosugge;176190
+298;Koltjessem;178912
+10649;Joanna;167782
+4763;Radiosugge;171488
+298;Koltjessem;192720
+298;Koltjessem;169395
+1294;AsbjørnF;168944
+298;Koltjessem;172706
+298;Koltjessem;193088
+7608;espenun;169077
+298;Koltjessem;169520
+298;Koltjessem;195626
+1231;Liss@nve;189836
+325;Siggen@obskorps;169253
+1231;Liss@nve;171292
+298;Koltjessem;169403
+298;Koltjessem;179998
+298;Koltjessem;169497
+298;Koltjessem;168782
+10988;Jankarlsen;182719
+298;Koltjessem;169530
+6718;Leo Z;175152
+6718;Leo Z;180194
+298;Koltjessem;176232
+298;Koltjessem;187498
+298;Koltjessem;180623
+720;Frank Skjeldnes;176831
+299;Franklin (franklin@getmail.no);189004
+298;Koltjessem;190833
+298;Koltjessem;173770
+298;Koltjessem;195994
+845;ellen;172298
+3467;rubenroos;173024
+3594;EdvardI;190247
+298;Koltjessem;186052
+298;Koltjessem;181874
+3594;EdvardI;173546
+6718;Leo Z;172612
+298;Koltjessem;179655
+298;Koltjessem;170969
+11525;Jada97;174836
+4118;TJ;185652
+1231;Liss@nve;193993
+298;Koltjessem;175330
+11008;SteffenDeBeuker;169574
+2859;kristian.sivertsen@statskog.no;176917
+2802;Abonden;183055
+298;Koltjessem;169975
+298;Koltjessem;173482
+11454;Tango-Tango;178841
+1231;Liss@nve;189143
+2855;LLO;187361
+1231;Liss@nve;170387
+298;Koltjessem;180835
+298;Koltjessem;178754
+298;Koltjessem;190839
+3702;Atle;179444
+10988;Jankarlsen;188692
+3201;Larseid;169088
+298;Koltjessem;174642
+2855;LLO;190536
+298;Koltjessem;193549
+931;Olaf Årthun. ;183081
+4763;Radiosugge;172146
+325;Siggen@obskorps;172428
+298;Koltjessem;188680
+298;Koltjessem;177994
+298;Koltjessem;169389
+298;Koltjessem;169492
+1352;MagnusU;181239
+10909;BåSS;168797
+298;Koltjessem;186275
+1015;Hålogaland Kraft AS;170717
+298;Koltjessem;176230
+298;Koltjessem;169503
+3467;rubenroos;170069
+325;Siggen@obskorps;191903
+298;Koltjessem;179666
+3594;EdvardI;173252
+1352;MagnusU;181192
+4763;Radiosugge;176714
+298;Koltjessem;188685
+4763;Radiosugge;169079
+227;solveig@NVE;183100
+289;Hammerfest Kommune;171240
+10909;BåSS;170991
+298;Koltjessem;188687
+298;Koltjessem;183176
+289;Hammerfest Kommune;171235
+298;Koltjessem;193783
+298;Koltjessem;181025
+298;Koltjessem;169977
+289;Hammerfest Kommune;175566
+1231;Liss@nve;191444
+2844;klo@statskog.no;177386
+2844;klo@statskog.no;184022
+298;Koltjessem;188323
+586;Rune - Trønderenergi;189734
+298;Koltjessem;170290
+298;Koltjessem;172764
+298;Koltjessem;193541
+298;Koltjessem;190838
+6718;Leo Z;171289
+298;Koltjessem;177659
+298;Koltjessem;172062
+298;Koltjessem;178613
+325;Siggen@obskorps;172728
+2812;Abj;183581
+325;Siggen@obskorps;195192
+299;Franklin (franklin@getmail.no);175477
+298;Koltjessem;180000
+7847;Reidar KV;174431
+298;Koltjessem;169750
+298;Koltjessem;169514
+298;Koltjessem;178909
+4118;TJ;182447
+289;Hammerfest Kommune;168430
+1231;Liss@nve;180121
+298;Koltjessem;168918
+4763;Radiosugge;190511
+298;Koltjessem;183563
+298;Koltjessem;178277
+4763;Radiosugge;168237
+298;Koltjessem;172790
+299;Franklin (franklin@getmail.no);180113
+289;Hammerfest Kommune;174412
+299;Franklin (franklin@getmail.no);177056
+298;Koltjessem;179458
+241;hae@nve.no;193425
+298;Koltjessem;177815
+6718;Leo Z;177951
+298;Koltjessem;181033
+1015;Hålogaland Kraft AS;191249
+298;Koltjessem;183316
+298;Koltjessem;195449
+298;Koltjessem;193537
+298;Koltjessem;180624
+298;Koltjessem;172090
+11161;o2;171719
+298;Koltjessem;178285
+298;Koltjessem;196006
+6718;Leo Z;170925
+298;Koltjessem;177095
+3594;EdvardI;172900
+298;Koltjessem;177998
+45;jostein@nve;184311
+11017;sklett;170056
+4763;Radiosugge;182375
+298;Koltjessem;195569
+3621;Espen@rkh;192521
+11401;Tobias Brox;174298
+931;Olaf Årthun. ;177135
+2844;klo@statskog.no;177225
+3594;EdvardI;189274
+298;Koltjessem;177315
+298;Koltjessem;195445
+3594;EdvardI;190307
+298;Koltjessem;172085
+299;Franklin (franklin@getmail.no);181016
+298;Koltjessem;195414
+298;Koltjessem;171311
+241;hae@nve.no;193207
+1231;Liss@nve;193994
+298;Koltjessem;185458
+3594;EdvardI;180202
+289;Hammerfest Kommune;191287
+289;Hammerfest Kommune;170748
+299;Franklin (franklin@getmail.no);187272
+298;Koltjessem;177485
+298;Koltjessem;172065
+6718;Leo Z;178777
+3467;rubenroos;169037
+298;Koltjessem;193397
+298;Koltjessem;180009
+241;hae@nve.no;195931
+12161;Larsinj;180146
+2985;Amund@forsvaret;183732
+298;Koltjessem;172789
+45;jostein@nve;167786
+298;Koltjessem;186283
+3594;EdvardI;169846
+298;Koltjessem;172783
+931;Olaf Årthun. ;180107
+11131;JanM;171512
+298;Koltjessem;195568
+7771;Jossa;189491
+298;Koltjessem;194207
+298;Koltjessem;174639
+298;Koltjessem;196001
+4763;Radiosugge;180343
+298;Koltjessem;187374
+2812;Abj;183669
+298;Koltjessem;180020
+298;Koltjessem;187963
+4763;Radiosugge;182827
+298;Koltjessem;196100
+298;Koltjessem;196103
+1683;arøys1;169052
+298;Koltjessem;196009
+3594;EdvardI;176602
+1739;Frode Vassenden;178142
+3433;Torbjørn;185687
+845;ellen;169273
+623;ljoslandshytta.no;185638
+2808;tve@statskog.no;172305
+7;rue@nve;168740
+931;Olaf Årthun. ;186234
+298;Koltjessem;168919
+4763;Radiosugge;172495
+298;Koltjessem;187500
+1231;Liss@nve;191339
+1231;Liss@nve;191992
+298;Koltjessem;169401
+298;Koltjessem;195987
+11630;gjs@statskog.no;183680
+298;Koltjessem;190826
+1015;Hålogaland Kraft AS;170725
+298;Koltjessem;172060
+298;Koltjessem;179463
+6718;Leo Z;183988
+3556;Frode Lund;173130
+298;Koltjessem;172765
+289;Hammerfest Kommune;193519
+1683;arøys1;168790
+21;Leif@ObsKorps;183279
+298;Koltjessem;186271
+298;Koltjessem;169741
+2844;klo@statskog.no;184017
+395;Ketil - Statkraft Trondheim;179504
+289;Hammerfest Kommune;174409
+2808;tve@statskog.no;176185
+298;Koltjessem;181993
+298;Koltjessem;178439
+3594;EdvardI;192430
+298;Koltjessem;177286
+298;Koltjessem;172247
+720;Frank Skjeldnes;171711
+298;Koltjessem;180205
+298;Koltjessem;193538
+299;Franklin (franklin@getmail.no);174628
+299;Franklin (franklin@getmail.no);176300
+325;Siggen@obskorps;169094
+4763;Radiosugge;181010
+298;Koltjessem;171147
+298;Koltjessem;187390
+298;Koltjessem;174819
+298;Koltjessem;178752
+2855;LLO;190538
+6718;Leo Z;181621
+325;Siggen@obskorps;195452
+298;Koltjessem;172759
+1712;Lars Rogstad;172509
+299;Franklin (franklin@getmail.no);178418
+298;Koltjessem;195375
+298;Koltjessem;192724
+299;Franklin (franklin@getmail.no);174603
+3621;Espen@rkh;192520
+614;jbr@nve.no;190916
+298;Koltjessem;170277
+298;Koltjessem;186265
+298;Koltjessem;170975
+325;Siggen@obskorps;169286
+298;Koltjessem;180836
+2812;Abj;177143
+2812;Abj;183667
+299;Franklin (franklin@getmail.no);181965
+298;Koltjessem;190698
+3467;rubenroos;170812
+1231;Liss@nve;171288
+298;Koltjessem;196095
+6718;Leo Z;171089
+6718;Leo Z;169228
+298;Koltjessem;169525
+11401;Tobias Brox;181272
+298;Koltjessem;177494
+298;Koltjessem;171309
+1015;Hålogaland Kraft AS;193286
+2870;Salvesen@obskorps;192562
+325;Siggen@obskorps;172898
+298;Koltjessem;177292
+586;Rune - Trønderenergi;178681
+11131;JanM;171417
+298;Koltjessem;171637
+298;Koltjessem;182163
+720;Frank Skjeldnes;176825
+299;Franklin (franklin@getmail.no);187260
+2805;soj@statskog.no;175704
+298;Koltjessem;193395
+298;Koltjessem;178443
+2985;Amund@forsvaret;172334
+298;Koltjessem;170982
+298;Koltjessem;185453
+325;Siggen@obskorps;171295
+21;Leif@ObsKorps;168927
+45;jostein@nve;189652
+3814;Trond Baadstø;183600
+3467;rubenroos;179389
+298;Koltjessem;173852
+298;Koltjessem;172082
+10980;Odd;169086
+299;Franklin (franklin@getmail.no);177711
+3763;Chris;175182
+720;Frank Skjeldnes;170774
+298;Koltjessem;194730
+2805;soj@statskog.no;176148
+298;Koltjessem;177474
+6718;Leo Z;173739
+1683;arøys1;168791
+289;Hammerfest Kommune;177243
+325;Siggen@obskorps;172976
+931;Olaf Årthun. ;188490
+325;Siggen@obskorps;169243
+298;Koltjessem;177312
+298;Koltjessem;172786
+45;jostein@nve;174194
+298;Koltjessem;168786
+299;Franklin (franklin@getmail.no);180519
+298;Koltjessem;180822
+1231;Liss@nve;191991
+298;Koltjessem;184009
+298;Koltjessem;195396
+298;Koltjessem;171633
+298;Koltjessem;169867
+1294;AsbjørnF;174449
+1695;Marius Rosøy;177285
+299;Franklin (franklin@getmail.no);180142
+298;Koltjessem;177476
+1231;Liss@nve;189542
+3762;arve.tvede;181761
+298;Koltjessem;179446
+3467;rubenroos;174765
+298;Koltjessem;195406
+298;Koltjessem;170311
+298;Koltjessem;176234
+298;Koltjessem;180010
+325;Siggen@obskorps;169261
+298;Koltjessem;190697
+6718;Leo Z;176596
+298;Koltjessem;177306
+298;Koltjessem;193787
+299;Franklin (franklin@getmail.no);173256
+299;Franklin (franklin@getmail.no);187247
+6718;Leo Z;170156
+298;Koltjessem;177302
+11140;Helaar;171518
+6718;Leo Z;178779
+298;Koltjessem;172054
+2812;Abj;174187
+4763;Radiosugge;172731
+2800;tgu;174903
+298;Koltjessem;173037
+10973;Erlnd;172336
+2;awa@nve.no;169115
+299;Franklin (franklin@getmail.no);181800
+298;Koltjessem;195411
+298;Koltjessem;169871
+586;Rune - Trønderenergi;175048
+298;Koltjessem;196089
+298;Koltjessem;179656
+4763;Radiosugge;181392
+298;Koltjessem;174823
+1231;Liss@nve;173015
+4763;Radiosugge;174617
+6718;Leo Z;169330
+3433;Torbjørn;185689
+298;Koltjessem;169501
+867;Tjugen;194069
+298;Koltjessem;168916
+325;Siggen@obskorps;188663
+298;Koltjessem;182215
+298;Koltjessem;173765
+6726;Hermansen ;178215
+298;Koltjessem;183175
+1352;MagnusU;181250
+10988;Jankarlsen;182717
+298;Koltjessem;196008
+2855;LLO;190528
+298;Koltjessem;177096
+298;Koltjessem;168917
+299;Franklin (franklin@getmail.no);184307
+12722;Isfiskern;185551
+298;Koltjessem;193809
+45;jostein@nve;168749
+298;Koltjessem;172059
+6718;Leo Z;179323
+298;Koltjessem;170963
+4763;Radiosugge;170824
+7847;Reidar KV;175615
+720;Frank Skjeldnes;196023
+298;Koltjessem;169517
+4763;Radiosugge;191085
+298;Koltjessem;192723
+1231;Liss@nve;180124
+298;Koltjessem;177493
+1231;Liss@nve;172861
+298;Koltjessem;177475
+298;Koltjessem;168299
+298;Koltjessem;168329
+298;Koltjessem;173477
+45;jostein@nve;172430
+298;Koltjessem;180853
+6718;Leo Z;181211
+298;Koltjessem;173846
+325;Siggen@obskorps;185634
+299;Franklin (franklin@getmail.no);175482
+623;ljoslandshytta.no;176900
+2844;klo@statskog.no;177233
+1682;Olavwv;195107
+298;Koltjessem;168784
+4763;Radiosugge;181803
+298;Koltjessem;180210
+298;Koltjessem;184003
+2869;Norsk Folkehjelp Meråker;191102
+325;Siggen@obskorps;195051
+21;Leif@ObsKorps;194980
+299;Franklin (franklin@getmail.no);175472
+298;Koltjessem;178447
+298;Koltjessem;177490
+584;Bjørn - Statkraft Vinje;189356
+298;Koltjessem;171643
+298;Koltjessem;182214
+325;Siggen@obskorps;169355
+298;Koltjessem;169507
+298;Koltjessem;196085
+623;ljoslandshytta.no;185643
+298;Koltjessem;190842
+11454;Tango-Tango;174441
+298;Koltjessem;181877
+3594;EdvardI;173253
+298;Koltjessem;168293
+298;Koltjessem;183171
+325;Siggen@obskorps;194643
+4763;Radiosugge;169200
+1683;arøys1;169050
+289;Hammerfest Kommune;168433
+1231;Liss@nve;191356
+298;Koltjessem;176021
+298;Koltjessem;194729
+6726;Hermansen ;171088
+298;Koltjessem;179660
+298;Koltjessem;178275
+3092;Stureth;186610
+298;Koltjessem;178918
+325;Siggen@obskorps;190541
+6110;Priska@NVE;183229
+299;Franklin (franklin@getmail.no);183218
+4118;TJ;173934
+298;Koltjessem;178902
+4763;Radiosugge;190246
+298;Koltjessem;177495
+325;Siggen@obskorps;187797
+298;Koltjessem;187493
+10909;BåSS;170993
+584;Bjørn - Statkraft Vinje;169224
+299;Franklin (franklin@getmail.no);187370
+11394;Jim Helge;174174
+8986;Torstein R;191711
+3594;EdvardI;173250
+298;Koltjessem;172768
+299;Franklin (franklin@getmail.no);184304
+298;Koltjessem;181994
+289;Hammerfest Kommune;171985
+3594;EdvardI;170669
+4763;Radiosugge;173456
+11429;Jan-Fredrik;174307
+8986;Torstein R;191594
+298;Koltjessem;180198
+298;Koltjessem;193540
+298;Koltjessem;193086
+10911;sti.lar;168763
+298;Koltjessem;180829
+299;Franklin (franklin@getmail.no);173267
+298;Koltjessem;177496
+298;Koltjessem;179459
+298;Koltjessem;178905
+6718;Leo Z;180196
+1231;Liss@nve;170639
+298;Koltjessem;169982
+1683;arøys1;168792
+298;Koltjessem;172093
+298;Koltjessem;181039
+2805;soj@statskog.no;177299
+1231;Liss@nve;173117
+298;Koltjessem;169740
+299;Franklin (franklin@getmail.no);181390
+299;Franklin (franklin@getmail.no);174623
+867;Tjugen;184904
+6718;Leo Z;170193
+720;Frank Skjeldnes;189944
+11579;Hurum turistforening ;175309
+867;Tjugen;194065
+298;Koltjessem;171140
+289;Hammerfest Kommune;177239
+234;Frodetk@nve;173686
+298;Koltjessem;173483
+3594;EdvardI;169055
+1231;Liss@nve;171287
+298;Koltjessem;190844
+2844;klo@statskog.no;184018
+6718;Leo Z;169426
+1231;Liss@nve;173336
+298;Koltjessem;180015
+298;Koltjessem;177663
+584;Bjørn - Statkraft Vinje;181224
+298;Koltjessem;183562
+298;Koltjessem;195982
+298;Koltjessem;173039
+2805;soj@statskog.no;177297
+298;Koltjessem;192722
+4763;Radiosugge;188928
+298;Koltjessem;179442
+584;Bjørn - Statkraft Vinje;174590
+9171;Stranden;173230
+1179;Blackbird;172411
+3594;EdvardI;193382
+298;Koltjessem;186277
+298;Koltjessem;177290
+298;Koltjessem;171631
+298;Koltjessem;195998
+298;Koltjessem;173771
+298;Koltjessem;181027
+3594;EdvardI;169845
+298;Koltjessem;193782
+298;Koltjessem;169508
+4763;Radiosugge;169319
+325;Siggen@obskorps;172319
+2808;tve@statskog.no;169464
+11401;Tobias Brox;185017
+3123;Krille;192555
+2985;Amund@forsvaret;189548
+298;Koltjessem;178278
+1231;Liss@nve;180110
+289;Hammerfest Kommune;170746
+298;Koltjessem;170962
+9156;Johnny Johnsen;183648
+298;Koltjessem;178612
+298;Koltjessem;179455
+298;Koltjessem;185444
+4763;Radiosugge;174933
+3814;Trond Baadstø;177086
+1739;Frode Vassenden;183001
+1617;håkon@obskorps ;169370
+298;Koltjessem;188329
+298;Koltjessem;177298
+3702;Atle;169312
+298;Koltjessem;174829
+298;Koltjessem;168308
+298;Koltjessem;170276
+298;Koltjessem;175329
+289;Hammerfest Kommune;172884
+6718;Leo Z;171882
+299;Franklin (franklin@getmail.no);179952
+298;Koltjessem;172276
+11809;Jonas Hals;183320
+45;jostein@nve;168828
+298;Koltjessem;181999
+298;Koltjessem;170976
+11231;Veståsen;172631
+299;Franklin (franklin@getmail.no);181650
+6718;Leo Z;169424
+298;Koltjessem;194190
+2844;klo@statskog.no;177249
+289;Hammerfest Kommune;168431
+298;Koltjessem;186257
+298;Koltjessem;172712
+2808;tve@statskog.no;182176
+11142;Ulrike Jüse;171582
+298;Koltjessem;182206
+289;Hammerfest Kommune;170743
+3702;Atle;179440
+6726;Hermansen ;172958
+298;Koltjessem;179159
+1231;Liss@nve;173013
+6718;Leo Z;169232
+45;jostein@nve;167785
+298;Koltjessem;193793
+298;Koltjessem;179453
+298;Koltjessem;168301
+2775;Ok67;171535
+325;Siggen@obskorps;172438
+720;Frank Skjeldnes;189945
+4763;Radiosugge;183673
+298;Koltjessem;177288
+6110;Priska@NVE;193386
+3467;rubenroos;169034
+1231;Liss@nve;195490
+298;Koltjessem;177098
+6718;Leo Z;169327
+21;Leif@ObsKorps;195561
+298;Koltjessem;172703
+1231;Liss@nve;191338
+298;Koltjessem;190853
+298;Koltjessem;186258
+298;Koltjessem;174827
+298;Koltjessem;183003
+298;Koltjessem;172772
+6946;HV;173653
+1407;Utgård;182162
+325;Siggen@obskorps;169254
+298;Koltjessem;179468
+298;Koltjessem;184356
+298;Koltjessem;189694
+1231;Liss@nve;174297
+298;Koltjessem;178283
+299;Franklin (franklin@getmail.no);177263
+3594;EdvardI;173125
+298;Koltjessem;195437
+10988;Jankarlsen;182714
+289;Hammerfest Kommune;193522
+6726;Hermansen ;183243
+298;Koltjessem;186048
+7014;Agnes@svv;172872
+298;Koltjessem;177807
+298;Koltjessem;196099
+3467;rubenroos;176226
+298;Koltjessem;193079
+2812;Abj;177141
+325;Siggen@obskorps;188859
+298;Koltjessem;184360
+1231;Liss@nve;181001
+289;Hammerfest Kommune;193520
+298;Koltjessem;170968
+298;Koltjessem;178455
+298;Koltjessem;187488
+289;Hammerfest Kommune;171980
+298;Koltjessem;195996
+298;Koltjessem;193093
+4763;Radiosugge;173116
+298;Koltjessem;182838
+3593;am@daastol.com;174720
+298;Koltjessem;173488
+298;Koltjessem;169752
+867;Tjugen;184860
+298;Koltjessem;169974
+298;Koltjessem;168300
+1015;Hålogaland Kraft AS;185893
+298;Koltjessem;181992
+6718;Leo Z;179149
+3556;Frode Lund;173133
+691;Merakerredningstjeneste;180393
+2775;Ok67;169375
+6718;Leo Z;179738
+6718;Leo Z;179147
+11809;Jonas Hals;183321
+2985;Amund@forsvaret;189547
+298;Koltjessem;177491
+298;Koltjessem;177309
+720;Frank Skjeldnes;189946
+2870;Salvesen@obskorps;192564
+6718;Leo Z;171509
+1231;Liss@nve;191041
+298;Koltjessem;169519
+298;Koltjessem;194214
+1231;Liss@nve;186401
+1015;Hålogaland Kraft AS;191275
+298;Koltjessem;193385
+289;Hammerfest Kommune;169962
+298;Koltjessem;186611
+298;Koltjessem;179462
+1712;Lars Rogstad;171539
+298;Koltjessem;185450
+298;Koltjessem;172061
+6718;Leo Z;177460
+298;Koltjessem;173040
+299;Franklin (franklin@getmail.no);187384
+298;Koltjessem;168297
+241;hae@nve.no;195930
+298;Koltjessem;168785
+298;Koltjessem;193811
+298;Koltjessem;172773
+1294;AsbjørnF;174451
+10909;BåSS;170186
+2870;Salvesen@obskorps;192565
+1231;Liss@nve;170625
+298;Koltjessem;168307
+298;Koltjessem;192713
+298;Koltjessem;178450
+2853;jim@statskog.no;178487
+298;Koltjessem;173045
+298;Koltjessem;190836
+1015;Hålogaland Kraft AS;191248
+298;Koltjessem;190835
+298;Koltjessem;195372
+298;Koltjessem;193401
+720;Frank Skjeldnes;195880
+298;Koltjessem;184006
+298;Koltjessem;180837
+4763;Radiosugge;180345
+298;Koltjessem;169526
+4763;Radiosugge;173457
+325;Siggen@obskorps;169109
+4730;Bjørn-Are;169112
+298;Koltjessem;177486
+299;Franklin (franklin@getmail.no);183083
+299;Franklin (franklin@getmail.no);184905
+289;Hammerfest Kommune;177242
+298;Koltjessem;177662
+299;Franklin (franklin@getmail.no);180386
+289;Hammerfest Kommune;171981
+298;Koltjessem;193092
+298;Koltjessem;190828
+3594;EdvardI;193383
+298;Koltjessem;176239
+3594;EdvardI;168764
+298;Koltjessem;170295
+298;Koltjessem;186263
+298;Koltjessem;181869
+298;Koltjessem;178269
+298;Koltjessem;195986
+299;Franklin (franklin@getmail.no);183973
+2985;Amund@forsvaret;172332
+298;Koltjessem;171526
+298;Koltjessem;182205
+298;Koltjessem;173486
+298;Koltjessem;169870
+298;Koltjessem;168781
+298;Koltjessem;171528
+10909;BåSS;168753
+298;Koltjessem;196005
+1739;Frode Vassenden;169875
+289;Hammerfest Kommune;168429
+395;Ketil - Statkraft Trondheim;179505
+298;Koltjessem;172754
+298;Koltjessem;169396
+3467;rubenroos;170066
+298;Koltjessem;184363
+4763;Radiosugge;190633
+3594;EdvardI;175452
+298;Koltjessem;190846
+289;Hammerfest Kommune;175575
+6504;Ragnar Standal;174161
+10909;BåSS;168795
+6726;Hermansen ;171405
+298;Koltjessem;180845
+298;Koltjessem;176233
+1695;Marius Rosøy;177283
+6718;Leo Z;171441
+298;Koltjessem;180833
+6718;Leo Z;171881
+298;Koltjessem;193547
+11630;gjs@statskog.no;176680
+298;Koltjessem;169387
+298;Koltjessem;172725
+289;Hammerfest Kommune;174587
+298;Koltjessem;180615
+1231;Liss@nve;193991
+298;Koltjessem;177093
+2853;jim@statskog.no;176924
+298;Koltjessem;195446
+299;Franklin (franklin@getmail.no);174744
+298;Koltjessem;172788
+298;Koltjessem;170960
+298;Koltjessem;192711
+325;Siggen@obskorps;182824
+298;Koltjessem;169747
+2853;jim@statskog.no;182528
+2844;klo@statskog.no;184020
+298;Koltjessem;186270
+298;Koltjessem;170354
+7;rue@nve;168745
+1294;AsbjørnF;170357
+298;Koltjessem;169504
+298;Koltjessem;193784
+6531;Nils;172589
+298;Koltjessem;195385
+4763;Radiosugge;181377
+10649;Joanna;168240
+298;Koltjessem;172084
+4763;Radiosugge;182195
+289;Hammerfest Kommune;170747
+298;Koltjessem;177658
+298;Koltjessem;178748
+298;Koltjessem;193653
+298;Koltjessem;172075
+12389;Tommy;182185
+298;Koltjessem;169873
+298;Koltjessem;190841
+6718;Leo Z;173737
+1015;Hålogaland Kraft AS;177134
+1231;Liss@nve;193213
+298;Koltjessem;182150
+298;Koltjessem;182207
+298;Koltjessem;179466
+289;Hammerfest Kommune;175569
+299;Franklin (franklin@getmail.no);173579
+1231;Liss@nve;185899
+4763;Radiosugge;175154
+747;MSA@nortind;183086
+1231;Liss@nve;191353
+11579;Hurum turistforening ;175294
+298;Koltjessem;179999
+298;Koltjessem;174828
+7253;BAL;188850
+298;Koltjessem;196086
+298;Koltjessem;179658
+298;Koltjessem;177094
+298;Koltjessem;177811
+298;Koltjessem;168306
+6718;Leo Z;181620
+6726;Hermansen ;177402
+298;Koltjessem;168302
+298;Koltjessem;179992
+325;Siggen@obskorps;191303
+3594;EdvardI;169303
+298;Koltjessem;193390
+298;Koltjessem;178913
+298;Koltjessem;184362
+11630;gjs@statskog.no;176682
+289;Hammerfest Kommune;169965
+298;Koltjessem;174644
+298;Koltjessem;192718
+289;Hammerfest Kommune;193524
+298;Koltjessem;173848
+2844;klo@statskog.no;184025
+325;Siggen@obskorps;195198
+6718;Leo Z;173736
+4763;Radiosugge;188929
+298;Koltjessem;179467
+4763;Radiosugge;171393
+298;Koltjessem;177478
+325;Siggen@obskorps;194200
+1231;Liss@nve;188841
+298;Koltjessem;172785
+3467;rubenroos;171136
+3556;Frode Lund;173129
+2812;Abj;183668
+11630;gjs@statskog.no;176685
+298;Koltjessem;179997
+11809;Jonas Hals;178427
+1231;Liss@nve;186403
+4763;Radiosugge;182376
+11703;Olav Krogsæter;177375
+1352;MagnusU;181197
+1015;Hålogaland Kraft AS;192381
+1231;Liss@nve;182678
+289;Hammerfest Kommune;170745

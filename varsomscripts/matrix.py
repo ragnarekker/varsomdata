@@ -29,7 +29,7 @@ def pickle_warnings(regions, date_from, date_to, pickle_file_name):
     for r in regions:
 
         # get all warning and problems for this region and then loop though them joining them where dates match.
-        region_warnings = gfa.get_avalanche_warnings(r, date_from, date_to)
+        region_warnings = gfa.get_avalanche_warnings_deprecated(r, date_from, date_to)
         #name = gro.get_forecast_region_name(r)
         '''
         problems = gro.get_problems_from_AvalancheWarnProblemV(r, date_from, date_to)

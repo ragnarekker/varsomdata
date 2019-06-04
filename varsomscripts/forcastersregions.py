@@ -13,8 +13,8 @@ if __name__ == '__main__':
     # regions = gkdv.get_kdv('ForecastRegionKDV')
 
     # Get forecasts
-    nordenskiold_warnings_201516 = gfa.get_avalanche_warnings(130, '2016-01-27', '2016-07-01')
-    nordenskiold_warnings_201617 = gfa.get_avalanche_warnings(3003, '2016-12-02', date.today())
+    nordenskiold_warnings_201516 = gfa.get_avalanche_warnings_deprecated(130, '2016-01-27', '2016-07-01')
+    nordenskiold_warnings_201617 = gfa.get_avalanche_warnings_deprecated(3003, '2016-12-02', date.today())
     nordenskiold_warnings = nordenskiold_warnings_201516 + nordenskiold_warnings_201617
 
     # Count occurences

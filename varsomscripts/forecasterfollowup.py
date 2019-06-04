@@ -1,128 +1,228 @@
 # -*- coding: utf-8 -*-
+"""
+
+"""
+
+import datetime as dt
+from varsomdata import getvarsompickles as gvp
+from utilities import makepickle as mp
+import setenvironment as env
+import os as os
+import numpy as np
+import pandas as pd
+
 __author__ = 'raek'
 
 
-from varsomdata import getdangers as gd
-import datetime as dt
-from varsomdata import getmisc as gm
-from varsomdata import makepickle as mp
-import setcoreenvironment as env
-import os as os
-import numpy as np
+class _WarningPartInt:
+
+    def __init__(self, for_this_author, for_all):
+
+        self.values = [float(i) for i in for_this_author]
+        self.values_all = [float(i) for i in for_all]
+
+        self.avg_values = np.mean(np.array(self.values))
+        self.avg_values_all = np.mean(np.array(self.values_all))
+
+        self.std_values = np.std(np.array(self.values))
+        self.std_values_all = np.std(np.array(self.values_all))
 
 
-def get_2016_17_warnings(how_to_get_data='Get new and dont pickle', pickle_file_name=None):
-    '''
+class _WarningPartString:
 
-    :param hot_to_get_data:     'Get new and dont pickle', 'Get new and save pickle' or 'Load pickle'
-    :param file_name:           Not needed if no pickles involved
-    :return:
-    '''
+    def __init__(self, for_this_author, for_all):
 
-    if 'Get new' in how_to_get_data:
+        self.texts = for_this_author
+        self.texts_all = for_all
 
-        from_date = dt.date(2016, 11, 30)
-        #to_date = dt.date.today()
-        to_date = dt.date(2017, 5, 31)
+        self.values = [len(str(t)) for t in self.texts]
+        self.values_all = [len(str(t)) for t in self.texts_all]
 
-        #region_ids = [3012, 3013]
-        region_ids = gm.get_forecast_regions(year='2016-17')
+        self.avg_values = np.mean(np.array(self.values))
+        self.avg_values_all = np.mean(np.array(self.values_all))
 
-        all_warnings = []
-        for region_id in region_ids:
-            all_warnings += gd.get_forecasted_dangers(region_id, from_date, to_date, include_ikke_vurdert=False)
+        self.std_values = np.std(np.array(self.values))
+        self.std_values_all = np.std(np.array(self.values_all))
 
-        # Sort by date
-        all_warnings = sorted(all_warnings, key=lambda AvalancheDanger: AvalancheDanger.date)
-
-        if 'and save pickle' in how_to_get_data:
-            mp.pickle_anything(all_warnings, pickle_file_name)
-
-    elif 'Load pickle' in how_to_get_data:
-        all_warnings = mp.unpickle_anything(pickle_warnings_file_name)
-
-    else:
-        all_warnings = 'No valid data retrival method given in get_2015_16_warnings.'
-
-    return all_warnings
+        self.daily_text_diff = []
+        self.daily_text_diff_all = []
 
 
-def make_forecaster_data(warnings, save_for_web=False):
-    '''Make the forecaster dictionary with all the neccesary data.
-    method also makes the dict needed fore the menu on the pythonanywhre website.
+class Forecaster:
 
-    :param warnings:
-    :return:
-    '''
+    def __init__(self, author_inn):
 
-    # get nicknames and ids to all regObs users. Get {id:nick} to all forecasters.
-    observer_nicks = gm.get_observer_v()
+        self.author = author_inn
 
-    # Make dataset with dict {nick: Forecaster}. Add warnings to Forecaster object.
-    # Note: A list of all forecaster names is all the keys in this dictionary
+        self.warnings = []              # all warnings made by this forecaster
+        self.warning_count = None       # int number of of warnings
+        self.dates_valid = {}           # dict of {date:#}
+        self.work_days = None
+        self.observer_id = None         # int observer id in regObs
+
+        # for current author. all input in the warnings listed by input field
+        self.danger_levels = []             # ints
+        self.main_texts = []                # strings
+        self.avalanche_dangers = []         # strings
+        self.snow_surfaces = []             # strings
+        self.current_weak_layers = []       # strings
+        self.problems_pr_warnings = []      # ints
+
+    def add_warning(self, warning_inn):
+        self.warnings.append(warning_inn)
+
+    def add_warnings_count(self, warning_count_inn):
+        self.warning_count = warning_count_inn
+
+    def add_dates_valid(self, dates_valid_inn):
+        self.dates_valid = dates_valid_inn
+
+    def add_work_days(self, work_days_inn):
+        self.work_days = work_days_inn
+
+    def add_observer_id(self, observer_id_inn):
+        self.observer_id = observer_id_inn
+
+    def add_danger_levels(self, danger_levels_inn, danger_levels_all_inn):
+        self.danger_levels = _WarningPartInt(danger_levels_inn, danger_levels_all_inn)
+
+    def add_main_texts(self, main_texts_inn, main_texts_all_inn):
+        self.main_texts = _WarningPartString(main_texts_inn, main_texts_all_inn)
+
+    def add_avalanche_dangers(self, avalanche_dangers_inn, avalanche_dangers_all_inn):
+        self.avalanche_dangers = _WarningPartString(avalanche_dangers_inn, avalanche_dangers_all_inn)
+
+    def add_snow_surfaces(self, snow_surface_inn, snow_surface_all_inn):
+        self.snow_surfaces = _WarningPartString(snow_surface_inn, snow_surface_all_inn)
+
+    def add_current_weak_layers(self, current_weak_layers_inn, current_weak_layers_all_inn):
+        self.current_weak_layers = _WarningPartString(current_weak_layers_inn, current_weak_layers_all_inn)
+
+    def add_problems_pr_warnings(self, problems_pr_warnings_inn, problems_pr_warnings_all_inn):
+        self.problems_pr_warnings = _WarningPartInt(problems_pr_warnings_inn, problems_pr_warnings_all_inn)
+
+
+def make_forecaster_data(year):
+    """For one season, make the forecaster dictionary with all the necessary data.
+    :param year:    [string] Eg. season '2017-18'
+    """
+
+    # get all valid forecasts
+    warnings_all = gvp.get_all_forecasts(year, max_file_age=100)
+    warnings_as_dict = [w.to_dict() for w in warnings_all]
+    warnings = pd.DataFrame(warnings_as_dict)
+
+    # get authors of all forecasters.
+    authors = warnings.author.unique()
+
+    forecasts_by_author = {}
+    number_by_author = {}
+    danger_levels_by_author = {}
+    avalanche_problems_by_author = {}
+
+    for a in authors:
+
+        author_df = warnings.loc[warnings['author'] == a]
+
+        forecasts_by_author[a] = author_df
+        number_by_author[a] = int(warnings.loc[warnings['author'] == a].shape[0])
+        danger_levels_by_author[a] = author_df['danger_level'].values
+
+        avalanche_problems_by_author[a] = author_df[
+            ['avalanche_problem_1_problem_type_name',
+             'avalanche_problem_2_problem_type_name',
+            'avalanche_problem_3_problem_type_name']
+        ].replace({'Not given': None}).count(axis='columns')
+
+    number_by_author_sorted = sorted(number_by_author.items(), key=lambda kv: kv[1], reverse=True)
+
+    observations_all = gvp.get_all_observations(year, geohazard_tids=10, output='List')
+
+    return
+
+
+def make_forecaster_data_old(year):
+    """For one season, make the forecaster dictionary with all the necessary data.
+    :param year:    [string] Eg. season '2017-18'
+    """
+
+    # get all valid forecasts
+    all_warnings = gvp.get_all_forecasts(year, max_file_age=100)
+
+    # get authors of all forecasters.
+    authors = []
+    for w in all_warnings:
+        if w.author not in authors:
+            authors.append(w.author)
+
+    # Make data set with dict {author: Forecaster}. Add warnings to Forecaster object.
+    # Note: A list of all authors are all the keys in this dictionary.
     forecaster_dict = {}
-    for w in warnings:
-        if w.nick not in forecaster_dict:
-            forecaster_dict[w.nick] = Forecaster(w.nick)
-            forecaster_dict[w.nick].add_warning(w)
+    for w in all_warnings:
+        if w.author not in forecaster_dict:
+            forecaster_dict[w.author] = Forecaster(w.author)
+            forecaster_dict[w.author].add_warning(w)
         else:
-            forecaster_dict[w.nick].add_warning(w)
+            forecaster_dict[w.author].add_warning(w)
 
-    # need this below for forecasterstatisitics
-    nowcast_lengths_all = []
-    forecast_lengths_all = []
-    danger_levels_all = []
-    problems_pr_warning_all = []
-    for w in warnings:
-        nowcast_lengths_all.append(len(w.avalanche_nowcast))
-        forecast_lengths_all.append(len(w.avalanche_forecast))
+    # need this below for forecaster statistics
+    danger_levels_all = []             # ints
+    main_texts_all = []                # strings
+    avalanche_dangers_all = []         # strings
+    snow_surfaces_all = []             # strings
+    current_weak_layers_all = []       # strings
+    problems_pr_warnings_all = []      # ints
+    for w in all_warnings:
         danger_levels_all.append(w.danger_level)
-        problems_pr_warning_all.append(len(w.avalanche_problems))
+        main_texts_all.append(w.main_text)
+        avalanche_dangers_all.append(w.avalanche_danger)
+        snow_surfaces_all.append(w.snow_surface)
+        current_weak_layers_all.append(w.current_weak_layers)
+        problems_pr_warnings_all.append(len(w.avalanche_problems))
 
-    # Add more data for forecaster objects in the dict
+    # Add data about the authors forecasts to forecaster objects in the dict
     for n, f in forecaster_dict.items():
 
-        # add # warnings made
-        forecaster_dict[f.nick].add_warnings_count(len(f.warnings))
-        for o_i, o_n in observer_nicks.items():
-            if o_n == f.nick:
-                forecaster_dict[f.nick].add_observer_id(o_i)
+        # add numbers of warnings made
+        forecaster_dict[f.author].add_warnings_count(len(f.warnings))
 
-        # find how many pr date
-        dates = {}
+        # find how many pr date valid
+        dates_valid = {}
         for w in f.warnings:
-            if w.date not in dates:
-                dates[w.date] = 1
+            if w.date_valid not in dates_valid:
+                dates_valid[w.date_valid] = 1
             else:
-                dates[w.date] += 1
-        forecaster_dict[f.nick].add_dates(dates)
+                dates_valid[w.date_valid] += 1
+        forecaster_dict[f.author].add_dates_valid(dates_valid)
 
-        # Add lists of dangerlevels, nowcastlengths, forecast lengths and problems.
-        # for this forecaster and all and avarages.
-        nowcast_lengths = []
-        forecast_lengths = []
-        danger_levels = []
-        problems_pr_warning = []
-
+        # add data on the danger levels forecasted
+        danger_levels_author = []
         for w in f.warnings:
-            nowcast_lengths.append(len(w.avalanche_nowcast))
-            forecast_lengths.append(len(w.avalanche_forecast))
-            danger_levels.append(w.danger_level)
-            problems_pr_warning.append(len(w.avalanche_problems))
+            data = {'Date': w.date_valid,
+                    'Region': w.region_name,
+                    'DL': w.danger_level,
+                    'Danger level': w.danger_level}
+        forecaster_dict[f.author].add_danger_levels(danger_levels_author, danger_levels_all)
 
-        forecaster_dict[f.nick].add_nowcast_lengths(nowcast_lengths, nowcast_lengths_all)
-        forecaster_dict[f.nick].add_forecast_lengths(forecast_lengths, forecast_lengths_all)
-        forecaster_dict[f.nick].add_danger_levels(danger_levels, danger_levels_all)
-        forecaster_dict[f.nick].add_problems_pr_warning(problems_pr_warning, problems_pr_warning_all)
+        # add data on the main texts made
+        main_texts_author = [w.main_text for w in f.warnings]
+        forecaster_dict[f.author].add_main_texts(main_texts_author, main_texts_all)
 
-    # Save dict of forecasters for the website menu. Find where nick match forecasters.
-    if save_for_web:
-        forecaster_nicknid_dict = {-1:'_OVERSIKT ALLE_'}
-        for o_i,o_n in observer_nicks.items():
-            for f_n, f_F in forecaster_dict.items():
-                if o_n == f_n:
-                    forecaster_nicknid_dict[o_i] = o_n
-        mp.pickle_anything(forecaster_nicknid_dict, '{0}forecasterlist.pickle'.format(env.web_root_folder))
+        # add data on the avalanche dangers made
+        avalanche_dangers_author = [w.avalanche_danger for w in f.warnings]
+        forecaster_dict[f.author].add_avalanche_dangers(avalanche_dangers_author, avalanche_dangers_all)
+
+        # add data on the snow surfaces forecasted
+        snow_surfaces_author = [w.snow_surface for w in f.warnings]
+        forecaster_dict[f.author].add_snow_surfaces(snow_surfaces_author, snow_surfaces_all)
+
+        # add data on the current weak layers made
+        current_weak_layers_author = [w.current_weak_layers for w in f.warnings]
+        forecaster_dict[f.author].add_current_weak_layers(current_weak_layers_author, current_weak_layers_all)
+
+        # add data on the avalanche problems made
+        problems_pr_warnings_author = [len(w.avalanche_problems) for w in f.warnings]
+        forecaster_dict[f.author].add_problems_pr_warnings(problems_pr_warnings_author, problems_pr_warnings_all)
 
     return forecaster_dict
 
@@ -206,14 +306,14 @@ def make_plots(forecaster_dict, nick, path=''):
 
 
 def make_html(forecaster_dict, nick, path='', type='Simple'):
-    '''Makes a html with dates and links to the forecasts made by a given forecaster.
+    """Makes a html with dates and links to the forecasts made by a given forecaster.
 
     :param forecaster_dict:
     :param nick:
     :param observer_id:
     :param path:
     :return:
-    '''
+    """
 
     fc = forecaster_dict[nick]
 
@@ -278,16 +378,16 @@ def make_html(forecaster_dict, nick, path='', type='Simple'):
 
 
 def make_m3_figs(forecaster_dict, nick, path=''):
-    '''Makes m3 tables for each forecaster. Uses methods from the runmatrix module.
+    """Makes m3 tables for each forecaster. Uses methods from the runmatrix module.
 
     :param forecaster_dict:
     :param nick:            is how I can select relevant warnings for this forecaster
     :param product_folder:  location where plots (endproduct) is saved
     :param project_folder:  many files generated; make project folder in product folder
     :return:
-    '''
+    """
 
-    from runvarsomdata import runmatrix as rm
+    from varsomscripts import matrix as mx
 
     f = forecaster_dict[nick]
     # select only warnings for this forecaster
@@ -295,17 +395,17 @@ def make_m3_figs(forecaster_dict, nick, path=''):
 
     # prepare dataset
     pickle_data_set_file_name = '{0}runforefollow data set {1}.pickle'.format(env.local_storage, f.observer_id)
-    rm.pickle_data_set(one_forecaster_warnings, pickle_data_set_file_name, use_ikke_gitt=False)
+    mx.pickle_data_set(one_forecaster_warnings, pickle_data_set_file_name, use_ikke_gitt=False)
     forecaster_data_set = mp.unpickle_anything(pickle_data_set_file_name)
 
     # prepare the m3 elementes (cell contents)
     pickle_m3_v2_file_name = '{0}runforefollow m3 {1}.pickle'.format(env.local_storage, f.observer_id)
-    rm.pickle_M3(forecaster_data_set, 'matrixconfiguration.v2.csv', pickle_m3_v2_file_name)
+    mx.pickle_M3(forecaster_data_set, 'matrixconfiguration.v2.csv', pickle_m3_v2_file_name)
     m3_v2_elements = mp.unpickle_anything(pickle_m3_v2_file_name)
 
     # plot
     plot_m3_v2_file_name = '{0}{1}_m3'.format(path, f.observer_id)
-    rm.plot_m3_v2(m3_v2_elements, plot_m3_v2_file_name)
+    mx.plot_m3_v2(m3_v2_elements, plot_m3_v2_file_name)
 
     return
 
@@ -389,165 +489,8 @@ def make_comparison_plots(forecaster_dict, path=''):
     return
 
 
-class Forecaster():
-
-
-    def __init__(self, nick_inn):
-
-        self.nick = nick_inn
-
-        self.warnings = []              # all warnings made by this forecaster
-        self.warning_count = None       # int number of of warnings
-        self.dates = {}                 # dict of {date:#}
-        self.observer_id = None         # int observer id in regObs
-
-        self.work_days = None
-
-        self.danger_levels = None
-        self.nowcast_lengths = None
-        self.forecast_lengths = None
-        self.problems_pr_warning = None
-
-        self.danger_levels_all = None
-        self.nowcast_lengths_all = None
-        self.forecast_lengths_all = None
-        self.problems_pr_warning_all = None
-
-        self.danger_levels_avg = None
-        self.nowcast_lengths_avg = None
-        self.forecast_lengths_avg = None
-        self.problems_pr_warning_avg = None
-
-        self.danger_levels_all_avg = None
-        self.nowcast_lengths_all_avg = None
-        self.forecast_lengths_all_avg = None
-        self.problems_pr_warning_all_avg = None
-
-        self.danger_levels_std = None
-        self.nowcast_lengths_std = None
-        self.forecast_lengths_std = None
-        self.problems_pr_warning_std = None
-
-        self.danger_levels_all_std = None
-        self.nowcast_lengths_all_std = None
-        self.forecast_lengths_all_std = None
-        self.problems_pr_warning_all_std = None
-
-
-
-    def add_warning(self, warning_inn):
-        self.warnings.append(warning_inn)
-
-
-    def add_warnings_count(self, warning_count_inn):
-        self.warning_count = warning_count_inn
-
-
-    def add_dates(self, dates_inn):
-        self.dates = dates_inn
-        self.work_days = len(self.dates)
-
-
-    def add_observer_id(self, observer_id_inn):
-        self.observer_id = observer_id_inn
-
-
-    def add_nowcast_lengths(self, nowcast_lengths_inn, nowcast_lengths_all_inn):
-
-        self.nowcast_lengths = [float(i) for i in nowcast_lengths_inn]
-        self.nowcast_lengths_avg = np.mean(np.array(self.nowcast_lengths))
-        self.nowcast_lengths_std = np.std(np.array(self.nowcast_lengths))
-
-        self.nowcast_lengths_all = [float(i) for i in nowcast_lengths_all_inn]
-        self.nowcast_lengths_all_avg = sum(self.nowcast_lengths_all)/len(self.nowcast_lengths_all)
-        self.nowcast_lengths_all_std = np.std(np.array(self.nowcast_lengths_all))
-
-
-    def add_forecast_lengths(self, forecast_lengths_inn, forecast_lengths_all_inn):
-
-        self.forecast_lengths = [float(i) for i in forecast_lengths_inn]
-        self.forecast_lengths_avg = sum(self.forecast_lengths)/len(self.forecast_lengths)
-        self.forecast_lengths_std = np.std(np.array(self.forecast_lengths))
-
-        self.forecast_lengths_all = [float(i) for i in forecast_lengths_all_inn]
-        self.forecast_lengths_all_avg = sum(self.forecast_lengths_all)/len(self.forecast_lengths_all)
-        self.forecast_lengths_all_std = np.std(np.array(self.forecast_lengths_all))
-
-
-    def add_danger_levels(self, danger_levels_inn, danger_levels_all_inn):
-
-        self.danger_levels = [float(i) for i in danger_levels_inn]
-        self.danger_levels_avg = sum(self.danger_levels)/len(self.danger_levels)
-        self.danger_levels_std = np.std(np.array(self.danger_levels))
-
-        self.danger_levels_all = [float(i) for i in danger_levels_all_inn]
-        self.danger_levels_all_avg = sum(self.danger_levels_all)/len(self.danger_levels_all)
-        self.danger_levels_all_std = np.std(np.array(self.danger_levels_all))
-
-
-    def add_problems_pr_warning(self, problems_pr_warning_inn, problems_pr_warning_all_inn):
-
-        self.problems_pr_warning = [float(i) for i in problems_pr_warning_inn]
-        self.problems_pr_warning_avg = sum(self.problems_pr_warning)/len(self.problems_pr_warning)
-        self.problems_pr_warning_std = np.std(np.array(self.problems_pr_warning))
-
-        self.problems_pr_warning_all = [float(i) for i in problems_pr_warning_all_inn]
-        self.problems_pr_warning_all_avg = sum(self.problems_pr_warning_all)/len(self.problems_pr_warning_all)
-        self.problems_pr_warning_all_std = np.std(np.array(self.problems_pr_warning_all))
-
-
 if __name__ == "__main__":
 
-    # Some controls for debugging and developing
-    plot_one = False         # make one plot for user 'Ragnar@NVE'. If False it makes all plots.
-    save_for_web = True      # save for web. If false it saves to plot folder.
-    get_new = False           # if false it uses a local pickle
-    make_pickle = True      # save pickle of what is gotten by get_new if true
+    make_forecaster_data('2018-19')
 
-    # Many files. Use a project folder.
-    project_folder = 'forecasterplots/'
-
-    product_image_folder='plots/'+ project_folder
-    if save_for_web:
-        product_image_folder=env.web_images_folder + project_folder
-    # Make folder if it doesnt exist
-    if not os.path.exists('{0}'.format(product_image_folder)):
-        os.makedirs('{0}'.format(product_image_folder))
-
-    product_html_folder=product_image_folder
-    if save_for_web: product_html_folder=env.web_view_folder
-
-    # Get and pickle all the warnings this season.
-    pickle_warnings_file_name = '{0}{1}'.format(env.local_storage, 'runforecasterfollowup warnings.pickle')
-    how_to_get_warning_data='Load pickle'
-    if get_new:
-        if make_pickle:
-            how_to_get_warning_data='Get new and save pickle'
-        else:
-            how_to_get_warning_data='Get new and dont pickle'
-    warnings = get_2016_17_warnings(how_to_get_data=how_to_get_warning_data, pickle_file_name=pickle_warnings_file_name)
-
-    # This is the data used from now on
-    forecaster_dict = make_forecaster_data(warnings, save_for_web=save_for_web)
-
-    # make plots about all forecasters
-    make_comparison_plots(forecaster_dict, path=product_image_folder)
-
-    # make finge forecaster output
-    if plot_one:
-        # plot for singe user
-        make_m3_figs(forecaster_dict, 'Ragnar@NVE', path=product_image_folder)
-        make_plots(forecaster_dict, 'Ragnar@NVE', path=product_image_folder)
-        make_html(forecaster_dict, 'Ragnar@NVE', path=product_html_folder, type='Advanced')
-        make_html(forecaster_dict, 'Ragnar@NVE', path=product_html_folder, type='Simple')
-    else:
-        # plot for all forecasters
-        for n,f in forecaster_dict.items():
-            nick = n
-            make_m3_figs(forecaster_dict, nick, path=product_image_folder)
-            make_plots(forecaster_dict, nick, path=product_image_folder)
-            make_html(forecaster_dict, nick, path=product_html_folder, type='Advanced')
-            make_html(forecaster_dict, nick, path=product_html_folder, type='Simple')
-
-
-
+    pass

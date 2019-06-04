@@ -1,40 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-
+Module contains methods for picking through Regobs and Varsom data.It might be to randomly pick
+out winners of a competition or count numbers for a report benchmark.
 """
 
 from varsomdata import getobservations as go
-from varsomdata import getforecastapi as gfa
 from varsomdata import getmisc as gm
 from varsomdata import getvarsompickles as gvp
-from utilities import makepickle as mp, makemisc as mm
+from utilities import makepickle as mp
 import setenvironment as env
 import collections as cols
 import datetime as dt
 
 __author__ = 'ragnarekker'
-
-
-def _get_all_snow(get_new=False):
-
-    file_name = '{}observations and forecasts 2012-17.pickle'.format(env.local_storage)
-
-    if get_new:
-        all_observations = go.get_all_registrations('2012-12-01', '2017-07-01', geohazard_tids=10)
-
-        years = ['2012-13', '2013-14', '2014-15', '2015-16', '2016-17']
-        all_forecasts = []
-        for y in years:
-            from_date, to_date = gm.get_forecast_dates(y)
-            region_ids = gm.get_forecast_regions(y)
-            all_forecasts += gfa.get_avalanche_warnings(region_ids, from_date, to_date)
-
-        mp.pickle_anything([all_observations, all_forecasts], file_name)
-
-    else:
-        [all_observations, all_forecasts] = mp.unpickle_anything(file_name)
-
-    return all_observations, all_forecasts
 
 
 class ObsCount:
@@ -133,165 +111,11 @@ def write_to_file_all_obs():
             f.write('{};{};{};{};{};{}\n'.format(k, v.water, v.landslide, v.ice, v.snow, v.total))
 
 
-def find_fun_facts():
-    """Til regObs quiz på oppstartsamling nov2017
-    Antall observasjoner totalt
-    Andre spm: kva region hadde(prosentvis?) flest obs av vedvarande svakt lag?
-    Antall observasjoner i Trollheimen?
-    Hvilket svakt lag ble mest observert i 2016-17 (i Hallingfjella)?
-
-    Andel observasjoner med *** eller mer?
-    Antall bilder total?
-    Antall skredhendelser observert?
-
-    Antall observasjoner på fg 4?
-    Antall observasjoner på fg 1?
-
-    :return:
-    """
-
-    obs, fore = _get_all_snow(get_new=False)
-
-    num_regtypes = {}
-    num_competance = {}
-
-    num_pr_date = mm.make_date_int_dict()          # antall obs pr dag
-    obs_pr_date = mm.make_date_list_dict()         # alle obs gruppert på dato
-    num_pr_region = {}
-    obs_pr_region = {}
-    num_persweek_pr_region = {}
-    obs_persweek_pr_region = {}
-
-    num_serious_incidents = 0
-
-    for o in obs:
-
-        registration_name = o.RegistrationName
-        if registration_name in num_regtypes.keys():
-            num_regtypes[registration_name] += 1
-        else:
-            num_regtypes[registration_name] = 0
-
-        competance_level = o.CompetenceLevelName
-        if competance_level in num_competance.keys():
-            num_competance[competance_level] += 1
-        else:
-            num_competance[competance_level] = 0
-
-        if 'Ulykke' in registration_name:
-            if o.FullObject['DamageExtentTID'] in [29, 30, 40]:
-                num_serious_incidents += 1
-
-        date = o.DtObsTime.date()
-        num_pr_date[date] += 1
-        obs_pr_date[date].append(o)
-
-        # observations pr region
-        region_id = o.ForecastRegionTID
-        if region_id in num_pr_region.keys():
-            num_pr_region[region_id] += 1
-            obs_pr_region[region_id].append(o)
-        else:
-            num_pr_region[region_id] = 1
-            obs_pr_region[region_id] = [o]
-
-        # persistent weak layers in regions
-        if 'Skredproblem' in o.RegistrationName:
-            if o.FullObject['AvalCauseTID'] in [11, 13, 16, 17, 18, 19]:
-                if region_id in num_persweek_pr_region.keys():
-                    num_persweek_pr_region[region_id] += 1
-                    obs_persweek_pr_region[region_id].append(o)
-                else:
-                    num_persweek_pr_region[region_id] = 1
-                    obs_persweek_pr_region[region_id] = [o]
-
-    aval_cause_halling = {}
-    for o in obs_pr_region[3032]:
-        if 'Skredproblem' in o.RegistrationName:
-            aval_cause = o.FullObject['AvalCauseTName']
-            if aval_cause in aval_cause_halling.keys():
-                aval_cause_halling[aval_cause] += 1
-            else:
-                aval_cause_halling[aval_cause] = 1
-
-    region_id_name = {}
-    for k, v in obs_pr_region.items():
-        region_id_name[k] = v[0].ForecastRegionName
-
-    print('Antall snø observasjoner fra tidenes morgen: {}'.format(len(obs)))
-    print('Antall snø observasjoner i Trollheimen fra tidenes morgen: {}'.format(num_pr_region[3022]))
-    print('Antal hendelser med nestenulykke, personskade eller dødsfall registrert: {}'.format(num_serious_incidents))
-    print('Antall bilder registrert: {}'.format(num_regtypes['Bilde']))
-    print('Mest observerte svake laget i Hallingdal er Nedføyka lag av nysnø med 157 av totalt {} skredproblemer observert.'.format(sum(aval_cause_halling.values())))
-    print('Nest mest observerte svake laget i Hallingdal er Dårlig binding mellom lag i fokksnøen med 145 observasjoner.')
-    print('Regionen med flest observerte vedvarende svake lag er Jotunheimen med 236 av totalt {} observasjoner med vedvarende svake lag.'.format(sum(num_persweek_pr_region.values())))
-    print('Regionen med nest flest observerte vedvarende svake lag er Hallingdal med 204 observerte problemer.')
-    print('Antall observasjoner levert med *** eller høyere kompetanse: {}'.format(num_competance['***']+ num_competance['****']+num_competance['*****']))
-
-    #obs_old_coords = _map_obs_to_old_regions(obs, make_new=False)
-
-    # num_dl4_pr_region = {}
-    # for_dl4_pr_region = {}
-    # num_dl1_pr_region = {}
-    # for_dl1_pr_region = {}
-    # for f in fore:
-    #     region_id = f.region_regobs_id
-    #     if region_id > 2999:
-    #         # danger level 4 pr region
-    #         if f.danger_level == 4:
-    #             if region_id in num_dl4_pr_region.keys():
-    #                 num_dl4_pr_region[region_id] += 1
-    #                 for_dl4_pr_region[region_id].append(f)
-    #             else:
-    #                 num_dl4_pr_region[region_id] = 1
-    #                 for_dl4_pr_region[region_id] = [f]
-    #
-    #         if f.danger_level == 1:
-    #             if region_id in num_dl1_pr_region.keys():
-    #                 num_dl1_pr_region[region_id] += 1
-    #                 for_dl1_pr_region[region_id].append(f)
-    #             else:
-    #                 num_dl1_pr_region[region_id] = 1
-    #                 for_dl1_pr_region[region_id] = [f]
-
-    dl_count = {}
-    for f in fore:
-        dl = f.danger_level
-        if dl in dl_count.keys():
-            dl_count[dl] += 1
-        else:
-            dl_count[dl] = 1
-
-    print('Antall varsel siden vi startet: {}'.format(dl_count[1] + dl_count[2] + dl_count[3] + dl_count[4]))
-    print('Antall dager med fg 5: 0')
-    print('Antall dager med fg 4: {}'.format(dl_count[4]))
-    print('Antall dager med fg 3: {}'.format(dl_count[3]))
-    print('Antall dager med fg 2: {}'.format(dl_count[2]))
-    print('Antall dager med fg 1: {}'.format(dl_count[1]))
-
-
-    return
-
-    # obs_by_date = cols.OrderedDict(sorted(obs_by_date.items(), key=lambda d: d[0]))
-    # num_at_date_most = cols.OrderedDict(sorted(num_at_date.items(), key=lambda d: d[1], reverse=True))
-
-    # c = []
-    # d = []
-    # for k,v in num_pr_date.items():
-    #     c.append(k)
-    #     d.append(v)
-    #
-    # # Write observed snow obs to file
-    # with open('all_obs_plot.txt', 'w', encoding='utf-8') as f:
-    #     for k, v in num_pr_date.items():
-    #         f.write('{}{};{}\n'.format(env.output_folder, k, v))
-
-
 def pick_winners_at_conference():
     """Pick winers at regObs competition at nordic avalanche conference at Åndalsnes."""
     import random as rand
-    romsdalen_konf_obs = go.get_all_registrations('2017-11-02', '2017-11-05', region_ids=3023, geohazard_tids=10)
-    romsdalen_konf_regs = go.get_data('2017-11-02', '2017-11-05', region_ids=3023, geohazard_tids=10, output='Nest')
+    romsdalen_konf_obs = go.get_all_observations('2017-11-02', '2017-11-05', region_ids=3023, geohazard_tids=10)
+    romsdalen_konf_regs = go.get_data('2017-11-02', '2017-11-05', region_ids=3023, geohazard_tids=10)
     rauma_konf_obs = []
     rauma_konf_regs = []
     for o in romsdalen_konf_obs:
@@ -309,57 +133,135 @@ def pick_winners_at_conference():
     print('5 : {}'.format(rauma_konf_obs[rand.randint(0, len(rauma_konf_obs))].NickName))
 
 
-def pick_winners_varsom_friflyt_konk_2018():
-    """Method for picking winners of the varsom/friflyt competition.
-    Winter 2017-18 we encouraged voluntary observations.
-    We pick som winners among snow obs.
-    1st, 2nd and 3rd to those who observed most.
-    The rest on random pick in relevant obs.
+def pick_winners_varsom_friflyt_konk_2019():
+    """
+    Method for picking winners of the varsom/friflyt competition.
 
-    :return:
+    Utvalgskriterier:
+        • Premie for flest observasjoner av snøoverflate og faretegn
+        • Premie til den som sender inn den grundigste observasjonen
+        • Uttrekkspremier blant de som leverer flere enn 10 observasjoner
+        • Uttrekkspremier blant de som leverer flere enn 5 isobservasjoner
+
     """
 
-    year = '2017-18'
-    all_snow_obs = gvp.get_all_observations(year, output='Nest', geohazard_tids=10, max_file_age=23)
+    year = '2018-19'
+    all_snow_obs = gvp.get_all_observations(year, geohazard_tids=10, max_file_age=23)
+    all_ice_obs = gvp.get_all_observations(year, geohazard_tids=70, max_file_age=23)
 
-    voluntary_obs = []
-    users_and_numbers = {}
+    voluntary_snow_obs = []
+    users_and_numbers_snow = {}
+
+    voluntary_snowcover_dangersign_obs = []
+    users_and_numbers_sc_ds = {}
+
+    voluntary_manyforms_obs = []
+    users_and_numbers_manyforms = {}
 
     for o in all_snow_obs:
 
         competence_level = o.CompetenceLevelName
         nick_name = o.NickName.lower()
-        observer_id_and_nick = '{};{}'.format(o.ObserverId, nick_name)
+        observer_id_and_nick = '{};{}'.format(o.ObserverID, nick_name)
 
-        if '****' not in competence_level:   # dont include obs with *** or more cometance
+        if '****' not in competence_level:   # dont include obs with **** or more competance
             if 'obskorps' not in nick_name:
                 if 'svv' not in nick_name and 'vegvesen' not in nick_name:
                     if 'nve' not in nick_name and 'met' not in nick_name:
                         if 'wyssen' not in nick_name and 'forsvaret' not in nick_name:
                             if 'kjus@nortind' not in nick_name:
 
-                                voluntary_obs.append(o)
-                                if observer_id_and_nick in users_and_numbers.keys():
-                                    users_and_numbers[observer_id_and_nick] += 1
+                                voluntary_snow_obs.append(o)
+                                if observer_id_and_nick in users_and_numbers_snow.keys():
+                                    users_and_numbers_snow[observer_id_and_nick] += 1
                                 else:
-                                    users_and_numbers[observer_id_and_nick] = 1
+                                    users_and_numbers_snow[observer_id_and_nick] = 1
+
+                                for oo in o.Observations:
+                                    if isinstance(oo, go.SnowSurfaceObservation):
+                                        voluntary_snowcover_dangersign_obs.append(o)
+                                        if observer_id_and_nick in users_and_numbers_sc_ds.keys():
+                                            users_and_numbers_sc_ds[observer_id_and_nick] += 1
+                                        else:
+                                            users_and_numbers_sc_ds[observer_id_and_nick] = 1
+                                    elif isinstance(oo, go.DangerSign):
+                                        voluntary_snowcover_dangersign_obs.append(o)
+                                        if observer_id_and_nick in users_and_numbers_sc_ds.keys():
+                                            users_and_numbers_sc_ds[observer_id_and_nick] += 1
+                                        else:
+                                            users_and_numbers_sc_ds[observer_id_and_nick] = 1
+
+                                if len(o.Observations) > 7:
+                                    voluntary_manyforms_obs.append(o)
+                                    if observer_id_and_nick in users_and_numbers_manyforms.keys():
+                                        users_and_numbers_manyforms[observer_id_and_nick] += 1
+                                    else:
+                                        users_and_numbers_manyforms[observer_id_and_nick] = 1
+
+    voluntary_ice_obs = []
+    users_and_numbers_ice = {}
+
+    for o in all_ice_obs:
+        competence_level = o.CompetenceLevelName
+        nick_name = o.NickName.lower()
+        observer_id_and_nick = '{};{}'.format(o.ObserverID, nick_name)
+
+        if '*****' not in competence_level:   # dont include obs with **** or more competance
+            voluntary_ice_obs.append(o)
+            if observer_id_and_nick in users_and_numbers_ice.keys():
+                users_and_numbers_ice[observer_id_and_nick] += 1
+            else:
+                users_and_numbers_ice[observer_id_and_nick] = 1
 
     import operator
     from random import shuffle
-    sorted_users_and_numbers = sorted(users_and_numbers.items(), key=operator.itemgetter(1), reverse=True)
 
-    # Write list of users and numbers to file. List can be sorted in excel. Need to lookup email and full name.
-    with open('{}users_and_numbers {}.txt'.format(env.output_folder, year), 'w', encoding='utf-8') as f:
-        for k, v in users_and_numbers.items():
+    sorted_users_and_numbers_snow = sorted(users_and_numbers_snow.items(), key=operator.itemgetter(1), reverse=True)
+    sorted_users_and_numbers_ice = sorted(users_and_numbers_ice.items(), key=operator.itemgetter(1), reverse=True)
+
+    # Write lists of users and numbers to file. List can be sorted in excel.Need to lookup email and full name.
+    # all snow obseravtions
+    with open('{}snow_observations_pr_user {}.txt'.format(env.output_folder, year), 'w', encoding='utf-8') as f:
+        for k, v in users_and_numbers_snow.items():
             f.write('{};{}\n'.format(k, v))
 
+    # all users with 10 or more snowobs with danger signs and/or snow cover obs.
+    with open('{}snow_cover_or_danger_sign_pr_user {}.txt'.format(env.output_folder, year), 'w', encoding='utf-8') as f:
+        for k, v in users_and_numbers_sc_ds.items():
+            if v > 9:       # only users with 10 or more obs
+                f.write('{};{}\n'.format(k, v))
+
+    # Comprehensive snow observations (many forms)
+    with open('{}many_forms_pr_users {}.txt'.format(env.output_folder, year), 'w',
+              encoding='utf-8') as f:
+        for k, v in users_and_numbers_snow.items():
+            f.write('{};{}\n'.format(k, v))
+
+    # Write list of users and numbers to file. List can be sorted in excel. Need to lookup email and full name.
+    with open('{}ice_observations_pr_user {}.txt'.format(env.output_folder, year), 'w', encoding='utf-8') as f:
+        for k, v in users_and_numbers_ice.items():
+            if v > 4:       # only users with 5 or more obs
+                f.write('{};{}\n'.format(k, v))
+
     # Shuffle the list of observations
-    shuffle(voluntary_obs)
+    shuffle(voluntary_snow_obs)
+    shuffle(voluntary_snowcover_dangersign_obs)
+    shuffle(voluntary_manyforms_obs)
+    shuffle(voluntary_ice_obs)
 
     # Write the random list of users and regid to file
-    with open('{}random_users_and_obs {}.txt'.format(env.output_folder, year), 'w', encoding='utf-8') as f:
-        for o in voluntary_obs:
-            f.write('{};{};{}\n'.format(o.ObserverId, o.NickName, o.RegID))
+    with open('{}random_snowobs {}.txt'.format(env.output_folder, year), 'w', encoding='utf-8') as f:
+        for o in voluntary_snow_obs:
+            f.write('{};{};{}\n'.format(o.ObserverID, o.NickName, o.RegID))
+    with open('{}random_snowcover_dangersign {}.txt'.format(env.output_folder, year), 'w', encoding='utf-8') as f:
+        for o in voluntary_snowcover_dangersign_obs:
+            f.write('{};{};{}\n'.format(o.ObserverID, o.NickName, o.RegID))
+    with open('{}random_manyforms {}.txt'.format(env.output_folder, year), 'w', encoding='utf-8') as f:
+        for o in voluntary_manyforms_obs:
+            f.write('{};{};{}\n'.format(o.ObserverID, o.NickName, o.RegID))
+    with open('{}random_ice_obs {}.txt'.format(env.output_folder, year), 'w', encoding='utf-8') as f:
+        for o in voluntary_ice_obs:
+            f.write('{};{};{}\n'.format(o.ObserverID, o.NickName, o.RegID))
 
     pass
 
@@ -368,8 +270,8 @@ def count_of_water_forms_used():
     """Which forms are use for observing water. Which users submit how much."""
 
     year = '2018'
-    all_water_obs_list = gvp.get_all_observations(year, output='List', geohazard_tids=60, max_file_age=230)
-    all_water_obs_nest = gvp.get_all_observations(year, output='Nest', geohazard_tids=60, max_file_age=230)
+    all_water_obs_list = gvp.get_all_observations(year, output='FlatList', geohazard_tids=60, max_file_age=230)
+    all_water_obs_nest = gvp.get_all_observations(year, output='List', geohazard_tids=60, max_file_age=230)
 
     form_count = {}
     for o in all_water_obs_list:
@@ -531,10 +433,9 @@ def total_2018_and_part_water():
 
 if __name__ == '__main__':
 
-    # find_fun_facts()
     # pick_winners_at_conference()
-    write_to_file_all_obs()
-    # pick_winners_varsom_friflyt_konk_2018()
+    # write_to_file_all_obs()
+    pick_winners_varsom_friflyt_konk_2019()
     # count_of_water_forms_used()
     # count_all_avalanches()
     # total_2018_and_part_water()
