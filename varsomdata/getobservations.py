@@ -371,28 +371,29 @@ def _make_one_request(from_date=None, to_date=None, reg_id=None, registration_ty
             lg.error("{0}: EXCEPTION. RECURSIVE COUNT {1} {2}".format(log_ref, recursive_count, error_msg))
 
             # When exception occurred, start requesting again. All that has happened in this scope is not important.
-            # Call this method again and make sure the received data goes direct to return at the bottom.
+            # Call the current method again and make sure the received data goes direct to return within this scope.
+            data_by_exception = []
 
             if recursive_count > 1:
                 recursive_count -= 1  # count down
-                data_by_except = _make_one_request(from_date=from_date,
-                                                   to_date=to_date,
-                                                   reg_id=reg_id,
-                                                   registration_types=registration_types,
-                                                   region_ids=region_ids,
-                                                   location_id=location_id,
-                                                   countries=countries,
-                                                   time_zone=time_zone,
-                                                   observer_id=observer_id,
-                                                   observer_nick=observer_nick,
-                                                   observer_competence=observer_competence,
-                                                   group_id=group_id,
-                                                   geohazard_tids=geohazard_tids,
-                                                   lang_key=lang_key,
-                                                   output=output,
-                                                   recursive_count=recursive_count)
+                data_by_exception = _make_one_request(from_date=from_date,
+                                                      to_date=to_date,
+                                                      reg_id=reg_id,
+                                                      registration_types=registration_types,
+                                                      region_ids=region_ids,
+                                                      location_id=location_id,
+                                                      countries=countries,
+                                                      time_zone=time_zone,
+                                                      observer_id=observer_id,
+                                                      observer_nick=observer_nick,
+                                                      observer_competence=observer_competence,
+                                                      group_id=group_id,
+                                                      geohazard_tids=geohazard_tids,
+                                                      lang_key=lang_key,
+                                                      output=output,
+                                                      recursive_count=recursive_count)
 
-            return data_by_except
+            return data_by_exception
 
     return data
 
@@ -3034,8 +3035,10 @@ if __name__ == "__main__":
 
     ###### Do some counting
     # count_all_season_regs = get_all_observations('2016-08-01', '2017-08-01', output='Count')
-    # count_ice = get_all_observations('2016-10-01', '2016-11-01', geohazard_tids=70, output='Count')
+    # count_ice = get_all_observations('2016-10-01', '2016-11-01', output='Count')
     # count_damages = get_damage_observation('2017-01-01', '2018-02-01', output='Count')
+
+    # todo: test one or more geohazards
 
     # danger_signs_data = get_data('2017-03-01', '2017-04-01', geohazard_tids=10, output='Count nest', registration_types=13)
     # registrations_ice = get_all_observations(from_date='2016-10-01', to_date='2016-11-01', geohazard_tids=70)

@@ -5,6 +5,7 @@
 
 import datetime as dt
 from varsomdata import getvarsompickles as gvp
+from varsomdata import getobservations as go
 from utilities import makepickle as mp
 import setenvironment as env
 import os as os
@@ -50,17 +51,17 @@ class _WarningPartString:
 
 class Forecaster:
 
-    def __init__(self, author_inn):
+    def __init__(self, author_in):
 
-        self.author = author_inn
+        self.author = author_in
 
-        self.warnings = []              # all warnings made by this forecaster
-        self.warning_count = None       # int number of of warnings
-        self.dates_valid = {}           # dict of {date:#}
-        self.work_days = None
-        self.observer_id = None         # int observer id in regObs
+        # About the warning production for current author
+        self.warnings = []                  # all warnings made by this forecaster
+        self.warning_count = 0           # int number of warnings
+        self.warning_publish_dates = {}     # dict of {date: number of warnings}
+        self.work_days = 0
 
-        # for current author. all input in the warnings listed by input field
+        # About the warning content for current author
         self.danger_levels = []             # ints
         self.main_texts = []                # strings
         self.avalanche_dangers = []         # strings
@@ -68,75 +69,118 @@ class Forecaster:
         self.current_weak_layers = []       # strings
         self.problems_pr_warnings = []      # ints
 
-    def add_warning(self, warning_inn):
-        self.warnings.append(warning_inn)
+        # About observations for current author
+        self.observer_id = None             # int observer id in regObs
+        self.observer_nick = None
+        self.observations = []
+        self.observation_count = 0
+        self.avalanche_evaluation_count = 0
+        self.avalanche_problem_count = 0
+        self.snow_profile_count = 0
 
-    def add_warnings_count(self, warning_count_inn):
-        self.warning_count = warning_count_inn
+    def add_warning(self, warning_in):
+        # add warning
+        self.warnings.append(warning_in)
+        self._update_warning_key_figures()
 
-    def add_dates_valid(self, dates_valid_inn):
-        self.dates_valid = dates_valid_inn
+    def _update_warning_key_figures(self):
+        # update numbers on the authors production
+        self.warning_count += 1
 
-    def add_work_days(self, work_days_inn):
-        self.work_days = work_days_inn
+        publish_date = self.warnings[-1].publish_time.date()
+        if publish_date in self.warning_publish_dates.keys():
+            self.warning_publish_dates[publish_date] += 1
+        else:
+            self.warning_publish_dates[publish_date] = 1
 
-    def add_observer_id(self, observer_id_inn):
-        self.observer_id = observer_id_inn
+        self.work_days = len(self.warning_publish_dates.keys())
 
-    def add_danger_levels(self, danger_levels_inn, danger_levels_all_inn):
-        self.danger_levels = _WarningPartInt(danger_levels_inn, danger_levels_all_inn)
+    def add_observation(self, observation_in):
+        # add observations and update numbers for about authors observations
+        self.observations.append(observation_in)
+        self.observer_id = observation_in.ObserverID
+        self.observer_nick = observation_in.NickName
+        self.observation_count = len(self.observations)
 
-    def add_main_texts(self, main_texts_inn, main_texts_all_inn):
-        self.main_texts = _WarningPartString(main_texts_inn, main_texts_all_inn)
+        for f in observation_in.Observations:
 
-    def add_avalanche_dangers(self, avalanche_dangers_inn, avalanche_dangers_all_inn):
-        self.avalanche_dangers = _WarningPartString(avalanche_dangers_inn, avalanche_dangers_all_inn)
+            if isinstance(f, go.AvalancheEvaluation3):
+                self.avalanche_evaluation_count += 1
 
-    def add_snow_surfaces(self, snow_surface_inn, snow_surface_all_inn):
-        self.snow_surfaces = _WarningPartString(snow_surface_inn, snow_surface_all_inn)
+            if isinstance(f, go.AvalancheEvalProblem2):
+                self.avalanche_problem_count += 1
 
-    def add_current_weak_layers(self, current_weak_layers_inn, current_weak_layers_all_inn):
-        self.current_weak_layers = _WarningPartString(current_weak_layers_inn, current_weak_layers_all_inn)
+            if isinstance(f, go.SnowProfile):
+                self.snow_profile_count += 1
 
-    def add_problems_pr_warnings(self, problems_pr_warnings_inn, problems_pr_warnings_all_inn):
-        self.problems_pr_warnings = _WarningPartInt(problems_pr_warnings_inn, problems_pr_warnings_all_inn)
+    def add_danger_levels(self, danger_levels_in, danger_levels_all_in):
+        self.danger_levels = _WarningPartInt(danger_levels_in, danger_levels_all_in)
+
+    def add_main_texts(self, main_texts_in, main_texts_all_in):
+        self.main_texts = _WarningPartString(main_texts_in, main_texts_all_in)
+
+    def add_avalanche_dangers(self, avalanche_dangers_in, avalanche_dangers_all_in):
+        self.avalanche_dangers = _WarningPartString(avalanche_dangers_in, avalanche_dangers_all_in)
+
+    def add_snow_surfaces(self, snow_surface_in, snow_surface_all_in):
+        self.snow_surfaces = _WarningPartString(snow_surface_in, snow_surface_all_in)
+
+    def add_current_weak_layers(self, current_weak_layers_in, current_weak_layers_all_in):
+        self.current_weak_layers = _WarningPartString(current_weak_layers_in, current_weak_layers_all_in)
+
+    def add_problems_pr_warnings(self, problems_pr_warnings_in, problems_pr_warnings_all_in):
+        self.problems_pr_warnings = _WarningPartInt(problems_pr_warnings_in, problems_pr_warnings_all_in)
+
+    def to_dict(self):
+
+        _dict = {'Author': self.author,
+                 'WarningCount': self.warning_count,
+                 'WorkDays': self.work_days,
+                 'ObserverNick': self.observer_nick,
+                 'ObserverID': self.observer_id,
+                 'ObservationCount': self.observation_count,
+                 'AvalancheEvaluationCount': self.avalanche_evaluation_count,
+                 'AvalancheProblemCount': self.avalanche_problem_count,
+                 'SnowProfileCount': self.snow_profile_count
+                 }
+
+        return _dict
 
 
 def make_forecaster_data(year):
-    """For one season, make the forecaster dictionary with all the necessary data.
-    :param year:    [string] Eg. season '2017-18'
+    """
+    For one season, make the forecaster dictionary with all the necessary data.
+    :param year:    [string] Eg. season '2018-19'
     """
 
-    # get all valid forecasts
-    warnings_all = gvp.get_all_forecasts(year, max_file_age=100)
-    warnings_as_dict = [w.to_dict() for w in warnings_all]
-    warnings = pd.DataFrame(warnings_as_dict)
+    # The data
+    all_warnings = gvp.get_all_forecasts(year, max_file_age=23)
+    all_observation_forms = gvp.get_all_observations(year, geohazard_tids=10, max_file_age=23)
 
-    # get authors of all forecasters.
-    authors = warnings.author.unique()
+    forecaster_data = {}
 
-    forecasts_by_author = {}
-    number_by_author = {}
-    danger_levels_by_author = {}
-    avalanche_problems_by_author = {}
+    for w in all_warnings:
+        if w.author in forecaster_data.keys():
+            forecaster_data[w.author].add_warning(w)
+        else:
+            forecaster_data[w.author] = Forecaster(w.author)
+            forecaster_data[w.author].add_warning(w)
 
-    for a in authors:
+    # number_by_author_sorted = sorted(number_by_author.items(), key=lambda kv: kv[1], reverse=True)
 
-        author_df = warnings.loc[warnings['author'] == a]
+    for o in all_observation_forms:
+        if o.NickName in forecaster_data.keys():
+            forecaster_data[o.NickName].add_observation(o)
 
-        forecasts_by_author[a] = author_df
-        number_by_author[a] = int(warnings.loc[warnings['author'] == a].shape[0])
-        danger_levels_by_author[a] = author_df['danger_level'].values
+    forecaster_list_of_dict = []
+    for v in forecaster_data.values():
+        forecaster_list_of_dict.append(v.to_dict())
 
-        avalanche_problems_by_author[a] = author_df[
-            ['avalanche_problem_1_problem_type_name',
-             'avalanche_problem_2_problem_type_name',
-            'avalanche_problem_3_problem_type_name']
-        ].replace({'Not given': None}).count(axis='columns')
-
-    number_by_author_sorted = sorted(number_by_author.items(), key=lambda kv: kv[1], reverse=True)
-
-    observations_all = gvp.get_all_observations(year, geohazard_tids=10, output='List')
+    import csv
+    with open('{0}forecaster_followup.txt'.format(env.output_folder), 'w', encoding='utf8') as f:
+        dict_writer = csv.DictWriter(f, delimiter=';', fieldnames=forecaster_list_of_dict[0].keys())
+        dict_writer.writeheader()
+        dict_writer.writerows(forecaster_list_of_dict)
 
     return
 

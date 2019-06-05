@@ -4,6 +4,7 @@
 Modifications:
 - 06.12.2018, kmunve: added class AvalancheWarning, MountainWeather, AvalancheWarningProblem
 - 24.05.2019, reak: changed logging python native logging and renamed get_avalanche_warnings_2 to get_avalanche_warnings
+- 05.06.2091, raek: added tests if mountain weather and avalanche problems. Add publish_time using parse (see import)
 """
 
 import requests
@@ -13,17 +14,20 @@ import numpy as np
 from varsomdata import varsomclasses as vc
 import setenvironment as env
 import logging as lg
+from dateutil.parser import parse as parse
 
 __author__ = 'raek and kmunve'
 
 
 class AvalancheWarning:
-    """AvalancheWarning represents the returns from
+    """
+    AvalancheWarning represents the returns from
     http://api.nve.no/doc/snoeskredvarsel/#avalanchewarningbyregion as a Python object.
     """
 
     def __init__(self):
-        """Init class properties
+        """
+        Init class properties
         """
         # Set internal variables
         self._nan_str = 'Not given'
@@ -131,14 +135,18 @@ class AvalancheWarning:
         else:
             self.valid_to = dt.datetime.strptime(date_in, '%Y-%m-%dT%H:%M:%S')
 
+    def set_publish_time(self, publish_time_in):
+        self.publish_time = parse(publish_time_in)
+
     def set_avalanche_problems(self, problems):
         try:
-            for p in problems:
-                _ap = AvalancheWarningProblem()
-                _ap.from_dict(p)
-                self.avalanche_problems.append(_ap)
-            # make sure lowest index (main problem) is first
-            self.avalanche_problems.sort(key=lambda _p: _p.avalanche_problem_id)
+            if problems:    # if danger level = 0, not evaluated, there are no problems
+                for p in problems:
+                    _ap = AvalancheWarningProblem()
+                    _ap.from_dict(p)
+                    self.avalanche_problems.append(_ap)
+                # make sure lowest index (main problem) is first
+                self.avalanche_problems.sort(key=lambda _p: _p.avalanche_problem_id)
         except TypeError:
             lg.error("getforecastapi.py -> AvalancheWarning.set_avalanche_problems(): TypeError")
 
@@ -154,7 +162,8 @@ class AvalancheWarning:
         return requests.utils.quote(f'{self.base_url_no}/{self.region_name}/{self.date_valid}', safe="/:")
 
     def from_dict(self, _d):
-        """Create AvalancheWarning object from JSON string returned by
+        """
+        Create AvalancheWarning object from JSON string returned by
         http://api.nve.no/doc/snoeskredvarsel/#avalanchewarningbyregion
 
         :param _d: the return from get_warnings_as_json
@@ -170,12 +179,12 @@ class AvalancheWarning:
         self.set_utm_zone(_d['UtmZone'])
         self.set_valid_from(_d['ValidFrom'])  # sets self.date_valid, too
         self.set_valid_to(_d['ValidTo'])
+        self.set_publish_time((_d['PublishTime']))
 
-        #self.county_list = []  # [list of county names overlapping with the region]
-        #self.muncipality_list = []  # [list of muncipalities overlapping with the region]
+        # self.county_list = []  # [list of county names overlapping with the region]
+        # self.muncipality_list = []  # [list of muncipalities overlapping with the region]
 
-        #self.next_warning_time = None  # [datetime]
-        #self.publish_time = None  # [datetime]
+        # self.next_warning_time = None  # [datetime]
         self.set_danger_level(_d['DangerLevel'])
         self.danger_level_name = _d['DangerLevelName']
         self.main_text = _d['MainText']
@@ -200,7 +209,8 @@ class AvalancheWarning:
         self.set_avalanche_problems(_d['AvalancheProblems'])  # [List of AvalancheProblem objects]
 
     def to_dict(self):
-        """Convert the object to a dictionary
+        """
+        Convert the object to a dictionary
 
         :return: dictionary representation of the AvalancheWarning class
         """
@@ -215,6 +225,7 @@ class AvalancheWarning:
                  'utm_zone': self.utm_zone,
                  'valid_from': self.valid_from,
                  'valid_to': self.valid_to,
+                 'publish_time': self.publish_time,
                  'danger_level': self.danger_level,
                  'danger_level_name': self.danger_level_name,
                  'main_text': self.main_text,
@@ -304,7 +315,8 @@ class AvalancheWarning:
 class AvalancheWarningProblem:
 
     def __init__(self):
-        """The AvalancheWarningProblem object contains the AvalancheProblems published as part of an AvalancheWarning.
+        """
+        The AvalancheWarningProblem object contains the AvalancheProblems published as part of an AvalancheWarning.
         You find the API documentation here: http://api.nve.no/doc/snoeskredvarsel/#avalanchewarningbyregion
         """
 
@@ -574,7 +586,8 @@ class AvalancheWarningProblem:
 
 
 class MountainWeather:
-    """The MountainWeather is published with each avalanche bulletin.
+    """
+    The MountainWeather is published with each avalanche bulletin.
     The API returns it as ['MountainWeather'] since version 4.
     Requires forecast_api_version = 4.0 or higher in /config/api.json
     """
@@ -660,89 +673,91 @@ class MountainWeather:
         :return: A MountainWeather object
         """
         try:
-            for _mt in _d['MeasurementTypes']:
-                if _mt['Id'] == 10:  # precipitation
-                    for _st in _mt['MeasurementSubTypes']:
-                        if _st['Id'] == 60:  # most exposed
-                            try:
-                                self.precip_most_exposed = float(_st['Value'])
-                            except TypeError:
-                                self.precip_most_exposed = self._nan_value
-                        elif _st['Id'] == 70:  # regional average
-                            try:
-                                self.precip_region = float(_st['Value'])
-                            except TypeError:
-                                self.precip_region = self._nan_value
-                            except ValueError:
-                                self.precip_region = float(re.sub('[^\-\d+]', '', _st['Value']))
+            if _d:      # outside season we might be missing mountain weather
+                for _mt in _d['MeasurementTypes']:
+                    if _mt['Id'] == 10:  # precipitation
+                        for _st in _mt['MeasurementSubTypes']:
+                            if _st['Id'] == 60:  # most exposed
+                                try:
+                                    self.precip_most_exposed = float(_st['Value'])
+                                except TypeError:
+                                    self.precip_most_exposed = self._nan_value
+                            elif _st['Id'] == 70:  # regional average
+                                try:
+                                    self.precip_region = float(_st['Value'])
+                                except TypeError:
+                                    self.precip_region = self._nan_value
+                                except ValueError:
+                                    self.precip_region = float(re.sub('[^\-\d+]', '', _st['Value']))
 
-                elif _mt['Id'] == 20:  # wind
-                    for _st in _mt['MeasurementSubTypes']:
-                        if _st['Id'] == 20:  # wind_speed
-                            self.wind_speed = _st['Value']
-                        elif _st['Id'] == 50:  # wind_direction
-                            self.wind_direction = _st['Value']
+                    elif _mt['Id'] == 20:  # wind
+                        for _st in _mt['MeasurementSubTypes']:
+                            if _st['Id'] == 20:  # wind_speed
+                                self.wind_speed = _st['Value']
+                            elif _st['Id'] == 50:  # wind_direction
+                                self.wind_direction = _st['Value']
 
-                elif _mt['Id'] == 30:  # changing wind
-                    for _st in _mt['MeasurementSubTypes']:
-                        if _st['Id'] == 20:  # wind_speed
-                            self.change_wind_speed = _st['Value']
-                        elif _st['Id'] == 50:  # wind_direction
-                            self.change_wind_direction = _st['Value']
-                        elif _st['Id'] == 100:  # hour_of_day_start
-                            try:
-                                self.change_hour_of_day_start = int(_st['Value'])
-                            except TypeError:
-                                self.change_hour_of_day_start = self._nan_value
-                        elif _st['Id'] == 110:  # hour_of_day_stop
-                            try:
-                                self.change_hour_of_day_stop = int(_st['Value'])
-                            except TypeError:
-                                self.change_hour_of_day_stop = self._nan_value
+                    elif _mt['Id'] == 30:  # changing wind
+                        for _st in _mt['MeasurementSubTypes']:
+                            if _st['Id'] == 20:  # wind_speed
+                                self.change_wind_speed = _st['Value']
+                            elif _st['Id'] == 50:  # wind_direction
+                                self.change_wind_direction = _st['Value']
+                            elif _st['Id'] == 100:  # hour_of_day_start
+                                try:
+                                    self.change_hour_of_day_start = int(_st['Value'])
+                                except TypeError:
+                                    self.change_hour_of_day_start = self._nan_value
+                            elif _st['Id'] == 110:  # hour_of_day_stop
+                                try:
+                                    self.change_hour_of_day_stop = int(_st['Value'])
+                                except TypeError:
+                                    self.change_hour_of_day_stop = self._nan_value
 
-                elif _mt['Id'] == 40:  # temperature
-                    for _st in _mt['MeasurementSubTypes']:
-                        if _st['Id'] == 30:  # temperature_min
-                            try:
-                                self.temperature_min = float(_st['Value'])
-                            except TypeError:
-                                self.temperature_min = self._nan_value
-                        elif _st['Id'] == 40:  # temperature_max
-                            try:
-                                self.temperature_max = float(_st['Value'])
-                            except TypeError:
-                                self.temperature_max = self._nan_value
-                            except ValueError:
-                                self.temperature_max = self._nan_value
-                        elif _st['Id'] == 90:  # temperature_elevation
-                            try:
-                                self.temperature_elevation = float(_st['Value'])
-                            except TypeError:
-                                self.temperature_elevation = self._nan_value
+                    elif _mt['Id'] == 40:  # temperature
+                        for _st in _mt['MeasurementSubTypes']:
+                            if _st['Id'] == 30:  # temperature_min
+                                try:
+                                    self.temperature_min = float(_st['Value'])
+                                except TypeError:
+                                    self.temperature_min = self._nan_value
+                            elif _st['Id'] == 40:  # temperature_max
+                                try:
+                                    self.temperature_max = float(_st['Value'])
+                                except TypeError:
+                                    self.temperature_max = self._nan_value
+                                except ValueError:
+                                    self.temperature_max = self._nan_value
+                            elif _st['Id'] == 90:  # temperature_elevation
+                                try:
+                                    self.temperature_elevation = float(_st['Value'])
+                                except TypeError:
+                                    self.temperature_elevation = self._nan_value
 
-                elif _mt['Id'] == 50:  # freezing level
-                    for _st in _mt['MeasurementSubTypes']:
-                        if _st['Id'] == 90:  # freezing_level
-                            try:
-                                self.freezing_level = float(_st['Value'])
-                            except TypeError:
-                                self.freezing_level = self._nan_value
-                        elif _st['Id'] == 100:  # hour_of_day_start
-                            if isinstance(_st['Value'], type(None)):
-                                self.fl_hour_of_day_start = self._nan_value
-                            else:
-                                self.fl_hour_of_day_start = int(_st['Value'])
-                        elif _st['Id'] == 110:  # hour_of_day_stop
-                            if isinstance(_st['Value'], type(None)):
-                                self.fl_hour_of_day_stop = self._nan_value
-                            else:
-                                self.fl_hour_of_day_stop = int(_st['Value'])
+                    elif _mt['Id'] == 50:  # freezing level
+                        for _st in _mt['MeasurementSubTypes']:
+                            if _st['Id'] == 90:  # freezing_level
+                                try:
+                                    self.freezing_level = float(_st['Value'])
+                                except TypeError:
+                                    self.freezing_level = self._nan_value
+                            elif _st['Id'] == 100:  # hour_of_day_start
+                                if isinstance(_st['Value'], type(None)):
+                                    self.fl_hour_of_day_start = self._nan_value
+                                else:
+                                    self.fl_hour_of_day_start = int(_st['Value'])
+                            elif _st['Id'] == 110:  # hour_of_day_stop
+                                if isinstance(_st['Value'], type(None)):
+                                    self.fl_hour_of_day_stop = self._nan_value
+                                else:
+                                    self.fl_hour_of_day_stop = int(_st['Value'])
         except TypeError:
-            lg.error('getforecastapi.py -> MountainWeather.from_dict(): TypeError source.')
+            lg.error("getforecastapi.py -> MountainWeather.from_dict(): TypeError source.")
 
 
 def get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=1, recursive_count=5):
-    """Selects warnings and returns the json structured as given on the api.
+    """
+    Selects warnings and returns the json structured as given on the api.
 
     :param region_ids:      [int or list of ints]       RegionID as given in the forecast api [1-99] or in regObs [101-199]
     :param from_date:       [date or string as yyyy-mm-dd]
@@ -799,7 +814,8 @@ def get_avalanche_warnings_as_json(region_ids, from_date, to_date, lang_key=1, r
 
 
 def get_avalanche_warnings(region_ids, from_date, to_date, lang_key=1, as_dict=False):
-    """Selects warnings and returns a list of AvalancheDanger Objects. This method adds the
+    """
+    Selects warnings and returns a list of AvalancheDanger Objects. This method adds the
     avalanche problems to the warning.
 
     :param region_ids:  [int or list of ints] RegionID as given in the forecast api [1-99] or in regObs [101-199]
@@ -1023,7 +1039,7 @@ def get_landslide_warnings_as_json(municipality, from_date, to_date, lang_key=1,
 if __name__ == "__main__":
 
     # land_slide_warnings = get_landslide_warnings_as_json([1201], dt.date(2018, 1, 1), dt.date(2018, 4, 1))
-    warnings = get_avalanche_warnings([3022, 3014], dt.date(2016, 12, 1), dt.date(2016, 12, 21))
+    warnings = get_avalanche_warnings([3022, 3014], dt.date(2018, 12, 1), dt.date(2018, 12, 5))
     # p = get_valid_regids(10, '2013-03-01', '2013-03-09')
 
     pass

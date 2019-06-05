@@ -16,8 +16,10 @@ __author__ = 'raek'
 
 
 def _observation_is_not_empty(o):
-    """Test if an observation form is empty. Might occur when making list of nests and only pictures are given.
-    Method will need to expand if empty cases occur on other forms."""
+    """
+    Test if an observation form is empty. Might occur when making list of nests and only pictures are given.
+    Method will need to expand if empty cases occur on other forms.
+    """
 
     if o.RegistrationTID == 10:
         if o.ObsComment is None and o.ObsHeader is None and o.Comment is None and len(o.URLs) == 0:
@@ -27,7 +29,8 @@ def _observation_is_not_empty(o):
 
 
 def get_all_observations(year, output='List', geohazard_tids=None, lang_key=1, max_file_age=23):
-    """Specialized method for getting all observations for one season (1. sept to 31. august).
+    """
+    Specialized method for getting all observations for one season (1. sept to 31. august).
     For the current season (at the time of writing, 2018-19), if request has been made the last 23hrs,
     data is retrieved from a locally stored pickle, if not, new request is made to the regObs api. Previous
     seasons are not requested if a pickle is found in local storage.
@@ -91,7 +94,7 @@ def get_all_observations(year, output='List', geohazard_tids=None, lang_key=1, m
         return listed_observations
 
     elif output == 'FlatList':
-        all_flat_listed_observations = mp.unpickle_anything(file_name_list)
+        all_flat_listed_observations = mp.unpickle_anything(file_name_flat)
         flat_listed_observations = []
 
         if geohazard_tids:
@@ -180,4 +183,3 @@ if __name__ == "__main__":
     # all_forecasts_1516 = get_all_forecasts('2015-16')
 
     pass
-

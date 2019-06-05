@@ -1,0 +1,31 @@
+Author;WarningCount;WorkDays;ObserverNick;ObserverID;ObservationCount;AvalancheEvaluationCount;AvalancheProblemCount;SnowProfileCount
+Karsten@NVE;123;21;Karsten@NVE;49;6;0;0;3
+Odd-Arne@NVE;84;18;Odd-Arne@NVE;77;3;0;1;1
+emma@nve;158;33;emma@nve;258;5;2;4;2
+JonasD@ObsKorps;240;40;JonasD@ObsKorps;111;69;30;36;14
+Andreas@nve;123;20;Andreas@nve;10;27;11;8;10
+Espen Granan;144;36;Espen Granan;17;7;5;3;3
+jostein@nve;116;23;jostein@nve;45;73;13;10;3
+HåvardT@met;101;22;HåvardT@met;19;22;10;15;5
+haso@nve.no;104;20;haso@nve.no;222;2;2;1;0
+torolav@obskorps;229;35;torolav@obskorps;55;76;58;56;26
+magnush@met;144;30;magnush@met;10676;13;11;12;9
+solveig@NVE;143;25;solveig@NVE;227;20;7;12;3
+ragnhildn@met;125;27;ragnhildn@met;6028;9;6;6;7
+MSA@nortind;104;20;MSA@nortind;747;22;7;8;3
+Ragnar@NVE;76;15;Ragnar@NVE;6;16;2;1;1
+Jørgen@obskorps;228;35;Jørgen@obskorps;35;69;37;47;0
+ToreV@met;125;23;ToreV@met;741;28;15;24;4
+Halvor@NVE;164;27;Halvor@NVE;40;76;33;42;13
+knutinge@svv;160;25;knutinge@svv;8;19;8;7;8
+Ingrid@NVE;114;23;Ingrid@NVE;2790;50;8;6;2
+Eldbjorg@MET;89;21;Eldbjorg@MET;10636;6;5;4;6
+John Smits;92;26;John Smits;15;8;8;8;5
+jegu@NVE;99;22;jegu@NVE;31;71;7;9;5
+Tommy@NVE;136;25;Tommy@NVE;173;29;5;4;4
+heidi@nve.no;194;35;heidi@nve.no;740;26;7;11;7
+Ronny@NVE;177;28;Ronny@NVE;3423;13;1;2;0
+rue@nve;28;4;rue@nve;7;17;2;3;0
+martin@svv;151;25;martin@svv;3436;45;16;17;3
+Julie@SVV;103;19;Julie@SVV;34;1;0;0;0
+torehum@svv;83;14;torehum@svv;41;95;6;8;3
