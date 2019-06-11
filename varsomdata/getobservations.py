@@ -169,7 +169,7 @@ def _get_object(registration_tid, d):
         _objects = []
         for do in d['DangerObs']:
             i += 1
-            _objects.append(DangerSign(d, i))
+            _objects.append(DangerSign(do, i))
         return _objects
 
     elif registration_tid == 14:
@@ -177,7 +177,7 @@ def _get_object(registration_tid, d):
         _objects = []
         for do in d['DamageObs']:
             i += 1
-            _objects.append(DamageObs(d, i))
+            _objects.append(DamageObs(do, i))
         return _objects
 
     elif registration_tid == 21:
@@ -191,7 +191,7 @@ def _get_object(registration_tid, d):
         _objects = []
         for do in d['CompressionTest']:
             i += 1
-            _objects.append(ColumnTest(d, i))
+            _objects.append(ColumnTest(do, i))
         return _objects
 
     elif registration_tid == 26:
@@ -202,7 +202,7 @@ def _get_object(registration_tid, d):
         _objects = []
         for do in d['AvalancheActivityObs']:
             i += 1
-            _objects.append(AvalancheActivityObs(d, i))
+            _objects.append(AvalancheActivityObs(do, i))
         return _objects
 
     elif registration_tid == 33:
@@ -210,7 +210,7 @@ def _get_object(registration_tid, d):
         _objects = []
         for do in d['AvalancheActivityObs2']:
             i += 1
-            _objects.append(AvalancheActivityObs2(d, i))
+            _objects.append(AvalancheActivityObs2(do, i))
         return _objects
 
     elif registration_tid == 28:
@@ -227,7 +227,7 @@ def _get_object(registration_tid, d):
         _objects = []
         for do in d['AvalancheEvalProblem2']:
             i += 1
-            _objects.append(AvalancheEvalProblem2(d, i))
+            _objects.append(AvalancheEvalProblem2(do, i))
         return _objects
 
     elif registration_tid == 36:
