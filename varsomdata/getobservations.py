@@ -448,11 +448,11 @@ def get_count(from_date=None, to_date=None, registration_types=None,
     for reg_id in reg_ids:
         for observer_id in observer_ids:
             part_count = _make_one_request(
-                    from_date=from_date, to_date=to_date, lang_key=lang_key, reg_id=reg_id,
-                    registration_types=registration_types, region_ids=region_ids, countries=countries,
-                    time_zone=time_zone, geohazard_tids=geohazard_tids,
-                    observer_id=observer_id, observer_nick=observer_nick, observer_competence=observer_competence,
-                    group_id=group_id, location_id=location_id, output='Count')
+                from_date=from_date, to_date=to_date, lang_key=lang_key, reg_id=reg_id,
+                registration_types=registration_types, region_ids=region_ids, countries=countries,
+                time_zone=time_zone, geohazard_tids=geohazard_tids,
+                observer_id=observer_id, observer_nick=observer_nick, observer_competence=observer_competence,
+                group_id=group_id, location_id=location_id, output='Count')
 
             total_count += part_count
 
@@ -1592,17 +1592,17 @@ class AvalancheEvalProblem2(Registration, Location, Observer, Pictures):
 
         if i > -1:
             self.AvalancheProblemID = d['AvalancheEvalProblem2'][i]['AvalancheEvalProblemID']
-    
+
             self.AvalCauseAttributeCrystalTID = d['AvalancheEvalProblem2'][i]['AvalCauseAttributeCrystalTID']
             self.AvalCauseAttributeLightTID = d['AvalancheEvalProblem2'][i]['AvalCauseAttributeLightTID']
             self.AvalCauseAttributeSoftTID = d['AvalancheEvalProblem2'][i]['AvalCauseAttributeSoftTID']
             self.AvalCauseAttributeThinTID = d['AvalancheEvalProblem2'][i]['AvalCauseAttributeThinTID']
-    
+
             self.AvalCauseAttributeCrystalName = d['AvalancheEvalProblem2'][i]['AvalCauseAttributeCrystalName']
             self.AvalCauseAttributeLightName = d['AvalancheEvalProblem2'][i]['AvalCauseAttributeLightName']
             self.AvalCauseAttributeSoftName = d['AvalancheEvalProblem2'][i]['AvalCauseAttributeSoftName']
             self.AvalCauseAttributeThinName = d['AvalancheEvalProblem2'][i]['AvalCauseAttributeThinName']
-    
+
             self.AvalCauseDepthName = d['AvalancheEvalProblem2'][i]['AvalCauseDepthName']
             self.AvalCauseName = d['AvalancheEvalProblem2'][i]['AvalCauseName']
             self.AvalCauseTID = d['AvalancheEvalProblem2'][i]['AvalCauseTID']
@@ -1610,23 +1610,23 @@ class AvalancheEvalProblem2(Registration, Location, Observer, Pictures):
             self.AvalancheProbabilityName = d['AvalancheEvalProblem2'][i]['AvalProbabilityName']
             self.DestructiveSizeName = d['AvalancheEvalProblem2'][i]['DestructiveSizeName']
             self.AvalPropagationName = d['AvalancheEvalProblem2'][i]['AvalPropagationName']
-    
+
             # int of eight char. First char is N, second is NE etc.
-            self.ValidExposition = d['AvalancheEvalProblem2'][i]['ValidExposition']  
+            self.ValidExposition = d['AvalancheEvalProblem2'][i]['ValidExposition']
             self.ExposedHeight1 = d['AvalancheEvalProblem2'][i]['ExposedHeight1']  # upper height
             self.ExposedHeight2 = d['AvalancheEvalProblem2'][i]['ExposedHeight2']  # lower height
             self.ExposedHeightComboTID = d['AvalancheEvalProblem2'][i]['ExposedHeightComboTID']
-    
+
             self.AvalancheExtName = d['AvalancheEvalProblem2'][i]['AvalancheExtName']
             self.AvalancheExtTID = d['AvalancheEvalProblem2'][i]['AvalancheExtTID']
             self.Comment = d['AvalancheEvalProblem2'][i]['Comment']
-        
+
         else:
-            self.AvalancheProblemID = None      
+            self.AvalancheProblemID = None
             self.AvalCauseAttributeCrystalTID = None
             self.AvalCauseAttributeLightTID = None
             self.AvalCauseAttributeSoftTID = None
-            self.AvalCauseAttributeThinTID = None    
+            self.AvalCauseAttributeThinTID = None
             self.AvalCauseAttributeCrystalName = None
             self.AvalCauseAttributeLightName = None
             self.AvalCauseAttributeSoftName = None
@@ -1641,11 +1641,11 @@ class AvalancheEvalProblem2(Registration, Location, Observer, Pictures):
             self.ValidExposition = None
             self.ExposedHeight1 = None
             self.ExposedHeight2 = None
-            self.ExposedHeightComboTID = None      
+            self.ExposedHeightComboTID = None
             self.AvalancheExtName = None
             self.AvalancheExtTID = None
             self.Comment = None
-        
+
         self.LangKey = d['LangKey']
 
     def to_dict(self):
@@ -2057,7 +2057,7 @@ class WaterLevel2(Registration, Location, Observer):
             self.MarkingTypeTID = d['WaterLevel2']['MarkingTypeTID']
             self.MarkingTypeName = d['WaterLevel2']['MarkingTypeName']
             self.MeasuringToolDescription = d['WaterLevel2']['MeasuringToolDescription']
-    
+
             self.WaterLevelMeasurements = []
             for m in d['WaterLevel2']['WaterLevelMeasurement']:
                 self.WaterLevelMeasurements.append(WaterLevelMeasurement(m))
@@ -2150,7 +2150,7 @@ class LandSlideObs(Registration, Location, Observer, Pictures):
             self.UTMNorthStart = d['LandSlideObs']['UTMNorthStart']
             self.UTMEastStart = d['LandSlideObs']['UTMEastStart']
             self.Comment = d['LandSlideObs']['Comment']
-    
+
             self.URLs = []
             for u in d['LandSlideObs']['Urls']:
                 self.URLs.append({'URLLine': u['UrlLine'], 'URLDescription': u['UrlDescription']})
@@ -2178,7 +2178,7 @@ class LandSlideObs(Registration, Location, Observer, Pictures):
             self.UTMEastStart = None
             self.Comment = None
             self.URLs = []
-            
+
         self.LangKey = d['LangKey']
 
     def to_dict(self):
@@ -2264,7 +2264,7 @@ def _get_general(registration_type, from_date, to_date, region_ids=None, locatio
     else:
         data = get_data(from_date=from_date, to_date=to_date, region_ids=region_ids, observer_ids=observer_ids,
                         observer_nick=observer_nick, observer_competence=observer_competence, group_id=group_id,
-                        location_id=location_id,  countries=countries, time_zone=time_zone, lang_key=lang_key,
+                        location_id=location_id, countries=countries, time_zone=time_zone, lang_key=lang_key,
                         registration_types=registration_type, geohazard_tids=geohazard_tids)
 
         if output == 'List' or output == 'DataFrame':
@@ -2336,7 +2336,7 @@ def get_incident(from_date, to_date, region_ids=None, location_id=None, countrie
 
     return _get_general(11, from_date=from_date, to_date=to_date,
                         region_ids=region_ids, location_id=location_id, countries=countries, time_zone=time_zone,
-                        group_id=group_id,  observer_ids=observer_ids, observer_nick=observer_nick,
+                        group_id=group_id, observer_ids=observer_ids, observer_nick=observer_nick,
                         observer_competence=observer_competence, output=output, geohazard_tids=geohazard_tids,
                         lang_key=lang_key)
 
@@ -3005,7 +3005,6 @@ def _test_diff_in_reg_type_query():
 
 
 if __name__ == "__main__":
-
     ### Covers calls for single forms
     # general_obs = get_general_observation('2018-01-20', '2018-02-01')
     # incident = get_incident('2012-03-01', '2012-03-10')
