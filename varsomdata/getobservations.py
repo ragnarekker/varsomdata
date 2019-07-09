@@ -312,6 +312,10 @@ def _make_one_request(from_date=None, to_date=None, reg_id=None, registration_ty
     elif isinstance(to_date, dt.datetime):
         to_date = dt.datetime.strftime(to_date, '%Y-%m-%d')
 
+    # Only norwegian (lang_key = 1) and english (lang_key = 2) are supported. If other, default to english.
+    if lang_key not in [1, 2]:
+        lang_key = 2
+
     data = []  # data from one query
 
     # query object posted in the request
@@ -2914,24 +2918,25 @@ def _request_testing():
     records_requested = 100
 
     # query object posted in the request
-    rssquery = {'LangKey': 1,
+    rssquery = {'LangKey': 0,
                 # 'RegId': 176528,
                 # 'ObserverGuid': None,               # '4d11f3cc-07c5-4f43-837a-6597d318143c',
-                'SelectedRegistrationTypes': [{'Id': 82, 'SubTypes': [36]}],
+                # 'SelectedRegistrationTypes': [{'Id': 82, 'SubTypes': [36]}],
                 # _reg_types_dict([10, 11, 12, 13]),    # list dict with type and sub type
                 # 'SelectedRegions': None,
-                # 'SelectedGeoHazards': [60],         # list int
+                'SelectedGeoHazards': [70],         # list int
                 # 'ObserverNickName': None,           # "jostein",
                 # 'ObserverId': None,
                 # 'ObserverCompetence': None,         # list int
                 # 'GroupId': None,
                 # 'LocationId': None,
-                'TimeZone': None,  # string
-                'Countries': None,  # list int
-                'FromDate': '2018-12-13',
-                'ToDate': '2019-01-16',
-                'NumberOfRecords': records_requested,  # int
-                'Offset': 0}
+                # 'TimeZone': None,  # string
+                # 'Countries': None,  # list int
+                'FromDate': '2018-12-30',
+                'ToDate': '2019-01-01',
+                # 'NumberOfRecords': records_requested,  # int
+                'Offset': 0
+                }
 
     url = 'https://api.regobs.no/v4/Search'
     # url = 'https://demo-api.regobs.no/v4/Search'
@@ -2973,9 +2978,19 @@ def _the_simplest_webapi_request():
              'ToDate': '2018-03-04',
              'NumberOfRecords': 500}
 
-    url = 'https://api.regobs.no/v4/Search'
+    query = {'LangKey': 1,
+             'SelectedGeoHazards': [70],
+             # 'SelectedRegistrationTypes': {'Id': 51, 'SubTypes': []},
+             'FromDate': '2019-03-01',
+             'ToDate': '2019-06-04',
+             'NumberOfRecords': 1500}
 
-    observations = rq.post(url, json=query).json()
+    url = 'https://api.regobs.no/v4/Search/' # AtAGlance'
+
+    data = rq.post(url, json=query)
+    time = data.elapsed
+    size = len(data.content)
+    observations = data.json()
 
     pass
 
@@ -3053,7 +3068,7 @@ if __name__ == "__main__":
     # ice_data = get_data(from_date='2016-10-01', to_date='2016-11-01', geohazard_tids=70)
 
     # data = _make_one_request(from_date='2019-02-01', to_date='2019-03-01')
-    # data = _request_testing()
+    data = _request_testing()
     # _the_simplest_webapi_request()
 
     pass
