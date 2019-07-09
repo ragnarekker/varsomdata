@@ -121,19 +121,21 @@ def _make_eval3_conform(evaluations_3):
     return dangers
 
 
-def get_observed_dangers(region_ids, from_date, to_date, lang_key=1):
+def get_observed_dangers(region_ids, from_date, to_date, lang_key=1, output='List'):
     """Gets observed avalanche dangers from AvalancheEvaluationV, AvalancheEvaluation2V and AvalancheEvaluation3V.
 
     :param region_ids:          [int or list of ints] ForecastRegionTID
     :param from_date:           [date or string as "YYYY-MM-DD"]
     :param to_date:             [date or string as "YYYY-MM-DD"]
+    :param output:              [string] Options: 'List', 'DataFrame' and 'Count'. Default 'List'.
+    :param lang_key             [int] 1 is norwegian, 2 is english
 
     :return:
     """
 
-    evaluations_1 = go.get_avalanche_evaluation(region_ids=region_ids, from_date=from_date, to_date=to_date, lang_key=lang_key)
-    evaluations_2 = go.get_avalanche_evaluation_2(region_ids=region_ids, from_date=from_date, to_date=to_date, lang_key=lang_key)
-    evaluations_3 = go.get_avalanche_evaluation_3(region_ids=region_ids, from_date=from_date, to_date=to_date, lang_key=lang_key)
+    evaluations_1 = go.get_avalanche_evaluation(region_ids=region_ids, from_date=from_date, to_date=to_date, lang_key=lang_key, output=output)
+    evaluations_2 = go.get_avalanche_evaluation_2(region_ids=region_ids, from_date=from_date, to_date=to_date, lang_key=lang_key, output=output)
+    evaluations_3 = go.get_avalanche_evaluation_3(region_ids=region_ids, from_date=from_date, to_date=to_date, lang_key=lang_key, output=output)
 
     conform_evals_1 = _make_eval1_conform(evaluations_1)
     conform_evals_2 = _make_eval2_conform(evaluations_2)
