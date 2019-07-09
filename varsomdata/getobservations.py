@@ -3068,7 +3068,7 @@ if __name__ == "__main__":
     # ice_data = get_data(from_date='2016-10-01', to_date='2016-11-01', geohazard_tids=70)
 
     # data = _make_one_request(from_date='2019-02-01', to_date='2019-03-01')
-    data = _request_testing()
+    # data = _request_testing()
     # _the_simplest_webapi_request()
 
     pass
