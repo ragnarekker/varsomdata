@@ -14,6 +14,9 @@
 # windows .ini files
 *.ini
 
+# osX .DS_Store files
+*.DS_Store
+
 # Files with private content
 folders.json
 api.json

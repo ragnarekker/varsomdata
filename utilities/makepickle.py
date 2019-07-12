@@ -2,7 +2,7 @@
 """Handles pickling and unpickling for storing data."""
 
 import pickle as pickle
-from utilities import makelogs as ml
+import logging as lg
 
 __author__ = 'raek'
 
@@ -19,7 +19,7 @@ def pickle_anything(something_to_pickle, file_name_and_path, print_message=True)
     pickle.dump(something_to_pickle, open(file_name_and_path, 'wb'))
 
     if print_message is True:
-        ml.log_and_print("[info] makepickle.py -> pickle_anything: {0} pickled.".format(file_name_and_path))
+        lg.info("makepickle.py -> pickle_anything: {0} pickled.".format(file_name_and_path))
 
 
 def unpickle_anything(file_name_and_path, print_message=True):
@@ -30,10 +30,9 @@ def unpickle_anything(file_name_and_path, print_message=True):
     :return something_to_unpickle:
     """
 
-    something_to_unpickle = pickle.load( open(file_name_and_path, 'rb') )
+    something_to_unpickle = pickle.load(open(file_name_and_path, 'rb'))
 
     if print_message is True:
-        ml.log_and_print("[info] makepickle.py -> unpickle_anything: {0} unpickled.".format(file_name_and_path))
+        lg.info("makepickle.py -> unpickle_anything: {0} unpickled.".format(file_name_and_path))
 
     return something_to_unpickle
-

@@ -1725,8 +1725,17 @@ class StratProfileLayer:
         self.GrainFormPrimaryName = l['GrainFormPrimaryTName']
         self.GrainFormSecondaryTID = l['GrainFormSecondaryTID']
         self.GrainFormSecondaryName = l['GrainFormSecondaryTName']
-        self.GrainSizeAvg = l['GrainSizeAvg'] / 10  # error in api
-        self.GrainSizeAvgMax = l['GrainSizeAvgMax'] / 10  # error in api
+
+        if l['GrainSizeAvg']:
+            self.GrainSizeAvg = l['GrainSizeAvg'] / 10  # error in api
+        else:
+            self.GrainSizeAvg = None
+
+        if l['GrainSizeAvgMax']:
+            self.GrainSizeAvgMax = l['GrainSizeAvgMax'] / 10  # error in api
+        else:
+            self.GrainSizeAvgMax = None
+
         self.HardnessTID = l['HardnessTID']
         self.HardnessName = l['HardnessTName']
         self.HardnessBottomTID = l['HardnessBottomTID']
@@ -2223,6 +2232,7 @@ class LandSlideObs(Registration, Location, Observer, Pictures):
 
 
 class PictureObservation(Registration, Location, Observer, Picture):
+
     def __init__(self, d):
         Registration.__init__(self, d)
         Location.__init__(self, d)

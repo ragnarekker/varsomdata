@@ -1,16 +1,20 @@
 # -*- coding: utf-8 -*-
-"""The code for downloading and making the plots on ragnar.pythonanywhere.com/observerdata/ etc"""
+"""
+The code for downloading and making the plots on ragnar.pythonanywhere.com/observerdata/ etc.
+
+Modifications:
+2019-07-12, Ragnar: Api4 support.
+"""
 
 import datetime as dt
 import matplotlib as mpl
 import pylab as plb
 import collections as col
 import calendar as cal
-from varsomdata import getobservations as go
 from varsomdata import getvarsompickles as gvp
 from varsomdata import getkdvelements as gkdv
 from varsomdata import getmisc as gm
-from utilities import makelogs as ml
+import logging as lg
 import setenvironment as env
 import os as os
 
@@ -20,10 +24,10 @@ __author__ = 'raek'
 class DayData:
     """Class handles all data for plotting observations in a certain day in calender plots."""
 
-    def __init__(self, date, observer_id=None, region_id=None):
+    def __init__(self, date):
 
-        self.observer_id = observer_id
-        self.region_id = region_id
+        self.observer_id = None
+        self.region_id = None
 
         self.box_size_x = None
         self.box_size_y = None
@@ -46,10 +50,18 @@ class DayData:
         self.loc_pr_regid = {}          # which forecast regions have been used this day?
         self.nic_pr_regid = {}          # which nicknames (observers) have contributed this day?
 
+        self.pictures_count = None      # number of pictures submitted with the observed forms.
+
         self.x = None
         self.y = None
         self.set_x()                    # x and y positions in plot set based on date
         self.set_y()
+
+    def set_region_id(self, region_id_inn):
+        self.region_id = region_id_inn
+
+    def set_observer_id(self, observer_id_inn):
+        self.observer_id = observer_id_inn
 
     def set_properties(self):
         self.box_size_x = 100
@@ -67,6 +79,9 @@ class DayData:
 
     def add_nicks(self, nicks):
         self.nick_names = col.Counter(nicks)
+
+    def add_pictures_count(self, pictures_count_inn):
+        self.pictures_count = pictures_count_inn
 
     def add_obs_pr_regid(self, obs_pr_regid):
         self.obs_pr_regid = obs_pr_regid
@@ -90,7 +105,6 @@ class DayData:
         if month == 1 and first != 1:
             first_week = 0
 
-        last_week = dt.date(year, month, last).isocalendar()[1]
         # make sure to get the last week if is is in the new year
         if month == 12 and self.week_no == 1:
             self.week_no = 53
@@ -98,7 +112,6 @@ class DayData:
         self.y = -100 * (self.week_no - first_week)
 
     def get_obs_pos(self, obs_type):
-
         if obs_type == 'Faretegn':
             return 38, 86, 'tomato', 'k'
         elif 'Skredaktivitet' in obs_type:
@@ -113,24 +126,24 @@ class DayData:
             return 86, 14, 'lightskyblue', 'k'
         elif 'Snøprofil' in obs_type:
             return 62, 14, 'white', 'k'
-        elif obs_type == 'Stabilitetstest':
+        elif obs_type == 'Tester':
             return 38, 14, 'white', 'k'
         elif obs_type == 'Skredproblem':
             return 14, 14, 'pink', 'k'
         elif obs_type == 'Skredfarevurdering':
             return 14, 38, 'pink', 'k'
         elif obs_type == 'Bilde':
-            return 14, 62, 'yellow', 'k'
-        elif obs_type == 'Fritekst' or obs_type == 'Notater':       # TODO Remove Fritekst reference
+            return 6, 54, 'gray', 'k'
+        elif obs_type == 'Notater':
             return 38, 62, 'yellow', 'k'
         else:
+            lg.warning("plotcalendardata.py -> DayData.get_obs_pos: Unknown obs_type: {}".format(obs_type))
             return 0, 0, 'k', 'k'
 
 
 class ObserverData:
 
     def __init__(self, observer_id_inn, observer_nick_inn, observation_count_inn=0):
-
         self.observer_id = observer_id_inn
         self.observer_nick = observer_nick_inn
         self.observation_count = observation_count_inn
@@ -138,12 +151,10 @@ class ObserverData:
         self.competence_level_name = None
 
     def set_competence_level(self, competence_level_tid_inn, competence_level_name_inn):
-
         self.competence_level_name = competence_level_name_inn
         self.competence_level_tid = competence_level_tid_inn
 
     def add_one_observation_count(self):
-
         self.observation_count += 1
 
 
@@ -195,7 +206,7 @@ def _make_plot(dates, observer_name=None, region_name=None, file_ext='.png', dat
                 plot_file_name = '{0}observerdata_{1}_{2}{3:02d}'.format(folder, dates[0].observer_id, dates[0].date.year, dates[0].date.month)
 
             else:
-                ml.log_and_print("[warning] plotcalendardata.py -> _make_plot: Need ObserverID and/or forecastRegionTID to make this work.", print_it=True)
+                lg.warning("plotcalendardata.py -> _make_plot: Need ObserverID and/or forecastRegionTID to make this work.")
                 plot_file_name = 'no_good_plot'
 
     # Figure dimensions
@@ -222,17 +233,23 @@ def _make_plot(dates, observer_name=None, region_name=None, file_ext='.png', dat
             ax.add_patch(circ)
             plb.text(x+relative_x-2, y+relative_y-2, '{0}'.format(v))
 
+        if d.pictures_count > 0:
+            relative_x, relative_y, obs_colour, obs_edge = d.get_obs_pos('Bilde')
+            rect = mpl.patches.Rectangle((x+relative_x, y+relative_y), d.box_size_x/6, d.box_size_x/6, facecolor=obs_colour, edgecolor=obs_edge)
+            ax.add_patch(rect)
+            plb.text(x+relative_x+5, y+relative_y+5, '{0}'.format(d.pictures_count))
+
         if observer_name is not None:
             # List all regids
             reg_id_string = ''
-            for k,v in d.reg_ids.items():
+            for k, v in d.reg_ids.items():
                 reg_id_string += '{0}: {1}\n'.format(k, v)
             plb.text(x+45, y+60-len(d.reg_ids)*8, reg_id_string)
 
         if region_name is not None:
             # List all observer nicks
             nick_string = ''
-            for k,v in d.nick_names.items():
+            for k, v in d.nick_names.items():
                 nick_string += '{0}: {1}\n'.format(k, v)
             plb.text(x+35, y+60-len(d.nick_names)*8, nick_string)
 
@@ -240,7 +257,7 @@ def _make_plot(dates, observer_name=None, region_name=None, file_ext='.png', dat
         if d.number_obs > 0:
             plb.text(x+30, y+35, '{0}'.format(d.number_obs), fontsize=25)
 
-    # add weeknumbers
+    # add week numbers
     year = dates[0].date.year
     month = dates[0].date.month
     first, last = cal.monthrange(year, month)
@@ -330,7 +347,7 @@ def _make_html(dates, observer_id=None, region_name=None, data_description=None,
             if observer_id is not None:
                 html_file_name = '{0}observerdata_{1}_{2}{3:02d}.html'.format(html_folder, observer_id, dates[0].date.year, dates[0].date.month)
             else:
-                ml.log_and_print("[warning] plotcalendardata.py -> _make_html: Got to have region and/or observer to make this work.", print_it=True)
+                lg.warning("plotcalendardata.py -> _make_html: Got to have region and/or observer to make this work.")
                 html_file_name = 'no_good_html'
 
     with open(html_file_name, 'w', encoding='utf-8') as f:
@@ -379,7 +396,13 @@ def _make_html(dates, observer_id=None, region_name=None, data_description=None,
 
 
 def _make_day_data_list(region_observations_list, m, frid=None, o=None):
-    """
+    """Makes a list of all the dates in a month and adds a observers or regions observations (forms) to it.
+
+    :param region_observations_list:
+    :param m:       [date] month in question
+    :param frid:    [int] forecast region id
+    :param o:       [ObserverData] Observer data
+    :return:
     """
 
     month = m.month
@@ -391,17 +414,21 @@ def _make_day_data_list(region_observations_list, m, frid=None, o=None):
     # for all dates in the requested from-to interval
     dates = []
     for d in _get_dates(from_date, to_date, dt.timedelta(days=1)):
+
+        dd = DayData(d)
+
         if frid is not None:
-            dd = DayData(d, region_id=id)
+            dd.set_region_id(id)
         if o is not None:
-            dd = DayData(d, observer_id=o.observer_id)
+            dd.set_observer_id(o.observer_id)
         if frid is None and o is None:
-            ml.log_and_print("[warning] plotcalendardata.py -> _make_day_data_list: No region id og observer id provided. Unable to make DayData list.")
+            lg.warning("plotcalendardata.py -> _make_day_data_list: No region id og observer id provided. Unable to make DayData list.")
             return []
 
         obstyp = []
         regids = []
         nicks = []
+        pictures_count = 0
         loc_pr_regid = {}
         obs_pr_regid = {}
         nic_pr_regid = {}
@@ -419,11 +446,11 @@ def _make_day_data_list(region_observations_list, m, frid=None, o=None):
                 if ao.RegID not in nic_pr_regid.keys():
                     nic_pr_regid[ao.RegID] = ao.NickName
 
-                # observations pr regid (might be more) and pictures are pictures and not what they are of
-                if isinstance(ao, go.PictureObservation) and ao.RegistrationTID != 23:
-                    observation_name = 'Bilde'
-                else:
-                    observation_name = ao.RegistrationName
+                # count pictures submitted
+                pictures_count += len(ao.Pictures)
+
+                # observations pr regid (might be more)
+                observation_name = ao.RegistrationName
 
                 if ao.RegID not in obs_pr_regid.keys():
                     obs_pr_regid[ao.RegID] = [observation_name]
@@ -443,6 +470,7 @@ def _make_day_data_list(region_observations_list, m, frid=None, o=None):
         dd.add_loc_pr_regid(loc_pr_regid)
         dd.add_obs_pr_regid(obs_pr_regid)
         dd.add_nic_pr_regid(nic_pr_regid)
+        dd.add_pictures_count(pictures_count)
         dd.add_observations(obstyp)
         dd.add_regids(regids)
         dd.add_nicks(nicks)
@@ -452,7 +480,8 @@ def _make_day_data_list(region_observations_list, m, frid=None, o=None):
 
 
 def make_observer_plots(all_observations_list, observer_list, months, plot_folder=env.plot_folder, html_folder=env.output_folder + 'views/'):
-    """Method prepares data for plotting and making the corresponding table for the observations for a list of
+    """
+    Method prepares data for plotting and making the corresponding table for the observations for a list of
     observers.
 
     :param all_observations_list:
@@ -469,7 +498,7 @@ def make_observer_plots(all_observations_list, observer_list, months, plot_folde
 
     for o in observer_list:
 
-        ml.log_and_print("[info] plotcalendardata.py -> make_observer_plots: {} {}".format(o.observer_id, o.observer_nick))
+        lg.info("plotcalendardata.py -> make_observer_plots: {} {}".format(o.observer_id, o.observer_nick))
         observers_observations_list = [all_obs for all_obs in all_observations_list if all_obs.ObserverID == o.observer_id]
 
         # plot one month at the time
@@ -481,7 +510,8 @@ def make_observer_plots(all_observations_list, observer_list, months, plot_folde
 
 
 def make_region_plots(all_observations_list, region_ids, months, plot_folder=env.plot_folder, html_folder=env.output_folder + 'views/'):
-    """Method prepares data for plotting and making the corresponding table for the observations for one
+    """
+    Method prepares data for plotting and making the corresponding table for the observations for one
     region.
 
     :param all_observations_list:
@@ -496,7 +526,7 @@ def make_region_plots(all_observations_list, region_ids, months, plot_folder=env
 
         region_observations_list = [all_obs for all_obs in all_observations_list if all_obs.ForecastRegionTID == frid]
         region_name = gkdv.get_name('ForecastRegionKDV', frid)
-        ml.log_and_print("[info] plotcalendardata.py -> make_region_plots: {} {}".format(frid, region_name))
+        lg.info("plotcalendardata.py -> make_region_plots: {} {}".format(frid, region_name))
 
         # plot one month at the time
         for m in months:
@@ -554,7 +584,7 @@ def make_svv_plots(all_observations_list, observer_dict, region_ids, months, plo
         region_observations_list = [all_obs for all_obs in svv_observations_list if all_obs.ForecastRegionTID == frid]
         region_name = gkdv.get_name('ForecastRegionKDV', frid)
         data_description = 'svv_i_{0}'.format(region_name)
-        ml.log_and_print("[info] plotcalendardata.py -> make_svv_plots: {} {}".format(frid, region_name))
+        lg.info("plotcalendardata.py -> make_svv_plots: {} {}".format(frid, region_name))
 
         # plot one month at the time
         for m in months:
@@ -567,8 +597,8 @@ if __name__ == "__main__":
 
     observer = [ObserverData(325, 'Siggen@obskorps'), ObserverData(10, 'Andreas@nve')]
 
-    all_observations = gvp.get_all_observations('2018-19', output='List', geohazard_tids=10)
-    month = [dt.date(2018, 11, 1), dt.date(2018, 12, 1)]
+    all_observations = gvp.get_all_observations('2018-19', output='FlatList', geohazard_tids=10, max_file_age=100)
+    month = [dt.date(2019, 1, 1), dt.date(2019, 2, 1), dt.date(2019, 3, 1), dt.date(2019, 4, 1)]
 
     make_observer_plots(all_observations, observer, month)
 
