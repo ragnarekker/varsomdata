@@ -3,6 +3,7 @@ import sys as sys
 import os as os
 import json as json
 import logging as lg
+import logging.config as lgc
 import datetime as dt
 from pathlib import Path
 from shutil import copyfile
@@ -83,6 +84,7 @@ web_api_version = api['web_api_version']
 forecast_api_version = api['forecast_api_version']
 forecast_api_version_archive = api['forecast_api_version_archive']
 registration_basestring = api['registration_basestring']
+forecast_basestring = api['forecast_basestring']
 image_basestring_original = api['image_basestring_original']
 image_basestring_large = api['image_basestring_large']
 personal_regObs_app_token = api['personal_regObs_app_token']

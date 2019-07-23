@@ -28,9 +28,8 @@ def _observation_is_not_empty(o):
     return True
 
 
-def get_all_observations(year, output='List', geohazard_tids=None, lang_key=1, max_file_age=23):
-    """
-    Specialized method for getting all observations for one season (1. sept to 31. august).
+def get_all_observations(year, output='List', geohazard_tids=None, lang_key=1, max_file_age=1000):
+    """Specialized method for getting all observations for one season (1. sept to 31. august).
     For the current season (at the time of writing, 2018-19), if request has been made the last 23hrs,
     data is retrieved from a locally stored pickle, if not, new request is made to the regObs api. Previous
     seasons are not requested if a pickle is found in local storage.
@@ -112,7 +111,7 @@ def get_all_observations(year, output='List', geohazard_tids=None, lang_key=1, m
         return []
 
 
-def get_all_forecasts(year, lang_key=1, max_file_age=23):
+def get_all_forecasts(year, lang_key=1, max_file_age=1000):
     """Specialized method for getting all forecasts for one season.
     For the current season (at the time of writing, 2018-19), if a request
     has been made the last 23hrs, data is retrieved from a locally stored pickle,
@@ -164,8 +163,6 @@ def get_all_forecasts(year, lang_key=1, max_file_age=23):
         mp.pickle_anything(valid_forecasts, file_name)
 
     else:
-        lg.info("getvarsompickles.py -> get_all_forecasts: Unpickle {0} forecasts.".format(year))
-
         valid_forecasts = mp.unpickle_anything(file_name)
 
     return valid_forecasts

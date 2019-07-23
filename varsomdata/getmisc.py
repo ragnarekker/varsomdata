@@ -12,6 +12,7 @@ import setenvironment as env
 from varsomdata import getobservations as go
 from varsomdata import getdangers as gd
 from varsomdata import getkdvelements as kdv
+from varsomdata import getvarsompickles as gvp
 from utilities import fencoding as fe, readfile as rf, makelogs as ml
 
 __author__ = 'raek'
@@ -282,7 +283,6 @@ class AvalancheIndex:
         self.region_name = None
         self.observation = None
 
-
     def set_num_and_size_and_index(self, estimated_num_inn, destructive_size_inn, index_definition):
 
         self.estimated_num = estimated_num_inn
@@ -299,24 +299,20 @@ class AvalancheIndex:
                 # If there is observed avalanaches but not given sizes, count the observations as a dangersign
                 self.set_avalanches_as_dangersign()
 
-
     def set_no_avalanche_activity(self):
         self.estimated_num = "Ingen skredaktivitet"
         self.index = 1
-
 
     def set_avalanches_as_dangersign(self):
         self.estimated_num = 'Ferske skred'
         self.destructive_size = 'Ferske skred'
         self.index = 2
 
-
     def set_date_region_observation(self, date_inn, region_name_inn, observation_inn):
 
         self.date = date_inn
         self.region_name = region_name_inn
         self.observation = observation_inn
-
 
     def add_configuration_row(self, row):
         """Used for reading the definition file. Method called from readfile.py.
@@ -332,48 +328,53 @@ class AvalancheIndex:
         return
 
 
-def get_avalanche_index(from_date, to_date, region_ids=None, observer_ids=None):
-    """All tables in regObs containing information on avalanche activity is mapped to an avalanche index. These
-    are AvalancheActivityObs, AvalancheActivityObs2, AvalanchObs and DangerObs. The definition of the index is
+def get_avalanche_index(observations):
+    """All tables in Regobs containing information on avalanche activity will be mapped to an avalanche index. These
+    are AvalancheActivityObs, AvalancheActivityObs2, AvalancheObs and DangerObs. The definition of the index is
     found in the input/aval_dl_order_of_size_and_num.csv configuration file.
 
-    :param from_date:
-    :param to_date:
-    :param region_ids:
-    :param observer_ids:
-    :return avalanche_indexes:  [list] of class AvalanchIndex
-    """
+    It takes a list of observations. Observations not containing info on avalanche activity will be ignored.
 
-    # get all data
-    avalanche_activities = go.get_avalanche_activity(from_date, to_date, region_ids=region_ids, observer_ids=observer_ids)
-    avalanche_activities_2 = go.get_avalanche_activity_2(from_date, to_date, region_ids=region_ids, observer_ids=observer_ids)
-    avalanches = go.get_avalanche(from_date, to_date, region_ids=region_ids, observer_ids=observer_ids)
-    danger_signs = go.get_danger_sign(from_date, to_date, region_ids=region_ids, observer_ids=observer_ids)
+    :param observations:        [list] of observations
+    :return avalanche_indexes:  [list] of class AvalancheIndex
+    """
 
     # get index definition
     index_definition = rf.read_configuration_file('{0}aval_dl_order_of_size_and_num.csv'.format(env.matrix_configurations), AvalancheIndex)
 
+    avalanche_activities = []
+    avalanche_activities_2 = []
+    avalanches = []
+    danger_signs = []
+
+    for o in observations:
+        if isinstance(o, go.AvalancheActivityObs):
+            avalanche_activities.append(o)
+        if isinstance(o, go.AvalancheActivityObs2):
+            avalanche_activities_2.append(o)
+        if isinstance(o, go.AvalancheObs):
+            avalanches.append(o)
+        if isinstance(o, go.DangerSign):
+            danger_signs.append(o)
+
     avalanche_indexes = []
 
     for aa in avalanche_activities:
-
         ai = AvalancheIndex()
         ai.set_num_and_size_and_index(aa.EstimatedNumName, aa.DestructiveSizeName, index_definition)
         ai.set_date_region_observation(aa.DtAvalancheTime, aa.ForecastRegionName, aa)
         avalanche_indexes.append(ai)
 
     for aa in avalanche_activities_2:
-
         if aa.DtStart and aa.DtEnd:
             ai = AvalancheIndex()
             ai.set_num_and_size_and_index(aa.EstimatedNumName, aa.DestructiveSizeName, index_definition)
-            # Activity date is the avarage of DtStart and DtEnd
+            # Activity date is the average of DtStart and DtEnd
             activity_date = aa.DtStart+(aa.DtEnd-aa.DtStart)/2
             ai.set_date_region_observation(activity_date.date(), aa.ForecastRegionName, aa)
             avalanche_indexes.append(ai)
 
     for aa in avalanches:
-
         ai = AvalancheIndex()
         # Make sure size is not None
         ai.set_num_and_size_and_index("Ett (1)", aa.DestructiveSizeName, index_definition)
@@ -381,7 +382,6 @@ def get_avalanche_index(from_date, to_date, region_ids=None, observer_ids=None):
         avalanche_indexes.append(ai)
 
     for ds in danger_signs:
-
         ai = AvalancheIndex()
         if 'Ferske skred' in ds.DangerSignName:
             ai.set_avalanches_as_dangersign()
@@ -455,7 +455,10 @@ def get_forecast_dates(year, padding=dt.timedelta(days=0)):
         from_date = dt.date(2017, 11, 1)
         to_date = dt.date(2018, 6, 1)
     elif year == '2018-19':
-        from_date = dt.date(2018, 11, 1)
+        from_date = dt.date(2018, 11, 30)
+        to_date = dt.date(2019, 6, 1)
+    elif year == '2019-20':
+        from_date = dt.date(2019, 11, 1)
         to_date = dt.date.today() + dt.timedelta(days=2)
     else:
         from_date = "Undefined dates"
@@ -857,14 +860,15 @@ if __name__ == "__main__":
     # id2, region2 = get_forecast_region_for_coordinate(687380, 7672286, '2012-13') # Tamok
     # a = get_observer_v()
 
-    from_date = dt.date(2018, 1, 21)
+    # from_date = dt.date(2018, 1, 21)
     # from_date = dt.date.today()-dt.timedelta(days=1)
-    to_date = dt.date.today()+dt.timedelta(days=1)
+    # to_date = dt.date.today()+dt.timedelta(days=1)
 
-    region_ids = get_forecast_regions(year='2017-18')
+    # region_ids = get_forecast_regions(year='2017-18')
     # region_ids = [116, 117]
 
-    avalanche_indexes = get_avalanche_index(from_date, to_date, region_ids)
+    all_observations = gvp.get_all_observations('2018-19', output='FlatList', geohazard_tids=10)
+    avalanche_indexes = get_avalanche_index(all_observations)
 
     # a = get_obs_location(from_date, to_date)
 

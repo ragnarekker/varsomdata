@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """All classes of varsomdata. Well, not all. regObs classes are found in getobservations.py and some very special
 custom fits are found un getmisc.py.
-
 """
 
 import datetime as dt

@@ -14,6 +14,7 @@ import calendar as cal
 from varsomdata import getvarsompickles as gvp
 from varsomdata import getkdvelements as gkdv
 from varsomdata import getmisc as gm
+from utilities import makepickle as mp
 import logging as lg
 import setenvironment as env
 import os as os
@@ -114,7 +115,7 @@ class DayData:
     def get_obs_pos(self, obs_type):
         if obs_type == 'Faretegn':
             return 38, 86, 'tomato', 'k'
-        elif 'Skredaktivitet' in obs_type:
+        elif 'kredaktivitet' in obs_type:
             return 62, 86, 'tomato', 'k'
         elif obs_type == 'Skredhendelse':
             return 86, 86, 'orange', 'k'
@@ -593,13 +594,69 @@ def make_svv_plots(all_observations_list, observer_dict, region_ids, months, plo
             _make_html(dates, region_name=region_name, data_description=data_description, html_folder=html_folder)
 
 
+def make_season_calender_plots(year='2018-19', plot_folder=env.plot_folder, html_folder=env.output_folder + 'views/', web_pickle_folder=env.output_folder + 'webpickles/'):
+    """Makes observation calender plots for both observer and region for display on web page for the season 2018-19.
+    Method includes a request for list of relevant observers."""
+
+    from_year = int(year[0:4])
+    to_year = int('20' + year[-2:])
+
+    from_day = dt.date(from_year, 11, 1)
+    to_day = dt.date(to_year, 6, 30)
+
+    # if the seasons expected end is after todays date, set it to today.
+    if to_day > dt.date.today():
+        to_day = dt.date.today()
+
+    # list of months to be plotted
+    months = []
+    month = from_day
+
+    while month < to_day:
+        months.append(month)
+        almost_next = month + dt.timedelta(days=35)
+        month = dt.date(almost_next.year, almost_next.month, 1)
+
+    # Get all regions
+    region_ids = gm.get_forecast_regions(year)
+
+    # get a list of relevant observers to plot and make pickle for adding to the web-folder
+    all_observations_nest = gvp.get_all_observations(year, output='List', geohazard_tids=10)
+    all_observations_list = gvp.get_all_observations(year, output='FlatList', geohazard_tids=10)
+
+    observer_dict = {}
+    for o in all_observations_nest:
+        if o.ObserverID in observer_dict.keys():
+            observer_dict[o.ObserverID].add_one_observation_count()
+        else:
+            observer_dict[o.ObserverID] = ObserverData(o.ObserverID, o.NickName, observation_count_inn=1)
+
+    observer_list = []
+    observer_list_web = []
+    ordered_observer_dict = col.OrderedDict(sorted(observer_dict.items(), key=lambda t: t[1].observation_count, reverse=True))
+    for k, v in ordered_observer_dict.items():
+        if v.observation_count > 4:
+            observer_list.append(ObserverData(v.observer_id, v.observer_nick, observation_count_inn=v.observation_count))
+            observer_list_web.append([v.observer_id, v.observer_nick, v.observation_count])
+
+    if not os.path.exists(web_pickle_folder):
+        os.makedirs(web_pickle_folder)
+    mp.pickle_anything(observer_list_web, '{0}observerlist.pickle'.format(web_pickle_folder))
+
+    # run the stuff
+    make_observer_plots(all_observations_list, observer_list, months, plot_folder=plot_folder, html_folder=html_folder)
+    make_region_plots(all_observations_list, region_ids, months, plot_folder=plot_folder, html_folder=html_folder)
+    make_svv_plots(all_observations_list, observer_dict, region_ids, months, plot_folder=plot_folder, html_folder=html_folder)
+
+
 if __name__ == "__main__":
+
+    make_season_calender_plots(year='2018-19')
 
     observer = [ObserverData(325, 'Siggen@obskorps'), ObserverData(10, 'Andreas@nve')]
 
-    all_observations = gvp.get_all_observations('2018-19', output='FlatList', geohazard_tids=10, max_file_age=100)
-    month = [dt.date(2019, 1, 1), dt.date(2019, 2, 1), dt.date(2019, 3, 1), dt.date(2019, 4, 1)]
-
-    make_observer_plots(all_observations, observer, month)
+    all_observations = gvp.get_all_observations('2018-19', output='FlatList', geohazard_tids=10, max_file_age=1000)
+    months = [dt.date(2019, 1, 1), dt.date(2019, 2, 1), dt.date(2019, 3, 1), dt.date(2019, 4, 1)]
+    make_observer_plots(all_observations, observer, months)
 
     pass

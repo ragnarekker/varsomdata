@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+""" """
+
 import datetime as dt
 from varsomdata import getobservations as go
 from varsomdata import getforecastapi as gfa
@@ -5,7 +8,6 @@ from varsomdata import varsomclasses as vc
 from utilities import makelogs as ml
 import setenvironment as env
 
-# -*- coding: utf-8 -*-
 __author__ = 'raek'
 
 
@@ -130,17 +132,63 @@ def _map_eval_problem_2_to_problem(eval_problem_2):
 
 
 def _map_warning_to_problem(warnings):
-    """Forcasting api returns AvalancheDanger objects where the AvalancheProblems are listed. Classification is
-    tipp topp so we only need to pick out the avalanche problems and return.
+    """
 
     :param warnings:
     :return:
     """
+
     problems = []
+
     for w in warnings:
-        problems +=  w.avalanche_problems
+
+        region_id = w.region_id
+        region_name = w.region_name
+        date = w.publish_time
+
+        for p in w.avalanche_problems:
+
+            order = p.avalanche_problem_id
+            cause_name = p.aval_cause_name
+            source = 'Forecast'
+            problem = vc.AvalancheProblem(region_id, region_name, date, order, cause_name, source)
+
+            problem.set_regobs_table('AvalancheWarnProblem??')
+            problem.set_regid(w.reg_id)
+            problem.set_url('{0}{1}/{2}'.format(env.forecast_basestring, w.region_name, w.date_valid))
+            problem.set_registration_time(w.publish_time)
+            problem.set_nick_name(w.author)
+
+            problem.set_cause_tid(p.aval_cause_id)
+            problem.set_aval_size(p.destructive_size_ext_name, aval_size_tid_inn=p.destructive_size_ext_id)
+            problem.set_aval_type(p.avalanche_ext_name, aval_type_tid_inn=p.avalanche_ext_id)
+            problem.set_aval_trigger(p.aval_trigger_simple_name)
+
+            problems.append(problem)
 
     return problems
+
+
+def make_problems_conform_from_list(problems):
+    """
+
+    :param problems:
+    :return:
+    """
+
+    conform_list = []
+
+    for p in problems:
+        if isinstance(p, go.AvalancheEvaluation):
+            conform_list.append(_map_eval1_to_problem([p])[0])
+        if isinstance(p, go.AvalancheEvaluation2):
+            conform_list.append(_map_eval2_to_problem([p])[0])
+        if isinstance(p, go.AvalancheEvalProblem2):
+            conform_list.append(_map_eval_problem_2_to_problem([p])[0])
+        if isinstance(p, gfa.AvalancheWarning):
+            conform_list += _map_warning_to_problem([p])
+
+    return conform_list
 
 
 def get_forecasted_problems(region_ids, from_date, to_date, add_danger_level=True, lang_key=1):
@@ -236,7 +284,8 @@ def get_all_problems(region_ids, from_date, to_date, add_danger_level=True, prob
         all_non_zero_warnings = [w for w in warnings if w.danger_level != 0]
         all_non_zero_warnings.sort(key=lambda AvalancheDanger: AvalancheDanger.date)
 
-        # Lots of looping. Be smart. Keep track of last index since both lists are ordered by date. Break inner loop and go to next problem if forecasts are older than the problem.
+        # Lots of looping. Be smart. Keep track of last index since both lists are ordered by date. Break inner l
+        # oop and go to next problem if forecasts are older than the problem.
         last_i = 0
         for p in all_problems:
             for i in range(last_i, len(all_non_zero_warnings), 1):

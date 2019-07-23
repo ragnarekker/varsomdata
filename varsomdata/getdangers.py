@@ -121,6 +121,64 @@ def _make_eval3_conform(evaluations_3):
     return dangers
 
 
+def _make_warning_conform(warning):
+    """Maps the AvalancheWarning to the conformity of a common AvalancheDanger object.
+
+    :param warning:   [list of AvalancheWarning] These are the classes used on getforecastapi.py
+    :return:          [list of AvalancheDanger]
+    """
+
+    dangers = []
+
+    for w in warning:
+        region_id = w.region_id
+        region_name = w.region_name
+        data_table = 'AvalancheWarning??'
+        date = w.date_valid
+        danger_level = w.danger_level
+        danger_level_name = w.danger_level_name
+
+        danger = vc.AvalancheDanger(region_id, region_name, data_table, date, danger_level, danger_level_name)
+
+        danger.set_avalanche_nowcast('{} {} {} {}'.format(w.snow_surface, w.current_weak_layers, w.latest_avalanche_activity, w.latest_observations))
+        danger.set_avalanche_forecast(w.avalanche_danger)
+
+        danger.set_regid(w.reg_id)
+        danger.set_source('Forecast')
+        danger.set_url('{0}{1}/{2}'.format(env.forecast_basestring, w.region_name, w.date_valid))
+        danger.set_registration_time(w.publish_time)
+        danger.set_nick(w.author)
+        danger.add_metadata('Original data', w)
+
+        dangers.append(danger)
+
+    return dangers
+    
+
+def make_dangers_conform_from_list(dangers):
+    """Takes a list of observations and/or forecasts and if the instances contain an avalanche danger, it maps them
+    to the conformity (common denominator) in the AvalancheDanger object. Useful when comparing dangers, both observed
+    and forecasted.
+
+    :param dangers:
+    :return conform_list:
+    """
+
+    conform_list = []
+
+    for d in dangers:
+        if isinstance(d, go.AvalancheEvaluation):
+            conform_list.append(_make_eval1_conform([d])[0])
+        if isinstance(d, go.AvalancheEvaluation2):
+            conform_list.append(_make_eval2_conform([d])[0])
+        if isinstance(d, go.AvalancheEvaluation3):
+            conform_list.append(_make_eval3_conform([d])[0])
+        if isinstance(d, gfa.AvalancheWarning):
+            conform_list.append(_make_warning_conform([d])[0])
+
+    return conform_list
+
+
 def get_observed_dangers(region_ids, from_date, to_date, lang_key=1, output='List'):
     """Gets observed avalanche dangers from AvalancheEvaluationV, AvalancheEvaluation2V and AvalancheEvaluation3V.
 
