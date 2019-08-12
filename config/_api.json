@@ -4,6 +4,7 @@
   "forecast_api_version" : "v4.0.2",
   "forecast_api_version_archive" : "v3.0.0",
   "registration_basestring" : "http://www.regobs.no/Registration/",
+  "forecast_basestring": "https://varsom.no/snoskredvarsling/varsel/",
   "image_basestring_original" : "https://api.nve.no/hydrology/regobs/v3.2.0/Image/orginal/",
   "image_basestring_large" : "https://api.nve.no/hydrology/regobs/v3.2.0/Image/large/",
   "personal_regObs_app_token" : "00000000-0000-0000-0000-000000000000"
