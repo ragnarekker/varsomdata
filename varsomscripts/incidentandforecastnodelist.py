@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+"""Makes a input json with the nodes for the Sankey diagram dispalyed on
+http://ragnar.pythonanywhere.com/regobsdata/Alle%20hendelser%202015-16
+
+"""
+
 from varsomdata import getdangers as gd
 import datetime as dt
 from varsomdata import getkdvelements as gkdv
@@ -38,7 +43,7 @@ class NodesAndValues:
     def __init__(self, node_name_inn, node_id_inn, target_name_inn, target_id_inn):
 
         self.node_name = node_name_inn
-        self.node_id = node_id_inn     # labeled scource in datafile
+        self.node_id = node_id_inn     # labeled source in datafile
         self.target_name = target_name_inn
         self.target_id = target_id_inn
         self.value = 0
@@ -184,7 +189,7 @@ def get_node_list(pickle_file_name_3, make_new_node_list, desired_damage_extent_
 
                 # Loop through the cause and problem list.
                 # If it is the first run make the nodes.
-                # If the causes in the lists match what is in the list of acutal incidents, add one to the node.
+                # If the causes in the lists match what is in the list of actual incidents, add one to the node.
                 for cause_tid, cause_kdve in cause_kdv.items():
                     if cause_kdve.IsActive:
                         cause_name = cause_kdve.Name

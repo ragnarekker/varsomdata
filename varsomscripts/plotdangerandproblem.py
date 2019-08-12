@@ -7,6 +7,7 @@ import datetime as dt
 import os as os
 import matplotlib.pyplot as pplt
 from utilities import makelogs as ml
+import logging as lg
 from varsomdata import getvarsompickles as gvp
 from varsomdata import getobservations as go
 from varsomdata import getdangers as gd
@@ -90,10 +91,10 @@ def _plot_causes(region_name, causes, year='2018-19', plot_folder=env.plot_folde
     filename = '{0} skredproblemer {1}'.format(region_name, year)
     ml.log_and_print("[info] plotdangerandproblem.py -> plot_causes: Plotting {0}".format(filename))
 
-    AvalCauseKDV = gkdv.get_kdv('AvalCauseKDV')
+    aval_cause_kdv = gkdv.get_kdv('AvalCauseKDV')
     list_of_causes = [0, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
-    #list_of_causes = set([c.cause_tid for c in causes])
-    list_of_cause_names = [AvalCauseKDV[tid].Name for tid in list_of_causes]
+    # list_of_causes = set([c.cause_tid for c in causes])
+    list_of_cause_names = [aval_cause_kdv[tid].Name for tid in list_of_causes]
 
     dict_of_causes = {}
     for c in list_of_causes:
@@ -108,13 +109,13 @@ def _plot_causes(region_name, causes, year='2018-19', plot_folder=env.plot_folde
 
     # plot lines and left and bottom ticks
     y = 0
-    for k,values in dict_of_causes.items():
+    for k, values in dict_of_causes.items():
         for v in values:
             x = (v.date-from_date).days
             if 'Forecast' in v.source:
-                plt.hlines(y-0.1, x, x+1, lw=4, color='red')        # ofset the line 0.1 up
+                plt.hlines(y-0.1, x, x+1, lw=4, color='red')        # offset the line 0.1 up
             if 'Observation' in v.source:
-                plt.hlines(y+0.1, x, x+1, lw=4, color='blue')      # ofset the line 0.1 down
+                plt.hlines(y+0.1, x, x+1, lw=4, color='blue')      # offset the line 0.1 down
         y += 1
 
     # Left y-axis labels
@@ -134,7 +135,7 @@ def _plot_causes(region_name, causes, year='2018-19', plot_folder=env.plot_folde
     # Right hand side y-axis
     right_ticks = []
     correlation_sum = 0.
-    for k,values in dict_of_causes.items():
+    for k, values in dict_of_causes.items():
         values_obs = [vo for vo in values if 'Observation' in vo.source]
         values_fc = [vf for vf in values if 'Forecast' in vf.source]
         correlation = 0.
@@ -167,6 +168,9 @@ def _plot_causes(region_name, causes, year='2018-19', plot_folder=env.plot_folde
         .format(region_name, from_date.strftime('%Y%m%d'), to_date.strftime('%Y%m%d'), num_fc, num_obs, correlation_prct)
     plt.title(title)
 
+    # When is the figure made?
+    plt.gcf().text(0.85, 0.02, 'Figur laget {0:%Y-%m-%d %H:%M}'.format(dt.datetime.now()), color='0.5')
+
     fig = plt.gcf()
     fig.subplots_adjust(left=0.2)
     plt.savefig(u'{0}{1}'.format(plot_folder, filename))
@@ -198,7 +202,7 @@ def _plot_danger_levels(region_name, danger_levels, aval_indexes, year='2018-19'
     plt.clf()
 
     ##########################################
-    ###### First subplot with avalanche index
+    # First subplot with avalanche index
     ##########################################
     pplt.subplot2grid((6, 1), (0, 0), rowspan=1)
 
@@ -224,8 +228,10 @@ def _plot_danger_levels(region_name, danger_levels, aval_indexes, year='2018-19'
         elif i.index >= 13:
             index_colors.append('red')
         else:
+            # This option should not happen.
             index_colors.append('black')
-            # TODO: this option should not happen. Test for no black markers
+            lg.warning("plotdangerandproblem.py -> plot_danger_levels: Illegal avalanche index option.")
+
 
     index_values = np.asarray(data_indexes, int)
 
@@ -238,7 +244,7 @@ def _plot_danger_levels(region_name, danger_levels, aval_indexes, year='2018-19'
     plt.title(title)
 
     ##########################################
-    ## Second subplot with avalanche danger forecast
+    # Second subplot with avalanche danger forecast
     ##########################################
     pplt.subplot2grid((6, 1), (1, 0), rowspan=2)
 
@@ -280,7 +286,7 @@ def _plot_danger_levels(region_name, danger_levels, aval_indexes, year='2018-19'
     plt.xlim(from_date, to_date)
 
     ##########################################
-    ######### Third subplot with avalanche danger observed
+    # Third subplot with avalanche danger observed
     ##########################################
     pplt.subplot2grid((6, 1), (3, 0), rowspan=2)
 
@@ -322,7 +328,7 @@ def _plot_danger_levels(region_name, danger_levels, aval_indexes, year='2018-19'
     plt.xlim(from_date, to_date)
 
     ##########################################
-    ######### Forth subplot with how well the forecast is
+    # Forth subplot with how well the forecast is
     ##########################################
     pplt.subplot2grid((6, 1), (5, 0), rowspan=1)
     plt.xlim(from_date, to_date)
@@ -347,20 +353,20 @@ def _plot_danger_levels(region_name, danger_levels, aval_indexes, year='2018-19'
                 else:
                     forecast_correct_values.append(0)
                     forecast_correct_colours.append('black')
-                    # TODO: Check if no black markers
+                    lg.warning("plotdangerandproblem.py -> plot_danger_levels: Illegal option for markes on forecast correct plot.")
 
     forecast_correct_np_values = np.asarray(forecast_correct_values, int)
     plt.scatter(forecast_correct_dates, forecast_correct_np_values, s=50., c=forecast_correct_colours, alpha=0.5)
     plt.yticks(range(-1, 2, 1), ["For lav", "Riktig", "    For høy"])
     plt.ylabel("Stemmer varslet faregrad?")
 
-    # this is an inset pie of the distribution of dangerlevels OVER the main axes
+    # this is an inset pie of the distribution of danger levels OVER the main axes
     xfrac = 0.15
     yfrac = (float(fsize[0])/float(fsize[1])) * xfrac
     xpos = 0.45-xfrac
     ypos = 0.95-yfrac
     a = plt.axes([0.8, 0.66, 0.10, 0.10])
-    #a = plt.axes([xpos, ypos, xfrac, yfrac])
+    # a = plt.axes([xpos, ypos, xfrac, yfrac])
     wDistr = np.bincount([d.danger_level for d in danger_levels if 'Forecast' in d.source])
     a.pie(wDistr, colors=dl_colors, autopct='%1.0f%%', shadow=False)
     plt.setp(a, xticks=[], yticks=[])
@@ -371,12 +377,12 @@ def _plot_danger_levels(region_name, danger_levels, aval_indexes, year='2018-19'
     xpos = 0.95-xfrac
     ypos = 0.29-yfrac
     b = plt.axes([0.8, 0.24, 0.10, 0.10])
-    #b = plt.axes([xpos, ypos, xfrac, yfrac])
+    # b = plt.axes([xpos, ypos, xfrac, yfrac])
     eDistr = np.bincount([d.danger_level for d in danger_levels if 'Observation' in d.source])
     b.pie(eDistr, colors=dl_colors, autopct='%1.0f%%', shadow=False)
     plt.setp(b, xticks=[], yticks=[])
 
-    # figuretext in observed dangerlevels subplot
+    # figure text in observed danger levels subplot
     w_number, e_number, fract_same = _compare_danger_levels(danger_levels)
     fig.text(0.15, 0.25, " Totalt {0} varslet faregrader og {1} observerte faregrader \n og det er {2}% samsvar mellom det som er observert og varslet."
              .format(w_number, e_number, int(round(fract_same*100, 0))), fontsize = 14)
@@ -393,9 +399,11 @@ def _plot_danger_levels(region_name, danger_levels, aval_indexes, year='2018-19'
     if 0 in forecast_correct_distr.keys():  fig.text(0.91, 0.15, '{0}%'.format(  int(round(forecast_correct_distr[0]/float(len(forecast_correct_values))*100, 0)))  ,fontsize = 14)
     if -1 in forecast_correct_distr.keys(): fig.text(0.91, 0.11, '{0}%'.format(  int(round(forecast_correct_distr[-1]/float(len(forecast_correct_values))*100, 0))) ,fontsize = 14)
 
+    # When is the figure made?
+    plt.gcf().text(0.8, 0.02, 'Figur laget {0:%Y-%m-%d %H:%M}'.format(dt.datetime.now()), color='0.5')
+
     # This saves the figure to file
     plt.savefig(u'{0}{1}'.format(plot_folder, filename))#,dpi=90)
-    fig.tight_layout()
     plt.close(fig)
 
 

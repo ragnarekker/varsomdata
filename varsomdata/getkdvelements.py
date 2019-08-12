@@ -43,7 +43,7 @@ def get_kdv(view):
 
         if file_date_datetime < file_date_limit:
             ml.log_and_print("[info] getkdvelements.py -> get_kdv: Old xKDV. Removing file from local storage: {0}".format(kdv_file_name))
-            os.remove(kdv_file_name)
+            os.remove(kdv_file_name)    # remove before attempting to get new, or else it will always find a file and start getting new again.
             ordered_dict = get_kdv(view)
             mp.pickle_anything(ordered_dict, kdv_file_name)
         else:

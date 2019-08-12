@@ -119,6 +119,7 @@ def get_svalbard_regional_forecasts():
     df = pandas.DataFrame(aw_dict)
     df.to_csv('../localstorage/svalbard_forecasts.csv', index_label='index')
 
+
 def get_svalbard_regional_forecasts_2015():
     region_ids = [130]
     from_date = dt.date(2014, 12, 1)
@@ -129,13 +130,12 @@ def get_svalbard_regional_forecasts_2015():
 
 
 if __name__ == '__main__':
-    #test_MountainWeather_class()
-    #test_AvalancheWarning_class()
-    #test_get_avalanche_warnings()
-    #test_AvalancheDanger_to_dict()
-    #test_AvalancheDanger_as_df()
+    # test_MountainWeather_class()
+    # test_AvalancheWarning_class()
+    # test_get_avalanche_warnings()
+    # test_AvalancheDanger_to_dict()
+    # test_AvalancheDanger_as_df()
     # get_season_17_18()
     # get_season_18_19()
     # get_svalbard_regional_forecasts()
     get_svalbard_regional_forecasts_2015()
-

@@ -1768,9 +1768,8 @@ class SnowDensityLayer:
         self.Density = l['Density']
         self.Comment = l['Comment']
         self.Weight = l['Weight']
-        self.WaterEquivalent = self.Density * self.Thickness
-        # wrong on api
-        # self.WaterEquivalent = l['WaterEquivalent']
+        # self.WaterEquivalent = self.Density * self.Thickness
+        self.WaterEquivalent = l['WaterEquivalent']
 
 
 class SnowProfile(Registration, Location, Observer, Pictures):
@@ -3045,7 +3044,7 @@ if __name__ == "__main__":
     # avalanche_evaluations_2 = get_avalanche_evaluation_2('2013-03-01', '2013-03-10')
     # avalanche_evaluations_3 = get_avalanche_evaluation_3('2017-03-01', '2017-03-10')
     # problems = get_avalanche_problem_2('2017-03-01', '2017-03-10')
-    # snow_profiles = get_snow_profile('2018-12-13', '2018-12-16')
+    # snow_profiles = get_snow_profile('2019-05-01', '2019-05-03')
     # snow_profiles_df = get_snow_profile('2018-12-13', '2018-12-16', output='DataFrame')
     # ice_thicks = get_ice_thickness('2018-01-20', '2018-02-10')
     # ice_cover = get_ice_cover('2018-01-20', '2018-02-10')
