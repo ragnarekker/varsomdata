@@ -93,6 +93,7 @@ def _plot_causes(region_name, causes, year='2018-19', plot_folder=env.plot_folde
 
     aval_cause_kdv = gkdv.get_kdv('AvalCauseKDV')
     list_of_causes = [0, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+    list_of_causes = [10, 15, 14, 11, 13, 18, 19, 16, 22, 20, 24, 0]
     # list_of_causes = set([c.cause_tid for c in causes])
     list_of_cause_names = [aval_cause_kdv[tid].Name for tid in list_of_causes]
 
@@ -119,7 +120,7 @@ def _plot_causes(region_name, causes, year='2018-19', plot_folder=env.plot_folde
         y += 1
 
     # Left y-axis labels
-    plt.ylim(len(list_of_causes)-1, -1)                # 16 skredproblemer
+    plt.ylim(len(list_of_causes)-1, -1)                # 12 skredproblemer
     plt.yticks(range(len(list_of_causes)+1), list_of_cause_names)
 
     # x-axis labels
