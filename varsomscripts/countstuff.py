@@ -134,8 +134,7 @@ def pick_winners_at_conference():
 
 
 def pick_winners_varsom_friflyt_konk_2019():
-    """
-    Method for picking winners of the varsom/friflyt competition.
+    """Method for picking winners of the varsom/friflyt competition.
 
     Utvalgskriterier:
         • Premie for flest observasjoner av snøoverflate og faretegn
@@ -431,12 +430,51 @@ def total_2018_and_part_water():
     pass
 
 
+def total_obs_and_users(year='2018-19'):
+
+    all_snow_obs = gvp.get_all_observations(year, geohazard_tids=10, max_file_age=23)
+    all_ice_obs = gvp.get_all_observations(year, geohazard_tids=70, max_file_age=23)
+    all_obs = gvp.get_all_observations(year, max_file_age=23)
+
+    snow_observers = {}
+    ice_observers = {}
+    observers = {}
+
+    for o in all_snow_obs:
+        if o.NickName in snow_observers.keys():
+            snow_observers[o.NickName] += 1
+        else:
+            snow_observers[o.NickName] = 1
+
+    for o in all_ice_obs:
+        if o.NickName in ice_observers.keys():
+            ice_observers[o.NickName] += 1
+        else:
+            ice_observers[o.NickName] = 1
+
+    for o in all_obs:
+        if o.NickName in observers.keys():
+            observers[o.NickName] += 1
+        else:
+            observers[o.NickName] = 1
+
+    print("For sesongen {} (1. sept til 31. aug)\n".format(year))
+    print("Totalt snøobservasjoner: {}".format(len(all_snow_obs)))
+    print("Antall snøobservatører: {}\n".format(len(snow_observers)))
+    print("Totalt isobservasjoner: {}".format(len(all_ice_obs)))
+    print("Antall isobservatører: {}\n".format(len(ice_observers)))
+    print("Totalt observasjoner: {}".format(len(all_obs)))
+    print("Antall observatører: {}".format(len(observers)))
+
+    pass
+
+
 if __name__ == '__main__':
 
     # pick_winners_at_conference()
     # write_to_file_all_obs()
-    pick_winners_varsom_friflyt_konk_2019()
+    # pick_winners_varsom_friflyt_konk_2019()
     # count_of_water_forms_used()
     # count_all_avalanches()
     # total_2018_and_part_water()
-
+    total_obs_and_users()
