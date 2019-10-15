@@ -8,7 +8,11 @@ from matplotlib import pyplot as plt
 import matplotlib.patches as mpatches
 import os as os
 import numpy as np
+import collections as cols
 import datetime as dt
+import logging as lg
+import sys as sys
+
 
 __author__ = 'ragnarekker'
 
@@ -39,13 +43,15 @@ def _sum_list(list_inn):
     return sum_list
 
 
-def _smooth(list_of_numbers, crop_for_season=False):
+def _smooth(list_of_numbers, window_size=11, crop_for_season=False):
     """Smooths a list of numbers with a sliding hanning window. If list_of_numbers represents the current
     season, days after today are cropped away.
 
     :param list_of_numbers:
+    :param window_size:             [int] size of slifing hanning window
     :param crop_for_season:
-    :return:
+    :return full_np_array:          [np array] input list of numbers as np array
+            full_np_array_smooth:   [np array] smoothed list
     """
 
     length_of_season = len(list_of_numbers)
@@ -54,7 +60,6 @@ def _smooth(list_of_numbers, crop_for_season=False):
         number_of_days_to_crop = (dt.date.today() - dt.date(2019, 9, 1)).days
         list_of_numbers = list_of_numbers[:number_of_days_to_crop]
 
-    window_size = 11
     window = np.hanning(window_size)
     shift = int(window_size/2)
 
@@ -62,16 +67,16 @@ def _smooth(list_of_numbers, crop_for_season=False):
     np_array_with_none = np.asarray(list_of_numbers)
     # replace None to 0
     np_array = [i if i is not None else 0 for i in np_array_with_none]
-    # convoulution with hann window (the smoothing)
+    # convolution with hanning window (the smoothing)
     smoothed_array = np.convolve(window / window.sum(), np_array, mode='valid')
 
     # shift smoothing half hanning window to the right
     smoothed_array_shift = np.append([None] * shift, smoothed_array)
     # add nones to the rest so length array is the same as inn
-    full_list_smooth = np.append(smoothed_array_shift, [None] * (length_of_season - len(smoothed_array_shift)))
+    full_np_array_smooth = np.append(smoothed_array_shift, [None] * (length_of_season - len(smoothed_array_shift)))
     full_np_array = np.append(np_array, [None] * (length_of_season - len(np_array)))
 
-    return full_np_array, full_list_smooth
+    return full_np_array, full_np_array_smooth
 
 
 class DailyNumbers:
@@ -349,7 +354,7 @@ def _region_by_region_type(all_forecasts):
 
 
 def _axis_date_labels_from_year(year):
-    """For a season (year) get lables for the first day in the month and positions on x axis."""
+    """For a season (year) get labels for the first day in the month and positions on x axis."""
     axis_dates = []
     axis_positions = []
     from_date, to_date = gm.get_forecast_dates(year)
@@ -631,6 +636,139 @@ def _plot_seasons_avalanche_problems(year, file_name_prefix, problem_ids, title_
     plt.close(fig)
 
 
+class ObsCount:
+
+    def __init__(self):
+        self.total = 0
+        self.snow = 0
+        self.landslide = 0
+        self.water = 0
+        self.ice = 0
+
+    def add_one_to_total(self):
+        self.total += 1
+
+    def add_one_to_snow(self):
+        self.snow += 1
+
+    def add_one_to_landslide(self):
+        self.landslide += 1
+
+    def add_one_to_water(self):
+        self.water += 1
+
+    def add_one_to_ice(self):
+        self.ice += 1
+
+
+def _make_date_obscount_dict(start_date=dt.date(2012, 10, 1), end_date=dt.date.today()):
+    """Makes dictionary with all dates in a period as keys and values set to empty ObsCount objects."""
+
+    num_days = (end_date-start_date).days
+    date_list = [start_date + dt.timedelta(days=x) for x in range(0, num_days)]
+
+    date_dict = cols.OrderedDict()
+    for d in date_list:
+        date_dict[d] = ObsCount()
+
+    return date_dict
+
+
+def show_data_from_the_beginning_of_time(output='File'):
+    """Writes to file all dates and the number of observations on the dates.
+    Both the total and the numbers pr geohazard.
+
+    :param output   [string]    'Plot' or 'File' or 'File and Plot'. Not case sensitive.
+
+    """
+
+    years = ['2012-13', '2013-14', '2014-15', '2015-16', '2016-17', '2017-18', '2018-19', '2019-20']
+    all_observations = []
+    for y in years:
+        all_observations += gvp.get_all_observations(y)
+
+    num_at_date = _make_date_obscount_dict()  # number of obs pr day pr geohazard
+
+    for o in all_observations:
+        date = o.DtObsTime.date()
+        try:
+            num_at_date[date].add_one_to_total()
+
+            if o.GeoHazardTID == 10:
+                num_at_date[date].add_one_to_snow()
+            if o.GeoHazardTID in [20, 30, 40]:
+                num_at_date[date].add_one_to_landslide()
+            if o.GeoHazardTID == 60:
+                num_at_date[date].add_one_to_water()
+            if o.GeoHazardTID == 70:
+                num_at_date[date].add_one_to_ice()
+
+        except Exception:
+            error_msg = sys.exc_info()[0]
+            lg.warning("regobsstatistics.py -> show_data_from_the_beginning_of_time: Exception adding one data point on {0}. Msg: {1}".format(date, error_msg))
+            pass
+
+    # Write data to file
+    if 'file' in output.lower():
+
+        with open('{}number_of_obs_pr_date.txt'.format(env.output_folder), 'w', encoding='utf-8') as f:
+            f.write('Date;Water;Landslide;Ice;Snow;Total\n')
+            for k, v in num_at_date.items():
+                f.write('{};{};{};{};{};{}\n'.format(k, v.water, v.landslide, v.ice, v.snow, v.total))
+
+    # Write data to plot
+    if 'plot' in output.lower():
+
+        x = []
+        y_total = []
+        y_snow = []
+        y_ice = []
+        y_landslide = []
+        y_water = []
+
+        for k, v in num_at_date.items():
+            x.append(k)
+            y_total.append(v.total)
+            y_snow.append(v.snow)
+            y_ice.append(v.ice)
+            y_landslide.append(v.landslide)
+            y_water.append(v.water)
+
+        y_total_smooth = _smooth(y_total, window_size=30)
+
+        # Turn off interactive mode
+        plt.ioff()
+
+        fig, ax = plt.subplots(figsize=(14, 7))
+        ax.plot(x, y_total, color='darkblue', linewidth=0.3, alpha=0.5)
+        ax.plot(x, y_total_smooth[1], color='k')
+
+        fig.suptitle("Daily observations", fontsize=20)
+        ax.grid()
+
+        # Change tick label size
+        for tick in ax.xaxis.get_major_ticks():
+            tick.label.set_fontsize(14)
+
+        for tick in ax.yaxis.get_major_ticks():
+            tick.label.set_fontsize(14)
+
+        fig.text(0.2, 0.64, "TOTAL:                     \n\nSnow:\nIce:\nDirt:\nWater:",
+                     bbox={'edgecolor': 'none', 'facecolor': 'lavender', 'alpha': 1., 'pad': 8})
+        fig.text(0.26, 0.64, "{0:7,d}\n\n{1:7,d}\n{2:7,d}\n{3:7,d}\n  {4:7d}"
+                      .format(sum(y_total), sum(y_snow), sum(y_ice), sum(y_landslide), sum(y_water)))
+
+        # When is the figure made?
+        plt.gcf().text(0.77, 0.02, 'Figure made {0:%Y-%m-%d %H:%M}'.format(dt.datetime.now()), color='0.5')
+
+        fig.savefig('{}number_of_obs_pr_date.png'.format(env.plot_folder))
+        plt.show()
+
+    # If the words plot or file do not show up in the output request, log warning.
+    if 'plot' not in output.lower() or 'file' not in output.lower():
+        lg.warning("regobsstatistics.py -> show_data_from_the_beginning_of_time: Unknown output. Must be 'Plot', 'File' or both.")
+
+
 class MonthlyNumbers:
     """
     Pr month:
@@ -687,9 +825,10 @@ if __name__ == '__main__':
     # plot_numbers_of_3_seasons()
     # plot_seasons_forecasted_danger_level()
     # plot_seasons_avalanche_problems()
-    plot_seasons_forecasted_danger_level(year='2017-18')
-    plot_seasons_avalanche_problems(year='2017-18')
-    plot_seasons_forecasted_danger_level(year='2016-17')
-    plot_seasons_avalanche_problems(year='2016-17')
+    # plot_seasons_forecasted_danger_level(year='2017-18')
+    # plot_seasons_avalanche_problems(year='2017-18')
+    # plot_seasons_forecasted_danger_level(year='2016-17')
+    # plot_seasons_avalanche_problems(year='2016-17')
+    show_data_from_the_beginning_of_time(output='Plot')
 
     pass

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Module contains methods for picking through Regobs and Varsom data.It might be to randomly pick
+"""Module contains methods for picking through Regobs and Varsom data. It might be to randomly pick
 out winners of a competition or count numbers for a report benchmark.
 """
 
@@ -9,48 +8,9 @@ from varsomdata import getmisc as gm
 from varsomdata import getvarsompickles as gvp
 from utilities import makepickle as mp
 import setenvironment as env
-import collections as cols
-import datetime as dt
+
 
 __author__ = 'ragnarekker'
-
-
-class ObsCount:
-
-    def __init__(self):
-        self.total = 0
-        self.snow = 0
-        self.landslide = 0
-        self.water = 0
-        self.ice = 0
-
-    def add_one_to_total(self):
-        self.total += 1
-
-    def add_one_to_snow(self):
-        self.snow += 1
-
-    def add_one_to_landslide(self):
-        self.landslide += 1
-
-    def add_one_to_water(self):
-        self.water += 1
-
-    def add_one_to_ice(self):
-        self.ice += 1
-
-
-def _make_date_obscount_dict(start_date=dt.date(2012, 10, 1), end_date=dt.date.today()):
-    """Makes dictionary with all dates in a period as keys and values set to empty ObsCount objects."""
-
-    num_days = (end_date-start_date).days
-    date_list = [start_date + dt.timedelta(days=x) for x in range(0, num_days)]
-
-    date_dict = cols.OrderedDict()
-    for d in date_list:
-        date_dict[d] = ObsCount()
-
-    return date_dict
 
 
 def _map_obs_to_old_regions(obs, make_new=True):
@@ -74,41 +34,6 @@ def _map_obs_to_old_regions(obs, make_new=True):
     else:
         obs_old_coords = mp.unpickle_anything(picle_file_name)
         return obs_old_coords
-
-
-def write_to_file_all_obs():
-    """Writes to file all dates and the number of observations on the dates.
-    Both the total and the numbers pr geohazard."""
-
-    years = ['2012-13', '2013-14', '2014-15', '2015-16', '2016-17', '2017-18', '2018-19']
-    all_observations = []
-    for y in years:
-        all_observations += gvp.get_all_observations(y)
-
-    num_at_date = _make_date_obscount_dict()          # number of obs pr day pr geohazard
-
-    for o in all_observations:
-        date = o.DtObsTime.date()
-        try:
-            num_at_date[date].add_one_to_total()
-
-            if o.GeoHazardTID == 10:
-                num_at_date[date].add_one_to_snow()
-            if o.GeoHazardTID in [20, 30, 40]:
-                num_at_date[date].add_one_to_landslide()
-            if o.GeoHazardTID == 60:
-                num_at_date[date].add_one_to_water()
-            if o.GeoHazardTID == 70:
-                num_at_date[date].add_one_to_ice()
-
-        except:
-            pass
-
-    # Write observed dangers to file
-    with open('{}number_off_obs_pr_date.txt'.format(env.output_folder), 'w', encoding='utf-8') as f:
-        f.write('Date;Water;Landslide;Ice;Snow;Total\n')
-        for k, v in num_at_date.items():
-            f.write('{};{};{};{};{};{}\n'.format(k, v.water, v.landslide, v.ice, v.snow, v.total))
 
 
 def pick_winners_at_conference():

@@ -4,6 +4,10 @@
 import datetime as dt
 from varsomdata import getforecastapi as gf
 from varsomdata import varsomclasses as vc
+from varsomdata import getvarsompickles as gvp
+from varsomdata import getmisc as gm
+import logging as lg
+import setenvironment as se
 import pandas
 
 __author__ = 'kmunve'
@@ -129,6 +133,24 @@ def get_svalbard_regional_forecasts_2015():
     df.to_csv('../localstorage/svalbard_forecasts_2015.csv', index_label='index')
 
 
+# TODO: choose with get_season_18_19()
+def get_season_raek(season='2018-19'):
+    """Requests all forecasts (danger levels and problems) from the forecast api and writes to .csv file.
+
+    :param season: [string] Eg. '2019-20'. If parameter is not 7 char it will not make the csv.
+    """
+
+    if len(season) == 7:
+        aw = gvp.get_all_forecasts(year=season)
+        aw_dict = [w.to_dict() for w in aw]
+        df = pandas.DataFrame(aw_dict)
+        file_and_folder = '{0}norwegian_avalanche_warnings_season_{1}_{2}.csv'.format(se.local_storage, season[2:4], season[5:7])
+        df.to_csv(file_and_folder, index_label='index')
+
+    else:
+        lg.warning('avalanchewarningscomplete.py -> get_season_raek: season parameter ist not the expected length.')
+
+
 if __name__ == '__main__':
     # test_MountainWeather_class()
     # test_AvalancheWarning_class()
@@ -138,4 +160,6 @@ if __name__ == '__main__':
     # get_season_17_18()
     # get_season_18_19()
     # get_svalbard_regional_forecasts()
-    get_svalbard_regional_forecasts_2015()
+    # get_svalbard_regional_forecasts_2015()
+    get_season_raek(season='2017-18')
+    get_season_raek(season='2016-17')

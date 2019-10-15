@@ -2989,10 +2989,11 @@ def _the_simplest_webapi_request():
 
     query = {'LangKey': 1,
              'SelectedGeoHazards': [70],
-             # 'SelectedRegistrationTypes': {'Id': 51, 'SubTypes': []},
+             'SelectedRegistrationTypes': [{'Id': 11, 'SubTypes': []}],
              'FromDate': '2019-03-01',
-             'ToDate': '2019-06-04',
-             'NumberOfRecords': 1500}
+             'ToDate': '2019-06-04'}
+
+    # query = {'LangKey': 1, 'RegId': 196802}
 
     url = 'https://api.regobs.no/v4/Search/' # AtAGlance'
 

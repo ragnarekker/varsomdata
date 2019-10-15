@@ -498,6 +498,9 @@ def get_observation_dates(year, padding=dt.timedelta(days=0)):
         to_date = dt.date(2018, 7, 1)
     elif year == '2018-19':
         from_date = dt.date(2018, 10, 1)
+        to_date = dt.date(2019, 7, 1)
+    elif year == '2019-20':
+        from_date = dt.date(2019, 10, 1)
         to_date = dt.date.today() + dt.timedelta(days=2)
     else:
         from_date = "Undefined dates"
@@ -594,8 +597,12 @@ def get_dates_from_season(year):
         to_date = dt.date(2018, 9, 1)
     elif year == '2018-19':
         from_date = dt.date(2018, 9, 1)
+        to_date = dt.date(2019, 9, 1)
+    elif year == '2019-20':
+        from_date = dt.date(2019, 9, 1)
         to_date = dt.date.today()
-    elif year in ['2012', '2013', '2014', '2015', '2016', '2017', '2018']:
+
+    elif year in ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020']:
         from_date = dt.date(int(year), 1, 1)
         to_date = dt.date(int(year), 12, 31)
     else:
