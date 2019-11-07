@@ -594,7 +594,7 @@ def make_svv_plots(all_observations_list, observer_dict, region_ids, months, plo
             _make_html(dates, region_name=region_name, data_description=data_description, html_folder=html_folder)
 
 
-def make_season_calender_plots(year='2018-19', plot_folder=env.plot_folder, html_folder=env.output_folder + 'views/', web_pickle_folder=env.output_folder + 'webpickles/'):
+def make_season_calender_plots(year='2019-20', plot_folder=env.plot_folder, html_folder=env.output_folder + 'views/', web_pickle_folder=env.output_folder + 'webpickles/'):
     """Makes observation calender plots for both observer and region for display on web page for the season 2018-19.
     Method includes a request for list of relevant observers."""
 

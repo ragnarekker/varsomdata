@@ -458,7 +458,7 @@ class AvalancheCause:
         self.cause_name = AvalCauseKDV[self.cause_tid].Name
 
 
-def make_plots_for_regions(region_ids=None, year='2018-19', plot_folder=env.plot_folder + 'regionplots/'):
+def make_plots_for_regions(region_ids=None, year='2019-20', plot_folder=env.plot_folder + 'regionplots/'):
     """This method prepares data for plotting and calls on the plot methods. Pure administration.
 
     :param region_ids:      [int]       Forecast region ID as given in ForecastRegionKDV

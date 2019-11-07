@@ -205,12 +205,12 @@ def plot_numbers_of_3_seasons(output_folder=env.plot_folder+'regobsplots/'):
     """
 
     # Get data
-    all_obs_201819_list = gvp.get_all_observations('2018-19', output='FlatList', max_file_age=23)
-    all_obs_201819_nest = gvp.get_all_observations('2018-19', output='List', max_file_age=23)
+    all_obs_201920_list = gvp.get_all_observations('2019-20', output='FlatList', max_file_age=23)
+    all_obs_201920_nest = gvp.get_all_observations('2019-20', output='List', max_file_age=23)
+    all_obs_201819_list = gvp.get_all_observations('2018-19', output='FlatList')
+    all_obs_201819_nest = gvp.get_all_observations('2018-19', output='List')
     all_obs_201718_list = gvp.get_all_observations('2017-18', output='FlatList')
     all_obs_201718_nest = gvp.get_all_observations('2017-18', output='List')
-    all_obs_201617_list = gvp.get_all_observations('2016-17', output='FlatList')
-    all_obs_201617_nest = gvp.get_all_observations('2016-17', output='List')
 
     # Make dict with all dates and a empty DailyNumbers object
     all_year = {}
@@ -226,22 +226,22 @@ def plot_numbers_of_3_seasons(output_folder=env.plot_folder+'regobsplots/'):
                 all_year[_str(m) + _str(d)] = DailyNumbers(m, d)
 
     # Add data to the DailyNumbers
-    for o in all_obs_201819_list:
+    for o in all_obs_201920_list:
         all_year[_str(o.DtObsTime.month) + _str(o.DtObsTime.day)].add_obs_this_season(o)
 
-    for o in all_obs_201819_nest:
+    for o in all_obs_201920_nest:
         all_year[_str(o.DtObsTime.month) + _str(o.DtObsTime.day)].add_regs_this_season(o)
 
-    for o in all_obs_201718_list:
+    for o in all_obs_201819_list:
         all_year[_str(o.DtObsTime.month) + _str(o.DtObsTime.day)].add_obs_prev_season(o)
 
-    for o in all_obs_201718_nest:
+    for o in all_obs_201819_nest:
         all_year[_str(o.DtObsTime.month) + _str(o.DtObsTime.day)].add_regs_prev_season(o)
 
-    for o in all_obs_201617_list:
+    for o in all_obs_201718_list:
         all_year[_str(o.DtObsTime.month) + _str(o.DtObsTime.day)].add_obs_two_seasons_ago(o)
 
-    for o in all_obs_201617_nest:
+    for o in all_obs_201718_nest:
         all_year[_str(o.DtObsTime.month) + _str(o.DtObsTime.day)].add_regs_two_seasons_ago(o)
 
     obs_this_season, obs_this_season_smooth = _smooth([v.obs_this_season_num for k, v in all_year.items()], crop_for_season=True)
@@ -268,9 +268,9 @@ def plot_numbers_of_3_seasons(output_folder=env.plot_folder+'regobsplots/'):
 
     # Make legend
     legend_handles = []
-    legend_handles.append(mpatches.Patch(color='0.2', label="2018-19"))
-    legend_handles.append(mpatches.Patch(color='blue', label="2017-18"))
-    legend_handles.append(mpatches.Patch(color='red', label="2016-17"))
+    legend_handles.append(mpatches.Patch(color='0.2', label="2019-20"))
+    legend_handles.append(mpatches.Patch(color='blue', label="2018-19"))
+    legend_handles.append(mpatches.Patch(color='red', label="2017-18"))
 
     # x-axis labels
     axis_dates, axis_positions = [], []
@@ -406,7 +406,7 @@ class DangerLevelPixel:
         return y
 
 
-def plot_seasons_forecasted_danger_level(year='2018-19', output_folder=env.plot_folder+'regobsplots/'):
+def plot_seasons_forecasted_danger_level(year='2019-20', output_folder=env.plot_folder+'regobsplots/'):
     """All forecasted danger levels for all regions are plotted in one figure.
 
     :param year:                [string]    Season as eg '2018-19'
@@ -544,7 +544,7 @@ class AvalancheProblemPixel:
         return y
 
 
-def plot_seasons_avalanche_problems(year='2018-19', output_folder=env.plot_folder+'regobsplots/'):
+def plot_seasons_avalanche_problems(year='2019-20', output_folder=env.plot_folder+'regobsplots/'):
     """All forecasted avalanche problems for alle regions are plotted in one figure. This method
     makes 5 separate plots for each of the general types of avalanche problems.
 
@@ -829,6 +829,6 @@ if __name__ == '__main__':
     # plot_seasons_avalanche_problems(year='2017-18')
     # plot_seasons_forecasted_danger_level(year='2016-17')
     # plot_seasons_avalanche_problems(year='2016-17')
-    show_data_from_the_beginning_of_time(output='Plot')
+    # show_data_from_the_beginning_of_time(output='Plot and file')
 
     pass
